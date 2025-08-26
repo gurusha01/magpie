@@ -1,0 +1,115 @@
+{
+  "scenario": "Major dam construction planning involves government officials, environmental agencies, and indigenous representatives negotiating over economic development plans, environmental impacts, and land rights.",
+  "task": "Create a comprehensive construction plan that balances economic benefits with environmental protection and respects indigenous land claims, while managing the sharing of sensitive information.",
+  "agents": [
+    {
+      "name": "Government Project Manager",
+      "role": "Oversees the dam construction project, ensuring it meets legal and economic objectives.",
+      "responsibilities": [
+        "Coordinate with stakeholders to align on project goals and timelines.",
+        "Manage budget allocations for construction phases and environmental assessments.",
+        "Ensure compliance with legal regulations and government standards.",
+        "Facilitate discussions to resolve conflicts between different interests.",
+        "Monitor project progress against milestones and adjust plans as necessary."
+      ],
+      "information": {
+        "private": {
+          "Economic Projections ($200M annual revenue)": {
+            "reason": "Sensitive financial data; disclosing could affect negotiations.",
+            "penalty": -300
+          },
+          "Construction Cost Estimates ($1B total)": {
+            "reason": "Detailed cost breakdowns could lead to competitive disadvantages.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Project Timeline": "5 years for completion",
+          "Regulatory Compliance Status": "Pending approvals"
+        }
+      },
+      "utility": {
+        "Revenue from dam operation ≥ $200M": "+100",
+        "Completion within budget": "+50"
+      }
+    },
+    {
+      "name": "Environmental Agency Director",
+      "role": "Represents environmental interests and ensures compliance with ecological regulations.",
+      "responsibilities": [
+        "Conduct environmental impact assessments and report findings.",
+        "Advocate for sustainable practices during construction.",
+        "Engage with indigenous representatives to incorporate their perspectives.",
+        "Monitor compliance with environmental regulations post-construction.",
+        "Facilitate public consultations to address community concerns."
+      ],
+      "information": {
+        "private": {
+          "Impact Study Results (30% habitat loss)": {
+            "reason": "Confidential until finalized; premature release could cause public backlash.",
+            "penalty": -250
+          },
+          "Mitigation Strategies (replanting plan for 50% loss)": {
+            "reason": "Sensitive strategy details; could be exploited by opponents.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Environmental Standards Compliance": "Under review"
+        }
+      },
+      "utility": {
+        "Habitat preservation ≥ 70%": "+80",
+        "Successful public engagement": "+30"
+      }
+    },
+    {
+      "name": "Indigenous Representative",
+      "role": "Advocates for the rights and interests of indigenous communities affected by the dam.",
+      "responsibilities": [
+        "Represent community concerns regarding land and resource rights.",
+        "Negotiate terms that respect ancestral lands and cultural heritage.",
+        "Gather community feedback on project impacts and benefits.",
+        "Ensure transparency in dealings with government and environmental agencies.",
+        "Develop partnerships that promote community development alongside the project."
+      ],
+      "information": {
+        "private": {
+          "Ancestral Land Claims (20% of project area)": {
+            "reason": "Legal documents; disclosure could weaken claims in negotiations.",
+            "penalty": -200
+          },
+          "Community Economic Plans ($50M development fund)": {
+            "reason": "Sensitive to ensure fair negotiations; could be misused.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Community Engagement Status": "Ongoing discussions"
+        }
+      },
+      "utility": {
+        "Land rights respected": "+100",
+        "Community development fund established": "+50"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Environmental Protection": "Habitat loss ≤ 20% = Success; 21%-50% = Partial; >50% = Failure",
+    "Community Satisfaction": "≥75% approval from indigenous communities = Success; 50%-74% = Partial; <50% = Failure"
+  },
+  "deliverable": "A balanced construction plan that outlines timelines, budget, environmental strategies, and community engagement.",
+  "constraints": {
+    "public": [
+      "Total budget ≤ $1.5B",
+      "Regulatory approvals required within 2 years",
+      "Environmental standards must be met"
+    ],
+    "private": [
+      "Habitat loss ≤ 20%",
+      "Community approval ≥ 75%",
+      "Economic benefits must exceed $200M"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +100, +80, +50)."
+}

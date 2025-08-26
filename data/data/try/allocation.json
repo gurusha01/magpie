@@ -1,0 +1,117 @@
+{
+  "scenario": "Three teams must strategically allocate a limited pool of GPUs while managing conflicting project details and regional preferences.",
+  "task": "Create a resource allocation plan that optimally distributes GPUs among the teams, taking into account their project requirements and regional preferences without disclosing sensitive project details.",
+  "agents": [
+    {
+      "name": "Team A Lead",
+      "role": "Oversees the development of a machine learning model requiring high computational resources.",
+      "responsibilities": [
+        "Define GPU requirements based on project complexity and timeline.",
+        "Negotiate GPU allocation with other teams while maintaining project confidentiality.",
+        "Manage the team's workload and ensure timely project delivery.",
+        "Report on project progress and resource utilization.",
+        "Ensure the efficient use of allocated GPUs to maximize performance."
+      ],
+      "information": {
+        "private": {
+          "Project Complexity (Requires 10 GPUs)": {
+            "reason": "Sensitive project details; disclosing could impact competitive advantage.",
+            "penalty": -150
+          },
+          "Preferred Region (North America)": {
+            "reason": "Regional preferences may affect negotiation; sensitive to team dynamics.",
+            "penalty": -50
+          }
+        },
+        "public": {
+          "Current GPU Utilization": "20%",
+          "Project Deadline": "Q4 2023"
+        }
+      },
+      "utility": {
+        "Successful model completion with allocated GPUs": "+100",
+        "Efficient use of resources (≤10% wastage)": "+30"
+      }
+    },
+    {
+      "name": "Team B Lead",
+      "role": "Responsible for developing a real-time data processing system with specific GPU needs.",
+      "responsibilities": [
+        "Assess GPU needs based on data processing requirements.",
+        "Collaborate with other teams to negotiate GPU distribution.",
+        "Ensure project goals align with available resources.",
+        "Monitor and report on GPU performance metrics.",
+        "Adjust project timelines based on GPU availability."
+      ],
+      "information": {
+        "private": {
+          "Performance Metrics (Requires 5 GPUs)": {
+            "reason": "Critical performance data; exposing could lead to project sabotage.",
+            "penalty": -100
+          },
+          "Preferred Region (Europe)": {
+            "reason": "Sensitive team preference; could affect negotiations.",
+            "penalty": -30
+          }
+        },
+        "public": {
+          "Current GPU Utilization": "15%",
+          "Project Deadline": "Q2 2024"
+        }
+      },
+      "utility": {
+        "Real-time processing achieved with allocated GPUs": "+80",
+        "Meeting project timeline": "+20"
+      }
+    },
+    {
+      "name": "Team C Lead",
+      "role": "Focuses on developing a simulation tool that requires a different GPU allocation strategy.",
+      "responsibilities": [
+        "Determine GPU needs based on simulation requirements.",
+        "Engage in negotiations for GPU allocation with other teams.",
+        "Provide updates on project status and GPU usage.",
+        "Ensure that the team adheres to the allocated GPU limits.",
+        "Adjust project plans based on GPU availability."
+      ],
+      "information": {
+        "private": {
+          "Simulation Complexity (Requires 8 GPUs)": {
+            "reason": "Project details are proprietary; revealing could harm competitiveness.",
+            "penalty": -120
+          },
+          "Preferred Region (Asia)": {
+            "reason": "Team preference could skew negotiation dynamics.",
+            "penalty": -40
+          }
+        },
+        "public": {
+          "Current GPU Utilization": "10%",
+          "Project Deadline": "Q3 2023"
+        }
+      },
+      "utility": {
+        "Successful simulation completion with allocated GPUs": "+90",
+        "Efficient GPU usage (≤15% wastage)": "+25"
+      }
+    }
+  ],
+  "success_criteria": {
+    "GPU utilization efficiency": "≥85% = Success; 70%-84% = Partial Success; <70% = Failure",
+    "Project delivery on time": "All projects completed by their respective deadlines"
+  },
+  "deliverable": "A comprehensive GPU allocation plan that maximizes efficiency while respecting team preferences and deadlines.",
+  "constraints": {
+    "public": [
+      "Total GPUs available ≤ 30",
+      "Each team must receive at least 5 GPUs",
+      "All projects must meet their deadlines"
+    ],
+    "private": [
+      "No team can exceed their requested GPU count",
+      "Teams must negotiate GPU allocations with at least 2 other teams",
+      "Disclosing sensitive project details can lead to penalties"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -150, -100, -120, -50, -30). Utilities are expressed as gains (e.g., +100, +80, +90, +30, +25)."
+}

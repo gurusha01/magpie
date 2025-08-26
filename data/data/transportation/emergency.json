@@ -1,0 +1,115 @@
+{
+  "scenario": "Natural disaster response resource allocation between government agencies, NGOs, and local authorities with private population vulnerability data, undisclosed resource limitations, and confidential political considerations.",
+  "task": "Create a resource allocation plan that optimizes aid distribution among affected populations while ensuring transparency and maximizing effective response efforts.",
+  "agents": [
+    {
+      "name": "Government Agency Director",
+      "role": "Oversees disaster response efforts and coordinates with various stakeholders to ensure effective resource distribution.",
+      "responsibilities": [
+        "Assess overall disaster impact and resource needs across affected areas.",
+        "Coordinate with NGOs and local authorities to align response strategies.",
+        "Manage government funding allocations for relief efforts.",
+        "Ensure compliance with federal regulations and reporting requirements.",
+        "Communicate publicly about resource availability and response timelines."
+      ],
+      "information": {
+        "private": {
+          "Population Vulnerability Data (high-risk zones)": {
+            "reason": "Sensitive data that could lead to panic if disclosed prematurely.",
+            "penalty": -250
+          },
+          "Resource Limitations (50% of requested aid available)": {
+            "reason": "Disclosing limits could undermine public trust and response efforts.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Total Relief Budget": "$100M"
+        }
+      },
+      "utility": {
+        "Effective resource distribution to 80% of high-risk areas": "+100",
+        "Meeting response timeline of 72 hours": "+50"
+      }
+    },
+    {
+      "name": "NGO Operations Manager",
+      "role": "Manages on-the-ground relief efforts and ensures that aid reaches the most vulnerable populations.",
+      "responsibilities": [
+        "Identify and assess local needs through community engagement.",
+        "Coordinate logistics for aid delivery and volunteer deployment.",
+        "Advocate for resource allocation based on ground realities.",
+        "Maintain transparency with stakeholders while protecting sensitive data.",
+        "Report on the effectiveness of aid distribution efforts."
+      ],
+      "information": {
+        "private": {
+          "Local Vulnerability Assessments (specific community needs)": {
+            "reason": "Detailed assessments could lead to targeted exploitation or misallocation.",
+            "penalty": -150
+          },
+          "Volunteer Capacity (limited to 200 volunteers)": {
+            "reason": "Revealing capacity could lead to unrealistic expectations from the public.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Aid Distribution Plan": "Focus on food, shelter, and medical needs"
+        }
+      },
+      "utility": {
+        "Aid reaches 90% of identified vulnerable populations": "+75",
+        "Volunteer deployment within 48 hours": "+50"
+      }
+    },
+    {
+      "name": "Local Authority Representative",
+      "role": "Acts as the liaison between the community and external aid organizations, ensuring local needs are prioritized.",
+      "responsibilities": [
+        "Gather and relay community feedback on aid effectiveness.",
+        "Facilitate access to local infrastructure for aid distribution.",
+        "Coordinate with government and NGOs to align local needs with available resources.",
+        "Monitor and report on the local impact of disaster response efforts.",
+        "Ensure local regulations are considered in resource allocation."
+      ],
+      "information": {
+        "private": {
+          "Community Trust Levels (low in certain areas)": {
+            "reason": "Trust issues could escalate tensions if disclosed.",
+            "penalty": -100
+          },
+          "Internal Resource Constraints (limited funding for local initiatives)": {
+            "reason": "Disclosure may hinder negotiations with external partners.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Community Needs Assessment": "Food, clean water, shelter"
+        }
+      },
+      "utility": {
+        "Local trust restored to 70%": "+60",
+        "Aid distribution meets local regulatory standards": "+40"
+      }
+    }
+  ],
+  "success_criteria": {
+    "High-risk area coverage": "≥80% of identified areas = Success; 70-79% = Partial; <70% = Failure",
+    "Community satisfaction rate": "≥70% positive feedback = Success; 50-69% = Partial; <50% = Failure"
+  },
+  "deliverable": "A comprehensive resource allocation plan detailing aid distribution strategies, timelines, and stakeholder responsibilities.",
+  "constraints": {
+    "public": [
+      "Total budget ≤ $100M",
+      "Response initiated within 72 hours",
+      "Compliance with local regulations"
+    ],
+    "private": [
+      "Community trust must exceed 60%",
+      "Resource allocation must meet at least 75% of local needs",
+      "Confidentiality of vulnerability data maintained",
+      "Agencies must agree on priority areas for aid"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +60, +50)."
+}

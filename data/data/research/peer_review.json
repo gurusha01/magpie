@@ -1,0 +1,114 @@
+{
+  "scenario": "High-impact pandemic research evaluation between journal editors, scientific reviewers, and public health officials with private political pressures, undisclosed competing research, and confidential information about potential applications.",
+  "task": "Create a balanced evaluation framework for pandemic research submissions that considers scientific merit, public health implications, and addresses potential conflicts of interest.",
+  "agents": [
+    {
+      "name": "Journal Editor",
+      "role": "Oversees the publication process and ensures integrity in research evaluation.",
+      "responsibilities": [
+        "Review and select research papers for publication based on scientific merit.",
+        "Manage relationships with reviewers and ensure fair evaluation.",
+        "Protect the confidentiality of sensitive research data.",
+        "Balance editorial board opinions with public health needs.",
+        "Ensure timely publication to inform the scientific community."
+      ],
+      "information": {
+        "private": {
+          "Pending Submission Data (50% rejection rate)": {
+            "reason": "Internal metrics to gauge submission quality; revealing could bias future submissions.",
+            "penalty": -150
+          },
+          "Reviewer Bias Concerns": {
+            "reason": "Potential conflicts of interest among reviewers; disclosing could undermine trust.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Publication Timeline": "Average 6 months for review"
+        }
+      },
+      "utility": {
+        "Timely publication (within 6 months)": "+50",
+        "Maintaining a balanced review process": "+30"
+      }
+    },
+    {
+      "name": "Scientific Reviewer",
+      "role": "Evaluates the scientific quality and relevance of submitted research.",
+      "responsibilities": [
+        "Critically assess research methodology and findings.",
+        "Provide constructive feedback to authors.",
+        "Identify potential conflicts of interest in the research.",
+        "Ensure adherence to ethical research standards.",
+        "Advocate for high-impact research that addresses public health needs."
+      ],
+      "information": {
+        "private": {
+          "Competing Research Insights": {
+            "reason": "Knowledge of other submissions that could influence evaluation; revealing could skew perceptions.",
+            "penalty": -200
+          },
+          "Reviewer Performance Ratings": {
+            "reason": "Internal ratings that could affect future reviewer assignments.",
+            "penalty": -50
+          }
+        },
+        "public": {
+          "Evaluation Criteria": "Scientific rigor, relevance, and ethical standards"
+        }
+      },
+      "utility": {
+        "Identifying high-impact research": "+70",
+        "Providing thorough feedback": "+20"
+      }
+    },
+    {
+      "name": "Public Health Official",
+      "role": "Ensures that published research aligns with public health priorities and informs policy.",
+      "responsibilities": [
+        "Advocate for research that addresses urgent public health challenges.",
+        "Collaborate with researchers to translate findings into policy.",
+        "Monitor public health implications of published research.",
+        "Engage with community stakeholders to align research with needs.",
+        "Ensure transparency in public health communications."
+      ],
+      "information": {
+        "private": {
+          "Political Pressure Data": {
+            "reason": "Sensitive information regarding government influence on research priorities.",
+            "penalty": -100
+          },
+          "Unpublished Health Trends": {
+            "reason": "Confidential data that could mislead public perception if leaked.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Health Priority Areas": "Infectious diseases, vaccine development, health equity"
+        }
+      },
+      "utility": {
+        "Research aligns with health priorities": "+60",
+        "Successful translation of findings into policy": "+40"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Publication Impact Factor": "≥5 = Success; 3–4 = Partial Success; <3 = Failure",
+    "Relevance to Public Health": "≥80% alignment with health priorities = Success; 60–79% = Partial Success; <60% = Failure"
+  },
+  "deliverable": "A comprehensive evaluation framework for pandemic research submissions that balances scientific merit and public health implications.",
+  "constraints": {
+    "public": [
+      "All submissions must be evaluated within 6 months",
+      "Maintain transparency in evaluation criteria",
+      "Compliance with ethical standards in research"
+    ],
+    "private": [
+      "Limit publication of competing research to ensure focus",
+      "Internal reviewer performance must remain confidential",
+      "Political influences must not affect publication decisions"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +70, +60, +50)."
+}

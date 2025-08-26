@@ -1,0 +1,115 @@
+{
+  "scenario": "Military equipment relocation planning requires collaboration between commanders, logistics officers, and intelligence analysts to ensure secure and efficient transport while managing sensitive information.",
+  "task": "Create a detailed relocation strategy that includes timelines, resource allocations, and contingency plans, while negotiating sensitive information sharing among agents.",
+  "agents": [
+    {
+      "name": "Combat Commander",
+      "role": "Leads the operational aspect of the relocation, ensuring mission objectives are met.",
+      "responsibilities": [
+        "Define strategic objectives for equipment relocation.",
+        "Coordinate with logistics and intelligence to ensure alignment.",
+        "Assess real-time threats to adjust plans accordingly.",
+        "Authorize resource allocations for secure transport.",
+        "Ensure that troop readiness is maintained during the operation."
+      ],
+      "information": {
+        "private": {
+          "Troop Deployment Plans": {
+            "reason": "Sensitive operational details that could compromise security if leaked.",
+            "penalty": -300
+          },
+          "Threat Level Assessment": {
+            "reason": "Classified intelligence that may cause panic or misinformation if disclosed.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Equipment Inventory": "All units accounted for and ready for transport."
+        }
+      },
+      "utility": {
+        "Mission success rate >90%": "+100",
+        "Completion within 24 hours": "+50"
+      }
+    },
+    {
+      "name": "Logistics Officer",
+      "role": "Responsible for planning and executing the physical movement of equipment.",
+      "responsibilities": [
+        "Develop transport routes and schedules considering safety and efficiency.",
+        "Manage the allocation of vehicles and personnel for the operation.",
+        "Coordinate with the commander for real-time adjustments based on threats.",
+        "Ensure compliance with military regulations during transport.",
+        "Document the relocation process for future assessments."
+      ],
+      "information": {
+        "private": {
+          "Vehicle Capabilities": {
+            "reason": "Confidential information that could provide adversaries with tactical advantages.",
+            "penalty": -150
+          },
+          "Supply Chain Constraints": {
+            "reason": "Internal issues that could impact operational readiness if known.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Transport Timeline": "Estimated completion in 24 hours."
+        }
+      },
+      "utility": {
+        "On-time delivery of all equipment": "+75",
+        "Cost under budget": "+50"
+      }
+    },
+    {
+      "name": "Intelligence Analyst",
+      "role": "Provides critical threat assessments and intelligence support to inform relocation strategies.",
+      "responsibilities": [
+        "Analyze potential threats to transport routes.",
+        "Provide real-time intelligence updates during the operation.",
+        "Assess enemy capabilities and movements.",
+        "Compile intelligence reports for commanders and logistics.",
+        "Maintain confidentiality of sensitive information."
+      ],
+      "information": {
+        "private": {
+          "Enemy Movement Patterns": {
+            "reason": "Could compromise operational security if disclosed.",
+            "penalty": -250
+          },
+          "Strategic Objectives": {
+            "reason": "Sensitive information that could lead to mission failure if leaked.",
+            "penalty": -300
+          }
+        },
+        "public": {
+          "Current Threat Level": "Moderate."
+        }
+      },
+      "utility": {
+        "Accuracy of threat assessments >85%": "+100",
+        "Timely intelligence updates during operation": "+75"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Equipment safety rate": "≥95% = Success; 90-94% = Partial; <90% = Failure",
+    "Timely completion": "≤24 hours = Success; 25-30 hours = Partial; >30 hours = Failure"
+  },
+  "deliverable": "A comprehensive relocation strategy that includes timelines, resource allocations, and contingency plans.",
+  "constraints": {
+    "public": [
+      "Total equipment must be relocated within 24 hours.",
+      "All operations must comply with military regulations.",
+      "No equipment losses during transport."
+    ],
+    "private": [
+      "Threat level must remain at or below 'Moderate'.",
+      "Troop readiness must be ≥90% during operation.",
+      "Logistics must not exceed allocated budgets.",
+      "No unauthorized disclosures of sensitive information."
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+}

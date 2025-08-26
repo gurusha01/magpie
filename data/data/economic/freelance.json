@@ -1,0 +1,114 @@
+{
+  "scenario": "A project contract negotiation takes place where a client, freelancers, and a project manager must align on scope and budget despite hidden constraints and pressure from undisclosed changes.",
+  "task": "Negotiate a project plan that defines scope, budget, and timelines while balancing the interests of the client and freelancers, revealing enough information to reach consensus but protecting sensitive details.",
+  "agents": [
+    {
+      "name": "Client Representative",
+      "role": "Oversees project vision and budget, ensuring outcomes meet business goals.",
+      "responsibilities": [
+        "Define project scope and expectations clearly to all parties.",
+        "Allocate budget efficiently while maintaining flexibility for unforeseen changes.",
+        "Communicate critical project milestones and deadlines.",
+        "Negotiate terms that favor client interests without alienating freelancers.",
+        "Monitor project progress and adjust budgets as necessary."
+      ],
+      "information": {
+        "private": {
+          "Hidden Budget Cap ($150,000)": {
+            "reason": "Revealing the maximum budget could weaken negotiation position.",
+            "penalty": -300
+          },
+          "Upcoming Strategic Shift": {
+            "reason": "Strategic changes in business direction that may affect project scope.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Initial Budget Proposal": "$200,000"
+        }
+      },
+      "utility": {
+        "Staying under budget": "+100",
+        "Meeting project deadlines": "+50"
+      }
+    },
+    {
+      "name": "Freelancer Lead",
+      "role": "Represents a group of freelancers with diverse skills, ensuring their interests are prioritized.",
+      "responsibilities": [
+        "Clarify the scope of work as it relates to freelancers' capabilities.",
+        "Negotiate fair compensation and terms for services provided.",
+        "Ensure timelines are realistic based on freelancers' workloads.",
+        "Communicate any potential issues or concerns regarding project execution.",
+        "Advocate for transparency to ensure freelancers' contributions are recognized."
+      ],
+      "information": {
+        "private": {
+          "Minimum Acceptable Rate ($120,000)": {
+            "reason": "Revealing this could limit negotiating flexibility.",
+            "penalty": -250
+          },
+          "Freelancer Availability Constraints": {
+            "reason": "Internal scheduling conflicts that could limit project resources.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Freelancer Team Skills": "Design, Development, Marketing"
+        }
+      },
+      "utility": {
+        "Total compensation meeting minimum rate": "+80",
+        "Timely project completion": "+60"
+      }
+    },
+    {
+      "name": "Project Manager",
+      "role": "Facilitates communication between client and freelancers, ensuring project alignment.",
+      "responsibilities": [
+        "Coordinate project tasks and timelines among all parties.",
+        "Manage stakeholder expectations and resolve conflicts.",
+        "Provide regular updates on progress and any emerging issues.",
+        "Ensure compliance with the agreed-upon scope and budget.",
+        "Act as a mediator during negotiations to find common ground."
+      ],
+      "information": {
+        "private": {
+          "Pending Scope Adjustments": {
+            "reason": "Changes that could significantly impact project delivery timeline.",
+            "penalty": -200
+          },
+          "Internal Resource Availability": {
+            "reason": "Confidential information about available team members.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Project Timeline": "6 months"
+        }
+      },
+      "utility": {
+        "Project delivered on time": "+70",
+        "Budget adherence": "+40"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Budget adherence": "≤$200,000 = Success; $200,001-$220,000 = Partial success; >$220,000 = Failure",
+    "Timeline adherence": "≤6 months = Success; 6-7 months = Partial success; >7 months = Failure"
+  },
+  "deliverable": "A finalized project contract that outlines scope, budget, and timelines.",
+  "constraints": {
+    "public": [
+      "Total budget proposal ≤ $250,000",
+      "Project completion within 7 months",
+      "Scope must be clearly defined"
+    ],
+    "private": [
+      "Client budget cap ≤ $150,000",
+      "Freelancer minimum rate ≥ $120,000",
+      "Internal resource availability must meet demands"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +70)."
+}

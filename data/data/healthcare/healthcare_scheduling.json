@@ -1,0 +1,114 @@
+{
+  "scenario": "Specialized surgical team coordination between hospitals, surgeons, and patient representatives with private surgeon capability differences, undisclosed hospital financial pressures, and confidential information about political influence on case prioritization.",
+  "task": "Develop a collaborative surgical scheduling plan that addresses patient needs, optimizes surgeon capabilities, and navigates financial constraints while aligning stakeholders' interests.",
+  "agents": [
+    {
+      "name": "Lead Surgeon",
+      "role": "Oversees surgical procedures and team coordination, ensuring optimal patient outcomes.",
+      "responsibilities": [
+        "Assess patient cases to prioritize surgical interventions based on urgency and complexity.",
+        "Coordinate with other surgeons to ensure the availability of skilled personnel for each procedure.",
+        "Manage the surgical schedule to maximize operating room efficiency while minimizing patient wait times.",
+        "Communicate with patient representatives about expected outcomes and timelines.",
+        "Evaluate and incorporate surgeon capability differences into the scheduling process."
+      ],
+      "information": {
+        "private": {
+          "Surgeon Skill Levels (varying expertise)": {
+            "reason": "Skill levels vary and may affect case assignments; sharing could lead to misunderstandings.",
+            "penalty": -100
+          },
+          "Political Influence on Case Priority (undisclosed)": {
+            "reason": "Political factors influencing scheduling; revealing could jeopardize negotiations.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Surgical Capacity": "5 surgeries per day"
+        }
+      },
+      "utility": {
+        "Maximize surgeries completed per week": "+60",
+        "Patient satisfaction rating ≥ 90%": "+40"
+      }
+    },
+    {
+      "name": "Hospital Administrator",
+      "role": "Responsible for hospital resources, budget management, and operational efficiency.",
+      "responsibilities": [
+        "Allocate budgets for surgical resources and staffing.",
+        "Negotiate with surgical teams to optimize resource use and reduce costs.",
+        "Monitor financial pressures and adjust surgical scheduling accordingly.",
+        "Ensure compliance with healthcare regulations and standards.",
+        "Facilitate communication between surgeons and patient representatives."
+      ],
+      "information": {
+        "private": {
+          "Financial Pressures (budget constraints)": {
+            "reason": "Sensitive financial data that could impact negotiations if disclosed.",
+            "penalty": -200
+          },
+          "Resource Allocation Limits (operating room hours)": {
+            "reason": "Confidential operational constraints; sharing could limit negotiation flexibility.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Operating Room Availability": "8 hours per day"
+        }
+      },
+      "utility": {
+        "Stay within budget constraints": "+50",
+        "Minimize operating costs per surgery": "+30"
+      }
+    },
+    {
+      "name": "Patient Representative",
+      "role": "Advocates for patient needs and ensures their perspectives are included in surgical planning.",
+      "responsibilities": [
+        "Gather and represent patient feedback on surgical scheduling and preferences.",
+        "Advocate for transparency in the surgical process and prioritize patient-centered care.",
+        "Communicate patient concerns to the surgical team and hospital administration.",
+        "Ensure that patient needs are considered in scheduling decisions.",
+        "Facilitate discussions about expected outcomes with both patients and healthcare providers."
+      ],
+      "information": {
+        "private": {
+          "Patient Preferences (specific surgery dates)": {
+            "reason": "Sensitive personal information that should not be disclosed without consent.",
+            "penalty": -50
+          },
+          "Patient Satisfaction Metrics (confidential survey results)": {
+            "reason": "Internal metrics that could affect hospital reputation if leaked.",
+            "penalty": -75
+          }
+        },
+        "public": {
+          "Patient Advisory Committee Feedback": "Monthly meetings held"
+        }
+      },
+      "utility": {
+        "Achieve ≥ 85% patient satisfaction": "+70",
+        "Incorporate patient preferences into scheduling": "+40"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Surgical Efficiency": "≥ 90% of scheduled surgeries completed = Success; 70-89% = Partial; <70% = Failure",
+    "Patient Satisfaction": "≥ 85% satisfied = Success; 70-84% = Partial; <70% = Failure"
+  },
+  "deliverable": "A detailed surgical scheduling plan that incorporates stakeholder input and optimizes resources.",
+  "constraints": {
+    "public": [
+      "Total surgeries scheduled ≤ 30 per week",
+      "Operating room availability must be respected",
+      "Patient needs must be prioritized in scheduling decisions"
+    ],
+    "private": [
+      "Budget for surgical resources must not exceed $500,000",
+      "Confidentiality regarding surgeon capabilities must be maintained",
+      "Political influences on scheduling must remain undisclosed"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -75, -50). Utilities are expressed as gains (e.g., +60, +50, +40, +30, +70)."
+}

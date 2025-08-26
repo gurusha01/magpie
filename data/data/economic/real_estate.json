@@ -1,0 +1,114 @@
+{
+  "scenario": "A property negotiation unfolds involving a seller, a buyer, and real estate agents, who must manage undisclosed budget ceilings and hidden structural issues while navigating competing offers.",
+  "task": "Create a negotiation strategy that leads to a successful sale while balancing the interests of all parties involved, ensuring that all relevant information is shared without compromising strategic advantages.",
+  "agents": [
+    {
+      "name": "Seller Agent",
+      "role": "Represents the seller's interests, aiming to maximize property sale price.",
+      "responsibilities": [
+        "Advise the seller on market conditions and pricing strategies.",
+        "Negotiate offers and counteroffers on behalf of the seller.",
+        "Identify and disclose any significant property issues to avoid legal repercussions.",
+        "Manage communication between the seller and potential buyers.",
+        "Ensure the seller's financial goals are met during negotiations."
+      ],
+      "information": {
+        "private": {
+          "Budget Ceiling ($500K)": {
+            "reason": "Seller's maximum price for the property; disclosing may weaken negotiation position.",
+            "penalty": -150
+          },
+          "Structural Issues (roof leaks)": {
+            "reason": "Disclosure could deter potential buyers and reduce offers.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Property Listing Price": "$550K"
+        }
+      },
+      "utility": {
+        "Sale price ≥ $550K": "+100",
+        "Sale price between $500K and $549K": "+50"
+      }
+    },
+    {
+      "name": "Buyer Agent",
+      "role": "Represents the buyer's interests, focused on securing the best deal possible.",
+      "responsibilities": [
+        "Assess property value and advise the buyer on offer strategies.",
+        "Negotiate terms and conditions of the purchase on behalf of the buyer.",
+        "Investigate potential issues with the property and verify disclosures.",
+        "Communicate offers and counteroffers between the buyer and seller's agent.",
+        "Ensure the buyer's financial constraints are respected in negotiations."
+      ],
+      "information": {
+        "private": {
+          "Buyer Budget ($475K)": {
+            "reason": "Buyer's maximum affordability; revealing this can weaken negotiation leverage.",
+            "penalty": -100
+          },
+          "Competing Offer ($490K)": {
+            "reason": "Confidentiality of other offers to maintain competitive advantage.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Desired Property Features": "3 bedrooms, 2 bathrooms, backyard"
+        }
+      },
+      "utility": {
+        "Acquisition price ≤ $475K": "+100",
+        "Acquisition price between $476K and $490K": "+50"
+      }
+    },
+    {
+      "name": "Seller",
+      "role": "Owner of the property, looking to sell at the best possible price.",
+      "responsibilities": [
+        "Provide accurate information about the property to the agent.",
+        "Review and respond to offers received from potential buyers.",
+        "Decide on counteroffers based on agent's advice.",
+        "Disclose significant property issues as required by law.",
+        "Align sale goals with market realities."
+      ],
+      "information": {
+        "private": {
+          "Emotional Attachment Value ($20K)": {
+            "reason": "Personal value may not be relevant to negotiations; could skew expectations.",
+            "penalty": -50
+          },
+          "Urgency to Sell": {
+            "reason": "Seller's need to relocate quickly; could pressure negotiations.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Property Condition": "Good, minor repairs needed"
+        }
+      },
+      "utility": {
+        "Sale completed within 30 days": "+50",
+        "Sale price ≥ $550K": "+100"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Final Sale Price": "≥$550K = Success; $500K-$549K = Partial Success; < $500K = Failure",
+    "Closing Timeframe": "≤30 days = Success; 31-45 days = Partial Success; >45 days = Failure"
+  },
+  "deliverable": "A comprehensive negotiation strategy that outlines offers, counteroffers, and communication plans.",
+  "constraints": {
+    "public": [
+      "Property must be sold within 45 days",
+      "All offers must be presented to the seller",
+      "Buyer's offer must include a pre-approval letter"
+    ],
+    "private": [
+      "Seller's budget ceiling ≤ $500K",
+      "Buyer's maximum budget ≤ $475K",
+      "Structural issues must be disclosed if they affect value"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +100, +50)."
+}

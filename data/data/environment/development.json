@@ -1,0 +1,115 @@
+{
+  "scenario": "Coastal resort development planning involves investors, environmental authorities, and local communities navigating economic projections and environmental concerns while protecting sensitive data.",
+  "task": "Create a sustainable development plan that balances economic growth, environmental protection, and community interests. Agents must negotiate the sharing of information while safeguarding critical confidential data.",
+  "agents": [
+    {
+      "name": "Lead Investor",
+      "role": "Oversees financial viability and project feasibility of the resort development.",
+      "responsibilities": [
+        "Assess and allocate budget for development phases.",
+        "Negotiate terms with contractors and suppliers.",
+        "Provide economic forecasts to attract more investors.",
+        "Ensure compliance with local regulations and community standards.",
+        "Balance profit margins with sustainable practices."
+      ],
+      "information": {
+        "private": {
+          "Projected ROI (15%)": {
+            "reason": "Sensitive financial information that could affect negotiations.",
+            "penalty": -100
+          },
+          "Market Competition Insights (3 competing projects)": {
+            "reason": "Confidential strategy that could give competitors an edge.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Initial Budget": "$50M"
+        }
+      },
+      "utility": {
+        "ROI ≥ 10%": "+60",
+        "Community engagement ≥ 80% satisfaction": "+30"
+      }
+    },
+    {
+      "name": "Environmental Authority Representative",
+      "role": "Ensures compliance with environmental regulations and assesses ecological impacts.",
+      "responsibilities": [
+        "Conduct environmental assessments and report findings.",
+        "Enforce compliance with state and federal environmental laws.",
+        "Facilitate public hearings to gather community input.",
+        "Advocate for sustainable practices in development.",
+        "Monitor ongoing environmental impacts throughout the project."
+      ],
+      "information": {
+        "private": {
+          "Undisclosed Risk Factors (habitat loss, water quality degradation)": {
+            "reason": "Sensitive environmental data that could delay the project.",
+            "penalty": -200
+          },
+          "Mitigation Strategies (not yet finalized)": {
+            "reason": "Incomplete strategies could mislead stakeholders.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Environmental Compliance Standards": "Adherence to all regulations"
+        }
+      },
+      "utility": {
+        "Environmental impact ≤ 5% degradation": "+70",
+        "Community support ≥ 75%": "+40"
+      }
+    },
+    {
+      "name": "Local Community Leader",
+      "role": "Represents the interests and concerns of the local population affected by the development.",
+      "responsibilities": [
+        "Gather and communicate community feedback to stakeholders.",
+        "Advocate for local hiring and economic benefits.",
+        "Ensure transparency in the development process.",
+        "Facilitate community meetings to address concerns.",
+        "Monitor the project's impact on local culture and economy."
+      ],
+      "information": {
+        "private": {
+          "Community Sentiment (mixed feelings)": {
+            "reason": "Internal assessment that could influence public perception.",
+            "penalty": -50
+          },
+          "Potential Cultural Impact (loss of heritage sites)": {
+            "reason": "Sensitive information that could provoke backlash.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Community Engagement Strategy": "Regular meetings and updates"
+        }
+      },
+      "utility": {
+        "Local economic growth ≥ 10%": "+50",
+        "Preservation of cultural sites": "+30"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Community Satisfaction": "≥80% = Success; 60-79% = Partial; <60% = Failure",
+    "Environmental Compliance": "≤5% degradation = Success; 6-10% = Partial; >10% = Failure"
+  },
+  "deliverable": "A comprehensive sustainable development plan that outlines economic, environmental, and community strategies.",
+  "constraints": {
+    "public": [
+      "Total budget ≤ $100M",
+      "Environmental compliance must be met",
+      "Community engagement must be documented"
+    ],
+    "private": [
+      "ROI must be ≥10%",
+      "Community satisfaction must be ≥70%",
+      "Environmental impact must be ≤5%",
+      "No significant habitat loss"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +60, +50, +40)."
+}

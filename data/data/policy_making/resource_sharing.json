@@ -1,0 +1,117 @@
+{
+  "scenario": "National emergency response coordination between federal agencies, state governments, and military units with private resource inventories, undisclosed vulnerability assessments, and confidential deployment capabilities.",
+  "task": "Create a comprehensive emergency response strategy that optimally allocates resources, coordinates efforts across agencies, and ensures rapid deployment while maintaining confidentiality of critical information.",
+  "agents": [
+    {
+      "name": "Federal Agency Coordinator",
+      "role": "Oversees national response efforts and ensures alignment between federal resources and state needs.",
+      "responsibilities": [
+        "Assess national resource availability and allocate them to states based on priority.",
+        "Coordinate communication between federal and state agencies.",
+        "Monitor the effectiveness of resource deployment and adjust strategies as needed.",
+        "Maintain confidentiality of sensitive resource inventories.",
+        "Ensure compliance with federal regulations in emergency response."
+      ],
+      "information": {
+        "private": {
+          "Resource Inventory (500,000 units)": {
+            "reason": "Sensitive data that could compromise security if disclosed.",
+            "penalty": -300
+          },
+          "Vulnerability Assessment (high-risk areas)": {
+            "reason": "Identifying vulnerabilities could lead to exploitation by adversaries.",
+            "penalty": -250
+          }
+        },
+        "public": {
+          "Deployment Status": "Active",
+          "Federal Resources Allocated": "70% to priority states"
+        }
+      },
+      "utility": {
+        "Response time ≤ 24 hours": "+100",
+        "Resource allocation efficiency ≥ 80%": "+50"
+      }
+    },
+    {
+      "name": "State Government Official",
+      "role": "Manages state-level response efforts and ensures local needs are met during emergencies.",
+      "responsibilities": [
+        "Assess local resource needs and communicate them to federal coordinators.",
+        "Manage deployment of state resources and personnel in coordination with federal support.",
+        "Ensure public safety measures are in place and communicated to citizens.",
+        "Gather and report real-time data on emergency conditions to federal agencies.",
+        "Advocate for additional federal resources if local needs exceed capacities."
+      ],
+      "information": {
+        "private": {
+          "Local Vulnerability Report (critical infrastructure)": {
+            "reason": "Public knowledge could lead to security risks.",
+            "penalty": -200
+          },
+          "State Resource Limitations (20% shortfall)": {
+            "reason": "Disclosure could undermine confidence in state response capabilities.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Emergency Declaration": "In effect",
+          "Local Resource Needs": "High"
+        }
+      },
+      "utility": {
+        "Public safety maintained": "+75",
+        "Federal resources received ≥ 50% of needs": "+50"
+      }
+    },
+    {
+      "name": "Military Unit Commander",
+      "role": "Leads military support for emergency response and ensures rapid deployment of personnel and equipment.",
+      "responsibilities": [
+        "Coordinate military assets for rapid response to emergencies.",
+        "Provide logistical support and personnel for state and federal operations.",
+        "Maintain operational security of military capabilities and deployment plans.",
+        "Train personnel for emergency response scenarios.",
+        "Ensure timely communication of operational readiness to federal officials."
+      ],
+      "information": {
+        "private": {
+          "Deployment Capabilities (1000 troops ready)": {
+            "reason": "Sensitive operational details that could compromise mission success.",
+            "penalty": -350
+          },
+          "Strategic Vulnerability (base location risks)": {
+            "reason": "Public awareness could jeopardize future operations.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Troop Readiness": "High",
+          "Logistical Support Available": "Full"
+        }
+      },
+      "utility": {
+        "Deployment within 12 hours": "+100",
+        "Operational effectiveness ≥ 90%": "+75"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Response Time": "≤ 24 hours = Success; 25-48 hours = Partial Success; >48 hours = Failure",
+    "Resource Allocation Efficiency": "≥ 80% = Success; 60-79% = Partial Success; <60% = Failure"
+  },
+  "deliverable": "A detailed emergency response strategy that outlines resource allocation, coordination plans, and deployment timelines.",
+  "constraints": {
+    "public": [
+      "Total response time ≤ 48 hours",
+      "Maintain communication with state officials",
+      "Ensure public safety protocols are established"
+    ],
+    "private": [
+      "Resource inventories must remain classified",
+      "Vulnerability assessments must not be disclosed",
+      "Military deployment plans must be kept confidential"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +100, +75, +50)."
+}

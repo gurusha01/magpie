@@ -1,0 +1,114 @@
+{
+  "scenario": "Prestigious laboratory placement decisions are made among faculty researchers, department heads, and doctoral candidates, each navigating private funding situations and interpersonal dynamics while balancing project directions.",
+  "task": "Formulate a strategy to allocate laboratory placements that maximizes research output while considering the confidential dynamics and funding situations of each agent.",
+  "agents": [
+    {
+      "name": "Department Head",
+      "role": "Oversees laboratory placements and ensures alignment with departmental goals.",
+      "responsibilities": [
+        "Evaluate candidates based on research potential and funding availability.",
+        "Negotiate placements with faculty to satisfy strategic departmental needs.",
+        "Maintain a balance between faculty preferences and candidate qualifications.",
+        "Facilitate communication among faculty and candidates to promote transparency.",
+        "Ensure equitable distribution of resources among all labs."
+      ],
+      "information": {
+        "private": {
+          "Funding Status (high funding availability)": {
+            "reason": "Sensitive financial information; sharing could create bias in placement.",
+            "penalty": -300
+          },
+          "Candidate Dynamics (personal conflicts)": {
+            "reason": "Undisclosed interpersonal issues; revealing could harm team cohesion.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Placement Criteria": "Merit-based with funding considerations"
+        }
+      },
+      "utility": {
+        "Maximize candidate satisfaction": "+70",
+        "Achieve departmental research targets": "+50"
+      }
+    },
+    {
+      "name": "Faculty Researcher A",
+      "role": "Conducts research and selects doctoral candidates for their lab.",
+      "responsibilities": [
+        "Identify and recruit candidates based on research compatibility.",
+        "Manage lab resources and funding allocations for projects.",
+        "Collaborate with the department head to align lab goals with departmental strategy.",
+        "Provide mentorship to candidates and support their professional development.",
+        "Assess candidate performance and provide feedback for placement decisions."
+      ],
+      "information": {
+        "private": {
+          "Lab Success Metrics (high publication rate)": {
+            "reason": "Internal performance data; sharing could affect future funding opportunities.",
+            "penalty": -200
+          },
+          "Candidate Preference (specific candidate suitability)": {
+            "reason": "Personal insights; disclosing could bias other faculty decisions.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Research Focus": "Neuroscience and cognitive behavior"
+        }
+      },
+      "utility": {
+        "Successful candidate placements": "+60",
+        "Funding secured for projects": "+40"
+      }
+    },
+    {
+      "name": "Doctoral Candidate B",
+      "role": "Aspiring researcher seeking a laboratory placement to further their studies.",
+      "responsibilities": [
+        "Apply for laboratory placements based on research interests.",
+        "Demonstrate research potential through interviews and proposals.",
+        "Engage with faculty to showcase compatibility and fit for their labs.",
+        "Negotiate funding support and resources for their research projects.",
+        "Foster relationships with faculty and peers to enhance collaboration."
+      ],
+      "information": {
+        "private": {
+          "Funding Situation (limited external funding)": {
+            "reason": "Financial constraints; revealing could affect placement chances.",
+            "penalty": -250
+          },
+          "Research Ambitions (specific project interests)": {
+            "reason": "Personal goals; sharing could lead to misalignment with faculty expectations.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Research Interests": "Machine learning applications in biology"
+        }
+      },
+      "utility": {
+        "Placement in preferred lab": "+80",
+        "Secured funding for research": "+50"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Candidate satisfaction rate": "≥80% = Success; 70–79% = Partial; <70% = Failure",
+    "Research output measure": "≥5 publications per lab per year = Required; 3–4 = borderline; <3 = failure"
+  },
+  "deliverable": "A comprehensive placement strategy that outlines laboratory assignments and funding allocations.",
+  "constraints": {
+    "public": [
+      "Total placements ≤ 10 candidates",
+      "Departmental budget ≤ $1M",
+      "Research output monitored quarterly"
+    ],
+    "private": [
+      "Candidate funding must cover at least 50% of project costs",
+      "No more than two candidates with high interpersonal conflict in one lab",
+      "Faculty preference must be respected for at least 60% of placements"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +80, +70, +60, +50)."
+}

@@ -1,0 +1,144 @@
+{
+  "scenario": "Critical scientific equipment allocation between competing research teams, administrators, and funding agencies with private experimental timelines, undisclosed breakthrough proximity, and confidential information about potential publications.",
+  "task": "Create a strategic allocation plan for the scientific equipment that maximizes research output while navigating the competing interests of all parties involved.",
+  "agents": [
+    {
+      "name": "Research Team A Lead",
+      "role": "Oversees research activities and coordinates with team members to utilize equipment effectively.",
+      "responsibilities": [
+        "Develop and execute research projects that require the allocated equipment.",
+        "Communicate research needs and timelines to the equipment allocation committee.",
+        "Ensure that all data produced is shared appropriately while protecting sensitive information.",
+        "Negotiate with other teams to prioritize equipment access based on project urgency.",
+        "Report on research progress and equipment utilization to stakeholders."
+      ],
+      "information": {
+        "private": {
+          "Breakthrough Timeline (3 months)": {
+            "reason": "Sensitive information that could influence competitor strategies.",
+            "penalty": -150
+          },
+          "Upcoming Publication (high-impact journal)": {
+            "reason": "Confidential until submission; leaking could undermine competitive advantage.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Current Project Status": "Phase II trials ongoing"
+        }
+      },
+      "utility": {
+        "Access to equipment for 6 months": "+80",
+        "Successful project completion": "+100"
+      }
+    },
+    {
+      "name": "Research Team B Lead",
+      "role": "Responsible for another research team competing for the same equipment.",
+      "responsibilities": [
+        "Coordinate with team members to ensure efficient use of equipment.",
+        "Provide updates on research progress and resource requirements.",
+        "Engage in discussions with other teams to negotiate shared equipment access.",
+        "Protect proprietary research findings while collaborating when necessary.",
+        "Submit proposals for equipment usage that highlight the potential impact of their research."
+      ],
+      "information": {
+        "private": {
+          "Experimental Breakthrough (early results promising)": {
+            "reason": "Revealing could lead to lost competitive edge.",
+            "penalty": -100
+          },
+          "Confidential Publication Plans": {
+            "reason": "Sensitive data that could affect research funding and collaborations.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Funding Status": "Secured for current project"
+        }
+      },
+      "utility": {
+        "Access to equipment for 3 months": "+60",
+        "Successful grant proposal": "+40"
+      }
+    },
+    {
+      "name": "University Administrator",
+      "role": "Facilitates equipment allocation and ensures institutional goals are met.",
+      "responsibilities": [
+        "Evaluate and prioritize equipment allocation requests from research teams.",
+        "Balance competing demands while aligning with university research objectives.",
+        "Ensure compliance with institutional policies regarding resource distribution.",
+        "Communicate decisions to researchers and provide rationale for allocations.",
+        "Monitor usage and report back on equipment effectiveness and research outcomes."
+      ],
+      "information": {
+        "private": {
+          "Allocation Criteria (favoring high-impact projects)": {
+            "reason": "Internal strategy that could influence team behaviors.",
+            "penalty": -50
+          },
+          "Future Funding Opportunities": {
+            "reason": "Confidential until officially announced.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Current Equipment Availability": "Limited"
+        }
+      },
+      "utility": {
+        "Successful allocation meeting": "+70",
+        "Enhancing university's research reputation": "+90"
+      }
+    },
+    {
+      "name": "Funding Agency Representative",
+      "role": "Provides financial support and oversight for research projects.",
+      "responsibilities": [
+        "Review and approve funding requests based on research proposals.",
+        "Ensure that funded projects align with agency goals and objectives.",
+        "Monitor progress and report back on the impact of funded research.",
+        "Facilitate communication between teams and the agency for resource optimization.",
+        "Encourage collaboration to maximize the impact of funded research."
+      ],
+      "information": {
+        "private": {
+          "Future Funding Guidelines": {
+            "reason": "Confidential until finalized; could affect grant applications.",
+            "penalty": -75
+          },
+          "Performance Metrics for Funding": {
+            "reason": "Internal metrics used for evaluation; leaking could bias proposals.",
+            "penalty": -125
+          }
+        },
+        "public": {
+          "Total Funding Available": "$5 million"
+        }
+      },
+      "utility": {
+        "Successful project outcomes from funded research": "+100",
+        "Positive feedback from researchers": "+50"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Research Output Quality": "≥3 significant findings = Success; 2 findings = Partial; <2 findings = Failure",
+    "Equipment Utilization Rate": "≥80% = Success; 60-79% = Partial; <60% = Failure"
+  },
+  "deliverable": "A detailed equipment allocation strategy that outlines research priorities and timelines.",
+  "constraints": {
+    "public": [
+      "Total equipment usage time ≤ 12 months",
+      "Budget for equipment maintenance must not exceed $1 million",
+      "All teams must provide quarterly progress reports"
+    ],
+    "private": [
+      "Research teams must maintain confidentiality on breakthrough timelines",
+      "No team can access equipment for more than 6 months",
+      "Funding agency must approve all allocations exceeding $500,000"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -75). Utilities are expressed as gains (e.g., +100, +80, +70)."
+}

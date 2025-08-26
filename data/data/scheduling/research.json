@@ -1,0 +1,115 @@
+{
+  "scenario": "Multinational scientific collaboration between research institutions with private funding limitations, undisclosed preliminary findings, and confidential intellectual property concerns.",
+  "task": "Create a strategy for collaborative research that respects funding limitations while maximizing innovation and protecting proprietary information.",
+  "agents": [
+    {
+      "name": "Lead Research Scientist",
+      "role": "Oversees scientific research and coordinates experiments across institutions.",
+      "responsibilities": [
+        "Design experimental protocols that align with funding constraints.",
+        "Manage data sharing agreements to protect proprietary information.",
+        "Ensure compliance with ethical standards in research.",
+        "Coordinate communication between institutions to foster collaboration.",
+        "Evaluate research outputs and adjust strategies as necessary."
+      ],
+      "information": {
+        "private": {
+          "Preliminary Findings (60% efficacy observed)": {
+            "reason": "Not yet validated; disclosure could lead to misinterpretation.",
+            "penalty": -150
+          },
+          "Confidential Methodologies (unique synthesis protocols)": {
+            "reason": "Proprietary techniques that provide competitive advantage.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Research Budget": "$5M allocated across institutions"
+        }
+      },
+      "utility": {
+        "Successful validation of findings": "+100",
+        "Adherence to budget constraints": "+50"
+      }
+    },
+    {
+      "name": "Institutional Funding Officer",
+      "role": "Manages funding allocations and ensures compliance with financial regulations.",
+      "responsibilities": [
+        "Distribute funds according to project milestones.",
+        "Monitor expenditures to avoid overspending.",
+        "Negotiate funding agreements with external sponsors.",
+        "Ensure transparency in financial reporting.",
+        "Advocate for additional funding based on project needs."
+      ],
+      "information": {
+        "private": {
+          "Funding Restrictions (no more than $1M per institution)": {
+            "reason": "Confidential agreements with sponsors.",
+            "penalty": -100
+          },
+          "Future Funding Projections (potential $2M available)": {
+            "reason": "Sensitive information that could impact negotiations.",
+            "penalty": -50
+          }
+        },
+        "public": {
+          "Current Funding Status": "On track with budget"
+        }
+      },
+      "utility": {
+        "Maintaining budget compliance across institutions": "+75",
+        "Securing additional funding": "+100"
+      }
+    },
+    {
+      "name": "Intellectual Property Manager",
+      "role": "Protects and manages intellectual property created during the research collaboration.",
+      "responsibilities": [
+        "Draft and enforce non-disclosure agreements among partners.",
+        "Evaluate patentability of research outputs.",
+        "Coordinate with legal teams to secure IP rights.",
+        "Educate researchers on IP management and compliance.",
+        "Monitor potential infringements on intellectual property."
+      ],
+      "information": {
+        "private": {
+          "Pending Patents (several applications submitted)": {
+            "reason": "Sensitive status; public disclosure might weaken claims.",
+            "penalty": -200
+          },
+          "Competitive Analysis (market potential insights)": {
+            "reason": "Confidential insights that could inform competitors.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "IP Compliance Status": "All agreements in place"
+        }
+      },
+      "utility": {
+        "Successful patent grants": "+150",
+        "No IP breaches during collaboration": "+100"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Research validation rate": "≥70% = Success; 60-69% = Partial; <60% = Failure",
+    "Funding compliance": "≤5% overspend = Success; 6-10% = Partial; >10% = Failure"
+  },
+  "deliverable": "A comprehensive research strategy that outlines funding management, data sharing protocols, and IP protection measures.",
+  "constraints": {
+    "public": [
+      "Total funding ≤ $5M",
+      "Research output must meet predefined efficacy benchmarks",
+      "Compliance with all institutional regulations"
+    ],
+    "private": [
+      "No institution receives >$1M in funding",
+      "Confidentiality agreements must be strictly enforced",
+      "Funding must be allocated proportionally to institutional contributions",
+      "IP must not be disclosed until patents are secured"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +150, +100, +75)."
+}

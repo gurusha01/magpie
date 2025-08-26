@@ -1,0 +1,114 @@
+{
+  "scenario": "An elite university department is conducting a hiring negotiation where administration, faculty committees, and candidates must navigate budget constraints and competing offers while balancing transparency and confidentiality.",
+  "task": "Formulate a hiring strategy that optimizes candidate selection while adhering to budget limits and negotiating competing offers effectively. Agents must share information selectively to reach a consensus without compromising their positions.",
+  "agents": [
+    {
+      "name": "Department Chair",
+      "role": "Leads the hiring process and represents the department's interests.",
+      "responsibilities": [
+        "Set the hiring budget and allocate resources accordingly.",
+        "Negotiate salary offers with candidates based on internal equity.",
+        "Ensure alignment of candidate selection with departmental strategic goals.",
+        "Manage communication between candidates and faculty committees.",
+        "Advocate for the best fit for the department while respecting faculty input."
+      ],
+      "information": {
+        "private": {
+          "Available Budget ($1M)": {
+            "reason": "Sensitive financial information; disclosing could weaken negotiation position.",
+            "penalty": -300
+          },
+          "Strategic Direction Change (focus on interdisciplinary research)": {
+            "reason": "Upcoming changes not yet public; leaking could affect candidate expectations.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Salary Range": "$80k - $120k based on experience"
+        }
+      },
+      "utility": {
+        "Hiring within budget": "+100",
+        "Securing top candidate": "+150"
+      }
+    },
+    {
+      "name": "Faculty Committee Member",
+      "role": "Represents faculty interests and ensures candidates meet academic standards.",
+      "responsibilities": [
+        "Evaluate candidates based on academic qualifications and fit.",
+        "Provide input on salary offers based on market standards.",
+        "Ensure transparency in the hiring process while advocating for faculty preferences.",
+        "Collaborate with the department chair to align candidate selection with faculty needs.",
+        "Engage in discussions about the strategic direction of the department."
+      ],
+      "information": {
+        "private": {
+          "Competing Offers (another university at $130k)": {
+            "reason": "Confidential candidate information; revealing could influence negotiations.",
+            "penalty": -250
+          },
+          "Faculty Preferences (interest in candidates with teaching experience)": {
+            "reason": "Internal bias; disclosing could skew evaluations.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Evaluation Criteria": "Research, teaching, and service contributions"
+        }
+      },
+      "utility": {
+        "Candidate with teaching experience hired": "+80",
+        "Salary offer meets faculty expectations": "+50"
+      }
+    },
+    {
+      "name": "Candidate",
+      "role": "Potential hire seeking the best offer that aligns with personal and professional goals.",
+      "responsibilities": [
+        "Negotiate salary and benefits with the university.",
+        "Research departmental culture and strategic goals.",
+        "Communicate personal and professional expectations clearly.",
+        "Evaluate competing offers and make informed decisions.",
+        "Maintain confidentiality about other offers during negotiations."
+      ],
+      "information": {
+        "private": {
+          "Other Offers (two offers above $125k)": {
+            "reason": "Confidential negotiations; revealing could weaken position.",
+            "penalty": -300
+          },
+          "Personal Salary Expectations ($120k minimum)": {
+            "reason": "Personal financial situation; disclosing could limit negotiations.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Professional Goals": "Pursue interdisciplinary research opportunities"
+        }
+      },
+      "utility": {
+        "Salary offer ≥ $120k": "+100",
+        "Job satisfaction based on departmental culture": "+50"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Budget adherence": "≤$1M = Success; $1.1M-$1.2M = Partial; >$1.2M = Failure",
+    "Candidate acceptance rate": "≥80% = Success; 70%-79% = Partial; <70% = Failure"
+  },
+  "deliverable": "A comprehensive hiring plan that includes salary offers, candidate evaluations, and alignment with departmental goals.",
+  "constraints": {
+    "public": [
+      "Total salary offers ≤ $1M",
+      "Hiring process completed within 3 months",
+      "All candidates evaluated on the same criteria"
+    ],
+    "private": [
+      "Budget constraints are ≤$1M",
+      "Faculty preferences must remain undisclosed",
+      "Candidate information regarding other offers must be kept confidential"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +150, +100, +80, +50)."
+}

@@ -1,0 +1,114 @@
+{
+  "scenario": "A hospital emergency department must balance staffing needs between administration and medical staff while managing private budget constraints and confidential information about expected patient surges.",
+  "task": "Create a staffing plan that optimally allocates medical and administrative personnel to handle varying patient loads while adhering to budget restrictions and maintaining operational efficiency.",
+  "agents": [
+    {
+      "name": "Emergency Department Director",
+      "role": "Oversees overall operations and ensures patient care standards are met.",
+      "responsibilities": [
+        "Develop staffing models based on projected patient volumes.",
+        "Manage budget allocations for staff salaries and overtime.",
+        "Coordinate with medical staff to ensure adequate coverage during peak hours.",
+        "Address and resolve personnel issues confidentially.",
+        "Ensure compliance with health regulations and safety standards."
+      ],
+      "information": {
+        "private": {
+          "Budget Constraints (max $1M)": {
+            "reason": "Sensitive financial information that could affect negotiations.",
+            "penalty": -300
+          },
+          "Personnel Issues (staffing shortages)": {
+            "reason": "Confidentiality regarding staff performance and morale.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Current Staff Levels": "30 medical staff, 10 administrative staff"
+        }
+      },
+      "utility": {
+        "Staffing efficiency maintained": "+100",
+        "Budget adherence": "+50"
+      }
+    },
+    {
+      "name": "Chief Financial Officer",
+      "role": "Manages the hospital's finances and budget allocations.",
+      "responsibilities": [
+        "Review and approve staffing budgets.",
+        "Analyze financial implications of staffing changes.",
+        "Negotiate contracts for temporary staffing solutions.",
+        "Provide financial reports to the administration.",
+        "Ensure financial compliance with hospital policies."
+      ],
+      "information": {
+        "private": {
+          "Projected Revenue (based on patient surge)": {
+            "reason": "Confidential financial projections that could influence staffing decisions.",
+            "penalty": -250
+          },
+          "Cost of Overtime (up to $200K)": {
+            "reason": "Sensitive data that could affect negotiations with staff.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Current Budget Allocation": "60% for salaries, 40% for operations"
+        }
+      },
+      "utility": {
+        "Budget surplus achieved": "+80",
+        "Overtime costs ≤ $100K": "+40"
+      }
+    },
+    {
+      "name": "Nurse Manager",
+      "role": "Responsible for the day-to-day management of nursing staff.",
+      "responsibilities": [
+        "Schedule nursing staff based on patient demand.",
+        "Address nursing staff concerns and morale.",
+        "Ensure compliance with nursing standards and protocols.",
+        "Collaborate with the Emergency Department Director on staffing needs.",
+        "Monitor patient care quality and safety."
+      ],
+      "information": {
+        "private": {
+          "Nurse Feedback (staffing dissatisfaction)": {
+            "reason": "Sensitive feedback that could impact morale if disclosed.",
+            "penalty": -100
+          },
+          "Patient Load Expectations (surges expected)": {
+            "reason": "Confidential information that could affect strategic planning.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Nursing Staff Levels": "25 full-time, 5 part-time"
+        }
+      },
+      "utility": {
+        "Patient satisfaction ≥ 90%": "+100",
+        "Staffing levels meet demand": "+60"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Patient wait time": "≤30 minutes = Success; 31-45 minutes = Partial; >45 minutes = Failure",
+    "Budget compliance": "≤$1M = Required; $1.1M-$1.2M = borderline; >$1.2M = failure"
+  },
+  "deliverable": "A comprehensive staffing plan that addresses budget constraints and projected patient surges while ensuring quality patient care.",
+  "constraints": {
+    "public": [
+      "Total staffing budget ≤ $1M",
+      "Patient care standards must be met",
+      "Staffing levels must comply with hospital policies"
+    ],
+    "private": [
+      "Projected patient surge must be kept confidential",
+      "Individual staff performance issues must remain undisclosed",
+      "Overtime costs must not exceed $200K"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +80, +60)."
+}

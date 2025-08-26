@@ -1,0 +1,114 @@
+{
+  "scenario": "Establishing a humanitarian corridor in a conflict zone requires coordination between military forces, aid organizations, and diplomatic negotiators, each holding sensitive information that could impact the success of the mission.",
+  "task": "Create a strategic plan for establishing the humanitarian corridor that addresses security, resource distribution, and diplomatic negotiations while managing the private information held by each agent.",
+  "agents": [
+    {
+      "name": "Military Commander",
+      "role": "Oversees security operations and ensures the safety of the humanitarian corridor.",
+      "responsibilities": [
+        "Assess and mitigate security threats in the corridor area.",
+        "Coordinate with aid organizations to provide safe passage for supplies.",
+        "Communicate military presence and capabilities to aid organizations.",
+        "Develop contingency plans for potential escalations or breaches.",
+        "Report on security metrics to gauge success of operations."
+      ],
+      "information": {
+        "private": {
+          "Threat Assessment (high risk of ambush)": {
+            "reason": "Revealing could compromise operational security.",
+            "penalty": -300
+          },
+          "Troop Movements (planned deployment schedules)": {
+            "reason": "Confidential military strategy; could be exploited.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Security Presence": "10 military units deployed in the region."
+        }
+      },
+      "utility": {
+        "Threat neutralized before aid arrival": "+100",
+        "Maintaining zero incidents during operations": "+50"
+      }
+    },
+    {
+      "name": "Aid Organization Director",
+      "role": "Ensures effective delivery of humanitarian aid while navigating the complexities of the conflict zone.",
+      "responsibilities": [
+        "Plan and execute logistics for aid distribution.",
+        "Collaborate with military to ensure safe access to distribution points.",
+        "Gather and analyze on-ground data about local needs and inequities.",
+        "Advocate for equitable resource distribution among affected populations.",
+        "Report on aid delivery outcomes and challenges."
+      ],
+      "information": {
+        "private": {
+          "Resource Distribution Data (inequitable access for certain groups)": {
+            "reason": "Sensitive local dynamics; disclosure could incite conflict.",
+            "penalty": -250
+          },
+          "Local Faction Intentions (potential disruptions)": {
+            "reason": "Exposing could jeopardize negotiations and safety.",
+            "penalty": -150
+          }
+        },
+        "public": {
+          "Aid Supplies Ready": "5000 food packages, 2000 medical kits."
+        }
+      },
+      "utility": {
+        "Successful distribution to all targeted groups": "+80",
+        "Meeting distribution deadlines": "+40"
+      }
+    },
+    {
+      "name": "Diplomatic Negotiator",
+      "role": "Facilitates discussions among conflicting parties to ensure the corridor's establishment and operation.",
+      "responsibilities": [
+        "Engage with military and aid organizations to align objectives.",
+        "Negotiate terms with local factions to secure cooperation.",
+        "Monitor political dynamics that may affect corridor operations.",
+        "Provide updates to stakeholders on negotiation progress.",
+        "Ensure compliance with international humanitarian laws."
+      ],
+      "information": {
+        "private": {
+          "Political Faction Intentions (secret agendas)": {
+            "reason": "Disclosure could undermine negotiations.",
+            "penalty": -300
+          },
+          "Confidential Agreements (terms with local leaders)": {
+            "reason": "Sensitive information; could be exploited by rivals.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Negotiation Status": "In progress with two key factions."
+        }
+      },
+      "utility": {
+        "Achieving consensus among all parties": "+100",
+        "Securing commitments from local factions": "+50"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Aid Delivery Success Rate": "≥80% = Success; 70-79% = Partial success; <70% = Failure",
+    "Security Incident Rate": "≤1 incident = Success; 2-3 incidents = Partial success; >3 incidents = Failure"
+  },
+  "deliverable": "A comprehensive plan outlining the establishment of the humanitarian corridor, including security protocols, aid distribution logistics, and diplomatic strategies.",
+  "constraints": {
+    "public": [
+      "Humanitarian corridor operational within 30 days",
+      "Zero tolerance for violence during aid delivery",
+      "Coordination with local authorities required"
+    ],
+    "private": [
+      "Security risk must remain below threshold defined by military",
+      "Aid must be equitably distributed per local needs assessment",
+      "Negotiations must remain confidential to prevent leaks"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +80, +50)."
+}

@@ -1,0 +1,114 @@
+{
+  "scenario": "Breakthrough cancer treatment trial participant selection involves oncologists, pharmaceutical researchers, and hospital ethics boards negotiating the balance of patient prognosis data, treatment efficacy concerns, and financial interests.",
+  "task": "Create a participant selection strategy that maximizes trial efficacy while ensuring ethical standards and financial considerations are met. Agents must navigate their private data while reaching a consensus.",
+  "agents": [
+    {
+      "name": "Oncologist Lead",
+      "role": "Oversees patient selection based on medical criteria and prognosis.",
+      "responsibilities": [
+        "Evaluate patient eligibility based on clinical indicators and prognosis.",
+        "Advise on treatment risks and potential outcomes for selected participants.",
+        "Ensure patient safety and compliance with ethical guidelines during selection.",
+        "Collaborate with researchers to align patient selection with trial requirements.",
+        "Communicate medical insights to the ethics board while protecting sensitive patient data."
+      ],
+      "information": {
+        "private": {
+          "Patient Prognosis Data (60% 5-year survival rate)": {
+            "reason": "Confidential medical information; disclosure could influence patient choices and disrupt trust.",
+            "penalty": -150
+          },
+          "Treatment Risk Assessment (higher adverse event rate)": {
+            "reason": "Leaking could bias trial participant willingness and affect recruitment.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Eligibility Criteria": "Must be stage III or IV with no prior treatment."
+        }
+      },
+      "utility": {
+        "Successful patient retention rate ≥80%": "+50",
+        "Achieving ethical compliance": "+30"
+      }
+    },
+    {
+      "name": "Pharmaceutical Researcher",
+      "role": "Conducts research on treatment efficacy and oversees clinical trial design.",
+      "responsibilities": [
+        "Design trial protocols and evaluate treatment efficacy.",
+        "Analyze data from previous trials to inform selection criteria.",
+        "Manage communication of treatment benefits and risks to stakeholders.",
+        "Coordinate with oncologists to ensure alignment on patient selection.",
+        "Protect proprietary treatment data while sharing necessary insights."
+      ],
+      "information": {
+        "private": {
+          "Efficacy Concerns (only 65% efficacy reported)": {
+            "reason": "Unpublished data; leaking could harm company reputation.",
+            "penalty": -200
+          },
+          "Funding Sources ($10M investment at risk)": {
+            "reason": "Confidential financial interests; disclosure could affect negotiations.",
+            "penalty": -50
+          }
+        },
+        "public": {
+          "Trial Duration": "Expected 3 years with interim analyses."
+        }
+      },
+      "utility": {
+        "Efficacy ≥70% confirmed in trials": "+100",
+        "Funding secured for entire trial duration": "+40"
+      }
+    },
+    {
+      "name": "Hospital Ethics Board Chair",
+      "role": "Ensures ethical standards are upheld in patient selection and trial conduct.",
+      "responsibilities": [
+        "Review and approve trial protocols and participant selection criteria.",
+        "Advocate for patient rights and informed consent processes.",
+        "Monitor adherence to ethical guidelines throughout the trial.",
+        "Facilitate discussions among stakeholders to ensure transparency.",
+        "Address any ethical concerns raised by patient advocates or trial participants."
+      ],
+      "information": {
+        "private": {
+          "Ethical Concerns (potential for coercion in patient selection)": {
+            "reason": "Sensitive issue; must be handled confidentially to maintain trust.",
+            "penalty": -100
+          },
+          "Funding Conflicts (hospital receives sponsorship)": {
+            "reason": "Could bias ethical review; must remain confidential.",
+            "penalty": -80
+          }
+        },
+        "public": {
+          "Ethics Review Process": "All protocols must pass a full review."
+        }
+      },
+      "utility": {
+        "No ethical violations reported during trial": "+70",
+        "Patient advocacy involvement ≥50%": "+30"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Patient Retention Rate": "≥80% = Success; 60-79% = Partial Success; <60% = Failure",
+    "Efficacy Confirmation": "≥70% = Success; 50-69% = Partial Success; <50% = Failure"
+  },
+  "deliverable": "A comprehensive participant selection strategy that balances medical, ethical, and financial considerations.",
+  "constraints": {
+    "public": [
+      "Total participant count ≤200",
+      "Trial duration must not exceed 3 years",
+      "Compliance with ethical review standards"
+    ],
+    "private": [
+      "Patient prognosis must remain confidential until trial completion",
+      "Efficacy data must not be disclosed until peer-reviewed",
+      "Funding sources must remain undisclosed to prevent bias"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -80, -50). Utilities are expressed as gains (e.g., +100, +70, +50, +40, +30)."
+}
