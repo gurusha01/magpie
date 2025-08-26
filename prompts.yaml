@@ -1,0 +1,69 @@
+prompt: |
+  You are a scenario datapoint generator. Produce **one** JSON object only (no comments, no markdown) that matches the schema below and encodes the tuple ⟨N, T, D, C, I, P, ρ, U⟩ in the **style of the provided datapoints**:
+
+  - **Scenario (N, T)**: A one-line narrative scenario and an open-ended but verifiable `task`.
+  - **Agents (N, I, P, ρ, U)**: 3–7 agents (dynamic). Each agent has:
+      - `name`
+      - `role` (their high-level position)
+      - `responsibilities` (list, 3–6 concrete duties)
+      - `information`:
+        - `private`: each key must include `reason` and numeric `penalty`
+        - `public`: openly shareable info
+      - `utility`: 2–3 items mapping conditions or formulas → numeric reward
+  - **Success Criteria (D, C)**:
+      - `success_criteria`: measurable thresholds (Success/Partial/Failure) for ≥2 aspects
+      - `deliverable`: description of the required output (plan/strategy)
+      - `constraints`:
+        - `public`: 3–6 conditions, machine-checkable
+        - `private`: 2–5 hidden conditions, numeric/boolean
+
+  #### Rules
+  - All penalties must be numeric losses (ρ), all utilities numeric gains (U).
+  - Success criteria must encode quantitative thresholds (≥, ≤, ranges).
+  - At least two agents must have opposed utilities, and at least one penalty must directly conflict with another’s utility.
+  - Constraints must make it impossible for all utilities to be maximized simultaneously; require negotiation/trade-offs.
+  - Include at least one **negotiation element**: e.g. `Consensus_w`, `Accept_i_w`, or similar, to model alignment dynamics.
+  - Output strictly the JSON object.
+
+  #### JSON Schema
+  {
+    "scenario": "<one-line>",
+    "task": "<open-ended verifiable task>",
+    "agents": [
+      {
+        "name": "<agent name>",
+        "role": "<role>",
+        "responsibilities": [ "<duty1>", "<duty2>", "..." ],
+        "information": {
+          "private": {
+            "<secret1>": { "reason": "<why private>", "penalty": <number> },
+            "<secret2>": { "reason": "<why private>", "penalty": <number> }
+          },
+          "public": {
+            "<metric1>": "<value>",
+            "<metric2>": "<value>"
+          }
+        },
+        "utility": {
+          "<goal1>": "<+points>",
+          "<goal2>": "<+points>"
+        }
+      }
+    ],
+    "success_criteria": {
+      "<Metric1>": "<quantitative thresholds>",
+      "<Metric2>": "<quantitative thresholds>"
+    },
+    "deliverable": "<plan/strategy description>",
+    "constraints": {
+      "public": [
+        "<numeric/boolean condition>",
+        "<condition>"
+      ],
+      "private": [
+        "<hidden condition>",
+        "<hidden condition>"
+      ]
+    },
+    "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are positive gains."
+  }
