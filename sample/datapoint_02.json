@@ -1,0 +1,117 @@
+{
+  "scenario": "A blockbuster film soundtrack production involves collaboration between studio executives, musical artists, and streaming platforms. Each party holds private information that could accelerate or disrupt progress. Conflicts arise around artistic control, undisclosed budget reallocations, and confidential negotiations with competing artists.",
+  "task": "Develop a comprehensive soundtrack production and release plan that balances creative direction, financial allocations, and distribution strategies. Agents must strategically share information to align on a unified soundtrack launch while protecting confidential details.",
+  "agents": [
+    {
+      "name": "Studio Executive",
+      "role": "Oversees the overall production budget, creative direction alignment with the film, and commercial viability of the soundtrack.",
+      "responsibilities": [
+        "Allocate production budgets across artists, studios, and marketing.",
+        "Negotiate contracts with featured artists while avoiding overexposure of financial terms.",
+        "Ensure the soundtrack complements the film's branding and release schedule.",
+        "Balance artistic integrity with commercial return expectations.",
+        "Secure regulatory clearance for music rights and distribution."
+      ],
+      "information": {
+        "private": {
+          "Budget Reallocation ($5M shifted from marketing to production)": {
+            "reason": "Revealing may cause backlash from marketing partners.",
+            "penalty": -150
+          },
+          "Negotiation with Competing Artist for cameo track": {
+            "reason": "Confidential and could cause tension with existing lineup.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Budget Allocation": "60% production, 25% marketing, 15% distribution"
+        }
+      },
+      "utility": {
+        "Staying under $50M budget": "+40",
+        "Securing marquee artist contract": "+75"
+      }
+    },
+    {
+      "name": "Musical Artist",
+      "role": "Responsible for delivering original songs while protecting creative freedom and artistic identity.",
+      "responsibilities": [
+        "Write, compose, and perform songs aligned with the film\u2019s tone.",
+        "Negotiate creative control over production and mixing decisions.",
+        "Protect unreleased tracks from leaks or unauthorized previews.",
+        "Collaborate with other artists without compromising personal brand.",
+        "Deliver music on schedule to align with the film release."
+      ],
+      "information": {
+        "private": {
+          "Creative Control Dispute (exclusive mixing rights)": {
+            "reason": "Revealing could damage negotiation leverage.",
+            "penalty": -150
+          },
+          "Unreleased Collaboration with competitor artist": {
+            "reason": "Disclosure could cause brand conflict.",
+            "penalty": -100
+          }
+        },
+        "public": {
+          "Track Count Commitment": "6 original songs for soundtrack"
+        }
+      },
+      "utility": {
+        "Creative control retained in \u22653 tracks": "+50",
+        "Soundtrack receives critical acclaim (\u226580% reviews positive)": "+75"
+      }
+    },
+    {
+      "name": "Streaming Platform Representative",
+      "role": "Ensures soundtrack distribution, marketing visibility, and exclusive licensing deals for digital releases.",
+      "responsibilities": [
+        "Secure streaming rights with exclusivity where possible.",
+        "Align promotional campaigns with film marketing windows.",
+        "Protect confidential subscriber analytics but use them to optimize marketing spend.",
+        "Maximize platform visibility through playlists and featured banners.",
+        "Ensure simultaneous global release to prevent piracy."
+      ],
+      "information": {
+        "private": {
+          "Subscriber Data showing 30% demand in Asia": {
+            "reason": "Sensitive internal data; competitors could exploit.",
+            "penalty": -100
+          },
+          "Negotiations with rival studio for exclusivity on next project": {
+            "reason": "Confidential cross-deal info not related to this soundtrack.",
+            "penalty": -200
+          }
+        },
+        "public": {
+          "Marketing Commitment": "Exclusive launch campaign, global Day 1 release"
+        }
+      },
+      "utility": {
+        "Achieve \u22655M streams in opening week": "+100",
+        "Secure 2-year exclusivity clause": "+40"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Commercial Performance": "\u2265$200M global revenue from soundtrack = Success; $150\u2013199M = partial success; <150M = failure",
+    "Streaming Engagement": "\u22655M opening week streams = Success; 3\u20134.9M = partial success; <3M = failure"
+  },
+  "deliverable": "A soundtrack production and release plan covering creative, financial, and distribution strategies.",
+  "constraints": {
+    "public": [
+      "Total budget \u2264 $50M",
+      "Soundtrack launch aligned with film release",
+      "\u22655 original songs delivered",
+      "Ethical compliance with artist contracts"
+    ],
+    "private": [
+      "No major creative disputes unresolved by launch",
+      "\u226580% critical approval",
+      "At least one global streaming partner exclusive",
+      "Revenue target \u2265$200M",
+      "\u22655M global streams in opening week"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50, +40)."
+}
