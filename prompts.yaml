@@ -2,26 +2,31 @@ prompt: |
   You are a scenario datapoint generator. Produce **one** JSON object only (no comments, no markdown) that matches the schema below and encodes the tuple ⟨N, T, D, C, I, P, ρ, U⟩ in the **style of the provided datapoints (pharma prize, soundtrack, corridor, patent dispute, doctoral placements)**:
 
   - **Scenario (N, T)**: Provide a one-line narrative `scenario` and an open-ended but verifiable `task`.
+
   - **Agents (N, I, P, ρ, U)**: 3–7 agents (dynamic). Each agent must include:
       - `name`
       - `role` (their high-level position)
       - `responsibilities`: 3–6 concrete duties
       - `information`:
-        - `private`: ≥2 secrets; each must include `reason` and numeric `penalty` (negative)
+        - `private`: ≥2 secrets; each must include `reason`, numeric `penalty` (negative), and at least one `shareable_with` field indicating selective disclosure
         - `public`: ≥1 openly shareable metric/value
       - `utility`: 2–3 conditions mapping to numeric rewards (positive)
+
   - **Success Criteria (D, C)**:
-      - `success_criteria`: ≥2 measurable thresholds (Success/Partial/Failure) with quantitative cutoffs
-      - `deliverable`: description of the required output (plan/strategy)
+      - `success_criteria`: Must be **negotiation-based**, not future-outcome dependent. At least 2–3 criteria describing what counts as agreement/alignment (e.g., budget allocation agreed, timeline alignment, candidate–faculty fit).
+      - `deliverable`: description of the required output (e.g., plan/strategy/placement).
       - `constraints`:
         - `public`: 3–6 numeric/boolean conditions, machine-checkable
         - `private`: 2–5 hidden numeric/boolean conditions, non-trivial
+
   - **Negotiation/Alignment Element**:
-      - Include at least one explicit negotiation key such as `Consensus_w`, `Accept_i_w`, or equivalent, showing trade-off/coordination is required.
+      - Must include at least one explicit negotiation marker such as `Consensus_w`, `Accept_i_w`, or equivalent, showing that trade-offs and alignment are required.
+      - Success must be **achievable through discussion** (agreement on constraints/utilities), not external outcomes.
+
   - **Conflict Structure**:
       - At least two agents must have opposed utilities.
       - At least one penalty must directly conflict with another agent’s utility.
-      - Constraints must make it impossible for all utilities to be maximized simultaneously.
+      - Constraints must make it impossible for all utilities to be maximized simultaneously, ensuring trade-offs.
 
   #### JSON Schema
   {
@@ -34,8 +39,8 @@ prompt: |
         "responsibilities": [ "<duty1>", "<duty2>", "..." ],
         "information": {
           "private": {
-            "<secret1>": { "reason": "<why private>", "penalty": <number> },
-            "<secret2>": { "reason": "<why private>", "penalty": <number> }
+            "<secret1>": { "reason": "<why private>", "penalty": <negative number>, "shareable_with": ["<agent(s)>"] },
+            "<secret2>": { "reason": "<why private>", "penalty": <negative number>, "shareable_with": ["<agent(s)>"] }
           },
           "public": {
             "<metric1>": "<value>",
@@ -49,8 +54,8 @@ prompt: |
       }
     ],
     "success_criteria": {
-      "<Metric1>": "<quantitative thresholds>",
-      "<Metric2>": "<quantitative thresholds>"
+      "<Agreement1>": "<description of aligned outcome>",
+      "<Agreement2>": "<description of aligned outcome>"
     },
     "deliverable": "<plan/strategy description>",
     "constraints": {
@@ -63,5 +68,6 @@ prompt: |
         "<hidden condition>"
       ]
     },
-    "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are positive gains."
+    "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are positive gains.",
+    "Consensus_w": "<explicit marker showing agreement/trade-off is required>"
   }
