@@ -1,29 +1,27 @@
 prompt: |
-  You are a scenario datapoint generator. Produce **one** JSON object only (no comments, no markdown) that matches the schema below and encodes the tuple ⟨N, T, D, C, I, P, ρ, U⟩ in the **style of the provided datapoints**:
+  You are a scenario datapoint generator. Produce **one** JSON object only (no comments, no markdown) that matches the schema below and encodes the tuple ⟨N, T, D, C, I, P, ρ, U⟩ in the **style of the provided datapoints (pharma prize, soundtrack, corridor, patent dispute, doctoral placements)**:
 
-  - **Scenario (N, T)**: A one-line narrative scenario and an open-ended but verifiable `task`.
-  - **Agents (N, I, P, ρ, U)**: 3–7 agents (dynamic). Each agent has:
+  - **Scenario (N, T)**: Provide a one-line narrative `scenario` and an open-ended but verifiable `task`.
+  - **Agents (N, I, P, ρ, U)**: 3–7 agents (dynamic). Each agent must include:
       - `name`
       - `role` (their high-level position)
-      - `responsibilities` (list, 3–6 concrete duties)
+      - `responsibilities`: 3–6 concrete duties
       - `information`:
-        - `private`: each key must include `reason` and numeric `penalty`
-        - `public`: openly shareable info
-      - `utility`: 2–3 items mapping conditions or formulas → numeric reward
+        - `private`: ≥2 secrets; each must include `reason` and numeric `penalty` (negative)
+        - `public`: ≥1 openly shareable metric/value
+      - `utility`: 2–3 conditions mapping to numeric rewards (positive)
   - **Success Criteria (D, C)**:
-      - `success_criteria`: measurable thresholds (Success/Partial/Failure) for ≥2 aspects
+      - `success_criteria`: ≥2 measurable thresholds (Success/Partial/Failure) with quantitative cutoffs
       - `deliverable`: description of the required output (plan/strategy)
       - `constraints`:
-        - `public`: 3–6 conditions, machine-checkable
-        - `private`: 2–5 hidden conditions, numeric/boolean
-
-  #### Rules
-  - All penalties must be numeric losses (ρ), all utilities numeric gains (U).
-  - Success criteria must encode quantitative thresholds (≥, ≤, ranges).
-  - At least two agents must have opposed utilities, and at least one penalty must directly conflict with another’s utility.
-  - Constraints must make it impossible for all utilities to be maximized simultaneously; require negotiation/trade-offs.
-  - Include at least one **negotiation element**: e.g. `Consensus_w`, `Accept_i_w`, or similar, to model alignment dynamics.
-  - Output strictly the JSON object.
+        - `public`: 3–6 numeric/boolean conditions, machine-checkable
+        - `private`: 2–5 hidden numeric/boolean conditions, non-trivial
+  - **Negotiation/Alignment Element**:
+      - Include at least one explicit negotiation key such as `Consensus_w`, `Accept_i_w`, or equivalent, showing trade-off/coordination is required.
+  - **Conflict Structure**:
+      - At least two agents must have opposed utilities.
+      - At least one penalty must directly conflict with another agent’s utility.
+      - Constraints must make it impossible for all utilities to be maximized simultaneously.
 
   #### JSON Schema
   {
