@@ -1,117 +1,128 @@
 {
-  "scenario": "An international diplomatic dinner is being arranged where protocol officers, security teams, and political advisors must navigate private tensions and undisclosed negotiations while ensuring a successful event.",
-  "task": "Coordinate a comprehensive plan for the dinner that addresses security, diplomatic seating arrangements, and contingency plans for potential conflicts, while managing sensitive information.",
+  "scenario": "An international diplomatic dinner is being arranged where protocol officers, security teams, and political advisors must navigate private tensions and undisclosed negotiations to ensure a successful event.",
+  "task": "Develop a comprehensive plan for the diplomatic dinner that aligns security measures, seating arrangements, and political agendas. Agents must balance the need for security, the importance of diplomatic relations, and the management of sensitive information, ensuring that all parties are comfortable and that the event proceeds without incident.",
   "agents": [
     {
       "name": "Protocol Officer",
-      "role": "Ensures adherence to diplomatic protocols and seating arrangements.",
+      "role": "Manages the formal aspects of the dinner, including guest lists and seating arrangements.",
       "responsibilities": [
-        "Design and finalize the seating chart based on diplomatic importance and sensitivity.",
-        "Communicate with foreign dignitaries to confirm attendance and special requests.",
-        "Prepare briefing materials that include cultural considerations and etiquette.",
-        "Coordinate with security teams to ensure all protocols are followed during the event.",
-        "Facilitate discussions to mitigate any potential diplomatic tensions."
+        "Coordinate guest list with diplomatic priorities.",
+        "Arrange seating to minimize tensions.",
+        "Oversee event etiquette and protocol adherence."
       ],
       "information": {
         "private": {
-          "Seating Arrangement Conflicts": {
-            "reason": "Potential diplomatic fallout if disclosed; sensitive relationships involved.",
-            "penalty": -100
+          "Seating Tensions (known conflicts between two diplomats)": {
+            "reason": "Disclosure could escalate tensions and impact relations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Security Team"
+            ]
           },
-          "Undisclosed Alliance Negotiations": {
-            "reason": "Revealing could jeopardize ongoing diplomatic discussions.",
-            "penalty": -200
+          "Potential Alliances (discussions with a rival country)": {
+            "reason": "Sensitive negotiations could be jeopardized if leaked.",
+            "penalty": -150,
+            "shareable_with": [
+              "Political Advisor"
+            ]
           }
         },
         "public": {
-          "Number of Attendees": "30",
-          "Dinner Theme": "Cultural Exchange"
+          "Confirmed Guests": "20 diplomats from 5 countries"
         }
       },
       "utility": {
-        "Successful seating arrangement minimizing tensions": "+50",
-        "Dinner conducted without incidents": "+100"
+        "Successful seating arrangement": "+50",
+        "Smooth protocol adherence": "+30"
       }
     },
     {
       "name": "Security Team Lead",
-      "role": "Oversees the safety and security measures for the dinner event.",
+      "role": "Ensures the safety and security of all attendees during the event.",
       "responsibilities": [
-        "Conduct risk assessments based on guest lists and potential threats.",
-        "Implement security protocols to safeguard attendees during the dinner.",
-        "Coordinate with local law enforcement and intelligence agencies.",
-        "Manage entry and exit points to ensure controlled access.",
-        "Prepare contingency plans for emergencies or disruptions."
+        "Assess security risks associated with guest profiles.",
+        "Implement security measures based on threat levels.",
+        "Coordinate with local law enforcement for additional support."
       ],
       "information": {
         "private": {
-          "Threat Assessment Reports": {
-            "reason": "Sensitive information that could cause panic if leaked.",
-            "penalty": -150
+          "Threat Assessment (identified potential protesters nearby)": {
+            "reason": "Public knowledge could incite unrest.",
+            "penalty": -200,
+            "shareable_with": [
+              "Protocol Officer"
+            ]
           },
-          "Intelligence on Diplomatic Conflicts": {
-            "reason": "Could affect negotiations if made public.",
-            "penalty": -250
+          "Confidential Intelligence (internal dissent among attendees)": {
+            "reason": "Revealing could compromise safety and security.",
+            "penalty": -150,
+            "shareable_with": [
+              "Political Advisor"
+            ]
           }
         },
         "public": {
-          "Security Personnel Deployed": "15",
-          "Emergency Response Plan": "In place and rehearsed"
+          "Security Personnel Deployed": "10 officers on-site"
         }
       },
       "utility": {
-        "Incident-free event": "+100",
-        "Effective response to threats": "+75"
+        "No security incidents during the dinner": "+100",
+        "Effective threat management": "+50"
       }
     },
     {
       "name": "Political Advisor",
-      "role": "Advises on political implications and strategies for the dinner.",
+      "role": "Provides strategic political insights to ensure diplomatic relations are maintained.",
       "responsibilities": [
-        "Analyze the potential impact of seating arrangements on diplomatic relations.",
-        "Provide strategic insights on managing sensitive discussions during the dinner.",
-        "Facilitate discussions to promote alliances and resolve conflicts.",
-        "Prepare talking points for key attendees to ensure aligned messaging.",
-        "Monitor feedback and reactions during the dinner for future strategy."
+        "Advise on political sensitivities related to guest interactions.",
+        "Facilitate discussions between conflicting parties.",
+        "Monitor political dynamics during the event."
       ],
       "information": {
         "private": {
-          "Confidential Diplomatic Strategies": {
-            "reason": "Could undermine negotiations if disclosed.",
-            "penalty": -200
+          "Interpersonal Conflicts (disputes between key diplomats)": {
+            "reason": "Knowledge could lead to diplomatic fallout.",
+            "penalty": -100,
+            "shareable_with": [
+              "Protocol Officer"
+            ]
           },
-          "Interpersonal Conflicts Among Dignitaries": {
-            "reason": "Sensitive and could escalate tensions if known.",
-            "penalty": -150
+          "Undisclosed Alliances (talks with an ally about future collaboration)": {
+            "reason": "Sensitive discussions that could impact negotiations.",
+            "penalty": -200,
+            "shareable_with": [
+              "Security Team Lead"
+            ]
           }
         },
         "public": {
-          "Agenda Topics": "Trade agreements, cultural initiatives",
-          "Expected Outcomes": "Strengthened alliances"
+          "Political Climate Assessment": "Stable but sensitive"
         }
       },
       "utility": {
-        "Successful conflict resolution": "+100",
-        "Formation of new alliances": "+75"
+        "Successful conflict mediation": "+75",
+        "Positive diplomatic engagement": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Diplomatic Tensions Managed": "≤2 incidents = Success; 3-5 incidents = Partial; >5 incidents = Failure",
-    "Alliances Formed": "≥2 new alliances = Success; 1 alliance = Partial; 0 alliances = Failure"
+    "Seating Agreement": "All agents agree on a seating arrangement that avoids known conflicts and promotes diplomatic dialogue.",
+    "Security Alignment": "Consensus on security measures that ensure safety while respecting diplomatic protocols.",
+    "Political Strategy Resolution": "Agreement on key discussion points that align with the political goals of the participating countries."
   },
-  "deliverable": "A detailed event plan that includes security measures, seating arrangements, and diplomatic strategies.",
+  "deliverable": "A detailed plan for the diplomatic dinner that includes seating arrangements, security protocols, and political engagement strategies.",
   "constraints": {
     "public": [
-      "Total guest capacity ≤ 50",
-      "Security measures in place before event starts",
-      "Confidentiality of sensitive discussions maintained"
+      "Total guest count ≤ 25",
+      "All security measures approved before the event",
+      "No major incidents reported during the dinner"
     ],
     "private": [
-      "No leaks of private intelligence reports",
-      "Seating arrangement must not create diplomatic incidents",
-      "Must not exceed budget of $200,000"
+      "No unresolved conflicts among key diplomats",
+      "All sensitive negotiations must remain confidential",
+      "Security threats must be managed without public disclosure"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses; utilities are expressed as positive gains.",
+  "Consensus_w": "Consensus on seating and security measures must be achieved through discussion."
 }

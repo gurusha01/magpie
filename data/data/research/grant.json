@@ -1,115 +1,131 @@
 {
-  "scenario": "A collaborative evaluation process for funding cutting-edge quantum computing research involves government agencies, university consortiums, and private industry, each holding private technological capabilities and sensitive information.",
-  "task": "Create a detailed evaluation framework that balances innovation potential, national security considerations, and commercial viability while ensuring that sensitive information is protected and shared appropriately.",
+  "scenario": "A multi-stakeholder evaluation of quantum computing research funding applications requires collaboration between government agencies, university consortiums, and private industry, each holding critical yet sensitive information that could impact national security and competitive advantage.",
+  "task": "Formulate a comprehensive evaluation framework for quantum computing funding applications that balances technological innovation, national security concerns, and competitive intelligence while ensuring transparency and compliance with funding guidelines. Agents must navigate the complexities of proprietary research capabilities and undisclosed implications, sharing enough information to align on evaluations without breaching confidentiality.",
   "agents": [
     {
-      "name": "Government Agency Representative",
-      "role": "Oversees funding allocation and ensures compliance with national security regulations.",
+      "name": "Government Agency Director",
+      "role": "Oversees funding allocation and ensures compliance with national security protocols.",
       "responsibilities": [
-        "Evaluate proposals based on national security implications and technological innovation.",
-        "Disseminate guidelines for funding application criteria and compliance.",
-        "Ensure transparency in the evaluation process while guarding sensitive information.",
-        "Negotiate funding terms with industry and academia to maximize public benefit.",
-        "Monitor ongoing projects for compliance with government standards."
+        "Assess funding applications against national security criteria.",
+        "Coordinate with other government entities on funding priorities.",
+        "Monitor compliance with grant conditions and reporting.",
+        "Facilitate inter-agency discussions on sensitive technologies."
       ],
       "information": {
         "private": {
-          "National Security Risks Assessment": {
-            "reason": "Sensitive data that could reveal vulnerabilities if disclosed.",
-            "penalty": -300
+          "Sensitive National Security Implications": {
+            "reason": "Disclosure could compromise national interests or strategic advantages.",
+            "penalty": -300,
+            "shareable_with": [
+              "University Consortium Lead"
+            ]
           },
-          "Funding Limitations": {
-            "reason": "Confidential budgetary constraints that could affect negotiations.",
-            "penalty": -150
+          "Competitive Intelligence on Rivals' Proposals": {
+            "reason": "Revealing could undermine negotiation positions and funding strategies.",
+            "penalty": -200,
+            "shareable_with": [
+              "Private Industry Lead"
+            ]
           }
         },
         "public": {
-          "Funding Availability": "$500M allocated for quantum research"
+          "Funding Allocation Ceiling": "$500M"
         }
       },
       "utility": {
-        "Successful project compliance": "+100",
-        "Innovation rate above 75%": "+50"
+        "National security risks assessed": "+100",
+        "Funding allocated within deadlines": "+50"
       }
     },
     {
       "name": "University Consortium Lead",
-      "role": "Coordinates research efforts among multiple academic institutions and ensures alignment with funding criteria.",
+      "role": "Coordinates research proposals from universities and ensures alignment with academic standards and innovation goals.",
       "responsibilities": [
-        "Develop cutting-edge research proposals that align with national security interests.",
-        "Facilitate collaboration between universities to share resources and expertise.",
-        "Protect sensitive research findings while advocating for open knowledge sharing.",
-        "Ensure that all proposals meet funding criteria and ethical standards.",
-        "Analyze the potential societal impact of proposed technologies."
+        "Evaluate proposals based on scientific merit and feasibility.",
+        "Engage with faculty to refine research proposals.",
+        "Ensure compliance with ethical research standards.",
+        "Advocate for academic interests in funding discussions."
       ],
       "information": {
         "private": {
-          "Research Breakthroughs": {
-            "reason": "Proprietary developments that could give competitors an advantage.",
-            "penalty": -200
+          "Internal Research Capabilities (breakthrough algorithms)": {
+            "reason": "Disclosure risks losing competitive edge in academia.",
+            "penalty": -150,
+            "shareable_with": [
+              "Government Agency Director"
+            ]
           },
-          "Collaborative Agreements": {
-            "reason": "Confidential partnerships with private companies.",
-            "penalty": -100
+          "Potential Collaborations with Industry Partners": {
+            "reason": "Could influence negotiations and funding dynamics.",
+            "penalty": -100,
+            "shareable_with": [
+              "Private Industry Lead"
+            ]
           }
         },
         "public": {
-          "Research Focus Areas": "Quantum algorithms, cryptography, and materials science"
+          "Number of Proposals Submitted": "25"
         }
       },
       "utility": {
-        "Research proposal accepted": "+80",
-        "Collaboration with industry partners": "+40"
+        "Successful proposal collaborations": "+75",
+        "Funding received for research projects": "+100"
       }
     },
     {
-      "name": "Private Industry Executive",
-      "role": "Drives technological innovation and commercial application of research outcomes.",
+      "name": "Private Industry Lead",
+      "role": "Represents private sector interests and technological capabilities in funding discussions.",
       "responsibilities": [
-        "Identify and propose commercially viable quantum technologies.",
-        "Negotiate partnerships with academic institutions and government agencies.",
-        "Protect proprietary technologies while contributing to collaborative projects.",
-        "Ensure that projects align with market needs and trends.",
-        "Advocate for funding that supports competitive advantages in the industry."
+        "Present industry research capabilities and potential applications.",
+        "Negotiate funding terms that align with business objectives.",
+        "Assess market viability of proposed research outcomes.",
+        "Collaborate on joint ventures with academia and government."
       ],
       "information": {
         "private": {
-          "Competitive Intelligence": {
-            "reason": "Sensitive market analysis that could undermine competitive positioning.",
-            "penalty": -250
+          "Proprietary Technology Developments": {
+            "reason": "Revealing could jeopardize intellectual property and competitive advantage.",
+            "penalty": -250,
+            "shareable_with": [
+              "Government Agency Director"
+            ]
           },
-          "Technological Capabilities": {
-            "reason": "Confidential information about proprietary technologies.",
-            "penalty": -200
+          "Market Analysis of Quantum Technologies": {
+            "reason": "Confidential insights could be exploited by competitors.",
+            "penalty": -150,
+            "shareable_with": [
+              "University Consortium Lead"
+            ]
           }
         },
         "public": {
-          "Market Potential": "$1B projected in quantum technologies"
+          "Investment in Quantum Research": "$200M"
         }
       },
       "utility": {
-        "Successful commercialization of technology": "+120",
-        "Partnerships with two or more universities": "+60"
+        "Strategic partnerships formed": "+80",
+        "Funding secured for key projects": "+100"
       }
     }
   ],
   "success_criteria": {
-    "Innovation level": "≥75% = Success; 50-74% = Partial Success; <50% = Failure",
-    "Compliance with national security": "100% compliance = Success; 90-99% = Partial Success; <90% = Failure"
+    "Funding Agreement": "All parties reach consensus on funding distribution that meets both government compliance and innovation goals of academia and industry.",
+    "Proposal Quality Alignment": "Agreement on the scientific merit and feasibility of submitted proposals, ensuring high standards across all submissions.",
+    "National Security Compliance": "Consensus on proposals that meet national security guidelines without compromising proprietary information."
   },
-  "deliverable": "A comprehensive evaluation framework that includes proposal criteria, risk assessments, and compliance metrics.",
+  "deliverable": "A comprehensive evaluation framework detailing funding allocation, proposal assessment criteria, and compliance measures.",
   "constraints": {
     "public": [
-      "Total funding must not exceed $500M",
-      "All proposals must comply with national security regulations",
-      "Evaluation process must be completed within 6 months"
+      "Total funding ≤ $500M",
+      "Proposals must meet national security standards",
+      "≥70% of proposals must be deemed viable"
     ],
     "private": [
-      "Maximum of 3 proposals funded per year",
-      "Confidentiality agreements must be signed by all parties",
-      "Research must not disclose sensitive national security information",
-      "Budget allocations must be transparent but not exceed individual project caps"
+      "Confidentiality of sensitive technologies must be maintained",
+      "≥80% alignment on proposal evaluations across agents",
+      "No major conflicts of interest disclosed during evaluations"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +120, +100, +80, +60, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +80, +75, +50).",
+  "Consensus_w": "All agents must negotiate terms to align funding evaluations and proposals, balancing transparency with confidentiality."
 }

@@ -1,114 +1,127 @@
 {
-  "scenario": "Major sports figure contract negotiation between team management, player representatives, and league officials with private performance metrics, undisclosed medical concerns, and confidential sponsorship considerations affecting team economics.",
-  "task": "Negotiate a contract that aligns the player's compensation, performance incentives, and team budget while managing private information and maximizing stakeholder interests.",
+  "scenario": "A major sports figure's contract negotiation unfolds involving team management, player representatives, and league officials. Each party holds private information that could influence the financial and performance aspects of the agreement.",
+  "task": "Develop a comprehensive contract proposal that aligns the interests of the player, team, and league while balancing performance metrics, medical disclosures, and sponsorship deals. Agents must navigate competing priorities: player salary expectations may conflict with team budget constraints, undisclosed medical concerns could affect contract terms, and sponsorship considerations may impact league-wide revenue sharing. To achieve a successful negotiation, agents must strategically share information to build consensus without compromising sensitive data that could affect negotiations.",
   "agents": [
     {
       "name": "Team General Manager",
-      "role": "Oversees team operations and budget management, negotiating player contracts and ensuring team success.",
+      "role": "Oversees player contracts and team budget; responsible for aligning player salaries with overall team financial health.",
       "responsibilities": [
-        "Evaluate player performance metrics to determine contract value.",
-        "Balance team budget constraints while offering competitive compensation.",
-        "Negotiate terms that align with team goals and financial health.",
-        "Maintain confidentiality of sensitive team information during negotiations.",
-        "Ensure compliance with league salary cap regulations."
+        "Negotiate contract terms with player representatives.",
+        "Assess team budget constraints and salary cap implications.",
+        "Coordinate with league officials on compliance matters.",
+        "Evaluate player performance data for contract justification."
       ],
       "information": {
         "private": {
-          "Performance Metrics (85% player efficiency)": {
-            "reason": "Disclosing could impact negotiation leverage.",
-            "penalty": -300
+          "Undisclosed Medical History (knee injury risk)": {
+            "reason": "Disclosure could affect contract negotiations and player market value.",
+            "penalty": -250,
+            "shareable_with": [
+              "Player Representative"
+            ]
           },
-          "Medical Concerns (chronic injury history)": {
-            "reason": "Leaking could affect player market value.",
-            "penalty": -250
+          "Projected Salary Cap Space ($10M available)": {
+            "reason": "Revealing could weaken negotiation position with other players.",
+            "penalty": -150,
+            "shareable_with": [
+              "League Official"
+            ]
           }
         },
         "public": {
-          "Salary Cap Space": "$120M"
+          "Current Roster Salary Total": "$120M"
         }
       },
       "utility": {
-        "Contract under $30M": "+100",
-        "Incentives tied to performance metrics": "+50"
+        "Contract signed under $30M": "+50",
+        "Player performance metrics improvement ≥10%": "+70"
       }
     },
     {
-      "name": "Player Agent",
-      "role": "Represents the player's interests, negotiating terms that maximize player compensation and career longevity.",
+      "name": "Player Representative",
+      "role": "Negotiates on behalf of the player to secure the best possible contract terms while maintaining player interests.",
       "responsibilities": [
-        "Assess player performance and market value to negotiate optimal contract terms.",
-        "Advocate for player health and wellness considerations in contract negotiations.",
-        "Manage communications between player and team, ensuring clarity and transparency.",
-        "Leverage player popularity to secure additional endorsement deals.",
-        "Ensure contract terms align with player career goals and aspirations."
+        "Advocate for player salary and benefits.",
+        "Provide performance metrics to support contract demands.",
+        "Manage communications between player and team management.",
+        "Negotiate endorsement and sponsorship deals."
       ],
       "information": {
         "private": {
-          "Endorsement Deals ($10M potential)": {
-            "reason": "Confidential agreements that could influence negotiations.",
-            "penalty": -200
+          "Confidential Sponsorship Offer ($5M potential deal)": {
+            "reason": "Revealing could jeopardize the player's marketability and negotiation leverage.",
+            "penalty": -200,
+            "shareable_with": [
+              "Team General Manager"
+            ]
           },
-          "Player's Injury Status (undisclosed severity)": {
-            "reason": "Revealing could diminish negotiation power.",
-            "penalty": -150
+          "Player’s Injury Status (chronic back pain)": {
+            "reason": "Disclosure could diminish contract value and increase risk for the player.",
+            "penalty": -300,
+            "shareable_with": []
           }
         },
         "public": {
-          "Player's Last Season Stats": "25 points per game"
+          "Player’s Average Performance Rating": "85%"
         }
       },
       "utility": {
-        "Contract over $35M": "+100",
-        "Performance incentives included": "+75"
+        "Contract value ≥$35M": "+100",
+        "Endorsement deals secured": "+40"
       }
     },
     {
       "name": "League Official",
-      "role": "Ensures compliance with league policies and oversees contract regulations and standards.",
+      "role": "Ensures compliance with league regulations and oversees the financial integrity of player contracts.",
       "responsibilities": [
-        "Monitor contract negotiations to ensure adherence to league rules.",
-        "Facilitate discussions between teams and players to maintain equitable standards.",
-        "Provide guidance on salary cap implications and player eligibility.",
-        "Collect and analyze data on player performance and contract trends.",
-        "Ensure that all contracts are submitted for league approval."
+        "Review contract proposals for league compliance.",
+        "Facilitate discussions between teams and players.",
+        "Monitor salary cap adherence across the league.",
+        "Advise on market trends affecting player contracts."
       ],
       "information": {
         "private": {
-          "Upcoming Rule Changes (salary cap adjustments)": {
-            "reason": "Confidential until official announcement; could affect negotiations.",
-            "penalty": -100
+          "Pending Investigations (team salary cap violations)": {
+            "reason": "Confidential to protect league integrity until resolved.",
+            "penalty": -250,
+            "shareable_with": []
           },
-          "Market Analysis ($500M revenue impact)": {
-            "reason": "Sensitive information that could influence team strategies.",
-            "penalty": -50
+          "League Revenue Projections ($2B next season)": {
+            "reason": "Could influence negotiations and contract structures across the league.",
+            "penalty": -100,
+            "shareable_with": [
+              "Team General Manager"
+            ]
           }
         },
         "public": {
-          "Current Salary Cap": "$150M"
+          "Current League Salary Cap": "$180M"
         }
       },
       "utility": {
-        "Compliance with contract regulations": "+50",
-        "Equity in player contracts": "+30"
+        "Compliance with all contracts": "+50",
+        "Reduction in salary cap violations": "+70"
       }
     }
   ],
   "success_criteria": {
-    "Contract Value": "≤$35M = Success; $36M-$40M = Partial Success; >$40M = Failure",
-    "Performance Incentives": "≥3 incentives included = Success; 1-2 incentives = Partial Success; 0 incentives = Failure"
+    "Contract Agreement": "All parties agree to a final contract that meets the player's salary expectations while adhering to team budget constraints.",
+    "Medical Disclosure Resolution": "The team receives sufficient medical information to assess player risk without compromising the player's market position.",
+    "Sponsorship Alignment": "Consensus is reached on sponsorship terms that benefit the player and the team without infringing on league regulations."
   },
-  "deliverable": "A finalized player contract that balances team budget, player compensation, and performance incentives.",
+  "deliverable": "A finalized contract proposal that balances player compensation, performance metrics, and compliance with league regulations.",
   "constraints": {
     "public": [
-      "Adherence to league salary cap regulations",
-      "Contract must be submitted for league approval",
-      "No more than 5 performance incentives"
+      "Total salary ≤ $30M over 4 years",
+      "Contract terms comply with league regulations",
+      "Player performance metrics must be validated"
     ],
     "private": [
-      "Team budget must remain ≤$120M after contract",
-      "Player's injury history must remain undisclosed",
-      "Endorsement deals must not be disclosed during negotiations"
+      "No undisclosed medical conditions affecting performance",
+      "Team salary cap adherence must be maintained",
+      "Sponsorship deals must not conflict with league policies"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200); utilities are expressed as gains (e.g., +100, +70, +50).",
+  "Consensus_w": "Negotiation on contract terms requires agreement on player performance metrics, medical disclosures, and sponsorship considerations."
 }

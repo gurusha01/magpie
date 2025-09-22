@@ -1,117 +1,128 @@
 {
-  "scenario": "A network construction project requires collaboration between an engineer, a government employee, and an environmentalist, each holding private insights that could significantly influence project decisions.",
-  "task": "Create a detailed construction plan that balances engineering requirements, regulatory compliance, and environmental impact, ensuring all parties share relevant information without compromising sensitive data.",
+  "scenario": "A network construction project involves collaboration between an engineer, a government employee, and an environmentalist. Each party holds private information that could influence project planning and execution, requiring careful negotiation around budget, environmental impact, and regulatory compliance.",
+  "task": "Develop a comprehensive plan for the network construction project that balances technical feasibility, regulatory requirements, and environmental sustainability. Agents must navigate competing interests, ensuring that the engineering solutions meet government standards while minimizing environmental impact without compromising project timelines or costs.",
   "agents": [
     {
-      "name": "Lead Engineer",
-      "role": "Oversees the technical design and implementation of the network structure.",
+      "name": "Network Engineer",
+      "role": "Responsible for the technical design and implementation of the network infrastructure.",
       "responsibilities": [
-        "Design the network layout to meet performance specifications.",
-        "Ensure all materials used comply with engineering standards.",
-        "Coordinate with the government for necessary permits and compliance.",
-        "Balance cost with quality to avoid budget overruns.",
-        "Integrate environmental considerations into the design."
+        "Design network architecture and specifications.",
+        "Ensure compliance with technical standards.",
+        "Coordinate with contractors for project execution."
       ],
       "information": {
         "private": {
-          "Previous Project Performance Data": {
-            "reason": "Confidential insights from past projects that could give competitors an edge.",
-            "penalty": -150
+          "Previous Project Costs ($5M under budget)": {
+            "reason": "Disclosure could affect future negotiations and expectations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Government Employee"
+            ]
           },
-          "Material Cost Projections": {
-            "reason": "Sensitive pricing information that could influence negotiations.",
-            "penalty": -100
+          "Material Performance Data (low-impact materials used in past projects)": {
+            "reason": "Revealing could lead to competitive disadvantages.",
+            "penalty": -100,
+            "shareable_with": [
+              "Environmentalist"
+            ]
           }
         },
         "public": {
-          "Project Timeline": "12 months",
-          "Budget Estimate": "$2 million"
+          "Projected Timeline": "12 months for completion"
         }
       },
       "utility": {
-        "On-time project completion": "+50",
-        "Staying under budget": "+40"
+        "Project completed within budget": "+50",
+        "Meeting all technical standards": "+40"
       }
     },
     {
-      "name": "Government Regulatory Officer",
-      "role": "Ensures that the project complies with local regulations and policies.",
+      "name": "Government Employee",
+      "role": "Oversees regulatory compliance and funding allocation for infrastructure projects.",
       "responsibilities": [
-        "Review and approve construction plans to ensure regulatory compliance.",
-        "Monitor the project's adherence to government standards.",
-        "Facilitate communication between the construction team and regulatory bodies.",
-        "Provide guidance on future government policies affecting construction.",
-        "Enforce environmental regulations during project execution."
+        "Ensure project adheres to government regulations.",
+        "Allocate budget for the project.",
+        "Coordinate with stakeholders for approvals."
       ],
       "information": {
         "private": {
-          "Upcoming Regulatory Changes": {
-            "reason": "Sensitive information that could affect project planning and competitiveness.",
-            "penalty": -200
+          "Upcoming Policy Changes (favorable to green projects)": {
+            "reason": "Sensitive information that could impact project planning.",
+            "penalty": -200,
+            "shareable_with": [
+              "Network Engineer"
+            ]
           },
-          "Past Compliance Issues": {
-            "reason": "Internal records that could impact reputations if disclosed.",
-            "penalty": -100
+          "Budget Allocation Limits ($10M max)": {
+            "reason": "Disclosure could limit negotiation flexibility.",
+            "penalty": -150,
+            "shareable_with": [
+              "Environmentalist"
+            ]
           }
         },
         "public": {
-          "Regulatory Framework": "Complies with local environmental laws",
-          "Permit Requirements": "Standard construction permits needed"
+          "Funding Available": "$10M"
         }
       },
       "utility": {
-        "Compliance without issues": "+75",
-        "Advancement of future policy goals": "+50"
+        "Project approval within 3 months": "+100",
+        "Compliance with new policies": "+50"
       }
     },
     {
-      "name": "Environmental Consultant",
-      "role": "Advises on the environmental impact of construction materials and methods.",
+      "name": "Environmentalist",
+      "role": "Ensures that the project adheres to environmental sustainability standards.",
       "responsibilities": [
-        "Assess the environmental impact of proposed materials and methods.",
-        "Advocate for sustainable practices and low-impact materials.",
-        "Prepare environmental impact assessments and reports.",
-        "Collaborate with the engineer to find environmentally friendly solutions.",
-        "Engage with the community to address environmental concerns."
+        "Assess environmental impact of proposed materials.",
+        "Advise on low-impact construction methods.",
+        "Engage with community stakeholders regarding environmental concerns."
       ],
       "information": {
         "private": {
-          "Low-Impact Material Effectiveness Data": {
-            "reason": "Confidential studies that could benefit competitors if leaked.",
-            "penalty": -150
+          "Research on Low-Impact Materials (30% less harmful)": {
+            "reason": "Sensitive data that could influence project material choices.",
+            "penalty": -150,
+            "shareable_with": [
+              "Network Engineer"
+            ]
           },
-          "Community Feedback on Past Projects": {
-            "reason": "Sensitive insights that could affect public perception.",
-            "penalty": -50
+          "Community Sentiment Analysis (70% support for green methods)": {
+            "reason": "Could be misused in negotiations against environmental standards.",
+            "penalty": -100,
+            "shareable_with": [
+              "Government Employee"
+            ]
           }
         },
         "public": {
-          "Sustainability Goals": "Reduce carbon footprint by 30%",
-          "Community Engagement Strategies": "Regular public consultations"
+          "Environmental Standards Compliance": "100%"
         }
       },
       "utility": {
-        "Use of low-impact materials": "+60",
-        "Community satisfaction": "+40"
+        "Sustainable materials used in ≥70% of project": "+75",
+        "Community support secured": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Regulatory Compliance Rate": "≥95% = Success; 80-94% = Partial; <80% = Failure",
-    "Environmental Impact Assessment Score": "≥80% = Success; 60-79% = Partial; <60% = Failure"
+    "Budget Agreement": "All parties agree on the budget allocation that respects the Government Employee's cap of $10M while meeting the Engineer's project needs.",
+    "Regulatory Compliance": "Consensus is reached on compliance with all relevant regulations and standards to secure government approvals.",
+    "Environmental Impact Mitigation": "Agreement on using low-impact materials and sustainable practices that satisfy both the Environmentalist's and Engineer's requirements."
   },
-  "deliverable": "A comprehensive construction plan that meets engineering, regulatory, and environmental standards.",
+  "deliverable": "A comprehensive network construction plan detailing budget, timelines, material choices, and compliance strategies.",
   "constraints": {
     "public": [
-      "Total project budget ≤ $2.5 million",
-      "Completion within 12 months",
-      "Adherence to local environmental laws"
+      "Total budget ≤ $10M",
+      "Project completion within 12 months",
+      "Environmental standards met"
     ],
     "private": [
-      "No major compliance violations during the project",
-      "Use of at least 50% low-impact materials",
-      "Community approval rating ≥75%"
+      "Engineer must not exceed prior project costs",
+      "New policies not to be publicly disclosed before project approval",
+      "Community support must be verified before final plans"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +60, +50, +75)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50, +40).",
+  "Consensus_w": "Negotiation is required to align budget allocations, compliance standards, and material choices."
 }

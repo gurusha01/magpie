@@ -1,114 +1,124 @@
 {
-  "scenario": "A compensation negotiation takes place between a department head, an HR director, and a candidate, each holding critical confidential information that could influence the outcome.",
-  "task": "Reach a mutually agreeable compensation package that satisfies both the candidate's expectations and the department's budget constraints while ensuring transparency and compliance with internal policies.",
+  "scenario": "A compensation negotiation takes place involving the department head, HR director, and a candidate, each holding confidential information that could influence the outcome.",
+  "task": "Reach a mutually agreeable compensation package for the candidate that aligns with internal pay scales while considering the department's budget constraints and the candidate's competing job offers. Each party must strategically share information to facilitate consensus without compromising sensitive data.",
   "agents": [
     {
       "name": "Department Head",
-      "role": "Oversees the department's budget and resource allocation.",
+      "role": "Oversees departmental budget and team dynamics, ensuring alignment with organizational goals.",
       "responsibilities": [
-        "Define the salary range for the position based on departmental needs.",
-        "Ensure that the compensation aligns with budget constraints.",
-        "Advocate for the candidate's skills and potential contributions to the team.",
-        "Balance internal equity with external market rates.",
-        "Negotiate terms that foster long-term retention."
+        "Evaluate candidate fit for the team.",
+        "Determine budget allocation for the new hire.",
+        "Negotiate salary and benefits package."
       ],
       "information": {
         "private": {
-          "Internal Pay Scale (Salary range $80K-$100K)": {
-            "reason": "Sensitive information that could create internal discord if leaked.",
-            "penalty": -150
+          "Internal Pay Scale ($90K - $120K for similar roles)": {
+            "reason": "Disclosing could create internal discontent among existing staff.",
+            "penalty": -150,
+            "shareable_with": [
+              "HR Director"
+            ]
           },
-          "Budget Constraints ($90K maximum offer)": {
-            "reason": "Disclosure could weaken negotiation position.",
-            "penalty": -100
+          "Department Budget Constraints (max $110K for new hires)": {
+            "reason": "Revealing limits could weaken negotiation position.",
+            "penalty": -200,
+            "shareable_with": [
+              "HR Director"
+            ]
           }
         },
         "public": {
-          "Department Goals": "Increase team productivity by 20% in the next year"
+          "Department Growth Rate": "15%"
         }
       },
       "utility": {
-        "Offer within budget": "+50",
-        "Candidate retention for 2 years": "+100"
+        "Salary offer ≤ $110K": "+50",
+        "Successful hire within 2 months": "+40"
       }
     },
     {
       "name": "HR Director",
-      "role": "Manages overall HR policies and compliance.",
+      "role": "Manages overall compensation strategy and compliance with company policies.",
       "responsibilities": [
-        "Ensure that the negotiation complies with company pay policies.",
-        "Provide guidance on market salary benchmarks.",
-        "Facilitate communication between the department head and the candidate.",
-        "Address any concerns regarding equity and fairness in compensation.",
-        "Document the negotiation outcomes for future reference."
+        "Ensure compensation aligns with company standards.",
+        "Facilitate negotiation process.",
+        "Analyze market salary trends."
       ],
       "information": {
         "private": {
-          "Market Benchmark (Average salary $95K)": {
-            "reason": "Confidential data that could impact salary negotiations across departments.",
-            "penalty": -200
+          "Candidate's Competing Offer ($115K from another company)": {
+            "reason": "Sensitive information that could skew negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Department Head"
+            ]
           },
-          "Competing Offers (Candidate has $92K offer)": {
-            "reason": "Sensitive information that could affect negotiation leverage.",
-            "penalty": -150
+          "Internal Equity Issues": {
+            "reason": "May cause unrest if disclosed; need to balance fairness.",
+            "penalty": -150,
+            "shareable_with": [
+              "Department Head"
+            ]
           }
         },
         "public": {
-          "Company Policy": "Maintain transparency in compensation negotiations"
+          "Average Salary Increase Rate": "5%"
         }
       },
       "utility": {
-        "Successful negotiation outcome": "+75",
-        "Compliance with pay equity standards": "+50"
+        "Offer accepted within 1 week": "+60",
+        "Maintain salary equity across teams": "+30"
       }
     },
     {
       "name": "Candidate",
-      "role": "Potential employee evaluating job offers.",
+      "role": "Seeks a competitive compensation package that reflects skills and market value.",
       "responsibilities": [
-        "Negotiate salary and benefits based on personal expectations.",
-        "Assess the overall compensation package, including non-monetary benefits.",
-        "Leverage competing offers to enhance negotiation position.",
-        "Communicate career goals and expectations clearly.",
-        "Evaluate culture fit and growth opportunities."
+        "Evaluate job offers.",
+        "Negotiate salary and benefits.",
+        "Communicate expectations clearly."
       ],
       "information": {
         "private": {
-          "Personal Salary Expectation ($95K)": {
-            "reason": "Personal financial goal; sharing could weaken negotiation stance.",
-            "penalty": -100
+          "Current Salary ($95K)": {
+            "reason": "Personal financial information; revealing could weaken negotiation stance.",
+            "penalty": -100,
+            "shareable_with": []
           },
-          "Other Offers (One at $92K with benefits)": {
-            "reason": "Confidential competing offers that could affect negotiation leverage.",
-            "penalty": -150
+          "Preferred Salary ($120K)": {
+            "reason": "Too high; revealing could jeopardize the offer.",
+            "penalty": -150,
+            "shareable_with": []
           }
         },
         "public": {
-          "Career Goals": "Seek growth opportunities in management"
+          "Years of Experience": "8 years"
         }
       },
       "utility": {
-        "Salary ≥ $92K": "+100",
-        "Benefits package meets expectations": "+50"
+        "Achieve salary ≥ $110K": "+70",
+        "Job offer accepted before current job's deadline": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Candidate satisfaction with offer": "≥80% = Success; 70-79% = Partial; <70% = Failure",
-    "Budget adherence": "Offer ≤ $90K = Success; >$90K = Failure"
+    "Budget Agreement": "All parties agree to a final compensation package that respects the Department Head's budget constraints.",
+    "Salary Alignment": "The candidate's salary meets or exceeds their minimum expectations while remaining within the internal pay scale.",
+    "Timeline Agreement": "Consensus on finalizing the offer within a week to accommodate the candidate's competing offers."
   },
-  "deliverable": "A finalized compensation package that meets the candidate's expectations while adhering to departmental budget constraints.",
+  "deliverable": "A finalized compensation package proposal that includes salary, benefits, and start date.",
   "constraints": {
     "public": [
-      "Total compensation must not exceed $90K",
-      "Offer must comply with company pay policies",
-      "Negotiation must conclude within 2 weeks"
+      "Total compensation ≤ $120K",
+      "Decision made within 1 week",
+      "Alignment with internal equity policies"
     ],
     "private": [
-      "Department can only offer within internal pay scale",
-      "HR must ensure no pay equity violations occur",
-      "Candidate's competing offers must remain confidential"
+      "Department budget constraints ≤ $110K for new hires",
+      "Candidate's minimum acceptable salary ≤ $120K",
+      "No major discrepancies in salary offers for similar positions"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +70, +60, +50, +40).",
+  "Consensus_w": "Agreement on final salary and benefits package requires negotiation and trade-offs."
 }

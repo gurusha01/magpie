@@ -1,114 +1,128 @@
 {
-  "scenario": "The Olympic team selection committee is tasked with choosing athletes for the upcoming games while managing private performance data, health information, and sponsorship deals.",
-  "task": "Formulate a selection strategy that balances athlete performance, health considerations, and sponsorship requirements while ensuring fairness and transparency.",
+  "scenario": "The Olympic team selection committee is convening to evaluate athlete qualifications, balancing public performance metrics with private health and sponsorship information.",
+  "task": "Develop a selection strategy that integrates athlete performance data, health considerations, and sponsorship commitments while ensuring fairness and transparency in the selection process. The committee must navigate conflicting priorities around athlete eligibility, health disclosures, and sponsorship pressures, sharing information judiciously to build consensus without compromising athlete confidentiality or sponsor relationships.",
   "agents": [
     {
-      "name": "Head Coach",
-      "role": "Leads the coaching staff and is responsible for athlete training and performance evaluation.",
+      "name": "Committee Chair",
+      "role": "Leads the selection process, ensuring adherence to Olympic standards and fair evaluation.",
       "responsibilities": [
-        "Evaluate athlete performance metrics and training progress.",
-        "Determine selection criteria based on performance and potential.",
-        "Ensure athletes are prepared and in peak condition for the games.",
-        "Communicate selection outcomes and rationale to athletes.",
-        "Manage training schedules that align with selection timelines."
+        "Facilitate discussions among committee members.",
+        "Ensure compliance with Olympic selection criteria.",
+        "Oversee the final decision-making process."
       ],
       "information": {
         "private": {
-          "Athlete Performance Scores (Top 5%)": {
-            "reason": "Scores are sensitive and could lead to unfair comparisons if leaked.",
-            "penalty": -150
+          "Undisclosed athlete health issues (3 athletes)": {
+            "reason": "Disclosure could lead to public backlash and impact athlete careers.",
+            "penalty": -300,
+            "shareable_with": [
+              "Medical Officer"
+            ]
           },
-          "Athlete Health Reports (Injury Status)": {
-            "reason": "Health data is confidential; disclosure could impact athlete reputation.",
-            "penalty": -100
+          "Sponsorship pressure from major brands": {
+            "reason": "Revealing this could jeopardize negotiations and athlete endorsements.",
+            "penalty": -200,
+            "shareable_with": [
+              "Sponsorship Coordinator"
+            ]
           }
         },
         "public": {
-          "Selection Criteria": "Based on performance, health, and sponsorship alignment."
+          "Selection Criteria": "Performance metrics, health evaluations, and athlete potential."
         }
       },
       "utility": {
-        "Selecting 90% of top-performing athletes": "+50",
-        "Ensuring all selected athletes are injury-free": "+30"
+        "Consensus reached on athlete selections": "+100",
+        "No appeals from athletes post-decision": "+50"
       }
     },
     {
-      "name": "Athlete Representative",
-      "role": "Advocates for athlete rights and ensures their voices are heard in the selection process.",
+      "name": "Medical Officer",
+      "role": "Evaluates athlete health data to ensure fitness for competition.",
       "responsibilities": [
-        "Gather feedback from athletes regarding selection criteria.",
-        "Represent athlete concerns in committee discussions.",
-        "Ensure transparency in the selection process.",
-        "Monitor compliance with ethical standards in athlete selection.",
-        "Facilitate communication between athletes and the selection committee."
+        "Assess health reports and performance readiness.",
+        "Advise on athlete health implications for selection.",
+        "Confidentially manage sensitive health information."
       ],
       "information": {
         "private": {
-          "Athlete Feedback (Health Concerns)": {
-            "reason": "Sensitive information that could influence selection decisions.",
-            "penalty": -80
+          "Recent injuries of top contenders": {
+            "reason": "Disclosure could influence selection decisions unfairly.",
+            "penalty": -250,
+            "shareable_with": [
+              "Committee Chair"
+            ]
           },
-          "Undisclosed Sponsorship Deals": {
-            "reason": "Confidential agreements that could bias selection.",
-            "penalty": -50
+          "Long-term health issues of key athletes": {
+            "reason": "Could impact athletes' reputations and career opportunities.",
+            "penalty": -350,
+            "shareable_with": [
+              "Committee Chair"
+            ]
           }
         },
         "public": {
-          "Advocacy Goals": "Transparency and fairness in selection."
+          "Average athlete health rating": "85%"
         }
       },
       "utility": {
-        "Achieving athlete satisfaction ≥ 80%": "+40",
-        "Ensuring selection process adheres to ethical standards": "+25"
+        "All athletes fit for competition": "+75",
+        "No health-related disqualifications": "+50"
       }
     },
     {
-      "name": "Sponsorship Manager",
-      "role": "Oversees sponsorship deals and ensures financial support aligns with athlete selection.",
+      "name": "Sponsorship Coordinator",
+      "role": "Manages relationships with sponsors and ensures their interests are represented in selections.",
       "responsibilities": [
-        "Negotiate and secure sponsorships for the Olympic team.",
-        "Align sponsorship requirements with athlete selection criteria.",
-        "Provide financial insights to the selection committee.",
-        "Monitor sponsor expectations and metrics for athlete performance.",
-        "Ensure the team remains financially viable while maximizing sponsorships."
+        "Negotiate sponsorship deals related to the Olympic team.",
+        "Advocate for athletes aligned with sponsor interests.",
+        "Provide insights on marketability of selected athletes."
       ],
       "information": {
         "private": {
-          "Sponsorship Conditions (Performance-Based Bonuses)": {
-            "reason": "Confidential agreements that could affect selection decisions.",
-            "penalty": -200
+          "Sponsorship commitments tied to specific athletes": {
+            "reason": "Disclosing could influence public perception and athlete choices.",
+            "penalty": -200,
+            "shareable_with": [
+              "Committee Chair"
+            ]
           },
-          "Projected Sponsorship Revenue": {
-            "reason": "Sensitive financial information that could impact negotiations.",
-            "penalty": -100
+          "Potential backlash from sponsors over selections": {
+            "reason": "Could lead to loss of funding; sensitive to public opinion.",
+            "penalty": -150,
+            "shareable_with": [
+              "Committee Chair"
+            ]
           }
         },
         "public": {
-          "Sponsorship Goals": "Secure funding for team training and events."
+          "Total sponsorship funds available": "$5M"
         }
       },
       "utility": {
-        "Securing ≥ $1M in sponsorships": "+100",
-        "Performance-based bonuses achieved": "+50"
+        "Successful sponsorship retention post-selection": "+100",
+        "At least one new major sponsor onboard": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Athlete Performance Level": "≥80% of top athletes selected = Success; 70-79% = Partial Success; <70% = Failure",
-    "Sponsorship Satisfaction": "≥$1M secured = Success; $800k-$999k = Partial Success; <800k = Failure"
+    "Selection Consensus": "All committee members agree on the final athlete selections based on performance and health evaluations.",
+    "Sponsorship Alignment": "Sponsorship interests are met without compromising athlete integrity.",
+    "Health Transparency": "Athlete health issues are managed confidentially while ensuring all selected athletes are fit for competition."
   },
-  "deliverable": "A comprehensive athlete selection strategy that includes criteria, rationale, and sponsorship alignment.",
+  "deliverable": "A finalized selection strategy document outlining athlete choices, health considerations, and sponsorship agreements.",
   "constraints": {
     "public": [
-      "Total number of athletes selected ≤ 20",
-      "Selection process completed by 2 months before the games",
-      "All athletes must meet health standards"
+      "Total athletes selected ≤ 50",
+      "All selections comply with Olympic standards",
+      "Health evaluations completed for all athletes"
     ],
     "private": [
-      "Athletes in the top 10% must be prioritized",
-      "Sponsorship conditions must not bias selection",
-      "Health reports must remain confidential until after selection"
+      "No athlete health disclosures without consent",
+      "Sponsorship commitments maintained",
+      "No major disputes or appeals post-selection"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -80, -50). Utilities are expressed as gains (e.g., +100, +50, +40, +30, +25)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on athlete selections is crucial, requiring trade-offs between health issues, sponsorship pressures, and performance metrics."
 }

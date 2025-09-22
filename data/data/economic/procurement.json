@@ -1,114 +1,128 @@
 {
-  "scenario": "A government contract bidding process requires procurement officers, vendors, and an oversight committee to collaborate while managing confidential budget limits and undisclosed technical requirements.",
-  "task": "Develop a comprehensive proposal that meets government requirements while optimizing cost and technical specifications. Agents must negotiate and share information to ensure compliance without disclosing sensitive data.",
+  "scenario": "A government contract bidding process involves procurement officers, vendors, and an oversight committee working together to finalize a contract that meets public needs while managing private constraints and technical specifications.",
+  "task": "Develop a comprehensive bid proposal that aligns with government requirements, vendor capabilities, and oversight mandates. Agents must navigate conflicting interests: procurement officers must adhere to budget limits, vendors seek to maximize their bids, and the oversight committee aims to ensure compliance and transparency, while also managing sensitive information that could impact negotiations.",
   "agents": [
     {
       "name": "Procurement Officer",
-      "role": "Manages the bidding process and ensures compliance with government regulations.",
+      "role": "Responsible for overseeing the bidding process, ensuring compliance with regulations, and managing budget allocations.",
       "responsibilities": [
-        "Define the bidding criteria and requirements for vendors.",
-        "Evaluate vendor proposals based on technical and financial metrics.",
-        "Facilitate communication between vendors and the oversight committee.",
-        "Ensure all proposals adhere to budget limitations and timeline constraints.",
-        "Maintain confidentiality of sensitive information throughout the process."
+        "Draft and distribute bid documents",
+        "Evaluate vendor proposals based on criteria",
+        "Negotiate terms with selected vendors"
       ],
       "information": {
         "private": {
-          "Confidential Budget Limit ($2M)": {
-            "reason": "Disclosure could lead to vendor manipulation of bids.",
-            "penalty": -300
+          "Confidential Budget Limit ($1M)": {
+            "reason": "Disclosing would limit negotiation flexibility and could lead to inflated bids.",
+            "penalty": -200,
+            "shareable_with": [
+              "Oversight Committee"
+            ]
           },
-          "Undisclosed Technical Requirements": {
-            "reason": "Leaking could compromise the integrity of the bidding process.",
-            "penalty": -250
+          "Technical Requirements (undisclosed specifications)": {
+            "reason": "Revealing could compromise the integrity of the bidding process.",
+            "penalty": -150,
+            "shareable_with": [
+              "Oversight Committee"
+            ]
           }
         },
         "public": {
-          "Bidding Timeline": "Submissions due by Q2 2024"
+          "Bid Submission Deadline": "30 days from announcement"
         }
       },
       "utility": {
-        "Vendor compliance with budget": "+100",
-        "Successful proposal evaluation within timeline": "+50"
+        "Staying within budget": "+50",
+        "Successful completion of bid evaluation": "+100"
       }
     },
     {
-      "name": "Vendor A",
-      "role": "Submits proposals to win government contracts by showcasing technical capabilities.",
+      "name": "Vendor Representative",
+      "role": "Submits proposals and seeks to align their offerings with government needs while maximizing potential profit.",
       "responsibilities": [
-        "Prepare and submit competitive proposals that meet government specifications.",
-        "Communicate with procurement officers to clarify requirements.",
-        "Maintain confidentiality of proprietary technology and pricing models.",
-        "Negotiate terms and conditions of contracts post-bid acceptance.",
-        "Monitor market trends to adjust bids accordingly."
+        "Prepare and submit bid proposals",
+        "Engage in negotiations with procurement officers",
+        "Ensure compliance with bidding requirements"
       ],
       "information": {
         "private": {
-          "Technical Capabilities (AI integration)": {
-            "reason": "Revealing could give competitors an advantage.",
-            "penalty": -200
+          "Vendor Capabilities (advanced technology not disclosed)": {
+            "reason": "Revealing could undermine competitive advantage.",
+            "penalty": -100,
+            "shareable_with": [
+              "Procurement Officer"
+            ]
           },
-          "Pricing Model ($1.8M proposal)": {
-            "reason": "Disclosure could lead to price undercutting by competitors.",
-            "penalty": -150
+          "Internal Cost Structure (actual costs are lower)": {
+            "reason": "Sensitive information; revealing could impact profit margins.",
+            "penalty": -150,
+            "shareable_with": [
+              "Oversight Committee"
+            ]
           }
         },
         "public": {
-          "Experience in similar projects": "5 years"
+          "Previous Contract Success Rate": "85%"
         }
       },
       "utility": {
-        "Winning the contract": "+150",
-        "Maintaining profit margins": "+75"
+        "Winning the contract": "+200",
+        "Maintaining competitive pricing": "+50"
       }
     },
     {
       "name": "Oversight Committee Member",
-      "role": "Ensures fairness and compliance in the bidding process.",
+      "role": "Ensures that the bidding process adheres to regulations and standards, maintaining transparency and accountability.",
       "responsibilities": [
-        "Review vendor proposals for adherence to government standards.",
-        "Provide feedback and recommendations to procurement officers.",
-        "Monitor the bidding process for transparency and integrity.",
-        "Ensure that all stakeholders are informed of the evaluation criteria.",
-        "Advocate for ethical practices in vendor selection."
+        "Monitor the bidding process for compliance",
+        "Review proposals for adherence to requirements",
+        "Report findings to government officials"
       ],
       "information": {
         "private": {
-          "Evaluation Criteria Weighting": {
-            "reason": "Disclosure could bias vendor proposals.",
-            "penalty": -100
+          "Pending Investigations (ongoing reviews of vendor practices)": {
+            "reason": "Sensitive information that could influence bidding dynamics.",
+            "penalty": -200,
+            "shareable_with": [
+              "Procurement Officer"
+            ]
           },
-          "Internal Budget Assessment": {
-            "reason": "Sensitive information; sharing could jeopardize negotiations.",
-            "penalty": -200
+          "Internal Audit Results (not yet disclosed)": {
+            "reason": "Could affect public perception if revealed prematurely.",
+            "penalty": -100,
+            "shareable_with": [
+              "Procurement Officer"
+            ]
           }
         },
         "public": {
-          "Committee Meeting Frequency": "Bi-weekly"
+          "Compliance Score Requirement": "≥90%"
         }
       },
       "utility": {
-        "Ensuring transparency in the process": "+50",
-        "Reducing vendor complaints": "+40"
+        "Successful audit completion": "+100",
+        "Ensuring vendor compliance": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Proposal adherence to budget": "≤$2M = Success; $2.1M-$2.5M = Partial; >$2.5M = Failure",
-    "Technical compliance evaluation": "≥80% = Success; 70%-79% = Partial; <70% = Failure"
+    "Budget Agreement": "All parties agree to a final bid that falls within the confidential budget limit established by the Procurement Officer.",
+    "Proposal Acceptance": "The Oversight Committee and Procurement Officer reach consensus on the selected vendor's proposal based on compliance and value.",
+    "Technical Alignment": "Agreement on the technical specifications that meet both the government’s needs and the vendor’s capabilities."
   },
-  "deliverable": "A detailed proposal that meets the bidding criteria, including cost analysis and technical specifications.",
+  "deliverable": "A finalized bid proposal that includes budget adherence, compliance with technical requirements, and vendor capabilities.",
   "constraints": {
     "public": [
-      "Total budget must not exceed $2M",
-      "Proposals must be submitted by Q2 2024",
-      "Compliance with federal procurement regulations"
+      "Total bid must not exceed $1M",
+      "Proposal submission by deadline",
+      "Compliance with all technical specifications"
     ],
     "private": [
-      "Confidential technical requirements must remain undisclosed",
-      "Vendors must not exceed their internal cost limits",
-      "Evaluation criteria must be kept confidential until the bidding process concludes"
+      "Budget flexibility not to exceed ±10%",
+      "Vendor must have a minimum of 80% success rate in prior contracts",
+      "No unresolved compliance issues"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100); utilities are expressed as gains (e.g., +150, +100, +75, +50, +40)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +200, +100, +75, +50).",
+  "Consensus_w": "Negotiation of budget limits and technical specifications is required to reach agreement."
 }

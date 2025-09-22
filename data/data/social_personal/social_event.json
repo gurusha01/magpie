@@ -1,115 +1,133 @@
 {
-  "scenario": "High-profile charity gala coordination between political figures, celebrity attendees, and wealthy donors with private political rivalries, undisclosed donation expectations, and confidential security concerns.",
-  "task": "Develop a comprehensive gala coordination plan that includes event logistics, security measures, and donation strategies, while managing the private interests and rivalries of involved parties.",
+  "scenario": "A high-profile charity gala is coordinated involving political figures, celebrity attendees, and wealthy donors, each holding private information that could impact the event's success.",
+  "task": "Develop a comprehensive event planning strategy that aligns security protocols, guest lists, donation targets, and media coverage while ensuring all parties manage their private interests and potential conflicts. Agents must balance reputational concerns, security risks, and public expectations, necessitating strategic information sharing to achieve consensus without compromising sensitive details that could fuel rivalries or jeopardize donor relationships.",
   "agents": [
     {
-      "name": "Event Coordinator",
-      "role": "Oversees all aspects of the gala, ensuring smooth logistics and adherence to the event agenda.",
+      "name": "Political Figure",
+      "role": "Represents the political interests and agenda at the gala, ensuring alignment with party goals.",
       "responsibilities": [
-        "Plan the event schedule, including timing for speeches and performances.",
-        "Coordinate with vendors for catering, decorations, and entertainment.",
-        "Manage guest lists, ensuring VIPs and celebrities are appropriately accommodated.",
-        "Work with security teams to implement safety protocols without alarming guests.",
-        "Facilitate communication between political figures and donors to align interests."
+        "Outline political messaging for the event.",
+        "Manage public speaking engagements.",
+        "Coordinate with security teams for personal safety."
       ],
       "information": {
         "private": {
-          "Guest Rivalries": {
-            "reason": "Knowledge of conflicts could create tension during the event.",
-            "penalty": -100
+          "Controversial Policy Stance": {
+            "reason": "Could alienate potential donors if disclosed.",
+            "penalty": -150,
+            "shareable_with": [
+              "Wealthy Donor"
+            ]
           },
-          "Undisclosed Donation Expectations": {
-            "reason": "Revealing could jeopardize donor relationships.",
-            "penalty": -150
+          "Rivalry with another political figure": {
+            "reason": "Disclosure could escalate tensions and affect attendance.",
+            "penalty": -200,
+            "shareable_with": [
+              "Celebrity Attendee"
+            ]
           }
         },
         "public": {
-          "Event Date": "2024-06-15",
-          "Venue": "Grand Ballroom, City Center"
+          "Expected Attendance": "500 guests",
+          "Fundraising Goal": "$1M"
         }
       },
       "utility": {
-        "Event runs under budget": "+50",
-        "Guest satisfaction score ≥ 85%": "+75"
+        "Positive media coverage": "+100",
+        "Achieving fundraising goal": "+75"
       }
     },
     {
-      "name": "Political Figure A",
-      "role": "Represents political interests and seeks to leverage the gala for visibility and support.",
+      "name": "Celebrity Attendee",
+      "role": "Brings visibility and media attention to the gala, ensuring a high-profile event.",
       "responsibilities": [
-        "Engage with donors to secure funding for political initiatives.",
-        "Deliver a keynote speech that aligns with the event's charitable goals.",
-        "Network with celebrities to enhance public image.",
-        "Manage personal rivalries discreetly to avoid public conflict.",
-        "Collaborate with the event coordinator on agenda items relevant to political messaging."
+        "Promote the event on social media.",
+        "Participate in interviews and red carpet appearances.",
+        "Engage with donors and guests during the gala."
       ],
       "information": {
         "private": {
-          "Rivalry with Political Figure B": {
-            "reason": "Public knowledge could harm political standing.",
-            "penalty": -200
+          "Undisclosed Donation Expectations": {
+            "reason": "Could create pressure on personal relationships if made public.",
+            "penalty": -100,
+            "shareable_with": [
+              "Wealthy Donor"
+            ]
           },
-          "Donation Requirements": {
-            "reason": "Could compromise negotiation leverage if disclosed.",
-            "penalty": -100
+          "Confidential Security Concerns": {
+            "reason": "Personal safety issues; revealing could lead to increased risks.",
+            "penalty": -150,
+            "shareable_with": [
+              "Political Figure"
+            ]
           }
         },
         "public": {
-          "Political Agenda": "Support for environmental initiatives"
+          "Social Media Following": "1.5M followers",
+          "Previous Charity Involvement": "3 events this year"
         }
       },
       "utility": {
-        "Securing ≥ $500K in donations": "+100",
-        "Positive media coverage": "+50"
+        "Media engagement exceeds 50 interviews": "+50",
+        "Social media reach ≥3M": "+75"
       }
     },
     {
       "name": "Wealthy Donor",
-      "role": "Provides financial support and expects recognition and influence in return.",
+      "role": "Provides financial support while navigating personal interests and expectations.",
       "responsibilities": [
-        "Commit to a significant donation contingent on gala success.",
-        "Participate in discussions to shape event focus and visibility.",
-        "Ensure personal and corporate branding is highlighted throughout the event.",
-        "Engage with political figures to align charitable goals with personal interests.",
-        "Maintain confidentiality regarding donation amounts and expectations."
+        "Secure large donations for the event.",
+        "Negotiate sponsorship terms.",
+        "Coordinate with security for private access."
       ],
       "information": {
         "private": {
-          "Expected Donation Amount": {
-            "reason": "Keeping it secret maintains negotiation power.",
-            "penalty": -150
+          "Donation Size (≥$250K expected)": {
+            "reason": "Could lead to pressure or expectations from other donors.",
+            "penalty": -200,
+            "shareable_with": [
+              "Political Figure"
+            ]
           },
-          "Political Contributions": {
-            "reason": "Disclosure could invite scrutiny or backlash.",
-            "penalty": -100
+          "Past Rivalries with other donors": {
+            "reason": "Could affect their willingness to contribute if disclosed.",
+            "penalty": -150,
+            "shareable_with": [
+              "Celebrity Attendee"
+            ]
           }
         },
         "public": {
-          "Philanthropic Focus": "Education and healthcare initiatives"
+          "Confirmed Donations": "$500K",
+          "Event Budget Contribution": "40%"
         }
       },
       "utility": {
-        "Recognition as top donor": "+75",
-        "Influence over event agenda": "+50"
+        "Securing exclusive donor recognition": "+75",
+        "Ensuring personal safety during the event": "+100"
       }
     }
   ],
   "success_criteria": {
-    "Donations Secured": "≥ $1M = Success; $500K-$999K = Partial Success; < $500K = Failure",
-    "Guest Satisfaction": "≥ 85% = Success; 70%-84% = Partial Success; < 70% = Failure"
+    "Funding Agreement": "All parties agree to a final donation target that satisfies the Political Figure’s agenda and the Wealthy Donor’s expectations.",
+    "Guest List Alignment": "Consensus is reached on the final guest list that balances visibility with security concerns.",
+    "Security Protocols Resolution": "Agreement on security measures that protect all attendees while accommodating the Celebrity Attendee's concerns."
   },
-  "deliverable": "A detailed coordination plan covering logistics, security, and donor engagement strategies.",
+  "deliverable": "An event planning and coordination strategy detailing security, guest engagement, and fundraising efforts.",
   "constraints": {
     "public": [
       "Total budget ≤ $2M",
-      "Event must be held on scheduled date",
-      "Security protocols must be enforced without alarming guests"
+      "Event date confirmed",
+      "Media coverage secured",
+      "Minimum of 500 attendees"
     ],
     "private": [
-      "Confidentiality regarding donation amounts must be maintained",
-      "No public conflict between political figures",
-      "Guest satisfaction must meet or exceed 80%"
+      "No major security breaches allowed",
+      "≥75% of expected donations confirmed before the event",
+      "No public disputes among attendees",
+      "Personal safety plans validated for key figures"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Trade-offs on guest lists and security measures are required to align interests."
 }

@@ -1,119 +1,128 @@
 {
-  "scenario": "A remote crisis intervention system is deployed among rural hospitals, specialist physicians, and technology providers, each facing private infrastructure limitations and undisclosed diagnostic accuracy concerns.",
-  "task": "Create a strategic implementation plan for the crisis intervention system that addresses infrastructure needs, ensures diagnostic accuracy, and protects patient confidentiality while facilitating collaboration among stakeholders.",
+  "scenario": "A remote crisis intervention system is being deployed between rural hospitals, specialist physicians, and technology providers, each facing unique infrastructure limitations and confidentiality concerns.",
+  "task": "Develop a comprehensive deployment strategy that integrates system capabilities, hospital readiness, specialist availability, and technology infrastructure. Agents must navigate conflicting priorities: ensuring diagnostic accuracy while managing technological constraints and patient data confidentiality. To succeed, they must share information judiciously—enough to facilitate coordination and agreement, but not so much that sensitive details undermine trust or operational integrity.",
   "agents": [
     {
       "name": "Rural Hospital Administrator",
-      "role": "Oversees hospital operations and resource allocation to ensure that the crisis intervention system is effectively integrated.",
+      "role": "Oversees hospital operations, resource allocation, and readiness for the new system.",
       "responsibilities": [
-        "Assess current infrastructure and identify necessary upgrades for system deployment.",
-        "Coordinate training for staff on the new intervention protocols.",
-        "Monitor patient outcomes and feedback to inform system adjustments.",
-        "Manage budget constraints while advocating for necessary funding.",
-        "Ensure compliance with healthcare regulations and standards."
+        "Assess current infrastructure capabilities.",
+        "Coordinate training for staff on the new system.",
+        "Manage patient flow and emergency protocols."
       ],
       "information": {
         "private": {
-          "Current Infrastructure Limitations": {
-            "reason": "Disclosure could undermine negotiations for upgrading resources.",
-            "penalty": -150
+          "Infrastructure Limitations (bandwidth issues)": {
+            "reason": "Revealing could affect negotiations with technology providers.",
+            "penalty": -150,
+            "shareable_with": [
+              "Specialist Physician"
+            ]
           },
-          "Patient Demographic Vulnerability Data": {
-            "reason": "Sensitive data that could lead to privacy violations if leaked.",
-            "penalty": -200
+          "Patient Demographics (high vulnerability population)": {
+            "reason": "Confidentiality concerns; disclosure could risk patient trust.",
+            "penalty": -200,
+            "shareable_with": [
+              "Technology Provider"
+            ]
           }
         },
         "public": {
-          "Budget Availability": "$1M for upgrades",
-          "Staff Training Timeline": "3 months"
+          "Emergency Protocols": "Established response times and triage processes"
         }
       },
       "utility": {
-        "Successful deployment within budget": "+70",
-        "Patient satisfaction rate ≥85%": "+50"
+        "System readiness achieved": "+100",
+        "Training completion rate ≥90%": "+50"
       }
     },
     {
       "name": "Specialist Physician",
-      "role": "Provides expertise and guidance for the remote crisis intervention protocols and diagnostic processes.",
+      "role": "Provides expert consultation and diagnostic support through the remote system.",
       "responsibilities": [
-        "Develop evidence-based clinical guidelines for the intervention.",
-        "Ensure diagnostic accuracy through validation of remote tools.",
-        "Collaborate with rural hospitals to refine intervention strategies.",
-        "Monitor and evaluate clinical outcomes from the intervention.",
-        "Advocate for necessary resources and training for rural staff."
+        "Review patient cases referred from rural hospitals.",
+        "Ensure accurate diagnoses and treatment recommendations.",
+        "Communicate effectively with hospital staff."
       ],
       "information": {
         "private": {
-          "Diagnostic Accuracy Concerns": {
-            "reason": "Sharing could impact trust in the intervention tools.",
-            "penalty": -100
+          "Diagnostic Accuracy Concerns (≤80% accuracy)": {
+            "reason": "May impact credibility if disclosed; could lead to mistrust.",
+            "penalty": -100,
+            "shareable_with": [
+              "Rural Hospital Administrator"
+            ]
           },
-          "Patient Outcome Projections": {
-            "reason": "Confidential analytics that could mislead stakeholders if misinterpreted.",
-            "penalty": -50
+          "Treatment Protocol Adjustments": {
+            "reason": "Confidentiality regarding proprietary methods; could affect competitive positioning.",
+            "penalty": -150,
+            "shareable_with": [
+              "Technology Provider"
+            ]
           }
         },
         "public": {
-          "Clinical Guidelines Release Date": "2 months",
-          "Collaboration Meetings Scheduled": "Bi-weekly"
+          "Consultation Availability": "Available for 15 hours/week"
         }
       },
       "utility": {
-        "Diagnostic accuracy ≥90%": "+100",
-        "Improvement in patient outcomes ≥20%": "+60"
+        "Accuracy improvement ≥90%": "+75",
+        "Effective communication feedback ≥85%": "+50"
       }
     },
     {
       "name": "Technology Provider",
-      "role": "Develops and maintains the technological infrastructure necessary for the remote intervention system.",
+      "role": "Develops and maintains the remote intervention system, ensuring technical reliability and data security.",
       "responsibilities": [
-        "Design and implement the software and hardware solutions for the system.",
-        "Provide ongoing technical support and training for users.",
-        "Ensure data security and privacy compliance for all patient interactions.",
-        "Collaborate with hospitals and physicians to adapt technology based on feedback.",
-        "Monitor system performance and troubleshoot issues as they arise."
+        "Implement system infrastructure and support.",
+        "Monitor system performance and resolve technical issues.",
+        "Ensure compliance with data privacy regulations."
       ],
       "information": {
         "private": {
-          "Infrastructure Capability Limitations": {
-            "reason": "Could affect competitive positioning in future contracts.",
-            "penalty": -150
+          "System Vulnerabilities (potential data breaches)": {
+            "reason": "Revealing could endanger client contracts and reputation.",
+            "penalty": -200,
+            "shareable_with": [
+              "Rural Hospital Administrator"
+            ]
           },
-          "User Engagement Metrics": {
-            "reason": "Sensitive data that could mislead stakeholders if disclosed.",
-            "penalty": -100
+          "Client Contracts (pricing and terms)": {
+            "reason": "Confidential agreements; public knowledge could affect negotiations with other clients.",
+            "penalty": -150,
+            "shareable_with": [
+              "Specialist Physician"
+            ]
           }
         },
         "public": {
-          "System Launch Date": "6 months",
-          "Support Team Availability": "24/7"
+          "System Uptime": "99.9% reliability"
         }
       },
       "utility": {
-        "System uptime ≥99%": "+80",
-        "User satisfaction ≥90%": "+40"
+        "Client satisfaction ≥90%": "+100",
+        "System performance metrics met": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Patient satisfaction rate": "≥85% = Success; 70%-84% = Partial Success; <70% = Failure",
-    "Diagnostic accuracy": "≥90% = Required; 80%-89% = Borderline; <80% = Failure"
+    "Infrastructure Agreement": "All parties agree on the necessary upgrades and support required to meet system deployment needs.",
+    "Diagnostic Accuracy Resolution": "Consensus on acceptable diagnostic accuracy levels that all agents can work towards without compromising patient care.",
+    "Training Alignment": "Agreement on training schedules and materials that meet the needs of hospital staff and the specialist physician."
   },
-  "deliverable": "A comprehensive implementation plan detailing resource allocation, training, and technology integration for the crisis intervention system.",
+  "deliverable": "A comprehensive deployment strategy that details infrastructure upgrades, training plans, and operational protocols.",
   "constraints": {
     "public": [
-      "Total budget ≤ $1.5M",
-      "System operational within 6 months",
-      "Compliance with healthcare regulations",
-      "Patient confidentiality maintained"
+      "Deployment completed within 6 months",
+      "Training sessions held for all staff",
+      "System uptime ≥99.5%"
     ],
     "private": [
-      "Infrastructure upgrades must be completed without exceeding $1M",
-      "Diagnostic tools must achieve accuracy ≥85% before deployment",
-      "Patient demographic data must remain undisclosed",
-      "System must be scalable for future needs"
+      "Diagnostic accuracy must be verified ≥80% before launch",
+      "Confidentiality agreements in place",
+      "Infrastructure upgrades completed without exceeding budget"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +100, +70, +60)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on constraints and utility expectations is necessary for successful deployment."
 }

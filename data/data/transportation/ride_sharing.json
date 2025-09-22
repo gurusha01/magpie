@@ -1,114 +1,128 @@
 {
-  "scenario": "Emergency medical transport coordination between hospitals, ambulance services, and air evacuation teams must optimize patient transfers while safeguarding private information and addressing resource limitations.",
-  "task": "Create a comprehensive coordination plan that details patient transfer protocols, resource allocations, and communication strategies among involved parties while ensuring confidentiality.",
+  "scenario": "Emergency medical transport coordination involves collaboration between hospitals, ambulance services, and air evacuation teams, each holding private information that could impact patient care and resource allocation.",
+  "task": "Develop a comprehensive emergency transport plan that balances patient needs, resource availability, and response times. Agents must navigate competing priorities: timely patient transfers may conflict with resource limitations and facility capacities. They must strategically share information—enough to coordinate effectively while protecting sensitive patient data and operational constraints.",
   "agents": [
     {
       "name": "Hospital Coordinator",
-      "role": "Manages patient admissions and transfers, ensuring efficient use of hospital resources.",
+      "role": "Manages patient intake and transfer logistics, ensuring swift access to necessary medical facilities.",
       "responsibilities": [
-        "Assess and prioritize incoming patients for transfer based on severity and resource availability.",
-        "Coordinate with ambulance and air evacuation teams to schedule transfers.",
-        "Maintain accurate patient records while ensuring sensitive information is protected.",
-        "Communicate real-time capacity data to relevant teams without disclosing confidential details.",
-        "Evaluate post-transfer outcomes to improve future coordination."
+        "Assess incoming patient needs and prioritize transfers.",
+        "Coordinate with ambulance services for timely dispatch.",
+        "Maintain communication with receiving facilities for capacity updates."
       ],
       "information": {
         "private": {
-          "Current Patient Load (50 patients)": {
-            "reason": "Sensitive operational data; revealing could create panic or misallocation.",
-            "penalty": -150
+          "Current Patient Load (95% capacity)": {
+            "reason": "Disclosure may lead to overloading and patient safety risks.",
+            "penalty": -150,
+            "shareable_with": [
+              "Ambulance Service Lead"
+            ]
           },
-          "Resource Limitations (3 ICU beds)": {
-            "reason": "Confidential information impacting negotiation leverage.",
-            "penalty": -100
+          "Critical Equipment Availability (2 ventilators)": {
+            "reason": "Sensitive information that could affect transfer decisions.",
+            "penalty": -100,
+            "shareable_with": [
+              "Air Evacuation Team Lead"
+            ]
           }
         },
         "public": {
-          "Transfer Protocols": "Standardized procedures for patient transfers"
+          "Average Response Time": "10 minutes"
         }
       },
       "utility": {
-        "Transfer efficiency >90%": "+50",
-        "Patient satisfaction >85%": "+40"
+        "Transfer success rate ≥90%": "+100",
+        "Response time ≤8 minutes": "+50"
       }
     },
     {
-      "name": "Ambulance Service Director",
-      "role": "Oversees ground transport operations, ensuring timely patient pickups and adherence to protocols.",
+      "name": "Ambulance Service Lead",
+      "role": "Oversees ground transport logistics, ensuring timely arrivals and efficient patient transfers.",
       "responsibilities": [
-        "Manage fleet allocation and dispatch for optimal response times.",
-        "Ensure crews are trained in patient handling and emergency protocols.",
-        "Communicate with hospitals regarding patient needs and transport requirements.",
-        "Monitor traffic and weather conditions to adapt routes as necessary.",
-        "Maintain operational readiness and equipment standards."
+        "Dispatch ambulances based on priority and location.",
+        "Communicate with hospitals regarding transport readiness.",
+        "Monitor traffic and route conditions to optimize response times."
       ],
       "information": {
         "private": {
-          "Vehicle Availability (5 ambulances)": {
-            "reason": "Internal resource management; sharing could affect operational strategy.",
-            "penalty": -100
+          "Resource Limitations (only 5 ambulances available)": {
+            "reason": "Disclosure could impact public perception and trust.",
+            "penalty": -200,
+            "shareable_with": [
+              "Hospital Coordinator"
+            ]
           },
-          "Staffing Levels (10 paramedics)": {
-            "reason": "Confidential staffing data; could influence negotiations with hospitals.",
-            "penalty": -50
+          "Staffing Shortages (2 EMTs unavailable)": {
+            "reason": "Sensitive operational detail that could affect service delivery.",
+            "penalty": -150,
+            "shareable_with": [
+              "Air Evacuation Team Lead"
+            ]
           }
         },
         "public": {
-          "Average Response Time": "8 minutes"
+          "Average Transport Time": "15 minutes"
         }
       },
       "utility": {
-        "Response time <10 minutes": "+40",
-        "Crew efficiency >95%": "+30"
+        "Transport success rate ≥85%": "+75",
+        "Average response time ≤12 minutes": "+40"
       }
     },
     {
       "name": "Air Evacuation Team Lead",
-      "role": "Coordinates aerial transport operations, ensuring rapid response for critical patients.",
+      "role": "Coordinates air transport logistics, ensuring rapid response for critical patients needing specialized care.",
       "responsibilities": [
-        "Assess patient transfer needs and determine suitability for air transport.",
-        "Coordinate with hospitals and ground services for seamless transitions.",
-        "Ensure compliance with aviation regulations and safety protocols.",
-        "Maintain aircraft readiness and crew training.",
-        "Communicate flight status and landing protocols to receiving facilities."
+        "Evaluate patient transfer requests for air transport eligibility.",
+        "Coordinate with hospitals and ambulance services for seamless transitions.",
+        "Manage air traffic and landing permissions for timely evacuations."
       ],
       "information": {
         "private": {
-          "Flight Capacity (2 patients per flight)": {
-            "reason": "Operational constraints; revealing could lead to mismanagement of resources.",
-            "penalty": -200
+          "Flight Capacity (1 helicopter available)": {
+            "reason": "Operational capacity detail that could lead to resource misallocation.",
+            "penalty": -200,
+            "shareable_with": [
+              "Hospital Coordinator"
+            ]
           },
-          "Flight Availability (1 aircraft)": {
-            "reason": "Sensitive availability data; impacts competitive positioning.",
-            "penalty": -150
+          "Pending Weather Conditions (storm expected)": {
+            "reason": "Disclosure could lead to unnecessary panic and miscommunication.",
+            "penalty": -100,
+            "shareable_with": [
+              "Ambulance Service Lead"
+            ]
           }
         },
         "public": {
-          "Average Flight Time": "15 minutes"
+          "Average Evacuation Time": "30 minutes"
         }
       },
       "utility": {
-        "Flight readiness >95%": "+60",
-        "Patient transfer success rate >90%": "+50"
+        "Evacuation success rate ≥90%": "+100",
+        "Average evacuation time ≤25 minutes": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Patient transfer success rate": "≥90% = Success; 80-89% = Partial success; <80% = Failure",
-    "Overall transfer time": "≤30 minutes = Success; 31-45 minutes = Partial success; >45 minutes = Failure"
+    "Transfer Coordination": "All agents agree on a transfer protocol that optimally utilizes available resources while prioritizing patient safety.",
+    "Response Time Agreement": "Consensus on response times that meet or exceed the operational targets set by each agency.",
+    "Capacity Management": "Agreement on how to manage patient loads and resource allocations effectively without compromising care."
   },
-  "deliverable": "A detailed coordination plan outlining protocols, resource allocation, and communication strategies.",
+  "deliverable": "An emergency transport coordination plan detailing patient transfer protocols, resource allocations, and response strategies.",
   "constraints": {
     "public": [
-      "Total transfer time ≤ 45 minutes",
-      "Compliance with patient confidentiality regulations",
-      "Resource availability must be confirmed before transfers"
+      "Total average response time ≤20 minutes",
+      "No patient left waiting ≥30 minutes",
+      "Compliance with emergency medical regulations"
     ],
     "private": [
-      "Patient load must not exceed facility capacity",
-      "Ambulance response time must be ≤10 minutes",
-      "Air evacuation must be ready within 20 minutes of request"
+      "Hospital capacity must not exceed 90% during peak transfers",
+      "Ambulance service must maintain at least 80% operational readiness",
+      "Air evacuation must have a backup plan for adverse weather conditions"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +60, +50, +40)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on resource management and patient prioritization is necessary for effective coordination."
 }

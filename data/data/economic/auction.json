@@ -1,117 +1,122 @@
 {
-  "scenario": "An art auction where collectors, museum representatives, and anonymous phone bidders must navigate private bidding limits and authentication concerns while vying for specific artworks.",
-  "task": "Formulate a bidding strategy that maximizes the chances of winning desired artworks while respecting hidden bidding limits and authentication protocols.",
+  "scenario": "An art auction takes place where collectors, museum representatives, and anonymous phone bidders navigate private bidding limits, authentication concerns, and hidden motivations for specific pieces.",
+  "task": "Develop a comprehensive auction strategy that includes bidding limits, authentication processes for artworks, and communication protocols among participants. Agents must reconcile competing priorities: securing desired pieces might conflict with budget constraints, authentication delays could jeopardize bids, and hidden motivations could lead to strategic misalignment. To succeed, they must share information strategically—enough to build consensus and coordinate effectively, but without disclosing sensitive bidding limits or authentication protocols that could undermine their positions.",
   "agents": [
     {
       "name": "Collector A",
-      "role": "Art collector with a focus on contemporary pieces.",
+      "role": "Avid art collector focused on acquiring valuable pieces to enhance their collection.",
       "responsibilities": [
-        "Research upcoming auction items and their market value.",
-        "Determine maximum bids for desired pieces based on personal budget.",
-        "Negotiate with other collectors to secure favorable terms.",
-        "Ensure authentication of artworks before bidding.",
-        "Monitor bidding activity to adjust strategy in real-time."
+        "Establish maximum bid limits for desired artworks.",
+        "Engage in bidding strategies to outmaneuver competitors.",
+        "Communicate preferences for specific pieces to auction house."
       ],
       "information": {
         "private": {
-          "Maximum Bid (Piece X)": {
-            "reason": "Sensitive financial information; disclosing could weaken bidding position.",
-            "penalty": -300
+          "Maximum Bid Limit ($1M for specific painting)": {
+            "reason": "Disclosing could weaken bidding strategy.",
+            "penalty": -150,
+            "shareable_with": [
+              "Auction House"
+            ]
           },
-          "Interest in Piece Y": {
-            "reason": "Personal preference that could influence others' bidding strategies.",
-            "penalty": -150
+          "Interest in competitor's collection (potential rivalry)": {
+            "reason": "Revealing could jeopardize future bidding strategies.",
+            "penalty": -100,
+            "shareable_with": [
+              "Auction House"
+            ]
           }
         },
         "public": {
-          "Current Collection Value": "$5M",
-          "Bidding Strategy": "Aggressive on contemporary pieces"
+          "Current Collection Value": "$5M"
         }
       },
       "utility": {
-        "Winning Piece X": "+100",
-        "Staying under budget": "+50"
+        "Winning desired piece": "+100",
+        "Staying under bid limit": "+50"
       }
     },
     {
       "name": "Museum Representative",
-      "role": "Curator representing a museum with a focus on historical artworks.",
+      "role": "Responsible for acquiring pieces to enhance the museum's collection and public offerings.",
       "responsibilities": [
-        "Identify key pieces for museum acquisition.",
-        "Establish a budget for bidding on selected artworks.",
-        "Work with authentication experts to validate artworks.",
-        "Collaborate with other museum representatives for collective bids.",
-        "Present the museum's case to stakeholders for funding approval."
+        "Identify artworks that align with the museum's mission.",
+        "Negotiate terms for acquisitions with auction house.",
+        "Ensure compliance with museum's budgetary constraints."
       ],
       "information": {
         "private": {
-          "Budget Cap (Artworks)": {
-            "reason": "Confidential financial limits; revealing could undermine negotiation power.",
-            "penalty": -200
+          "Internal Budget Limit ($800K for acquisitions)": {
+            "reason": "Sensitive financial information; disclosure risks overbidding.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Interest in Piece Z": {
-            "reason": "Strategic acquisition plan; disclosure could alert competitors.",
-            "penalty": -100
+          "Interest in specific artist's works (potential partnerships)": {
+            "reason": "Could influence future negotiations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Auction House"
+            ]
           }
         },
         "public": {
-          "Acquisition Goals": "Enhance historical collection",
-          "Current Museum Budget": "$1M"
+          "Museum's Annual Acquisition Budget": "$2M"
         }
       },
       "utility": {
-        "Acquiring Piece Z": "+80",
-        "Successful authentication": "+30"
+        "Acquiring a high-profile piece": "+150",
+        "Staying within budget": "+75"
       }
     },
     {
       "name": "Anonymous Phone Bidder",
-      "role": "A mysterious bidder with a keen interest in rare artworks.",
+      "role": "Participates in the auction remotely, relying on anonymity to secure competitive bids.",
       "responsibilities": [
-        "Place bids anonymously over the phone to maintain secrecy.",
-        "Evaluate artworks based on personal taste and investment potential.",
-        "Set private bidding limits to avoid overspending.",
-        "Research auction trends to inform bidding strategy.",
-        "Stay updated on authentication processes to ensure piece legitimacy."
+        "Place bids without revealing identity.",
+        "Monitor auction progress and adjust bidding strategy.",
+        "Communicate with a proxy if necessary for authentication."
       ],
       "information": {
         "private": {
-          "Bidding Limit (Pieces)": {
-            "reason": "To prevent competitors from anticipating bidding behavior.",
-            "penalty": -250
+          "Bid Limit ($500K for selected pieces)": {
+            "reason": "Disclosing limit could jeopardize competitive advantage.",
+            "penalty": -100,
+            "shareable_with": []
           },
-          "Preferred Art Style": {
-            "reason": "Personal preference that could influence rivals' strategies.",
-            "penalty": -150
+          "Personal motivations for specific artworks (nostalgic value)": {
+            "reason": "Highly personal; revealing could affect bidding behavior.",
+            "penalty": -50,
+            "shareable_with": []
           }
         },
         "public": {
-          "Bidding History": "Active in last 5 auctions",
-          "Focus Area": "Rare artworks"
+          "Bidding History": "Participated in 3 previous auctions"
         }
       },
       "utility": {
-        "Winning Piece A": "+90",
-        "Staying within bidding limits": "+40"
+        "Winning a key piece": "+120",
+        "Maintaining anonymity": "+30"
       }
     }
   ],
   "success_criteria": {
-    "Winning Desired Artworks": "≥2 pieces = Success; 1 piece = Partial Success; 0 pieces = Failure",
-    "Budget Adherence": "≤$1M = Success; $1.1M-$1.5M = Partial Success; >$1.5M = Failure"
+    "Budget Agreement": "All agents agree to final bidding limits that respect their individual financial constraints.",
+    "Piece Authentication": "Consensus is reached on processes for verifying the authenticity of artworks before bidding.",
+    "Bidding Strategy Alignment": "Agents coordinate their bidding strategies to avoid conflicts and ensure that desired pieces are secured."
   },
-  "deliverable": "A comprehensive bidding strategy that outlines maximum bids, authentication checks, and negotiation tactics.",
+  "deliverable": "A comprehensive auction strategy document outlining bidding limits, authentication processes, and communication protocols.",
   "constraints": {
     "public": [
-      "Total budget ≤ $1.5M",
-      "Bids must be placed before auction closes",
-      "Authenticity must be verified prior to bidding"
+      "Total budget for all acquisitions ≤ $2M",
+      "Authentication processes established prior to bidding",
+      "Maximum bid limits agreed upon by all parties"
     ],
     "private": [
-      "Bidding limits must remain confidential",
-      "Personal preferences must not be disclosed",
-      "Collective bidding strategies must be agreed upon without revealing individual limits"
+      "No bidding limit disclosed to competitors",
+      "Authentication concerns resolved before auction starts",
+      "No personal motivations revealed during negotiations"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -200, -150). Utilities are expressed as gains (e.g., +100, +90, +80)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +150, +120, +100).",
+  "Consensus_w": "Negotiation and alignment on budget and bidding strategies are essential for achieving success."
 }

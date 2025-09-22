@@ -1,116 +1,158 @@
 {
-  "scenario": "A technology patent infringement negotiation unfolds between competing corporations, legal experts, and technical specialists, each possessing private information that could tip the scales in their favor.",
-  "task": "Formulate a negotiation strategy that addresses patent disputes, seeks resolution through compromise, and aligns stakeholders on technology pathways while managing confidential information.",
+  "scenario": "A technology patent infringement negotiation takes place between competing corporations, legal experts, and technical specialists who must reconcile conflicting claims while protecting sensitive information.",
+  "task": "Develop a negotiation strategy that addresses patent claims, counterclaims, and licensing fees while balancing corporate interests, legal compliance, and technical viability. Agents must navigate competing priorities: revealing critical prior art could weaken a patent claim, while withholding it risks financial penalties. They must share information judiciously to reach consensus on patent validity and financial terms without compromising proprietary technology.",
   "agents": [
     {
       "name": "Corporate A Legal Counsel",
-      "role": "Oversees legal strategy and negotiations for Corporate A in the patent dispute.",
+      "role": "Leads the legal strategy and oversees negotiations regarding patent claims.",
       "responsibilities": [
-        "Assess the strength of Corporate A's patent claims.",
-        "Negotiate terms of settlement with opposing counsel.",
-        "Ensure compliance with legal regulations during negotiations.",
-        "Maintain confidentiality of sensitive legal documents.",
-        "Advise on potential litigation risks and costs."
+        "Evaluate patent validity and infringement claims.",
+        "Negotiate licensing fees and terms.",
+        "Develop counterclaims based on prior art evidence.",
+        "Coordinate with technical experts to align legal and technical arguments."
       ],
       "information": {
         "private": {
-          "Undisclosed Prior Art": {
-            "reason": "Disclosure could undermine Corporate A's claims.",
-            "penalty": -300
+          "Undisclosed Prior Art Evidence": {
+            "reason": "Revealing could undermine current patent claims.",
+            "penalty": -300,
+            "shareable_with": [
+              "Corporate A Technical Specialist"
+            ]
           },
-          "Internal R&D Timelines": {
-            "reason": "Revealing could provide competitors an advantage.",
-            "penalty": -200
+          "Confidential Settlement Offer from Corporate B": {
+            "reason": "Disclosure could weaken negotiating position.",
+            "penalty": -200,
+            "shareable_with": []
           }
         },
         "public": {
-          "Patent Status": "Pending review",
-          "Negotiation Position": "Seeking non-monetary settlement"
+          "Pending Litigation Costs": "$1M"
         }
       },
       "utility": {
-        "Settlement reached within 6 months": "+80",
-        "No litigation costs incurred": "+50"
+        "Patent upheld in court": "+100",
+        "Successful negotiation under $500k licensing fee": "+50"
+      }
+    },
+    {
+      "name": "Corporate B Legal Counsel",
+      "role": "Represents Corporate B's interests in defending against infringement claims and negotiating terms.",
+      "responsibilities": [
+        "Assess risk and prepare defense strategies.",
+        "Negotiate settlement agreements and licensing terms.",
+        "Collaborate with technical teams on infringement assessments.",
+        "Manage communications with external stakeholders."
+      ],
+      "information": {
+        "private": {
+          "Alternative Technology Pathway": {
+            "reason": "Revealing could lead to competitive disadvantage.",
+            "penalty": -250,
+            "shareable_with": [
+              "Corporate B Technical Specialist"
+            ]
+          },
+          "Potential Counterclaims Data": {
+            "reason": "Sensitive information could jeopardize negotiations.",
+            "penalty": -150,
+            "shareable_with": []
+          }
+        },
+        "public": {
+          "Current Market Share": "25%"
+        }
+      },
+      "utility": {
+        "Infringement claims dismissed": "+100",
+        "Final settlement ≤ $400k": "+40"
+      }
+    },
+    {
+      "name": "Corporate A Technical Specialist",
+      "role": "Provides technical insights and supports the legal team with evidence regarding patent functionality.",
+      "responsibilities": [
+        "Analyze technical specifications of the patent in question.",
+        "Provide insights on prior art and alternative technologies.",
+        "Support legal counsel with technical arguments.",
+        "Assist in preparing documentation for negotiation."
+      ],
+      "information": {
+        "private": {
+          "Research Development Timeline": {
+            "reason": "Revealing could allow competitors to expedite their own developments.",
+            "penalty": -100,
+            "shareable_with": []
+          },
+          "Internal Efficacy Data": {
+            "reason": "Sensitive data that could impact negotiations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Corporate A Legal Counsel"
+            ]
+          }
+        },
+        "public": {
+          "Technical Compliance Standards": "100% met"
+        }
+      },
+      "utility": {
+        "Evidence supports patent validity": "+60",
+        "Technical documentation completed on time": "+30"
       }
     },
     {
       "name": "Corporate B Technical Specialist",
-      "role": "Provides technical insights and alternative solutions for Corporate B in the negotiation.",
+      "role": "Analyzes the technical aspects of the patent and provides counterarguments.",
       "responsibilities": [
-        "Evaluate the technical merits of the patents in dispute.",
-        "Propose alternative technology pathways to mitigate infringement risks.",
-        "Support legal counsel with technical documentation.",
-        "Analyze competitor technology for potential weaknesses.",
-        "Communicate technical details without revealing proprietary information."
+        "Evaluate the functionality of the contested patent.",
+        "Identify prior art that supports defense arguments.",
+        "Collaborate with legal counsel on technical rebuttals.",
+        "Prepare technical documentation for negotiations."
       ],
       "information": {
         "private": {
-          "Alternative Technology Pathways": {
-            "reason": "Revealing could weaken Corporate B's competitive edge.",
-            "penalty": -250
+          "Competitive Analysis Report": {
+            "reason": "Revealing could compromise competitive strategy.",
+            "penalty": -120,
+            "shareable_with": []
           },
-          "Confidential R&D Insights": {
-            "reason": "Leaking could lead to competitive disadvantages.",
-            "penalty": -150
+          "Technical Failures in Patent Claims": {
+            "reason": "Disclosing could negatively impact negotiation stance.",
+            "penalty": -200,
+            "shareable_with": [
+              "Corporate B Legal Counsel"
+            ]
           }
         },
         "public": {
-          "Technical Analysis Summary": "Available upon request",
-          "Collaboration Willingness": "Open to joint development"
+          "Patent Functionality Assessment": "95% confirmed"
         }
       },
       "utility": {
-        "Alternative pathway accepted": "+70",
-        "Technical documentation approved": "+40"
-      }
-    },
-    {
-      "name": "Mediator",
-      "role": "Facilitates negotiations between Corporate A and Corporate B to reach a consensus.",
-      "responsibilities": [
-        "Identify common interests of both parties.",
-        "Encourage open dialogue and compromise.",
-        "Manage the flow of information to maintain confidentiality.",
-        "Draft the terms of any agreed settlement.",
-        "Ensure that both parties adhere to the negotiation timeline."
-      ],
-      "information": {
-        "private": {
-          "Confidential Meeting Notes": {
-            "reason": "Disclosure could jeopardize negotiation integrity.",
-            "penalty": -100
-          },
-          "Stakeholder Positions": {
-            "reason": "Revealing could bias negotiations.",
-            "penalty": -100
-          }
-        },
-        "public": {
-          "Negotiation Framework": "Structured process agreed upon by both parties"
-        }
-      },
-      "utility": {
-        "Agreement reached before deadline": "+100",
-        "Maintaining confidentiality throughout process": "+50"
+        "Counterclaims validated by evidence": "+70",
+        "Technical documentation supports defense": "+40"
       }
     }
   ],
   "success_criteria": {
-    "Negotiation Duration": "≤6 months = Success; 7-12 months = Partial; >12 months = Failure",
-    "Settlement Terms Acceptance": "≥80% stakeholder agreement = Success; 60-79% = Partial; <60% = Failure"
+    "Patent Validity Agreement": "Both corporations agree on the validity of the contested patent based on presented evidence.",
+    "Licensing Fee Alignment": "Negotiated licensing fees are accepted by both parties within the agreed thresholds.",
+    "Prior Art Resolution": "Consensus on whether the prior art affects the patent claims, allowing for strategic disclosures."
   },
-  "deliverable": "A comprehensive settlement agreement that outlines the terms of the negotiation, including any technology pathways and stakeholder commitments.",
+  "deliverable": "A detailed negotiation strategy document outlining patent claims, counterclaims, and finalized licensing terms.",
   "constraints": {
     "public": [
-      "Negotiation must remain confidential until resolved.",
-      "All parties must adhere to agreed timelines.",
-      "No public statements during negotiation."
+      "Total litigation costs ≤ $2M",
+      "Settlement reached within 6 months",
+      "No unresolved patent claims at negotiation end"
     ],
     "private": [
-      "Confidential information must not be disclosed.",
-      "Internal R&D timelines must remain undisclosed until after resolution.",
-      "Prior art must be kept secret to protect competitive advantage."
+      "No critical prior art revealed during negotiations",
+      "Confidentiality maintained on alternative technologies",
+      "Negotiation outcomes do not exceed agreed penalties"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +70)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +70, +60).",
+  "Consensus_w": "Both parties must agree on the validity of patent claims and associated licensing terms to conclude negotiations."
 }

@@ -1,115 +1,130 @@
 {
-  "scenario": "Healthcare reform negotiation where legislators, industry lobbyists, and public health experts must navigate private pressures and conflicting interests to forge a viable policy.",
-  "task": "Develop a comprehensive healthcare reform proposal that balances industry interests, public health priorities, and legislative feasibility while managing confidential information.",
+  "scenario": "A healthcare reform negotiation involves legislators, industry lobbyists, and public health experts who must balance competing interests while managing private pressures from political donors and undisclosed economic forecasts.",
+  "task": "Develop a comprehensive healthcare reform proposal that integrates legislative goals, industry interests, and public health needs. Agents must navigate conflicting priorities: ensuring adequate funding, addressing public health concerns, and complying with donor expectations, while sharing sensitive information selectively to build consensus.",
   "agents": [
     {
-      "name": "Legislator A",
-      "role": "Crafts and advocates for the healthcare reform proposal in the legislative body.",
+      "name": "Legislator",
+      "role": "Crafts and advocates for healthcare reform legislation, balancing constituent needs with political pressures.",
       "responsibilities": [
-        "Draft legislative language that reflects negotiated agreements.",
-        "Engage with constituents to gauge public sentiment and adjust proposals accordingly.",
-        "Balance party lines while considering the economic implications of reform.",
-        "Facilitate discussions among stakeholders to reach consensus on key provisions.",
-        "Monitor voting patterns and alignments to secure necessary support."
+        "Draft proposed healthcare policies",
+        "Engage with constituents and stakeholders",
+        "Negotiate with industry and public health representatives"
       ],
       "information": {
         "private": {
-          "Donor Influence (Top 5 donors)": {
-            "reason": "Disclosure could jeopardize political capital and electoral support.",
-            "penalty": -300
+          "Political Donor Influence (major contributions from healthcare lobbyists)": {
+            "reason": "Disclosure could harm reputation and electoral support.",
+            "penalty": -250,
+            "shareable_with": [
+              "Industry Lobbyist"
+            ]
           },
-          "Voting Bloc Analysis (Key supporters and opponents)": {
-            "reason": "Sensitive data that could affect strategic negotiations.",
-            "penalty": -200
+          "Confidential Voting Bloc Analysis (key votes secured)": {
+            "reason": "Revealing could weaken negotiating position with other legislators.",
+            "penalty": -200,
+            "shareable_with": [
+              "Public Health Expert"
+            ]
           }
         },
         "public": {
-          "Constituent Feedback": "Positive responses from 60% of surveyed voters"
+          "Constituent Support": "75% in favor of healthcare reform"
         }
       },
       "utility": {
-        "Proposal passes with ≥60% votes": "+100",
-        "Maintaining public support ≥50%": "+50"
+        "Bill passed with ≥60% approval": "+100",
+        "Securing ≥3 bipartisan sponsors": "+50"
       }
     },
     {
       "name": "Industry Lobbyist",
-      "role": "Represents corporate interests to influence the healthcare reform agenda favorably.",
+      "role": "Represents healthcare industry interests, ensuring that reform proposals are favorable for business operations.",
       "responsibilities": [
-        "Articulate industry positions and priorities during negotiations.",
-        "Provide economic impact forecasts to justify industry demands.",
-        "Ensure that reform measures do not over-regulate or harm business interests.",
-        "Network with legislators to build relationships and gain support.",
-        "Analyze competitor positions to strengthen lobbying strategy."
+        "Advocate for industry-friendly policies",
+        "Monitor legislative developments",
+        "Engage with legislators to influence outcomes"
       ],
       "information": {
         "private": {
-          "Economic Forecasts (Projected revenue impacts)": {
-            "reason": "Sensitive information that could be misused by opponents.",
-            "penalty": -250
+          "Economic Impact Forecast (projected $1B industry loss)": {
+            "reason": "Sensitive internal analysis; disclosure could harm industry leverage.",
+            "penalty": -300,
+            "shareable_with": [
+              "Legislator"
+            ]
           },
-          "Insider Insights (Upcoming legislative shifts)": {
-            "reason": "Confidential discussions that could influence market positioning.",
-            "penalty": -150
+          "Donor Commitments (potential withdrawal of support)": {
+            "reason": "Need for confidentiality to maintain negotiating power.",
+            "penalty": -150,
+            "shareable_with": [
+              "Public Health Expert"
+            ]
           }
         },
         "public": {
-          "Industry Position Statement": "Support changes that enhance market access"
+          "Industry Support Level": "80% in favor of reform"
         }
       },
       "utility": {
-        "Successful negotiation of favorable terms": "+75",
-        "Avoiding regulatory burdens that exceed 10% impact": "+50"
+        "Minimizing new regulations": "+100",
+        "Achieving funding for industry initiatives": "+75"
       }
     },
     {
       "name": "Public Health Expert",
-      "role": "Advocates for evidence-based practices and prioritizes public health outcomes in reform discussions.",
+      "role": "Ensures that public health considerations are prioritized in reform proposals.",
       "responsibilities": [
-        "Research and present data on health outcomes and effective policies.",
-        "Engage with community stakeholders to incorporate diverse health needs.",
-        "Monitor and evaluate the potential impact of proposed reforms on public health.",
-        "Advocate for transparency and accountability in the legislative process.",
-        "Develop strategies to communicate health benefits to the public."
+        "Analyze healthcare outcomes",
+        "Advise legislators on public health impacts",
+        "Engage with public health organizations to gather support"
       ],
       "information": {
         "private": {
-          "Health Impact Assessments (Projected population health outcomes)": {
-            "reason": "Confidential analyses that could sway public opinion prematurely.",
-            "penalty": -200
+          "Health Outcome Data (projected 20% improvement with reforms)": {
+            "reason": "Sensitive data; revealing could affect public trust.",
+            "penalty": -200,
+            "shareable_with": [
+              "Legislator"
+            ]
           },
-          "Community Needs Survey Results": {
-            "reason": "Sensitive data that may bias stakeholder perceptions.",
-            "penalty": -100
+          "Confidential Public Health Recommendations (e.g., funding levels)": {
+            "reason": "Could be used against in negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Industry Lobbyist"
+            ]
           }
         },
         "public": {
-          "Public Health Goals": "Reduce uninsured rate to <10%"
+          "Public Health Approval Rating": "85% in favor of proposed reforms"
         }
       },
       "utility": {
-        "Achieving a comprehensive insurance coverage increase ≥20%": "+100",
-        "Maintaining health outcome improvements with ≥70% public support": "+50"
+        "Reform includes key public health provisions": "+100",
+        "Securing funding for health initiatives": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Legislative Vote Outcome": "≥60% = Success; 50-59% = Partial Success; <50% = Failure",
-    "Public Support Level": "≥50% = Required; 40-49% = borderline; <40% = failure"
+    "Legislative Approval": "All parties agree on a final healthcare reform proposal that meets key legislative goals and public health standards.",
+    "Industry Alignment": "Consensus is achieved on regulatory frameworks that satisfy both industry needs and public health objectives.",
+    "Public Health Integration": "Agreement is reached on incorporating significant public health recommendations without compromising industry viability."
   },
-  "deliverable": "A detailed healthcare reform proposal that articulates policy provisions and stakeholder considerations.",
+  "deliverable": "A comprehensive healthcare reform proposal that balances legislative, industry, and public health interests.",
   "constraints": {
     "public": [
-      "Proposal must adhere to budgetary limits of $500M",
-      "Must pass within the current legislative session",
-      "Public hearings must be conducted before voting"
+      "Total budget for reform ≤ $500M",
+      "Public health outcomes improved within 5 years",
+      "≥60% legislative approval required",
+      "Compliance with ethical lobbying standards"
     ],
     "private": [
-      "Economic impact must not exceed $200M in industry costs",
-      "Legislator must secure support from at least 3 key voting blocs",
-      "Confidential donor influences must remain undisclosed",
-      "Health outcomes must improve by ≥15% post-reform"
+      "No major industry opposition unresolved by vote",
+      "Legislator's donor influences disclosed minimally",
+      "Public health metrics show ≥70% improvement post-reform",
+      "Forecasted economic impacts must be within acceptable limits"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Negotiation is required to balance the conflicting interests of legislators, industry lobbyists, and public health experts."
 }

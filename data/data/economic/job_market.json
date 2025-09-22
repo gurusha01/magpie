@@ -1,114 +1,134 @@
 {
-  "scenario": "An executive talent acquisition process involves headhunters, competing companies, and candidates who must negotiate salary expectations while managing undisclosed company financial forecasts and hidden career motivations.",
-  "task": "Develop a strategic recruitment plan that balances candidate expectations, company budgets, and competitive offers while maintaining confidentiality on sensitive information.",
+  "scenario": "A competitive executive talent acquisition process involves headhunters, rival companies, and candidates, each holding private information that could influence negotiations.",
+  "task": "Develop a comprehensive talent acquisition strategy that aligns candidate expectations, company financial capabilities, and headhunter insights to secure the best executive hire. Agents must navigate conflicting priorities: candidates may have undisclosed salary expectations, companies might have hidden budget constraints, and headhunters need to protect candidate motivations while maximizing their commission. To reach a successful agreement, they must share information judiciously to facilitate consensus without disclosing sensitive details that could jeopardize negotiations.",
   "agents": [
     {
       "name": "Headhunter",
-      "role": "Facilitates the recruitment process by connecting candidates with companies.",
+      "role": "Facilitates the connection between candidates and companies, ensuring alignment on expectations and motivations.",
       "responsibilities": [
-        "Identify and approach suitable candidates based on company needs.",
-        "Negotiate salary expectations without revealing company budgets.",
-        "Ensure confidentiality of candidate information while aligning interests.",
-        "Provide market insights to both candidates and companies.",
-        "Manage timelines for interviews and feedback to ensure a smooth process."
+        "Identify suitable candidates for executive roles.",
+        "Negotiate terms with candidates and companies.",
+        "Maintain confidentiality regarding candidate salary expectations.",
+        "Provide market insights to companies about salary trends.",
+        "Ensure smooth communication between all parties."
       ],
       "information": {
         "private": {
-          "Top Candidate Salary Expectation ($250K)": {
-            "reason": "Confidential candidate data; revealing could hurt negotiation leverage.",
-            "penalty": -100
+          "Candidate's Hidden Salary Expectation ($250K)": {
+            "reason": "Disclosure could limit negotiation flexibility and affect candidate's market value.",
+            "penalty": -150,
+            "shareable_with": [
+              "Company Representative"
+            ]
           },
-          "Company Budget Cap ($200K)": {
-            "reason": "Sensitive financial information that could impact negotiation strategies.",
-            "penalty": -150
+          "Top Candidate's Ambition (desire for leadership role within 2 years)": {
+            "reason": "Revealing could deter companies from pursuing the candidate if they fear quick turnover.",
+            "penalty": -100,
+            "shareable_with": [
+              "Company Representative"
+            ]
           }
         },
         "public": {
-          "Market Salary Range": "$180K - $300K"
+          "Market Insight on Executive Salaries": "$200K - $300K for similar roles"
         }
       },
       "utility": {
-        "Successful placement within budget": "+80",
-        "Candidate acceptance rate": "+50"
+        "Successful placement within budget": "+100",
+        "Candidate accepts offer": "+50"
       }
     },
     {
-      "name": "Company Recruiter",
-      "role": "Oversees the internal hiring process and ensures alignment with company strategy.",
+      "name": "Company Representative",
+      "role": "Oversees the hiring process, ensuring alignment with company goals and budget constraints.",
       "responsibilities": [
-        "Define the ideal candidate profile and required qualifications.",
-        "Manage interview processes and coordinate with the headhunter.",
-        "Set salary ranges based on internal budget and market data.",
-        "Evaluate candidates against company culture and long-term goals.",
-        "Negotiate offers while keeping salary caps confidential."
+        "Define executive role requirements and expectations.",
+        "Manage budget for executive compensation.",
+        "Evaluate candidate fit and potential contributions.",
+        "Negotiate terms of employment and salary with headhunters.",
+        "Review and approve final offers."
       ],
       "information": {
         "private": {
-          "Projected Financial Growth (20% next year)": {
-            "reason": "Sensitive company data that could influence salary negotiations.",
-            "penalty": -200
+          "Undisclosed Budget Cap ($220K)": {
+            "reason": "Revealing could weaken negotiation position against competitors.",
+            "penalty": -200,
+            "shareable_with": [
+              "Headhunter"
+            ]
           },
-          "Internal Salary Guidelines": {
-            "reason": "Confidential compensation structure; revealing could disrupt internal equity.",
-            "penalty": -100
+          "Projected Company Growth (20% next year)": {
+            "reason": "Sensitive financial information; disclosure could impact stock prices or competitor actions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Headhunter"
+            ]
           }
         },
         "public": {
-          "Open Positions": "2 executive roles"
+          "Current Executive Compensation Average": "$180K"
         }
       },
       "utility": {
-        "Hiring within budget": "+70",
-        "Retention of hired candidate for 1 year": "+60"
+        "Executive hired below budget cap": "+100",
+        "Candidate fits company culture": "+50"
       }
     },
     {
       "name": "Candidate",
-      "role": "Potential executive hire who evaluates job offers based on personal and professional goals.",
+      "role": "Evaluates job opportunities, negotiates compensation, and assesses cultural fit with the prospective company.",
       "responsibilities": [
-        "Assess job offers based on salary, benefits, and company culture.",
-        "Negotiate terms while keeping personal salary expectations private.",
-        "Communicate career aspirations to the headhunter discreetly.",
-        "Research the company's market position and growth potential.",
-        "Maintain confidentiality regarding other job offers and motivations."
+        "Participate in interviews and assessments.",
+        "Negotiate salary and benefits.",
+        "Assess company culture and alignment with personal values.",
+        "Provide feedback on the hiring process.",
+        "Maintain confidentiality of personal career goals."
       ],
       "information": {
         "private": {
-          "Salary Expectations ($250K)": {
-            "reason": "Sensitive information that could weaken negotiation position.",
-            "penalty": -50
+          "Desired Salary ($250K)": {
+            "reason": "Revealing could negatively impact negotiation power and perceived value.",
+            "penalty": -100,
+            "shareable_with": [
+              "Headhunter"
+            ]
           },
-          "Career Motivation (desire for work-life balance)": {
-            "reason": "Personal priorities that should not be disclosed to employers.",
-            "penalty": -75
+          "Long-term Career Goals (desire for international relocation)": {
+            "reason": "Could influence hiring decisions if perceived as a lack of commitment.",
+            "penalty": -150,
+            "shareable_with": [
+              "Headhunter"
+            ]
           }
         },
         "public": {
-          "Years of Experience": "15 years"
+          "Years of Experience": "15 years in executive roles"
         }
       },
       "utility": {
-        "Salary accepted above $220K": "+100",
-        "Work-life balance satisfaction": "+50"
+        "Salary meets expectations": "+100",
+        "Role aligns with career goals": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Candidate acceptance rate": "≥75% = Success; 50-74% = Partial; <50% = Failure",
-    "Budget adherence": "≤$200K = Success; $201K-$250K = Partial; >$250K = Failure"
+    "Salary Agreement": "All parties agree on a final salary that fits within the company's budget cap and meets the candidate's expectations.",
+    "Cultural Fit Confirmation": "Consensus on the candidate's fit with the company culture, ensuring long-term retention.",
+    "Role Clarity Alignment": "Agreement on the executive role's expectations and growth opportunities that satisfy both candidate ambitions and company needs."
   },
-  "deliverable": "A recruitment strategy that outlines candidate sourcing, salary negotiations, and internal alignment.",
+  "deliverable": "A comprehensive executive talent acquisition strategy detailing roles, salary negotiations, and cultural alignment.",
   "constraints": {
     "public": [
-      "Total salary offers ≤ $600K for 3 candidates",
-      "Roles filled within 3 months",
-      "Maintain candidate confidentiality"
+      "Total compensation ≤ $250K",
+      "Candidate has ≥10 years of relevant experience",
+      "Role aligns with company growth strategy"
     ],
     "private": [
-      "Company financial forecasts must remain undisclosed",
-      "Candidate salary expectations must not exceed $250K",
-      "Internal salary guidelines must be adhered to"
+      "No salary negotiations exceeding budget cap",
+      "Candidate's confidentiality maintained",
+      "Company's financial forecasts remain undisclosed"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -75). Utilities are expressed as gains (e.g., +100, +80, +70)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Trade-offs on salary expectations and role responsibilities are required to facilitate agreement."
 }

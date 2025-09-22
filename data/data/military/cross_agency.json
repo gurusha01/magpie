@@ -1,114 +1,128 @@
 {
-  "scenario": "Nuclear material security response coordination between energy departments, intelligence agencies, and military units with private detection technology limitations, undisclosed threat assessment details, and confidential information about potential insider threats.",
-  "task": "Develop a coordinated response plan that optimally allocates resources and information sharing among agencies while protecting sensitive data and ensuring maximum security.",
+  "scenario": "A coordinated response to a nuclear material security breach involves energy departments, intelligence agencies, and military units, each holding sensitive information that could influence the operation's success.",
+  "task": "Develop a comprehensive response plan that integrates detection capabilities, threat assessments, and operational protocols. Agents must navigate competing priorities related to security measures, resource allocation, and information sharing while ensuring that sensitive data remains protected from unauthorized disclosure.",
   "agents": [
     {
       "name": "Energy Department Coordinator",
-      "role": "Oversees nuclear material safety protocols and ensures compliance with federal regulations.",
+      "role": "Oversees nuclear material safety protocols and coordinates with local agencies.",
       "responsibilities": [
-        "Assess security measures at nuclear facilities and recommend improvements.",
-        "Coordinate with intelligence agencies to share relevant data on threats.",
-        "Manage public communication regarding nuclear safety without revealing sensitive information.",
-        "Ensure all personnel are trained on emergency response procedures.",
-        "Evaluate the effectiveness of detection technology and advocate for upgrades."
+        "Manage security assessments of nuclear facilities.",
+        "Coordinate with intelligence agencies on threat updates.",
+        "Ensure compliance with federal regulations on nuclear safety."
       ],
       "information": {
         "private": {
-          "Detection Technology Limitations": {
-            "reason": "Revealing weaknesses could expose vulnerabilities to potential threats.",
-            "penalty": -300
+          "Detection Technology Limitations (30% false negatives)": {
+            "reason": "Disclosure could undermine public confidence and operational security.",
+            "penalty": -250,
+            "shareable_with": [
+              "Intelligence Agency Lead"
+            ]
           },
-          "Internal Threat Assessment Data": {
-            "reason": "Sensitive details about potential insider threats must remain confidential to prevent panic.",
-            "penalty": -250
+          "Internal Threat Assessment (high-risk personnel identified)": {
+            "reason": "Sensitive information that could jeopardize ongoing investigations.",
+            "penalty": -300,
+            "shareable_with": [
+              "Military Unit Commander"
+            ]
           }
         },
         "public": {
-          "Facility Compliance Status": "All facilities meet current safety standards."
+          "Security Budget Allocation": "$10M for enhanced security measures"
         }
       },
       "utility": {
-        "Successful threat neutralization": "+150",
-        "Maintaining public confidence": "+100"
+        "Achieving 100% compliance with safety protocols": "+80",
+        "Reducing response time to incidents under 30 minutes": "+60"
       }
     },
     {
-      "name": "Intelligence Agency Analyst",
-      "role": "Analyzes data and trends related to national security threats, focusing on nuclear material risks.",
+      "name": "Intelligence Agency Lead",
+      "role": "Analyzes and disseminates threat intelligence regarding potential nuclear security risks.",
       "responsibilities": [
-        "Gather and analyze intelligence on potential insider threats.",
-        "Share relevant findings with the Energy Department and military units.",
-        "Develop threat assessment reports while protecting sensitive sources.",
-        "Monitor global nuclear threats and recommend necessary preemptive actions.",
-        "Collaborate with other agencies to ensure a unified security strategy."
+        "Gather intelligence on potential insider threats.",
+        "Coordinate with military units on operational intelligence.",
+        "Provide updates on national security assessments."
       ],
       "information": {
         "private": {
-          "Insider Threat Indicators": {
-            "reason": "Disclosing specifics could compromise ongoing investigations.",
-            "penalty": -200
+          "Confidential Threat Data (emerging threats from foreign entities)": {
+            "reason": "Revealing could compromise operational security and inform adversaries.",
+            "penalty": -200,
+            "shareable_with": [
+              "Energy Department Coordinator"
+            ]
           },
-          "Unpublished Threat Reports": {
-            "reason": "Sensitive data that could lead to public fear if leaked.",
-            "penalty": -150
+          "Internal Assessment of Agency Capabilities (limited surveillance capacity)": {
+            "reason": "Disclosure risks undermining agency credibility.",
+            "penalty": -150,
+            "shareable_with": [
+              "Military Unit Commander"
+            ]
           }
         },
         "public": {
-          "Threat Level Assessment": "Current threat level: Elevated"
+          "Threat Level Indicator": "Elevated"
         }
       },
       "utility": {
-        "Timely intelligence sharing": "+120",
-        "Preventing a security breach": "+200"
+        "Successful identification of insider threats": "+100",
+        "Maintaining operational secrecy": "+50"
       }
     },
     {
       "name": "Military Unit Commander",
-      "role": "Leads military response to nuclear security threats and coordinates with other agencies.",
+      "role": "Leads military response operations and coordinates with civilian agencies.",
       "responsibilities": [
-        "Deploy rapid response teams to potential nuclear threat sites.",
-        "Coordinate with energy and intelligence agencies for real-time updates.",
-        "Train military personnel on nuclear security protocols.",
-        "Conduct drills to prepare for potential nuclear incidents.",
-        "Ensure military readiness for various scenarios related to nuclear threats."
+        "Deploy military assets to secure nuclear sites.",
+        "Coordinate with intelligence on real-time threat assessments.",
+        "Train personnel on emergency response protocols."
       ],
       "information": {
         "private": {
-          "Operational Readiness Metrics": {
-            "reason": "Details about military capabilities should remain confidential for strategic reasons.",
-            "penalty": -250
+          "Resource Deployment Plans (troop allocation details)": {
+            "reason": "Sensitive information that could inform adversaries about military readiness.",
+            "penalty": -200,
+            "shareable_with": [
+              "Energy Department Coordinator"
+            ]
           },
-          "Tactical Response Plans": {
-            "reason": "Sharing specific plans could undermine operational security.",
-            "penalty": -300
+          "Operational Readiness Status (60% of units at readiness)": {
+            "reason": "Disclosure could cause public panic or affect morale.",
+            "penalty": -100,
+            "shareable_with": [
+              "Intelligence Agency Lead"
+            ]
           }
         },
         "public": {
-          "Deployment Status": "Ready for immediate response."
+          "Military Budget for Response Operations": "$15M allocated"
         }
       },
       "utility": {
-        "Successful intervention": "+180",
-        "Minimizing civilian impact": "+150"
+        "Successful containment of threats within 24 hours": "+100",
+        "Minimizing civilian impact during operations": "+70"
       }
     }
   ],
   "success_criteria": {
-    "Threat neutralization success rate": "≥90% = Success; 70-89% = Partial; <70% = Failure",
-    "Public confidence level": "≥80% = Success; 60-79% = Partial; <60% = Failure"
+    "Operational Alignment": "All parties agree on a unified response strategy that incorporates detection capabilities and threat assessments.",
+    "Resource Allocation Agreement": "Consensus on the distribution of budgets and military resources to ensure effective response.",
+    "Information Sharing Protocols": "Agreement on what sensitive information can be shared among agencies without compromising security."
   },
-  "deliverable": "A detailed response plan outlining resource allocation, information sharing protocols, and operational readiness.",
+  "deliverable": "A coordinated nuclear security response plan detailing detection strategies, resource allocations, and information sharing protocols.",
   "constraints": {
     "public": [
-      "Response time to threats ≤ 30 minutes",
-      "Inter-agency communication established within 10 minutes",
-      "Training completion for all personnel within 6 months"
+      "Total budget ≤ $35M",
+      "Incident response time ≤ 30 minutes",
+      "Compliance with federal nuclear regulations"
     ],
     "private": [
-      "Detection technology must meet ≥85% effectiveness",
-      "Insider threat incidents ≤ 2 per year",
-      "Operational readiness must be at least 90%"
+      "No leaks of sensitive internal assessments",
+      "≥80% readiness of military units",
+      "No unresolved insider threat assessments"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +180, +150, +120)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +60).",
+  "Consensus_w": "All agents must agree on resource allocation and information sharing protocols to achieve operational success."
 }

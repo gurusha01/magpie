@@ -1,114 +1,127 @@
 {
-  "scenario": "Research laboratory space allocation is contested among competing scientific teams, each holding undisclosed grant funding details and private equipment needs while racing against confidential breakthrough timelines.",
-  "task": "Negotiate and finalize the allocation of laboratory space that maximizes each team's productivity while ensuring compliance with funding and equipment constraints.",
+  "scenario": "Competing scientific teams negotiate for limited laboratory space in a research facility while balancing undisclosed grant funding, private equipment needs, and confidential breakthrough timelines.",
+  "task": "Develop a comprehensive laboratory space allocation plan that optimally distributes research space among teams while accommodating their unique requirements and timelines. Agents must navigate competing priorities: ensuring adequate resources for each team's project while respecting grant limitations and confidentiality in funding disclosures. To achieve consensus, they must share information judiciously, striking a balance between collaboration and the protection of sensitive details.",
   "agents": [
     {
-      "name": "Team A Lead Scientist",
-      "role": "Oversees research activities and coordinates team efforts to ensure timely project completion.",
+      "name": "Research Team A Lead",
+      "role": "Coordinates research activities and manages team resources for a breakthrough project in biotechnology.",
       "responsibilities": [
-        "Develop a detailed research plan that outlines space and equipment needs.",
-        "Communicate team requirements and negotiate space allocation with other teams.",
-        "Monitor project timelines and adjust lab usage accordingly.",
-        "Ensure compliance with grant conditions regarding lab space utilization.",
-        "Report progress and challenges to funding bodies while maintaining confidentiality."
+        "Develop project proposals and timelines.",
+        "Secure grant funding and manage budget allocations.",
+        "Coordinate with facility management on space needs."
       ],
       "information": {
         "private": {
-          "Grant Funding Amount ($1M)": {
-            "reason": "Confidential financial details that could influence negotiation dynamics.",
-            "penalty": -250
+          "Grant Amount ($2M)": {
+            "reason": "Disclosure could lead to funding competition and tension with other teams.",
+            "penalty": -150,
+            "shareable_with": [
+              "Research Team B Lead"
+            ]
           },
-          "Essential Equipment Needs (Cryo-EM)": {
-            "reason": "Specific equipment requirements are sensitive and may provide competitive advantage.",
-            "penalty": -150
+          "Equipment Needs (high-throughput screening machines)": {
+            "reason": "Revealing specific needs could lead to allocation conflicts.",
+            "penalty": -100,
+            "shareable_with": [
+              "Facility Manager"
+            ]
           }
         },
         "public": {
-          "Current Project Stage": "Phase II"
+          "Project Timeline": "18 months until expected breakthrough"
         }
       },
       "utility": {
-        "Space allocated ≥50% of needs": "+80",
-        "Timely project completion": "+50"
+        "Successful project completion on time": "+100",
+        "Adequate lab space secured": "+50"
       }
     },
     {
-      "name": "Team B Lead Scientist",
-      "role": "Manages research operations and ensures efficient use of lab resources for competitive edge.",
+      "name": "Research Team B Lead",
+      "role": "Oversees a project focused on renewable energy solutions, ensuring resource efficiency and project viability.",
       "responsibilities": [
-        "Identify and articulate specific lab space and equipment requirements to other teams.",
-        "Engage in negotiations with Team A and others to secure optimal lab space.",
-        "Adjust research plans based on available lab resources and timelines.",
-        "Ensure adherence to funding restrictions related to lab usage.",
-        "Provide updates on research developments while safeguarding sensitive information."
+        "Prepare and submit grant applications.",
+        "Manage team members and their roles within the project.",
+        "Communicate lab space requirements to facility management."
       ],
       "information": {
         "private": {
-          "Grant Funding Amount ($800K)": {
-            "reason": "Sensitive financial information that may impact negotiation leverage.",
-            "penalty": -200
+          "Pending Grant (confidential negotiations)": {
+            "reason": "Disclosing could jeopardize funding negotiations.",
+            "penalty": -200,
+            "shareable_with": [
+              "Research Team A Lead"
+            ]
           },
-          "Breakthrough Timeline (6 months)": {
-            "reason": "Projected milestones are confidential and could affect competitive positioning.",
-            "penalty": -100
+          "Specific Equipment (solar testing apparatus)": {
+            "reason": "Could lead to competition over limited resources.",
+            "penalty": -150,
+            "shareable_with": [
+              "Facility Manager"
+            ]
           }
         },
         "public": {
-          "Research Focus": "Nanotechnology applications"
+          "Projected Research Output": "3 publications expected"
         }
       },
       "utility": {
-        "Space allocated ≥60% of needs": "+90",
-        "Successful milestone within timeline": "+70"
+        "Achieving project milestones": "+75",
+        "Securing necessary lab space": "+50"
       }
     },
     {
-      "name": "Laboratory Manager",
-      "role": "Coordinates space allocation and ensures compliance with institutional policies.",
+      "name": "Facility Manager",
+      "role": "Responsible for overall lab space allocation and resource management across multiple research teams.",
       "responsibilities": [
-        "Facilitate negotiations between competing teams for lab space.",
-        "Ensure compliance with overall lab usage policies and funding requirements.",
-        "Monitor lab usage efficiency and provide feedback to teams.",
-        "Manage scheduling conflicts and optimize resource distribution.",
-        "Report to administration on lab allocation effectiveness."
+        "Assess space requirements from all teams.",
+        "Facilitate negotiations and conflict resolution.",
+        "Ensure compliance with safety and operational standards."
       ],
       "information": {
         "private": {
-          "Space Utilization Metrics (75%)": {
-            "reason": "Internal metrics that inform space allocation decisions.",
-            "penalty": -50
+          "Total Available Space (5000 sq ft)": {
+            "reason": "Sensitive operational data; could influence team negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Research Team A Lead",
+              "Research Team B Lead"
+            ]
           },
-          "Pending Grant Approvals": {
-            "reason": "Confidentiality surrounding future funding could impact current negotiations.",
-            "penalty": -30
+          "Future Expansion Plans": {
+            "reason": "Confidential strategic information that could affect current negotiations.",
+            "penalty": -200,
+            "shareable_with": []
           }
         },
         "public": {
-          "Total Lab Space": "10,000 sq ft"
+          "Current Lab Utilization": "70%"
         }
       },
       "utility": {
-        "All teams satisfied with allocations": "+100",
-        "Lab utilization ≥80%": "+50"
+        "Maximized utilization of lab space": "+100",
+        "Conflict resolution among teams": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Space Utilization": "≥75% = Success; 60–74% = Partial Success; <60% = Failure",
-    "Timely Research Progress": "Milestones met within 6 months = Success; 7–12 months = Partial Success; >12 months = Failure"
+    "Space Allocation Agreement": "All teams agree on the final allocation of lab space that meets their basic requirements without exceeding available resources.",
+    "Funding Disclosure Alignment": "Teams reach consensus on what funding details can be shared without jeopardizing negotiations.",
+    "Resource Sharing Agreement": "Teams agree on shared access to common equipment while respecting private needs."
   },
-  "deliverable": "A finalized lab space allocation plan that maximizes team productivity and adheres to funding constraints.",
+  "deliverable": "A detailed laboratory space allocation plan that includes timelines, resource needs, and mutual agreements on shared facilities.",
   "constraints": {
     "public": [
-      "Total lab space allocated ≤10,000 sq ft",
-      "Compliance with funding conditions",
-      "No team receives <40% of their requested space"
+      "Total lab space ≤ 5000 sq ft",
+      "Compliance with safety regulations",
+      "No more than 3 teams in the same lab area"
     ],
     "private": [
-      "Each team's grant funding details remain confidential",
-      "Equipment requirements must not exceed 20% of total lab resources",
-      "Breakthrough timelines must not be disclosed to competing teams"
+      "Each team's grant funding must remain undisclosed until final agreements",
+      "No team can exceed 50% of total available space",
+      "Equipment allocation must respect individual team needs without overlap"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150). Utilities are expressed as gains (e.g., +100, +90, +80)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Negotiation is required to agree on space allocation, funding disclosures, and resource sharing."
 }

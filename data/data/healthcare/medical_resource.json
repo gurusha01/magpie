@@ -1,114 +1,128 @@
 {
-  "scenario": "Hospital administrators, government officials, and public health experts must negotiate the allocation of pandemic emergency equipment amidst competing interests and confidential data regarding hospital capacity and supply chain limitations.",
-  "task": "Develop a strategic allocation plan for pandemic emergency equipment that balances hospital needs, government regulations, and public health recommendations while safeguarding sensitive information.",
+  "scenario": "Hospital administrators, government officials, and public health experts engage in a critical negotiation to allocate pandemic emergency equipment amidst private capacity data and undisclosed supply chain limitations.",
+  "task": "Develop a strategic allocation plan for pandemic emergency equipment that balances hospital capacity, governmental regulations, and public health needs. Agents must navigate conflicting priorities: hospitals may require more resources than available, governments may impose restrictive regulations, and public health experts may have differing projections on infection surges. To achieve consensus, they must share crucial information selectively while protecting sensitive data that could affect public trust and operational efficiency.",
   "agents": [
     {
       "name": "Hospital Administrator",
-      "role": "Oversees hospital operations and ensures patient care standards are met during the pandemic.",
+      "role": "Responsible for managing hospital resources and ensuring patient care standards during the pandemic.",
       "responsibilities": [
-        "Assess current hospital capacity and equipment needs.",
-        "Coordinate with government officials to request necessary supplies.",
-        "Implement triage protocols for resource allocation based on patient severity.",
-        "Provide updates on hospital status while protecting sensitive capacity data.",
-        "Ensure compliance with public health guidelines in hospital operations."
+        "Assess current equipment inventory and needs.",
+        "Coordinate with government for resource allocation.",
+        "Manage internal communication regarding equipment shortages."
       ],
       "information": {
         "private": {
-          "Current Capacity (85% occupied)": {
-            "reason": "Sensitive operational data; disclosing could affect public perception and trust.",
-            "penalty": -150
+          "Current Capacity (ICU beds: 80% occupied)": {
+            "reason": "Disclosing may lead to panic and affect patient admissions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Government Official"
+            ]
           },
-          "Projected Patient Surge (30% increase)": {
-            "reason": "Confidential projections; revealing could lead to panic or misinformation.",
-            "penalty": -200
+          "Supply Chain Delays (30% equipment backlog)": {
+            "reason": "Revealing could affect negotiation leverage and public perception.",
+            "penalty": -200,
+            "shareable_with": [
+              "Public Health Expert"
+            ]
           }
         },
         "public": {
-          "Equipment Request": "500 units of PPE, 200 ventilators"
+          "Current Equipment Needs": "100 ventilators, 200 PPE sets"
         }
       },
       "utility": {
-        "Adequate supply for surge": "+100",
-        "Compliance with health regulations": "+50"
+        "Securing all requested equipment": "+100",
+        "Meeting patient care standards": "+50"
       }
     },
     {
       "name": "Government Official",
-      "role": "Responsible for policy-making and resource distribution during the pandemic.",
+      "role": "Oversees emergency resource distribution and ensures compliance with public health policies.",
       "responsibilities": [
-        "Allocate government resources to hospitals based on reported needs.",
-        "Negotiate with suppliers to ensure timely delivery of emergency equipment.",
-        "Monitor compliance with regulations and public health guidelines.",
-        "Communicate with the public about resource availability while managing expectations.",
-        "Assess the broader impact of resource allocation decisions on public health."
+        "Evaluate resource allocation proposals.",
+        "Ensure compliance with federal regulations.",
+        "Communicate with public health officials regarding strategies."
       ],
       "information": {
         "private": {
-          "Supply Chain Limitations (30% delay)": {
-            "reason": "Sensitive supply chain information; disclosure could disrupt logistics.",
-            "penalty": -100
+          "Regulatory Constraints (limited funding):": {
+            "reason": "Revealing can affect public confidence and political support.",
+            "penalty": -100,
+            "shareable_with": [
+              "Public Health Expert"
+            ]
           },
-          "Funding Constraints ($50M cap)": {
-            "reason": "Budgetary limitations need to be protected to avoid public outcry.",
-            "penalty": -150
+          "Projected Budget Cuts (20% reduction next quarter)": {
+            "reason": "Sensitive budget information that could impact future negotiations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Hospital Administrator"
+            ]
           }
         },
         "public": {
-          "Total Equipment Allocated": "2,000 units nationwide"
+          "Emergency Funding Available": "$5M"
         }
       },
       "utility": {
-        "Timely delivery of equipment": "+100",
-        "Public satisfaction with resource distribution": "+75"
+        "Ensuring compliance with regulations": "+70",
+        "Meeting public health demands": "+80"
       }
     },
     {
       "name": "Public Health Expert",
-      "role": "Advises on health policies and best practices to manage the pandemic effectively.",
+      "role": "Provides data-driven insights on pandemic trends and resource needs for effective public health response.",
       "responsibilities": [
-        "Analyze infection data to predict trends and equipment needs.",
-        "Advise hospital administrators on resource allocation based on epidemiological data.",
-        "Ensure public health messaging is clear and based on the latest science.",
-        "Collaborate with government officials to inform policy decisions.",
-        "Monitor community health outcomes to adjust strategies as needed."
+        "Analyze infection trends and project future needs.",
+        "Advise on public health guidelines.",
+        "Communicate findings to both hospitals and government."
       ],
       "information": {
         "private": {
-          "Infection Surge Projections (peak in 4 weeks)": {
-            "reason": "Confidential epidemiological data; sharing could lead to public panic.",
-            "penalty": -200
+          "Infection Surge Projection (50% increase in 2 weeks)": {
+            "reason": "Sensitive data that could cause public alarm if shared prematurely.",
+            "penalty": -200,
+            "shareable_with": [
+              "Hospital Administrator"
+            ]
           },
-          "Vaccine Efficacy Data (70% effective)": {
-            "reason": "Pending peer review; premature sharing could mislead public health strategies.",
-            "penalty": -150
+          "Confidential Study on Resource Needs (30% more than current allocation)": {
+            "reason": "Leaking could lead to public unrest and misallocation.",
+            "penalty": -100,
+            "shareable_with": [
+              "Government Official"
+            ]
           }
         },
         "public": {
-          "Current Infection Rate": "5%"
+          "Current Infection Rate": "15%"
         }
       },
       "utility": {
-        "Effective public health messaging": "+75",
-        "Accurate predictions of equipment needs": "+100"
+        "Accurate projections leading to resource allocation": "+100",
+        "Public health guidelines accepted by all parties": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Equipment Sufficiency": "≥80% hospitals report adequate supplies = Success; 70-79% = Partial; <70% = Failure",
-    "Public Health Compliance": "≥90% adherence to guidelines = Success; 80-89% = Partial; <80% = Failure"
+    "Resource Allocation Agreement": "All agents agree on the distribution plan for emergency equipment that meets the needs of hospitals while adhering to government regulations.",
+    "Infection Projection Alignment": "Consensus reached on the projected infection surges and necessary resource adjustments based on expert data.",
+    "Compliance with Regulations": "All parties align on regulatory compliance requirements and how they affect resource distribution."
   },
-  "deliverable": "A comprehensive equipment allocation strategy that includes timelines, responsibilities, and compliance measures.",
+  "deliverable": "A comprehensive allocation plan detailing equipment distribution, regulatory compliance, and public health recommendations.",
   "constraints": {
     "public": [
-      "Total budget ≤ $50M",
-      "Equipment must be distributed within 2 weeks",
-      "Compliance with federal health regulations"
+      "Total equipment distribution ≤ available inventory",
+      "Funding ≤ $5M",
+      "Regulatory compliance maintained"
     ],
     "private": [
-      "Hospital capacity must remain ≤90% during peak",
-      "Confidentiality of sensitive data must be maintained",
-      "Supply chain delays must not exceed 30%"
+      "Hospital capacity must not exceed 90% occupancy",
+      "Supply chain limitations must be accounted for",
+      "Infection projections must be kept confidential until official release"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +70, +50).",
+  "Consensus_w": "All parties must negotiate trade-offs in resource distribution based on capacity, funding, and projected needs."
 }

@@ -1,144 +1,163 @@
 {
-  "scenario": "Critical scientific equipment allocation between competing research teams, administrators, and funding agencies with private experimental timelines, undisclosed breakthrough proximity, and confidential information about potential publications.",
-  "task": "Create a strategic allocation plan for the scientific equipment that maximizes research output while navigating the competing interests of all parties involved.",
+  "scenario": "Critical scientific equipment allocation involves competing research teams, administrators, and funding agencies negotiating over access to limited resources while holding private experimental timelines and publication plans.",
+  "task": "Develop a comprehensive allocation strategy for scientific equipment that balances research priorities, funding availability, and administrative requirements. Agents must navigate competing interests: research teams may prioritize immediate experimental needs, while funding agencies seek long-term project viability. To align on a unified allocation plan, agents must share information strategically—enough to establish consensus and coordinate effectively, but without leaking sensitive data that could jeopardize funding or competitive advantage.",
   "agents": [
     {
       "name": "Research Team A Lead",
-      "role": "Oversees research activities and coordinates with team members to utilize equipment effectively.",
+      "role": "Oversees project execution and resource allocation for ongoing experiments.",
       "responsibilities": [
-        "Develop and execute research projects that require the allocated equipment.",
-        "Communicate research needs and timelines to the equipment allocation committee.",
-        "Ensure that all data produced is shared appropriately while protecting sensitive information.",
-        "Negotiate with other teams to prioritize equipment access based on project urgency.",
-        "Report on research progress and equipment utilization to stakeholders."
+        "Manage experimental designs and timelines.",
+        "Coordinate with team members on equipment needs.",
+        "Prepare progress reports for stakeholders."
       ],
       "information": {
         "private": {
-          "Breakthrough Timeline (3 months)": {
-            "reason": "Sensitive information that could influence competitor strategies.",
-            "penalty": -150
+          "Breakthrough Timeline (expected within 2 months)": {
+            "reason": "Sensitive progress information that could influence funding decisions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Funding Agency"
+            ]
           },
-          "Upcoming Publication (high-impact journal)": {
-            "reason": "Confidential until submission; leaking could undermine competitive advantage.",
-            "penalty": -200
+          "Upcoming Publication (high-impact journal submission)": {
+            "reason": "Confidential data that could affect competitive standing.",
+            "penalty": -200,
+            "shareable_with": [
+              "Administrator"
+            ]
           }
         },
         "public": {
-          "Current Project Status": "Phase II trials ongoing"
+          "Current Project Budget": "$300,000"
         }
       },
       "utility": {
-        "Access to equipment for 6 months": "+80",
-        "Successful project completion": "+100"
+        "Access to equipment within 1 month": "+100",
+        "Achieving publication acceptance": "+75"
       }
     },
     {
       "name": "Research Team B Lead",
-      "role": "Responsible for another research team competing for the same equipment.",
+      "role": "Responsible for another competing research project with distinct goals and timelines.",
       "responsibilities": [
-        "Coordinate with team members to ensure efficient use of equipment.",
-        "Provide updates on research progress and resource requirements.",
-        "Engage in discussions with other teams to negotiate shared equipment access.",
-        "Protect proprietary research findings while collaborating when necessary.",
-        "Submit proposals for equipment usage that highlight the potential impact of their research."
+        "Define project objectives and experimental requirements.",
+        "Engage with external collaborators.",
+        "Report on resource utilization."
       ],
       "information": {
         "private": {
-          "Experimental Breakthrough (early results promising)": {
-            "reason": "Revealing could lead to lost competitive edge.",
-            "penalty": -100
+          "Funding Negotiation Status (pending $250,000 grant)": {
+            "reason": "Sensitive financial discussions that could alter resource requests.",
+            "penalty": -100,
+            "shareable_with": [
+              "Administrator"
+            ]
           },
-          "Confidential Publication Plans": {
-            "reason": "Sensitive data that could affect research funding and collaborations.",
-            "penalty": -150
+          "Experimental Results (early data showing 85% success)": {
+            "reason": "Unverified results that could attract competitive interest.",
+            "penalty": -150,
+            "shareable_with": [
+              "Funding Agency"
+            ]
           }
         },
         "public": {
-          "Funding Status": "Secured for current project"
+          "Total Team Size": "8 researchers"
         }
       },
       "utility": {
-        "Access to equipment for 3 months": "+60",
-        "Successful grant proposal": "+40"
+        "Securing equipment access": "+100",
+        "Collaboration success with external partners": "+50"
       }
     },
     {
-      "name": "University Administrator",
-      "role": "Facilitates equipment allocation and ensures institutional goals are met.",
+      "name": "Administrator",
+      "role": "Manages resource allocation and ensures compliance with institutional policies.",
       "responsibilities": [
-        "Evaluate and prioritize equipment allocation requests from research teams.",
-        "Balance competing demands while aligning with university research objectives.",
-        "Ensure compliance with institutional policies regarding resource distribution.",
-        "Communicate decisions to researchers and provide rationale for allocations.",
-        "Monitor usage and report back on equipment effectiveness and research outcomes."
+        "Evaluate equipment requests from research teams.",
+        "Facilitate negotiations between teams and funding agencies.",
+        "Monitor project progress and resource utilization."
       ],
       "information": {
         "private": {
-          "Allocation Criteria (favoring high-impact projects)": {
-            "reason": "Internal strategy that could influence team behaviors.",
-            "penalty": -50
+          "Resource Allocation Policy Changes": {
+            "reason": "Internal strategy that could influence team priorities.",
+            "penalty": -200,
+            "shareable_with": [
+              "Funding Agency"
+            ]
           },
-          "Future Funding Opportunities": {
-            "reason": "Confidential until officially announced.",
-            "penalty": -100
+          "Team B's Funding Stability Concerns": {
+            "reason": "Sensitive information that could sway equipment allocation decisions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Research Team A Lead"
+            ]
           }
         },
         "public": {
-          "Current Equipment Availability": "Limited"
+          "Available Equipment Budget": "$500,000"
         }
       },
       "utility": {
-        "Successful allocation meeting": "+70",
-        "Enhancing university's research reputation": "+90"
+        "Successful allocation meeting held": "+75",
+        "No compliance issues reported": "+50"
       }
     },
     {
       "name": "Funding Agency Representative",
-      "role": "Provides financial support and oversight for research projects.",
+      "role": "Oversees financial contributions and evaluates grant applications from research teams.",
       "responsibilities": [
-        "Review and approve funding requests based on research proposals.",
-        "Ensure that funded projects align with agency goals and objectives.",
-        "Monitor progress and report back on the impact of funded research.",
-        "Facilitate communication between teams and the agency for resource optimization.",
-        "Encourage collaboration to maximize the impact of funded research."
+        "Review funding proposals and allocate budgets.",
+        "Assess project viability based on outcomes.",
+        "Engage with research teams to ensure alignment with funding goals."
       ],
       "information": {
         "private": {
-          "Future Funding Guidelines": {
-            "reason": "Confidential until finalized; could affect grant applications.",
-            "penalty": -75
+          "Pending Grant Approvals": {
+            "reason": "Confidential discussions that could influence team strategies.",
+            "penalty": -100,
+            "shareable_with": [
+              "Administrator"
+            ]
           },
-          "Performance Metrics for Funding": {
-            "reason": "Internal metrics used for evaluation; leaking could bias proposals.",
-            "penalty": -125
+          "Market Analysis (potential for $1M funding impact)": {
+            "reason": "Strategic information that could alter funding priorities.",
+            "penalty": -200,
+            "shareable_with": [
+              "Research Team A Lead",
+              "Research Team B Lead"
+            ]
           }
         },
         "public": {
-          "Total Funding Available": "$5 million"
+          "Total Funding Available": "$1,000,000"
         }
       },
       "utility": {
-        "Successful project outcomes from funded research": "+100",
-        "Positive feedback from researchers": "+50"
+        "Successful grant allocation": "+100",
+        "Positive feedback from research teams": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Research Output Quality": "≥3 significant findings = Success; 2 findings = Partial; <2 findings = Failure",
-    "Equipment Utilization Rate": "≥80% = Success; 60-79% = Partial; <60% = Failure"
+    "Resource Allocation Agreement": "All parties agree on a final allocation strategy that meets immediate experimental needs while considering long-term viability.",
+    "Funding Alignment": "Consensus is reached on funding allocations that respect both teams' project requirements and the agency's budget constraints.",
+    "Compliance with Institutional Policies": "All agents agree to uphold institutional policies throughout the negotiation process."
   },
-  "deliverable": "A detailed equipment allocation strategy that outlines research priorities and timelines.",
+  "deliverable": "A detailed equipment allocation strategy that outlines resource distribution among competing teams.",
   "constraints": {
     "public": [
-      "Total equipment usage time ≤ 12 months",
-      "Budget for equipment maintenance must not exceed $1 million",
-      "All teams must provide quarterly progress reports"
+      "Total equipment budget ≤ $500,000",
+      "Each team receives at least 40% of requested equipment",
+      "All funding proposals submitted by end of quarter"
     ],
     "private": [
-      "Research teams must maintain confidentiality on breakthrough timelines",
-      "No team can access equipment for more than 6 months",
-      "Funding agency must approve all allocations exceeding $500,000"
+      "No major disputes unresolved by allocation deadline",
+      "Funding agency maintains ≥75% satisfaction from teams",
+      "Resource allocation complies with institutional policies"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -75). Utilities are expressed as gains (e.g., +100, +80, +70)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on resource allocation requires negotiation and trade-offs among agents."
 }

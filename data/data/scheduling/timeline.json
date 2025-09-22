@@ -1,114 +1,128 @@
 {
-  "scenario": "High-profile product launch timeline negotiation between engineering, marketing, and sales teams with private technical challenges, undisclosed market intelligence, and confidential competitive deadlines.",
-  "task": "Develop a cohesive product launch plan that aligns engineering capabilities, market readiness, and sales strategies while managing confidential information and negotiating timelines.",
+  "scenario": "A high-profile product launch timeline negotiation occurs between engineering, marketing, and sales teams, each harboring private technical challenges, market intelligence, and competitive deadlines.",
+  "task": "Develop a coordinated launch timeline that aligns engineering capabilities, marketing strategies, and sales targets while addressing internal constraints and external competitive pressures. The teams must share critical information to negotiate an effective timeline that balances product readiness, market entry, and sales objectives, while protecting sensitive insights.",
   "agents": [
     {
-      "name": "Engineering Manager",
-      "role": "Oversees product development and ensures technical feasibility within the launch timeline.",
+      "name": "Engineering Lead",
+      "role": "Oversees product development and technical readiness for launch.",
       "responsibilities": [
-        "Coordinate engineering efforts to meet product specifications.",
-        "Identify potential technical challenges and propose solutions.",
-        "Communicate realistic timelines for development phases.",
-        "Ensure compliance with quality standards and regulatory requirements.",
-        "Protect sensitive technical information from premature disclosure."
+        "Manage product design and development timelines.",
+        "Ensure technical specifications meet market demands.",
+        "Coordinate testing and quality assurance processes."
       ],
       "information": {
         "private": {
-          "Technical Challenges (75% completion)": {
-            "reason": "Unresolved issues could mislead other teams and affect planning.",
-            "penalty": -150
+          "Technical Challenge (software integration delay)": {
+            "reason": "Disclosure could weaken bargaining position with marketing and sales.",
+            "penalty": -150,
+            "shareable_with": [
+              "Marketing Manager"
+            ]
           },
-          "Prototype Testing Results (80% success rate)": {
-            "reason": "Early results may lead to false confidence among stakeholders.",
-            "penalty": -100
+          "Internal Resource Constraints (limited engineering staff)": {
+            "reason": "Revealing could impact internal morale and negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Sales Director"
+            ]
           }
         },
         "public": {
-          "Development Timeline": "6 months until full prototype readiness"
+          "Current Development Phase": "Prototype testing completed"
         }
       },
       "utility": {
-        "Launch readiness on schedule": "+100",
-        "Meeting technical milestones": "+50"
+        "Launch readiness by Q2": "+100",
+        "Minimized technical delays": "+50"
       }
     },
     {
-      "name": "Marketing Director",
-      "role": "Crafts the go-to-market strategy and ensures alignment with product positioning.",
+      "name": "Marketing Manager",
+      "role": "Responsible for crafting the product launch strategy and promotional activities.",
       "responsibilities": [
-        "Develop marketing campaigns that resonate with target audiences.",
-        "Gather and analyze market intelligence to inform launch strategies.",
-        "Coordinate with sales on promotional activities and product messaging.",
-        "Ensure marketing materials are ready in time for the launch.",
-        "Protect proprietary market insights to maintain competitive advantage."
+        "Develop marketing campaigns aligned with product features.",
+        "Analyze market trends and consumer behavior.",
+        "Coordinate with sales for promotional alignment."
       ],
       "information": {
         "private": {
-          "Market Insights (predicted 20% growth)": {
-            "reason": "Confidential analysis that could affect competitive positioning.",
-            "penalty": -200
+          "Market Intelligence (competitor launch date)": {
+            "reason": "Sensitive information that could influence strategic decisions.",
+            "penalty": -200,
+            "shareable_with": [
+              "Sales Director"
+            ]
           },
-          "Competitor Launch Dates (Q3 2024)": {
-            "reason": "Sensitive timing could lead to strategic disadvantages if disclosed.",
-            "penalty": -150
+          "Potential Rebranding Costs": {
+            "reason": "Revealing could impact budget negotiations with engineering.",
+            "penalty": -120,
+            "shareable_with": [
+              "Engineering Lead"
+            ]
           }
         },
         "public": {
-          "Target Audience": "Tech-savvy consumers aged 18-35"
+          "Target Audience Size": "2 million potential customers"
         }
       },
       "utility": {
-        "Successful launch campaign engagement": "+80",
-        "Market share growth ≥15%": "+100"
+        "Successful campaign execution": "+75",
+        "Meeting launch date": "+50"
       }
     },
     {
-      "name": "Sales Lead",
-      "role": "Drives sales strategy and ensures alignment with customer needs and market opportunities.",
+      "name": "Sales Director",
+      "role": "Oversees sales strategy and ensures alignment with marketing and engineering for product launch.",
       "responsibilities": [
-        "Develop sales forecasts based on product features and market demand.",
-        "Coordinate with marketing to align sales strategies with promotional efforts.",
-        "Train sales staff on product details and selling points.",
-        "Gather feedback from potential customers to refine sales approach.",
-        "Maintain confidentiality of sales projections and customer insights."
+        "Develop sales forecasts and targets.",
+        "Coordinate with marketing on promotional strategies.",
+        "Gather feedback from sales teams on customer expectations."
       ],
       "information": {
         "private": {
-          "Sales Projections ($5M in first quarter)": {
-            "reason": "Leaking could mislead competitors regarding demand.",
-            "penalty": -100
+          "Sales Projections (estimated sales drop if delayed)": {
+            "reason": "Internal strategy; revealing could affect negotiations with marketing.",
+            "penalty": -150,
+            "shareable_with": [
+              "Marketing Manager"
+            ]
           },
-          "Customer Feedback (90% positive interest)": {
-            "reason": "Sensitive data that could sway market reactions prematurely.",
-            "penalty": -50
+          "Confidential Client Feedback": {
+            "reason": "Sensitive customer insights that could influence launch timing.",
+            "penalty": -100,
+            "shareable_with": [
+              "Engineering Lead"
+            ]
           }
         },
         "public": {
-          "Sales Strategy": "Focus on direct-to-consumer channels"
+          "Sales Target for Launch": "$5 million in first quarter"
         }
       },
       "utility": {
-        "Achieving first quarter sales target": "+120",
-        "Customer satisfaction ≥85%": "+60"
+        "Achieving sales target": "+100",
+        "Minimizing launch delays": "+30"
       }
     }
   ],
   "success_criteria": {
-    "Product readiness": "Launch on schedule = Success; 1 month delay = Partial; >1 month = Failure",
-    "Sales targets": "$5M in first quarter = Success; $3M-$4.9M = Partial; < $3M = Failure"
+    "Timeline Alignment": "All teams agree on a final product launch date that accommodates engineering readiness, marketing strategy, and sales projections.",
+    "Resource Allocation Agreement": "Consensus on resource distribution that supports both technical and marketing needs without exceeding budget constraints.",
+    "Market Readiness Consensus": "Agreement on a unified approach to market entry that aligns promotional activities with technical capabilities."
   },
-  "deliverable": "A comprehensive product launch plan that includes timeline, marketing strategies, and sales forecasts.",
+  "deliverable": "A detailed product launch timeline and strategy that incorporates input from engineering, marketing, and sales.",
   "constraints": {
     "public": [
-      "Total budget for launch ≤ $500K",
-      "Product must meet quality standards",
-      "Marketing materials ready 1 month before launch"
+      "Launch date must be set by Q2",
+      "Marketing campaign must begin 2 months prior to launch",
+      "Sales target must be achievable within the first quarter post-launch"
     ],
     "private": [
-      "Engineering must resolve issues ≥ 90% completion",
-      "Market insights must be validated before launch",
-      "Sales projections must remain confidential until launch"
+      "Technical readiness must be confirmed 1 month before launch",
+      "Marketing budget must not exceed $1 million",
+      "Sales projections must be validated by client feedback"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +100, +80, +60)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50, +30).",
+  "Consensus_w": "Agreement on resource allocation and timeline is required for successful negotiation."
 }

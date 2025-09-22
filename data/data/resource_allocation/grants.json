@@ -1,114 +1,120 @@
 {
-  "scenario": "A medical research funding committee must allocate limited resources among members while navigating private conflicts of interest, undisclosed preliminary findings, and rival research efforts.",
-  "task": "Create a funding allocation plan that balances the interests of all committee members while ensuring transparency and adherence to ethical guidelines.",
+  "scenario": "A medical research funding committee must allocate grants while navigating private conflicts of interest, undisclosed preliminary findings, and confidential parallel research efforts.",
+  "task": "Develop a funding allocation strategy that balances committee members' interests, ensures fair distribution of resources, and respects confidentiality while maximizing research impact. Members must share relevant information selectively to reach consensus on the funding distribution while safeguarding sensitive data that could bias decisions or create conflicts.",
   "agents": [
     {
-      "name": "Lead Researcher",
-      "role": "Oversees the research initiatives and ensures that funding aligns with scientific merit.",
+      "name": "Committee Chair",
+      "role": "Leads the funding allocation process, ensuring fair consideration of all proposals.",
       "responsibilities": [
-        "Evaluate research proposals based on scientific validity and potential impact.",
-        "Negotiate funding distribution among committee members to ensure fairness.",
-        "Maintain confidentiality of preliminary data to avoid bias in funding decisions.",
-        "Advocate for transparency in the allocation process.",
-        "Prepare a report detailing the rationale for funding decisions."
+        "Facilitate discussions among committee members.",
+        "Evaluate funding proposals based on scientific merit.",
+        "Ensure compliance with ethical funding guidelines."
       ],
       "information": {
         "private": {
-          "Preliminary Findings (60% efficacy)": {
-            "reason": "Not yet published; disclosure could mislead funding decisions.",
-            "penalty": -150
+          "Preliminary Findings (75% efficacy in trials)": {
+            "reason": "Revealing could influence funding decisions unfairly.",
+            "penalty": -150,
+            "shareable_with": [
+              "Committee Member A"
+            ]
           },
-          "Conflict of Interest (financial ties to a competing research firm)": {
-            "reason": "Potential bias in decision-making; needs to be concealed.",
-            "penalty": -100
+          "Conflict of Interest (personal investment in a competing project)": {
+            "reason": "Disclosure could undermine credibility and trust.",
+            "penalty": -200,
+            "shareable_with": []
           }
         },
         "public": {
-          "Funding Pool": "$5M available for allocation"
+          "Total Funding Available": "$5M"
         }
       },
       "utility": {
-        "Allocation meets >=70% of scientific merit criteria": "+60",
-        "Transparency in funding decisions": "+40"
-      }
-    },
-    {
-      "name": "Ethics Officer",
-      "role": "Ensures all funding decisions adhere to ethical standards and guidelines.",
-      "responsibilities": [
-        "Review all proposals for ethical compliance.",
-        "Monitor discussions for conflicts of interest.",
-        "Facilitate discussions to promote transparency.",
-        "Provide training on ethical considerations for committee members.",
-        "Report any violations of ethical standards."
-      ],
-      "information": {
-        "private": {
-          "Confidential Ethics Review (concerns about bias in proposals)": {
-            "reason": "Sensitive information; could damage reputations.",
-            "penalty": -120
-          },
-          "Pending Ethics Violations (from previous funding cycles)": {
-            "reason": "Could influence current funding decisions negatively.",
-            "penalty": -80
-          }
-        },
-        "public": {
-          "Ethics Guidelines": "All members must disclose potential conflicts."
-        }
-      },
-      "utility": {
-        "100% compliance with ethics guidelines": "+50",
-        "Successful resolution of conflicts": "+30"
+        "Equitable funding distribution achieved": "+50",
+        "Adherence to ethical guidelines": "+40"
       }
     },
     {
       "name": "Committee Member A",
-      "role": "Represents a specific research area and advocates for funding in that domain.",
+      "role": "Focuses on advancing research in their specialty area and advocating for funding allocation that benefits their project.",
       "responsibilities": [
-        "Present research proposals to the committee.",
-        "Argue for the importance of funding their specific area.",
-        "Provide data to support funding requests.",
-        "Collaborate with other members to build consensus.",
-        "Negotiate terms of funding distribution."
+        "Present research findings to the committee.",
+        "Advocate for funding based on project potential.",
+        "Negotiate terms of funding with other members."
       ],
       "information": {
         "private": {
-          "Competing Research Results (70% efficacy in parallel study)": {
-            "reason": "Could undermine own proposal; must keep private.",
-            "penalty": -200
+          "Ongoing Collaboration with a major pharmaceutical company": {
+            "reason": "Disclosure could jeopardize future funding opportunities.",
+            "penalty": -100,
+            "shareable_with": []
           },
-          "Funding Needs ($1.5M for next phase)": {
-            "reason": "Disclosure could weaken bargaining position.",
-            "penalty": -100
+          "Preliminary Results (80% success in trials)": {
+            "reason": "Sensitive data that could influence funding unfairly.",
+            "penalty": -150,
+            "shareable_with": [
+              "Committee Chair"
+            ]
           }
         },
         "public": {
-          "Research Area Importance": "High impact on public health"
+          "Research Proposal Impact Score": "85/100"
         }
       },
       "utility": {
-        "Securing >=$1M in funding": "+70",
-        "Collaborative funding with other members": "+30"
+        "Funding ≥$1M for my project": "+75",
+        "Successful collaboration with industry partner": "+50"
+      }
+    },
+    {
+      "name": "Committee Member B",
+      "role": "Advocates for diverse research areas and seeks balanced funding across projects.",
+      "responsibilities": [
+        "Review funding proposals from all members.",
+        "Promote equitable distribution of funds.",
+        "Engage in discussions to resolve conflicts."
+      ],
+      "information": {
+        "private": {
+          "Undisclosed Research Findings (potential breakthrough)": {
+            "reason": "Revealing could shift funding priorities drastically.",
+            "penalty": -200,
+            "shareable_with": []
+          },
+          "Pending patent for a new treatment": {
+            "reason": "Disclosure could lead to competitive disadvantages.",
+            "penalty": -150,
+            "shareable_with": []
+          }
+        },
+        "public": {
+          "Funding Allocation Proposal": "Balanced across at least 4 projects"
+        }
+      },
+      "utility": {
+        "Achieving balanced funding across projects": "+60",
+        "No conflicts unresolved at the end of the meeting": "+40"
       }
     }
   ],
   "success_criteria": {
-    "Funding fairness score": "≥70% = Success; 50-69% = Partial; <50% = Failure",
-    "Ethical compliance rate": "≥90% = Success; 70-89% = Partial; <70% = Failure"
+    "Funding Agreement": "All committee members agree on a final funding distribution that respects the Chair’s ethical guidelines and balances interests.",
+    "Conflict Resolution": "Members reach consensus on how to address any conflicts of interest without jeopardizing trust.",
+    "Transparency Level": "Agreement on what information can be shared publicly while maintaining necessary confidentiality."
   },
-  "deliverable": "A detailed funding allocation plan that includes justification for each decision made.",
+  "deliverable": "A detailed funding allocation strategy that outlines the distribution of the $5M budget across approved projects.",
   "constraints": {
     "public": [
-      "Total funding allocation must not exceed $5M",
-      "All conflicts of interest must be disclosed",
-      "At least 3 proposals must be funded"
+      "Total funding ≤ $5M",
+      "Funding allocation finalized within 2 meetings",
+      "No more than 3 projects funded with ≥$1M each"
     ],
     "private": [
-      "No member can receive >30% of total funding",
-      "Confidentiality of preliminary findings must be maintained",
-      "Ethics review must be completed before allocation"
+      "No unresolved conflicts of interest at the conclusion of discussions",
+      "At least 70% of members agree on the final allocation",
+      "All proposals meet basic ethical guidelines"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -120, -100, -80). Utilities are expressed as gains (e.g., +70, +60, +50, +40, +30)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +75, +60, +50, +40).",
+  "Consensus_w": "Agreement on funding allocations requires discussion and trade-offs among committee members."
 }

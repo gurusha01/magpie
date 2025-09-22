@@ -1,117 +1,128 @@
 {
-  "scenario": "Establishing a protected marine area requires collaboration among multiple nations, fishing industries, and environmental organizations, while managing sensitive economic and ecological data.",
-  "task": "Create a strategic plan for the establishment of the marine protected area, balancing ecological preservation with the interests of the fishing industry and national policies while ensuring confidentiality of sensitive information.",
+  "scenario": "Multiple nations, fishing industries, and environmental organizations negotiate the establishment of a protected marine area to balance conservation efforts with fishing rights and economic impacts.",
+  "task": "Develop a comprehensive plan for the establishment of a protected marine area that harmonizes conservation goals with the economic interests of fishing industries, ensuring sustainable practices while protecting endangered species. Agents must navigate competing priorities: conservation mandates may limit fishing zones, while economic data and alternative fishing grounds could influence negotiations. They must share information judiciously to build consensus without compromising sensitive data.",
   "agents": [
     {
-      "name": "National Policy Maker",
-      "role": "Responsible for creating and enforcing policies related to marine conservation and fishing regulations.",
+      "name": "Government Representative",
+      "role": "Facilitates negotiations between nations, ensuring compliance with international treaties and local laws.",
       "responsibilities": [
-        "Draft legislation for the marine protected area.",
-        "Negotiate terms with other nations and stakeholders.",
-        "Ensure compliance with international treaties.",
-        "Assess the economic impact on local fishing industries.",
-        "Facilitate public consultations and stakeholder engagement."
+        "Lead discussions on conservation policies.",
+        "Ensure alignment with national interests.",
+        "Coordinate data sharing between parties."
       ],
       "information": {
         "private": {
-          "Economic Impact Study ($200M loss in fishing revenue)": {
-            "reason": "Sensitive data could cause unrest among fishing communities.",
-            "penalty": -300
+          "Economic Impact Assessment ($300M loss for fishing industry)": {
+            "reason": "Disclosure could incite backlash from local fishermen and political pressure.",
+            "penalty": -250,
+            "shareable_with": [
+              "Fishing Industry Representative"
+            ]
           },
-          "Endangered Species Data (undisclosed species in area)": {
-            "reason": "Releasing this info could lead to exploitation or illegal fishing.",
-            "penalty": -250
+          "Confidential Species Data (endangered species hotspots)": {
+            "reason": "Sensitive information that could be exploited if leaked.",
+            "penalty": -200,
+            "shareable_with": [
+              "Environmental Organization Representative"
+            ]
           }
         },
         "public": {
-          "Proposed Area Size": "50,000 square kilometers",
-          "Stakeholder Engagement Schedule": "Quarterly meetings"
+          "Negotiation Timeline": "Completion expected within 6 months"
         }
       },
       "utility": {
-        "Successful treaty ratification": "+150",
-        "Maintaining fishing revenue loss under 10%": "+100"
+        "Agreement on boundaries within 5% of initial proposal": "+100",
+        "Alignment with international conservation standards": "+50"
       }
     },
     {
       "name": "Fishing Industry Representative",
-      "role": "Advocates for fishing interests and economic viability during the establishment of the marine protected area.",
+      "role": "Represents the interests of local fishing communities, advocating for sustainable fishing practices while protecting economic viability.",
       "responsibilities": [
-        "Provide data on fishing revenues and employment impacts.",
-        "Negotiate fishing quotas and alternative fishing grounds.",
-        "Communicate the concerns of fishing communities to policymakers.",
-        "Promote sustainable fishing practices.",
-        "Monitor compliance with the established fishing regulations."
+        "Advocate for fishing rights and access.",
+        "Provide data on industry impacts.",
+        "Negotiate alternative fishing ground access."
       ],
       "information": {
         "private": {
-          "Alternative Fishing Ground Locations (confidential)": {
-            "reason": "Leaking could lead to competition and overfishing.",
-            "penalty": -200
+          "Undisclosed Fishing Ground Potential ($150M in annual revenue)": {
+            "reason": "Revealing could undermine negotiations for access.",
+            "penalty": -300,
+            "shareable_with": [
+              "Government Representative"
+            ]
           },
-          "Economic Projections (30% revenue decrease)": {
-            "reason": "Sensitive data that could destabilize markets.",
-            "penalty": -150
+          "Market Analysis (30% drop in fish stocks)": {
+            "reason": "Sensitive internal data that could affect pricing and negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Environmental Organization Representative"
+            ]
           }
         },
         "public": {
-          "Current Fishing Practices": "Sustainable methods adopted",
-          "Community Engagement Efforts": "Monthly forums"
+          "Current Fishing Quota": "10,000 tons annually"
         }
       },
       "utility": {
-        "Negotiated fishing quotas maintained": "+120",
-        "Revenue loss under 15%": "+80"
+        "Access to alternative fishing grounds secured": "+75",
+        "Minimizing fishing area loss to ≤10%": "+50"
       }
     },
     {
-      "name": "Environmental Organization Leader",
-      "role": "Ensures ecological integrity and conservation goals are prioritized in the protected area establishment.",
+      "name": "Environmental Organization Representative",
+      "role": "Ensures conservation priorities are met and advocates for the protection of marine biodiversity.",
       "responsibilities": [
-        "Conduct ecological assessments of the proposed area.",
-        "Advocate for the protection of biodiversity and endangered species.",
-        "Collaborate with policy makers on environmental impact assessments.",
-        "Engage the public in conservation efforts.",
-        "Monitor compliance with environmental regulations."
+        "Provide scientific data on marine ecosystems.",
+        "Advocate for strict conservation measures.",
+        "Engage with local communities for support."
       ],
       "information": {
         "private": {
-          "Sensitive Biodiversity Data (critical habitats)": {
-            "reason": "Disclosure may lead to habitat destruction or poaching.",
-            "penalty": -300
+          "Alternative Conservation Strategies (potential to reduce impact by 40%)": {
+            "reason": "Internal strategy that could weaken negotiation position if disclosed.",
+            "penalty": -150,
+            "shareable_with": [
+              "Government Representative"
+            ]
           },
-          "Impact of Fishing on Endangered Species (confidential report)": {
-            "reason": "Leaking could undermine conservation efforts.",
-            "penalty": -200
+          "Endangered Species Reports (specific locations of vulnerable species)": {
+            "reason": "Sensitive information that could lead to exploitation.",
+            "penalty": -200,
+            "shareable_with": [
+              "Fishing Industry Representative"
+            ]
           }
         },
         "public": {
-          "Conservation Goals": "Protect 30% of marine biodiversity",
-          "Public Awareness Campaigns": "Annual events"
+          "Species Protection Commitment": "At least 5 endangered species"
         }
       },
       "utility": {
-        "Successful inclusion of endangered species protections": "+200",
-        "Public support for the marine protected area above 75%": "+100"
+        "Establishment of protected areas ≥30% of proposed zones": "+100",
+        "Achieving public awareness campaign targets": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Stakeholder Agreement Rate": "≥80% = Success; 60–79% = Partial Success; <60% = Failure",
-    "Biodiversity Protection Index": "≥30% of key species protected = Success; 20–29% = Partial Success; <20% = Failure"
+    "Boundary Agreement": "All parties agree on the final boundaries of the protected marine area that meet conservation goals while allowing for sustainable fishing.",
+    "Economic Impact Mitigation": "Consensus is reached on compensatory measures for affected fishing communities to mitigate economic losses.",
+    "Species Protection Alignment": "Agreement on the protection measures for endangered species that satisfy both environmental and fishing representatives."
   },
-  "deliverable": "A comprehensive strategic plan outlining the establishment of the marine protected area, including stakeholder agreements and ecological assessments.",
+  "deliverable": "A comprehensive plan for the establishment of a protected marine area, detailing boundaries, conservation measures, and economic impact mitigation strategies.",
   "constraints": {
     "public": [
-      "Total area designated must not exceed 100,000 square kilometers.",
-      "Fishing quotas must be established before implementation.",
-      "Environmental assessments must be completed within 6 months."
+      "Total area designated as protected ≤ 20% of the total fishing zone",
+      "Compliance with international environmental regulations",
+      "Final agreement reached within 6 months"
     ],
     "private": [
-      "Economic impact on fishing industry must be assessed to be ≤15%.",
-      "Endangered species data must remain undisclosed until after the agreement.",
-      "Alternative fishing ground data must not be shared publicly."
+      "Economic impact losses ≤ $300M",
+      "No major species protection disputes unresolved",
+      "Fishing industry access to alternative grounds ≥100% of original quota"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +150, +120, +100, +200)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses (e.g., -300, -250, -200). Utilities are expressed as positive gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on trade-offs between conservation needs and fishing rights is essential."
 }

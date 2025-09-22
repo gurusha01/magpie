@@ -1,115 +1,128 @@
 {
-  "scenario": "A pharmaceutical challenge prize competition unfolds where research teams, patient advocacy groups, and corporate sponsors must navigate private preliminary results, undisclosed parallel research efforts, and confidential regulatory fast-track arrangements to develop a breakthrough drug.",
-  "task": "Create a collaborative strategy that balances scientific research, patient needs, and funding while managing the sharing of sensitive information among stakeholders.",
+  "scenario": "A pharmaceutical challenge prize competition brings together research teams, patient advocacy groups, and corporate sponsors to develop a breakthrough treatment. Each party holds private information that could significantly impact progress, including preliminary results and undisclosed research efforts.",
+  "task": "Create a detailed research and development strategy that balances scientific innovation, patient advocacy, and corporate funding needs. Agents must navigate conflicting priorities: research teams may prioritize experimental results while sponsors focus on financial viability, and patient groups emphasize ethical considerations. Effective collaboration requires strategic sharing of information to build consensus while safeguarding sensitive data.",
   "agents": [
     {
       "name": "Lead Research Scientist",
-      "role": "Oversees the scientific research and development of the drug candidate.",
+      "role": "Oversees experimental design and data analysis to ensure scientific rigor and innovation in treatment development.",
       "responsibilities": [
-        "Design and conduct experiments to validate drug efficacy.",
-        "Analyze preliminary results and determine next steps.",
-        "Coordinate with regulatory teams for compliance.",
-        "Share relevant findings with stakeholders while protecting sensitive data.",
-        "Manage laboratory resources and timelines."
+        "Design and conduct clinical trials.",
+        "Analyze data and prepare reports.",
+        "Collaborate with patient groups for trial recruitment."
       ],
       "information": {
         "private": {
-          "Preliminary Efficacy Results (60% efficacy)": {
-            "reason": "Unpublished data could mislead stakeholders and create unrealistic expectations.",
-            "penalty": -150
+          "Preliminary Efficacy Data (65% improvement observed)": {
+            "reason": "Not yet peer-reviewed; could mislead stakeholders if disclosed.",
+            "penalty": -250,
+            "shareable_with": [
+              "Corporate Sponsor"
+            ]
           },
-          "Parallel Research Efforts (alternative formulation)": {
-            "reason": "Leaking details could enable competitors to replicate efforts.",
-            "penalty": -100
+          "Parallel Research Efforts (alternative treatment strategies)": {
+            "reason": "Competing interests; revealing could undermine funding security.",
+            "penalty": -200,
+            "shareable_with": [
+              "Patient Advocacy Group"
+            ]
           }
         },
         "public": {
-          "Research Timeline": "12 months for Phase I completion"
+          "Trial Completion Timeline": "Expected within 18 months"
         }
       },
       "utility": {
-        "Efficacy above 65% achieved": "+60",
-        "On-time Phase I completion": "+40"
+        "Achieving ≥70% patient satisfaction in trials": "+60",
+        "Meeting the regulatory submission deadline": "+40"
       }
     },
     {
-      "name": "Patient Advocate Leader",
-      "role": "Represents patient interests and ensures ethical considerations guide the research.",
+      "name": "Patient Advocacy Leader",
+      "role": "Ensures that patient needs and ethical considerations are prioritized throughout the development process.",
       "responsibilities": [
-        "Gather and present patient insights on drug needs and preferences.",
-        "Monitor ethical compliance during trials and data handling.",
-        "Facilitate communication between patients and research teams.",
-        "Share aggregated patient feedback to inform trial design.",
-        "Advocate for transparency and ethical standards."
+        "Collect and represent patient feedback.",
+        "Advocate for ethical trial practices.",
+        "Coordinate with research teams for patient recruitment."
       ],
       "information": {
         "private": {
-          "Patient Feedback (high preference for oral administration)": {
-            "reason": "Sensitive data; premature disclosure could bias recruitment.",
-            "penalty": -80
+          "Patient Feedback Trends (60% prefer minimal side effects)": {
+            "reason": "Sensitive data; early disclosure could skew public perception.",
+            "penalty": -150,
+            "shareable_with": [
+              "Lead Research Scientist"
+            ]
           },
-          "Confidential Patient Satisfaction Metrics (70% satisfaction)": {
-            "reason": "Revealing could harm trust and participant recruitment.",
-            "penalty": -120
+          "Undisclosed Patient Cohort Characteristics": {
+            "reason": "Revealing could weaken negotiation positions with sponsors.",
+            "penalty": -100,
+            "shareable_with": [
+              "Corporate Sponsor"
+            ]
           }
         },
         "public": {
-          "Ethical Compliance Status": "Under review"
+          "Patient Engagement Level": "75% participation in surveys"
         }
       },
       "utility": {
-        "Patient satisfaction > 75%": "+50",
-        "Incorporation of patient feedback": "+30"
+        "Securing ethical trial approval": "+50",
+        "Achieving ≥80% positive patient feedback": "+75"
       }
     },
     {
-      "name": "Corporate Funding Director",
-      "role": "Manages funding and financial strategy for the drug development project.",
+      "name": "Corporate Sponsor Executive",
+      "role": "Provides funding and strategic direction, ensuring that the project aligns with business interests while supporting patient outcomes.",
       "responsibilities": [
-        "Allocate funds appropriately across research, trials, and marketing.",
-        "Negotiate with regulatory bodies for fast-track approval.",
-        "Maintain financial discipline while ensuring project viability.",
-        "Provide financial reports to stakeholders.",
-        "Evaluate market potential and adjust funding strategies."
+        "Allocate funding for trials and research.",
+        "Negotiate with regulators for fast-track approvals.",
+        "Monitor financial performance and budget adherence."
       ],
       "information": {
         "private": {
-          "Fast-Track Approval Deal (Phase II by Q1 2025)": {
-            "reason": "Confidential agreements; disclosure could affect negotiations.",
-            "penalty": -200
+          "Regulatory Fast-Track Agreement (Phase II by Q1 2025)": {
+            "reason": "Confidential deal; disclosure could affect competitive advantage.",
+            "penalty": -300,
+            "shareable_with": [
+              "Lead Research Scientist"
+            ]
           },
-          "Projected Market Revenue ($300M annually)": {
-            "reason": "Sensitive financial data; could lead to competitive disadvantages.",
-            "penalty": -50
+          "Market Potential Analysis ($400M projected annually)": {
+            "reason": "Sensitive financial projection; competitors could exploit it.",
+            "penalty": -50,
+            "shareable_with": [
+              "Patient Advocacy Leader"
+            ]
           }
         },
         "public": {
-          "Funding Distribution": "50% research, 30% trials, 20% marketing"
+          "Funding Commitment": "Initial $100M allocated"
         }
       },
       "utility": {
-        "Fast-track approval achieved": "+100",
-        "Maintaining budget under $150M": "+40"
+        "Regulatory approval achieved by target date": "+100",
+        "Maintaining budget within 10% of initial allocation": "+40"
       }
     }
   ],
   "success_criteria": {
-    "Efficacy Rate": "≥65% = Success; 55-64% = Partial Success; <55% = Failure",
-    "Patient Satisfaction": "≥75% = Success; 65-74% = Partial Success; <65% = Failure"
+    "Budget Agreement": "All parties reach consensus on a final budget that satisfies the Corporate Sponsor’s funding limits and the Research Team’s needs.",
+    "Research Alignment": "Agents agree on the prioritization of research efforts that meet both patient advocacy goals and corporate profitability.",
+    "Timeline Consensus": "All agents align on a project timeline that accommodates scientific, ethical, and financial constraints."
   },
-  "deliverable": "A comprehensive strategy that integrates research timelines, ethical considerations, and funding allocations.",
+  "deliverable": "A comprehensive research and development strategy integrating scientific, ethical, and funding considerations.",
   "constraints": {
     "public": [
-      "Total budget ≤ $200M",
-      "FDA approval within 3 years",
-      "Completion of Phase I trials within 12 months"
+      "Total funding ≤ $200M",
+      "Regulatory approval within 2 years",
+      "Completion of Phase I trials"
     ],
     "private": [
-      "Efficacy ≥ 60%",
-      "Patient satisfaction ≥ 70%",
-      "Fast-track approval secured",
-      "Funding must cover ≥$50M in trials and ≥$30M in research"
+      "Research efficacy ≥60%",
+      "≥70% patient satisfaction in trials",
+      "Fast-track reduces approval time by ≥6 months"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -150, -100, -80, -120, -200). Utilities are expressed as gains (e.g., +60, +40, +50, +30, +100)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +75, +60).",
+  "Consensus_w": "Negotiation and trade-offs are required to ensure all parties' needs are met."
 }

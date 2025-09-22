@@ -1,114 +1,125 @@
 {
-  "scenario": "An executive leadership team is formed with board members, a search committee, and candidates who must navigate private succession planning details and undisclosed financial challenges while competing for the same position.",
-  "task": "Create a comprehensive strategy for selecting the new executive leader that addresses the board's priorities, candidate qualifications, and financial constraints while managing private information carefully.",
+  "scenario": "An executive leadership team is being formed through collaboration among board members, a search committee, and candidates, each holding private information that could influence their negotiations.",
+  "task": "Develop a comprehensive hiring strategy that aligns the board's vision, the search committee's criteria, and the candidates' expectations while navigating undisclosed financial challenges and competing offers. Agents must strategically share information to build consensus on candidate selection without revealing sensitive details that could jeopardize negotiations or candidate interest.",
   "agents": [
     {
       "name": "Board Chair",
-      "role": "Leads the board's decision-making process and ensures alignment on executive leadership needs.",
+      "role": "Oversees the executive hiring process, ensuring alignment with strategic goals and stakeholder interests.",
       "responsibilities": [
-        "Define strategic priorities for the new executive role.",
-        "Facilitate discussions among board members and the search committee.",
-        "Review and approve candidate evaluations and recommendations.",
-        "Balance candidate qualities with the company's financial capabilities.",
-        "Ensure transparency in the selection process without disclosing sensitive information."
+        "Define the leadership qualities needed for the new executive.",
+        "Facilitate discussions among board members regarding candidate suitability.",
+        "Manage the overall timeline and ensure compliance with governance policies."
       ],
       "information": {
         "private": {
           "Succession Plan Details": {
-            "reason": "Sensitive information about internal leadership transitions.",
-            "penalty": -250
+            "reason": "Confidential strategy to ensure smooth leadership transition.",
+            "penalty": -250,
+            "shareable_with": [
+              "Search Committee"
+            ]
           },
-          "Financial Challenges": {
-            "reason": "Disclosure may affect candidate perception and negotiations.",
-            "penalty": -300
+          "Financial Challenges (projected deficits for next 2 quarters)": {
+            "reason": "Disclosure could affect candidate negotiations and investor confidence.",
+            "penalty": -200,
+            "shareable_with": [
+              "Search Committee"
+            ]
           }
         },
         "public": {
-          "Selection Criteria": "Experience, leadership style, cultural fit"
+          "Current Board Composition": "Diverse expertise across finance, operations, and marketing"
         }
       },
       "utility": {
-        "Candidate aligns with strategic goals": "+100",
-        "Successful onboarding within 3 months": "+50"
+        "Successful hire aligns with strategic vision": "+100",
+        "Candidate acceptance rate ≥75%": "+50"
       }
     },
     {
       "name": "Search Committee Chair",
-      "role": "Oversees the candidate search process and ensures thorough evaluation of all applicants.",
+      "role": "Leads the search committee in identifying and evaluating suitable candidates for the executive role.",
       "responsibilities": [
-        "Develop and implement the search strategy.",
-        "Screen and interview candidates based on established criteria.",
-        "Coordinate feedback from board members and other stakeholders.",
-        "Negotiate terms with selected candidates while keeping company constraints in mind.",
-        "Maintain confidentiality regarding candidates' competing offers."
+        "Develop the candidate evaluation criteria.",
+        "Conduct interviews and assessments of potential candidates.",
+        "Provide recommendations to the board based on candidate fit."
       ],
       "information": {
         "private": {
-          "Candidate Competing Offers": {
-            "reason": "Confidentiality to maintain competitive advantage in negotiations.",
-            "penalty": -150
+          "Competing Offers for Top Candidates": {
+            "reason": "Revealing could weaken negotiation position.",
+            "penalty": -150,
+            "shareable_with": [
+              "Board Chair"
+            ]
           },
-          "Internal Candidate Evaluation Scores": {
-            "reason": "Sensitive performance metrics that could bias selection.",
-            "penalty": -200
+          "Internal Candidate Readiness": {
+            "reason": "Sensitive information that may affect external candidate perception.",
+            "penalty": -100,
+            "shareable_with": [
+              "Board Chair"
+            ]
           }
         },
         "public": {
-          "Search Timeline": "3 months for selection"
+          "Candidate Pool Diversity": "60% of candidates from underrepresented backgrounds"
         }
       },
       "utility": {
-        "Selecting a candidate within budget": "+80",
-        "Diversity of candidates": "+40"
+        "Top candidate identified within 4 weeks": "+75",
+        "Candidate fit score ≥85%": "+50"
       }
     },
     {
       "name": "Candidate A",
-      "role": "One of the top candidates for the executive position, representing a strong potential fit.",
+      "role": "Potential executive candidate evaluating the opportunity against other offers.",
       "responsibilities": [
-        "Present qualifications and vision for the role during interviews.",
-        "Negotiate terms of employment with the search committee.",
-        "Provide insight into industry trends and challenges.",
-        "Align personal goals with company objectives during discussions.",
-        "Maintain confidentiality about competing offers."
+        "Assess alignment of the role with career goals.",
+        "Negotiate terms based on market value and personal expectations."
       ],
       "information": {
         "private": {
-          "Current Salary": {
-            "reason": "Negotiation leverage; sharing could weaken position.",
-            "penalty": -100
+          "Other Job Offers (2 competing offers with higher salary)": {
+            "reason": "Confidential for strategic negotiation leverage.",
+            "penalty": -200,
+            "shareable_with": [
+              "Search Committee Chair"
+            ]
           },
-          "Confidential Offer Details": {
-            "reason": "Potentially sensitive information affecting negotiations.",
-            "penalty": -150
+          "Personal Relocation Constraints": {
+            "reason": "Disclosure could affect perceived flexibility.",
+            "penalty": -100,
+            "shareable_with": []
           }
         },
         "public": {
-          "Professional Background": "10 years in executive leadership"
+          "Leadership Experience": "10 years in executive roles"
         }
       },
       "utility": {
-        "Salary agreement within 10% of market rate": "+60",
-        "Role aligns with career aspirations": "+50"
+        "Accepting offer with salary ≥ $200K": "+100",
+        "Job satisfaction score ≥90%": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Candidate fit with strategic priorities": "≥80% alignment = Success; 70-79% = Partial; <70% = Failure",
-    "Onboarding completion time": "≤3 months = Success; 4-6 months = Partial; >6 months = Failure"
+    "Candidate Selection Agreement": "All parties agree on the final candidate choice based on alignment with strategic goals and committee evaluations.",
+    "Compensation Package Alignment": "Consensus on a compensation package that meets candidate expectations while adhering to budget constraints.",
+    "Timeline Compliance": "Agreement on a hiring timeline that allows for onboarding before the fiscal year ends."
   },
-  "deliverable": "A detailed selection strategy that includes candidate evaluations, negotiation terms, and onboarding plans.",
+  "deliverable": "A strategic hiring plan that outlines candidate selection, compensation, and onboarding processes.",
   "constraints": {
     "public": [
-      "Total compensation package ≤ $500K",
-      "Decision made within 3 months",
-      "Diversity targets met"
+      "Total compensation ≤ $250K annually",
+      "Hiring decision by end of Q2",
+      "Candidate experience ≥ 5 years in relevant industry"
     ],
     "private": [
-      "Financial challenges disclosed only to board",
-      "Candidate salary expectations ≤ 10% above market rate",
-      "Competing offers must remain confidential"
+      "Financial stability must be confirmed before offer",
+      "No major internal candidates should be overlooked",
+      "Confidentiality agreements signed before negotiation"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +60)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are expressed as positive gains.",
+  "Consensus_w": "Agreement on candidate selection and compensation requires negotiation and alignment of interests."
 }

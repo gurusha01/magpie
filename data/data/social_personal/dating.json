@@ -1,117 +1,128 @@
 {
-  "scenario": "A celebrity relationship arrangement is established where public figures, publicists, and managers negotiate to optimize public image while managing personal preferences and career trajectories.",
-  "task": "Develop a strategic plan that outlines the relationship arrangement, public image management, and career trajectory alignment while balancing private concerns and public perceptions.",
+  "scenario": "A high-profile celebrity relationship arrangement involves collaboration between public figures, their publicists, and managers, each holding private information that could affect public perception and career trajectories.",
+  "task": "Develop a strategic relationship management plan that balances public image, personal preferences, and career goals. Agents must navigate competing priorities: publicists may push for visibility, managers may prioritize career trajectories, and public figures might have personal relationship preferences that conflict with public expectations. To achieve alignment, they must share information selectively to build consensus while protecting sensitive details that could impact reputations or career paths.",
   "agents": [
     {
       "name": "Public Figure A",
-      "role": "Celebrity involved in the relationship arrangement, balancing personal desires with public image.",
+      "role": "Celebrity actively involved in the relationship and its public portrayal.",
       "responsibilities": [
-        "Communicate personal relationship preferences to the publicist and manager.",
-        "Participate in public appearances and events to shape public perception.",
-        "Maintain a positive image in media through controlled social interactions.",
-        "Align personal career goals with the relationship narrative.",
-        "Provide feedback on public image strategies proposed by the publicist."
+        "Engage in public appearances and events.",
+        "Communicate personal relationship preferences.",
+        "Collaborate with publicist on image strategy."
       ],
       "information": {
         "private": {
-          "Preferred Relationship Dynamics": {
-            "reason": "Personal preferences should remain confidential to avoid media speculation.",
-            "penalty": -100
+          "Personal Relationship Preferences (prefers low-key visibility)": {
+            "reason": "Disclosing could undermine public persona and lead to unwanted media speculation.",
+            "penalty": -150,
+            "shareable_with": [
+              "Publicist"
+            ]
           },
-          "Career Aspirations (film roles)": {
-            "reason": "Sensitive career trajectory information that could impact negotiations.",
-            "penalty": -150
+          "Career Trajectory Plans (interested in directing projects)": {
+            "reason": "Revealing ambitions could attract unwanted scrutiny or competition.",
+            "penalty": -200,
+            "shareable_with": [
+              "Manager"
+            ]
           }
         },
         "public": {
-          "Public Image Rating": "75%",
-          "Engagement Level": "High"
+          "Current Projects": "Upcoming album release and film debut"
         }
       },
       "utility": {
-        "Positive media coverage": "+50",
-        "Achieving personal career goals": "+40"
+        "Positive media coverage": "+100",
+        "Achieving personal relationship goals": "+75"
       }
     },
     {
       "name": "Publicist B",
-      "role": "Manages the public image of the celebrity and coordinates media interactions.",
+      "role": "Manages the public image and media relations for the celebrity.",
       "responsibilities": [
-        "Craft and implement strategies to enhance the celebrity's public image.",
-        "Negotiate media appearances and interviews to control narratives.",
-        "Monitor public sentiment and adjust strategies accordingly.",
-        "Advise on relationship dynamics to maximize positive exposure.",
-        "Protect confidential information while promoting the public figure."
+        "Craft press releases and media strategies.",
+        "Coordinate public appearances and events.",
+        "Monitor public sentiment and adjust strategies accordingly."
       ],
       "information": {
         "private": {
-          "Image Management Strategy": {
-            "reason": "Sensitive strategies that, if leaked, could undermine efforts.",
-            "penalty": -200
+          "Undisclosed Image Concerns (negative press from previous relationship)": {
+            "reason": "Revealing could cause reputational damage and affect current strategies.",
+            "penalty": -100,
+            "shareable_with": [
+              "Manager"
+            ]
           },
-          "Media Contact List": {
-            "reason": "Confidential relationships with media personnel to secure favorable coverage.",
-            "penalty": -100
+          "Confidential Media Negotiations (exclusive interview offers)": {
+            "reason": "Leaking could jeopardize negotiations and future opportunities.",
+            "penalty": -150,
+            "shareable_with": [
+              "Public Figure A"
+            ]
           }
         },
         "public": {
-          "Current Media Sentiment": "Favorable",
-          "Upcoming Events": "3 scheduled appearances"
+          "Media Engagements": "5 scheduled interviews in the next month"
         }
       },
       "utility": {
-        "Successful media coverage": "+60",
-        "Maintaining positive public sentiment": "+30"
+        "Securing positive press coverage": "+80",
+        "Enhancing public figure's visibility": "+60"
       }
     },
     {
       "name": "Manager C",
-      "role": "Oversees the career trajectory and business decisions related to the celebrity.",
+      "role": "Oversees career development and strategic planning for the public figure.",
       "responsibilities": [
-        "Align career goals with public image strategies and relationship dynamics.",
-        "Negotiate contracts and opportunities that fit the celebrity's brand.",
-        "Ensure that personal relationships do not conflict with professional goals.",
-        "Advise on timing and public messaging related to the relationship.",
-        "Manage financial aspects related to public appearances and events."
+        "Negotiate contracts and career opportunities.",
+        "Advise on public appearances and media engagement.",
+        "Ensure alignment between public image and career goals."
       ],
       "information": {
         "private": {
-          "Contractual Obligations": {
-            "reason": "Confidential agreements that could impact negotiations and relationships.",
-            "penalty": -250
+          "Future Project Deals (potential film directing opportunity)": {
+            "reason": "Disclosing could lead to competitive bidding and unwanted attention.",
+            "penalty": -200,
+            "shareable_with": [
+              "Publicist B"
+            ]
           },
-          "Financial Projections": {
-            "reason": "Sensitive financial data that could influence competitor strategies.",
-            "penalty": -200
+          "Performance Metrics (social media engagement analytics)": {
+            "reason": "Sensitive data; revealing could give competitors insights.",
+            "penalty": -100,
+            "shareable_with": [
+              "Public Figure A"
+            ]
           }
         },
         "public": {
-          "Total Revenue from Appearances": "$1M",
-          "Projected Growth": "20%"
+          "Upcoming Appearances": "2 major award shows in the next quarter"
         }
       },
       "utility": {
-        "Maximizing revenue from public appearances": "+70",
-        "Aligning career moves with public image": "+40"
+        "Successful contract negotiations": "+100",
+        "Maintaining public figure's brand integrity": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Public Image Rating": "≥80% = Success; 70-79% = Partial success; <70% = Failure",
-    "Career Trajectory Alignment": "≥3 successful career moves = Success; 1-2 = Partial success; 0 = Failure"
+    "Public Image Alignment": "All agents agree on a cohesive public strategy that respects the public figure's personal preferences while maximizing media visibility.",
+    "Career Goals Synchronization": "Consensus on career trajectory that aligns with personal relationship plans and public image considerations.",
+    "Media Strategy Agreement": "All parties agree on the media engagement plan that balances press opportunities with the public figure's desired level of privacy."
   },
-  "deliverable": "A strategic plan that details the relationship arrangement, public image management, and career trajectory alignment.",
+  "deliverable": "A relationship management plan detailing strategies for public image, career trajectory, and personal preferences.",
   "constraints": {
     "public": [
-      "Maintain public image rating ≥70%",
-      "Ensure no major media controversies arise",
-      "Achieve at least 2 successful public appearances per month"
+      "Positive media sentiment ≥80%",
+      "Minimum of 3 public appearances per quarter",
+      "No major controversies during the relationship period"
     ],
     "private": [
-      "Confidentiality of personal preferences must be maintained",
-      "No public disclosure of financial projections",
-      "Career aspirations must align with public narrative"
+      "Maintain confidentiality of sensitive personal preferences",
+      "Achieve minimum social media engagement targets",
+      "Ensure no public conflicts arise from the relationship"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150). Utilities are expressed as gains (e.g., +70, +60, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +60).",
+  "Consensus_w": "Negotiation and alignment are essential for balancing public image and personal preferences."
 }

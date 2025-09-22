@@ -1,114 +1,131 @@
 {
-  "scenario": "A property negotiation unfolds involving a seller, a buyer, and real estate agents, who must manage undisclosed budget ceilings and hidden structural issues while navigating competing offers.",
-  "task": "Create a negotiation strategy that leads to a successful sale while balancing the interests of all parties involved, ensuring that all relevant information is shared without compromising strategic advantages.",
+  "scenario": "A property negotiation unfolds involving a seller, a buyer, and real estate agents, all navigating undisclosed budget ceilings and hidden structural issues while competing offers complicate the discussions.",
+  "task": "Create a comprehensive negotiation strategy that addresses budget limits, structural integrity assessments, and competing offers, ensuring all parties can align on price, contingencies, and terms while managing sensitive information effectively.",
   "agents": [
     {
-      "name": "Seller Agent",
-      "role": "Represents the seller's interests, aiming to maximize property sale price.",
-      "responsibilities": [
-        "Advise the seller on market conditions and pricing strategies.",
-        "Negotiate offers and counteroffers on behalf of the seller.",
-        "Identify and disclose any significant property issues to avoid legal repercussions.",
-        "Manage communication between the seller and potential buyers.",
-        "Ensure the seller's financial goals are met during negotiations."
-      ],
-      "information": {
-        "private": {
-          "Budget Ceiling ($500K)": {
-            "reason": "Seller's maximum price for the property; disclosing may weaken negotiation position.",
-            "penalty": -150
-          },
-          "Structural Issues (roof leaks)": {
-            "reason": "Disclosure could deter potential buyers and reduce offers.",
-            "penalty": -200
-          }
-        },
-        "public": {
-          "Property Listing Price": "$550K"
-        }
-      },
-      "utility": {
-        "Sale price ≥ $550K": "+100",
-        "Sale price between $500K and $549K": "+50"
-      }
-    },
-    {
-      "name": "Buyer Agent",
-      "role": "Represents the buyer's interests, focused on securing the best deal possible.",
-      "responsibilities": [
-        "Assess property value and advise the buyer on offer strategies.",
-        "Negotiate terms and conditions of the purchase on behalf of the buyer.",
-        "Investigate potential issues with the property and verify disclosures.",
-        "Communicate offers and counteroffers between the buyer and seller's agent.",
-        "Ensure the buyer's financial constraints are respected in negotiations."
-      ],
-      "information": {
-        "private": {
-          "Buyer Budget ($475K)": {
-            "reason": "Buyer's maximum affordability; revealing this can weaken negotiation leverage.",
-            "penalty": -100
-          },
-          "Competing Offer ($490K)": {
-            "reason": "Confidentiality of other offers to maintain competitive advantage.",
-            "penalty": -150
-          }
-        },
-        "public": {
-          "Desired Property Features": "3 bedrooms, 2 bathrooms, backyard"
-        }
-      },
-      "utility": {
-        "Acquisition price ≤ $475K": "+100",
-        "Acquisition price between $476K and $490K": "+50"
-      }
-    },
-    {
       "name": "Seller",
-      "role": "Owner of the property, looking to sell at the best possible price.",
+      "role": "Property owner looking to maximize sale price while disclosing minimal issues.",
       "responsibilities": [
-        "Provide accurate information about the property to the agent.",
-        "Review and respond to offers received from potential buyers.",
-        "Decide on counteroffers based on agent's advice.",
-        "Disclose significant property issues as required by law.",
-        "Align sale goals with market realities."
+        "Provide property disclosures as required by law.",
+        "Negotiate price and terms with potential buyers.",
+        "Manage competing offers to drive up sale price.",
+        "Coordinate with real estate agents for marketing."
       ],
       "information": {
         "private": {
-          "Emotional Attachment Value ($20K)": {
-            "reason": "Personal value may not be relevant to negotiations; could skew expectations.",
-            "penalty": -50
+          "Undisclosed Structural Issues (foundation cracks)": {
+            "reason": "Disclosure may lower buyer offers significantly.",
+            "penalty": -300,
+            "shareable_with": [
+              "Real Estate Agent"
+            ]
           },
-          "Urgency to Sell": {
-            "reason": "Seller's need to relocate quickly; could pressure negotiations.",
-            "penalty": -100
+          "Minimum Acceptable Price ($500K)": {
+            "reason": "Revealing this could weaken negotiation power.",
+            "penalty": -200,
+            "shareable_with": [
+              "Real Estate Agent"
+            ]
           }
         },
         "public": {
-          "Property Condition": "Good, minor repairs needed"
+          "Asking Price": "$600K"
         }
       },
       "utility": {
-        "Sale completed within 30 days": "+50",
-        "Sale price ≥ $550K": "+100"
+        "Sale price ≥ $600K": "+100",
+        "Sale completed within 30 days": "+50"
+      }
+    },
+    {
+      "name": "Buyer",
+      "role": "Prospective buyer aiming to secure the property at the lowest possible price while ensuring its condition.",
+      "responsibilities": [
+        "Conduct property inspections.",
+        "Assess comparable property values.",
+        "Negotiate terms and contingencies.",
+        "Secure financing for the purchase."
+      ],
+      "information": {
+        "private": {
+          "Max Budget Ceiling ($550K)": {
+            "reason": "Revealing this could limit negotiation leverage.",
+            "penalty": -250,
+            "shareable_with": [
+              "Real Estate Agent"
+            ]
+          },
+          "Competing Offer ($580K)": {
+            "reason": "Disclosure could escalate bidding unnecessarily.",
+            "penalty": -150,
+            "shareable_with": [
+              "Real Estate Agent"
+            ]
+          }
+        },
+        "public": {
+          "Pre-approval Status": "Approved for financing"
+        }
+      },
+      "utility": {
+        "Purchase price ≤ $550K": "+100",
+        "Successful negotiation of repairs": "+50"
+      }
+    },
+    {
+      "name": "Real Estate Agent",
+      "role": "Facilitates the negotiation process between the buyer and seller, aiming to close the deal efficiently.",
+      "responsibilities": [
+        "Present offers to the seller.",
+        "Advise the buyer on market conditions.",
+        "Manage communication between parties.",
+        "Ensure compliance with real estate laws."
+      ],
+      "information": {
+        "private": {
+          "Undisclosed Multiple Offers": {
+            "reason": "Revealing this could disrupt negotiations and lead to bidding wars.",
+            "penalty": -200,
+            "shareable_with": [
+              "Seller"
+            ]
+          },
+          "Commission Rate (3%)": {
+            "reason": "Disclosing this could affect negotiations on sale price.",
+            "penalty": -100,
+            "shareable_with": [
+              "Buyer"
+            ]
+          }
+        },
+        "public": {
+          "Market Analysis Report": "Properties in area average $590K"
+        }
+      },
+      "utility": {
+        "Closing sale within 60 days": "+75",
+        "Achieving a sale price ≥ $600K": "+100"
       }
     }
   ],
   "success_criteria": {
-    "Final Sale Price": "≥$550K = Success; $500K-$549K = Partial Success; < $500K = Failure",
-    "Closing Timeframe": "≤30 days = Success; 31-45 days = Partial Success; >45 days = Failure"
+    "Price Agreement": "All parties agree on a final sale price that meets the seller's minimum acceptable price and the buyer's budget ceiling.",
+    "Contingency Alignment": "Consensus on contingencies related to property condition and financing terms that satisfy both buyer and seller.",
+    "Offer Acceptance": "The seller acknowledges the buyer's offer as the most favorable considering competing bids."
   },
-  "deliverable": "A comprehensive negotiation strategy that outlines offers, counteroffers, and communication plans.",
+  "deliverable": "A finalized purchase agreement detailing price, conditions, and contingencies.",
   "constraints": {
     "public": [
-      "Property must be sold within 45 days",
-      "All offers must be presented to the seller",
-      "Buyer's offer must include a pre-approval letter"
+      "Asking price ≤ $600K",
+      "Property inspection completed within 7 days",
+      "Financing secured before closing"
     ],
     "private": [
-      "Seller's budget ceiling ≤ $500K",
-      "Buyer's maximum budget ≤ $475K",
-      "Structural issues must be disclosed if they affect value"
+      "Seller's minimum price must remain undisclosed",
+      "Buyer's maximum budget should not be revealed",
+      "Structural issues must be assessed before agreement"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +100, +50)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are expressed as positive gains.",
+  "Consensus_w": "Negotiation requires trade-offs on price, contingencies, and disclosures."
 }

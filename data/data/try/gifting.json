@@ -1,114 +1,128 @@
 {
-  "scenario": "A team must collaboratively purchase a gift for a colleague while balancing personal preferences and budget constraints. Each member has sensitive knowledge that could influence the choice but also holds differing opinions on what would be appropriate.",
-  "task": "Create a gift purchase plan that accommodates the preferences of the colleague while adhering to the budget and maintaining confidentiality about personal insights.",
+  "scenario": "A group of coworkers collaborates to purchase a thoughtful gift for a colleague while navigating budget constraints and sensitive personal information about the recipient.",
+  "task": "Develop a comprehensive gift purchasing plan that balances budget, personal preferences, and the need for discretion regarding the colleague's private interests and circumstances. Agents must ensure that the gift is meaningful while adhering to financial limits and avoiding the disclosure of sensitive information that could affect the colleague's privacy.",
   "agents": [
     {
       "name": "Team Leader",
-      "role": "Coordinates the gift purchasing process and ensures team alignment.",
+      "role": "Coordinates the gift purchasing process and ensures that all team members are aligned on budget and preferences.",
       "responsibilities": [
-        "Gather input from team members about gift ideas.",
-        "Set a budget limit based on team consensus.",
-        "Ensure that the selected gift reflects the colleague's preferences.",
-        "Facilitate discussions to resolve differing opinions.",
-        "Oversee the final purchase and delivery arrangements."
+        "Facilitate discussions about potential gift ideas.",
+        "Manage the overall budget for the gift.",
+        "Ensure discretion regarding the colleague's personal information."
       ],
       "information": {
         "private": {
-          "Colleague's Favorite Hobby": {
-            "reason": "Personal information that could influence gift choice; sharing might breach trust.",
-            "penalty": -100
+          "Colleague's Personal Interests (hobby: gardening)": {
+            "reason": "Disclosure could lead to unwanted attention or assumptions about the colleague's preferences.",
+            "penalty": -100,
+            "shareable_with": [
+              "Gift Coordinator"
+            ]
           },
-          "Team Budget Limit": {
-            "reason": "Internal financial discussions; revealing could affect future allocations.",
-            "penalty": -50
+          "Budget Flexibility ($50 maximum)": {
+            "reason": "Revealing could lead to pressure for higher spending from other team members.",
+            "penalty": -50,
+            "shareable_with": [
+              "Gift Coordinator"
+            ]
           }
         },
         "public": {
-          "Total Budget": "$200"
+          "Total Team Budget": "$200"
         }
       },
       "utility": {
-        "Gift aligns with colleague's preferences": "+100",
-        "Stays within budget": "+50"
+        "Gift well-received by colleague": "+75",
+        "Staying under budget": "+50"
       }
     },
     {
-      "name": "Close Colleague",
-      "role": "Has personal insights about the colleague's preferences and interests.",
+      "name": "Gift Coordinator",
+      "role": "Researches and proposes gift options while ensuring alignment with the colleague's preferences and budget.",
       "responsibilities": [
-        "Provide insights on what the colleague would appreciate.",
-        "Advocate for a gift that reflects the colleague's personality.",
-        "Help negotiate between differing opinions on the gift choice.",
-        "Ensure the gift is suitable for the occasion.",
-        "Support the team leader in finalizing the purchase."
+        "Identify suitable gift options based on the colleague's interests.",
+        "Present gift options to the team for feedback.",
+        "Coordinate the purchase and delivery of the gift."
       ],
       "information": {
         "private": {
-          "Colleague's Recent Achievements": {
-            "reason": "Sensitive information that could influence the gift choice; should remain confidential.",
-            "penalty": -80
+          "Preferred Gift Type (personalized items)": {
+            "reason": "Keeping this secret maintains the surprise element.",
+            "penalty": -150,
+            "shareable_with": [
+              "Team Leader"
+            ]
           },
-          "Personal Preferences": {
-            "reason": "Details that could bias the decision-making process; should not be disclosed.",
-            "penalty": -60
+          "Potential Gift Sources (local shops)": {
+            "reason": "Revealing could lead to competition among team members for purchasing responsibilities.",
+            "penalty": -100,
+            "shareable_with": [
+              "Team Leader"
+            ]
           }
         },
         "public": {
-          "Gift Occasion": "Birthday"
+          "Gift Options Compiled": "5 potential gifts"
         }
       },
       "utility": {
-        "Gift is meaningful": "+80",
-        "Enhances team morale": "+40"
+        "Gift selected with unanimous approval": "+100",
+        "Purchase completed on time": "+40"
       }
     },
     {
-      "name": "Budget Analyst",
-      "role": "Ensures that the purchasing process adheres to financial constraints.",
+      "name": "Finance Officer",
+      "role": "Oversees the budget and ensures that all expenditures align with company policies.",
       "responsibilities": [
-        "Monitor spending to ensure compliance with the budget.",
-        "Provide financial insights and alternatives if costs exceed limits.",
-        "Advise on cost-effective gift options.",
-        "Review the final purchase for budget adherence.",
-        "Communicate any potential financial issues to the team."
+        "Review and approve the proposed gift budget.",
+        "Ensure compliance with financial policies regarding gift-giving.",
+        "Provide transparency on budget usage to the team."
       ],
       "information": {
         "private": {
-          "Budget Flexibility": {
-            "reason": "Internal policy on budget adjustments; sharing could impact future decisions.",
-            "penalty": -40
+          "Additional Budget Considerations (team bonuses)": {
+            "reason": "Sensitive information that could influence team expectations.",
+            "penalty": -200,
+            "shareable_with": [
+              "Team Leader"
+            ]
           },
-          "Cost Breakdown of Gift Options": {
-            "reason": "Detailed financial analysis that could guide competitors; should remain internal.",
-            "penalty": -30
+          "Discretionary Spending Limits ($100 maximum)": {
+            "reason": "Revealing could lead to demands for increased spending.",
+            "penalty": -50,
+            "shareable_with": [
+              "Gift Coordinator"
+            ]
           }
         },
         "public": {
-          "Remaining Budget": "$150"
+          "Current Budget Usage": "$50"
         }
       },
       "utility": {
-        "Stays under budget": "+100",
-        "Identifies cost-effective options": "+60"
+        "Budget adhered to without overspending": "+60",
+        "Team morale increased through thoughtful gift": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Gift appropriateness": "≥80% team consensus = Success; 60-79% = Partial success; <60% = Failure",
-    "Budget adherence": "≤$200 = Success; $201-$220 = Partial success; >$220 = Failure"
+    "Budget Alignment": "All agents agree on a final budget that does not exceed $200 and respects individual spending limits.",
+    "Gift Selection Consensus": "The team reaches unanimous agreement on the chosen gift that reflects the colleague's interests.",
+    "Discretion Maintained": "No sensitive personal information about the colleague is disclosed during the planning and purchasing process."
   },
-  "deliverable": "A finalized gift purchasing plan including selected item, budget details, and team consensus.",
+  "deliverable": "A detailed gift purchasing plan that outlines budget adherence, chosen gift, and delivery logistics.",
   "constraints": {
     "public": [
       "Total budget ≤ $200",
-      "Gift purchase completed by the colleague's birthday",
-      "Team consensus achieved on gift choice"
+      "Gift must be purchased within 2 weeks",
+      "At least 3 gift options presented for team review"
     ],
     "private": [
-      "No member discloses personal insights about the colleague's preferences",
-      "Budget adjustments must not exceed 10%",
-      "Gift must reflect the colleague's interests without revealing sensitive information"
+      "Colleague's personal interests must remain confidential",
+      "No overspending beyond $50 on any single gift",
+      "Unanimous agreement required for gift selection"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -100, -80, -60, -50, -40, -30). Utilities are expressed as gains (e.g., +100, +80, +60, +50, +40)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50, +40).",
+  "Consensus_w": "All agents must negotiate to agree on the final gift choice and budget adherence."
 }

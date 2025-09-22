@@ -1,114 +1,128 @@
 {
-  "scenario": "Corporate executive transportation scheduling requires collaboration between security teams, executives, and transportation providers, each holding sensitive threat assessments and undisclosed meeting locations.",
-  "task": "Create a secure transportation schedule that ensures executive safety while accommodating private threat data and undisclosed locations. Agents must negotiate sharing sensitive information without compromising security.",
+  "scenario": "Corporate executive transportation scheduling involves collaboration between security teams, executives, and transportation providers, each holding private threat assessment data and undisclosed meeting locations that could impact security and logistics.",
+  "task": "Develop a comprehensive transportation schedule that ensures executive safety, aligns with meeting requirements, and meets budget constraints while sharing sensitive information judiciously to maintain confidentiality and security.",
   "agents": [
     {
-      "name": "Security Chief",
-      "role": "Oversees the safety protocols for executive transportation, ensuring all potential threats are mitigated.",
+      "name": "Chief Security Officer",
+      "role": "Responsible for ensuring executive safety and assessing threat levels during transportation.",
       "responsibilities": [
-        "Conduct threat assessments based on current intelligence.",
-        "Coordinate with transportation providers to ensure safe routes.",
-        "Implement security measures at undisclosed meeting locations.",
-        "Manage security personnel during transport and at destinations.",
-        "Provide real-time updates to executives on security status."
+        "Conduct threat assessments for each executive transport.",
+        "Coordinate with local law enforcement for security support.",
+        "Manage security personnel assignments for transportation routes."
       ],
       "information": {
         "private": {
-          "Threat Level (High)": {
-            "reason": "Details about specific threats could incite panic or compromise security measures.",
-            "penalty": -300
+          "Threat Level Assessment (high for certain routes)": {
+            "reason": "Disclosure could alert potential threats or compromise security.",
+            "penalty": -250,
+            "shareable_with": [
+              "Transportation Provider"
+            ]
           },
-          "Meeting Location (Confidential)": {
-            "reason": "Revealing locations could lead to potential breaches in security.",
-            "penalty": -200
+          "Executive Travel Preferences (specific routes and timings)": {
+            "reason": "Leaking this could lead to unwanted public attention or potential threats.",
+            "penalty": -150,
+            "shareable_with": [
+              "Executive Team"
+            ]
           }
         },
         "public": {
-          "Security Protocols": "Standard operating procedures for executive transport"
+          "Number of Executives Transported": "5"
         }
       },
       "utility": {
-        "Safe transport completed": "+100",
-        "Threat level mitigated": "+50"
-      }
-    },
-    {
-      "name": "Executive Assistant",
-      "role": "Facilitates the scheduling and coordination of executive meetings and transportation.",
-      "responsibilities": [
-        "Schedule transportation for executives based on their availability.",
-        "Communicate with security about the executives' needs during transport.",
-        "Ensure all logistics are handled discreetly and efficiently.",
-        "Keep track of all executive appointments and changes in schedule.",
-        "Liaise with transportation providers to confirm arrangements."
-      ],
-      "information": {
-        "private": {
-          "Executive Itinerary (Sensitive)": {
-            "reason": "Disclosing schedules could expose executives to risks.",
-            "penalty": -150
-          },
-          "Transportation Provider Contracts": {
-            "reason": "Contracts contain proprietary agreements that must remain confidential.",
-            "penalty": -100
-          }
-        },
-        "public": {
-          "Transportation Schedule": "Available upon request from authorized personnel"
-        }
-      },
-      "utility": {
-        "Timely arrivals at all meetings": "+75",
-        "Efficient scheduling with minimal delays": "+50"
+        "No security incidents during transport": "+100",
+        "Timely arrivals at all meeting locations": "+50"
       }
     },
     {
       "name": "Transportation Provider",
-      "role": "Responsible for providing safe and reliable transportation for executives.",
+      "role": "Manages logistics and transportation arrangements for executives.",
       "responsibilities": [
-        "Ensure vehicles meet safety and security standards.",
-        "Coordinate with security for safe routes and schedules.",
-        "Provide real-time tracking of transportation for security teams.",
-        "Maintain confidentiality regarding client information and schedules.",
-        "Adapt to last-minute changes in transportation needs."
+        "Schedule vehicles and drivers based on executive needs.",
+        "Ensure vehicles meet security and comfort standards.",
+        "Communicate with security teams regarding route changes."
       ],
       "information": {
         "private": {
-          "Vehicle Security Features (Confidential)": {
-            "reason": "Specific features could be exploited by malicious actors.",
-            "penalty": -200
+          "Vehicle Availability (2 armored vehicles reserved)": {
+            "reason": "Revealing could attract competitors or lead to price hikes.",
+            "penalty": -100,
+            "shareable_with": [
+              "Chief Security Officer"
+            ]
           },
-          "Client List (Sensitive)": {
-            "reason": "Revealing client information could harm business relationships.",
-            "penalty": -150
+          "Confidential Contract Terms with Security (specific clauses)": {
+            "reason": "Could compromise future negotiations and pricing strategy.",
+            "penalty": -200,
+            "shareable_with": [
+              "Executive Team"
+            ]
           }
         },
         "public": {
-          "Service Availability": "24/7 for executive transport"
+          "Total Distance Covered (miles)": "150"
         }
       },
       "utility": {
-        "All scheduled transports completed without incident": "+100",
-        "Positive feedback from executives": "+50"
+        "All transports completed on time": "+100",
+        "Cost savings on transportation logistics": "+50"
+      }
+    },
+    {
+      "name": "Executive Team",
+      "role": "Oversees decision-making and schedules for corporate executives.",
+      "responsibilities": [
+        "Approve transportation schedules and routes.",
+        "Communicate preferences and requirements to security and transportation teams.",
+        "Manage overall executive travel budget."
+      ],
+      "information": {
+        "private": {
+          "Upcoming Acquisition Discussions (location confidential)": {
+            "reason": "Disclosure could jeopardize negotiations and corporate strategy.",
+            "penalty": -300,
+            "shareable_with": [
+              "Chief Security Officer"
+            ]
+          },
+          "Executive Availability (specific executives not available on certain dates)": {
+            "reason": "Could be exploited by competitors if disclosed.",
+            "penalty": -150,
+            "shareable_with": [
+              "Transportation Provider"
+            ]
+          }
+        },
+        "public": {
+          "Total Budget for Transportation": "$50,000"
+        }
+      },
+      "utility": {
+        "All executives arrive safely and on time": "+150",
+        "Maintain budget compliance": "+100"
       }
     }
   ],
   "success_criteria": {
-    "Transport safety rate": "100% = Success; 90-99% = Partial; <90% = Failure",
-    "Timeliness of arrivals": "≥95% on-time arrivals = Success; 80-94% = Partial; <80% = Failure"
+    "Safety Agreement": "All parties agree on the safety protocols for transportation that address threat levels and secure routes.",
+    "Schedule Alignment": "The transportation schedule aligns with executive availability and meeting locations without compromising security.",
+    "Budget Compliance": "Consensus on transportation costs ensuring the total budget is respected while meeting all logistical needs."
   },
-  "deliverable": "A comprehensive transportation schedule balancing security and executive needs.",
+  "deliverable": "A detailed transportation schedule that outlines routes, timings, and security measures for executive travel.",
   "constraints": {
     "public": [
-      "All transports must be completed within scheduled windows.",
-      "Executives must not be informed of potential threats unless necessary.",
-      "Transportation must comply with safety regulations."
+      "Total transportation budget ≤ $50,000",
+      "All routes must be secured according to threat assessments",
+      "No delays in executive arrivals"
     ],
     "private": [
-      "Threat assessments must remain confidential and not be fully disclosed.",
-      "Meeting locations can only be shared on a need-to-know basis.",
-      "Negotiations with transportation providers must remain undisclosed."
+      "Threat assessments must remain confidential",
+      "Executive preferences must not be disclosed",
+      "Contractual terms with security are not to be revealed"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +150, +100, +50).",
+  "Consensus_w": "Explicit agreement on the transportation schedule and security measures is required to ensure safety and compliance."
 }

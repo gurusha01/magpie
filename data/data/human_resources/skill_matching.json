@@ -1,114 +1,133 @@
 {
-  "scenario": "A specialized crisis response team is formed between government agencies, private contractors, and technical experts to address an undisclosed emerging threat while managing sensitive information and security clearances.",
-  "task": "Develop a coordinated crisis response plan that includes threat assessment, resource allocation, and communication strategies while ensuring the confidentiality of sensitive information.",
+  "scenario": "A specialized crisis response team is formed to address an emerging threat involving collaboration between government agencies, private contractors, and technical experts. Each entity possesses private information that could influence operational effectiveness and risk management.",
+  "task": "Develop a comprehensive crisis response plan that incorporates threat assessments, resource allocations, coordination protocols, and communication strategies. Agents must navigate competing interests: government agencies may prioritize public safety, private contractors focus on profitability, and technical experts aim for technological efficacy. They need to share information judiciously to build consensus while safeguarding sensitive details that could compromise security or operational integrity.",
   "agents": [
     {
-      "name": "Government Agency Lead",
-      "role": "Oversees the coordination of response efforts and ensures compliance with national security protocols.",
+      "name": "Government Agency Director",
+      "role": "Leads the crisis response initiative, ensuring alignment with national security protocols and public safety standards.",
       "responsibilities": [
-        "Conduct threat assessments and identify risk factors.",
-        "Allocate government resources and personnel for response efforts.",
-        "Ensure all actions comply with legal and regulatory requirements.",
-        "Facilitate communication between agencies and external contractors.",
-        "Maintain security protocols for sensitive information."
+        "Coordinate with other government bodies for unified response.",
+        "Oversee resource allocation and budget management.",
+        "Ensure compliance with federal regulations and protocols.",
+        "Communicate with the public and media on crisis developments."
       ],
       "information": {
         "private": {
-          "Threat Level Assessment (Classified)": {
-            "reason": "Disclosure could cause public panic and undermine operational security.",
-            "penalty": -300
+          "Security Clearance Issues (internal review pending)": {
+            "reason": "Disclosure could jeopardize personnel security and operational integrity.",
+            "penalty": -250,
+            "shareable_with": [
+              "Technical Expert"
+            ]
           },
-          "Resource Allocation (Restricted)": {
-            "reason": "Confidential budget details that could influence market behavior if leaked.",
-            "penalty": -200
+          "Threat Assessment (classified details)": {
+            "reason": "Sensitive nature of threat; revealing specifics could cause panic or affect operational security.",
+            "penalty": -300,
+            "shareable_with": [
+              "Private Contractor"
+            ]
           }
         },
         "public": {
-          "Crisis Response Framework": "Multi-agency collaboration and resource sharing."
+          "Crisis Response Budget": "$10M"
         }
       },
       "utility": {
-        "Threat neutralized within 48 hours": "+150",
-        "Successful inter-agency coordination": "+100"
+        "Public safety measures enacted within 48 hours": "+100",
+        "Compliance with federal regulations": "+50"
       }
     },
     {
       "name": "Private Contractor Manager",
-      "role": "Manages private sector resources and expertise in support of the crisis response.",
+      "role": "Manages logistics and operational execution of the crisis response, balancing between efficiency and cost-effectiveness.",
       "responsibilities": [
-        "Deploy technical resources and personnel as needed.",
-        "Ensure timely communication of capabilities and limitations.",
-        "Provide expertise on threat mitigation strategies.",
-        "Manage contractual obligations and deliverables.",
-        "Maintain confidentiality of proprietary information."
+        "Coordinate logistics for resource deployment.",
+        "Manage contractor personnel and ensure training compliance.",
+        "Develop cost estimates and budget proposals.",
+        "Communicate operational needs to government agencies."
       ],
       "information": {
         "private": {
-          "Capability Assessment (Confidential)": {
-            "reason": "Leaking could give competitors an advantage in securing contracts.",
-            "penalty": -250
+          "Cost Overruns (projected 20% increase)": {
+            "reason": "Internal financial strategy; revealing could affect contract negotiations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Government Agency Director"
+            ]
           },
-          "Operational Readiness Status": {
-            "reason": "Sensitive information that could affect public perception.",
-            "penalty": -150
+          "Confidential Client Feedback (on past performance)": {
+            "reason": "Sensitive information that could influence future contracts.",
+            "penalty": -100,
+            "shareable_with": [
+              "Technical Expert"
+            ]
           }
         },
         "public": {
-          "Resource Availability": "24/7 operational support."
+          "Resource Allocation Plan": "60% personnel, 30% equipment, 10% training"
         }
       },
       "utility": {
-        "Rapid deployment of resources": "+120",
-        "Meeting contractual deadlines": "+80"
+        "Operational efficiency maintained": "+75",
+        "Contractual obligations met within budget": "+50"
       }
     },
     {
       "name": "Technical Expert",
-      "role": "Provides specialized knowledge and technical support for threat analysis and response.",
+      "role": "Provides specialized knowledge and technical solutions to address the emerging threat effectively.",
       "responsibilities": [
-        "Analyze data related to the emerging threat.",
-        "Develop technical solutions to mitigate identified risks.",
-        "Collaborate with other agents to ensure a unified response.",
-        "Maintain up-to-date knowledge on threat technologies.",
-        "Generate reports for internal use without public disclosure."
+        "Conduct in-depth analysis of the threat.",
+        "Develop technical solutions and strategies.",
+        "Liaise with government and contractor personnel for integration.",
+        "Ensure compliance with technical standards and protocols."
       ],
       "information": {
         "private": {
-          "Technical Findings (Sensitive)": {
-            "reason": "Details could compromise ongoing investigations.",
-            "penalty": -200
+          "Capability Assessment (limited data available)": {
+            "reason": "Sensitive internal evaluation; disclosure could undermine negotiation position.",
+            "penalty": -200,
+            "shareable_with": [
+              "Government Agency Director"
+            ]
           },
-          "Research Data (Proprietary)": {
-            "reason": "Disclosure could undermine competitive advantage.",
-            "penalty": -100
+          "Emerging Threat Details (classified intelligence)": {
+            "reason": "Critical information that could panic the public if disclosed.",
+            "penalty": -300,
+            "shareable_with": [
+              "Private Contractor"
+            ]
           }
         },
         "public": {
-          "Expertise Areas": "Cybersecurity, risk assessment, and mitigation strategies."
+          "Technical Solution Viability Score": "85%"
         }
       },
       "utility": {
-        "Effective risk mitigation strategy implemented": "+100",
-        "Timely reporting of findings": "+50"
+        "Effective technical solution implemented": "+100",
+        "Integration time ≤ 2 weeks": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Threat neutralization time": "≤48 hours = Success; 49-72 hours = Partial Success; >72 hours = Failure",
-    "Inter-agency coordination effectiveness": "≥90% alignment = Success; 70-89% = Partial Success; <70% = Failure"
+    "Budget Agreement": "All parties agree to a final budget allocation that respects the Government Agency’s $10M ceiling and allows for contractor flexibility.",
+    "Operational Coordination": "Consensus is reached on resource deployment strategies that satisfy government oversight and contractor efficiency.",
+    "Threat Response Alignment": "Technical solutions proposed align with the government’s public safety objectives while meeting contractor operational needs."
   },
-  "deliverable": "A comprehensive crisis response plan detailing threat assessment, resource allocation, and communication strategies.",
+  "deliverable": "A comprehensive crisis response plan detailing threat assessment, resource allocation, and operational protocols.",
   "constraints": {
     "public": [
-      "Total response time ≤ 72 hours",
-      "Compliance with legal and regulatory standards",
-      "Effective communication between all parties"
+      "Total budget ≤ $10M",
+      "Crisis response initiated within 48 hours",
+      "Minimum 3 resource deployments completed",
+      "Compliance with federal security protocols"
     ],
     "private": [
-      "Confidentiality of threat details must be maintained",
-      "Operational budgets must remain undisclosed",
-      "Personnel security clearances must be verified"
+      "Security clearance issues resolved before deployment",
+      "No unresolved internal conflicts among agencies",
+      "Technical solutions validated before public announcement",
+      "Cost overruns ≤ 10%"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +150, +120, +100)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on shared resource allocations and operational strategies is required."
 }

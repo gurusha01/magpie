@@ -1,114 +1,128 @@
 {
-  "scenario": "High-stakes corporate mediation between executives, board members, and legal teams with private litigation strategies, undisclosed financial implications, and confidential personal motivations behind business decisions.",
-  "task": "Facilitate a mediation process that reconciles opposing interests of corporate executives and legal teams while ensuring confidentiality and compliance with internal governance.",
+  "scenario": "High-stakes corporate mediation involves executives, board members, and legal teams negotiating to resolve a complex dispute while safeguarding sensitive strategies and motivations.",
+  "task": "Develop a mediation strategy that reconciles financial interests, legal obligations, and personal motivations among stakeholders. Agents must navigate competing priorities: maintaining corporate integrity, managing potential litigation risks, and addressing personal agendas while ensuring that sensitive information is shared strategically to facilitate consensus.",
   "agents": [
     {
       "name": "Chief Executive Officer",
-      "role": "Leads the company's strategic vision and oversees overall operations.",
+      "role": "Leads corporate strategy and oversees overall mediation process.",
       "responsibilities": [
-        "Define the company's negotiation position and objectives.",
-        "Align internal stakeholders on the mediation strategy.",
-        "Communicate with the board about potential outcomes and risks.",
-        "Ensure that the mediation process adheres to corporate governance standards.",
-        "Evaluate the impact of mediation outcomes on company reputation."
+        "Set negotiation objectives and priorities.",
+        "Communicate corporate vision and values.",
+        "Ensure alignment between board and executive perspectives."
       ],
       "information": {
         "private": {
-          "Projected Revenue Loss (up to $10M)": {
-            "reason": "Sensitive financial data that could influence negotiation leverage.",
-            "penalty": -300
+          "Personal stakes in outcome (potential $5M bonus)": {
+            "reason": "Disclosure could undermine negotiation leverage.",
+            "penalty": -300,
+            "shareable_with": [
+              "Board Member"
+            ]
           },
-          "Executive Compensation Packages (undisclosed changes)": {
-            "reason": "Confidential agreements that could affect stakeholder trust.",
-            "penalty": -200
+          "Unreleased market analysis ($2B potential loss)": {
+            "reason": "Sensitive data that could impact corporate reputation.",
+            "penalty": -200,
+            "shareable_with": [
+              "Legal Team"
+            ]
           }
         },
         "public": {
-          "Current Market Position": "Leading in sector with 25% market share"
+          "Current Market Position": "$10B valuation"
         }
       },
       "utility": {
-        "Mediation resolves disputes favorably": "+100",
-        "Maintaining market share": "+50"
+        "Successful mediation outcome": "+100",
+        "Avoiding litigation costs": "+75"
       }
     },
     {
       "name": "Board Member",
-      "role": "Provides oversight and strategic direction for the company.",
+      "role": "Represents shareholder interests and ensures governance compliance.",
       "responsibilities": [
-        "Review and approve mediation strategies proposed by executives.",
-        "Ensure the mediation aligns with shareholder interests and corporate policies.",
-        "Communicate board concerns and expectations to the executive team.",
-        "Evaluate the implications of mediation outcomes on long-term strategy.",
-        "Facilitate discussions on potential compromises between conflicting parties."
+        "Advocate for shareholder value.",
+        "Review and approve mediation proposals.",
+        "Ensure compliance with legal and ethical standards."
       ],
       "information": {
         "private": {
-          "Shareholder Discontent (75% concerned about performance)": {
-            "reason": "Internal sentiment that could affect stock prices; must remain confidential.",
-            "penalty": -150
+          "Confidential votes on board decisions": {
+            "reason": "Revealing could influence stakeholder trust.",
+            "penalty": -150,
+            "shareable_with": [
+              "Chief Executive Officer"
+            ]
           },
-          "Proposed Changes to Corporate Governance (under discussion)": {
-            "reason": "Sensitive proposals that could impact board dynamics.",
-            "penalty": -100
+          "Personal investment stakes (up to $1M)": {
+            "reason": "Risk of bias perceptions if disclosed.",
+            "penalty": -100,
+            "shareable_with": [
+              "Legal Team"
+            ]
           }
         },
         "public": {
-          "Shareholder Meeting Schedule": "Quarterly, next in 3 weeks"
+          "Shareholder Satisfaction Rate": "90%"
         }
       },
       "utility": {
-        "Successful mediation outcome": "+70",
-        "Positive shareholder feedback": "+30"
+        "Maintaining shareholder value": "+100",
+        "Successful resolution of disputes": "+50"
       }
     },
     {
-      "name": "Legal Counsel",
-      "role": "Advises on legal implications and risk management during negotiations.",
+      "name": "General Counsel",
+      "role": "Advises on legal ramifications and oversees compliance issues.",
       "responsibilities": [
-        "Assess legal risks associated with mediation agreements.",
-        "Provide legal guidance to executives and board members.",
-        "Draft and review all mediation documents to ensure compliance.",
-        "Negotiate terms that protect the company's interests.",
-        "Advise on potential litigation strategies based on mediation outcomes."
+        "Develop legal strategies for mediation.",
+        "Assess risks of potential litigation.",
+        "Provide legal counsel to executives and board."
       ],
       "information": {
         "private": {
-          "Litigation Strategy Details (not disclosed)": {
-            "reason": "Sensitive legal strategy that could weaken negotiation position.",
-            "penalty": -250
+          "Pending litigation details (potential $50M case)": {
+            "reason": "Sensitive information that could leverage negotiation.",
+            "penalty": -250,
+            "shareable_with": [
+              "Chief Executive Officer"
+            ]
           },
-          "Confidential Client Agreements (impacting negotiation leverage)": {
-            "reason": "Undisclosed terms that could influence mediation outcomes.",
-            "penalty": -150
+          "Confidential agreements with external parties": {
+            "reason": "Risk of breaching confidentiality agreements.",
+            "penalty": -150,
+            "shareable_with": [
+              "Board Member"
+            ]
           }
         },
         "public": {
-          "Current Legal Challenges": "Pending litigation against competitors"
+          "Litigation Success Rate": "85%"
         }
       },
       "utility": {
-        "Mediation agreement minimizes legal exposure": "+90",
-        "Successful negotiation of favorable terms": "+60"
+        "Successfully avoiding lawsuits": "+100",
+        "Achieving favorable settlement terms": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Mediation Outcome Satisfaction": "≥75% satisfaction = Success; 50-74% = Partial success; <50% = Failure",
-    "Financial Impact Minimization": "≤$5M loss = Success; $5M-$10M = Partial success; >$10M = Failure"
+    "Financial Agreement": "All parties reach consensus on financial terms that align with both corporate interests and stakeholder expectations.",
+    "Litigation Resolution": "Agreement on a strategy that minimizes litigation risks while addressing all parties' concerns.",
+    "Stakeholder Alignment": "Consensus on mediation outcomes that satisfy both executive goals and board governance standards."
   },
-  "deliverable": "A finalized mediation agreement that outlines terms, resolves disputes, and aligns stakeholders.",
+  "deliverable": "A comprehensive mediation strategy outlining the agreed financial terms, legal resolutions, and stakeholder commitments.",
   "constraints": {
     "public": [
-      "Mediation must be completed within 30 days",
-      "All stakeholders must consent to the final agreement",
-      "No public disclosures until mediation is concluded"
+      "Negotiation must conclude within 30 days",
+      "All parties must agree to confidentiality terms",
+      "Compliance with corporate governance standards"
     ],
     "private": [
-      "Maintain confidentiality on financial implications",
-      "No executive compensation changes disclosed until after mediation",
-      "Legal strategies must remain undisclosed until resolution"
+      "No unresolved personal conflicts among agents",
+      "Financial implications must remain below $50M",
+      "All legal strategies must comply with current regulations"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +90, +70, +60, +50, +30)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Trade-offs on financial terms and personal motivations are required for successful negotiation."
 }

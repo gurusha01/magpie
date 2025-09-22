@@ -1,114 +1,125 @@
 {
-  "scenario": "Breakthrough cancer treatment trial participant selection involves oncologists, pharmaceutical researchers, and hospital ethics boards negotiating the balance of patient prognosis data, treatment efficacy concerns, and financial interests.",
-  "task": "Create a participant selection strategy that maximizes trial efficacy while ensuring ethical standards and financial considerations are met. Agents must navigate their private data while reaching a consensus.",
+  "scenario": "A breakthrough cancer treatment trial participant selection involves negotiations between oncologists, pharmaceutical researchers, and hospital ethics boards, each holding sensitive patient data and undisclosed efficacy concerns.",
+  "task": "Develop a comprehensive participant selection strategy that balances patient safety, treatment efficacy, ethical standards, and financial stakes. Agents must navigate competing priorities, ensuring that the selection aligns with ethical guidelines while optimizing trial outcomes, all while sharing information selectively to maintain confidentiality and avoid conflicts.",
   "agents": [
     {
-      "name": "Oncologist Lead",
-      "role": "Oversees patient selection based on medical criteria and prognosis.",
+      "name": "Oncologist",
+      "role": "Responsible for patient selection based on clinical criteria and treatment suitability.",
       "responsibilities": [
-        "Evaluate patient eligibility based on clinical indicators and prognosis.",
-        "Advise on treatment risks and potential outcomes for selected participants.",
-        "Ensure patient safety and compliance with ethical guidelines during selection.",
-        "Collaborate with researchers to align patient selection with trial requirements.",
-        "Communicate medical insights to the ethics board while protecting sensitive patient data."
+        "Evaluate patient eligibility for trial based on health status.",
+        "Communicate potential risks and benefits to patients.",
+        "Collaborate with researchers on trial design and patient monitoring."
       ],
       "information": {
         "private": {
-          "Patient Prognosis Data (60% 5-year survival rate)": {
-            "reason": "Confidential medical information; disclosure could influence patient choices and disrupt trust.",
-            "penalty": -150
+          "Patient Prognosis Data (20% mortality risk)": {
+            "reason": "Sensitive information that could affect patient selection decisions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Pharmaceutical Researcher"
+            ]
           },
-          "Treatment Risk Assessment (higher adverse event rate)": {
-            "reason": "Leaking could bias trial participant willingness and affect recruitment.",
-            "penalty": -100
+          "Efficacy Concerns (30% lower efficacy in subgroup)": {
+            "reason": "Could affect recruitment strategies; needs careful handling.",
+            "penalty": -200,
+            "shareable_with": [
+              "Hospital Ethics Board"
+            ]
           }
         },
         "public": {
-          "Eligibility Criteria": "Must be stage III or IV with no prior treatment."
+          "Patient Enrollment Rate": "75%"
         }
       },
       "utility": {
-        "Successful patient retention rate ≥80%": "+50",
-        "Achieving ethical compliance": "+30"
+        "Trial completion with ≥80% patient retention": "+100",
+        "Meeting ethical standards in patient selection": "+50"
       }
     },
     {
       "name": "Pharmaceutical Researcher",
-      "role": "Conducts research on treatment efficacy and oversees clinical trial design.",
+      "role": "Oversees trial design and ensures alignment with scientific objectives.",
       "responsibilities": [
-        "Design trial protocols and evaluate treatment efficacy.",
-        "Analyze data from previous trials to inform selection criteria.",
-        "Manage communication of treatment benefits and risks to stakeholders.",
-        "Coordinate with oncologists to ensure alignment on patient selection.",
-        "Protect proprietary treatment data while sharing necessary insights."
+        "Design trial protocols that align with regulatory requirements.",
+        "Analyze treatment efficacy data and adjust protocols as needed.",
+        "Coordinate with oncologists to ensure patient safety."
       ],
       "information": {
         "private": {
-          "Efficacy Concerns (only 65% efficacy reported)": {
-            "reason": "Unpublished data; leaking could harm company reputation.",
-            "penalty": -200
+          "Financial Interests ($5M investment in treatment)": {
+            "reason": "Disclosure could lead to conflict of interest claims.",
+            "penalty": -250,
+            "shareable_with": []
           },
-          "Funding Sources ($10M investment at risk)": {
-            "reason": "Confidential financial interests; disclosure could affect negotiations.",
-            "penalty": -50
+          "Confidential Efficacy Data (40% overall efficacy)": {
+            "reason": "Sharing could affect recruitment and competitive positioning.",
+            "penalty": -100,
+            "shareable_with": [
+              "Oncologist"
+            ]
           }
         },
         "public": {
-          "Trial Duration": "Expected 3 years with interim analyses."
+          "Trial Budget": "$10M"
         }
       },
       "utility": {
-        "Efficacy ≥70% confirmed in trials": "+100",
-        "Funding secured for entire trial duration": "+40"
+        "Achieving full enrollment by deadline": "+100",
+        "Positive interim efficacy results": "+75"
       }
     },
     {
-      "name": "Hospital Ethics Board Chair",
-      "role": "Ensures ethical standards are upheld in patient selection and trial conduct.",
+      "name": "Hospital Ethics Board Member",
+      "role": "Ensures that all trial activities adhere to ethical standards and patient rights.",
       "responsibilities": [
-        "Review and approve trial protocols and participant selection criteria.",
-        "Advocate for patient rights and informed consent processes.",
-        "Monitor adherence to ethical guidelines throughout the trial.",
-        "Facilitate discussions among stakeholders to ensure transparency.",
-        "Address any ethical concerns raised by patient advocates or trial participants."
+        "Review and approve trial protocols.",
+        "Monitor compliance with ethical standards throughout the trial.",
+        "Assess patient consent processes and safeguard patient welfare."
       ],
       "information": {
         "private": {
-          "Ethical Concerns (potential for coercion in patient selection)": {
-            "reason": "Sensitive issue; must be handled confidentially to maintain trust.",
-            "penalty": -100
+          "Ethical Concerns (potential for exploitation of vulnerable populations)": {
+            "reason": "Sensitive topic that could affect public perception.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Funding Conflicts (hospital receives sponsorship)": {
-            "reason": "Could bias ethical review; must remain confidential.",
-            "penalty": -80
+          "Undisclosed Patient Complaints (5 reported issues)": {
+            "reason": "Confidential; could affect trial integrity if leaked.",
+            "penalty": -150,
+            "shareable_with": [
+              "Oncologist"
+            ]
           }
         },
         "public": {
-          "Ethics Review Process": "All protocols must pass a full review."
+          "Ethics Review Completion": "100% compliance"
         }
       },
       "utility": {
-        "No ethical violations reported during trial": "+70",
-        "Patient advocacy involvement ≥50%": "+30"
+        "No ethical violations reported during trial": "+100",
+        "Patient satisfaction ≥85%": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Patient Retention Rate": "≥80% = Success; 60-79% = Partial Success; <60% = Failure",
-    "Efficacy Confirmation": "≥70% = Success; 50-69% = Partial Success; <50% = Failure"
+    "Patient Selection Agreement": "All parties agree on criteria for patient selection that respects ethical guidelines and maximizes trial integrity.",
+    "Efficacy Concerns Resolution": "Consensus on how to address and communicate treatment efficacy concerns to stakeholders without compromising trust.",
+    "Financial Interests Disclosure": "Agreement on how to manage and disclose financial interests to ensure transparency and maintain ethical standards."
   },
-  "deliverable": "A comprehensive participant selection strategy that balances medical, ethical, and financial considerations.",
+  "deliverable": "A participant selection strategy that aligns ethical considerations with clinical and financial imperatives.",
   "constraints": {
     "public": [
-      "Total participant count ≤200",
-      "Trial duration must not exceed 3 years",
-      "Compliance with ethical review standards"
+      "Total patient enrollment ≤ 100 participants",
+      "Trial duration ≤ 2 years",
+      "Compliance with ethical standards",
+      "Patient retention rate ≥70%"
     ],
     "private": [
-      "Patient prognosis must remain confidential until trial completion",
-      "Efficacy data must not be disclosed until peer-reviewed",
-      "Funding sources must remain undisclosed to prevent bias"
+      "Efficacy must be ≥50% in primary outcome measures",
+      "No more than 3 serious adverse events reported",
+      "Financial conflicts must be disclosed to ethics board"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -80, -50). Utilities are expressed as gains (e.g., +100, +70, +50, +40, +30)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Achieving alignment on patient selection criteria and addressing efficacy concerns requires negotiation and trade-offs among all parties."
 }

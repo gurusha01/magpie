@@ -1,114 +1,125 @@
 {
-  "scenario": "A pharmaceutical liability settlement negotiation takes place where corporate counsel, plaintiff attorneys, and insurance representatives must balance legal risks, financial liabilities, and internal research while navigating confidentiality and maximizing settlement outcomes.",
-  "task": "Negotiate a settlement agreement that optimally balances the interests of the pharmaceutical company, plaintiffs, and insurance representatives, while ensuring confidentiality of sensitive information.",
+  "scenario": "A pharmaceutical liability settlement negotiation unfolds among corporate counsel, plaintiff attorneys, and insurance representatives, each holding sensitive information that could influence the outcome.",
+  "task": "Facilitate a settlement negotiation that balances corporate liability exposure, plaintiff demands, and insurance payout limits while protecting confidential information. Agents must navigate conflicting interests around settlement amounts, disclosure of past case patterns, and maximum payout authorizations to reach an agreement that satisfies all parties.",
   "agents": [
     {
       "name": "Corporate Counsel",
-      "role": "Leads the negotiation from the pharmaceutical company's side, focusing on minimizing liability and protecting company interests.",
+      "role": "Represents the pharmaceutical company’s legal interests and negotiates settlement terms.",
       "responsibilities": [
-        "Assess legal risks and prepare negotiation strategy.",
-        "Review internal research documents to gauge potential liabilities.",
-        "Communicate settlement offers and counteroffers effectively.",
-        "Ensure compliance with corporate policies and confidentiality agreements.",
-        "Document all negotiations and agreements reached."
+        "Assess legal risks and potential liabilities.",
+        "Negotiate settlement figures with plaintiff attorneys.",
+        "Protect confidential company information during discussions.",
+        "Coordinate with insurance representatives on payout limits."
       ],
       "information": {
         "private": {
           "Internal Research Findings (adverse event rates)": {
-            "reason": "Sensitive data that could impact legal position if disclosed.",
-            "penalty": -300
+            "reason": "Could influence settlement negotiations; disclosure may lead to increased liability.",
+            "penalty": -250,
+            "shareable_with": [
+              "Insurance Representative"
+            ]
           },
-          "Maximum Settlement Authorization ($10M)": {
-            "reason": "Confidential limit set by the company; revealing could weaken negotiation stance.",
-            "penalty": -200
+          "Maximum Settlement Authority ($10M cap)": {
+            "reason": "Sensitive corporate policy; revealing could weaken negotiation position.",
+            "penalty": -300,
+            "shareable_with": []
           }
         },
         "public": {
-          "Current Litigation Status": "5 active lawsuits, 3 settled"
+          "Litigation History": "5 similar cases settled out of court"
         }
       },
       "utility": {
-        "Settlement below $5M": "+100",
-        "Settlement above $10M": "-100"
+        "Settlement ≤ $5M": "+100",
+        "Settlement ≤ $3M": "+150"
       }
     },
     {
       "name": "Plaintiff Attorney",
-      "role": "Represents the interests of the plaintiffs, aiming to secure the highest possible settlement based on damages and suffering.",
+      "role": "Advocates for the plaintiffs’ interests and seeks maximum compensation for clients.",
       "responsibilities": [
-        "Gather evidence and testimonies to support plaintiffs' claims.",
-        "Negotiate aggressively for a favorable settlement amount.",
-        "Advise plaintiffs on the potential outcomes of the negotiation.",
-        "Maintain confidentiality of plaintiffs' personal information.",
-        "Assess risks of proceeding to trial versus settling."
+        "Gather evidence to support the plaintiffs' claims.",
+        "Negotiate settlement amounts with corporate counsel.",
+        "Communicate client expectations and needs.",
+        "Evaluate previous case settlements for leverage."
       ],
       "information": {
         "private": {
-          "Similar Case Patterns (settlements > $8M)": {
-            "reason": "Confidential data that could influence settlement expectations.",
-            "penalty": -250
+          "Confidential Similar Case Patterns (average payouts)": {
+            "reason": "Could provide leverage in negotiations; sharing may jeopardize future cases.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Client Settlement Expectations ($15M)": {
-            "reason": "Sensitive expectations that could complicate negotiations.",
-            "penalty": -150
+          "Client Health Outcomes (serious adverse events)": {
+            "reason": "Sensitive information; disclosure could affect public perception and case strategy.",
+            "penalty": -150,
+            "shareable_with": [
+              "Corporate Counsel"
+            ]
           }
         },
         "public": {
-          "Number of Plaintiffs": "20"
+          "Client Satisfaction Rate": "85% satisfied with representation"
         }
       },
       "utility": {
-        "Settlement ≥ $10M": "+150",
-        "Settlement < $5M": "-50"
+        "Settlement ≥ $7M": "+100",
+        "Settlement ≥ $10M": "+200"
       }
     },
     {
       "name": "Insurance Representative",
-      "role": "Oversees the financial aspects of the settlement, ensuring that the insurance coverage limits are adhered to while advocating for a fair resolution.",
+      "role": "Manages the insurance company's interests and oversees payout negotiations.",
       "responsibilities": [
-        "Evaluate the insurance policy coverage related to the claims.",
-        "Negotiate terms that align with insurance limits and company interests.",
-        "Facilitate communication between the insurer and the corporate counsel.",
-        "Analyze potential future liabilities that could arise from the case.",
-        "Ensure timely payments are made once a settlement is reached."
+        "Evaluate risk exposure and potential payouts.",
+        "Negotiate settlement terms with corporate counsel.",
+        "Ensure compliance with insurance policy limits.",
+        "Coordinate with legal teams on defense strategies."
       ],
       "information": {
         "private": {
-          "Insurance Coverage Limit ($12M)": {
-            "reason": "Confidential policy details that should not be disclosed publicly.",
-            "penalty": -300
+          "Payout Limitations ($8M maximum per case)": {
+            "reason": "Confidential policy detail; disclosure could limit negotiation flexibility.",
+            "penalty": -250,
+            "shareable_with": []
           },
-          "Historical Claim Payouts (average $7M)": {
-            "reason": "Sensitive data that could inform negotiation strategies.",
-            "penalty": -100
+          "Internal Claims Data (similar case resolutions)": {
+            "reason": "Sensitive data that could influence negotiations; sharing may affect future claims.",
+            "penalty": -100,
+            "shareable_with": [
+              "Corporate Counsel"
+            ]
           }
         },
         "public": {
-          "Current Payouts": "3 recent claims settled"
+          "Claim Approval Rate": "90% of claims processed"
         }
       },
       "utility": {
-        "Settlement ≤ $10M": "+80",
-        "Settlement > $12M": "-200"
+        "Settlement ≤ $5M": "+75",
+        "Settlement ≤ $3M": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Settlement Amount": "<=$10M = Success; $10M-$15M = Partial Success; >$15M = Failure",
-    "Confidentiality Maintained": "Confidential information not disclosed = Success; any leaks = Failure"
+    "Settlement Amount Agreement": "All parties agree on a final settlement figure that respects the corporate counsel’s maximum payout authority and the plaintiffs’ minimum compensation expectations.",
+    "Confidentiality Resolutions": "Agents agree on terms that protect sensitive information while allowing necessary disclosures for negotiation.",
+    "Payout Structure Alignment": "Consensus is reached on the payout structure that satisfies both the insurance representative and the plaintiffs’ attorney."
   },
-  "deliverable": "A finalized settlement agreement that outlines the terms, conditions, and confidentiality clauses.",
+  "deliverable": "A finalized settlement agreement detailing terms, payout amounts, and confidentiality clauses.",
   "constraints": {
     "public": [
-      "Settlement must be finalized within 60 days.",
-      "All parties must agree to confidentiality terms.",
-      "Insurance coverage limits must not be exceeded."
+      "Total settlement ≤ $10M",
+      "Payout structured over 3 years",
+      "Confidentiality agreements in place"
     ],
     "private": [
-      "Corporate maximum payout ≤ $10M",
-      "Plaintiff expectations must remain undisclosed",
-      "Insurance payout must not exceed policy limits"
+      "Maximum settlement authority not exceeded",
+      "No ongoing litigation for similar cases during negotiation",
+      "Confidential research documents remain undisclosed"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +150, +80)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +150, +100).",
+  "Consensus_w": "Negotiation on settlement terms requires trade-offs between maximum payouts and corporate liability exposure."
 }

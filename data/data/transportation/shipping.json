@@ -1,114 +1,129 @@
 {
-  "scenario": "High-value art collection transportation between museums, insurers, and security firms with private valuation details, undisclosed security vulnerabilities, and confidential exhibition negotiation details.",
-  "task": "Create a secure transportation plan that outlines logistics, insurance coverage, and security measures while maintaining confidentiality of sensitive information.",
+  "scenario": "A high-value art collection is being transported between museums, insurers, and security firms, each holding private information that could impact the safety and valuation of the artwork. Conflicts arise around valuation discrepancies, security measures, and exhibition negotiations.",
+  "task": "Develop a comprehensive transportation and exhibition plan that ensures the artwork's safety during transit, aligns on valuation for insurance purposes, and secures exhibition agreements. Agents must navigate competing priorities: security concerns may conflict with valuation accuracy, while negotiation details for exhibitions could impact insurance coverage. To achieve alignment, they must share information selectively, balancing transparency with the need to protect sensitive data.",
   "agents": [
     {
       "name": "Museum Curator",
-      "role": "Oversees the art collection, ensuring the integrity and safety of artworks during transportation.",
+      "role": "Oversees the exhibition and ensures the artwork is displayed safely and effectively.",
       "responsibilities": [
-        "Select artworks for transport and coordinate with insurers and security.",
-        "Establish exhibition timelines and negotiate terms with partner museums.",
-        "Ensure that art is appraised accurately for insurance coverage.",
-        "Communicate transportation needs to security teams while safeguarding sensitive details.",
-        "Monitor and document the condition of artworks pre- and post-transport."
+        "Coordinate exhibition logistics with security and insurers.",
+        "Prepare valuation reports for insurance purposes.",
+        "Negotiate exhibition contracts with other institutions."
       ],
       "information": {
         "private": {
-          "Art Valuations ($10M total)": {
-            "reason": "Sensitive financial information; disclosing could affect market value.",
-            "penalty": -300
+          "Artwork Valuation ($10M for specific pieces)": {
+            "reason": "Sensitive financial data; disclosure could affect negotiations.",
+            "penalty": -250,
+            "shareable_with": [
+              "Insurer"
+            ]
           },
-          "Exhibition Negotiation Terms": {
-            "reason": "Confidential agreements could jeopardize future collaborations.",
-            "penalty": -200
+          "Exhibition Negotiation Terms (exclusive rights negotiations ongoing)": {
+            "reason": "Confidential discussions; revealing could jeopardize agreements.",
+            "penalty": -200,
+            "shareable_with": [
+              "Security Firm"
+            ]
           }
         },
         "public": {
-          "Transportation Schedule": "Week of July 10th"
+          "Exhibition Schedule": "March 2024 to September 2024"
         }
       },
       "utility": {
-        "Successful exhibition launch": "+100",
-        "All artworks arrive undamaged": "+50"
+        "Securing exclusive exhibition rights": "+100",
+        "Valuation agreed with insurers": "+50"
       }
     },
     {
-      "name": "Insurance Adjuster",
-      "role": "Manages the insurance policy for the art collection, ensuring adequate coverage and risk assessment.",
+      "name": "Insurance Agent",
+      "role": "Evaluates and provides coverage for the art collection during transit and exhibition.",
       "responsibilities": [
-        "Evaluate the value of artworks and determine appropriate insurance premiums.",
-        "Assess risks associated with transportation and recommend coverage adjustments.",
-        "Coordinate with museums and security on insurance claims if damages occur.",
-        "Ensure all documentation is in place for claims processing.",
-        "Monitor compliance with insurance regulations during transportation."
+        "Assess and confirm artwork valuations.",
+        "Negotiate coverage terms with museums.",
+        "Monitor security measures during transportation."
       ],
       "information": {
         "private": {
-          "Risk Assessment Data": {
-            "reason": "Internal analysis could influence market strategies and competition.",
-            "penalty": -150
+          "Security Vulnerability Report (identified gaps in transit security)": {
+            "reason": "Internal risk assessment; disclosure could lead to exploitation.",
+            "penalty": -300,
+            "shareable_with": [
+              "Museum Curator"
+            ]
           },
-          "Insurance Premium Costs": {
-            "reason": "Sensitive financial data; revealing could lead to competitive disadvantages.",
-            "penalty": -100
+          "Insured Value Details ($15M total coverage)": {
+            "reason": "Confidential financial information; could impact market perceptions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Security Firm"
+            ]
           }
         },
         "public": {
-          "Coverage Amount": "$15M"
+          "Coverage Limit": "$15M"
         }
       },
       "utility": {
-        "Claim processing completed within 30 days": "+40",
-        "Insurance costs managed under budget": "+30"
+        "Coverage finalized before transit": "+100",
+        "No claims filed during exhibition": "+75"
       }
     },
     {
-      "name": "Security Consultant",
-      "role": "Ensures the security of the artworks during transport, identifying vulnerabilities and implementing safeguards.",
+      "name": "Security Firm Representative",
+      "role": "Ensures the safety and security of the artwork during transportation and exhibition.",
       "responsibilities": [
-        "Conduct a security audit of transportation routes and methods.",
-        "Develop contingency plans for potential security breaches.",
-        "Coordinate with local law enforcement and security firms.",
-        "Train staff on security protocols and emergency response.",
-        "Review and update security measures based on threat assessments."
+        "Develop and implement security protocols for transit.",
+        "Conduct risk assessments for exhibition venues.",
+        "Coordinate with museums and insurers on security measures."
       ],
       "information": {
         "private": {
-          "Security Vulnerabilities": {
-            "reason": "Internal assessments could be exploited by criminals.",
-            "penalty": -250
+          "Operational Security Gaps (potential vulnerabilities identified)": {
+            "reason": "Sensitive operational details; could compromise security.",
+            "penalty": -250,
+            "shareable_with": [
+              "Insurance Agent"
+            ]
           },
-          "Security Protocols": {
-            "reason": "Confidential strategies should not be disclosed to avoid compromise.",
-            "penalty": -150
+          "Confidential Contracts with Third-Party Security Personnel": {
+            "reason": "Sensitive agreements; revealing could impact staffing and security arrangements.",
+            "penalty": -200,
+            "shareable_with": [
+              "Museum Curator"
+            ]
           }
         },
         "public": {
-          "Security Team Size": "10 personnel"
+          "Security Protocols Established": "Yes"
         }
       },
       "utility": {
-        "No security breaches during transport": "+100",
-        "Effective response to security incidents": "+50"
+        "Security incidents reported ≤1": "+100",
+        "Successful transit completion without issues": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Art Condition Post-Transport": "100% undamaged = Success; 90-99% = Partial Success; <90% = Failure",
-    "Insurance Coverage Adequacy": "Coverage >= $15M = Success; $10-14M = Partial Success; <10M = Failure"
+    "Valuation Agreement": "All parties agree on the artwork's valuation for insurance purposes, aligning with the Museum Curator's reports.",
+    "Security Protocol Alignment": "Consensus is reached on security measures during transit that satisfy both the Insurance Agent's requirements and the Security Firm's assessments.",
+    "Exhibition Terms Agreement": "Negotiated exhibition terms are agreed upon, including exclusive rights and duration, that satisfy both the Museum Curator and the Insurance Agent."
   },
-  "deliverable": "A comprehensive transportation plan that includes logistics, insurance coverage, and security measures.",
+  "deliverable": "A comprehensive transportation and exhibition plan that includes security measures, valuation agreements, and exhibition contracts.",
   "constraints": {
     "public": [
-      "Transportation must occur within the scheduled week",
-      "All artworks must be insured for at least $15M",
-      "Security personnel must be present during transport"
+      "Total insured value ≤ $15M",
+      "Artwork must be transported without damage",
+      "Exhibition schedule adhered to without delays"
     ],
     "private": [
-      "Art valuations must remain undisclosed to external parties",
-      "Security vulnerabilities must not be revealed",
-      "Negotiation terms with partner museums must stay confidential"
+      "Valuation discrepancies ≤10%",
+      "No major security breaches during transit",
+      "Exclusive exhibition terms finalized before transport",
+      "Operational security gaps addressed before transit"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +50, +40, +30)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Achieving agreement on security measures and valuation requires negotiation and trade-offs."
 }

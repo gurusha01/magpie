@@ -1,118 +1,128 @@
 {
-  "scenario": "A large-scale real estate development project relies on peer funding, necessitating collaboration among property developers, high-net-worth lenders, and financial coordinators while managing private risk assessments and undisclosed regulatory challenges.",
-  "task": "Create a detailed funding strategy that outlines risk management, funding allocation, and compliance with regulatory requirements. Agents must carefully share relevant information while protecting sensitive data.",
+  "scenario": "A large-scale real estate development project relies on peer funding, requiring collaboration among property developers, high-net-worth lenders, and financial coordinators who hold critical private information about risks and regulatory challenges.",
+  "task": "Create a detailed funding and development strategy that aligns the interests of developers, lenders, and coordinators while addressing risk assessments, regulatory requirements, and potential funding discrepancies. Each party must share information judiciously to build consensus without disclosing sensitive data that could compromise negotiations or competitive positions.",
   "agents": [
     {
-      "name": "Property Developer Lead",
-      "role": "Oversees the real estate project, ensuring timely development and adherence to budget constraints.",
+      "name": "Property Developer",
+      "role": "Manages the real estate project, oversees design, construction, and compliance with local regulations.",
       "responsibilities": [
-        "Coordinate project timelines and construction schedules.",
-        "Manage relationships with contractors and vendors.",
-        "Ensure compliance with local zoning laws and regulations.",
-        "Allocate funds effectively across different phases of development.",
-        "Report on project progress to stakeholders."
+        "Coordinate project timelines and budgets.",
+        "Engage with local authorities for permits.",
+        "Manage contractor relationships and site logistics."
       ],
       "information": {
         "private": {
-          "Risk Assessment (high exposure)": {
-            "reason": "Sensitive data that could affect investor confidence if disclosed.",
-            "penalty": -250
+          "Risk Assessment (high construction cost forecast)": {
+            "reason": "Disclosure could deter lenders or affect negotiations.",
+            "penalty": -250,
+            "shareable_with": [
+              "Financial Coordinator"
+            ]
           },
-          "Regulatory Challenges (pending approvals)": {
-            "reason": "Disclosure could lead to premature investor withdrawal.",
-            "penalty": -200
+          "Potential Regulatory Delays (zoning changes pending)": {
+            "reason": "Could impact investor confidence if revealed.",
+            "penalty": -200,
+            "shareable_with": [
+              "High-Net-Worth Lender"
+            ]
           }
         },
         "public": {
-          "Project Budget": "$50M",
-          "Timeline": "24 months"
+          "Projected Return on Investment": "15%"
         }
       },
       "utility": {
-        "Project completion on time": "+100",
-        "Staying within budget": "+50"
+        "Project completion within budget": "+100",
+        "Securing necessary permits on time": "+50"
       }
     },
     {
       "name": "High-Net-Worth Lender",
-      "role": "Provides significant financial backing for the project while assessing risks and returns.",
+      "role": "Provides capital funding for the project, assessing financial viability and risk.",
       "responsibilities": [
-        "Evaluate project feasibility and financial projections.",
-        "Negotiate loan terms and interest rates with developers.",
-        "Monitor project progress and cash flow.",
-        "Advise on market trends and investment strategies.",
-        "Ensure that funds are allocated efficiently to mitigate risks."
+        "Evaluate funding requests and risk profiles.",
+        "Negotiate loan terms and interest rates.",
+        "Monitor project progress and financial health."
       ],
       "information": {
         "private": {
-          "Market Analysis (high demand forecast)": {
-            "reason": "Sensitive information that could influence market competition.",
-            "penalty": -150
+          "Alternative Funding Sources ($10M from private equity)": {
+            "reason": "Could influence negotiation leverage if disclosed.",
+            "penalty": -150,
+            "shareable_with": [
+              "Financial Coordinator"
+            ]
           },
-          "Parallel Funding Sources ($20M potential)": {
-            "reason": "Confidential agreements that could affect negotiation power.",
-            "penalty": -100
+          "Risk of Economic Downturn (30% probability)": {
+            "reason": "Revealing could raise concerns among stakeholders.",
+            "penalty": -300,
+            "shareable_with": [
+              "Property Developer"
+            ]
           }
         },
         "public": {
-          "Investment Amount": "$30M",
-          "Interest Rate": "5%"
+          "Investment Commitment": "$5M"
         }
       },
       "utility": {
-        "Investment returns ≥10%": "+100",
-        "Project completion before deadline": "+70"
+        "Interest rate ≤ 4%": "+80",
+        "Project completion on time": "+60"
       }
     },
     {
       "name": "Financial Coordinator",
-      "role": "Facilitates communication and financial logistics between developers and lenders.",
+      "role": "Facilitates funding arrangements and manages financial operations, ensuring compliance and transparency.",
       "responsibilities": [
+        "Align funding sources with project needs.",
         "Prepare financial reports and forecasts.",
-        "Coordinate funding disbursements based on milestones.",
-        "Ensure compliance with financial regulations.",
-        "Manage cash flow and liquidity for the project.",
-        "Negotiate terms between developers and lenders."
+        "Ensure regulatory compliance across all funding activities."
       ],
       "information": {
         "private": {
-          "Confidential Financial Projections (risk of default)": {
-            "reason": "Disclosure could lead to loss of confidence from lenders.",
-            "penalty": -200
+          "Confidential Risk Assessment Data (market volatility metrics)": {
+            "reason": "Sensitive data; could impact project perception if leaked.",
+            "penalty": -200,
+            "shareable_with": [
+              "Property Developer"
+            ]
           },
-          "Undisclosed Fees (hidden costs)": {
-            "reason": "Could alter funding negotiations unfavorably.",
-            "penalty": -150
+          "Regulatory Challenges (pending approvals from multiple agencies)": {
+            "reason": "Disclosure could complicate negotiations with lenders.",
+            "penalty": -250,
+            "shareable_with": [
+              "High-Net-Worth Lender"
+            ]
           }
         },
         "public": {
-          "Funding Structure": "Equity and debt mix",
-          "Compliance Status": "In progress"
+          "Funding Structure": "Equity and debt ratio of 60:40"
         }
       },
       "utility": {
-        "All funding milestones met": "+80",
-        "Maintaining liquidity above $5M": "+60"
+        "Compliance achieved by project kickoff": "+70",
+        "Securing additional funding sources": "+90"
       }
     }
   ],
   "success_criteria": {
-    "Project completion time": "≤24 months = Success; 25-30 months = Partial Success; >30 months = Failure",
-    "Budget adherence": "≤$50M = Success; $50M-$60M = Partial Success; >$60M = Failure"
+    "Funding Agreement": "All parties agree on the total funding amount and structure that meets the Property Developer's needs while satisfying lender risk criteria.",
+    "Regulatory Alignment": "Consensus on approaching regulatory bodies with a unified strategy to expedite approvals.",
+    "Risk Management Plan": "Develop and agree on a comprehensive risk management plan that addresses identified risks without revealing sensitive information."
   },
-  "deliverable": "A comprehensive funding strategy that includes risk management and compliance with regulatory requirements.",
+  "deliverable": "A comprehensive funding and development strategy that details project financing, risk assessments, and regulatory compliance.",
   "constraints": {
     "public": [
-      "Total project budget ≤ $50M",
-      "Completion of all phases within 30 months",
-      "Compliance with local zoning and financing regulations"
+      "Total funding ≤ $20M",
+      "Completion deadline within 2 years",
+      "Compliance with all local regulations"
     ],
     "private": [
-      "Risk exposure ≤15%",
-      "Funding sources must cover at least 80% of total budget",
-      "Regulatory approvals obtained before construction starts",
-      "Liquidity must remain ≥$5M throughout project duration"
+      "Project risk assessment ≤ 25% over budget",
+      "No significant regulatory hurdles unresolved at project start",
+      "Lender interest rate ≤ 5%"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150). Utilities are expressed as gains (e.g., +100, +70, +60)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -300). Utilities are expressed as gains (e.g., +100, +80, +60, +70, +90).",
+  "Consensus_w": "Agreement on risk management and funding structures is essential to move forward."
 }

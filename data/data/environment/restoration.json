@@ -1,114 +1,128 @@
 {
   "scenario": "Critical watershed rehabilitation coordination between agricultural interests, conservation agencies, and water utilities with private water rights information, undisclosed pollution sources, and confidential economic impact data affecting multiple communities.",
-  "task": "Develop a comprehensive watershed rehabilitation plan that addresses agricultural needs, conservation goals, and water utility requirements while managing sensitive information and fostering collaboration among stakeholders.",
+  "task": "Develop a comprehensive watershed rehabilitation strategy that integrates agricultural practices, conservation efforts, and water utility management. Agents must navigate competing interests regarding resource allocation, pollution control, and economic impacts while sharing sensitive information selectively to achieve a unified plan.",
   "agents": [
     {
       "name": "Agricultural Interest Representative",
-      "role": "Advocate for farmers' needs and sustainable agricultural practices in the watershed.",
+      "role": "Advocates for farmer needs and sustainable practices, ensuring agricultural viability alongside conservation efforts.",
       "responsibilities": [
-        "Communicate agricultural water usage and crop needs.",
-        "Ensure farming practices align with conservation efforts.",
-        "Negotiate resource allocation between agricultural and conservation goals.",
-        "Monitor impacts of rehabilitation on farming productivity.",
-        "Advocate for financial support to mitigate rehabilitation costs."
+        "Assess crop water needs and sustainable practices.",
+        "Negotiate water rights allocations.",
+        "Engage with farmers on best practices for pollution reduction."
       ],
       "information": {
         "private": {
-          "Water Rights Allocation (50% of watershed)": {
-            "reason": "Sensitive information that could impact negotiations and water usage rights.",
-            "penalty": -300
+          "Water Rights Holdings (3,000 acres)": {
+            "reason": "Disclosure could undermine negotiating power with conservation agencies.",
+            "penalty": -200,
+            "shareable_with": [
+              "Conservation Agency Representative"
+            ]
           },
-          "Pollution Source Data (undisclosed runoff areas)": {
-            "reason": "Releasing this could lead to legal repercussions and loss of trust.",
-            "penalty": -200
+          "Pollution Sources (2 undisclosed sites)": {
+            "reason": "Revealing could lead to regulatory penalties and affect community relations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Water Utility Representative"
+            ]
           }
         },
         "public": {
-          "Crop Needs": "30% water allocation for irrigation"
+          "Crop Yield Metrics": "Average yield of 150 bushels/acre"
         }
       },
       "utility": {
-        "Water allocation secured": "+100",
-        "Compliance with conservation practices": "+50"
+        "Water rights secured for ≥3 years": "+50",
+        "Pollution reduction commitment met": "+75"
       }
     },
     {
-      "name": "Conservation Agency Coordinator",
-      "role": "Oversee rehabilitation efforts focused on environmental sustainability and ecosystem restoration.",
+      "name": "Conservation Agency Representative",
+      "role": "Focuses on ecological health and regulatory compliance, guiding rehabilitation efforts to restore the watershed.",
       "responsibilities": [
-        "Develop and implement conservation strategies for watershed health.",
-        "Collaborate with agricultural representatives to align goals.",
-        "Monitor environmental impacts of agricultural practices.",
-        "Engage with communities to raise awareness about conservation needs.",
-        "Ensure compliance with environmental regulations and standards."
+        "Identify critical areas for ecological restoration.",
+        "Collaborate on pollution control measures.",
+        "Ensure compliance with environmental regulations."
       ],
       "information": {
         "private": {
-          "Undisclosed Pollution Sources (impacting aquatic life)": {
-            "reason": "Sensitive data that could lead to public outcry or legal action if revealed.",
-            "penalty": -250
+          "Pollution Impact Data (estimated loss of $1M in ecosystem services)": {
+            "reason": "Sensitive information that could impact negotiations with agricultural interests.",
+            "penalty": -200,
+            "shareable_with": [
+              "Water Utility Representative"
+            ]
           },
-          "Community Economic Impact Data (baseline assessments)": {
-            "reason": "Confidential information that could influence funding and policy decisions.",
-            "penalty": -150
+          "Undisclosed Restoration Costs ($500K)": {
+            "reason": "Revealing could affect funding negotiations and stakeholder trust.",
+            "penalty": -100,
+            "shareable_with": [
+              "Agricultural Interest Representative"
+            ]
           }
         },
         "public": {
-          "Conservation Goals": "Restore 40% of degraded habitats"
+          "Ecosystem Health Index": "Restoration goal of 80% ecosystem health by 2030"
         }
       },
       "utility": {
-        "Restoration of 40% habitats": "+100",
-        "Successful community engagement": "+75"
+        "Restoration plan approved by stakeholders": "+100",
+        "Pollution levels reduced by ≥30%": "+50"
       }
     },
     {
-      "name": "Water Utility Manager",
-      "role": "Manage water supply and quality while balancing agricultural and conservation interests.",
+      "name": "Water Utility Representative",
+      "role": "Manages water supply and quality, ensuring reliable access to water for communities while addressing pollution issues.",
       "responsibilities": [
-        "Ensure water quality meets health standards.",
-        "Allocate water resources between competing needs.",
-        "Negotiate agreements with agricultural and conservation stakeholders.",
-        "Implement monitoring systems for water quality and usage.",
-        "Prepare for drought or supply shortages by developing contingency plans."
+        "Monitor water quality and pollution sources.",
+        "Coordinate with agricultural and conservation stakeholders.",
+        "Implement water conservation measures."
       ],
       "information": {
         "private": {
-          "Water Quality Reports (contamination levels)": {
-            "reason": "Revealing could cause public panic and distrust.",
-            "penalty": -300
+          "Economic Impact Data ($2M potential loss due to water shortages)": {
+            "reason": "Revealing could affect public perception and regulatory scrutiny.",
+            "penalty": -150,
+            "shareable_with": [
+              "Conservation Agency Representative"
+            ]
           },
-          "Economic Impact of Water Shortages (projected losses)": {
-            "reason": "Sensitive data that could affect utility funding and operations.",
-            "penalty": -100
+          "Pollution Source Identifications (1 major source)": {
+            "reason": "Disclosing could lead to liability issues and community backlash.",
+            "penalty": -200,
+            "shareable_with": [
+              "Agricultural Interest Representative"
+            ]
           }
         },
         "public": {
-          "Water Supply Capacity": "100 million gallons per day"
+          "Water Quality Compliance Rate": "95% compliance with standards"
         }
       },
       "utility": {
-        "Maintaining water quality standards": "+100",
-        "Efficient resource allocation": "+50"
+        "Water quality maintained at 95% compliance": "+75",
+        "Pollution sources addressed within 2 years": "+100"
       }
     }
   ],
   "success_criteria": {
-    "Habitat Restoration Rate": "≥40% = Success; 30-39% = Partial Success; <30% = Failure",
-    "Water Quality Compliance": "≥95% compliance = Success; 90-94% = Partial Success; <90% = Failure"
+    "Water Rights Agreement": "All parties reach consensus on water rights allocations that ensure fair access for agricultural needs while supporting conservation efforts.",
+    "Pollution Control Alignment": "Agreement on pollution reduction strategies that incorporate input from all stakeholders, balancing agricultural practices and conservation goals.",
+    "Economic Impact Resolution": "Consensus on minimizing economic impacts to communities while achieving ecological restoration objectives."
   },
-  "deliverable": "A watershed rehabilitation plan that integrates agricultural, conservation, and utility needs with actionable steps and timelines.",
+  "deliverable": "A watershed rehabilitation strategy that outlines resource allocations, pollution control measures, and stakeholder commitments.",
   "constraints": {
     "public": [
-      "Total budget ≤ $5 million",
-      "Compliance with federal environmental regulations",
-      "Water quality must meet state health standards"
+      "Total rehabilitation budget ≤ $1M",
+      "Pollution levels reduced by ≥30% within 5 years",
+      "Water quality standards maintained at ≥95% compliance"
     ],
     "private": [
-      "Water rights must remain undisclosed until agreements are finalized",
-      "Pollution sources must be addressed without public disclosure of specifics",
-      "Economic impact assessments must not influence immediate funding decisions"
+      "Undisclosed pollution sources resolved before rehabilitation completion",
+      "Restoration costs must not exceed $500K",
+      "Water rights secured for ≥3 years"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Trade-offs regarding water allocations and pollution control must be discussed and agreed upon."
 }

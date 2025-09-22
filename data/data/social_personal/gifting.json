@@ -1,117 +1,128 @@
 {
-  "scenario": "Diplomatic gift exchange planning involves government officials, cultural advisors, and security personnel who must balance cultural significance, security protocols, and political sensitivities while managing private information.",
-  "task": "Create a detailed plan for the diplomatic gift exchange that includes gift selection, presentation, and security measures while ensuring all agents share relevant information without compromising confidentiality.",
+  "scenario": "A diplomatic gift exchange is being planned, involving government officials, cultural advisors, and security personnel, each holding private information that could influence the selection and presentation of gifts. They must navigate conflicting symbolic meanings, political sensitivities, and security considerations while ensuring the exchange strengthens international relations.",
+  "task": "Develop a comprehensive gift exchange strategy that aligns cultural significance, security protocols, and diplomatic objectives. Agents must balance the need for meaningful gifts with the constraints of political tensions and security requirements, sharing information selectively to build consensus without revealing sensitive details that could jeopardize the exchange or diplomatic relations.",
   "agents": [
     {
       "name": "Government Official",
-      "role": "Oversees the entire diplomatic exchange and ensures alignment with national interests.",
+      "role": "Oversees the diplomatic relations and ensures that the gifts align with national interests and international protocols.",
       "responsibilities": [
-        "Set overall objectives for the gift exchange.",
-        "Coordinate with cultural advisors to select appropriate gifts.",
-        "Manage communication between various stakeholders.",
-        "Monitor the political landscape to mitigate risks.",
-        "Ensure compliance with governmental protocols and regulations."
+        "Coordinate with cultural advisors on gift selection.",
+        "Ensure compliance with political guidelines.",
+        "Manage communication with foreign counterparts."
       ],
       "information": {
         "private": {
-          "Undisclosed Political Tensions": {
-            "reason": "Could impact diplomatic relations if leaked.",
-            "penalty": -300
+          "Political Tensions (recent trade disagreements)": {
+            "reason": "Disclosure could heighten tensions; must be handled delicately.",
+            "penalty": -150,
+            "shareable_with": [
+              "Cultural Advisor"
+            ]
           },
-          "Recipient's Personal Preferences": {
-            "reason": "Confidential to maintain the element of surprise.",
-            "penalty": -200
+          "Recipient's Preferences (specific cultural symbols avoided)": {
+            "reason": "Sensitive cultural insight; revealing could lead to diplomatic faux pas.",
+            "penalty": -100,
+            "shareable_with": [
+              "Security Personnel"
+            ]
           }
         },
         "public": {
-          "Exchange Date": "June 15, 2024",
-          "Venue": "State Banquet Hall"
+          "Budget for Gifts": "$500,000"
         }
       },
       "utility": {
-        "Successful exchange without incidents": "+100",
-        "Positive media coverage": "+50"
+        "Successful gift reception": "+100",
+        "Avoiding diplomatic incident": "+75"
       }
     },
     {
       "name": "Cultural Advisor",
-      "role": "Advises on the cultural significance and appropriateness of the gifts.",
+      "role": "Provides expertise on the cultural significance of potential gifts and ensures they are appropriate for the recipient.",
       "responsibilities": [
-        "Research and recommend culturally appropriate gifts.",
-        "Ensure gifts reflect mutual respect and understanding.",
-        "Provide insights on the historical context of gift-giving customs.",
-        "Advise on presentation styles to maximize impact.",
-        "Collaborate with security personnel to ensure gifts are safe."
+        "Research cultural implications of gift options.",
+        "Advise on symbolic meanings of gifts.",
+        "Collaborate with the government official to align gifts with diplomatic goals."
       ],
       "information": {
         "private": {
-          "Symbolic Meaning of Gifts": {
-            "reason": "Sensitive cultural insights that could be misinterpreted.",
-            "penalty": -150
+          "Cultural Sensitivity (historical grievances)": {
+            "reason": "Revealing could lead to backlash or misinterpretation.",
+            "penalty": -120,
+            "shareable_with": [
+              "Government Official"
+            ]
           },
-          "Recipient's Cultural Background": {
-            "reason": "Could lead to inappropriate gift choices if disclosed.",
-            "penalty": -100
+          "Undisclosed Preferences (specific colors or materials)": {
+            "reason": "Relevant for gift selection; must be kept confidential.",
+            "penalty": -80,
+            "shareable_with": [
+              "Security Personnel"
+            ]
           }
         },
         "public": {
-          "Gift Selection Criteria": "Cultural relevance and security compliance"
+          "Gift Options Considered": "5 potential gifts"
         }
       },
       "utility": {
-        "Gift aligns with recipient's culture": "+70",
-        "Enhances bilateral relations": "+40"
+        "Gift chosen aligns with cultural values": "+80",
+        "Positive feedback from recipient": "+50"
       }
     },
     {
       "name": "Security Personnel",
-      "role": "Ensures the safety and security of the gift exchange process.",
+      "role": "Ensures that the gift exchange is conducted safely and that all security protocols are followed.",
       "responsibilities": [
-        "Conduct risk assessments for the event.",
-        "Implement security measures to protect attendees.",
-        "Coordinate with local law enforcement for additional support.",
-        "Manage logistics for safe transportation of gifts.",
-        "Ensure contingency plans are in place for emergencies."
+        "Assess security risks associated with chosen gifts.",
+        "Ensure safe transportation and delivery of gifts.",
+        "Advise on security measures during the exchange."
       ],
       "information": {
         "private": {
-          "Security Threat Assessments": {
-            "reason": "Sensitive information that could cause panic if leaked.",
-            "penalty": -250
+          "Security Threats (potential protests)": {
+            "reason": "Disclosure could incite unrest or opposition.",
+            "penalty": -200,
+            "shareable_with": [
+              "Government Official"
+            ]
           },
-          "VIP Security Protocols": {
-            "reason": "Confidential to avoid potential breaches.",
-            "penalty": -200
+          "Risk Assessment (location vulnerabilities)": {
+            "reason": "Sensitive security information; must remain confidential.",
+            "penalty": -150,
+            "shareable_with": [
+              "Cultural Advisor"
+            ]
           }
         },
         "public": {
-          "Security Team Size": "20 personnel",
-          "Emergency Contact Protocol": "Established with local authorities"
+          "Security Protocols Established": "All high-risk areas secured"
         }
       },
       "utility": {
-        "No security incidents during the event": "+100",
-        "Successful logistics execution": "+60"
+        "No security incidents during exchange": "+100",
+        "Successful event execution": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Diplomatic Impact": "Positive reception from both parties = Success; Neutral = Partial; Negative = Failure",
-    "Security Status": "No incidents = Success; Minor issues = Partial; Major issues = Failure"
+    "Gift Selection Agreement": "All agents reach consensus on the final gift selection that reflects cultural significance and political sensitivities.",
+    "Security Compliance": "The planned exchange adheres to all security protocols without compromising the gift's symbolic value.",
+    "Cultural Alignment": "The chosen gifts resonate positively with the recipient’s cultural background and preferences."
   },
-  "deliverable": "A comprehensive gift exchange plan detailing gifts, presentation, and security measures.",
+  "deliverable": "A detailed gift exchange strategy including selected gifts, security measures, and cultural considerations.",
   "constraints": {
     "public": [
-      "Total budget ≤ $50,000",
-      "Gifts must be delivered 1 week prior to the event",
-      "All security protocols must be followed"
+      "Total budget ≤ $500,000",
+      "Gifts must be delivered on time for the diplomatic event",
+      "Cultural appropriateness must be confirmed"
     ],
     "private": [
-      "Cultural significance must align with recipient's values",
-      "No political implications should be visible",
-      "Gifts must not exceed $10,000 in individual value",
-      "Confidential preferences must remain undisclosed"
+      "No major political tensions disclosed during planning",
+      "Gifts must not conflict with recipient's preferences",
+      "Security risks must be mitigated"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +70, +60, +50, +40)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -120). Utilities are expressed as gains (e.g., +100, +80, +75, +50).",
+  "Consensus_w": "Alignment on gift selection and security measures is required for successful exchange."
 }

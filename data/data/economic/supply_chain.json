@@ -1,0 +1,121 @@
+{
+  "scenario": "A manufacturing partnership negotiation unfolds where suppliers, manufacturers, and distributors collaborate to establish terms while concealing private cost structures, delivery timelines, and alternative sourcing options.",
+  "task": "Formulate a detailed partnership agreement that aligns cost-sharing, delivery timelines, and distribution strategies while ensuring all parties protect their confidential information. Agents must balance financial constraints, production capabilities, and market demands, necessitating strategic information sharing to build consensus without undermining competitive advantages.",
+  "agents": [
+    {
+      "name": "Supplier Manager",
+      "role": "Oversees sourcing and pricing strategies, ensuring materials meet quality standards and cost targets.",
+      "responsibilities": [
+        "Negotiate pricing with manufacturers.",
+        "Manage inventory and supply chain logistics.",
+        "Ensure compliance with quality specifications."
+      ],
+      "information": {
+        "private": {
+          "Cost Structure ($200 per unit)": {
+            "reason": "Revealing could weaken negotiation leverage.",
+            "penalty": -150,
+            "shareable_with": [
+              "Manufacturer"
+            ]
+          },
+          "Alternative Supplier Options (20% lower cost)": {
+            "reason": "Disclosing this could jeopardize current contracts.",
+            "penalty": -200,
+            "shareable_with": []
+          }
+        },
+        "public": {
+          "Production Capacity": "100,000 units/month"
+        }
+      },
+      "utility": {
+        "Maintain unit cost ≤ $200": "+50",
+        "Securing a long-term contract": "+75"
+      }
+    },
+    {
+      "name": "Manufacturer Director",
+      "role": "Manages production operations, ensuring timely delivery and adherence to budget constraints.",
+      "responsibilities": [
+        "Coordinate production schedules with suppliers.",
+        "Optimize manufacturing processes for cost efficiency.",
+        "Ensure compliance with delivery timelines."
+      ],
+      "information": {
+        "private": {
+          "Confidential Delivery Timeline (4 weeks)": {
+            "reason": "Disclosure could lead to competitive pressure.",
+            "penalty": -100,
+            "shareable_with": [
+              "Distributor"
+            ]
+          },
+          "Production Cost per Unit ($180)": {
+            "reason": "Revealing could undermine negotiation strategy.",
+            "penalty": -150,
+            "shareable_with": []
+          }
+        },
+        "public": {
+          "Maximum Output": "150,000 units/month"
+        }
+      },
+      "utility": {
+        "Delivery on time": "+100",
+        "Cost reduction achieved": "+50"
+      }
+    },
+    {
+      "name": "Distributor Executive",
+      "role": "Oversees distribution logistics and market strategy, ensuring product availability and visibility.",
+      "responsibilities": [
+        "Negotiate distribution agreements.",
+        "Manage logistics and inventory for timely delivery.",
+        "Analyze market demand to optimize distribution."
+      ],
+      "information": {
+        "private": {
+          "Market Demand Forecast (30% growth)": {
+            "reason": "Sensitive market data; revealing could harm competitive position.",
+            "penalty": -100,
+            "shareable_with": []
+          },
+          "Alternative Distribution Channels (10% higher margins)": {
+            "reason": "Confidential strategy that could affect partnerships.",
+            "penalty": -200,
+            "shareable_with": []
+          }
+        },
+        "public": {
+          "Distribution Network Size": "200 retail partners"
+        }
+      },
+      "utility": {
+        "Achieve distribution within 2 weeks": "+75",
+        "Maximize margin per unit sold": "+50"
+      }
+    }
+  ],
+  "success_criteria": {
+    "Cost Agreement": "All parties agree on a final unit cost that meets the Supplier's ceiling and the Manufacturer's production cost requirements.",
+    "Timeline Alignment": "Consensus is reached on a delivery timeline that satisfies the Manufacturer's capabilities and the Distributor's market needs.",
+    "Distribution Strategy Agreement": "All agents align on the distribution strategy that maximizes market reach while respecting confidentiality constraints."
+  },
+  "deliverable": "A comprehensive partnership agreement detailing cost-sharing, delivery schedules, and distribution logistics.",
+  "constraints": {
+    "public": [
+      "Total unit cost ≤ $200",
+      "Delivery within 4 weeks",
+      "Production capacity ≥ 100,000 units/month",
+      "Distribution network must reach 200 retail partners"
+    ],
+    "private": [
+      "Supplier cost structure must remain undisclosed",
+      "Manufacturer's production costs must not be shared",
+      "Distributor's market forecasts must stay confidential"
+    ]
+  },
+  "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are expressed as gains.",
+  "Consensus_w": "Agreement on cost, timeline, and distribution strategy requires negotiation and trade-offs."
+}

@@ -1,84 +1,87 @@
 {
-  "scenario": "An HR representative negotiates salary with a selected candidate while managing sensitive salary information from other employees and competing offers from different companies.",
-  "task": "Reach an agreement on the candidate's salary package while protecting confidential salary data and ensuring the offer is competitive enough to secure the candidate's acceptance.",
+  "scenario": "Salary negotiations take place between an HR representative and a selected candidate who has received multiple competing job offers, creating a complex dynamic around salary expectations and internal equity.",
+  "task": "Negotiate a final salary package that aligns with the company's budget constraints while meeting the candidate's salary expectations and considering the offers from other companies. Both parties must navigate the sensitive internal salary information and the candidate's competing offers to reach a mutually beneficial agreement.",
   "agents": [
     {
       "name": "HR Manager",
-      "role": "Oversees the recruitment and salary negotiation processes, ensuring compliance with company policies.",
+      "role": "Oversees the recruitment process and finalizes salary offers while ensuring internal pay equity.",
       "responsibilities": [
-        "Evaluate the candidate's qualifications and expectations.",
-        "Present a competitive salary offer based on market research and internal equity.",
-        "Maintain confidentiality regarding other employees' salaries.",
-        "Negotiate terms that align with the company's budget and compensation strategy.",
-        "Document the negotiation process and finalize the employment contract."
+        "Evaluate the candidate's qualifications and market value.",
+        "Determine the salary range based on internal data and budget constraints.",
+        "Facilitate negotiations while maintaining confidentiality of existing employee salaries.",
+        "Communicate the company’s compensation philosophy to the candidate."
       ],
       "information": {
         "private": {
-          "Employee Salary Data": {
-            "reason": "Confidential information that could lead to discontent among current employees if disclosed.",
-            "penalty": -200
+          "Internal Salary Data (Employee X earns $80K)": {
+            "reason": "Disclosure could lead to dissatisfaction among current employees and create negotiation challenges.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Other Offers to Candidate": {
-            "reason": "Revealing competitor offers could weaken negotiating position and lead to loss of candidate.",
-            "penalty": -150
+          "Confidential Offer from Competitor ($90K plus bonuses)": {
+            "reason": "Revealing this could weaken the company's negotiating position.",
+            "penalty": -150,
+            "shareable_with": []
           }
         },
         "public": {
-          "Budget for New Hires": "$500,000"
+          "Budget for New Hires": "$85K average salary"
         }
       },
       "utility": {
-        "Offer accepted within 1 week": "+100",
-        "Salary within 10% of market rate": "+50"
+        "Salary offer ≤ $85K": "+50",
+        "Successful hire within 2 weeks": "+40"
       }
     },
     {
-      "name": "Candidate",
-      "role": "A prospective employee seeking the best possible salary and benefits package.",
+      "name": "Selected Candidate",
+      "role": "Evaluates job offers and negotiates the best possible salary and benefits package.",
       "responsibilities": [
-        "Assess the offer against other potential employment opportunities.",
-        "Negotiate for a salary that reflects skills and market value.",
-        "Maintain confidentiality regarding competing offers.",
-        "Communicate clearly about salary expectations and career goals.",
-        "Decide whether to accept or decline the offer based on negotiations."
+        "Assess the total compensation package from the company.",
+        "Negotiate salary based on market value and competing offers.",
+        "Communicate any non-salary benefits that are important for acceptance."
       ],
       "information": {
         "private": {
-          "Current Salary": {
-            "reason": "Personal financial information that could impact negotiation leverage.",
-            "penalty": -100
+          "Other Job Offer Details ($90K with stock options)": {
+            "reason": "Keeping this private maximizes negotiation leverage.",
+            "penalty": -100,
+            "shareable_with": []
           },
-          "Other Job Offers": {
-            "reason": "Disclosing this could undermine negotiation power and lead to unfavorable terms.",
-            "penalty": -150
+          "Salary Expectations ($95K minimum)": {
+            "reason": "Revealing this could limit negotiation flexibility.",
+            "penalty": -50,
+            "shareable_with": []
           }
         },
         "public": {
-          "Experience Level": "5 years in the industry"
+          "Current Salary": "$75K"
         }
       },
       "utility": {
-        "Salary ≥ $80,000": "+100",
-        "Benefits package includes remote work option": "+50"
+        "Achieve salary ≥ $90K": "+60",
+        "Accept job within 1 week": "+30"
       }
     }
   ],
   "success_criteria": {
-    "Salary Offer": "≥ $80,000 = Success; $70,000-$79,999 = Partial Success; < $70,000 = Failure",
-    "Offer Acceptance": "Candidate accepts offer within 1 week = Success; accepts in 2 weeks = Partial Success; declines = Failure"
+    "Salary Agreement": "Both parties reach a consensus on a final salary offer that meets the candidate's expectations while adhering to the company's budget.",
+    "Benefits Alignment": "Negotiation results in a benefits package that satisfies the candidate's needs and aligns with company policies.",
+    "Timeline Agreement": "Both parties agree on a timeline for the candidate's acceptance and start date."
   },
-  "deliverable": "A finalized salary package agreement that meets both parties' conditions and expectations.",
+  "deliverable": "A finalized salary and benefits package agreement.",
   "constraints": {
     "public": [
-      "Total salary package must not exceed $100,000",
-      "Salary must align with internal equity guidelines",
-      "Negotiation must conclude within 2 weeks"
+      "Total compensation ≤ $90K",
+      "Offer extended within 2 weeks",
+      "Benefits package includes health insurance"
     ],
     "private": [
-      "Salary offer must remain within 10% of market average",
-      "Candidate's current salary must not be disclosed",
-      "Other offers must not be revealed"
+      "Salary not exceeding $85K for internal equity",
+      "Candidate must not disclose other offers during negotiations",
+      "HR must maintain confidentiality of internal salary data"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +50)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are expressed as positive gains.",
+  "Consensus_w": "Agreement on salary and benefits must be reached through negotiation."
 }

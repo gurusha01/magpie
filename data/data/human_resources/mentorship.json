@@ -1,117 +1,129 @@
 {
-  "scenario": "A strategic leadership development program is launched to enhance executive skills, nurture high-potential employees, and leverage external coaching, while managing private performance weaknesses and undisclosed merger activities.",
-  "task": "Design a comprehensive leadership development strategy that integrates coaching sessions, performance assessments, and executive training, while ensuring confidentiality of sensitive information and fostering collaboration among all stakeholders.",
+  "scenario": "A strategic leadership development program is being coordinated among executives, high-potential employees, and external coaches, each managing sensitive information about performance weaknesses and merger preparations.",
+  "task": "Create a comprehensive development plan that integrates tailored coaching sessions, performance assessments, and strategic alignment for leadership roles while balancing confidentiality and transparency among all participants. The agents must navigate personal development needs against organizational goals, ensuring that private information does not hinder collective progress.",
   "agents": [
     {
-      "name": "Executive Program Director",
-      "role": "Oversees the entire leadership development program, ensuring alignment with organizational goals.",
+      "name": "Executive Sponsor",
+      "role": "Oversees the leadership program, ensuring alignment with corporate strategy and resource allocation.",
       "responsibilities": [
-        "Define the strategic objectives of the leadership program.",
-        "Coordinate schedules and resources for training sessions and coaching.",
-        "Monitor participant progress and adjust the program based on feedback.",
-        "Ensure confidentiality of sensitive performance data and merger activities.",
-        "Facilitate communication between executives, high-potential employees, and coaches."
+        "Define program objectives and outcomes",
+        "Allocate budget and resources",
+        "Facilitate stakeholder engagement and support"
       ],
       "information": {
         "private": {
-          "Performance Weaknesses (confidential assessments)": {
-            "reason": "Sensitive data that could impact participants' careers if leaked.",
-            "penalty": -300
+          "Personal Performance Weakness (communication skills)": {
+            "reason": "Disclosure could undermine credibility and authority.",
+            "penalty": -150,
+            "shareable_with": [
+              "External Coach"
+            ]
           },
-          "Merger Preparation Activities (ongoing negotiations)": {
-            "reason": "Disclosure could jeopardize competitive advantage and stakeholder trust.",
-            "penalty": -250
+          "Merger Preparation Activities (ongoing discussions with another firm)": {
+            "reason": "Could create panic or speculation among employees if disclosed.",
+            "penalty": -200,
+            "shareable_with": [
+              "High-Potential Employees"
+            ]
           }
         },
         "public": {
-          "Program Duration": "12 months",
-          "Participant Count": "20 executives and high-potential employees"
+          "Program Budget": "$500,000"
         }
       },
       "utility": {
-        "Successful completion of all training modules": "+80",
-        "Participant satisfaction score ≥ 85%": "+50"
+        "Program completion within timeline": "+100",
+        "Total participation rate ≥ 80%": "+50"
       }
     },
     {
       "name": "High-Potential Employee",
-      "role": "Participates in the leadership program to enhance skills and prepare for future roles.",
+      "role": "Participates in the program, focused on personal development and career advancement.",
       "responsibilities": [
-        "Engage actively in all training and coaching sessions.",
-        "Provide honest feedback on the program to improve its effectiveness.",
-        "Maintain confidentiality regarding sensitive performance and merger information.",
-        "Collaborate with peers to foster a supportive learning environment.",
-        "Set personal development goals in alignment with program objectives."
+        "Engage actively in coaching sessions",
+        "Provide feedback on program effectiveness",
+        "Set individual development goals"
       ],
       "information": {
         "private": {
-          "Personal Development Goals (specific skill areas)": {
-            "reason": "Personal aspirations that should remain confidential to avoid peer comparison.",
-            "penalty": -150
+          "Performance Weakness (decision-making under pressure)": {
+            "reason": "Disclosing this could limit future opportunities or promotions.",
+            "penalty": -100,
+            "shareable_with": [
+              "Executive Sponsor"
+            ]
           },
-          "Mentor's Career Transition Plans (confidential insights)": {
-            "reason": "Information that could influence perceptions of stability and leadership within the organization.",
-            "penalty": -100
+          "Confidential Mentor Transition (mentor considering leaving company)": {
+            "reason": "Could affect trust and mentor-mentee relationship if revealed.",
+            "penalty": -150,
+            "shareable_with": [
+              "External Coach"
+            ]
           }
         },
         "public": {
-          "Current Role": "Senior Analyst",
-          "Desired Position": "Manager"
+          "Development Goals": "Improve leadership presence and strategic thinking"
         }
       },
       "utility": {
-        "Achieving personal development goals": "+60",
-        "Positive feedback from mentor": "+40"
+        "Achieving development goals": "+75",
+        "Networking opportunities with executives": "+50"
       }
     },
     {
       "name": "External Coach",
-      "role": "Provides guidance and expertise to enhance leadership capabilities of participants.",
+      "role": "Provides expertise and guidance to enhance leadership skills and facilitate program success.",
       "responsibilities": [
-        "Design personalized coaching plans for each participant.",
-        "Facilitate workshops and group sessions to build leadership skills.",
-        "Gather feedback on coaching effectiveness and suggest program improvements.",
-        "Maintain confidentiality of coaching discussions and sensitive information.",
-        "Support participants in navigating their career paths and challenges."
+        "Design and deliver coaching modules",
+        "Assess participant performance and progress",
+        "Provide feedback to executives on program effectiveness"
       ],
       "information": {
         "private": {
-          "Client Performance Metrics (confidential evaluations)": {
-            "reason": "Sensitive data that must remain private to protect client interests.",
-            "penalty": -200
+          "Coach's Own Career Transition Plans": {
+            "reason": "May affect commitment or focus on the current program.",
+            "penalty": -100,
+            "shareable_with": [
+              "Executive Sponsor"
+            ]
           },
-          "Insights on Corporate Culture (internal dynamics)": {
-            "reason": "Leaking could disrupt team dynamics and trust within the organization.",
-            "penalty": -150
+          "Client Performance Weaknesses": {
+            "reason": "Sensitive information that could impact trust and confidentiality.",
+            "penalty": -200,
+            "shareable_with": [
+              "High-Potential Employee"
+            ]
           }
         },
         "public": {
-          "Coaching Approach": "Strengths-based and solution-focused",
-          "Coaching Duration": "6 months per participant"
+          "Coaching Experience": "15 years in leadership development"
         }
       },
       "utility": {
-        "Participant improvement in leadership skills": "+70",
-        "Positive feedback from program director": "+30"
+        "Participant satisfaction ≥ 90%": "+100",
+        "Successful implementation of coaching strategies": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Participant improvement rate": "≥75% = Success; 60-74% = Partial; <60% = Failure",
-    "Program completion rate": "≥90% = Success; 75-89% = Partial; <75% = Failure"
+    "Program Objectives Alignment": "All agents agree on the key objectives and outcomes of the leadership development program.",
+    "Participation Agreement": "Consensus on participant roles and commitments, ensuring high engagement levels.",
+    "Feedback Implementation": "Agreement on how to incorporate feedback from participants and coaches into program adjustments."
   },
-  "deliverable": "A detailed leadership development strategy that outlines training modules, coaching sessions, and evaluation methods.",
+  "deliverable": "A strategic leadership development plan that outlines program structure, roles, and expected outcomes.",
   "constraints": {
     "public": [
-      "Total program budget ≤ $500,000",
-      "Completion of the program within 12 months",
-      "Participant attendance ≥ 90%"
+      "Total budget ≤ $500,000",
+      "Program duration ≤ 12 months",
+      "≥80% participation rate",
+      "Confidentiality agreements signed"
     ],
     "private": [
-      "Confidentiality of performance weaknesses must be maintained",
-      "Merger activities must remain undisclosed until finalized",
-      "Participant feedback must be anonymized before sharing"
+      "No major performance weaknesses disclosed without consent",
+      "Merger details remain confidential until finalized",
+      "Coach's transition plans kept private until necessary"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +80, +60, +70, +50, +40, +30)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on how to share sensitive information while maintaining program integrity and participant trust."
 }

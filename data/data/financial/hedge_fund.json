@@ -1,115 +1,128 @@
 {
-  "scenario": "A multi-strategy hedge fund alliance is formed where portfolio managers, institutional investors, and prime brokers collaborate while managing sensitive trading strategies and regulatory information.",
-  "task": "Create a collaborative investment strategy that balances risk and return across diverse asset classes while protecting proprietary trading algorithms and regulatory insights.",
+  "scenario": "A multi-strategy hedge fund alliance is formed where portfolio managers, institutional investors, and prime brokers collaborate to optimize investment strategies while managing sensitive trading information and regulatory uncertainties.",
+  "task": "Create a comprehensive alliance strategy that aligns investment goals, risk management protocols, and compliance measures. Agents must navigate competing interests: portfolio managers might want aggressive strategies, while institutional investors prioritize risk mitigation, and prime brokers seek to maximize transaction volumes. They need to share sensitive trading information strategically, ensuring enough transparency to facilitate cooperation without compromising competitive advantages or regulatory compliance.",
   "agents": [
     {
-      "name": "Portfolio Manager A",
-      "role": "Leads investment strategy for equity markets and ensures alignment with overall fund goals.",
+      "name": "Portfolio Manager",
+      "role": "Responsible for developing and executing investment strategies tailored to market conditions.",
       "responsibilities": [
-        "Develop and implement equity trading strategies.",
-        "Monitor market trends and adjust investment positions accordingly.",
-        "Collaborate with other managers to optimize asset allocation.",
-        "Share aggregated performance data while keeping specific algorithm details private.",
-        "Assess risk exposure and adjust leverage positions."
+        "Analyze market trends and adjust portfolios accordingly.",
+        "Communicate strategy performance to stakeholders.",
+        "Implement risk management practices to protect capital."
       ],
       "information": {
         "private": {
-          "Algorithm Performance (80% success rate)": {
-            "reason": "Disclosing could give competitors an edge.",
-            "penalty": -250
+          "Algorithm Performance Metrics (algorithm A: 15% annualized return)": {
+            "reason": "Disclosure may lead to competitive disadvantage.",
+            "penalty": -250,
+            "shareable_with": [
+              "Institutional Investor"
+            ]
           },
-          "Leverage Position (3x on tech stocks)": {
-            "reason": "Sensitive financial information that could affect market behavior.",
-            "penalty": -200
+          "Leverage Position Details ($200M in leveraged positions)": {
+            "reason": "High sensitivity; could trigger panic among investors if revealed.",
+            "penalty": -300,
+            "shareable_with": [
+              "Prime Broker"
+            ]
           }
         },
         "public": {
-          "Current Equity Exposure": "60% in technology, 30% in healthcare, 10% in consumer goods"
+          "Current Portfolio Allocation": "30% equities, 50% fixed income, 20% alternatives"
         }
       },
       "utility": {
-        "Achieving ≥15% annual return": "+100",
-        "Maintaining risk exposure ≤5%": "+50"
+        "Maximum return achieved": "+100",
+        "Minimum drawdown maintained": "+75"
       }
     },
     {
-      "name": "Institutional Investor B",
-      "role": "Provides capital and strategic insights, ensuring investment aligns with long-term objectives.",
+      "name": "Institutional Investor",
+      "role": "Provides capital and seeks stable returns while ensuring compliance with investment mandates.",
       "responsibilities": [
-        "Evaluate investment proposals and risk assessments.",
-        "Provide feedback on portfolio diversification strategies.",
-        "Negotiate terms of capital allocation and expected returns.",
-        "Ensure compliance with investment mandates and regulations.",
-        "Facilitate transparent communication among alliance members."
+        "Evaluate fund performance and risk profile.",
+        "Ensure alignment with fiduciary duties.",
+        "Negotiate investment terms and conditions."
       ],
       "information": {
         "private": {
-          "Confidential Investment Mandate Details": {
-            "reason": "Sensitive information that could affect competitive positioning.",
-            "penalty": -150
+          "Internal Risk Assessment (high volatility strategy risk level)": {
+            "reason": "Confidential to maintain competitive edge in negotiations.",
+            "penalty": -200,
+            "shareable_with": [
+              "Portfolio Manager"
+            ]
           },
-          "Regulatory Investigation Insights": {
-            "reason": "Disclosing could impact market sentiment and fund strategies.",
-            "penalty": -100
+          "Pending Regulatory Investigations (affecting 3 strategies)": {
+            "reason": "Sensitive information; could affect market perception.",
+            "penalty": -250,
+            "shareable_with": [
+              "Prime Broker"
+            ]
           }
         },
         "public": {
-          "Investment Horizon": "5-7 years",
-          "Expected Returns": "≥10%"
+          "Investment Horizon": "5 years"
         }
       },
       "utility": {
-        "Investment return ≥10%": "+75",
-        "Compliance with all regulations": "+25"
+        "Achieving ≥6% annual return": "+80",
+        "Maintaining compliance with all regulations": "+50"
       }
     },
     {
-      "name": "Prime Broker C",
-      "role": "Facilitates trades and provides leverage while managing risk for the hedge fund alliance.",
+      "name": "Prime Broker",
+      "role": "Facilitates trading and provides liquidity, ensuring smooth operation of the hedge fund strategies.",
       "responsibilities": [
-        "Offer competitive financing and margin solutions.",
-        "Monitor trading activity and ensure compliance with regulations.",
-        "Provide analytics and performance reporting to portfolio managers.",
-        "Negotiate fees and terms of service for fund operations.",
-        "Manage relationships with regulatory bodies."
+        "Manage execution of trades and settlement.",
+        "Provide margin financing and leverage solutions.",
+        "Maintain relationships with regulatory bodies."
       ],
       "information": {
         "private": {
-          "Client Leverage Levels": {
-            "reason": "Confidential financial arrangements that could be exploited.",
-            "penalty": -200
+          "Confidential Client Trading Patterns (high-frequency trading volume)": {
+            "reason": "Revealing could compromise client strategies.",
+            "penalty": -150,
+            "shareable_with": [
+              "Portfolio Manager"
+            ]
           },
-          "Market Sensitivity Analysis": {
-            "reason": "Insights that could influence trading strategies if leaked.",
-            "penalty": -150
+          "Margin Requirements (revised leverage ratios)": {
+            "reason": "Sensitive information that could impact trading strategies.",
+            "penalty": -200,
+            "shareable_with": [
+              "Institutional Investor"
+            ]
           }
         },
         "public": {
-          "Trading Fee Structure": "0.1% per trade"
+          "Transaction Cost Structure": "0.1% per trade"
         }
       },
       "utility": {
-        "Client satisfaction ≥90%": "+50",
-        "Reducing margin call incidents ≤3%": "+100"
+        "Transaction volume ≥ $1B": "+90",
+        "Client retention rate ≥ 95%": "+70"
       }
     }
   ],
   "success_criteria": {
-    "Annualized Return": "≥15% = Success; 10-14% = Partial Success; <10% = Failure",
-    "Compliance Rate": "≥95% = Success; 90-94% = Partial Success; <90% = Failure"
+    "Investment Strategy Agreement": "All parties align on a diversified investment strategy that balances risk and return expectations.",
+    "Risk Management Protocols": "Consensus on risk management measures that satisfy both the Portfolio Manager’s aggressive strategies and the Institutional Investor’s risk tolerance.",
+    "Regulatory Compliance Alignment": "Agreement on compliance measures that address the concerns raised by potential regulatory investigations and maintain investor trust."
   },
-  "deliverable": "A comprehensive multi-strategy investment plan detailing risk management, capital allocation, and performance metrics.",
+  "deliverable": "A comprehensive alliance strategy document outlining investment goals, risk management protocols, and compliance measures.",
   "constraints": {
     "public": [
-      "Total leverage ≤4x across all strategies",
-      "Annualized return must be reported quarterly",
-      "All trades must comply with regulatory standards"
+      "Total capital commitment ≥ $500M",
+      "Compliance with SEC regulations",
+      "Diversification across at least 5 strategies"
     ],
     "private": [
-      "Algorithm must maintain a success rate ≥75%",
-      "Leverage positions must not exceed 60% of total capital",
-      "Confidential information must remain undisclosed to third parties"
+      "No leverage ratios exceed 3:1",
+      "≤20% exposure to any single strategy",
+      "Internal risk assessments must be kept confidential"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +90, +80).",
+  "Consensus_w": "All agents must negotiate and agree on the balance of aggressive versus conservative strategies to align their interests."
 }

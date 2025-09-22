@@ -1,114 +1,129 @@
 {
-  "scenario": "Strategic data center placement negotiation between tech giants, energy providers, and local governments with private expansion plans, undisclosed environmental impact data, and confidential economic incentive packages.",
-  "task": "Develop a collaborative strategy for the optimal placement of data centers that considers environmental, economic, and infrastructural factors while protecting sensitive information.",
+  "scenario": "A strategic data center placement negotiation involves tech giants, energy providers, and local governments each holding critical information about expansion plans, environmental impacts, and economic incentives that could influence the outcome.",
+  "task": "Develop a comprehensive placement strategy that balances site selection, energy requirements, environmental compliance, and local economic benefits. Agents must navigate competing interests: tech giants want optimal locations for data centers, energy providers seek profitable contracts, and local governments desire community benefits. To achieve alignment, they must strategically share information to build consensus while protecting sensitive data that could affect negotiations or public perception.",
   "agents": [
     {
       "name": "Tech Giant Representative",
-      "role": "Coordinates the technical requirements and site selection for data centers.",
+      "role": "Oversees data center location strategy, ensuring efficiency and scalability.",
       "responsibilities": [
-        "Outline technical specifications for data center locations.",
-        "Negotiate energy consumption agreements with providers.",
-        "Ensure compliance with local regulations and community standards.",
-        "Manage relationships with stakeholders to facilitate approvals.",
-        "Provide insights on potential technological innovations relevant to site efficiency."
+        "Identify potential sites based on latency and connectivity.",
+        "Negotiate land use agreements with local governments.",
+        "Assess energy needs and sustainability options."
       ],
       "information": {
         "private": {
-          "Projected Energy Use (10 MW per site)": {
-            "reason": "Sensitive operational data that could impact competitive positioning.",
-            "penalty": -300
+          "Expansion Plans (3 new centers by 2025)": {
+            "reason": "Disclosure could alert competitors and affect negotiations.",
+            "penalty": -250,
+            "shareable_with": [
+              "Local Government"
+            ]
           },
-          "Expansion Plans (5 new sites in 3 years)": {
-            "reason": "Confidential growth strategy that could influence market dynamics.",
-            "penalty": -250
+          "Projected Energy Consumption (100 MW per site)": {
+            "reason": "Sensitive internal data; revealing may impact negotiation leverage.",
+            "penalty": -150,
+            "shareable_with": [
+              "Energy Provider"
+            ]
           }
         },
         "public": {
-          "Current Site Utilization": "85%"
+          "Current Data Center Locations": "5 existing sites"
         }
       },
       "utility": {
-        "Meeting energy efficiency standards": "+100",
-        "Securing 3 sites within budget": "+80"
+        "Site selected with ≤5% latency": "+100",
+        "Energy contracts ≤ $50M annually": "+50"
       }
     },
     {
-      "name": "Energy Provider Executive",
-      "role": "Oversees energy supply agreements and infrastructure development.",
+      "name": "Energy Provider",
+      "role": "Responsible for delivering power solutions and ensuring sustainability of energy supply.",
       "responsibilities": [
-        "Negotiate energy contracts with tech companies.",
-        "Assess and propose renewable energy options.",
-        "Monitor grid capacity and reliability for new data centers.",
-        "Collaborate with local governments on infrastructure needs.",
+        "Develop energy supply proposals for data centers.",
+        "Negotiate pricing and contract terms with tech giants.",
         "Ensure compliance with environmental regulations."
       ],
       "information": {
         "private": {
-          "Infrastructure Upgrade Costs ($2M per site)": {
-            "reason": "Sensitive financial data that could affect negotiations.",
-            "penalty": -200
+          "Environmental Impact Data (emissions projections)": {
+            "reason": "Disclosure could spark public backlash and regulatory scrutiny.",
+            "penalty": -200,
+            "shareable_with": [
+              "Local Government"
+            ]
           },
-          "Environmental Impact Study Results (50% emissions reduction)": {
-            "reason": "Confidential data that could influence public perception.",
-            "penalty": -150
+          "Competitive Pricing Strategy (below market rates)": {
+            "reason": "Confidential strategy; revealing could weaken negotiation position.",
+            "penalty": -100,
+            "shareable_with": [
+              "Tech Giant Representative"
+            ]
           }
         },
         "public": {
-          "Renewable Energy Commitment": "60%"
+          "Renewable Energy Commitment": "50% of supply from renewable sources"
         }
       },
       "utility": {
-        "Achieving 100% renewable energy supply": "+150",
-        "Reducing emissions by ≥30%": "+70"
+        "Contracts signed with ≥3 tech companies": "+75",
+        "Sustainability targets met": "+50"
       }
     },
     {
       "name": "Local Government Official",
-      "role": "Represents community interests and regulatory compliance.",
+      "role": "Facilitates community engagement and ensures local benefits from data center placement.",
       "responsibilities": [
-        "Facilitate negotiations between tech companies and energy providers.",
-        "Ensure community needs and concerns are addressed.",
-        "Oversee compliance with local zoning and environmental laws.",
-        "Manage public relations and transparency efforts.",
-        "Advocate for economic incentives to attract tech investments."
+        "Negotiate economic incentives for tech giants.",
+        "Assess environmental compliance and community impact.",
+        "Engage with local stakeholders and address concerns."
       ],
       "information": {
         "private": {
-          "Economic Incentive Package ($5M total)": {
-            "reason": "Confidential negotiations may require adjustments based on competitive bids.",
-            "penalty": -100
+          "Confidential Economic Incentive Package (tax breaks)": {
+            "reason": "Disclosure could lead to public dissent and pressure from other sectors.",
+            "penalty": -150,
+            "shareable_with": [
+              "Energy Provider"
+            ]
           },
-          "Community Impact Data (70% support for tech expansion)": {
-            "reason": "Sensitive information that could sway negotiations.",
-            "penalty": -50
+          "Community Feedback Data (mixed responses)": {
+            "reason": "Sensitive insights; revealing could exacerbate community tensions.",
+            "penalty": -100,
+            "shareable_with": [
+              "Tech Giant Representative"
+            ]
           }
         },
         "public": {
-          "Zoning Regulations": "Updated for tech facilities"
+          "Community Engagement Events": "3 planned before final approval"
         }
       },
       "utility": {
-        "Community support ≥70%": "+100",
-        "Successful negotiation of incentives": "+50"
+        "Economic incentives approved": "+100",
+        "Community satisfaction ≥70%": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Energy Efficiency": "≤50% energy use increase = Success; 51-75% = Partial; >75% = Failure",
-    "Community Support": "≥70% approval = Success; 50-69% = Partial; <50% = Failure"
+    "Site Selection Agreement": "All agents agree on a final site that meets the tech giant's latency requirements, energy provider's capacity, and local government's community impact standards.",
+    "Energy Contract Alignment": "Consensus on energy supply terms that satisfy both tech giant's budget constraints and energy provider's pricing strategy.",
+    "Incentive Package Approval": "Local government finalizes an incentive package that aligns with both tech giant's expansion plans and community expectations."
   },
-  "deliverable": "A strategic placement plan that maximizes energy efficiency while ensuring community support and compliance.",
+  "deliverable": "A comprehensive data center placement strategy outlining site selection, energy solutions, and community benefits.",
   "constraints": {
     "public": [
-      "Total energy consumption ≤ 30 MW across all sites",
-      "Compliance with local zoning laws",
-      "Environmental impact reductions"
+      "Site selected within 50 miles of urban center",
+      "Energy supply contracts ≤ $50M annually",
+      "Environmental compliance verified",
+      "Community engagement completed before negotiations"
     ],
     "private": [
-      "Negotiated incentives must not exceed $5M total",
-      "Confidentiality of energy usage data",
-      "Local opposition must remain below 30%"
+      "Tech giant's expansion plans must remain undisclosed until finalized",
+      "Environmental impact data must meet local regulations",
+      "Economic incentives cannot exceed $10M in total"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +150, +70)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Negotiation of site selection and incentive packages requires agreement from all parties, necessitating trade-offs and compromises."
 }

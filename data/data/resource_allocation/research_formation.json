@@ -1,115 +1,129 @@
 {
-  "scenario": "An international pandemic response team is formed to address a global health crisis, where government agencies must navigate resource limitations, national security concerns, and sensitive epidemiological data.",
-  "task": "Create a collaborative response strategy that outlines resource allocation, information sharing protocols, and contingency plans for outbreak management, while ensuring sensitive information is protected.",
+  "scenario": "An international pandemic response team is assembled to coordinate efforts between multiple government agencies, each facing private resource limitations and national security concerns while managing confidential epidemiological data.",
+  "task": "Develop a comprehensive pandemic response strategy that integrates resource allocation, risk management, and data sharing protocols among agencies. Agents must navigate competing priorities: ensuring sufficient medical supplies may conflict with national security protocols, while data sharing must protect sensitive information without hindering response efforts. To succeed, agents must share crucial information selectively—enough to build consensus and coordinate effectively, but without compromising national interests or public safety.",
   "agents": [
     {
-      "name": "Government Health Official",
-      "role": "Leads the health sector's response efforts and coordinates with international health organizations.",
+      "name": "Public Health Official",
+      "role": "Oversees health data management and epidemiological strategy.",
       "responsibilities": [
-        "Develop health guidelines and protocols for response efforts.",
-        "Allocate healthcare resources based on real-time data and needs.",
-        "Communicate health risks to the public and ensure transparency.",
-        "Collaborate with other agencies to integrate health strategies into broader response plans.",
-        "Monitor and evaluate the effectiveness of implemented health measures."
+        "Coordinate data collection from various health agencies.",
+        "Analyze epidemiological trends and forecasts.",
+        "Develop public health guidelines based on data insights."
       ],
       "information": {
         "private": {
-          "Epidemiological Data (high transmission areas)": {
-            "reason": "Sensitive data that could incite public panic or compromise security.",
-            "penalty": -300
+          "Epidemiological Projections (30% infection rate)": {
+            "reason": "Sensitive projections; public disclosure could cause panic.",
+            "penalty": -200,
+            "shareable_with": [
+              "Government Agency Director"
+            ]
           },
-          "Vaccine Distribution Plans (limited supply)": {
-            "reason": "Confidential strategies that could influence public behavior or cause unrest.",
-            "penalty": -200
+          "Resource Availability (ventilator stockpile 50% depleted)": {
+            "reason": "Revealing could lead to public distrust and panic buying.",
+            "penalty": -150,
+            "shareable_with": [
+              "Resource Allocation Officer"
+            ]
           }
         },
         "public": {
-          "Current Infection Rate": "15%",
-          "Resource Allocation Plan": "70% healthcare, 30% research"
+          "Current Infection Rate": "15%"
         }
       },
       "utility": {
-        "Effective public communication": "+50",
-        "Resource allocation meets 80% of needs": "+100"
+        "Data accuracy ≥90%": "+50",
+        "Successful guideline implementation": "+75"
       }
     },
     {
-      "name": "National Security Advisor",
-      "role": "Ensures that national security interests are prioritized during the pandemic response.",
+      "name": "Government Agency Director",
+      "role": "Manages inter-agency coordination and national security considerations.",
       "responsibilities": [
-        "Assess threats to national security posed by the pandemic.",
-        "Coordinate with intelligence agencies to protect sensitive information.",
-        "Advise on the implications of health measures for national security.",
-        "Ensure that response strategies do not compromise national integrity.",
-        "Balance public health needs with security protocols."
+        "Facilitate communication between federal and local agencies.",
+        "Ensure compliance with national security protocols.",
+        "Oversee resource distribution logistics."
       ],
       "information": {
         "private": {
-          "Threat Assessment Reports": {
-            "reason": "Classified information that could affect public morale and response actions.",
-            "penalty": -250
+          "Security Protocols (classified response strategies)": {
+            "reason": "National security risk; disclosure could compromise operations.",
+            "penalty": -250,
+            "shareable_with": [
+              "Public Health Official"
+            ]
           },
-          "Resource Availability (military support)": {
-            "reason": "Sensitive operational details that must remain confidential.",
-            "penalty": -150
+          "Funding Allocation (20% budget cut due to fiscal constraints)": {
+            "reason": "Sensitive financial information that could affect public trust.",
+            "penalty": -100,
+            "shareable_with": [
+              "Resource Allocation Officer"
+            ]
           }
         },
         "public": {
-          "Security Protocols": "Monitoring and protection of critical infrastructure"
+          "Agency Coordination Meetings": "Weekly"
         }
       },
       "utility": {
-        "No security breaches during response": "+100",
-        "Threat level remains stable": "+50"
+        "Successful inter-agency agreement": "+100",
+        "Maintaining national security during response": "+75"
       }
     },
     {
-      "name": "Epidemiologist",
-      "role": "Provides scientific expertise on disease transmission and control measures.",
+      "name": "Resource Allocation Officer",
+      "role": "Responsible for managing and distributing medical supplies and resources.",
       "responsibilities": [
-        "Conduct research on virus behavior and transmission patterns.",
-        "Analyze data to inform public health decisions.",
-        "Collaborate with health officials to develop effective intervention strategies.",
-        "Communicate scientific findings to non-expert stakeholders.",
-        "Monitor the effectiveness of public health interventions."
+        "Assess resource needs and availability across agencies.",
+        "Coordinate supply chain logistics for medical supplies.",
+        "Monitor and report on resource usage and shortages."
       ],
       "information": {
         "private": {
-          "Research Findings (new variant risks)": {
-            "reason": "Data not yet published; could create panic if misinterpreted.",
-            "penalty": -150
+          "Supply Chain Disruptions (key supplier delays)": {
+            "reason": "Confidential supplier information; public knowledge could exacerbate shortages.",
+            "penalty": -150,
+            "shareable_with": [
+              "Government Agency Director"
+            ]
           },
-          "Vaccine Efficacy Data": {
-            "reason": "Confidential until peer-reviewed; premature disclosure could mislead public.",
-            "penalty": -100
+          "Resource Stock Levels (critical supplies below 30%)": {
+            "reason": "Sensitive operational data; disclosure could lead to public unrest.",
+            "penalty": -200,
+            "shareable_with": [
+              "Public Health Official"
+            ]
           }
         },
         "public": {
-          "Current Research Focus": "Transmission dynamics and vaccine development"
+          "Current Supply Status": "Adequate for 2 weeks"
         }
       },
       "utility": {
-        "Identification of effective interventions": "+75",
-        "Successful publication of findings": "+50"
+        "Resource allocation meets 90% demand": "+100",
+        "Avoiding supply chain disruptions": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Infection rate reduction": "≤5% = Success; 6-10% = Partial; >10% = Failure",
-    "Resource adequacy": "≥80% needs met = Success; 70-79% = Partial; <70% = Failure"
+    "Resource Allocation Agreement": "All agents agree to a resource distribution plan that meets the Public Health Official's epidemiological projections and the Agency Director's security protocols.",
+    "Data Sharing Protocols Established": "Consensus on how to share epidemiological data that balances public safety with national security concerns.",
+    "Coordination Efficiency": "Agents reach alignment on communication protocols and meeting schedules to ensure timely response."
   },
-  "deliverable": "A comprehensive pandemic response strategy that outlines resource allocation, information protocols, and contingency measures.",
+  "deliverable": "A comprehensive pandemic response strategy that outlines resource allocation, data sharing protocols, and inter-agency coordination.",
   "constraints": {
     "public": [
-      "Total healthcare budget ≤ $500M",
-      "Public communication must occur weekly",
-      "Compliance with international health regulations"
+      "Total response budget ≤ $500M",
+      "Medical supplies must last for at least 3 months",
+      "Regular updates to public health guidelines"
     ],
     "private": [
-      "Resource allocation must prioritize national security needs",
-      "Sensitive epidemiological data must remain undisclosed until validated",
-      "No sharing of threat assessment data without consensus"
+      "Resource availability must meet at least 80% of projected needs",
+      "No breach of national security protocols",
+      "Confidential data sharing agreements must be in place",
+      "Epidemiological data accuracy ≥85%"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on resource allocation and data sharing is required to proceed."
 }

@@ -1,114 +1,166 @@
 {
-  "scenario": "A project contract negotiation takes place where a client, freelancers, and a project manager must align on scope and budget despite hidden constraints and pressure from undisclosed changes.",
-  "task": "Negotiate a project plan that defines scope, budget, and timelines while balancing the interests of the client and freelancers, revealing enough information to reach consensus but protecting sensitive details.",
+  "scenario": "A project contract negotiation involves a client, freelancers, and a project manager, each navigating hidden budget constraints, undisclosed project scope changes, and private timeline pressures.",
+  "task": "Develop a comprehensive project contract that aligns on budget, scope, and timeline while ensuring all parties meet their respective needs and constraints. Agents must share relevant information strategically to build consensus, but without revealing sensitive data that could jeopardize negotiations or alter expectations.",
   "agents": [
     {
       "name": "Client Representative",
-      "role": "Oversees project vision and budget, ensuring outcomes meet business goals.",
+      "role": "Oversees project requirements and budget allocation, ensuring deliverables meet business goals.",
       "responsibilities": [
-        "Define project scope and expectations clearly to all parties.",
-        "Allocate budget efficiently while maintaining flexibility for unforeseen changes.",
-        "Communicate critical project milestones and deadlines.",
-        "Negotiate terms that favor client interests without alienating freelancers.",
-        "Monitor project progress and adjust budgets as necessary."
+        "Define project scope and objectives.",
+        "Set budget limits and approve financial allocations.",
+        "Communicate client expectations to freelancers and project manager.",
+        "Monitor project progress and adjust requirements as necessary."
       ],
       "information": {
         "private": {
-          "Hidden Budget Cap ($150,000)": {
-            "reason": "Revealing the maximum budget could weaken negotiation position.",
-            "penalty": -300
+          "Budget Ceiling ($150K)": {
+            "reason": "Disclosure could limit negotiation flexibility with freelancers.",
+            "penalty": -200,
+            "shareable_with": [
+              "Project Manager"
+            ]
           },
-          "Upcoming Strategic Shift": {
-            "reason": "Strategic changes in business direction that may affect project scope.",
-            "penalty": -200
+          "Upcoming Corporate Changes (potential budget cuts)": {
+            "reason": "Sensitive information that could affect freelancers’ willingness to commit.",
+            "penalty": -150,
+            "shareable_with": [
+              "Project Manager"
+            ]
           }
         },
         "public": {
-          "Initial Budget Proposal": "$200,000"
+          "Initial Budget Proposal": "$150K"
         }
       },
       "utility": {
-        "Staying under budget": "+100",
-        "Meeting project deadlines": "+50"
+        "Project completed within budget": "+100",
+        "Satisfaction with deliverables": "+50"
       }
     },
     {
-      "name": "Freelancer Lead",
-      "role": "Represents a group of freelancers with diverse skills, ensuring their interests are prioritized.",
+      "name": "Freelancer A",
+      "role": "Provides specialized skills and deliverables as per project requirements.",
       "responsibilities": [
-        "Clarify the scope of work as it relates to freelancers' capabilities.",
-        "Negotiate fair compensation and terms for services provided.",
-        "Ensure timelines are realistic based on freelancers' workloads.",
-        "Communicate any potential issues or concerns regarding project execution.",
-        "Advocate for transparency to ensure freelancers' contributions are recognized."
+        "Complete assigned tasks within agreed timelines.",
+        "Communicate progress and any challenges to the project manager.",
+        "Ensure quality of work meets client standards.",
+        "Manage workload across multiple projects."
       ],
       "information": {
         "private": {
-          "Minimum Acceptable Rate ($120,000)": {
-            "reason": "Revealing this could limit negotiating flexibility.",
-            "penalty": -250
+          "Competing Offer (higher rate from another client)": {
+            "reason": "Could influence negotiation stance; revealing might lead to lower offers.",
+            "penalty": -100,
+            "shareable_with": [
+              "Project Manager"
+            ]
           },
-          "Freelancer Availability Constraints": {
-            "reason": "Internal scheduling conflicts that could limit project resources.",
-            "penalty": -150
+          "Availability Constraints (limited hours due to other commitments)": {
+            "reason": "Disclosure could affect perceived reliability.",
+            "penalty": -50,
+            "shareable_with": [
+              "Project Manager"
+            ]
           }
         },
         "public": {
-          "Freelancer Team Skills": "Design, Development, Marketing"
+          "Current Hourly Rate": "$50"
         }
       },
       "utility": {
-        "Total compensation meeting minimum rate": "+80",
-        "Timely project completion": "+60"
+        "Project completed by initial deadline": "+75",
+        "Additional hours billable (≥20 hours)": "+50"
+      }
+    },
+    {
+      "name": "Freelancer B",
+      "role": "Delivers creative content and collaborates with other freelancers to meet project goals.",
+      "responsibilities": [
+        "Create high-quality content as per project specifications.",
+        "Collaborate with Freelancer A for cohesive deliverables.",
+        "Provide feedback and revisions based on client input.",
+        "Manage time effectively to meet project deadlines."
+      ],
+      "information": {
+        "private": {
+          "Client Feedback (previous negative experiences)": {
+            "reason": "Could impact negotiation dynamics; revealing could lead to distrust.",
+            "penalty": -80,
+            "shareable_with": [
+              "Project Manager"
+            ]
+          },
+          "Personal Rate Increase Expectation (wanting $60/hour)": {
+            "reason": "Could hinder negotiations if disclosed too early.",
+            "penalty": -100,
+            "shareable_with": [
+              "Project Manager"
+            ]
+          }
+        },
+        "public": {
+          "Previous Projects Completed": "10"
+        }
+      },
+      "utility": {
+        "Positive client feedback": "+100",
+        "Rate increase approved": "+75"
       }
     },
     {
       "name": "Project Manager",
       "role": "Facilitates communication between client and freelancers, ensuring project alignment.",
       "responsibilities": [
-        "Coordinate project tasks and timelines among all parties.",
-        "Manage stakeholder expectations and resolve conflicts.",
-        "Provide regular updates on progress and any emerging issues.",
-        "Ensure compliance with the agreed-upon scope and budget.",
-        "Act as a mediator during negotiations to find common ground."
+        "Manage project timeline and deliverables.",
+        "Coordinate between the client and freelancers.",
+        "Resolve conflicts and ensure smooth workflow.",
+        "Monitor project progress and timelines."
       ],
       "information": {
         "private": {
-          "Pending Scope Adjustments": {
-            "reason": "Changes that could significantly impact project delivery timeline.",
-            "penalty": -200
+          "Timeline Pressure (new client deadline)": {
+            "reason": "Disclosure might lead freelancers to overestimate their capabilities.",
+            "penalty": -150,
+            "shareable_with": [
+              "Client Representative"
+            ]
           },
-          "Internal Resource Availability": {
-            "reason": "Confidential information about available team members.",
-            "penalty": -100
+          "Potential Scope Changes (client's changing demands)": {
+            "reason": "Could cause panic among freelancers, affecting performance.",
+            "penalty": -200,
+            "shareable_with": [
+              "Client Representative"
+            ]
           }
         },
         "public": {
-          "Project Timeline": "6 months"
+          "Current Project Timeline": "3 months"
         }
       },
       "utility": {
-        "Project delivered on time": "+70",
-        "Budget adherence": "+40"
+        "Project completed on time": "+100",
+        "Maintaining client satisfaction": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Budget adherence": "≤$200,000 = Success; $200,001-$220,000 = Partial success; >$220,000 = Failure",
-    "Timeline adherence": "≤6 months = Success; 6-7 months = Partial success; >7 months = Failure"
+    "Budget Agreement": "All parties agree on a final budget that respects the Client's ceiling while accommodating freelancer rates.",
+    "Scope Alignment": "Consensus is reached on project scope that meets both client needs and freelancer capabilities.",
+    "Timeline Consensus": "Agreement on a project timeline that aligns with client expectations and freelancer availability."
   },
-  "deliverable": "A finalized project contract that outlines scope, budget, and timelines.",
+  "deliverable": "A finalized project contract detailing budget, scope, and timelines.",
   "constraints": {
     "public": [
-      "Total budget proposal ≤ $250,000",
-      "Project completion within 7 months",
-      "Scope must be clearly defined"
+      "Total budget ≤ $150K",
+      "Project completion within 3 months",
+      "At least 2 freelancers engaged"
     ],
     "private": [
-      "Client budget cap ≤ $150,000",
-      "Freelancer minimum rate ≥ $120,000",
-      "Internal resource availability must meet demands"
+      "Client's budget cuts not disclosed",
+      "Freelancers' competing offers not revealed",
+      "New client deadlines not communicated"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +70)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on budget, scope, and timeline is necessary for successful contract finalization."
 }

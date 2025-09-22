@@ -1,114 +1,130 @@
 {
-  "scenario": "A major museum installation collaboration brings together renowned artists, curators, and corporate sponsors who must navigate private artistic disagreements and budget limitations while addressing donor concerns about political messaging.",
-  "task": "Create a cohesive exhibition plan that balances artistic integrity with sponsor expectations, ensuring all parties are satisfied while protecting sensitive information.",
+  "scenario": "A major museum installation collaboration involves renowned artists, curators, and corporate sponsors navigating artistic disagreements, budget limitations, and donor messaging concerns.",
+  "task": "Create a detailed installation plan that harmonizes artistic vision, budget constraints, and corporate sponsorship commitments while addressing potential conflicts over artistic direction and donor expectations. Agents must strategically share insights to foster consensus, ensuring that sensitive artistic disagreements and financial limitations are managed without compromising the integrity of the installation.",
   "agents": [
     {
-      "name": "Lead Artist",
-      "role": "Responsible for the artistic vision and execution of the installation, ensuring it aligns with the museum's mission.",
+      "name": "Renowned Artist",
+      "role": "Leads the creative vision for the installation and ensures the artwork reflects personal and societal themes.",
       "responsibilities": [
-        "Develop the core theme and concept for the installation.",
-        "Coordinate with other artists to ensure cohesive artistic expression.",
-        "Manage the creative process while adhering to time constraints.",
-        "Balance artistic expression with sponsor requirements regarding political content.",
-        "Present draft designs and receive feedback from curators and sponsors."
+        "Conceptualize and design the installation.",
+        "Collaborate with curators on thematic elements.",
+        "Oversee the production and installation process."
       ],
       "information": {
         "private": {
-          "Artistic Disagreement (about political themes)": {
-            "reason": "Disclosing could harm collaborative relationships and lead to conflict.",
-            "penalty": -150
+          "Artistic Disagreement (use of politically charged themes)": {
+            "reason": "Could alienate corporate sponsors and impact funding.",
+            "penalty": -200,
+            "shareable_with": [
+              "Curator"
+            ]
           },
-          "Budget Limitations (undisclosed cap)": {
-            "reason": "Revealing could undermine negotiation leverage with sponsors.",
-            "penalty": -100
+          "Budget Overruns (initial estimate exceeded by 20%)": {
+            "reason": "Revealing may create distrust among sponsors.",
+            "penalty": -150,
+            "shareable_with": [
+              "Corporate Sponsor"
+            ]
           }
         },
         "public": {
-          "Exhibition Concept": "Exploration of contemporary societal issues"
+          "Installation Concept Theme": "Social Justice and Community Engagement"
         }
       },
       "utility": {
-        "Artistic vision maintained": "+70",
-        "Collaborative agreement reached": "+50"
+        "Installation completed on time": "+100",
+        "Artistic vision fully realized": "+75"
       }
     },
     {
-      "name": "Chief Curator",
-      "role": "Oversees the exhibition's thematic integrity and educational value, ensuring it aligns with the museum's goals.",
+      "name": "Curator",
+      "role": "Oversees the thematic integration and presentation of the installation within the museum's broader context.",
       "responsibilities": [
-        "Curate artworks that resonate with the chosen theme.",
-        "Engage with artists to refine their works for the exhibition.",
-        "Facilitate discussions among artists and sponsors to align expectations.",
-        "Ensure the exhibition meets educational and community outreach goals.",
-        "Monitor the installation process to maintain quality and relevance."
+        "Ensure the installation aligns with museum objectives.",
+        "Coordinate with artists and sponsors on logistics.",
+        "Manage public relations and community outreach."
       ],
       "information": {
         "private": {
-          "Donor Concerns (political messaging)": {
-            "reason": "Sensitive information that could affect funding and support.",
-            "penalty": -200
+          "Undisclosed Budget Ceiling ($1M)": {
+            "reason": "Sharing could limit negotiation flexibility with sponsors.",
+            "penalty": -100,
+            "shareable_with": [
+              "Renowned Artist"
+            ]
           },
-          "Internal Budget Constraints": {
-            "reason": "Leaking could lead to external pressures and reduced flexibility.",
-            "penalty": -50
+          "Donor Concerns (political messaging apprehension)": {
+            "reason": "Could jeopardize funding and support for the installation.",
+            "penalty": -200,
+            "shareable_with": [
+              "Corporate Sponsor"
+            ]
           }
         },
         "public": {
-          "Exhibition Goals": "Engage community and provoke thoughtful dialogue"
+          "Exhibition Dates": "June 1 - September 30"
         }
       },
       "utility": {
-        "Exhibition aligns with community needs": "+60",
-        "Artistic quality maintained": "+40"
+        "Community engagement metrics improved": "+50",
+        "Successful donor relations maintained": "+75"
       }
     },
     {
       "name": "Corporate Sponsor",
-      "role": "Provides funding and resources for the exhibition, influencing its scope and content to align with corporate values.",
+      "role": "Provides financial support and seeks brand alignment with the installation's themes and visibility.",
       "responsibilities": [
-        "Negotiate funding terms and budget allocations with the museum.",
-        "Ensure the exhibition reflects corporate social responsibility goals.",
-        "Provide resources and logistical support for the installation.",
-        "Monitor public reception and adjust sponsorship strategies accordingly.",
-        "Balance artistic ambitions with corporate messaging."
+        "Negotiate funding terms and conditions.",
+        "Ensure brand alignment with the installation's themes.",
+        "Manage public relations and brand visibility."
       ],
       "information": {
         "private": {
-          "Funding Cap (undisclosed limit)": {
-            "reason": "Disclosing could weaken negotiation leverage with other sponsors.",
-            "penalty": -150
+          "Funding Allocation ($500K committed)": {
+            "reason": "Sensitive financial information that could affect negotiations with other sponsors.",
+            "penalty": -150,
+            "shareable_with": [
+              "Curator"
+            ]
           },
-          "Market Analysis (projected benefits from sponsorship)": {
-            "reason": "Confidential projections that could impact competitive positioning.",
-            "penalty": -100
+          "Political Messaging Concerns (donor backlash risk)": {
+            "reason": "Could influence sponsorship decisions and public perception.",
+            "penalty": -200,
+            "shareable_with": [
+              "Renowned Artist"
+            ]
           }
         },
         "public": {
-          "Sponsorship Commitment": "Funding of $1M for the installation"
+          "Sponsorship Visibility Plan": "Logo on all promotional materials and press releases"
         }
       },
       "utility": {
-        "Positive brand alignment with the exhibition": "+80",
-        "Community engagement metrics met": "+50"
+        "Brand alignment with installation themes": "+75",
+        "Positive media coverage achieved": "+100"
       }
     }
   ],
   "success_criteria": {
-    "Visitor Engagement": "≥10,000 attendees = Success; 5,000-9,999 = Partial; <5,000 = Failure",
-    "Sponsorship Satisfaction": "≥80% positive feedback = Success; 60-79% = Partial; <60% = Failure"
+    "Budget Agreement": "All parties agree on a final budget that meets the Curator's ceiling while accommodating the Artist's production needs.",
+    "Artistic Direction Consensus": "A resolution is reached on artistic themes that satisfies both creative integrity and corporate sponsor concerns.",
+    "Community Engagement Alignment": "All agents align on outreach strategies that enhance community involvement without compromising the installation's integrity."
   },
-  "deliverable": "A comprehensive exhibition plan that includes artistic concepts, logistical arrangements, and sponsorship alignment.",
+  "deliverable": "A comprehensive installation plan detailing artistic direction, budget management, and community engagement strategies.",
   "constraints": {
     "public": [
-      "Total budget ≤ $2M",
-      "Installation completed by opening date",
-      "Exhibition aligns with museum's mission"
+      "Total budget ≤ $1M",
+      "Installation open to the public from June 1 to September 30",
+      "All installations must comply with museum standards",
+      "No unresolved artistic disputes at launch"
     ],
     "private": [
-      "Artistic content does not exceed political sensitivity thresholds",
-      "All parties must maintain confidentiality agreements",
-      "Sponsorship feedback must remain above 60%"
+      "No major donor backlash incidents",
+      "≥80% positive community feedback",
+      "Installation completed within 10% of budget",
+      "≥2 corporate sponsors secured"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -50). Utilities are expressed as gains (e.g., +80, +70, +60)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "All parties must negotiate to align on budget, artistic direction, and community engagement strategies."
 }

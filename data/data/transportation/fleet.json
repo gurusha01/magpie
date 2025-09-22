@@ -1,115 +1,128 @@
 {
-  "scenario": "Military equipment relocation planning requires collaboration between commanders, logistics officers, and intelligence analysts to ensure secure and efficient transport while managing sensitive information.",
-  "task": "Create a detailed relocation strategy that includes timelines, resource allocations, and contingency plans, while negotiating sensitive information sharing among agents.",
+  "scenario": "Military equipment relocation planning involves collaboration between commanders, logistics officers, and intelligence analysts, each holding private information that could influence operational success.",
+  "task": "Develop a comprehensive relocation strategy that integrates threat assessments, logistical capabilities, and strategic objectives. Agents must navigate conflicting priorities such as security risks, equipment readiness, and timeline constraints while strategically sharing sensitive information to achieve consensus without compromising operational security.",
   "agents": [
     {
-      "name": "Combat Commander",
-      "role": "Leads the operational aspect of the relocation, ensuring mission objectives are met.",
+      "name": "Field Commander",
+      "role": "Oversees military operations and strategic deployment of equipment.",
       "responsibilities": [
-        "Define strategic objectives for equipment relocation.",
-        "Coordinate with logistics and intelligence to ensure alignment.",
-        "Assess real-time threats to adjust plans accordingly.",
-        "Authorize resource allocations for secure transport.",
-        "Ensure that troop readiness is maintained during the operation."
+        "Determine overall relocation strategy based on mission objectives.",
+        "Coordinate with logistics and intelligence for operational readiness.",
+        "Manage troop movements and ensure safety during relocation."
       ],
       "information": {
         "private": {
-          "Troop Deployment Plans": {
-            "reason": "Sensitive operational details that could compromise security if leaked.",
-            "penalty": -300
+          "Threat Assessment (high risk from local insurgents)": {
+            "reason": "Disclosure could compromise troop safety and operational security.",
+            "penalty": -300,
+            "shareable_with": [
+              "Logistics Officer"
+            ]
           },
-          "Threat Level Assessment": {
-            "reason": "Classified intelligence that may cause panic or misinformation if disclosed.",
-            "penalty": -200
+          "Strategic Objective (maintain surprise element)": {
+            "reason": "Revealing this could jeopardize the success of the mission.",
+            "penalty": -250,
+            "shareable_with": [
+              "Intelligence Analyst"
+            ]
           }
         },
         "public": {
-          "Equipment Inventory": "All units accounted for and ready for transport."
+          "Operational Timeline": "Relocation must be completed within 14 days"
         }
       },
       "utility": {
-        "Mission success rate >90%": "+100",
-        "Completion within 24 hours": "+50"
+        "Completion within timeline": "+100",
+        "Minimal equipment loss": "+75"
       }
     },
     {
       "name": "Logistics Officer",
-      "role": "Responsible for planning and executing the physical movement of equipment.",
+      "role": "Responsible for the transportation and readiness of military equipment.",
       "responsibilities": [
-        "Develop transport routes and schedules considering safety and efficiency.",
-        "Manage the allocation of vehicles and personnel for the operation.",
-        "Coordinate with the commander for real-time adjustments based on threats.",
-        "Ensure compliance with military regulations during transport.",
-        "Document the relocation process for future assessments."
+        "Plan and execute the transportation of equipment.",
+        "Coordinate with field commanders to align logistics with operational needs.",
+        "Monitor equipment status and ensure readiness for deployment."
       ],
       "information": {
         "private": {
-          "Vehicle Capabilities": {
-            "reason": "Confidential information that could provide adversaries with tactical advantages.",
-            "penalty": -150
+          "Equipment Capability (certain vehicles under maintenance)": {
+            "reason": "Disclosure of readiness status could affect strategic decisions.",
+            "penalty": -200,
+            "shareable_with": [
+              "Field Commander"
+            ]
           },
-          "Supply Chain Constraints": {
-            "reason": "Internal issues that could impact operational readiness if known.",
-            "penalty": -100
+          "Logistical Constraints (limited transport vehicles available)": {
+            "reason": "Revealing this could impact negotiations with other units.",
+            "penalty": -150,
+            "shareable_with": [
+              "Intelligence Analyst"
+            ]
           }
         },
         "public": {
-          "Transport Timeline": "Estimated completion in 24 hours."
+          "Transport Capacity": "50 vehicles per day"
         }
       },
       "utility": {
-        "On-time delivery of all equipment": "+75",
-        "Cost under budget": "+50"
+        "Achieving relocation within 10 days": "+150",
+        "No logistical delays": "+100"
       }
     },
     {
       "name": "Intelligence Analyst",
-      "role": "Provides critical threat assessments and intelligence support to inform relocation strategies.",
+      "role": "Provides threat analysis and intelligence support for military operations.",
       "responsibilities": [
-        "Analyze potential threats to transport routes.",
-        "Provide real-time intelligence updates during the operation.",
-        "Assess enemy capabilities and movements.",
-        "Compile intelligence reports for commanders and logistics.",
-        "Maintain confidentiality of sensitive information."
+        "Analyze potential threats to equipment relocation.",
+        "Gather intelligence on enemy movements and capabilities.",
+        "Advise commanders on risk mitigation strategies."
       ],
       "information": {
         "private": {
-          "Enemy Movement Patterns": {
-            "reason": "Could compromise operational security if disclosed.",
-            "penalty": -250
+          "Enemy Movement Data (high activity in surrounding areas)": {
+            "reason": "Sensitive information that could alert enemy forces if leaked.",
+            "penalty": -250,
+            "shareable_with": [
+              "Field Commander"
+            ]
           },
-          "Strategic Objectives": {
-            "reason": "Sensitive information that could lead to mission failure if leaked.",
-            "penalty": -300
+          "Undisclosed Strategic Partnerships": {
+            "reason": "Confidential agreements that could affect operational tactics.",
+            "penalty": -200,
+            "shareable_with": [
+              "Logistics Officer"
+            ]
           }
         },
         "public": {
-          "Current Threat Level": "Moderate."
+          "Threat Level Assessment": "Moderate"
         }
       },
       "utility": {
-        "Accuracy of threat assessments >85%": "+100",
-        "Timely intelligence updates during operation": "+75"
+        "Accurate threat prediction": "+100",
+        "Successful intelligence integration": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Equipment safety rate": "≥95% = Success; 90-94% = Partial; <90% = Failure",
-    "Timely completion": "≤24 hours = Success; 25-30 hours = Partial; >30 hours = Failure"
+    "Operational Readiness Agreement": "All agents agree on the status of equipment readiness and logistical capabilities to ensure smooth relocation.",
+    "Timeline Consensus": "Agreement on the relocation timeline that accommodates both strategic objectives and logistical constraints.",
+    "Threat Mitigation Alignment": "Consensus reached on the threat assessment and corresponding strategies to ensure safety during relocation."
   },
-  "deliverable": "A comprehensive relocation strategy that includes timelines, resource allocations, and contingency plans.",
+  "deliverable": "A detailed relocation strategy document outlining timelines, equipment readiness, and threat mitigation plans.",
   "constraints": {
     "public": [
-      "Total equipment must be relocated within 24 hours.",
-      "All operations must comply with military regulations.",
-      "No equipment losses during transport."
+      "Relocation must be completed within 14 days",
+      "No equipment loss greater than 5%",
+      "Adherence to standard operational protocols"
     ],
     "private": [
-      "Threat level must remain at or below 'Moderate'.",
-      "Troop readiness must be ≥90% during operation.",
-      "Logistics must not exceed allocated budgets.",
-      "No unauthorized disclosures of sensitive information."
+      "Threat level must remain below 'high' throughout relocation",
+      "Logistical support must be guaranteed for all critical equipment",
+      "No major equipment failures during transport"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +150, +100, +75).",
+  "Consensus_w": "Agreement on threat assessments and logistical capacities requires collaborative discussion and trade-offs."
 }

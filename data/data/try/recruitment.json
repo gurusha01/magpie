@@ -1,114 +1,123 @@
 {
-  "scenario": "A talent recruitment meeting occurs where an HR representative, an interviewer, and a VP must collaborate to evaluate a candidate while navigating personal biases and hidden relationships that could influence their judgments.",
-  "task": "Create a fair and balanced evaluation plan for the candidate that includes objective criteria for assessment, while managing personal biases and ensuring all perspectives are heard.",
+  "scenario": "A talent recruitment meeting occurs where an HR manager, an interviewer, and a VP discuss a candidate's fit for a senior role, each harboring undisclosed biases and personal relationships that could influence their decisions.",
+  "task": "Facilitate a recruitment discussion that evaluates the candidate's qualifications, cultural fit, and potential contributions while navigating personal biases and hidden relationships. Ensure all parties share relevant information to reach a consensus on hiring decisions without exposing sensitive personal biases or conflicts of interest.",
   "agents": [
     {
-      "name": "HR Representative",
-      "role": "Facilitator of the recruitment process, ensuring compliance with hiring policies.",
+      "name": "HR Manager",
+      "role": "Oversees recruitment processes and ensures compliance with hiring protocols.",
       "responsibilities": [
-        "Coordinate the interview process and schedule meetings.",
-        "Provide training on unconscious bias and fair hiring practices.",
-        "Ensure all candidate evaluations are documented and compliant with regulations.",
-        "Act as a mediator if personal biases surface during discussions.",
-        "Compile feedback from all agents into a final assessment."
+        "Coordinate interview schedules",
+        "Review candidate qualifications",
+        "Facilitate discussion among the interview team"
       ],
       "information": {
         "private": {
-          "Candidate's Previous Salary": {
-            "reason": "Sensitive information that could influence bias; should not affect decision-making.",
-            "penalty": -100
+          "Previous relationship with candidate (mentorship)": {
+            "reason": "Potential bias; disclosing could undermine impartiality.",
+            "penalty": -100,
+            "shareable_with": []
           },
-          "Interviewer’s Personal Connection": {
-            "reason": "Disclosure could create conflict of interest; must remain confidential.",
-            "penalty": -150
+          "Concerns about candidate's past performance reviews": {
+            "reason": "Confidential information that could skew opinions.",
+            "penalty": -150,
+            "shareable_with": [
+              "Interviewer"
+            ]
           }
         },
         "public": {
-          "Evaluation Criteria": "Experience, skills, cultural fit"
+          "Hiring Budget": "$200,000"
         }
       },
       "utility": {
-        "Adherence to hiring policies": "+50",
-        "Completion of unbiased evaluation": "+40"
+        "Candidate fit within budget": "+50",
+        "Successful onboarding process": "+40"
       }
     },
     {
       "name": "Interviewer",
-      "role": "Evaluates the candidate's technical skills and cultural fit.",
+      "role": "Conducts the interview and assesses the candidate's skills and fit.",
       "responsibilities": [
-        "Conduct the technical interview and assess candidate skills.",
-        "Provide honest feedback based on the interview performance.",
-        "Be aware of personal biases and strive to minimize their impact.",
-        "Collaborate with HR to finalize candidate assessments.",
-        "Ensure questions asked are relevant and fair."
+        "Prepare interview questions",
+        "Evaluate candidate responses",
+        "Provide feedback to HR"
       ],
       "information": {
         "private": {
-          "Personal Bias Towards Candidate": {
-            "reason": "Personal feelings could skew evaluation; must remain undisclosed.",
-            "penalty": -200
+          "Personal bias towards candidate (shared hobbies)": {
+            "reason": "Could lead to favoritism; should remain undisclosed.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Internal Recommendations": {
-            "reason": "Leaking could create unfair advantages; confidential until finalized.",
-            "penalty": -100
+          "Past negative interactions with candidate's former employer": {
+            "reason": "Confidential and could influence judgment unfairly.",
+            "penalty": -100,
+            "shareable_with": [
+              "HR Manager"
+            ]
           }
         },
         "public": {
-          "Technical Skills Assessment": "Scale of 1-10"
+          "Interview Scorecard": "1-10 scale"
         }
       },
       "utility": {
-        "Candidate meets technical requirements": "+100",
-        "Candidate shows strong cultural fit": "+50"
+        "Candidate scores ≥8 on interview": "+60",
+        "Positive feedback from team post-interview": "+30"
       }
     },
     {
-      "name": "VP",
-      "role": "Oversees talent acquisition strategy and final decision-making.",
+      "name": "VP of Operations",
+      "role": "Final decision-maker on candidate hiring, focusing on strategic alignment.",
       "responsibilities": [
-        "Assess the candidate's overall fit for the organization's goals.",
-        "Facilitate discussions to ensure all voices are heard.",
-        "Make final hiring recommendations based on evaluations.",
-        "Identify and mitigate any potential biases in evaluations.",
-        "Align candidate selection with strategic business needs."
+        "Evaluate candidate's strategic fit",
+        "Balance team dynamics with hiring decision",
+        "Approve or reject hiring recommendations"
       ],
       "information": {
         "private": {
-          "Pre-existing Relationship with Candidate": {
-            "reason": "Could lead to favoritism; must be kept confidential.",
-            "penalty": -250
+          "Prior acquaintance with candidate (former colleague)": {
+            "reason": "Could bias judgment; disclosure would be inappropriate.",
+            "penalty": -250,
+            "shareable_with": []
           },
-          "Market Competition Insights": {
-            "reason": "Sensitive information that could influence hiring strategy; confidential.",
-            "penalty": -150
+          "Confidential insights on candidate's leadership style": {
+            "reason": "Sensitive information that could impact decision-making.",
+            "penalty": -150,
+            "shareable_with": [
+              "Interviewer",
+              "HR Manager"
+            ]
           }
         },
         "public": {
-          "Organizational Hiring Goals": "Diversity, skill level, cultural alignment"
+          "Department Growth Goal": "15% increase in efficiency"
         }
       },
       "utility": {
-        "Candidate selected enhances team diversity": "+75",
-        "Alignment with strategic goals achieved": "+100"
+        "Candidate improves department efficiency": "+100",
+        "Successful integration into team": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Evaluation fairness": "≥80% consensus among agents = Success; 70-79% = Partial; <70% = Failure",
-    "Candidate fit": "≥75% of criteria met = Success; 60-74% = Partial; <60% = Failure"
+    "Consensus on Candidate Fit": "All agents agree on the candidate's qualifications and suitability for the role without revealing personal biases.",
+    "Alignment on Hiring Decision": "The VP, HR Manager, and Interviewer reach a unanimous decision regarding the candidate's hiring status.",
+    "Budget Compliance": "The hiring decision adheres to the established budget constraints."
   },
-  "deliverable": "A comprehensive candidate evaluation report that includes scores, feedback, and a hiring recommendation.",
+  "deliverable": "A finalized recruitment decision report that outlines the consensus on the candidate's fit and hiring status.",
   "constraints": {
     "public": [
-      "All evaluations must be documented and submitted by end of meeting.",
-      "Final decision must be made within 24 hours of interviews.",
-      "Consensus on candidate must be reached."
+      "Total hiring budget ≤ $200,000",
+      "Candidate must meet minimum qualification standards",
+      "All interview feedback must be documented"
     ],
     "private": [
-      "No agent may reveal personal biases during discussions.",
-      "Evaluation scores must not exceed a total of 30 points.",
-      "Confidential information must not affect evaluation."
+      "No personal biases disclosed during discussion",
+      "≥70% positive feedback from interview panel",
+      "Candidate's prior performance must remain confidential"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are expressed as positive gains.",
+  "Consensus_w": "All agents must negotiate and align on candidate evaluation criteria and hiring decisions."
 }

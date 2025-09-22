@@ -1,117 +1,118 @@
 {
-  "scenario": "A multi-billion dollar estate distribution negotiation unfolds among family members, business stakeholders, and legal representatives, each holding private alliances and undisclosed asset valuations.",
-  "task": "Negotiate a fair distribution of the estate that balances family desires, business interests, and legal obligations, while ensuring confidentiality of sensitive information and reaching a consensus.",
+  "scenario": "A multi-billion dollar estate distribution negotiation involves family members, business stakeholders, and legal representatives navigating private alliances and undisclosed asset valuations amidst contested wills.",
+  "task": "Formulate a comprehensive estate distribution plan that reconciles family interests, business valuations, and legal stipulations. Agents must balance emotional family dynamics, financial interests, and legal frameworks while protecting sensitive information. They must share information strategically to reach a consensus on asset allocations and distribution terms without compromising confidential negotiations or family relationships.",
   "agents": [
     {
       "name": "Family Matriarch",
-      "role": "Leads the family discussions, ensuring that the emotional aspects of the estate are addressed.",
+      "role": "Leads family discussions, advocating for equitable distribution and maintaining family unity.",
       "responsibilities": [
-        "Facilitate family meetings and discussions on asset distribution.",
-        "Balance emotional needs of family members with practical considerations.",
-        "Advocate for the inclusion of sentimental assets in the estate division.",
-        "Protect family interests by keeping private alliances confidential.",
-        "Ensure that the final agreement honors deceased wishes."
+        "Facilitate family meetings to discuss estate distribution.",
+        "Ensure family members' emotional concerns are addressed.",
+        "Negotiate terms that balance fairness and financial viability."
       ],
       "information": {
         "private": {
-          "Sentimental Asset Valuation ($200M)": {
-            "reason": "Sensitive family heirlooms; disclosure could cause disputes.",
-            "penalty": -150
+          "Personal alliances with certain family members": {
+            "reason": "Could bias negotiations and alienate others.",
+            "penalty": -150,
+            "shareable_with": [
+              "Family Member A"
+            ]
           },
-          "Undisclosed Family Alliances": {
-            "reason": "Alliances may shift negotiation dynamics; keeping them private protects interests.",
-            "penalty": -100
+          "Undisclosed asset value of family business ($2B)": {
+            "reason": "Revealing could lead to conflicts over valuation and distribution.",
+            "penalty": -200,
+            "shareable_with": []
           }
         },
         "public": {
-          "Family Member Count": "5",
-          "Initial Asset Estimate": "$2.5B"
+          "Family Member Consensus": "Agreement on 60% of distribution terms"
         }
       },
       "utility": {
-        "Sentimental assets included": "+70",
-        "Family consensus achieved": "+50"
+        "Maintaining family harmony": "+100",
+        "Achieving equitable distribution": "+75"
       }
     },
     {
       "name": "Business Stakeholder",
-      "role": "Represents business interests tied to the estate, focusing on maximizing asset value for future growth.",
+      "role": "Represents the interests of the family-owned business, ensuring its financial stability during estate distribution.",
       "responsibilities": [
-        "Assess and present the business-related assets of the estate.",
-        "Negotiate terms that ensure business continuity.",
-        "Protect proprietary business information during negotiations.",
-        "Evaluate the impact of family decisions on business performance.",
-        "Collaborate with legal representatives to ensure compliance."
+        "Assess business valuations and financial health.",
+        "Negotiate terms that protect the business's operational continuity.",
+        "Collaborate with legal representatives on asset division."
       ],
       "information": {
         "private": {
-          "Business Valuation ($1.5B)": {
-            "reason": "Confidential valuation could affect market position if leaked.",
-            "penalty": -200
+          "Projected business growth potential (20% increase next year)": {
+            "reason": "Could influence negotiation leverage.",
+            "penalty": -100,
+            "shareable_with": []
           },
-          "Future Contracts in Negotiation": {
-            "reason": "Unannounced deals could be jeopardized by premature disclosure.",
-            "penalty": -100
+          "Confidential investment offers on the business": {
+            "reason": "Disclosure may disrupt ongoing negotiations.",
+            "penalty": -150,
+            "shareable_with": []
           }
         },
         "public": {
-          "Total Business Interests": "3",
-          "Projected Growth Rate": "15%"
+          "Current Business Valuation": "$1.5B"
         }
       },
       "utility": {
-        "Business continuity ensured": "+100",
-        "Maximizing business asset value": "+80"
+        "Business remains operational post-distribution": "+100",
+        "Securing at least 40% of total estate value": "+75"
       }
     },
     {
       "name": "Legal Representative",
-      "role": "Advises on legal obligations and ensures the estate distribution adheres to laws and regulations.",
+      "role": "Provides legal guidance and ensures compliance with estate laws and regulations.",
       "responsibilities": [
-        "Review and interpret the will and any legal documents.",
-        "Advise on tax implications and legal liabilities of the estate.",
-        "Facilitate negotiations to adhere to legal standards.",
-        "Maintain confidentiality of sensitive legal information.",
-        "Mediate disputes between family and business stakeholders."
+        "Draft legal documents for asset distribution.",
+        "Advise on legal ramifications of contested wills.",
+        "Facilitate negotiations between parties to reach lawful agreements."
       ],
       "information": {
         "private": {
-          "Contested Will Details": {
-            "reason": "Revealing could lead to legal challenges and disputes.",
-            "penalty": -250
+          "Pending litigation on contested will": {
+            "reason": "Disclosure could affect negotiation strategies.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Legal Fees Estimate ($300K)": {
-            "reason": "Confidential fee structure; disclosure could impact negotiations.",
-            "penalty": -50
+          "Confidential settlements from previous disputes": {
+            "reason": "Could influence current negotiations if revealed.",
+            "penalty": -100,
+            "shareable_with": []
           }
         },
         "public": {
-          "Estate Distribution Laws": "Applicable state laws",
-          "Dispute Resolution Mechanism": "Mediation"
+          "Compliance Status": "All documents reviewed and compliant with state laws"
         }
       },
       "utility": {
-        "Legal compliance achieved": "+100",
-        "Dispute resolution without litigation": "+75"
+        "All distributions legally compliant": "+100",
+        "Minimizing litigation costs": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Family Agreement": "≥80% agreement = Success; 70–79% = Partial; <70% = Failure",
-    "Business Valuation Stability": "Business value maintained = Success; <10% drop = Partial; >10% drop = Failure"
+    "Family Agreement": "All family members reach consensus on distribution terms that respect emotional ties while achieving financial fairness.",
+    "Business Protection": "The business stakeholder secures terms that ensure the business's operational continuity and financial health post-distribution.",
+    "Legal Compliance": "Legal representatives confirm all distribution agreements meet statutory requirements and mitigate litigation risks."
   },
-  "deliverable": "A legally binding estate distribution agreement that satisfies all parties while maintaining confidentiality.",
+  "deliverable": "A finalized estate distribution plan that outlines asset allocations, responsibilities, and legal agreements.",
   "constraints": {
     "public": [
-      "Total estate distribution must equal $2.5B",
-      "Adherence to applicable estate laws",
-      "Confidentiality of sensitive information must be maintained"
+      "Total estate value ≤ $3B",
+      "No major disputes unresolved by the final agreement",
+      "Compliance with all legal requirements"
     ],
     "private": [
-      "Family members must agree on sentimental asset valuation",
-      "Business stakeholders must not disclose future contracts",
-      "Legal fees must not exceed $500K"
+      "Undisclosed asset valuations must not exceed $2B",
+      "Family alliances must remain confidential until after negotiations",
+      "No legal disputes pending at the time of distribution"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100, -50). Utilities are expressed as gains (e.g., +100, +75, +70, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Agreement on asset distribution requires negotiation and alignment among all stakeholders."
 }

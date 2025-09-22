@@ -1,114 +1,135 @@
 {
-  "scenario": "Film production financing coordination between studio executives, independent producers, and platform representatives with private talent commitment information, undisclosed distribution channel negotiations, and confidential information about script changes affecting marketability.",
-  "task": "Create a detailed financing and production plan that outlines budget allocations, talent commitments, and distribution strategies while managing sensitive information and negotiating between conflicting interests.",
+  "scenario": "Film production financing coordination involves studio executives, independent producers, and platform representatives negotiating over talent commitments and distribution channels while managing script changes that impact marketability.",
+  "task": "Create a comprehensive financing and production strategy that aligns budget allocations, talent commitments, and distribution agreements. Agents must navigate conflicting interests regarding financial contributions, creative control, and market positioning, ensuring that private information is shared to facilitate consensus without compromising competitive advantages.",
   "agents": [
     {
       "name": "Studio Executive",
-      "role": "Oversees the financial and creative aspects of film production, ensuring the project aligns with the studio's vision and profitability.",
+      "role": "Oversees the budget and creative direction of the film, ensuring alignment with market expectations.",
       "responsibilities": [
-        "Approve budget allocations and oversee financial management.",
-        "Negotiate talent contracts and ensure their commitments are secured.",
-        "Coordinate with producers to align the film's creative direction with market trends.",
-        "Manage relationships with distribution platforms to maximize revenue.",
-        "Monitor production timelines and enforce compliance with studio standards."
+        "Manage overall film budget and finances.",
+        "Coordinate with independent producers on funding sources.",
+        "Ensure creative alignment between script and talent.",
+        "Negotiate distribution agreements with platforms."
       ],
       "information": {
         "private": {
-          "Talent Commitment (Lead Actor)": {
-            "reason": "Confidential negotiations; revealing could jeopardize contract finalization.",
-            "penalty": -150
+          "Undisclosed Talent Commitments ($5M for lead actor)": {
+            "reason": "Revealing could impact negotiations with other actors and producers.",
+            "penalty": -150,
+            "shareable_with": [
+              "Independent Producer"
+            ]
           },
-          "Script Changes (Major plot twist)": {
-            "reason": "Changes could impact marketability; sharing could affect public perception.",
-            "penalty": -100
+          "Script Changes (major plot twist affecting appeal)": {
+            "reason": "Sensitive information; disclosure could lead to market speculation.",
+            "penalty": -200,
+            "shareable_with": [
+              "Platform Representative"
+            ]
           }
         },
         "public": {
-          "Budget Overview": "$50M total budget"
+          "Total Budget": "$50M",
+          "Production Timeline": "12 months"
         }
       },
       "utility": {
-        "Secured talent contracts": "+75",
-        "Film completion within budget": "+50"
+        "Budget adherence (≤ $50M)": "+40",
+        "Successful talent acquisition": "+75"
       }
     },
     {
       "name": "Independent Producer",
-      "role": "Responsible for the logistical and operational aspects of film production, ensuring that the project stays on schedule and within budget.",
+      "role": "Responsible for securing additional financing and managing production logistics.",
       "responsibilities": [
-        "Coordinate day-to-day production activities and manage the crew.",
-        "Ensure all production components are delivered on time and within budget.",
-        "Negotiate with vendors and suppliers for resources and services.",
-        "Share relevant production updates with stakeholders while protecting sensitive details.",
-        "Maintain compliance with industry standards and regulations."
+        "Identify and negotiate with potential investors.",
+        "Oversee day-to-day production operations.",
+        "Ensure script aligns with investor expectations.",
+        "Facilitate communication between studio and talent."
       ],
       "information": {
         "private": {
-          "Distribution Channel Negotiations": {
-            "reason": "Ongoing talks with platforms; public knowledge could weaken bargaining position.",
-            "penalty": -200
+          "Investor Commitments ($10M secured)": {
+            "reason": "Confidential until formal agreements are signed.",
+            "penalty": -100,
+            "shareable_with": [
+              "Studio Executive"
+            ]
           },
-          "Production Delays (Weather issues)": {
-            "reason": "Confidential operational issues that could impact investor confidence.",
-            "penalty": -75
+          "Distribution Channel Negotiations (exclusive rights in Asia)": {
+            "reason": "Risk of losing leverage if disclosed prematurely.",
+            "penalty": -150,
+            "shareable_with": [
+              "Platform Representative"
+            ]
           }
         },
         "public": {
-          "Production Timeline": "Filming starts in Q2 2024"
+          "Funding Status": "70% secured",
+          "Production Milestones": "On schedule"
         }
       },
       "utility": {
-        "On-time production completion": "+100",
-        "Staying under $50M budget": "+40"
+        "Secured additional financing ≥ $10M": "+50",
+        "Production completion on time": "+40"
       }
     },
     {
       "name": "Platform Representative",
-      "role": "Represents the distribution platform's interests, ensuring that the film aligns with their content strategy and audience preferences.",
+      "role": "Ensures optimal distribution and marketing strategies for the film across digital platforms.",
       "responsibilities": [
-        "Evaluate film proposals and provide feedback on marketability.",
-        "Negotiate distribution terms and conditions with producers and studios.",
-        "Secure exclusive rights and promotional commitments for the film.",
-        "Monitor audience engagement metrics to inform production decisions.",
-        "Advocate for content that aligns with platform branding and viewer expectations."
+        "Negotiate distribution deals with studios and producers.",
+        "Plan marketing strategies aligned with film release.",
+        "Monitor audience engagement and adjust strategies accordingly."
       ],
       "information": {
         "private": {
-          "Market Analysis (Viewer preferences)": {
-            "reason": "Internal data that informs negotiations; disclosing could harm competitive advantage.",
-            "penalty": -100
+          "Confidential Analytics (30% increase in viewership for similar genres)": {
+            "reason": "Sensitive data that could impact future negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Independent Producer"
+            ]
           },
-          "Exclusive Deal Terms": {
-            "reason": "Confidential agreements with studios; public knowledge could disrupt negotiations.",
-            "penalty": -150
+          "Negotiations with competing platforms for exclusivity": {
+            "reason": "Could undermine negotiation position if revealed.",
+            "penalty": -200,
+            "shareable_with": [
+              "Studio Executive"
+            ]
           }
         },
         "public": {
-          "Audience Engagement Strategy": "Targeting 18-35 demographic"
+          "Marketing Budget": "$5M",
+          "Distribution Strategy": "Global rollout"
         }
       },
       "utility": {
-        "Exclusive rights secured": "+80",
-        "Increased viewer engagement metrics": "+60"
+        "Successful exclusive distribution deal": "+100",
+        "Achieving viewership targets": "+40"
       }
     }
   ],
   "success_criteria": {
-    "Budget Compliance": "≤$50M = Success; $51M-$55M = Partial; >$55M = Failure",
-    "Talent Secured": "Lead actor confirmed = Success; 2-3 actors confirmed = Partial; <2 = Failure"
+    "Budget Agreement": "All parties reach consensus on a final budget that meets the Studio's constraints and the Independent Producer's financing needs.",
+    "Talent Commitment Resolution": "Agreement on talent that satisfies both financial and creative expectations of all agents.",
+    "Distribution Alignment": "Consensus on distribution strategies that maximize market reach while protecting confidential negotiations."
   },
-  "deliverable": "A comprehensive financing and production plan detailing budget, talent commitments, and distribution strategies.",
+  "deliverable": "A financing and production strategy document that outlines budget allocations, talent commitments, and distribution plans.",
   "constraints": {
     "public": [
       "Total budget ≤ $50M",
-      "Filming must start by Q2 2024",
-      "All contracts signed before production begins"
+      "Production timeline ≤ 12 months",
+      "At least 3 key talent contracts signed",
+      "Ethical compliance with all agreements"
     ],
     "private": [
-      "Talent contracts must include no less than 3 main actors",
-      "Negotiations with platforms must remain confidential until finalized",
-      "Script changes must not exceed 10% of original content"
+      "No major disputes unresolved by launch",
+      "Confidential financing details remain undisclosed until public announcement",
+      "≥80% positive pre-release audience feedback",
+      "Exclusive distribution deals must be finalized before production wrap"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100, -75). Utilities are expressed as gains (e.g., +100, +80, +75, +60, +50, +40)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50, +40).",
+  "Consensus_w": "Negotiation and agreement on budget, talent, and distribution strategies are essential for project success."
 }

@@ -1,114 +1,128 @@
 {
-  "scenario": "A group of professionals enters a luxury apartment co-ownership arrangement, navigating complex financial situations, undisclosed lifestyle habits, and hidden long-term housing plans.",
-  "task": "Create a co-ownership agreement that balances financial contributions, usage rights, and maintenance responsibilities while addressing privacy concerns and potential conflicts of interest.",
+  "scenario": "A luxury apartment co-ownership arrangement is being negotiated among a group of professionals, each with private financial situations, undisclosed lifestyle habits, and hidden long-term housing plans that could affect their commitment.",
+  "task": "Develop a comprehensive co-ownership agreement that balances financial contributions, usage rights, maintenance responsibilities, and exit strategies. Agents must navigate conflicting personal priorities: some may seek short-term use while others prefer long-term investment, affecting maintenance costs and shared usage schedules. To finalize the agreement, they must strategically share relevant information to build consensus without revealing sensitive personal financial or lifestyle details that could undermine trust or negotiations.",
   "agents": [
     {
-      "name": "Investor A",
-      "role": "Primary financial contributor",
+      "name": "Investment Banker",
+      "role": "Responsible for financial contributions and investment viability.",
       "responsibilities": [
-        "Provide initial capital for property purchase.",
-        "Negotiate financial terms of the co-ownership agreement.",
-        "Monitor property value and investment returns.",
-        "Ensure that maintenance costs are shared fairly.",
-        "Advocate for a clear exit strategy in case of disagreement."
+        "Evaluate property value and market trends.",
+        "Negotiate financial terms for co-ownership.",
+        "Ensure compliance with investment regulations."
       ],
       "information": {
         "private": {
-          "Investment Threshold ($500,000)": {
-            "reason": "Sensitive financial data; revealing could affect negotiations.",
-            "penalty": -200
+          "Debt Level ($200K outstanding)": {
+            "reason": "Disclosure could affect perceived financial reliability.",
+            "penalty": -150,
+            "shareable_with": [
+              "Financial Advisor"
+            ]
           },
-          "Long-term housing plans (relocation in 5 years)": {
-            "reason": "Personal future plans; disclosure could influence current agreements.",
-            "penalty": -150
+          "Future relocation plans (moving abroad in 3 years)": {
+            "reason": "Could influence commitment to long-term co-ownership.",
+            "penalty": -100,
+            "shareable_with": [
+              "Co-owners"
+            ]
           }
         },
         "public": {
-          "Initial Contribution": "$500,000"
+          "Initial Investment Cap": "$500K"
         }
       },
       "utility": {
-        "Monthly rent below $3,000": "+50",
-        "Property appreciation ≥10% per year": "+100"
+        "Maximize rental income": "+50",
+        "Minimize maintenance costs": "+30"
       }
     },
     {
-      "name": "Investor B",
-      "role": "Lifestyle-focused contributor",
+      "name": "Tech Entrepreneur",
+      "role": "Focuses on maximizing personal usage and flexibility in co-ownership terms.",
       "responsibilities": [
-        "Contribute to property enhancements that increase desirability.",
-        "Engage in decisions regarding communal areas and amenities.",
-        "Share lifestyle preferences to shape the living environment.",
-        "Ensure that the property meets personal and shared needs.",
-        "Participate in conflict resolution among co-owners."
+        "Propose usage schedules that favor personal needs.",
+        "Assess technology integration for smart home features.",
+        "Negotiate terms for upgrades and renovations."
       ],
       "information": {
         "private": {
-          "Lifestyle preferences (luxury amenities)": {
-            "reason": "Personal tastes; sharing could lead to unwanted pressures.",
-            "penalty": -100
+          "Lifestyle preference (frequent travel, often away)": {
+            "reason": "Revealing could reduce perceived commitment to shared space.",
+            "penalty": -120,
+            "shareable_with": [
+              "Investment Banker"
+            ]
           },
-          "Financial flexibility (variable income)": {
-            "reason": "Income variability could affect co-ownership stability.",
-            "penalty": -200
+          "Undisclosed investment in another property": {
+            "reason": "Could impact negotiation leverage.",
+            "penalty": -80,
+            "shareable_with": [
+              "Co-owners"
+            ]
           }
         },
         "public": {
-          "Preferred Amenities": "Pool, gym, communal garden"
+          "Desired Usage Days": "100 days/year"
         }
       },
       "utility": {
-        "Satisfactory communal living experience": "+75",
-        "Amenity enhancement completion": "+50"
+        "Achieve flexible usage rights": "+40",
+        "Enhancements to property value": "+60"
       }
     },
     {
-      "name": "Investor C",
-      "role": "Legal advisor",
+      "name": "Marketing Executive",
+      "role": "Ensures co-ownership terms align with personal and professional branding.",
       "responsibilities": [
-        "Draft the co-ownership agreement ensuring legal compliance.",
-        "Advise on dispute resolution mechanisms.",
-        "Protect privacy clauses in the agreement.",
-        "Facilitate negotiations between investors.",
-        "Review financial implications of the agreement."
+        "Manage marketing of the property for potential rentals.",
+        "Coordinate maintenance and upgrades with co-owners.",
+        "Facilitate communication among co-owners."
       ],
       "information": {
         "private": {
-          "Legal fees ($10,000)": {
-            "reason": "Sensitive cost structure; premature disclosure could affect negotiations.",
-            "penalty": -100
+          "Job transition plans (potential relocation in 2 years)": {
+            "reason": "Could affect willingness to invest in property.",
+            "penalty": -100,
+            "shareable_with": [
+              "Investment Banker"
+            ]
           },
-          "Investor C's personal investment strategy": {
-            "reason": "Personal financial strategy; revealing could impact negotiations.",
-            "penalty": -150
+          "Undisclosed personal financial strain": {
+            "reason": "Could impact negotiation stance.",
+            "penalty": -150,
+            "shareable_with": [
+              "Co-owners"
+            ]
           }
         },
         "public": {
-          "Agreement Draft Status": "In progress"
+          "Marketing Strategy Outline": "Focus on luxury rentals"
         }
       },
       "utility": {
-        "Successful agreement signed": "+100",
-        "Resolution of disputes ≤30 days": "+50"
+        "Secure long-term rental contracts": "+70",
+        "Enhance property marketability": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Co-ownership agreement completion": "100% = Success; 75-99% = Partial Success; <75% = Failure",
-    "Property value increase": "≥5% per year = Success; 3-4% = Partial Success; <3% = Failure"
+    "Financial Agreement": "All parties agree on financial contributions that reflect their respective capabilities while ensuring no party feels overburdened.",
+    "Usage Rights Alignment": "Consensus on a fair usage schedule that accommodates all co-owners' needs without conflict.",
+    "Maintenance Responsibilities Defined": "Clear agreement on who is responsible for what aspects of property upkeep to prevent future disputes."
   },
-  "deliverable": "A finalized co-ownership agreement that outlines financial contributions, usage rights, and maintenance responsibilities.",
+  "deliverable": "A detailed co-ownership agreement outlining financial contributions, usage rights, maintenance duties, and exit strategies.",
   "constraints": {
     "public": [
-      "Total ownership costs within $2M",
-      "Monthly expenses ≤ $5,000",
-      "Clear usage rights defined"
+      "Total investment ≤ $2M",
+      "Maintenance costs ≤ $500/month",
+      "Usage schedule accommodates all parties"
     ],
     "private": [
-      "Financial contributions must not exceed 60% of individual income",
-      "Confidentiality on personal financial situations must be maintained",
-      "Exit strategy must be agreed upon before property purchase"
+      "No undisclosed financial burdens exceeding $100K",
+      "At least one co-owner must commit for a minimum of 5 years",
+      "No major lifestyle changes should affect property usage plans"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -150, -120, -100). Utilities are expressed as gains (e.g., +70, +60, +50).",
+  "Consensus_w": "Negotiation of financial contributions and usage rights requires trade-offs among co-owners."
 }

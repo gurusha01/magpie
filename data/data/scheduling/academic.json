@@ -1,114 +1,90 @@
 {
-  "scenario": "Department heads negotiate course scheduling while managing private faculty preferences, hidden budget constraints, and confidential information regarding upcoming program changes.",
-  "task": "Create a comprehensive course schedule that maximizes faculty satisfaction and meets budgetary requirements while balancing departmental priorities and student needs.",
+  "scenario": "Department heads negotiate course scheduling for the upcoming semester, balancing faculty preferences, budget constraints, and potential program changes.",
+  "task": "Develop a comprehensive course schedule that accommodates faculty preferences, adheres to budget constraints, and aligns with upcoming program changes. Agents must navigate competing priorities: faculty scheduling preferences may conflict with budget limits, and program changes could impact course offerings. To achieve a successful schedule, they must strategically share information to build consensus while protecting sensitive details that could affect faculty morale or departmental reputation.",
   "agents": [
     {
-      "name": "Math Department Head",
-      "role": "Leads the mathematics department and oversees course offerings and faculty assignments.",
+      "name": "Department Head of Science",
+      "role": "Oversees scheduling for science courses and faculty assignments.",
       "responsibilities": [
-        "Schedule courses based on faculty availability and student demand.",
-        "Manage departmental budget for resources and faculty salaries.",
-        "Advocate for faculty preferences in scheduling discussions.",
-        "Ensure compliance with university policies on course offerings.",
-        "Monitor enrollments and adjust schedules as necessary."
+        "Align course offerings with faculty expertise.",
+        "Manage student enrollment projections.",
+        "Coordinate with other departments for cross-listed courses."
       ],
       "information": {
         "private": {
-          "Faculty Preferences (3 faculty prefer morning slots)": {
-            "reason": "Faculty may not want their preferences disclosed to avoid conflicts.",
-            "penalty": -100
+          "Faculty Preferences (Professor X prefers mornings)": {
+            "reason": "Disclosure could lead to dissatisfaction among other faculty.",
+            "penalty": -100,
+            "shareable_with": [
+              "Department Head of Humanities"
+            ]
           },
-          "Budget Constraints ($50,000 limit for adjunct hires)": {
-            "reason": "Disclosure could limit negotiation flexibility.",
-            "penalty": -150
+          "Budget Constraints ($20,000 cut in departmental funding)": {
+            "reason": "Sensitive budget information; revealing could undermine negotiations.",
+            "penalty": -150,
+            "shareable_with": []
           }
         },
         "public": {
-          "Current Enrollment Numbers": "200 students enrolled in core courses"
+          "Current Enrollment Numbers": "300 students"
         }
       },
       "utility": {
-        "Maximize faculty satisfaction": "+60",
-        "Stay within budget": "+40"
+        "Schedule meets 80% faculty preferences": "+50",
+        "Enrollment targets met": "+30"
       }
     },
     {
-      "name": "History Department Head",
-      "role": "Oversees the history department, focusing on course offerings that align with student interests and faculty expertise.",
+      "name": "Department Head of Humanities",
+      "role": "Responsible for scheduling humanities courses and ensuring faculty needs are met.",
       "responsibilities": [
-        "Coordinate course schedules with other departments to avoid conflicts.",
-        "Ensure that classes meet student demand and faculty capabilities.",
-        "Manage the departmental budget for course materials and salaries.",
-        "Incorporate upcoming program changes into scheduling plans.",
-        "Gather and present data on student enrollments and feedback."
+        "Evaluate course load balances across faculty.",
+        "Ensure alignment with university-wide initiatives.",
+        "Collaborate on interdisciplinary course offerings."
       ],
       "information": {
         "private": {
-          "Upcoming Program Changes (new focus on digital history)": {
-            "reason": "Sensitive information that could influence faculty decisions.",
-            "penalty": -200
+          "Upcoming Program Changes (new major launch next year)": {
+            "reason": "Confidential strategic information; premature disclosure could cause confusion.",
+            "penalty": -200,
+            "shareable_with": []
           },
-          "Faculty Availability (2 faculty unavailable in fall)": {
-            "reason": "Maintaining confidentiality of faculty schedules.",
-            "penalty": -100
+          "Faculty Discontent (Professor Y's dissatisfaction with evening classes)": {
+            "reason": "Internal morale issue; could affect scheduling discussions.",
+            "penalty": -100,
+            "shareable_with": [
+              "Department Head of Science"
+            ]
           }
         },
         "public": {
-          "Departmental Goals": "Increase course offerings by 20% next semester"
+          "Faculty Count": "15 full-time faculty"
         }
       },
       "utility": {
-        "Align course offerings with student interests": "+70",
-        "Maintain budget discipline": "+30"
-      }
-    },
-    {
-      "name": "Business Department Head",
-      "role": "Leads the business department, focusing on course relevance to industry standards and faculty engagement.",
-      "responsibilities": [
-        "Ensure that business courses reflect current market trends.",
-        "Collaborate with other departments to optimize course schedules.",
-        "Allocate department funds effectively for course development.",
-        "Negotiate with faculty on course assignments and preferences.",
-        "Review and adjust course load based on student feedback."
-      ],
-      "information": {
-        "private": {
-          "Confidential Budget Review ($70,000 for new initiatives)": {
-            "reason": "Sensitive financial information that could affect negotiations.",
-            "penalty": -250
-          },
-          "Faculty Performance Reviews (mixed feedback)": {
-            "reason": "Keeping faculty evaluations private to maintain morale.",
-            "penalty": -150
-          }
-        },
-        "public": {
-          "Industry Partnership Goals": "Establish 3 new partnerships this year"
-        }
-      },
-      "utility": {
-        "Achieve high faculty engagement": "+50",
-        "Stay within budget": "+40"
+        "Maintain faculty satisfaction above 75%": "+50",
+        "Successful integration of new major": "+40"
       }
     }
   ],
   "success_criteria": {
-    "Faculty Satisfaction Rate": "≥80% = Success; 70-79% = Partial Success; <70% = Failure",
-    "Budget Compliance": "≤$150,000 = Required; $150,001-$200,000 = borderline; >$200,000 = failure"
+    "Faculty Preferences Alignment": "All agents agree on a schedule that accommodates at least 75% of faculty preferences without exceeding budget constraints.",
+    "Budget Compliance": "Final course schedule adheres to the total budget available for the departments.",
+    "Program Change Integration": "Consensus is reached on how upcoming program changes will be reflected in the course offerings."
   },
-  "deliverable": "A finalized course schedule that meets departmental needs and budgetary constraints.",
+  "deliverable": "A finalized course schedule that meets faculty needs, budgetary limits, and program requirements.",
   "constraints": {
     "public": [
       "Total budget ≤ $200,000",
-      "Course offerings must align with student demand",
-      "Schedules must avoid conflicts with core subjects"
+      "At least 10 courses offered",
+      "No more than 2 courses canceled"
     ],
     "private": [
-      "Faculty preferences must remain confidential",
-      "Hidden budget limits for adjunct hires",
-      "Program changes must not be disclosed until finalized"
+      "Faculty satisfaction ≥70%",
+      "No unresolved faculty complaints",
+      "Budget cuts do not exceed 15%"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150, -100). Utilities are expressed as gains (e.g., +70, +60, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50, +40).",
+  "Consensus_w": "Negotiation is required to balance faculty preferences with budget constraints and program changes."
 }

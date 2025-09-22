@@ -1,114 +1,128 @@
 {
-  "scenario": "Critical organ transplant matching involves collaboration between transplant centers, medical teams, and patient advocates to optimize donor-recipient matches while managing sensitive medical information.",
-  "task": "Create a strategic matching plan that prioritizes patient medical needs, donor quality, and compliance history while maintaining confidentiality of sensitive information.",
+  "scenario": "Critical organ transplant matching involves collaboration between transplant centers, medical teams, and patient advocates to ensure timely and suitable matches for patients in need.",
+  "task": "Develop a comprehensive organ matching strategy that balances medical urgency, donor quality assessments, and patient compliance histories while navigating competing priorities and maintaining confidentiality. Agents must strategically share information to coordinate decisions and secure consensus, ensuring timely transplants without compromising sensitive medical details.",
   "agents": [
     {
-      "name": "Transplant Coordinator",
-      "role": "Oversees the organ allocation process and coordinates between medical teams and transplant centers.",
+      "name": "Transplant Center Director",
+      "role": "Oversees the organ allocation process, ensuring compliance with medical standards and ethical guidelines.",
       "responsibilities": [
-        "Assess and prioritize transplant candidates based on urgency and compatibility.",
-        "Manage logistics of organ transport and timing for optimal transplant success.",
-        "Ensure compliance with ethical standards and regulatory guidelines.",
-        "Facilitate communication among medical teams regarding patient status and donor quality.",
-        "Maintain records of donor and recipient details while protecting sensitive information."
+        "Manage donor organ allocation",
+        "Coordinate with medical teams and patient advocates",
+        "Ensure compliance with regulatory requirements"
       ],
       "information": {
         "private": {
-          "Urgency Assessment (high)": {
-            "reason": "Sensitive information that could influence allocation decisions.",
-            "penalty": -300
+          "Donor Quality Score (95% viability)": {
+            "reason": "Sensitive information that could affect other centers’ decisions if disclosed.",
+            "penalty": -250,
+            "shareable_with": [
+              "Medical Team Lead"
+            ]
           },
-          "Donor Quality Score (85%)": {
-            "reason": "Confidential metrics that could affect competitive advantage.",
-            "penalty": -200
+          "Internal Urgency Assessment (patient priority ranking)": {
+            "reason": "Could lead to pressure from competing centers if revealed.",
+            "penalty": -200,
+            "shareable_with": [
+              "Patient Advocate"
+            ]
           }
         },
         "public": {
-          "Allocation Policy": "Based on medical urgency and compatibility"
+          "Total Transplants Last Year": "150"
         }
       },
       "utility": {
-        "Successful transplants within 24 hours": "+100",
-        "Patient satisfaction score above 90%": "+50"
+        "Transplants completed within 48 hours": "+100",
+        "Compliance with ethical guidelines": "+50"
       }
     },
     {
-      "name": "Surgeon",
-      "role": "Performs the transplant surgeries and evaluates patient readiness for surgery.",
+      "name": "Medical Team Lead",
+      "role": "Responsible for assessing patient readiness and medical compliance for transplant procedures.",
       "responsibilities": [
-        "Conduct evaluations of transplant candidates to ensure surgical readiness.",
-        "Collaborate with the transplant coordinator to assess organ compatibility.",
-        "Provide feedback on organ quality based on surgical outcomes.",
-        "Ensure all surgical protocols are followed to maximize patient safety.",
-        "Communicate with patient advocates regarding patient expectations and outcomes."
+        "Evaluate patient health status",
+        "Coordinate with transplant centers for organ matching",
+        "Ensure patient education and compliance"
       ],
       "information": {
         "private": {
-          "Patient Compliance History (non-compliant)": {
-            "reason": "Critical information that could affect transplant outcomes.",
-            "penalty": -250
+          "Patient Compliance History (70% adherence)": {
+            "reason": "Confidential; revealing could affect patient trust and future compliance.",
+            "penalty": -150,
+            "shareable_with": [
+              "Transplant Center Director"
+            ]
           },
-          "Surgical Risk Assessment (high risk)": {
-            "reason": "Confidential details that could influence transplant decisions.",
-            "penalty": -150
+          "Critical Health Updates (patient condition fluctuations)": {
+            "reason": "Sensitive updates that could influence matching priority.",
+            "penalty": -100,
+            "shareable_with": [
+              "Patient Advocate"
+            ]
           }
         },
         "public": {
-          "Surgical Success Rate": "95%"
+          "Patient Satisfaction Rate": "85%"
         }
       },
       "utility": {
-        "Surgical success rate above 90%": "+70",
-        "Transplants completed within 48 hours": "+30"
+        "Matching success rate ≥90%": "+75",
+        "Improved patient adherence rates": "+50"
       }
     },
     {
       "name": "Patient Advocate",
-      "role": "Represents the interests and needs of transplant patients during the matching process.",
+      "role": "Ensures that patient needs and perspectives are prioritized in the transplant process.",
       "responsibilities": [
-        "Ensure patient voices and preferences are considered in the allocation process.",
-        "Advocate for transparency in the matching process while protecting patient confidentiality.",
-        "Provide emotional support and information to patients and families.",
-        "Gather feedback from patients about their experiences and needs.",
-        "Collaborate with medical teams to address patient concerns."
+        "Communicate patient needs and concerns",
+        "Support patients through the transplant process",
+        "Facilitate discussions between medical teams and patients"
       ],
       "information": {
         "private": {
-          "Patient Feedback (negative)": {
-            "reason": "Sensitive information that could harm public perception.",
-            "penalty": -100
+          "Patient Feedback on Process (mixed reviews)": {
+            "reason": "Sensitive to maintain patient trust and morale.",
+            "penalty": -100,
+            "shareable_with": [
+              "Medical Team Lead"
+            ]
           },
-          "Patient Demographics (age, background)": {
-            "reason": "Confidential information that should not be disclosed publicly.",
-            "penalty": -50
+          "Urgent Patient Requests (specific organ preferences)": {
+            "reason": "Could bias allocation if disclosed publicly.",
+            "penalty": -150,
+            "shareable_with": [
+              "Transplant Center Director"
+            ]
           }
         },
         "public": {
-          "Advocacy Standards": "Patient-centered care and ethical practices"
+          "Advocacy Campaigns Run": "5"
         }
       },
       "utility": {
-        "Patient satisfaction above 85%": "+40",
-        "Successful communication of needs": "+20"
+        "Patient satisfaction ≥90%": "+100",
+        "Successful advocacy for urgent cases": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Transplant success rate": "≥90% = Success; 80-89% = Partial; <80% = Failure",
-    "Patient satisfaction": "≥85% = Success; 70-84% = Partial; <70% = Failure"
+    "Urgency Agreement": "All agents agree on the urgency assessment criteria that prioritize patients based on medical need.",
+    "Matching Quality Resolution": "Consensus on donor quality metrics that ensure optimal matches for patients.",
+    "Compliance Alignment": "Agreement on patient compliance measures that support successful transplant outcomes."
   },
-  "deliverable": "A comprehensive organ transplant matching plan that addresses patient needs, donor quality, and compliance while safeguarding sensitive information.",
+  "deliverable": "A detailed organ matching strategy that incorporates urgency assessments, donor quality evaluations, and patient compliance measures.",
   "constraints": {
     "public": [
-      "All matching decisions are based on medical urgency and compatibility.",
-      "Compliance with ethical standards in organ allocation.",
-      "Maintaining patient confidentiality throughout the process."
+      "Total transplants conducted ≤ 200",
+      "Ethical compliance with donor and patient rights",
+      "Patient satisfaction ≥80%"
     ],
     "private": [
-      "Donor quality metrics must remain confidential.",
-      "Patient compliance history cannot be disclosed without consent.",
-      "Urgency assessments should only be shared with authorized personnel."
+      "Donor viability ≥85%",
+      "Patient compliance ≥70%",
+      "No critical health updates unresolved at matching time"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100, -50). Utilities are expressed as gains (e.g., +100, +70, +50, +40, +30, +20)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -250, -200, -150). Utilities are expressed as gains (e.g., +100, +75, +50).",
+  "Consensus_w": "Trade-offs in urgency, quality, and compliance must be discussed to achieve alignment."
 }

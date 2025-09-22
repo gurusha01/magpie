@@ -1,117 +1,124 @@
 {
-  "scenario": "A startup is negotiating a funding round involving founders, investors, and board members, each holding critical private information that could influence the deal's structure and valuation.",
-  "task": "Create a funding proposal that balances equity, valuation, and strategic growth plans while negotiating terms that satisfy all parties' interests.",
+  "scenario": "A startup funding round involves negotiations between founders, multiple investors, and board members who each possess sensitive information that could influence the valuation and terms of investment. Each party must navigate conflicting interests regarding company valuation, equity stakes, and growth strategies while protecting proprietary data.",
+  "task": "Develop a funding strategy that aligns the interests of founders, investors, and board members, ensuring that the proposed valuation, equity distribution, and growth plans are acceptable to all parties. Agents must share critical information selectively to facilitate consensus, avoiding the disclosure of sensitive data that could harm negotiations or competitive positioning.",
   "agents": [
     {
-      "name": "Founder",
-      "role": "Leads the startup's vision and strategy, ensuring alignment between growth objectives and funding needs.",
+      "name": "Founder CEO",
+      "role": "Leads the startup and is responsible for overall vision, strategy, and securing funding.",
       "responsibilities": [
-        "Define the company's vision and strategic growth plan.",
-        "Negotiate funding terms with investors.",
-        "Maintain transparency with board members while protecting sensitive company information.",
-        "Balance equity dilution with capital needs.",
-        "Prepare for investor presentations and due diligence."
+        "Articulate the company's growth strategy to investors.",
+        "Negotiate terms with potential investors.",
+        "Ensure alignment with board members on equity distribution."
       ],
       "information": {
         "private": {
           "Current Valuation ($10M)": {
-            "reason": "Valuation is sensitive and could affect negotiation leverage.",
-            "penalty": -300
+            "reason": "Unverified; disclosing could affect investor perceptions.",
+            "penalty": -200,
+            "shareable_with": [
+              "Board Member"
+            ]
           },
-          "Projected Revenue Growth (150% next year)": {
-            "reason": "Disclosure could lead to unrealistic expectations and negotiating disadvantages.",
-            "penalty": -200
+          "Strategic Growth Plan (expansion into new markets)": {
+            "reason": "Sensitive competitive strategy; revealing could undermine market positioning.",
+            "penalty": -150,
+            "shareable_with": [
+              "Investor A"
+            ]
           }
         },
         "public": {
-          "Funding Requirement": "$2M",
-          "Current Team Size": "10"
+          "Funding Goal": "$5M"
         }
       },
       "utility": {
-        "Equity dilution ≤ 20%": "+100",
-        "Securing $2M funding": "+50"
+        "Funding secured at ≥$10M valuation": "+100",
+        "Equity dilution ≤20%": "+50"
       }
     },
     {
-      "name": "Lead Investor",
-      "role": "Provides capital and strategic guidance to the startup, seeking favorable terms that align with their investment strategy.",
+      "name": "Investor A",
+      "role": "Provides financial backing and strategic guidance to the startup.",
       "responsibilities": [
-        "Evaluate the startup's business model and growth potential.",
-        "Negotiate investment terms and equity stake.",
-        "Provide strategic insights based on market trends.",
-        "Assess risks associated with the investment.",
-        "Engage with other investors to align on terms."
+        "Evaluate startup's growth potential.",
+        "Negotiate investment terms and conditions.",
+        "Advise on market positioning and scalability."
       ],
       "information": {
         "private": {
-          "Term Sheet Offer (20% for $2M)": {
-            "reason": "Sensitive financial information that could affect negotiations with other investors.",
-            "penalty": -250
+          "Term Sheet Offer (10% equity for $1M)": {
+            "reason": "Confidential; public knowledge could affect negotiation leverage.",
+            "penalty": -200,
+            "shareable_with": [
+              "Founder CEO"
+            ]
           },
-          "Market Comparison ($12M average valuation)": {
-            "reason": "Disclosure could weaken negotiating position.",
-            "penalty": -150
+          "Competing Investment Interest (similar startup)": {
+            "reason": "Revealing could impact negotiation dynamics.",
+            "penalty": -100,
+            "shareable_with": []
           }
         },
         "public": {
-          "Investment Horizon": "3-5 years",
-          "Minimum Return Target": "3x"
+          "Investment Horizon": "5 years"
         }
       },
       "utility": {
-        "Achieving terms ≤ 20% equity": "+80",
-        "Investment secured within 3 months": "+40"
+        "Investment secured with favorable terms": "+100",
+        "Equity stake ≤15%": "+40"
       }
     },
     {
       "name": "Board Member",
-      "role": "Advises on governance and strategic direction, ensuring the startup's interests are protected in funding negotiations.",
+      "role": "Advises on governance, strategy, and investor relations.",
       "responsibilities": [
-        "Guide the startup's strategic decisions and oversight.",
-        "Evaluate investor proposals and ensure alignment with company goals.",
-        "Advise on equity distribution and governance structures.",
+        "Ensure alignment of interests among stakeholders.",
         "Facilitate communication between founders and investors.",
-        "Ensure compliance with legal and financial regulations."
+        "Provide oversight on strategic decisions."
       ],
       "information": {
         "private": {
-          "Board Consensus on Valuation ($10M)": {
-            "reason": "Confidential discussions that could impact investor perceptions.",
-            "penalty": -100
+          "Board's Valuation Expectation ($12M)": {
+            "reason": "Sensitive to maintain negotiation strength.",
+            "penalty": -150,
+            "shareable_with": [
+              "Founder CEO"
+            ]
           },
-          "Strategic Growth Concerns (High burn rate)": {
-            "reason": "Sensitive information that could affect negotiating leverage.",
-            "penalty": -50
+          "Undisclosed Investor Interests": {
+            "reason": "Risk of influencing other investors' decisions.",
+            "penalty": -100,
+            "shareable_with": []
           }
         },
         "public": {
-          "Board Composition": "5 members, including 2 independent",
-          "Meeting Frequency": "Monthly"
+          "Board Composition": "5 members"
         }
       },
       "utility": {
-        "Stakeholder agreement on funding strategy": "+70",
-        "Investor alignment with strategic goals": "+30"
+        "Alignment on valuation with all parties": "+100",
+        "Secured investor commitment before next board meeting": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Funding Secured": "Funding ≥ $2M = Success; $1M-$2M = Partial Success; < $1M = Failure",
-    "Equity Dilution": "Equity dilution ≤ 20% = Success; 21%-25% = Partial Success; > 25% = Failure"
+    "Valuation Agreement": "All parties agree on a final valuation that reflects the growth potential and market conditions.",
+    "Equity Distribution Consensus": "Founders and investors reach an agreement on equity stakes that satisfies both the funding needs and the dilution concerns.",
+    "Growth Strategy Approval": "A unified growth strategy is established that aligns with investor expectations and founder ambitions."
   },
-  "deliverable": "A comprehensive funding proposal outlining terms, valuation, and strategic objectives.",
+  "deliverable": "A comprehensive funding plan that includes valuation, equity distribution, and growth strategies.",
   "constraints": {
     "public": [
-      "Total funding requirement ≤ $2M",
-      "Equity dilution ≤ 25%",
-      "All negotiations completed within 3 months"
+      "Total funding goal ≤ $5M",
+      "Equity dilution ≤30%",
+      "Valuation agreed upon by all parties"
     ],
     "private": [
-      "Valuation must remain undisclosed until funding is secured",
-      "Burn rate must be managed to not exceed $300K/month",
-      "Investors must agree to board governance terms"
+      "Valuation must not exceed $12M",
+      "Investor commitments must be secured within 30 days",
+      "No significant changes to growth strategy without board approval"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +70)."
+  "penalties_utilities": "Penalties are expressed as negative utility losses; utilities are expressed as positive gains.",
+  "Consensus_w": "Negotiation required to align on valuation, equity distribution, and growth strategy."
 }

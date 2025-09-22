@@ -1,114 +1,128 @@
 {
-  "scenario": "Establishing a humanitarian corridor in a conflict zone requires coordination between military forces, aid organizations, and diplomatic negotiators, each holding sensitive information that could impact the success of the mission.",
-  "task": "Create a strategic plan for establishing the humanitarian corridor that addresses security, resource distribution, and diplomatic negotiations while managing the private information held by each agent.",
+  "scenario": "A humanitarian corridor is negotiated in a conflict zone, requiring cooperation between military forces, aid organizations, and diplomatic negotiators, each with sensitive information that could affect safety and resource allocation.",
+  "task": "Develop a comprehensive plan for establishing a secure humanitarian corridor, ensuring safe passage for aid while balancing military security needs, aid distribution, and diplomatic agreements. Agents must navigate competing priorities, including security assessments, resource equity concerns, and political ramifications. Strategic information sharing is crucial to align efforts while protecting sensitive data that could compromise safety or negotiations.",
   "agents": [
     {
       "name": "Military Commander",
-      "role": "Oversees security operations and ensures the safety of the humanitarian corridor.",
+      "role": "Responsible for ensuring the security of the humanitarian corridor and coordinating military operations.",
       "responsibilities": [
-        "Assess and mitigate security threats in the corridor area.",
-        "Coordinate with aid organizations to provide safe passage for supplies.",
-        "Communicate military presence and capabilities to aid organizations.",
-        "Develop contingency plans for potential escalations or breaches.",
-        "Report on security metrics to gauge success of operations."
+        "Assess security risks along the proposed corridor.",
+        "Coordinate with aid organizations for safe passage protocols.",
+        "Manage troop deployments to secure key areas."
       ],
       "information": {
         "private": {
-          "Threat Assessment (high risk of ambush)": {
-            "reason": "Revealing could compromise operational security.",
-            "penalty": -300
+          "Threat Assessment (high risk from local factions)": {
+            "reason": "Disclosure could compromise troop safety and operational strategies.",
+            "penalty": -250,
+            "shareable_with": [
+              "Diplomatic Negotiator"
+            ]
           },
-          "Troop Movements (planned deployment schedules)": {
-            "reason": "Confidential military strategy; could be exploited.",
-            "penalty": -200
+          "Resource Allocation Plans (military supplies prioritization)": {
+            "reason": "Leaking could incite unrest among local populations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Aid Organization Representative"
+            ]
           }
         },
         "public": {
-          "Security Presence": "10 military units deployed in the region."
+          "Troop Presence": "200 personnel allocated to corridor security"
         }
       },
       "utility": {
-        "Threat neutralized before aid arrival": "+100",
-        "Maintaining zero incidents during operations": "+50"
+        "Successful corridor establishment": "+100",
+        "Minimal incidents reported": "+50"
       }
     },
     {
-      "name": "Aid Organization Director",
-      "role": "Ensures effective delivery of humanitarian aid while navigating the complexities of the conflict zone.",
+      "name": "Aid Organization Representative",
+      "role": "Ensures that humanitarian needs are met and that aid can flow freely and safely through the corridor.",
       "responsibilities": [
-        "Plan and execute logistics for aid distribution.",
-        "Collaborate with military to ensure safe access to distribution points.",
-        "Gather and analyze on-ground data about local needs and inequities.",
-        "Advocate for equitable resource distribution among affected populations.",
-        "Report on aid delivery outcomes and challenges."
+        "Coordinate logistics for aid delivery.",
+        "Communicate needs of affected populations to military forces.",
+        "Monitor and report on aid distribution effectiveness."
       ],
       "information": {
         "private": {
-          "Resource Distribution Data (inequitable access for certain groups)": {
-            "reason": "Sensitive local dynamics; disclosure could incite conflict.",
-            "penalty": -250
+          "Resource Distribution Data (inequities in aid access)": {
+            "reason": "Sensitive data that could cause backlash if disclosed.",
+            "penalty": -200,
+            "shareable_with": [
+              "Military Commander"
+            ]
           },
-          "Local Faction Intentions (potential disruptions)": {
-            "reason": "Exposing could jeopardize negotiations and safety.",
-            "penalty": -150
+          "Local Community Sentiment (potential backlash against military presence)": {
+            "reason": "Risk of escalating tensions if revealed publicly.",
+            "penalty": -100,
+            "shareable_with": [
+              "Diplomatic Negotiator"
+            ]
           }
         },
         "public": {
-          "Aid Supplies Ready": "5000 food packages, 2000 medical kits."
+          "Aid Plan Scope": "Deliver 500 tons of supplies within 3 months"
         }
       },
       "utility": {
-        "Successful distribution to all targeted groups": "+80",
-        "Meeting distribution deadlines": "+40"
+        "Successful aid delivery": "+100",
+        "Positive community feedback": "+50"
       }
     },
     {
       "name": "Diplomatic Negotiator",
-      "role": "Facilitates discussions among conflicting parties to ensure the corridor's establishment and operation.",
+      "role": "Facilitates discussions and agreements between military and aid organizations, ensuring alignment on the corridor's terms.",
       "responsibilities": [
-        "Engage with military and aid organizations to align objectives.",
-        "Negotiate terms with local factions to secure cooperation.",
-        "Monitor political dynamics that may affect corridor operations.",
-        "Provide updates to stakeholders on negotiation progress.",
-        "Ensure compliance with international humanitarian laws."
+        "Lead negotiations for corridor establishment.",
+        "Draft and finalize agreements between parties.",
+        "Mitigate potential conflicts through dialogue."
       ],
       "information": {
         "private": {
-          "Political Faction Intentions (secret agendas)": {
-            "reason": "Disclosure could undermine negotiations.",
-            "penalty": -300
+          "Political Faction Intentions (potential disruptions planned)": {
+            "reason": "Disclosure could lead to premature tensions or conflict.",
+            "penalty": -300,
+            "shareable_with": [
+              "Military Commander"
+            ]
           },
-          "Confidential Agreements (terms with local leaders)": {
-            "reason": "Sensitive information; could be exploited by rivals.",
-            "penalty": -100
+          "Negotiation Leverage Points (undisclosed terms with military)": {
+            "reason": "Could weaken negotiation position if leaked.",
+            "penalty": -200,
+            "shareable_with": [
+              "Aid Organization Representative"
+            ]
           }
         },
         "public": {
-          "Negotiation Status": "In progress with two key factions."
+          "Negotiation Framework": "Agreement on corridor terms by all parties"
         }
       },
       "utility": {
-        "Achieving consensus among all parties": "+100",
-        "Securing commitments from local factions": "+50"
+        "Successful agreement reached": "+100",
+        "Minimized conflict during negotiations": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Aid Delivery Success Rate": "≥80% = Success; 70-79% = Partial success; <70% = Failure",
-    "Security Incident Rate": "≤1 incident = Success; 2-3 incidents = Partial success; >3 incidents = Failure"
+    "Security Agreement": "All parties agree on a security framework that ensures safe passage while respecting military and humanitarian needs.",
+    "Resource Equity Resolution": "Consensus on equitable distribution of aid that addresses local community needs without compromising security.",
+    "Negotiation Closure": "Formal agreement is reached that outlines responsibilities and protocols for corridor operation."
   },
-  "deliverable": "A comprehensive plan outlining the establishment of the humanitarian corridor, including security protocols, aid distribution logistics, and diplomatic strategies.",
+  "deliverable": "A comprehensive plan detailing the establishment of the humanitarian corridor, including security measures, aid distribution strategy, and diplomatic agreements.",
   "constraints": {
     "public": [
-      "Humanitarian corridor operational within 30 days",
-      "Zero tolerance for violence during aid delivery",
-      "Coordination with local authorities required"
+      "Troop presence ≤ 300 personnel",
+      "Aid delivery must begin within 1 month",
+      "Negotiation agreement finalized within 2 weeks"
     ],
     "private": [
-      "Security risk must remain below threshold defined by military",
-      "Aid must be equitably distributed per local needs assessment",
-      "Negotiations must remain confidential to prevent leaks"
+      "No major security breaches during initial corridor operation",
+      "Resource allocation must reflect local needs without triggering unrest",
+      "Political factions must not interfere with corridor operations"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +80, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +50).",
+  "Consensus_w": "Agreement on security measures and aid distribution is essential for corridor establishment."
 }

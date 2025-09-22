@@ -1,114 +1,128 @@
 {
-  "scenario": "Military and civilian satellite orbit allocation between defense agencies, commercial operators, and international regulatory bodies with classified mission requirements, undisclosed technological capabilities, and confidential strategic priorities.",
-  "task": "Create a comprehensive satellite orbit allocation plan that optimally balances defense needs, commercial interests, and international agreements while managing sensitive information and fostering collaboration.",
+  "scenario": "A complex negotiation unfolds over satellite orbit allocations among defense agencies, commercial operators, and international regulatory bodies, each holding classified information that could influence the outcome.",
+  "task": "Develop a strategic plan for satellite orbit allocation that adheres to national security requirements, maximizes commercial opportunities, and complies with international regulations. Agents must navigate conflicts over resource allocations, technological disclosures, and mission priorities while ensuring that sensitive information is selectively shared to build consensus.",
   "agents": [
     {
-      "name": "Defense Agency Director",
-      "role": "Oversees military satellite operations and ensures national security interests are prioritized in orbit allocation.",
+      "name": "Defense Agency Representative",
+      "role": "Oversees national security requirements and military satellite operations.",
       "responsibilities": [
-        "Determine critical satellite needs for defense operations.",
-        "Negotiate with commercial operators for shared orbit usage.",
-        "Protect classified mission details while ensuring transparency where possible.",
-        "Coordinate with international regulatory bodies to comply with treaties.",
-        "Manage budget allocations for satellite launches and maintenance."
+        "Define military mission requirements for orbital slots.",
+        "Assess potential conflicts with commercial operators.",
+        "Ensure compliance with international treaties."
       ],
       "information": {
         "private": {
-          "Mission Requirements (classified)": {
-            "reason": "Sensitive details that could compromise national security if disclosed.",
-            "penalty": -300
+          "Classified Mission Objectives (high-resolution imaging)": {
+            "reason": "Sensitive military operations; disclosure could jeopardize national security.",
+            "penalty": -300,
+            "shareable_with": [
+              "International Regulatory Body"
+            ]
           },
-          "Technological Capabilities (undisclosed)": {
-            "reason": "Revealing could diminish strategic advantages.",
-            "penalty": -200
+          "Undisclosed Technology (advanced propulsion system)": {
+            "reason": "Revealing capabilities could weaken strategic advantages.",
+            "penalty": -250,
+            "shareable_with": [
+              "Commercial Operator"
+            ]
           }
         },
         "public": {
-          "Budget Allocation": "60% defense operations, 20% joint projects, 20% research"
+          "Allocated Orbits": "20 military satellites"
         }
       },
       "utility": {
-        "Successful mission deployment": "+100",
-        "Efficient use of allocated orbits": "+50"
+        "Successful allocation of all military slots": "+100",
+        "Minimal conflict with commercial interests": "+50"
       }
     },
     {
-      "name": "Commercial Satellite Operator",
-      "role": "Manages commercial satellite services and advocates for fair usage of orbital slots.",
+      "name": "Commercial Operator",
+      "role": "Manages satellite services for commercial clients, focusing on maximizing market opportunities.",
       "responsibilities": [
-        "Provide satellite services to clients while ensuring compliance with regulations.",
-        "Negotiate orbit allocations with defense agencies for shared access.",
-        "Protect proprietary technology details to maintain competitive advantage.",
-        "Engage in public advocacy for equitable space usage policies.",
-        "Monitor market trends to adapt service offerings."
+        "Identify potential orbital slots for commercial use.",
+        "Negotiate terms of use with defense agencies.",
+        "Ensure compliance with regulatory standards."
       ],
       "information": {
         "private": {
-          "Market Projections ($1B potential)": {
-            "reason": "Confidential data that could affect stock prices if leaked.",
-            "penalty": -150
+          "Market Demand Analysis (30% growth in satellite services)": {
+            "reason": "Sensitive business intelligence; disclosure could harm competitive position.",
+            "penalty": -150,
+            "shareable_with": [
+              "Defense Agency Representative"
+            ]
           },
-          "Service Performance Metrics (undisclosed)": {
-            "reason": "Sensitive company performance data that could impact negotiations.",
-            "penalty": -100
+          "Confidential Client Contracts": {
+            "reason": "Leaking details could undermine client relationships.",
+            "penalty": -200,
+            "shareable_with": [
+              "International Regulatory Body"
+            ]
           }
         },
         "public": {
-          "Service Offerings": "Communications, Earth observation, data analytics"
+          "Total Satellites in Operation": "50"
         }
       },
       "utility": {
-        "Orbit usage efficiency": "+75",
-        "Market capture rate >20%": "+50"
+        "Acquisition of additional orbital slots": "+80",
+        "Successful contract renewals with clients": "+60"
       }
     },
     {
-      "name": "International Regulatory Body Representative",
-      "role": "Ensures compliance with international treaties regarding satellite usage and orbital space.",
+      "name": "International Regulatory Body",
+      "role": "Ensures compliance with international space treaties and manages orbital allocations.",
       "responsibilities": [
-        "Facilitate discussions between military and commercial entities.",
-        "Enforce compliance with international space treaties.",
-        "Monitor satellite allocations to prevent overcrowding in orbits.",
-        "Advocate for sustainable space practices.",
-        "Collect and disseminate data on satellite usage trends."
+        "Evaluate orbital requests from various stakeholders.",
+        "Facilitate negotiations between military and commercial entities.",
+        "Monitor compliance with international regulations."
       ],
       "information": {
         "private": {
-          "Regulatory Changes (upcoming)": {
-            "reason": "Sensitive information that could influence market behavior prematurely.",
-            "penalty": -100
+          "Pending Regulatory Changes": {
+            "reason": "Impact on allocation processes; disclosure could influence negotiations.",
+            "penalty": -100,
+            "shareable_with": [
+              "Defense Agency Representative"
+            ]
           },
-          "Member State Agreements (confidential)": {
-            "reason": "Details of agreements that could affect negotiations.",
-            "penalty": -150
+          "Confidential Reports on Orbital Conflicts": {
+            "reason": "Sensitive information that could affect diplomatic relations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Commercial Operator"
+            ]
           }
         },
         "public": {
-          "Compliance Standards": "Adherence to international treaties"
+          "Total Orbits Allocated": "100"
         }
       },
       "utility": {
-        "Successful treaty compliance": "+100",
-        "Sustainable practices adopted by 75% of operators": "+50"
+        "Successful resolution of all applications": "+90",
+        "Maintaining diplomatic relations": "+70"
       }
     }
   ],
   "success_criteria": {
-    "Orbit Allocation Efficiency": "≥85% usage = Success; 70-84% = Partial Success; <70% = Failure",
-    "Compliance with Treaties": "100% compliance = Success; 80-99% = Partial Success; <80% = Failure"
+    "Orbit Allocation Agreement": "All parties agree on the final allocation of satellite orbits that meets military, commercial, and regulatory needs.",
+    "Mission Priorities Alignment": "Consensus is reached on prioritizing mission objectives without compromising commercial opportunities.",
+    "Compliance with Regulations": "All agents agree to adhere to international treaties and standards governing satellite operations."
   },
-  "deliverable": "An orbit allocation plan that details usage by all parties while ensuring compliance and addressing sensitive information.",
+  "deliverable": "A comprehensive orbital allocation strategy that balances defense requirements, commercial interests, and regulatory compliance.",
   "constraints": {
     "public": [
-      "Total orbital slots ≤ 200",
-      "Compliance with international treaties",
-      "No overcrowding in designated orbits"
+      "Total allocated orbits ≤ 100",
+      "Compliance with international regulations",
+      "No more than 5 conflicting applications"
     ],
     "private": [
-      "Defense agency needs must remain classified",
-      "Commercial technology details to be kept confidential",
-      "International agreements must not be disclosed until finalized"
+      "Military operational capabilities must remain undisclosed",
+      "Commercial market forecasts must not be shared publicly",
+      "Regulatory changes must be kept confidential until finalized"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -200, -150, -100). Utilities are expressed as gains (e.g., +100, +75, +50)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +100, +90, +80, +70).",
+  "Consensus_w": "Negotiation for orbit allocations requires trade-offs among defense, commercial, and regulatory priorities."
 }

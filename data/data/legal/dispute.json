@@ -1,174 +1,230 @@
 {
-  "scenario": "High-profile divorce proceedings between celebrity spouses necessitate collaboration among legal teams and financial advisors while navigating private prenuptial agreement details and undisclosed asset valuations.",
-  "task": "Formulate a settlement strategy that addresses asset division, spousal support, and child custody while managing sensitive information and ensuring fair negotiations.",
+  "scenario": "High-profile divorce proceedings involve celebrity spouses, their legal teams, and financial advisors navigating asset division, custody arrangements, and public image management amidst confidential prenuptial details and undisclosed asset valuations.",
+  "task": "Develop a comprehensive settlement agreement that balances asset division, child custody arrangements, and public relations strategies. The agents must navigate competing interests: securing financial stability for both parties while protecting their reputations and personal conduct details that could affect public perception. To reach consensus, they must share information judiciously, ensuring enough transparency to facilitate agreement while safeguarding sensitive details.",
   "agents": [
     {
       "name": "Celebrity Spouse A",
-      "role": "Primary party in the divorce, seeking to protect personal interests and secure favorable terms.",
+      "role": "Primary party in the divorce, focused on securing favorable custody and financial terms.",
       "responsibilities": [
-        "Provide personal financial disclosures and asset valuations to the legal team.",
-        "Negotiate terms regarding child custody and support.",
-        "Maintain confidentiality regarding personal conduct to avoid reputational damage.",
-        "Collaborate with financial advisors to understand long-term implications of settlement offers."
+        "Negotiate asset division terms.",
+        "Outline child custody preferences.",
+        "Manage public relations regarding the divorce."
       ],
       "information": {
         "private": {
           "Prenuptial Agreement Details": {
-            "reason": "Sensitive legal terms that could influence negotiations.",
-            "penalty": -300
+            "reason": "Sensitive information that could influence negotiations.",
+            "penalty": -250,
+            "shareable_with": [
+              "Legal Team A"
+            ]
           },
-          "Valuation of Hidden Assets ($10M)": {
-            "reason": "Revealing could weaken bargaining position.",
-            "penalty": -250
+          "Undisclosed Asset Valuation ($10M in real estate)": {
+            "reason": "Revealing could weaken negotiating position.",
+            "penalty": -200,
+            "shareable_with": [
+              "Financial Advisor A"
+            ]
           }
         },
         "public": {
-          "Current Income": "$1M/year",
-          "Child Support Preference": "Shared custody with equitable support"
+          "Public Image Strategy": "Maintain positive media coverage during proceedings."
         }
       },
       "utility": {
-        "Achieving favorable custody terms": "+80",
-        "Total settlement value ≥ $15M": "+100"
+        "Custody agreement favoring primary residence": "+100",
+        "Asset division exceeding $5M": "+75"
       }
     },
     {
       "name": "Celebrity Spouse B",
-      "role": "Counterparty in the divorce, focused on maximizing financial settlement and ensuring fair custody arrangements.",
+      "role": "Secondary party in the divorce, focused on protecting personal assets and ensuring fair custody arrangements.",
       "responsibilities": [
-        "Assess asset valuations and negotiate financial settlements with legal representation.",
-        "Advocate for child support terms that reflect true needs.",
-        "Safeguard personal conduct information to maintain public image.",
-        "Coordinate with financial advisors on the long-term financial plan post-settlement."
+        "Negotiate asset division terms.",
+        "Outline child custody preferences.",
+        "Engage in public relations management."
       ],
       "information": {
         "private": {
-          "Undisclosed Asset Valuations ($12M)": {
-            "reason": "Revealing could reduce leverage in negotiations.",
-            "penalty": -300
+          "Confidential Conduct Issues": {
+            "reason": "Could negatively impact public image if disclosed.",
+            "penalty": -300,
+            "shareable_with": [
+              "Legal Team B"
+            ]
           },
-          "Personal Conduct Records": {
-            "reason": "Could impact custody and settlement outcomes if disclosed.",
-            "penalty": -200
+          "Hidden Asset Valuation ($5M in investments)": {
+            "reason": "Revealing could jeopardize financial negotiations.",
+            "penalty": -150,
+            "shareable_with": [
+              "Financial Advisor B"
+            ]
           }
         },
         "public": {
-          "Desired Custody Arrangement": "Primary custody with visitation rights",
-          "Annual Income": "$800K"
+          "Public Image Strategy": "Focus on maintaining a respectful narrative."
         }
       },
       "utility": {
-        "Settlement value ≥ $20M": "+120",
-        "Child custody secured": "+70"
+        "Asset division exceeding $3M": "+80",
+        "Custody agreement favoring shared custody": "+60"
       }
     },
     {
-      "name": "Legal Counsel A",
-      "role": "Attorney representing Celebrity Spouse A, focused on legal strategy and negotiation.",
+      "name": "Legal Team A",
+      "role": "Represents Celebrity Spouse A, focusing on legal strategies for asset division and custody arrangements.",
       "responsibilities": [
-        "Draft legal documents for the divorce proceedings.",
-        "Negotiate asset division and spousal support terms.",
-        "Advise on the implications of the prenuptial agreement.",
-        "Maintain confidentiality of sensitive information during negotiations."
+        "Draft settlement agreements.",
+        "Advise on legal implications of asset disclosures.",
+        "Negotiate terms with opposing counsel."
       ],
       "information": {
         "private": {
-          "Confidential Case Strategies": {
-            "reason": "Revealing could compromise legal position.",
-            "penalty": -150
-          },
-          "Assessment of Spouse B's Finances": {
-            "reason": "Sensitive information that could influence negotiations.",
-            "penalty": -100
-          }
-        },
-        "public": {
-          "Experience in High-Profile Cases": "15 years",
-          "Success Rate": "85%"
-        }
-      },
-      "utility": {
-        "Securing a favorable settlement for client": "+90",
-        "Maintaining client confidentiality": "+50"
-      }
-    },
-    {
-      "name": "Legal Counsel B",
-      "role": "Attorney representing Celebrity Spouse B, aiming to achieve the best financial and custodial outcomes.",
-      "responsibilities": [
-        "Draft legal documents and manage court filings.",
-        "Negotiate terms related to financial settlements and custody.",
-        "Analyze the strengths and weaknesses of the prenuptial agreement.",
-        "Ensure confidentiality of sensitive information is maintained."
-      ],
-      "information": {
-        "private": {
-          "Proposed Settlement Terms": {
-            "reason": "Could weaken negotiating position if leaked.",
-            "penalty": -150
-          },
-          "Assessment of Spouse A's Conduct": {
-            "reason": "Confidential info that could affect custody negotiations.",
-            "penalty": -100
-          }
-        },
-        "public": {
-          "Years of Experience": "10 years",
-          "Success Rate": "80%"
-        }
-      },
-      "utility": {
-        "Achieving a settlement value ≥ $18M": "+100",
-        "Securing favorable custody terms": "+70"
-      }
-    },
-    {
-      "name": "Financial Advisor",
-      "role": "Provides financial analysis and advice regarding asset division and long-term financial planning post-divorce.",
-      "responsibilities": [
-        "Evaluate asset valuations and recommend division strategies.",
-        "Advise on tax implications of settlement terms.",
-        "Assist in developing a financial plan for life after divorce.",
-        "Ensure confidentiality of sensitive financial information."
-      ],
-      "information": {
-        "private": {
-          "Detailed Asset Breakdown": {
-            "reason": "Sensitive financial info that could impact negotiations.",
-            "penalty": -200
-          },
-          "Future Earnings Projections": {
+          "Strategy for Custody Arrangement": {
             "reason": "Revealing could weaken negotiation leverage.",
-            "penalty": -150
+            "penalty": -100,
+            "shareable_with": [
+              "Celebrity Spouse A"
+            ]
+          },
+          "Confidential Case Precedents": {
+            "reason": "Sensitive legal strategies that could be countered.",
+            "penalty": -200,
+            "shareable_with": [
+              "Legal Team B"
+            ]
           }
         },
         "public": {
-          "Experience in Divorce Financial Planning": "12 years",
-          "Client Satisfaction Rate": "90%"
+          "Settlement Timeline": "Expected resolution within 3 months."
         }
       },
       "utility": {
-        "Maximizing asset division for clients": "+80",
-        "Ensuring client financial security post-settlement": "+60"
+        "Settlement reached within 3 months": "+50",
+        "Custody terms favorable to client": "+70"
+      }
+    },
+    {
+      "name": "Legal Team B",
+      "role": "Represents Celebrity Spouse B, focusing on legal strategies for asset protection and custody arrangements.",
+      "responsibilities": [
+        "Draft settlement agreements.",
+        "Advise on legal implications of asset disclosures.",
+        "Negotiate terms with opposing counsel."
+      ],
+      "information": {
+        "private": {
+          "Counterstrategy for Asset Division": {
+            "reason": "Could compromise negotiation position if disclosed.",
+            "penalty": -150,
+            "shareable_with": [
+              "Celebrity Spouse B"
+            ]
+          },
+          "Confidential Client Conduct Issues": {
+            "reason": "Could be used against the client in negotiations.",
+            "penalty": -250,
+            "shareable_with": [
+              "Legal Team A"
+            ]
+          }
+        },
+        "public": {
+          "Settlement Timeline": "Expected resolution within 3 months."
+        }
+      },
+      "utility": {
+        "Settlement reached within 3 months": "+50",
+        "Custody terms favorable to client": "+70"
+      }
+    },
+    {
+      "name": "Financial Advisor A",
+      "role": "Advises Celebrity Spouse A on financial implications of the divorce settlement.",
+      "responsibilities": [
+        "Assess asset valuations.",
+        "Advise on tax implications of asset division.",
+        "Develop financial strategies post-divorce."
+      ],
+      "information": {
+        "private": {
+          "Detailed Asset Valuations": {
+            "reason": "Sensitive financial information that could influence negotiations.",
+            "penalty": -200,
+            "shareable_with": [
+              "Celebrity Spouse A"
+            ]
+          },
+          "Future Income Projections": {
+            "reason": "Revealing could impact negotiation leverage.",
+            "penalty": -150,
+            "shareable_with": [
+              "Legal Team A"
+            ]
+          }
+        },
+        "public": {
+          "Financial Strategy Outline": "Focus on long-term stability post-settlement."
+        }
+      },
+      "utility": {
+        "Client's financial stability post-settlement": "+100",
+        "Asset division advice leading to ≤20% tax impact": "+75"
+      }
+    },
+    {
+      "name": "Financial Advisor B",
+      "role": "Advises Celebrity Spouse B on financial implications of the divorce settlement.",
+      "responsibilities": [
+        "Assess asset valuations.",
+        "Advise on tax implications of asset division.",
+        "Develop financial strategies post-divorce."
+      ],
+      "information": {
+        "private": {
+          "Detailed Asset Valuations": {
+            "reason": "Sensitive financial information that could influence negotiations.",
+            "penalty": -200,
+            "shareable_with": [
+              "Celebrity Spouse B"
+            ]
+          },
+          "Future Income Projections": {
+            "reason": "Revealing could impact negotiation leverage.",
+            "penalty": -150,
+            "shareable_with": [
+              "Legal Team B"
+            ]
+          }
+        },
+        "public": {
+          "Financial Strategy Outline": "Focus on long-term stability post-settlement."
+        }
+      },
+      "utility": {
+        "Client's financial stability post-settlement": "+100",
+        "Asset division advice leading to ≤20% tax impact": "+75"
       }
     }
   ],
   "success_criteria": {
-    "Settlement Value": "≥ $15M = Success; $10-14.9M = Partial; < $10M = Failure",
-    "Custody Agreement": "Shared custody = Success; primary custody only = Partial; no agreement = Failure"
+    "Asset Division Agreement": "Both spouses agree to a fair division of assets that satisfies their financial advisors' recommendations.",
+    "Custody Arrangement Consensus": "A mutually acceptable custody arrangement is reached that considers the welfare of the children.",
+    "Public Image Management Plan": "Both parties agree on a public relations strategy that maintains their reputations and minimizes media backlash."
   },
-  "deliverable": "A comprehensive settlement strategy that outlines asset division, spousal support, and child custody arrangements.",
+  "deliverable": "A finalized settlement agreement detailing asset division, custody arrangements, and public relations strategies.",
   "constraints": {
     "public": [
-      "Total settlement ≤ $30M",
-      "Child support must meet legal guidelines",
-      "All agreements must be finalized within 6 months"
+      "Total asset division does not exceed $20M",
+      "Custody agreement aligns with children's best interests",
+      "Public relations strategy approved by both parties"
     ],
     "private": [
-      "Asset valuations must be ≤ $25M",
-      "Confidentiality of personal conduct must be maintained",
-      "Negotiation terms must not exceed 3 rounds of discussion"
+      "Confidential conduct issues resolved prior to settlement",
+      "No undisclosed assets remain at the time of agreement",
+      "Settlement reached within 3 months"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200, -150). Utilities are expressed as gains (e.g., +120, +100, +90)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -300, -250, -200). Utilities are expressed as gains (e.g., +100, +80, +75).",
+  "Consensus_w": "Negotiation and trade-offs are required to balance asset division and custody arrangements."
 }

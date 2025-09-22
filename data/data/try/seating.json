@@ -1,148 +1,156 @@
 {
-  "scenario": "A group of four colleagues must arrange seating for an important corporate event while navigating personal preferences and hidden dislikes.",
-  "task": "Create a seating arrangement that maximizes comfort and collaboration among the attendees while considering their undisclosed preferences and aversions.",
+  "scenario": "A group of four friends is organizing seating arrangements for an upcoming event, each having hidden preferences that could impact the final layout.",
+  "task": "Create a seating plan that accommodates each individual's preferences while minimizing conflicts. Friends must navigate their personal likes and dislikes, ensuring that no one feels uncomfortable with their assigned seats. They must strategically share information to reach an agreement on the seating arrangement without revealing too much about their personal biases.",
   "agents": [
     {
       "name": "Alice",
-      "role": "Event Coordinator",
+      "role": "Event Organizer",
       "responsibilities": [
-        "Design the layout of the seating arrangement.",
-        "Ensure all attendees are seated in a way that fosters positive interactions.",
-        "Manage any last-minute changes or requests regarding seating.",
-        "Communicate with guests about their preferences without revealing sensitive information.",
-        "Gather feedback after the event to improve future arrangements."
+        "Coordinate seating layout",
+        "Communicate with all attendees",
+        "Ensure comfort and accessibility"
       ],
       "information": {
         "private": {
-          "Dislikes seating near Bob": {
-            "reason": "Past conflicts may lead to uncomfortable interactions.",
-            "penalty": -30
+          "Dislike for sitting near loud talkers": {
+            "reason": "To avoid discomfort during the event.",
+            "penalty": -50,
+            "shareable_with": [
+              "Bob"
+            ]
           },
-          "Prefers to sit next to Charlie": {
-            "reason": "Strong collaborative history; enhances comfort.",
-            "penalty": -20
+          "Preference to sit near the exit": {
+            "reason": "To easily leave if uncomfortable.",
+            "penalty": -30,
+            "shareable_with": [
+              "Charlie"
+            ]
           }
         },
         "public": {
-          "Seating Capacity": "4",
-          "Event Theme": "Networking and Collaboration"
+          "Total Seats Available": "20"
         }
       },
       "utility": {
-        "Maximize positive interactions": "+100",
-        "Minimize conflicts": "+50"
+        "Comfortable seating arrangement achieved": "+50",
+        "Seating plan finalized before deadline": "+40"
       }
     },
     {
       "name": "Bob",
-      "role": "Marketing Specialist",
+      "role": "Friend",
       "responsibilities": [
-        "Provide input on seating based on professional relationships.",
-        "Share insights on potential conflicts among attendees.",
-        "Suggest adjustments to enhance networking opportunities.",
-        "Communicate any personal seating preferences to the coordinator.",
-        "Support the event's overall success through active participation."
+        "Provide input on seating preferences",
+        "Support Alice in decision-making",
+        "Ensure personal comfort during the event"
       ],
       "information": {
         "private": {
-          "Prefers distance from Alice": {
-            "reason": "Previous disagreements could hinder collaboration.",
-            "penalty": -40
+          "Preference for sitting away from Alice": {
+            "reason": "Past conflicts; prefers distance.",
+            "penalty": -40,
+            "shareable_with": [
+              "Charlie"
+            ]
           },
-          "Likes sitting near Dana": {
-            "reason": "Strong rapport enhances teamwork.",
-            "penalty": -10
+          "Likes to sit near the food table": {
+            "reason": "Enjoys easy access to snacks.",
+            "penalty": -20,
+            "shareable_with": []
           }
         },
         "public": {
-          "Role in Event": "Marketing Specialist",
-          "Networking Goals": "Establish new contacts"
+          "Friends' Group Size": "4"
         }
       },
       "utility": {
-        "Sitting with Dana": "+70",
-        "Avoiding Alice": "+30"
+        "Enjoyable seating arrangement achieved": "+60",
+        "Minimal conflict with Alice": "+30"
       }
     },
     {
       "name": "Charlie",
-      "role": "Product Manager",
+      "role": "Friend",
       "responsibilities": [
-        "Ensure that the seating arrangement aligns with team dynamics.",
-        "Act as a mediator if conflicts arise during the event.",
-        "Provide feedback on seating preferences to the coordinator.",
-        "Facilitate discussions among attendees during the event.",
-        "Monitor interactions to improve future arrangements."
+        "Advocate for everyone's preferences",
+        "Help finalize the seating arrangement",
+        "Ensure a fun atmosphere at the event"
       ],
       "information": {
         "private": {
-          "Enjoys sitting next to Alice": {
-            "reason": "Collaborative synergy; boosts productivity.",
-            "penalty": -20
+          "Dislike for sitting near Bob": {
+            "reason": "Previous arguments; prefers distance.",
+            "penalty": -50,
+            "shareable_with": []
           },
-          "Dislikes being near Bob": {
-            "reason": "Past disagreements may lead to tension.",
-            "penalty": -30
+          "Preference to sit near Alice": {
+            "reason": "Feels safer with friends nearby.",
+            "penalty": -10,
+            "shareable_with": [
+              "Alice"
+            ]
           }
         },
         "public": {
-          "Team Focus": "Cross-department collaboration",
-          "Role in Event": "Facilitator"
+          "Event Date": "2023-10-15"
         }
       },
       "utility": {
-        "Sitting with Alice": "+50",
-        "Minimizing Bob's presence": "+40"
+        "Positive atmosphere maintained": "+70",
+        "All preferences addressed": "+50"
       }
     },
     {
       "name": "Dana",
-      "role": "HR Manager",
+      "role": "Friend",
       "responsibilities": [
-        "Oversee the event's overall atmosphere and ensure inclusivity.",
-        "Address any interpersonal issues that arise during the event.",
-        "Collect feedback from attendees post-event regarding comfort levels.",
-        "Advocate for a positive environment through strategic seating.",
-        "Help coordinate any changes in seating if necessary."
+        "Support the final seating decision",
+        "Contribute ideas for seating arrangement",
+        "Maintain harmony among friends"
       ],
       "information": {
         "private": {
-          "Prefers sitting with Bob": {
-            "reason": "Strong professional relationship; enhances comfort.",
-            "penalty": -10
+          "Preference to sit away from loud conversations": {
+            "reason": "To avoid distractions.",
+            "penalty": -40,
+            "shareable_with": [
+              "Alice"
+            ]
           },
-          "Dislikes sitting near Charlie": {
-            "reason": "Past conflicts could disrupt the event's atmosphere.",
-            "penalty": -20
+          "Dislike for sitting next to Charlie": {
+            "reason": "Past discomfort; prefers distance.",
+            "penalty": -30,
+            "shareable_with": []
           }
         },
         "public": {
-          "Event Objective": "Enhance team cohesion",
-          "Attendee Focus": "All departments"
+          "Event Location": "Community Center"
         }
       },
       "utility": {
-        "Sitting with Bob": "+60",
-        "Minimizing tension with Charlie": "+30"
+        "Calm seating arrangement achieved": "+60",
+        "All friends comfortable": "+50"
       }
     }
   ],
   "success_criteria": {
-    "Positive Interactions Rate": "≥75% = Success; 50-74% = Partial Success; <50% = Failure",
-    "Conflict Instances": "≤2 = Success; 3-4 = Partial Success; >4 = Failure"
+    "Seating Agreement": "All friends agree on a final seating arrangement that respects each person's preferences and minimizes discomfort.",
+    "Conflict Resolution": "Any potential seating conflicts are resolved through discussion and mutual understanding.",
+    "Comfort Level": "All friends express satisfaction with their assigned seats during the event."
   },
-  "deliverable": "A seating arrangement plan that reflects the preferences and aversions of all attendees while maximizing collaboration.",
+  "deliverable": "A finalized seating plan that accommodates all friends' preferences and minimizes conflicts.",
   "constraints": {
     "public": [
-      "All four attendees must be seated.",
-      "Seating arrangement must adhere to the event theme.",
-      "No more than 2 conflicts should arise during the event."
+      "Total number of seats must equal 4",
+      "No one can sit next to someone they dislike",
+      "Each person must have at least one preferred seating position respected"
     ],
     "private": [
-      "No attendee should sit next to someone they dislike.",
-      "At least one attendee should be seated with someone they prefer.",
-      "Seating must allow for easy communication among attendees."
+      "No more than two friends can sit close together if they have opposing preferences",
+      "At least one friend must have their preferences fully met",
+      "Seating must allow for easy access to exit"
     ]
   },
-  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -40, -30, -20, -10). Utilities are expressed as gains (e.g., +100, +70, +60, +50, +40, +30)."
+  "penalties_utilities": "Penalties are expressed as utility losses (e.g., -50, -40, -30, -20, -10). Utilities are expressed as gains (e.g., +70, +60, +50, +40).",
+  "Consensus_w": "Discussion and agreement on seating preferences are essential to finalize the arrangement."
 }
