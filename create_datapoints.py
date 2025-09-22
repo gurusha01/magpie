@@ -1,79 +1,144 @@
 import os
 import json
 import glob
-import math  # num safety
+import math  # numeric safety helpers (e.g., math.isfinite)
 from typing import Any
 from openai import OpenAI
 
-# IO HELPERS
+# ==============================
+# I/O HELPERS
+# ==============================
+
 def read_yaml_text(path: str) -> str:
-    # read YAML file into text
+    # Read a UTF-8 text file (often a YAML prompt) and return its raw contents.
+    # Using a context manager ensures the file handle is closed on success/failure.
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
 def read_text(path: str) -> str:
-    # read plain text file
+    # Read a generic UTF-8 text file and return its content as a string.
     with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
 def write_json(path: str, obj: Any) -> None:
-    # write JSON to file (create dirs if missing)
+    # Serialize a Python object as pretty JSON to `path`.
+    # - Creates parent directories if they do not exist.
+    # - ensure_ascii=False preserves unicode; indent=2 for stable diffs.
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
-# JSON COERCION
+# ==============================
+# JSON COERCION / SANITIZATION
+# ==============================
+
 def coerce_json(text: str) -> Any:
-    # extract valid JSON from model response
+    # Robustly coerce a model response into valid JSON.
+    # Steps:
+    # 1) Guard against None/empty.
+    # 2) Strip Markdown code fences (``` or ```json).
+    # 3) Slice the outermost {...} block (handles extra prose).
+    # 4) Patch frequent trailing-comma artifacts.
+    # 5) Parse with json.loads (let it raise if still malformed).
     s = (text or "").strip()
     if not s:
         raise ValueError("empty response")
-    if s.startswith("```"):  # strip code fences
+
+    # Remove code fences if the response is fenced as ```json ... ``` or ``` ... ```
+    if s.startswith("```"):
         lines = [ln for ln in s.splitlines() if not ln.strip().startswith("```")]
         s = "\n".join(lines).strip()
+
+    # Heuristic: keep only the first full JSON object between the first '{' and last '}'.
     start, end = s.find("{"), s.rfind("}")
     if start != -1 and end != -1 and end > start:
         s = s[start:end + 1]
-    s = s.replace(",\n}", "\n}").replace(",\n]", "\n]")  # trailing comma fix
+
+    # Patch common LLM artifact: a trailing comma right before } or ].
+    # We only replace when followed by a newline to avoid false positives inside strings.
+    s = s.replace(",\n}", "\n}").replace(",\n]", "\n]")
+
+    # Parse (may raise json.JSONDecodeError; that is OK to surface to caller).
     return json.loads(s)
 
-# OPENAI CLIENT
+# ==============================
+# OPENAI CLIENT + SINGLE CALL
+# ==============================
+
 def make_client() -> OpenAI:
-    # init OpenAI client
+    # Instantiate the OpenAI client.
+    # Early, explicit failure if OPENAI_API_KEY is not configured helps debugging.
     if not os.getenv("OPENAI_API_KEY"):
         raise RuntimeError("OPENAI_API_KEY is not set.")
     return OpenAI()
 
-def chat_once(client: OpenAI, model: str, messages: list[dict[str, str]],
-              temperature: float = 0.6, response_format: dict[str, Any] | None = None) -> str:
-    # one chat call
+def chat_once(
+    client: OpenAI,
+    model: str,
+    messages: list[dict[str, str]],
+    temperature: float = 0.6,
+    response_format: dict[str, Any] | None = None
+) -> str:
+    # Make a single Chat Completions API call; return assistant text content (or "" if None).
+    # `response_format={"type":"json_object"}` can be passed for stricter JSON outputs on supported models.
     kwargs: dict[str, Any] = {"model": model, "messages": messages, "temperature": temperature}
-    if response_format: kwargs["response_format"] = response_format
+    if response_format:
+        kwargs["response_format"] = response_format
     resp = client.chat.completions.create(**kwargs)
     return resp.choices[0].message.content or ""
 
-# SAMPLE LOADER
-def load_sample_block(category: str, sample_root: str = "sample",
-                      max_chars: int = 12000, max_files: int = 6) -> str:
-    # load sample JSONs for few-shot
+# ==============================
+# FEW-SHOT SAMPLE LOADER
+# ==============================
+
+def load_sample_block(
+    category: str,
+    sample_root: str = "sample",
+    max_chars: int = 12000,
+    max_files: int = 6
+) -> str:
+    # Build a concatenated block of sample JSON files for few-shot prompting.
+    # Selection policy:
+    # - Prefer `sample/<category>/*.json`; fall back to `sample/*.json`.
+    # - Cap by `max_files` and `max_chars` (with ~200 chars/headroom per file for headers/delimiters).
+    # - Prefix each sample with "# <filename>" and separate with "---".
     cat_glob = os.path.join(sample_root, category, "*.json")
     all_glob = os.path.join(sample_root, "*.json")
     paths = sorted(glob.glob(cat_glob)) or sorted(glob.glob(all_glob))
-    if not paths: return ""
+    if not paths:
+        return ""
+
     block_parts, used = [], 0
     for p in paths[:max_files]:
-        try: txt = read_text(p).strip()
-        except Exception: continue
-        if not txt: continue
-        if used + len(txt) + 200 > max_chars: break
+        try:
+            txt = read_text(p).strip()
+        except Exception:
+            # Skip unreadable files and continue assembling others.
+            continue
+        if not txt:
+            continue
+        # Keep some headroom for header and delimiter to avoid exceeding `max_chars`.
+        if used + len(txt) + 200 > max_chars:
+            break
         block_parts.append(f"# {os.path.basename(p)}\n{txt}")
         used += len(txt) + 200
+
     return "\n\n---\n".join(block_parts)
 
+# ==============================
 # MESSAGE BUILDERS
-def build_generator_messages(prompt_path: str, scenario_line: str, category: str,
-                             sample_root: str = "sample") -> list[dict[str, str]]:
-    # prepare generator prompt + samples + scenario
+# ==============================
+
+def build_generator_messages(
+    prompt_path: str,
+    scenario_line: str,
+    category: str,
+    sample_root: str = "sample"
+) -> list[dict[str, str]]:
+    # Construct messages for the generator model:
+    # - System: core instructions from YAML.
+    # - Optional System: "REFERENCE SAMPLES" block for few-shot guidance.
+    # - User: scenario line + explicit "Output JSON only." to discourage prose.
     sys_prompt = read_yaml_text(prompt_path)
     samples = load_sample_block(category, sample_root)
     msgs: list[dict[str, str]] = [{"role": "system", "content": sys_prompt}]
@@ -82,9 +147,17 @@ def build_generator_messages(prompt_path: str, scenario_line: str, category: str
     msgs.append({"role": "user", "content": f"Scenario:\n{scenario_line}\nOutput JSON only."})
     return msgs
 
-def build_evaluator_messages(prompt_path: str, category: str, datapoint: dict[str, Any],
-                             sample_root: str = "sample") -> list[dict[str, str]]:
-    # prepare evaluator instructions
+def build_evaluator_messages(
+    prompt_path: str,
+    category: str,
+    datapoint: dict[str, Any],
+    sample_root: str = "sample"
+) -> list[dict[str, str]]:
+    # Construct messages for the evaluator model:
+    # - System: evaluation instructions.
+    # - System: sample references for calibration (may be empty).
+    # - System: explicit rubric with pass/fail rule (threshold from env var).
+    # - User: the generated datapoint (pretty-printed JSON).
     sys_prompt = read_yaml_text(prompt_path)
     samples = load_sample_block(category, sample_root)
     pass_threshold = os.getenv("EVAL_PASS_THRESHOLD", "80")
@@ -101,8 +174,12 @@ def build_evaluator_messages(prompt_path: str, category: str, datapoint: dict[st
         {"role": "user", "content": json.dumps(datapoint, ensure_ascii=False, indent=2)},
     ]
 
-# ---- SCORING HELPERS (deterministic)
-_WEIGHTS = {  # weights sum = 17
+# ==============================
+# SCORING HELPERS (DETERMINISTIC)
+# ==============================
+
+# Weighted criteria; weights sum to 17. Higher weight = more influence on overall.
+_WEIGHTS = {
     "structure": 4,
     "consistency": 3,
     "privacy": 3,
@@ -112,7 +189,7 @@ _WEIGHTS = {  # weights sum = 17
 }
 
 def _to_num(x, default: float = 0.0) -> float:
-    # cast to finite float
+    # Convert arbitrary input to a finite float; fallback to `default` on failure or non-finite values.
     try:
         v = float(x)
         return v if math.isfinite(v) else default
@@ -120,52 +197,88 @@ def _to_num(x, default: float = 0.0) -> float:
         return default
 
 def _clamp(v: float, lo: float, hi: float) -> float:
-    # clamp to [lo, hi]
+    # Clamp a numeric value into the inclusive range [lo, hi].
     return max(lo, min(hi, v))
 
 def compute_overall(scores: dict[str, Any]) -> int:
-    # weighted 0–5 -> 0–100
-    total_w = sum(_WEIGHTS.values()) * 5.0
+    # Compute a 0–100 overall score from 0–5 criterion scores using the fixed weights.
+    # Rounds to nearest int for readability and stable reporting.
+    total_w = sum(_WEIGHTS.values()) * 5.0  # maximum possible weighted sum (all scores = 5)
     acc = 0.0
     for k, w in _WEIGHTS.items():
         v = _clamp(_to_num(scores.get(k, 0)), 0.0, 5.0)
         acc += v * w
     return int(round((acc / total_w) * 100))
 
-# STATIC CHECKS
+# ==============================
+# STATIC STRUCTURAL CHECKS
+# ==============================
+
 def basic_static_checks(d: dict[str, Any]) -> list[dict[str, str]]:
-    # quick programmatic checks
+    # Quick programmatic checks for obvious structural issues:
+    # - /agents must be a list if present.
+    # - /tasks must be a list if present.
+    # - All 'id' values across the object graph must be unique.
     issues = []
+
     if "agents" in d and not isinstance(d["agents"], list):
         issues.append({"path": "/agents", "severity": "error", "reason": "agents not list"})
     if "tasks" in d and not isinstance(d["tasks"], list):
         issues.append({"path": "/tasks", "severity": "error", "reason": "tasks not list"})
+
+    # Recursively traverse to collect all 'id' occurrences for uniqueness check.
     ids = []
     def collect_ids(node):
+        # Depth-first traversal for dicts/lists; collect id fields as strings.
         if isinstance(node, dict):
-            if "id" in node: ids.append(str(node["id"]))
-            for v in node.values(): collect_ids(v)
+            if "id" in node:
+                ids.append(str(node["id"]))
+            for v in node.values():
+                collect_ids(v)
         elif isinstance(node, list):
-            for v in node: collect_ids(v)
+            for v in node:
+                collect_ids(v)
+
     collect_ids(d)
+
     if len(ids) != len(set(ids)):
         issues.append({"path": "/**/id", "severity": "error", "reason": "duplicate ids"})
+
     return issues
 
-# PIPELINE
-def run_pipeline(category: str, key: str, scenario: str, prompt_path: str,
-                 model_gen: str = "gpt-4o-mini", model_eval: str = None,
-                 eval_temperature: float = 0.0) -> None:
-    # run generation + evaluation
+# ==============================
+# PIPELINE ORCHESTRATION
+# ==============================
+
+def run_pipeline(
+    category: str,
+    key: str,
+    scenario: str,
+    prompt_path: str,
+    model_gen: str = "gpt-4o-mini",
+    model_eval: str = None,
+    eval_temperature: float = 0.0
+) -> None:
+    # End-to-end process for a single scenario:
+    # 1) Call generator model -> get raw text.
+    # 2) Coerce to JSON; write datapoint to disk.
+    # 3) Run static checks to pre-catch structural issues.
+    # 4) Call evaluator with rubric; parse/normalize scores.
+    # 5) Compute deterministic overall; combine issues; decide PASS/FAIL.
+    # 6) Persist evaluation report.
     client = make_client()
     model_eval = model_eval or os.getenv("MODEL_EVAL", "gpt-4o-mini")
+
+    # Parse/normalize pass threshold from env with clamping to [0,100].
     pass_threshold_env = os.getenv("EVAL_PASS_THRESHOLD", "80")
     pass_threshold = int(_clamp(_to_num(pass_threshold_env, 80.0), 0.0, 100.0))
 
+    # ---- Generation
     print(f"{category}/{key}: Generating")
     gen_msgs = build_generator_messages(prompt_path, scenario, category)
     gen_text = chat_once(client, model_gen, gen_msgs, temperature=0.6)
 
+    # Try to parse the model output into a Python object; on failure, save the raw output for debugging.
     try:
         datapoint = coerce_json(gen_text)
     except Exception as e:
@@ -173,58 +286,80 @@ def run_pipeline(category: str, key: str, scenario: str, prompt_path: str,
         print(f"{category}/{key}::FAIL (parse)")
         return
 
+    # Save the generated datapoint.
+    # NOTE: This path currently writes to "data/data/..."; verify this is intentional (may be a double 'data').
     out_path = f"data/data/{category}/{key}.json"
     write_json(out_path, datapoint)
 
+    # ---- Static checks before evaluation
     static_issues = basic_static_checks(datapoint)
 
+    # ---- Evaluation
     eval_msgs = build_evaluator_messages(prompt_path, category, datapoint)
-    eval_text = chat_once(client, model_eval, eval_msgs, temperature=eval_temperature,
-                          response_format={"type": "json_object"})
+    eval_text = chat_once(
+        client,
+        model_eval,
+        eval_msgs,
+        temperature=eval_temperature,
+        response_format={"type": "json_object"}  # request structured JSON if supported
+    )
 
-    eval_report = {"scores": {}, "overall_score": 0, "passes": False,
-                   "issues": [], "meta": {"model_eval": model_eval, "threshold": pass_threshold}}
+    # Initialize a stable report structure so downstream consumers can rely on keys.
+    eval_report = {
+        "scores": {},
+        "overall_score": 0,
+        "passes": False,
+        "issues": [],
+        "meta": {"model_eval": model_eval, "threshold": pass_threshold},
+    }
 
+    # Parse evaluator output; if malformed, record a parse error and continue with defaults.
     try:
         parsed = coerce_json(eval_text)
     except Exception as e:
         eval_report["issues"].append({"path": "/", "severity": "error", "reason": f"eval parse {e}"})
         parsed = {}
 
-    # merge evaluator issues
+    # Merge evaluator-reported issues (if present) before static ones, so ordering roughly reflects origin.
     if isinstance(parsed.get("issues"), list):
         eval_report["issues"].extend(parsed["issues"])
 
-    # normalize sub-scores
+    # Normalize per-criterion scores to floats in [0,5]; ignore unknown keys, fill missing with 0.
     raw_scores = parsed.get("scores", {}) if isinstance(parsed.get("scores"), dict) else {}
     norm_scores = {k: float(_clamp(_to_num(raw_scores.get(k, 0)), 0.0, 5.0)) for k in _WEIGHTS.keys()}
     eval_report["scores"] = norm_scores
 
-    # compute overall deterministically
+    # Deterministically compute overall percentage.
     overall = compute_overall(norm_scores)
     eval_report["overall_score"] = overall
 
-    # add static issues and finalize pass/fail
+    # Add static issues and decide final pass/fail (must meet threshold and have no 'error' issues).
     eval_report["issues"].extend(static_issues)
     has_err = any((iss.get("severity") or "").lower() == "error" for iss in eval_report["issues"])
     eval_report["passes"] = (overall >= pass_threshold) and not has_err
-    eval_report["meta"]["threshold"] = pass_threshold  # sanitized value
+    eval_report["meta"]["threshold"] = pass_threshold  # store sanitized numeric threshold
 
+    # Persist evaluation report and emit a concise status line for CLI visibility.
     eval_path = f"data/eval/{category}/{key}.json"
     write_json(eval_path, eval_report)
     print(f"{category}/{key}::EVAL {'PASS' if eval_report['passes'] else 'FAIL'} "
           f"(score={eval_report.get('overall_score', 0)}) -> {eval_path}")
 
-def run_category_scenarios(scenarios_by_category: dict[str, dict[str, str]],
-                           prompt_file: str, model_gen: str = "gpt-4o-mini",
-                           model_eval: str | None = None) -> None:
-    # loop over all scenarios in each category
+def run_category_scenarios(
+    scenarios_by_category: dict[str, dict[str, str]],
+    prompt_file: str,
+    model_gen: str = "gpt-4o-mini",
+    model_eval: str | None = None
+) -> None:
+    # Iterate all categories and their (key -> scenario) mappings and run the full pipeline for each.
+    # Each scenario is isolated by try/except so a failure does not halt the batch.
     for category, scenarios in scenarios_by_category.items():
         print(f"{category}::Start")
         for key, scenario_text in scenarios.items():
             try:
                 run_pipeline(category, key, scenario_text, prompt_file, model_gen, model_eval)
             except Exception as e:
+                # Persist crash info for post-mortem; continue to next scenario.
                 write_json(f"data/{category}/{key}.crash.json", {"error": str(e)})
                 print(f"{category}/{key}::FAIL (exception)")
         print(f"{category}::Done")
@@ -375,4 +510,4 @@ if __name__ == "__main__":
 }
     MODEL_GEN = os.getenv("MODEL_GEN", "gpt-4o-mini")
     MODEL_EVAL = os.getenv("MODEL_EVAL", "gpt-4o-mini")
-    run_category_scenarios(scenarios, "prompt.yaml", MODEL_GEN, MODEL_EVAL)
+    run_category_scenarios(scenarios, "prompt .yaml", MODEL_GEN, MODEL_EVAL)
