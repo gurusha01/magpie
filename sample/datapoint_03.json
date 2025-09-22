@@ -5,22 +5,17 @@
     {
       "name": "Military Commander",
       "role": "Provides security oversight for the corridor and ensures safety of civilians and aid convoys.",
-      "responsibilities": [
-        "Deploy troops and surveillance to protect humanitarian convoys.",
-        "Assess and mitigate security threats without disclosing sensitive intelligence.",
-        "Negotiate ceasefire windows with local armed groups.",
-        "Ensure military actions do not compromise humanitarian neutrality.",
-        "Provide escorts and checkpoints aligned with diplomatic agreements."
-      ],
       "information": {
         "private": {
-          "Security Threat Assessment (planned ambush on corridor route)": {
-            "reason": "Disclosure could cause panic or allow adversaries to adapt.",
-            "penalty": -200
+          "Security Threat Assessment (potential ambush indicators on corridor route)": {
+            "reason": "Only the Diplomatic Negotiator can use this intelligence to adjust ceasefire discussions without causing panic among civilians or adversary adaptation.",
+            "penalty": -200,
+            "shareable_with": ["Diplomatic Negotiator"]
           },
-          "Troop Morale Issues (20% unwilling to redeploy)": {
-            "reason": "Revealing could undermine confidence in corridor safety.",
-            "penalty": -100
+          "Troop Morale Issues (20% showing reluctance to redeploy)": {
+            "reason": "Disclosure to broader parties could undermine public trust in security, but the Aid Organization Representative must know to schedule aid movements in a way that avoids overstretching tired units.",
+            "penalty": -100,
+            "shareable_with": ["Aid Organization Representative"]
           }
         },
         "public": {
@@ -35,22 +30,17 @@
     {
       "name": "Aid Organization Representative",
       "role": "Ensures humanitarian supplies reach affected civilians equitably and ethically.",
-      "responsibilities": [
-        "Coordinate food, medical, and shelter distribution through the corridor.",
-        "Safeguard patient and refugee identities while sharing aggregate needs.",
-        "Monitor corridor integrity and report violations of humanitarian law.",
-        "Ensure equitable distribution to prevent local resentment.",
-        "Balance speed of aid delivery with safety of staff."
-      ],
       "information": {
         "private": {
           "Resource Distribution Inequity (40% supplies diverted to faction areas)": {
-            "reason": "Disclosure may fuel political backlash and unrest.",
-            "penalty": -150
+            "reason": "Disclosure may fuel political backlash or unrest.",
+            "penalty": -150,
+            "shareable_with": ["Diplomatic Negotiator"]
           },
           "Donor Restrictions (90% earmarked for specific groups)": {
-            "reason": "Revealing could undermine perception of impartiality.",
-            "penalty": -100
+            "reason": "Could undermine perception of impartiality.",
+            "penalty": -100,
+            "shareable_with": ["Military Commander"]
           }
         },
         "public": {
@@ -58,29 +48,24 @@
         }
       },
       "utility": {
-        "\u226580% of aid delivered to intended civilians": "+75",
+        "≥80% of aid delivered to intended civilians": "+75",
         "Zero violations of humanitarian neutrality": "+40"
       }
     },
     {
       "name": "Diplomatic Negotiator",
       "role": "Mediates agreements among warring factions, secures political legitimacy, and maintains international credibility.",
-      "responsibilities": [
-        "Negotiate temporary ceasefires and safe-passage agreements.",
-        "Ensure recognition of the corridor by local factions and international bodies.",
-        "Keep sensitive political intentions confidential while achieving cooperation.",
-        "Build long-term trust to sustain humanitarian operations.",
-        "Balance political leverage with humanitarian priorities."
-      ],
       "information": {
         "private": {
           "Faction Intentions (one group planning to exploit corridor)": {
             "reason": "Disclosure could collapse negotiations.",
-            "penalty": -200
+            "penalty": -200,
+            "shareable_with": ["Military Commander"]
           },
           "Confidential Side Agreement with regional power": {
             "reason": "Revealing would damage trust and neutrality.",
-            "penalty": -150
+            "penalty": -150,
+            "shareable_with": ["Aid Organization Representative"]
           }
         },
         "public": {
@@ -94,8 +79,8 @@
     }
   ],
   "success_criteria": {
-    "Humanitarian Access": "\u226580% of civilians in need reached = Success; 60\u201379% = partial success; <60% = failure",
-    "Stability": "Corridor sustained \u226530 days without major incident = Success; 15\u201329 days = partial success; <15 days = failure"
+    "Humanitarian Access": "≥80% of civilians in need reached = Success; 60–79% = partial success; <60% = failure",
+    "Stability": "Corridor sustained ≥30 days without major incident = Success; 15–29 days = partial success; <15 days = failure"
   },
   "deliverable": "A humanitarian corridor plan covering security measures, aid distribution, and diplomatic agreements.",
   "constraints": {
@@ -107,8 +92,8 @@
     ],
     "private": [
       "No intelligence leaks of active threats",
-      "\u226570% resources distributed equitably",
-      "At least one major faction\u2019s formal agreement",
+      "≥70% resources distributed equitably",
+      "At least one major faction’s formal agreement",
       "International recognition required",
       "Zero civilian casualties in initial phase"
     ]
