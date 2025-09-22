@@ -510,4 +510,4 @@ if __name__ == "__main__":
 }
     MODEL_GEN = os.getenv("MODEL_GEN", "gpt-4o-mini")
     MODEL_EVAL = os.getenv("MODEL_EVAL", "gpt-4o-mini")
-    run_category_scenarios(scenarios, "prompt .yaml", MODEL_GEN, MODEL_EVAL)
+    run_category_scenarios(scenarios, "prompt.yaml", MODEL_GEN, MODEL_EVAL)
