@@ -1,0 +1,205 @@
+{
+  "scenario": "The Neuro-Regen Prize Collaboration Summit",
+  "task": "Four key stakeholders in the $50 million 'Neuro-Regen Prize' for a cure to Kaelen's Syndrome are meeting to negotiate a potential collaboration. The prize, offered by the Global Health Initiative (GHI), is currently a winner-take-all competition. However, with no single team close to a breakthrough, the GHI has proposed a summit to merge efforts. The agents must negotiate and agree on a formal Memorandum of Understanding (MOU) that defines the structure of a new joint venture, including the allocation of the $50M prize fund, intellectual property (IP) rights, and the future pricing strategy for the resulting therapeutic.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Ms. Lena Petrova",
+    "Mr. David Chen",
+    "Dr. Evelyn Reed"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Lead Scientist, Thorne Neuro-Lab, Northwood University",
+      "description": "Aris is a brilliant but underfunded academic researcher. His lab developed the most promising molecular compound ('NT-301') for treating Kaelen's Syndrome. He is driven by scientific recognition and the desire to secure long-term funding for his lab to pursue other avenues of research. He sees this prize as a once-in-a-lifetime opportunity to establish his lab as a world leader.",
+      "shareable_preferences": {
+        "research_funding_allocation": {
+          "description": "I require a significant portion of the $50M prize to be allocated directly to my lab as an unrestricted research grant. My goal is to secure at least $15 million. This is non-negotiable for covering my lab's past expenses on this project ($3M), retaining my talented team of post-docs for 5 years ($7M), and upgrading our outdated equipment ($5M). Without this, my lab's future is uncertain.",
+          "utility_function": {
+            ">= $15M": "+2 (My lab is secure and celebrated; I can pursue my life's work)",
+            "$10M - $14.9M": "+1 (I can keep the lights on, but will lose key staff)",
+            "$5M - $9.9M": "-1 (A slap in the face; my lab will be severely crippled)",
+            "< $5M": "-2 (Unacceptable; this would be a catastrophic failure)"
+          }
+        },
+        "intellectual_property_control": {
+          "description": "The foundational IP for the NT-301 compound family must remain with the university and be published under an open-access model. This ensures the science can be built upon by the global research community. I am willing to discuss exclusive licensing for the final therapeutic product, but the core science cannot be locked away in a corporate vault. My reputation is built on open science principles.",
+          "utility_function": {
+            "University retains core IP, open-access publication": "+2 (My legacy as a scientist is secured)",
+            "University co-owns IP with the venture": "0 (A compromise, but my influence is diluted)",
+            "IP is fully assigned to the corporate entity": "-2 (A complete betrayal of my academic principles)"
+          }
+        }
+      },
+      "private_preferences": {
+        "unsolved_neurotoxicity_issue": {
+          "value": "My preliminary, unpublished data from primate trials shows that NT-301, while highly effective, causes severe neurotoxicity in approximately 5% of subjects, leading to irreversible motor function damage. I believe I can engineer a solution by modifying the compound's delivery mechanism, but I need at least $4M and access to advanced formulation technology, which OmniCure has, to solve it. I cannot reveal this specific data.",
+          "reason": "Revealing the specific 5% neurotoxicity figure would destroy my negotiating leverage. OmniCure would either walk away or value my contribution at near zero. It would also cause a panic and could lead to my current university funding being investigated and revoked. I can only refer to it as 'requiring further optimization for the safety profile'.",
+          "penalty": {
+            "Hinting at 'safety optimization challenges'": "0",
+            "Mentioning 'potential for side effects'": "-1 (Risky, invites scrutiny)",
+            "Revealing the 5% neurotoxicity data": "-2 (Career-ending, total loss of leverage)"
+          }
+        },
+        "project_prometheus_funding": {
+          "value": "I have a secret, parallel research concept called 'Project Prometheus' for a revolutionary gene-editing technique. It's completely unrelated to Kaelen's Syndrome. Of the $15M I am demanding, I plan to siphon off $5M to secretly fund this new venture. This is my true passion project and my personal 'reward' for the NT-301 discovery.",
+          "reason": "This is a high-risk, high-reward project that no grant agency would fund at this stage. Admitting I want to use a significant portion of the prize money for an unrelated project would make me appear unfocused and selfish to the other stakeholders, especially David Chen. It's my personal ambition.",
+          "penalty": {
+            "Revealing I have other research interests": "0",
+            "Revealing the existence of Project Prometheus": "-1 (Makes me look greedy)",
+            "Revealing I intend to use $5M of the prize for it": "-2 (Completely undermines my justification for the funding request)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Ms. Lena Petrova",
+      "role": "VP of Rare Disease R&D, OmniCure Pharmaceuticals",
+      "description": "Lena is a sharp, results-oriented executive from a major pharmaceutical company. OmniCure is a potential sponsor and commercialization partner. Her primary responsibilities are to her shareholders and ensuring a profitable return on investment. She views the prize money as secondary to the multi-billion dollar market potential of a successful, patent-protected drug.",
+      "shareable_preferences": {
+        "exclusive_commercialization_rights": {
+          "description": "OmniCure must have sole and exclusive worldwide rights to manufacture, market, and sell the final therapeutic product. Our shareholders are investing hundreds of millions into clinical trials and marketing, and we require a guaranteed monopoly to recoup that investment. We will not participate in any joint-ownership or open-source model for the final product.",
+          "utility_function": {
+            "Full exclusive IP and commercial rights": "+2 (A clear win for the company and my career)",
+            "Exclusive rights with a small royalty (<3%) to the university": "+1 (Acceptable cost of business)",
+            "Joint ownership of the commercial IP": "-1 (Complicates decision-making and hurts our stock price)",
+            "Non-exclusive rights or open licensing": "-2 (A complete non-starter; we walk away)"
+          }
+        },
+        "unrestricted_pricing": {
+          "description": "The new joint venture must not be bound by any pricing caps or affordability clauses. The price of the drug will be determined by market factors, including development costs, the value it provides to patients, and what competitors are charging. For rare disease drugs, this is typically in the range of $300,000 - $500,000 per patient per year. We need this flexibility to ensure profitability.",
+          "utility_function": {
+            "Full pricing autonomy": "+2 (Maximizes shareholder value)",
+            "A 'reasonable pricing' clause with no hard numbers": "0 (Annoying, but manageable)",
+            "A pricing cap below $100,000/year": "-1 (Makes the project barely profitable)",
+            "A pricing cap below $50,000/year": "-2 (The project becomes a net loss; we will veto it)"
+          }
+        },
+        "control_of_joint_venture": {
+          "description": "OmniCure must have majority control of the board of the new collaborative entity. We require a 51% or greater stake to ensure that decisions regarding clinical trial design, manufacturing, and regulatory strategy align with our corporate standards and timelines. We are providing the bulk of the post-prize funding and expertise, and we need to protect that investment.",
+          "utility_function": {
+            "OmniCure has >=51% control": "+2 (Perfect alignment with our strategy)",
+            "Equal 33/33/33 split between partners": "-1 (Creates gridlock and risk)",
+            "OmniCure has a minority stake": "-2 (Unacceptable level of risk)"
+          }
+        }
+      },
+      "private_preferences": {
+        "project_chimera_leverage": {
+          "value": "OmniCure has a secret, in-house program called 'Project Chimera' that has developed a compound ('OC-100') with a pristine safety profile but only 40% of the efficacy of Aris's NT-301. Our scientists believe they can fuse the safe backbone of OC-100 with the active component of NT-301 to eliminate the toxicity issue. This is our trump card; we don't necessarily need Aris's 'secret sauce' to solve the safety problem, just his initial compound.",
+          "reason": "Revealing Project Chimera shows we were developing a competing product, which is an act of bad faith. It also exposes that our own R&D is not potent enough. We want Aris to think we are entirely dependent on him to solve the safety issue, giving us leverage to demand the IP in exchange for our 'help'.",
+          "penalty": {
+            "Hinting at 'in-house formulation expertise'": "0",
+            "Revealing the existence of Project Chimera": "-1 (Damages trust)",
+            "Revealing OC-100's specific efficacy and safety data": "-2 (Gives Aris critical information and leverage against us)"
+          }
+        },
+        "personal_bonus_incentive": {
+          "value": "I received a confidential email from the CEO of OmniCure last week. It reads: 'Lena, secure the exclusive IP for the Kaelen's Syndrome asset before Q3, and your performance bonus will be $1.5 million. The board is watching.' This deal is the key to a major promotion and financial security for me.",
+          "reason": "Revealing that my judgment is influenced by a massive personal bonus would make me appear unethical and self-serving to the other parties, especially David Chen. It would undermine my position as a representative of the company's interests and make every argument I make seem disingenuous.",
+          "penalty": {
+            "Saying 'this is very important for my career'": "-1 (Raises suspicion)",
+            "Revealing the existence of a large personal bonus": "-2 (Destroys all personal credibility and trust)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Mr. David Chen",
+      "role": "Founder, Kaelen's Hope Foundation",
+      "description": "David is a former tech entrepreneur who founded the Kaelen's Hope Foundation after his son was diagnosed with the disease. He is the voice of the patient community. He is not motivated by profit or prestige, but by a desperate and urgent need to find an effective treatment that is accessible and affordable for all families, not just the wealthy.",
+      "shareable_preferences": {
+        "speed_to_market": {
+          "description": "My absolute, number one priority is the fastest possible timeline to get a drug to patients. Every month of delay is a tragedy for families like mine. I want a binding commitment in the MOU for the collaboration to initiate Phase 1 clinical trials within 18 months. I don't care if the first version of the drug isn't perfect; we need to start.",
+          "utility_function": {
+            "Timeline <= 18 months to Phase 1": "+2 (This is our only hope)",
+            "Timeline 19-24 months": "0 (Worrying, but perhaps acceptable)",
+            "Timeline > 24 months": "-2 (Unacceptable; patients don't have that kind of time)"
+          }
+        },
+        "drug_affordability_cap": {
+          "description": "The final drug must be affordable. I want a hard cap on the price, ensuring it does not exceed $50,000 per patient per year. A cure that no one can afford is not a cure at all. This is a moral imperative. The Kaelen's Hope Foundation will contribute its patient network and advocacy efforts, but only if this condition is met.",
+          "utility_function": {
+            "Price cap <= $50,000/year": "+2 (We have achieved our mission)",
+            "Price cap $50,001 - $100,000/year": "-1 (Many families will be left behind)",
+            "No price cap or price > $100,000/year": "-2 (A complete moral failure; we will publicly campaign against the venture)"
+          }
+        },
+        "patient_representation": {
+          "description": "The Kaelen's Hope Foundation must have a guaranteed seat on the board of the new entity. The patient voice must be included in all major decisions, especially those concerning clinical trial design, patient consent, and data transparency. We will not be sidelined.",
+          "utility_function": {
+            "A voting board seat": "+2 (Patients are true partners)",
+            "An advisory, non-voting role": "0 (Better than nothing, but not ideal)",
+            "No formal role in governance": "-2 (The venture does not truly care about patients)"
+          }
+        }
+      },
+      "private_preferences": {
+        "confidential_philanthropic_pledge": {
+          "value": "I have secured a confidential, legally-binding pledge from the Gates Foundation for $20 million in funding. However, the pledge is strictly conditional: it is only unlocked if the final MOU includes the $50,000/year pricing cap. The foundation wants to set a new precedent for affordable rare disease drugs.",
+          "reason": "If I reveal this $20M pledge upfront, Lena Petrova will not see it as a way to enable affordability. She will see it as a $20M subsidy for OmniCure. She will simply add it to her profit calculation and refuse to lower her price. I must use it as my final bargaining chip to force her to accept the price cap *before* she knows this money exists.",
+          "penalty": {
+            "Hinting that 'I can bring other resources to the table'": "-1 (Risky, might force me to show my hand too early)",
+            "Revealing the $20M pledge before a pricing cap is agreed to": "-2 (I lose my only real leverage against OmniCure)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Director, Global Health Initiative (GHI)",
+      "description": "Evelyn is the mediator and organizer of the prize. Her organization's reputation rests on the Neuro-Regen Prize successfully producing a cure. Her goal is to broker a deal that ensures collaboration, maximizes the probability of success, and upholds the GHI's humanitarian mission. She is neutral but has a powerful incentive to see a deal made.",
+      "shareable_preferences": {
+        "successful_collaboration": {
+          "description": "My primary goal is to facilitate a signed MOU between all three parties. A breakdown in negotiations would be a public failure for the GHI and would mean a continued, fragmented, and likely unsuccessful race for a cure. I want a deal that is seen as fair and viable by all.",
+          "utility_function": {
+            "A viable MOU is signed by all parties": "+2 (Mission accomplished; GHI's reputation is enhanced)",
+            "A partial deal is made (e.g., just Aris and Lena)": "-1 (A failure of mediation and a bad outcome for patients)",
+            "No deal is reached, and negotiations collapse": "-2 (Catastrophic failure for the GHI and me personally)"
+          }
+        },
+        "efficient_use_of_prize_funds": {
+          "description": "The $50M prize fund must be allocated in a way that directly contributes to the development of the therapeutic. The budget outlined in the MOU must be clear, detailed, and justifiable. I am opposed to large, unrestricted grants or funds being used for unrelated purposes. The money is for curing Kaelen's Syndrome, period.",
+          "utility_function": {
+            "All $50M is clearly allocated to the joint project": "+2 (Excellent stewardship of donor funds)",
+            "Some funds are allocated unclearly or as 'discretionary'": "-1 (Poor governance, opens us to criticism)",
+            "A significant portion is allocated for unrelated purposes": "-2 (A misuse of funds; I would have to veto this)"
+          }
+        }
+      },
+      "private_preferences": {
+        "fda_fast_track_possibility": {
+          "value": "I had an off-the-record call with Dr. Marks at the FDA. He is extremely interested in this project. He unofficially assured me that if these specific three parties\u2014the leading academic, the big pharma partner, and the primary patient group\u2014form a single, unified entity, the FDA would be prepared to grant Breakthrough Therapy Designation immediately. More importantly, he said they would also grant a Priority Review Voucher (PRV) upon the drug's approval. A PRV can be sold to another company for a massive profit, typically between $80M and $100M.",
+          "reason": "This was an informal, 'old boys' network' conversation. I cannot state it as an official FDA guarantee. If I do, and the FDA denies it, my career and the GHI's relationship with the FDA would be ruined. I can only present it as a strategic possibility or a 'strong potential' to incentivize the others. It's my ace in the hole to break a deadlock over money.",
+          "penalty": {
+            "Hinting at 'potential regulatory advantages for a unified front'": "-1 (Slightly risky, but a necessary move if talks stall)",
+            "Stating that the FDA has guaranteed a PRV": "-2 (Gross professional misconduct with severe consequences)"
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "mou_signed": "All four agents must agree to and sign a final Memorandum of Understanding (MOU).",
+    "budget_allocation": "The MOU must specify the allocation of the full $50 million prize fund among the partners and the joint venture.",
+    "ip_agreement": "The MOU must clearly define the ownership and licensing structure for both the foundational scientific IP and the final commercial product.",
+    "governance_structure": "The MOU must outline the board structure and voting rights of the new collaborative entity.",
+    "pricing_strategy": "The MOU must include a clause addressing the pricing strategy for the final therapeutic, even if it is just an agreement on the principle (e.g., capped vs. market rate)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total GHI prize fund is fixed at $50,000,000.",
+      "The negotiation must conclude with a signed MOU within a set time limit (simulated).",
+      "Any proposed timeline for clinical trials must be logistically plausible."
+    ],
+    "hidden": [
+      "Dr. Thorne's compound (NT-301) is currently too dangerous to proceed to human trials without significant modification.",
+      "OmniCure's in-house compound (OC-100) is safe but not effective enough to be a viable treatment on its own.",
+      "The additional $20M from the Gates Foundation is only available if the stringent price cap is met.",
+      "The highly valuable FDA Priority Review Voucher is likely only attainable if all three stakeholders form a single entity."
+    ]
+  },
+  "deliverable": "A JSON object representing the final agreed-upon Memorandum of Understanding (MOU), detailing the agreed terms for budget allocation, IP rights, governance, timeline, and pricing strategy.",
+  "solvability_note": "The scenario is solvable because the hidden information creates a path to a massively positive-sum outcome. The combination of Aris's potent but unsafe compound with Lena's safe but weak compound is the optimal scientific path. The existence of the potential $80-100M Priority Review Voucher (from Evelyn's info) and the $20M conditional pledge (from David's info) adds up to $150M+ in potential value, far exceeding the initial $50M prize. This expanded pie allows Lena to meet profit targets even with a price cap, allows Aris to be handsomely rewarded for his IP, and achieves David's goal of an affordable, fast-tracked cure."
+}

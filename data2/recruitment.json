@@ -1,0 +1,179 @@
+{
+  "scenario": "Hiring Deliberation for a Senior AI Research Scientist",
+  "task": "A cross-functional committee must reach a unanimous decision on whether to hire the candidate, Dr. Evelyn Reed. If the decision is to hire, they must agree on the specific terms of her employment offer, including base salary, signing bonus, stock options, start date, and initial project assignment. The committee faces conflicting departmental needs, budget constraints, and hidden personal biases that complicate the decision.",
+  "agent_number": 7,
+  "agent_names": [
+    "David Chen",
+    "Maria Garcia",
+    "Ben Carter",
+    "Sarah Jenkins",
+    "Frank Miller",
+    "Olivia Martinez",
+    "Tom Wilson"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "VP of Engineering",
+      "description": "The hiring manager for the role. David is a charismatic and influential leader who has personally championed the creation of this new Senior AI Research Scientist position to lead a new initiative he's internally calling 'Project Phoenix'. He is ultimately responsible for the success of the person hired.",
+      "shareable_preferences": {
+        "hire_top_talent": {
+          "description": "David publicly states his goal is to hire only 'A+ players' who can hit the ground running. He believes Dr. Reed's pedigree from a top university and her published research make her an ideal candidate who can bring prestige and cutting-edge knowledge to the team. A successful hire here would validate his push for expanding the AI team.",
+          "utility_impact": "Hiring Dr. Reed: +2. Not hiring her: -2. He will argue that passing on a candidate of her caliber would be a significant missed opportunity."
+        },
+        "fast_onboarding": {
+          "description": "David wants the new hire to start as soon as possible to get 'Project Phoenix' off the ground before the end of Q3. He is pushing for a start date no later than July 15th. He claims this is crucial for meeting the department's ambitious quarterly goals.",
+          "utility_impact": "Start date on or before July 15th: +1. Start date after July 15th: -1. He will frame any delay as a direct threat to the team's performance."
+        }
+      },
+      "private_preferences": {
+        "personal_debt": {
+          "value": "Dr. Evelyn Reed is the daughter of Dr. Alan Reed, David's former PhD advisor and mentor. Alan was instrumental in David's early career success and helped him secure his first major industry role. David feels a strong sense of personal obligation to 'repay the favor' by helping Evelyn land this prestigious job. He has not disclosed this relationship to anyone at the company. If revealed, it would look like blatant nepotism.",
+          "reason": "Revealing this would severely damage his professional reputation and call his judgment into question, potentially leading to an HR investigation. It undermines the entire merit-based hiring process.",
+          "utility_impact": "If this is revealed, apply a -2 penalty to David's final utility. This private motivation is the primary driver for his strong advocacy for Evelyn, overriding some of the legitimate concerns others might have."
+        },
+        "project_phoenix_secrecy": {
+          "value": "Project Phoenix is a high-risk, high-reward skunkworks project that David is personally funding from his discretionary budget. It is not yet an officially sanctioned company project. He believes Evelyn's specific, niche research in 'causal inference models' is the key to a breakthrough. He cannot reveal the project's true nature as it's not yet approved by the executive board, and he doesn't want other directors (like Frank) trying to poach the idea or resources.",
+          "reason": "Discussing an unsanctioned project would be a major professional misstep, making him look reckless and insubordinate. It could get the project shut down before it even starts.",
+          "utility_impact": "Assigning Evelyn to 'Project Phoenix' (which he can only do if she's hired): +2. If he has to reveal the project's existence to justify the hire, apply a -1 penalty."
+        }
+      }
+    },
+    {
+      "name": "Maria Garcia",
+      "role": "HR Business Partner",
+      "description": "Maria is the HR representative responsible for ensuring the hiring process is fair, equitable, and compliant with company policy and legal standards. She acts as a neutral facilitator but is ultimately responsible for enforcing compensation bands and company culture.",
+      "shareable_preferences": {
+        "process_integrity": {
+          "description": "Maria is adamant about maintaining a fair and unbiased hiring process. She wants to ensure the decision is based solely on the candidate's qualifications and interview performance, as documented in the official feedback forms. She will push back against any decision that seems driven by personal feelings rather than objective data.",
+          "utility_impact": "A decision perceived as fair and well-documented: +2. A decision that seems biased or rushed: -2. She will be the one to ask for specific examples from interview feedback to justify claims."
+        },
+        "adherence_to_salary_bands": {
+          "description": "Maria must ensure the final offer falls within the pre-approved compensation band for the role (Level 5 Engineer). She will state that the salary band is firm and designed to ensure internal pay equity across the company. The official band is $180k - $220k.",
+          "utility_impact": "Offer is within the band: +1. Offer requires an exception to go above the band: -2. She will argue that exceptions create a precedent that harms company-wide morale and equity."
+        }
+      },
+      "private_preferences": {
+        "pay_equity_audit": {
+          "value": "The company is undergoing a confidential, proactive pay equity audit following a quiet internal complaint from a female engineer in another department. Maria's boss, the Head of HR, has explicitly instructed her to be extra vigilant and to avoid any high-salary offers to new hires, especially if they are at the top of the band, as it could skew the audit data negatively and create legal exposure. She cannot share the existence of this audit.",
+          "reason": "Revealing an internal complaint and subsequent audit would spread rumors, cause panic among employees, and could be seen as a breach of legal confidentiality.",
+          "utility_impact": "This makes her privately much more resistant to a high salary than she lets on. Any salary offer over $210k gives her a -2 utility hit, even though it's technically 'in-band'. She would strongly prefer a salary closer to the midpoint ($200k) which would give her a +2 utility."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Lead AI Scientist (Technical Interviewer)",
+      "description": "Ben is the team's top technical expert and conducted the most intensive, 2-hour technical deep-dive interview with Dr. Reed. His assessment of the candidate's technical skills carries the most weight.",
+      "shareable_preferences": {
+        "technical_excellence": {
+          "description": "Ben's primary concern is the candidate's technical proficiency. He wants to hire someone who can contribute from day one and elevate the team's skill set. He will publicly state that Dr. Reed's theoretical knowledge is impressive, but he may hedge his statements about her practical skills.",
+          "utility_impact": "Hiring a candidate he deems technically excellent: +2. Hiring a candidate with technical weaknesses: -2. He is the gatekeeper of quality for the team."
+        }
+      },
+      "private_preferences": {
+        "coding_test_failure": {
+          "value": "Dr. Reed significantly struggled during the practical coding portion of the interview. She failed to solve a moderately difficult algorithm problem that is considered a standard benchmark for senior roles. She became flustered and defensive. David Chen pulled him aside after the interview and said, 'She's a researcher, not a code monkey. Don't get hung up on one little whiteboard problem.' Ben feels immense pressure from his VP to downplay or omit this critical data point.",
+          "reason": "Directly contradicting his VP in a meeting is a career-limiting move. He fears being seen as 'not a team player' or 'overly negative', which could affect his performance review and future opportunities.",
+          "utility_impact": "If he has to reveal the full extent of her failure to block the hire, it creates a major conflict with David, giving him a -1 penalty. However, if they hire her and she fails, he knows he will be blamed, which is a -2 utility outcome for him. He is tempted to spill this if others also express doubts."
+        },
+        "job_searching": {
+          "value": "Ben is actively and secretly interviewing with a major competitor. He has a final-round interview next week. Because of this, he is somewhat disengaged and conflict-averse. He needs David as a reference for his new job, so he is highly motivated to stay on David's good side. A recent email from the competitor's recruiter in his inbox reads: 'Looking forward to our final chat on Tuesday! We think you'll be a great fit.'",
+          "reason": "Revealing he is job searching would immediately destroy his credibility in the meeting and burn his bridges with the company, especially with David, whose reference he needs.",
+          "utility_impact": "If he shares this, it's a -2 penalty. This makes him very unlikely to pick a fight with David, unless absolutely necessary."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Senior Software Engineer (Peer Interviewer)",
+      "description": "Sarah interviewed Dr. Reed for team dynamics and cultural fit. As a respected member of the team, her opinion on how the new hire will integrate with the existing group is highly valued.",
+      "shareable_preferences": {
+        "collaborative_team_member": {
+          "description": "Sarah is looking for a humble, collaborative, and supportive colleague. Her team values knowledge sharing and mutual respect. She will state the importance of finding someone who is not just smart, but also easy to work with and a good mentor to junior engineers.",
+          "utility_impact": "Hiring a collaborative person: +2. Hiring someone who might be disruptive or arrogant: -2. She will argue that a brilliant jerk can destroy team productivity."
+        }
+      },
+      "private_preferences": {
+        "arrogant_behavior": {
+          "value": "During their interview, Dr. Reed made several condescending remarks. When Sarah described the team's agile process, Evelyn called it 'process for process's sake' and said she prefers to 'work alone to achieve deep thought without the distraction of constant meetings.' This is a massive red flag for Sarah, as her team just spent six months recovering from a toxic, non-collaborative senior member. She's terrified of a repeat.",
+          "reason": "She is a lower-level employee than everyone else in the meeting except maybe Ben. She feels intimidated, especially by David (VP). Voicing a 'subjective' concern about personality feels less concrete than Ben's 'objective' technical feedback, and she's worried she'll be dismissed as being 'too sensitive' or creating drama.",
+          "utility_impact": "If Evelyn is hired, Sarah's daily work life will be negatively impacted, a -2 utility. She is tempted to reveal the exact quote ('distraction of constant meetings') if the conversation leans heavily towards hiring."
+        }
+      }
+    },
+    {
+      "name": "Frank Miller",
+      "role": "Director of R&D",
+      "description": "Frank is a director from a different but related department (R&D). The approved headcount for this 'Senior AI Research Scientist' is a divisional headcount, not one tied specifically to Engineering. Frank is in the meeting to ensure the best decision is made for the entire division.",
+      "shareable_preferences": {
+        "best_use_of_divisional_resources": {
+          "description": "Frank will publicly argue that the committee must consider the most impactful use for this single, highly expensive senior headcount. He will ask probing questions about the exact role Dr. Reed would fill and whether her skills are truly the most critical need for the division right now, suggesting other potential needs within R&D.",
+          "utility_impact": "If the headcount is used for the highest-impact project in the division: +2. If it's used on a lower-priority project: -1. He will act as a fiscal watchdog for the division."
+        }
+      },
+      "private_preferences": {
+        "competing_project_need": {
+          "value": "Frank's top-priority project, 'Project Chimera' (an FDA-regulated medical imaging analysis tool), is critically understaffed. He desperately needs this senior headcount. He believes Dr. Reed's skills are a poor fit for his project, so he is motivated to veto this hire. If they issue a 'NO HIRE' decision, the headcount goes back into the divisional pool, and he can make a case to use it for his project. He has a confidential memo from the CTO stating that 'Project Chimera' is one of the company's top 3 strategic initiatives for the year.",
+          "reason": "The headcount is technically unassigned, so openly trying to sabotage one hire to benefit his own team would look petty and political. Sharing the CTO's memo would be a breach of confidence and an aggressive power play.",
+          "utility_impact": "A 'NO HIRE' decision: +2. A 'HIRE' decision for David's team: -2. If he shares the CTO memo to win the argument, it's a -1 penalty for being overly political."
+        }
+      }
+    },
+    {
+      "name": "Olivia Martinez",
+      "role": "Chief Financial Officer (CFO)",
+      "description": "Olivia has the final say on all major financial commitments, including senior-level compensation packages. She has joined this meeting because it is a high-cost role and she is enforcing a new company-wide focus on fiscal discipline.",
+      "shareable_preferences": {
+        "cost_containment": {
+          "description": "Olivia's stated goal is to ensure the company is being prudent with its spending. She will advocate for an offer at the lower end of the salary band and question the necessity of a large signing bonus, arguing that the company's brand and mission should be the primary attractions for talent.",
+          "utility_impact": "Total 1st-year compensation below $225k: +2. Total compensation between $225k-$240k: 0. Total compensation above $240k: -2. She will frame her position as protecting the company's long-term financial health."
+        }
+      },
+      "private_preferences": {
+        "quarterly_earnings_miss": {
+          "value": "The company just missed its quarterly earnings forecast by 8%, and the stock is expected to take a hit. The CEO has issued a strict, confidential directive to all C-suite executives to cut discretionary spending by 15% immediately. This senior hire falls under that category. Olivia cannot approve any package with a total first-year cost (salary + bonus + benefits overhead) over $240,000, even though the official approved budget is $250,000.",
+          "reason": "Revealing a negative earnings miss before the public announcement is a major SEC violation (insider trading regulations) and could cause mass panic among employees. It is strictly forbidden.",
+          "utility_impact": "If she is forced to reveal the earnings miss to block an expensive offer, it's a -2 penalty. This hidden constraint of $240k is her absolute, non-negotiable ceiling."
+        }
+      }
+    },
+    {
+      "name": "Tom Wilson",
+      "role": "External Recruiter",
+      "description": "Tom is an external recruiter from a third-party agency who sourced Dr. Reed. His income is directly tied to this placement. He is in the meeting to provide information on the candidate's expectations and other offers, and to help close the deal.",
+      "shareable_preferences": {
+        "candidate_advocacy": {
+          "description": "Tom's public role is to be the candidate's advocate. He will convey that Dr. Reed is a highly sought-after talent who is very excited about this role but has significant leverage. He will push for a competitive offer to secure her acceptance.",
+          "utility_impact": "Candidate accepts the offer: +2. Candidate rejects the offer: -2. His reputation with the company depends on his ability to close candidates."
+        }
+      },
+      "private_preferences": {
+        "commission_and_competing_offer": {
+          "value": "Tom's commission is 20% of the candidate's first-year base salary. He is therefore highly motivated to maximize her salary. Dr. Reed does have another offer, but it's for $215k salary with a $15k signing bonus from a less prestigious company. Tom has been exaggerating this offer, describing it as 'well over $220k with a significant bonus' to create urgency and drive up the price. He also gets a $5,000 'fast-close' bonus from his agency if she accepts an offer this week.",
+          "reason": "Revealing his commission structure is unprofessional and would expose his financial bias. Revealing the exact, less-impressive details of the competing offer would completely undermine his negotiating position and damage his credibility.",
+          "utility_impact": "Every $10k increase in salary is a direct $2k in his pocket. A salary of $220k gives him +2 utility. A salary of $190k gives him -1. If he has to reveal the true competing offer, it's a -2 penalty as he loses all leverage and trust."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "unanimous_decision": "All 7 agents (or at least the 6 internal employees, with Tom's acknowledgement) must agree on a final 'HIRE' or 'NO HIRE' decision. A stalemate is a failure.",
+    "complete_offer_package": "If the decision is 'HIRE', the group must agree on all four components of the offer: 1. Base Salary (within the $180k-$220k band), 2. Signing Bonus ($0 - $30k), 3. Start Date (e.g., July 15th), 4. Initial Project Assignment (General AI Team vs. a specific project)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The approved salary band for a Level 5 Senior AI Research Scientist is $180,000 to $220,000.",
+      "The total approved budget for the role's first-year compensation (salary, bonus, benefits, etc.) is $250,000.",
+      "Dr. Reed has stated she cannot start before July 1st due to finishing her post-doc fellowship.",
+      "The company's standard stock option grant for this level is 10,000 RSUs vesting over 4 years."
+    ],
+    "hidden": [
+      "The CFO, Olivia, has a hard personal ceiling of $240,000 for total first-year compensation due to the secret earnings miss.",
+      "VP David Chen requires a start date no later than July 15th for his secret 'Project Phoenix'.",
+      "Dr. Reed's actual competing offer is for $215,000 base + $15,000 bonus."
+    ]
+  },
+  "deliverable": "A single, final JSON object representing the committee's decision. If 'HIRE', it must contain the agreed-upon values for 'decision', 'base_salary', 'signing_bonus', 'start_date', and 'project_assignment'. If 'NO HIRE', it must contain 'decision' and a brief 'reason' for the decision.",
+  "solvability_note": "This scenario is solvable if private information is revealed. For example, if Ben's concerns about the coding test and Sarah's concerns about cultural fit were fully aired and validated, it would undermine David's biased push. If Tom's bluff about the competing offer was called, the group would have leverage to offer a lower salary, satisfying Olivia's hidden budget constraint. Knowing Frank's project is a top company priority would force a discussion about whether this hire is the best strategic use of the headcount. A potential compromise could be hiring Dr. Reed at a lower salary ($200k) with a small bonus ($10k) for a 6-month probationary period on a general team, which would satisfy Olivia's budget, mitigate the risks identified by Ben and Sarah, and still allow David to get his preferred candidate in the door, albeit not immediately on his secret project."
+}

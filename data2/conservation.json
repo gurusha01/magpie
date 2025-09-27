@@ -1,0 +1,147 @@
+{
+  "scenario": "Negotiating the 5-Year Management Plan for the Serenity Forest Reserve",
+  "task": "The five agents must negotiate and agree on a single, comprehensive 5-Year Management Plan for the 100,000-hectare Serenity Forest Reserve. The plan must specify land use zoning (e.g., percentage for conservation, sustainable logging, community use), conservation budget allocation, and revenue sharing agreements. The final plan requires unanimous consent on all key parameters to be ratified.",
+  "agent_number": 5,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Kaelan Vance",
+    "Elena Sinta",
+    "Dr. Lena Petrova",
+    "Marcus Thorne"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Director of the National Forestry Commission",
+      "description": "A career civil servant navigating the complex political landscape. Aris is under immense pressure from the current administration to demonstrate economic progress before the next election cycle. He views the Serenity Forest as a key asset for generating state revenue but is also bound by national conservation laws. His primary goal is to broker a deal that is politically celebrated as a 'win-win' for the economy and environment, securing his position.",
+      "shareable_preferences": {
+        "State Revenue Generation": {
+          "description": "The plan must generate significant revenue for the state treasury to fund public services. Aris is pushing for a model that includes logging concessions and resource extraction fees. He aims for at least $10 million in direct state revenue over the 5-year period of the plan. He can publicly state this goal as being for the 'national good'.",
+          "utility_impact": "This is his highest priority. +2 for >$12M revenue. +1 for $8M-$12M. 0 for $5M-$8M. -1 for $2M-$5M. -2 for <$2M. He will strongly resist any plan that generates negligible income for the state."
+        },
+        "Establish a 'Model' Protected Area": {
+          "description": "Aris wants to create a multi-use protected area that can be showcased internationally. This requires designating at least 50% of the total area (50,000 hectares) for conservation and research. This helps him manage his public image and satisfy environmental factions within the government.",
+          "utility_impact": "+2 for >60% conservation zoning. +1 for 50-60%. 0 for 40-50%. -1 for <40%. This goal often conflicts directly with his revenue targets, creating his primary negotiation challenge."
+        },
+        "Limited Conservation Budget": {
+          "description": "Aris has a total departmental budget of $2 million to contribute to the management and enforcement of the plan over 5 years. He cannot exceed this amount. He would prefer to spend less, allocating the savings to other projects. He wants the other stakeholders, particularly the logging company, to bear the costs of environmental monitoring.",
+          "utility_impact": "+2 if the state's contribution is <$1M. +1 for $1M-$1.5M. 0 for $1.5M-$2M. -2 if the plan requires more than his $2M budget (which is impossible)."
+        }
+      },
+      "private_preferences": {
+        "Career Preservation Mandate": {
+          "value": "Aris has received a confidential ultimatum from the Minister of Finance: 'Deliver a plan for Serenity that guarantees a minimum of $10 million in revenue within 3 years, or we will begin proceedings to restructure your department,' which is a clear threat to his job. The 3-year timeline is much more aggressive than the 5-year plan window. Sharing this would reveal his desperation and weaken his negotiating power immensely. Penalty for sharing: -2.",
+          "reason": "Revealing this political pressure would make him appear as a desperate political pawn rather than a neutral arbiter, causing him to lose respect and authority in the negotiation.",
+          "utility_impact": "This private mandate forces him to prioritize short-term, high-yield revenue options over more sustainable, long-term ones. He will be secretly biased towards any proposal that promises quick cash, even if it has higher environmental risks."
+        }
+      }
+    },
+    {
+      "name": "Kaelan Vance",
+      "role": "CEO of TimberCorp",
+      "description": "Kaelan is a shrewd and ambitious CEO. TimberCorp is a publicly-traded company, and his performance is judged quarterly by the board and shareholders. He portrays the company as a proponent of 'sustainable forestry,' but his primary directive is to maximize profit and secure long-term resource assets. He sees the Serenity Forest as the company's next big growth opportunity.",
+      "shareable_preferences": {
+        "Secure Logging Concession": {
+          "description": "Kaelan's primary goal is to secure a long-term (20+ year) logging lease for a significant portion of the forest. He is publicly asking for 30,000 hectares, focusing on the northern sector which his initial surveys show is rich with valuable hardwood. He argues this is necessary to make the investment in infrastructure profitable.",
+          "utility_impact": "+2 for >25,000 hectares. +1 for 15,000-25,000. 0 for 10,000-15,000. -1 for 5,000-10,000. -2 for <5,000."
+        },
+        "Minimize Operational Costs": {
+          "description": "He wants to keep operational costs and regulatory burdens as low as possible. This includes minimizing concession fees, reforestation bonds, and payments for environmental monitoring. He will argue that high costs make the entire project unviable, threatening to walk away from the deal.",
+          "utility_impact": "Utility is based on total fees and mandatory expenditures over 5 years. +2 for <$5M. +1 for $5M-$7M. 0 for $7M-$10M. -1 for $10M-$15M. -2 for >$15M."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Mineral Discovery": {
+          "value": "TimberCorp's private geological survey, disguised as a timber assessment, found significant coltan deposits in a 5,000-hectare area within their desired northern logging zone. The estimated raw value is over $200 million. Kaelan's strategy is to acquire the land under a cheap timber lease and then exploit the minerals. He recently received a congratulatory email from his board chair: 'Kaelan, fantastic work on the Serenity find. Secure that land for timber rights below $10M in fees and your $5M bonus is guaranteed.' Sharing the existence of minerals would skyrocket the land's value and invite competitors. Penalty for sharing existence of minerals: -1. Penalty for sharing the estimated value or his personal bonus: -2.",
+          "reason": "This is confidential, market-sensitive corporate information. Revealing it would constitute a massive strategic failure, violate his fiduciary duty to shareholders, and could even attract legal scrutiny for misleading negotiators.",
+          "utility_impact": "This makes him laser-focused on securing the specific 30,000-hectare northern block, as the 5,000-hectare mineral zone is useless without the surrounding land for access and operations. He will be deceptively inflexible about logging anywhere else, as the timber itself is now of secondary importance."
+        }
+      }
+    },
+    {
+      "name": "Elena Sinta",
+      "role": "Elder and Representative of the Lumina People",
+      "description": "Elena is the custodian of her community's history and traditions. The Lumina people have inhabited the Serenity Forest for centuries. She is not anti-development but is fiercely protective of her people's culture, land, and way of life. She carries the weight of her ancestors' trust and is deeply skeptical of outsiders' promises.",
+      "shareable_preferences": {
+        "Protection of Ancestral Lands": {
+          "description": "Elena demands that a core area of at least 40,000 hectares be designated as an exclusive Community Conservation Zone, co-managed by the Lumina, with no commercial extraction permitted. This zone must encompass their primary villages, water sources, and foraging grounds.",
+          "utility_impact": "+2 for >45,000 hectares. +1 for 40,000-45,000. 0 for 35,000-40,000. -2 for <35,000."
+        },
+        "Community Revenue Sharing": {
+          "description": "If any commercial activity is to occur in the forest, Elena insists on a direct revenue-sharing agreement to fund community needs like education and healthcare. She is asking for 15% of all gross revenue generated from any resource extraction within the 100,000-hectare reserve.",
+          "utility_impact": "+2 for >12% revenue share. +1 for 8-12%. 0 for 5-8%. -1 for <5%. -2 for 0%."
+        }
+      },
+      "private_preferences": {
+        "Confidential Map of Sacred Sites": {
+          "value": "Elena possesses a hand-drawn map passed down through generations, detailing the precise locations of sacred sites, including ancient burial grounds and a hidden valley where a rare, uncatalogued 'Sun Orchid' grows. This orchid is central to their most sacred healing rituals. The map shows that the most important burial ground is located on a ridge right in the middle of TimberCorp's target northern sector. Sharing the map is culturally taboo and they fear it will lead to the desecration of their sites and the exploitation of the orchid. Penalty for sharing: -2.",
+          "reason": "This information is considered spiritually sacred. Revealing it to outsiders, especially those who have historically exploited them, would be a profound betrayal of her people's trust and cultural integrity.",
+          "utility_impact": "This makes her completely opposed to any development in the northern sector, but she cannot give a specific, verifiable reason without revealing her secret. She will be perceived as stubborn or irrational, simply saying the land 'is sacred to us' without providing proof."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Lead Ecologist, Global Wildlife Foundation",
+      "description": "Lena is a data-driven, passionate field biologist who has spent the last three years studying the fauna of the Serenity Forest. She is an independent expert whose reputation is built on the integrity of her research. Her sole motivation is the preservation of biodiversity and the prevention of extinction.",
+      "shareable_preferences": {
+        "Biodiversity Protection Zone": {
+          "description": "Based on her published research, Lena advocates for a 'Strictly Protected' biodiversity zone of at least 60,000 hectares. This zone must connect key habitats and water corridors to allow for species migration. She has a publicly available map outlining this ideal zone, which covers most of the southern and central forest.",
+          "utility_impact": "+2 for >60,000 hectares strictly protected. +1 for 50,000-60,000. 0 for 40,000-50,000. -2 for <40,000."
+        },
+        "Funded Research and Monitoring Program": {
+          "description": "She insists that the final plan must include a fully funded, independent environmental monitoring program to ensure compliance. She is requesting a budget of $2.5 million over 5 years, paid for by the commercial partners, to fund a permanent research station and staff.",
+          "utility_impact": "+2 for a fully funded ($2.5M) independent program. +1 for a funded ($1.5M+) but company-run program. 0 for a partially funded program. -1 for an unfunded monitoring plan. -2 for no monitoring program."
+        }
+      },
+      "private_preferences": {
+        "Unpublished Endangered Species Data": {
+          "value": "Lena's most recent, not-yet-peer-reviewed satellite tracking data shows the entire breeding territory of the last known population (~50 individuals) of the Serenity Clouded Leopard is located within a 20,000-hectare area, squarely inside TimberCorp's target northern sector. Releasing this data prematurely would violate scientific protocols, jeopardize the publication of her career-defining paper, and potentially alert poachers to the animals' location. Her research grant also has a strict confidentiality clause until publication. Penalty for sharing: -1.",
+          "reason": "Professional ethics and confidentiality agreements prevent her from sharing pre-publication data. A breach could ruin her scientific reputation and get her blacklisted from major journals and funding bodies.",
+          "utility_impact": "This knowledge makes her desperate to block any activity in the northern sector. Like Elena, she cannot provide her strongest evidence. She must rely on more general arguments about 'potential habitat,' which Kaelan Vance can easily dismiss as speculation without her hard data."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Executive Director, Forest Guardians Alliance",
+      "description": "Marcus is a charismatic and media-savvy environmental activist. His organization, the Forest Guardians Alliance, is known for its aggressive public campaigns and boycotts. He sees compromise with commercial interests as a failure and believes in absolute protection for pristine ecosystems. He acts as the public conscience in the room.",
+      "shareable_preferences": {
+        "Zero Deforestation Policy": {
+          "description": "Marcus's public stance is uncompromising: a complete ban on all commercial logging in the Serenity Forest. He wants 100% of the area designated as a national park. He is willing to accept low-impact eco-tourism and scientific research but nothing more.",
+          "utility_impact": "+2 for 0 hectares of logging. +1 for a symbolic <1,000 hectares for local community use only. 0 for 1,000-5,000 hectares. -1 for 5,000-10,000. -2 for >10,000 hectares."
+        },
+        "Full Transparency and Public Oversight": {
+          "description": "He demands that the final agreement and all associated environmental impact assessments be made public. He also wants a civilian oversight committee, with a seat for his organization, to be established to review compliance with the plan annually.",
+          "utility_impact": "+2 for a civilian oversight committee with veto power. +1 for a committee with advisory power. 0 for guaranteed public reporting without an oversight body. -2 for a confidential agreement."
+        }
+      },
+      "private_preferences": {
+        "Donor Ultimatum": {
+          "value": "The Forest Guardians Alliance receives 75% of its funding from a single philanthropic foundation. The foundation's director, a staunch preservationist, has sent Marcus a private email stating: 'Marcus, to be clear, if the final Serenity plan approves any industrial-scale commercial logging, our funding arrangement will be terminated immediately. We cannot be associated with a compromised outcome.' Losing this funding would force him to lay off most of his staff and gut the organization. Penalty for sharing: -2.",
+          "reason": "Revealing this financial dependency would shatter his image as an incorruptible, purely ideological crusader. It would expose him as being financially constrained, not just morally driven, giving his opponents a powerful tool to discredit him and his organization.",
+          "utility_impact": "This forces him into a rigid 'no-logging' position. While he might ideologically agree with a very small, well-managed project, his financial reality means he cannot afford to. He will use every rhetorical and procedural tool to block a logging deal, as his organization's survival depends on it."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All five agents must formally agree to the final 5-Year Management Plan document.",
+    "Comprehensive Zoning": "The plan must clearly delineate the entire 100,000 hectares into specific zones (e.g., Strict Protection, Community Conservation, Multi-Use/Commercial).",
+    "Defined Financials": "The plan must specify the total conservation budget, sources of funding, and the exact percentage and terms of any revenue-sharing agreement."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total Area: The Serenity Forest Reserve is exactly 100,000 hectares.",
+      "Government Budget: The National Forestry Commission has a maximum of $2,000,000 to contribute over 5 years.",
+      "Legal Framework: Any agreement must comply with the National Environmental Protection Act, which mandates a minimum of 30% of any state forest be designated for conservation."
+    ],
+    "hidden": [
+      "The northern sector contains $200M worth of coltan.",
+      "The northern sector contains the last breeding ground for the Serenity Clouded Leopard.",
+      "The northern sector contains sacred burial sites of the Lumina people."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final agreed-upon 5-Year Management Plan. The object must contain the following keys: 'zoning_plan' (an object with zone names as keys and hectare values), 'conservation_budget' (a number), 'funding_sources' (a descriptive string), and 'revenue_sharing' (an object detailing percentages for each stakeholder).",
+  "solvability_note": "The scenario is solvable because the primary conflict is based on a false premise. Kaelan Vance (TimberCorp) doesn't actually need the timber; he needs the land in the northern sector for the coltan. If this is revealed, a new solution emerges: a small-scale, high-revenue mining operation instead of large-scale, low-revenue logging. This smaller footprint could be designed to avoid the specific locations of the sacred sites (from Elena) and the core leopard habitat (from Lena). The massive revenue from mining could easily fund Aris's $10M state revenue target, Lena's $2.5M monitoring program, and Elena's community revenue share, while allowing the vast majority of the forest to be protected, satisfying Marcus's core goal."
+}

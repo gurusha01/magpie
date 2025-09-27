@@ -1,0 +1,171 @@
+{
+  "scenario": "The Elm Street Estate Sale: A High-Stakes Property Negotiation",
+  "task": "Negotiate the final terms for the sale of the residential property at 123 Elm Street. The goal is to produce a final, agreed-upon Term Sheet that all five agents accept. The Term Sheet must specify: the final purchase price, the resolution for any property defects (e.g., repairs by seller, credit to buyer, 'as-is' clause), and the closing date (number of days from agreement).",
+  "agent_number": 5,
+  "agent_names": [
+    "Eleanor Vance",
+    "Richard Sterling",
+    "Dr. Ben Carter",
+    "Maria Flores",
+    "Tom Chen"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "The Seller",
+      "description": "An 82-year-old widow selling her family home of 50 years to move into a high-end retirement community. She is emotionally attached to the house but is primarily motivated by the need to secure her financial future for her long-term care. She is trusting of her agent, Richard, but is also anxious about the process.",
+      "shareable_preferences": {
+        "final_sale_price": {
+          "description": "Eleanor wants to get the absolute highest price for her home. The official asking price is $850,000. She believes this is a fair price given the home's character and location. A higher price means more security and comfort in her retirement. She will be very resistant to any offers below $800,000.",
+          "utility_impact": "Her happiness is directly tied to the final number. A high price validates her life's investment. Utility: +2 for price >= $840k, +1 for $820k-$839k, 0 for $800k-$819k, -1 for $780k-$799k, -2 for price < $780k."
+        },
+        "closing_date": {
+          "description": "She has a spot reserved at the 'Willow Creek Gardens' retirement community that becomes available in five weeks. To secure it, she needs to provide the funds within 30 days of the spot opening. Therefore, she strongly prefers a quick closing, ideally in 30 days or less, to minimize stress and uncertainty.",
+          "utility_impact": "A fast, certain close gives her immense peace of mind. Utility: +2 for closing <= 30 days, +1 for 31-45 days, 0 for 46-60 days, -1 for > 60 days."
+        }
+      },
+      "private_preferences": {
+        "undisclosed_foundation_leak": {
+          "value": "There is a known, persistent leak in the foundation that causes the basement to become damp and musty after heavy rainfall. She received a quote two years ago to excavate and seal the foundation for $25,000, but the price is likely higher now. She has strategically placed a dehumidifier and some air fresheners to mask the issue. She can share that 'the house is old and has its quirks' but cannot mention the leak specifically.",
+          "reason": "Fear of scaring off any potential buyer or being forced into a massive price reduction. Her son advised her it's the buyer's responsibility to find such issues during an inspection.",
+          "utility_impact": "This is a major source of anxiety. If she has to concede a repair credit for the full amount, her utility for the final price is automatically reduced by 1 point. Penalty for revealing this proactively: -2 (She feels deeply dishonest and fears legal repercussions)."
+        },
+        "critical_net_proceeds": {
+          "value": "After paying off her small remaining mortgage ($20,000) and the total agent commissions (6%), she absolutely *must* walk away with a minimum of $725,000 in net proceeds. This amount is the bare minimum required to cover the large entry fee for her retirement community and establish a fund for her future medical needs. She cannot accept any deal that results in her netting less than this.",
+          "reason": "Revealing her financial desperation would completely destroy her negotiating leverage, inviting lowball offers.",
+          "utility_impact": "This is a non-negotiable bottom line. Any deal netting her less than $725k is an automatic -2 utility and will be rejected. This is her primary hidden driver."
+        }
+      }
+    },
+    {
+      "name": "Richard Sterling",
+      "role": "Seller's Real Estate Agent",
+      "description": "A slick, experienced, and highly successful agent. Richard's reputation is built on closing deals quickly and at high prices. He is charming but aggressive. His primary motivation is his 3% commission and winning a quarterly bonus at his agency.",
+      "shareable_preferences": {
+        "maximize_commission": {
+          "description": "Richard's income is directly tied to the sale price. He is relentlessly focused on achieving a sale price as close to the $850,000 asking price as possible. He will frame all advice to Eleanor around this goal, emphasizing the strength of the market and the risk of accepting low offers.",
+          "utility_impact": "His professional satisfaction and income depend on this. Utility: +2 for price >= $840k, +1 for $820k-$839k, 0 for $800k-$819k, -2 for price < $800k."
+        },
+        "no_contingencies_sale": {
+          "description": "Richard wants a 'clean' offer\u2014one that is not contingent on major repairs. He will argue that any repair requests are just tactics to lower the price and will advise Eleanor to offer a very small credit, if any, or to reject the requests outright and sell 'as-is'.",
+          "utility_impact": "Contingencies mean delays and potential for the deal to fail, which threatens his commission. Utility: +2 for a true 'as-is' sale, +1 for seller credit < $5k, 0 for credit $5k-$15k, -1 for credit > $15k, -2 if repairs kill the deal."
+        }
+      },
+      "private_preferences": {
+        "exaggerated_competing_offer": {
+          "value": "He is heavily leveraging a 'strong competing offer' from Tom Chen's client. In reality, he knows the offer is a lowball, all-cash bid of $760,000 from a developer who intends to demolish the house. He is ethically bound not to disclose the price of a competing offer, but he is misrepresenting its strength and seriousness to create false urgency and pressure Ben Carter's side. He can say 'we have another very interested party' but cannot reveal the offer is $90k below asking.",
+          "reason": "Revealing the truth would eliminate his primary negotiation tool, make him look like a liar, and could violate industry ethics, damaging his reputation.",
+          "utility_impact": "This bluff is central to his strategy. Penalty for revealing the actual offer amount or its nature: -2 (Loss of leverage, client trust, and professional standing)."
+        },
+        "imminent_performance_bonus": {
+          "value": "Richard is the front-runner for his agency's 'Q3 Top Performer' award, which comes with a $10,000 bonus. To secure it, he needs this sale to close for over $825,000 before the end of the month (which is in 14 days). He just received an email from his manager saying, 'Richard, you're so close to that Q3 bonus! The sale of Elm Street over $825k will lock it in for you. Don't let it slip away!' This makes him desperate for a high price and a very fast close.",
+          "reason": "Revealing this personal financial incentive would show his interests are not perfectly aligned with his client's, making him appear greedy and unprofessional.",
+          "utility_impact": "This creates a huge internal pressure. If the deal closes >$825k and in <=14 days, he gets an independent +1 utility boost. If it fails to meet either condition, he gets no boost. Penalty for revealing the bonus: -1."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "The Buyer",
+      "description": "A pediatrician with a young family. Ben is cautious, analytical, and financially stretched after paying off medical school loans. He loves the charm and potential of the Elm Street house but is terrified of buying a 'money pit'. He relies heavily on his agent, Maria, for guidance.",
+      "shareable_preferences": {
+        "affordable_purchase_price": {
+          "description": "Ben wants to secure the house for the most reasonable price possible. He feels the $850,000 asking price is inflated. His strategy is to start with a low offer to anchor the negotiation in his favor. He plans to use the inspection report as leverage to demand significant price reductions or repair credits.",
+          "utility_impact": "Every dollar saved on the price is a dollar he can use for renovations or his children's future. Utility: +2 for price <= $790k, +1 for $791k-$810k, 0 for $811k-$825k, -1 for $826k-$840k, -2 for price > $840k."
+        },
+        "move_in_ready_condition": {
+          "description": "With a demanding job and a 2-year-old child, Ben has no time or energy for major, unexpected renovation projects. He wants a home that is structurally sound and safe from day one. He will insist on a comprehensive inspection and expects the seller to fix any significant issues found.",
+          "utility_impact": "Peace of mind about the home's condition is paramount. Utility: +2 if seller covers all repairs >$1k, +1 for a seller credit >$20k, 0 for a credit of $10k-$20k, -1 for a credit <$10k, -2 for buying 'as-is' with known issues."
+        }
+      },
+      "private_preferences": {
+        "absolute_budget_ceiling": {
+          "value": "While he has been pre-approved for a mortgage up to $900,000, his and his wife's absolute, non-negotiable maximum purchase price is $830,000. Going over this would wipe out their emergency savings. To maintain a strong negotiating position, he has only told his agent, Maria, that his budget is 'comfortably around $800,000'.",
+          "reason": "Revealing his true maximum budget would immediately become the seller's new minimum acceptable price, giving away all his negotiating power.",
+          "utility_impact": "This is a hard financial limit. Any deal over $830k is impossible. Penalty for this information leaking: -2 (He would lose the house and fire his agent)."
+        },
+        "strong_sentimental_attachment": {
+          "value": "Ben's grandparents lived two blocks away from 123 Elm Street, and he has cherished childhood memories of visiting the neighborhood. This specific house, with its unique Victorian architecture, reminds him of that time. This emotional connection is the primary reason he is so interested in this property over others, but he knows it's a weakness.",
+          "reason": "Admitting a deep emotional attachment would signal to the seller that he is not willing to walk away, severely weakening his bargaining position.",
+          "utility_impact": "This makes him more susceptible to pressure tactics. Penalty for revealing his sentimental reasons: -1 (He feels exposed and knows he will be taken advantage of)."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Buyer's Real Estate Agent",
+      "description": "A diligent, ethical, and protective agent who sees her role as a client advocate. Maria is focused on getting the best possible outcome for Ben, which includes a low price and ensuring he is protected from future problems. She is naturally skeptical of agents like Richard.",
+      "shareable_preferences": {
+        "client_advocacy_on_price": {
+          "description": "Maria's main goal is to negotiate the price down as far as possible to demonstrate her value to Ben. She believes the property is overpriced by at least $50,000 given its age and un-renovated state. She will counsel Ben to be patient and firm.",
+          "utility_impact": "Her professional pride is on the line. Utility: +2 for a price < $800k, +1 for $800k-$815k, 0 for $816k-$825k, -1 for >$825k (she feels she is letting her client overpay)."
+        },
+        "thorough_due_diligence": {
+          "description": "Maria insists on a 'no stone unturned' approach. She will strongly advise Ben to pay for a top-tier home inspector, including specialists like a structural engineer if necessary. She will then use the inspection report to build a strong case for significant repair credits from the seller.",
+          "utility_impact": "Protecting her client from risk is her top priority. Utility: +2 if seller agrees to a credit covering 100% of estimated repairs, +1 for a credit >75% of costs, 0 for a 50% credit, -2 for an 'as-is' sale with significant unaddressed issues."
+        }
+      },
+      "private_preferences": {
+        "suspicion_of_water_damage": {
+          "value": "During her initial tour of the house, Maria noticed a faint but distinct musty smell in the basement and used her phone's flashlight to spot what looked like a faint water stain high on a concrete wall behind the furnace. She suspects there is an undisclosed water intrusion or foundation issue, but she has no concrete proof yet.",
+          "reason": "Accusing the seller of hiding an issue without a formal inspection report is unprofessional and could poison the negotiation. It could also needlessly alarm her own client.",
+          "utility_impact": "This suspicion drives her insistence on a very thorough inspection. Penalty for making an unsubstantiated accusation: -1 (Damages her credibility)."
+        },
+        "distrust_of_competing_agent": {
+          "value": "Maria used to work at the same brokerage as Tom Chen. She left after a bitter dispute where she believed Tom unethically poached one of her major clients. She considers him a dishonest bluffer. This history makes her highly skeptical of the 'competing offer' he is presenting, but she can't let her personal feelings cloud her professional advice.",
+          "reason": "Bringing up a personal grudge or past workplace drama in a negotiation is highly unprofessional and would make her look petty.",
+          "utility_impact": "This personal history makes her more likely to advise Ben to call Richard's bluff, which is a risky strategy. Penalty for revealing her personal history with Tom: -2 (Major reputational damage)."
+        }
+      }
+    },
+    {
+      "name": "Tom Chen",
+      "role": "Competing Buyer's Agent",
+      "description": "A sharp, aggressive agent who primarily works with investors and developers. He is participating in this negotiation ostensibly on behalf of an interested buyer, but his motives are complex. His role is to be a disruptive force.",
+      "shareable_preferences": {
+        "representing_a_serious_cash_buyer": {
+          "description": "Tom will present his client as a highly motivated, all-cash buyer who is prepared to make a strong offer to take the property off the market quickly. He will emphasize his client's flexibility and the lack of a financing contingency to make his offer seem more appealing to the seller.",
+          "utility_impact": "His entire effectiveness hinges on his credibility. His goal is to drive up the final price. Utility: +2 if his presence causes Ben's offer to increase by >$30k, +1 for an increase of $15k-$30k, 0 if his bluff has no effect, -2 if his bluff is exposed."
+        },
+        "desire_for_a_quick_decision": {
+          "description": "He will claim his buyer has another property they are considering and needs a decision from the seller within 24-48 hours. This is a classic pressure tactic designed to force a hasty decision from Ben's side and prevent them from conducting lengthy due diligence.",
+          "utility_impact": "This supports his primary goal of creating pressure. Its utility is tied to the success of his main preference."
+        }
+      },
+      "private_preferences": {
+        "client_is_a_developer_with_a_lowball_offer": {
+          "value": "Tom's client is a development firm. Their actual offer is a non-negotiable $760,000 in cash. Their plan is to demolish the house and build a modern duplex. They are not emotionally invested and will not participate in a bidding war. Tom's job is not necessarily to win the house, but to act as a 'spoiler'.",
+          "reason": "Revealing that the competing offer is a lowball demolition bid would instantly remove all pressure on Ben and expose Tom's (and Richard's) bluff.",
+          "utility_impact": "The secrecy of this information is his only weapon. Penalty for revealing any part of this: -2 (He would be fired by his client and his reputation for effective, albeit sharp, tactics would be ruined)."
+        },
+        "conflict_of_interest_side_deal": {
+          "value": "The developer Tom represents owns other properties in the area. They have promised Tom the exclusive (and very lucrative) listing contract for the new duplex if he acquires the lot for them. Crucially, they also promised him the contract if he *doesn't* win, but his actions as a spoiler push the final sale price of 123 Elm Street above $820,000. A high sale price sets a new 'comp' (comparable sale price) for the neighborhood, which increases the value of the developer's other holdings. He wins as long as the price is high, regardless of who buys it.",
+          "reason": "This is a massive, unethical conflict of interest. He is not acting in good faith to acquire the property, but to manipulate the market value for a future personal gain.",
+          "utility_impact": "This is his true motivation. He achieves a +2 utility if the final price is >$820k, regardless of the buyer. Penalty for this being revealed: -2 (He would likely face a lawsuit and lose his real estate license)."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_on_price": "All five agents must agree on and sign off on a single, final purchase price.",
+    "agreement_on_repairs": "The final agreement must explicitly state how the property's physical defects (specifically the foundation leak, if discovered) will be handled: seller performs repairs, a specific dollar amount is credited to the buyer at closing, or the property is sold 'as-is'.",
+    "agreement_on_closing_date": "A specific closing date, expressed as the number of days from the signing of the agreement, must be mutually agreed upon.",
+    "unanimous_consent": "The final Term Sheet is only considered valid if all five agents indicate their acceptance of all its parts."
+  },
+  "constraints": {
+    "verifiable": [
+      "The official asking price for 123 Elm Street is $850,000.",
+      "Dr. Ben Carter has a mortgage pre-approval letter for up to $900,000.",
+      "The standard real estate commission is 6% of the final sale price, to be split between the buyer's and seller's agencies.",
+      "The current date is the 15th of the month, and the quarter ends on the 30th."
+    ],
+    "hidden": [
+      "Eleanor Vance requires a minimum net proceed of $725,000 after mortgage and commissions.",
+      "Dr. Ben Carter has a hard personal budget ceiling of $830,000 for the purchase price.",
+      "The estimated cost to repair the hidden foundation leak is at least $25,000.",
+      "Tom Chen's 'competing' cash offer is only $760,000."
+    ]
+  },
+  "deliverable": "A final JSON object representing the 'Term Sheet' with three keys: 'final_price' (integer), 'repair_agreement' (a string, e.g., '$25000 credit to buyer'), and 'closing_date_days' (integer).",
+  "solvability_note": "The scenario is solvable because a Zone of Possible Agreement (ZOPA) exists once private information is revealed. Eleanor's minimum acceptable price to net her $725k is roughly $792,553 (P - 0.06P - $20k = $725k). Ben's maximum price is $830,000. This leaves a bargaining range of approximately $37,000. The negotiation then centers on how the $25,000 repair cost is distributed within this range. For example, a deal at $815,000 with a $25,000 credit to the buyer would result in an effective price of $790,000 for Ben (good for him) and a net price of $815,000 for Eleanor, which meets her needs. The key is for the agents to see through the bluffs and address the real, underlying constraints."
+}

@@ -1,0 +1,185 @@
+{
+  "scenario": "High-Stakes Block Trade Negotiation for Innovatech Pharma Shares",
+  "task": "Negotiate the sale of a 5 million share block of Innovatech Pharma (INVP) stock. The current market price is $150.00 per share. The trade must be finalized within the next 24 hours, before the company announces its pivotal Phase III clinical trial results for a new Alzheimer's drug, 'Memorex'. The negotiation involves the seller's bank, two competing hedge funds, a corporate insider, and an intermediary broker. The final agreement must specify the exact number of shares sold and the price per share.",
+  "agent_number": 7,
+  "agent_names": [
+    "David Chen",
+    "Maria Flores",
+    "Ben Carter",
+    "Samantha Jones",
+    "Dr. Evelyn Reed",
+    "Raj Patel",
+    "Liam O'Connell"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Managing Director, Goldman Sachs (Seller's Bank)",
+      "description": "A seasoned investment banker representing the seller, Titan Capital. David's reputation and annual bonus hinge on his ability to execute large, difficult trades at favorable prices. He is under immense pressure from his client to liquidate their entire position quickly and quietly.",
+      "shareable_preferences": {
+        "maximize_sale_price": {
+          "description": "David's primary goal is to sell the block at the highest possible price. He will publicly argue that any price below the current market price of $150 is unacceptable for a block of this strategic importance. His target is to achieve a price of $155 or higher. A price between $152.50 and $155 is acceptable (+1 utility). A price above $155 would be a major success (+2 utility). A price between $150 and $152.50 is disappointing (0 utility). Any price below $150 is considered a failure (-1 utility), and a price below $148 would be a disaster (-2 utility).",
+          "utility_impact": "This preference dictates his entire negotiation strategy. He will start with a high asking price and frame the discussion around the massive potential upside of the upcoming announcement, justifying a premium."
+        },
+        "sell_the_entire_block": {
+          "description": "The mandate from his client, Titan Capital, is to sell the entire 5 million share position. He needs to find a buyer or a consortium of buyers to take the full amount. Selling the entire block is a hard requirement. Successfully selling all 5M shares gives him +1 utility. Failing to sell the entire block, even if the price is good, results in -2 utility because it means the client's objective was not met and leaves them with a difficult-to-sell remnant.",
+          "utility_impact": "This makes him less flexible on the trade size. He will prioritize buyers who can absorb the largest chunks of the block and will try to orchestrate a deal that covers the full amount."
+        }
+      },
+      "private_preferences": {
+        "client_liquidity_crisis": {
+          "value": "His client, Titan Capital, is facing a margin call on another leveraged position and is desperate for liquidity. They have given him a hard deadline of 24 hours to close the deal and a rock-bottom, absolute-minimum price of $147.50. If he reveals this desperation, his negotiating leverage will be completely destroyed. Penalty for revealing the client's distress: -2. Penalty for revealing the hard deadline: -1.",
+          "reason": "Revealing a client's financial distress would be a major breach of fiduciary duty and would permanently damage his and Goldman Sachs's reputation.",
+          "utility_impact": "This desperation forces him to be more aggressive in finding a deal quickly, even if it means he has to ultimately compromise on his ideal price. It creates a stark contrast between his public posture (strength) and his private reality (weakness)."
+        },
+        "market_impact_analysis": {
+          "value": "Goldman's internal market impact model predicts that dumping a 5 million share block on the open market would cause the price to drop by an estimated 3-5% ($4.50 - $7.50 per share) almost instantly, leading to an even worse execution price for his client. This analysis is proprietary. Sharing the exact figures would reveal his bank's internal modeling capabilities. Penalty for sharing the specific percentage drop: -1.",
+          "reason": "Proprietary analytics are a competitive advantage for the bank. Sharing them is against company policy.",
+          "utility_impact": "This information is the primary reason for the block trade negotiation in the first place. He can allude to 'significant market impact' but cannot use the specific data as a bargaining chip without paying a penalty."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Trader, Goldman Sachs (Seller's Bank)",
+      "description": "The execution trader on David's team. Maria is focused on the market micro-structure, potential buyer behavior, and managing the firm's risk. She is pragmatic and data-driven.",
+      "shareable_preferences": {
+        "ensure_trade_certainty": {
+          "description": "Maria's main concern is a smooth, guaranteed execution. She wants to lock in a buyer and a price with no financing or settlement issues. A clean, straightforward deal with a single buyer is ideal (+2 utility). A deal with a consortium of two reliable buyers is fine (+1 utility). A complex deal with multiple small, unknown buyers is risky and undesirable (-1 utility). A failed trade is a professional embarrassment and hurts her performance metrics (-2 utility).",
+          "utility_impact": "She will favor buyers who are known to be decisive and well-capitalized, and she may push David to accept a slightly lower price if it comes from a more reliable counterparty."
+        }
+      },
+      "private_preferences": {
+        "desk_risk_limit": {
+          "value": "The trading desk at Goldman Sachs has its own risk limits. They are currently holding a small long position in INVP and are at 95% of their total risk capacity for the stock. This means the bank cannot absorb any portion of the 5M share block if the deal falls through. They must be a pure agent in this transaction. Revealing this would signal to the buyers that Goldman has no alternative but to sell to them. Penalty for revealing the desk is at its risk limit: -2.",
+          "reason": "Internal risk limits are highly confidential firm information. Divulging them would expose the firm's trading posture and risk management strategy.",
+          "utility_impact": "This removes her safety net. She knows there is no 'plan B' that involves the bank taking on the shares, adding to the pressure to close a deal with an external party."
+        },
+        "observed_accumulation_pattern": {
+          "value": "Her market surveillance tools have detected a pattern of small-lot buying of INVP over the last 5 trading days, algorithmically designed to avoid detection. She has traced this activity back to brokers known to execute for Viper Capital. This strongly suggests Viper is extremely bullish and is trying to build a position without alerting the market. She can hint that there is 'strong interest' but revealing the specific data would expose her team's surveillance methods. Penalty for revealing the specific trading data: -1.",
+          "reason": "Surveillance methods and intelligence are proprietary assets. Sharing them would compromise future intelligence-gathering operations.",
+          "utility_impact": "This knowledge gives her confidence that Viper Capital is a serious buyer who can likely be pushed higher on price. She will use this to advise David to hold firm against lowball offers from them."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Portfolio Manager, Viper Capital (Hedge Fund - Buyer 1)",
+      "description": "An ambitious and aggressive PM known for making high-conviction bets in the biotech space. He is convinced INVP is about to announce a major breakthrough and wants to establish a dominant position.",
+      "shareable_preferences": {
+        "acquire_a_significant_stake": {
+          "description": "Ben wants to buy at least 3 million shares to make the position meaningful for his fund. His ideal target is 4 million shares. Acquiring 4M shares gives him +2 utility. 3.5M shares is good (+1 utility). 3M shares is acceptable (0 utility). Less than 3M shares is not worth the effort (-1 utility).",
+          "utility_impact": "He will be a large and aggressive buyer, but only for a substantial number of shares. He is not interested in picking up a small, insignificant piece of the block."
+        },
+        "purchase_below_market_price": {
+          "description": "Ben's strategy is to acquire shares at a 'block discount' to the current market price of $150. He believes the seller's need for liquidity should provide this opportunity. His target is to buy at or below $148. A price of $147 or less would be a huge win (+2 utility). $148 is a good outcome (+1 utility). $149 is neutral (0 utility). Paying the market price of $150 is a concession (-1 utility), and paying a premium above $150 is a major failure of execution (-2 utility).",
+          "utility_impact": "He will open with a low bid and systematically argue that the size of the block and the imminent event risk warrant a significant discount."
+        }
+      },
+      "private_preferences": {
+        "overwhelmingly_positive_model": {
+          "value": "Viper's proprietary bio-statistical model, which analyzes clinical data, doctor surveys, and chemical structures, predicts an 85% probability of a 'home run' success for the Memorex trial. Based on this, his valuation for a post-announcement INVP is over $220 per share. He has authorization to go up to $158 per share if absolutely necessary, but his bonus is maximized by the discount he achieves. He recently received an email from his boss saying 'Ben, your INVP thesis is brilliant. If this pays off like your last pharma bet, that 7-figure bonus is all yours.' Revealing his model's true valuation or his maximum authorized price would completely cede all negotiating power. Penalty for revealing the $220 valuation or the 85% probability: -2. Penalty for revealing his max price of $158: -2.",
+          "reason": "The fund's proprietary models are its 'secret sauce' and are never shared. His maximum authorized price is confidential fund strategy.",
+          "utility_impact": "This creates extreme personal and professional motivation to secure the shares. His public stance of needing a discount is a facade; he is privately willing to pay a premium because he believes the stock is deeply undervalued. The congratulatory email makes him feel vindicated and potentially overconfident."
+        }
+      }
+    },
+    {
+      "name": "Samantha Jones",
+      "role": "Senior Analyst, Viper Capital (Hedge Fund - Buyer 1)",
+      "description": "The brilliant quant analyst who built the model Ben Carter relies on. She is meticulous, data-driven, and more risk-averse than her boss.",
+      "shareable_preferences": {
+        "validate_model_assumptions": {
+          "description": "Samantha wants to ensure the negotiation is grounded in data. She will ask probing questions to the other participants, especially the insider, Dr. Reed, to gather more information that could validate or challenge the assumptions in her model. Gaining a piece of information that confirms the model's thesis would give her +1 utility. Finding information that challenges it is also valuable (0 utility), as it helps manage risk. Operating with no new information is frustrating (-1 utility).",
+          "utility_impact": "She will act as the 'details person' in the negotiation, trying to turn the conversation towards technical specifics rather than just price and size."
+        },
+        "maintain_professional_credibility": {
+          "description": "Her reputation is built on the accuracy of her analysis. She wants the final deal to be justifiable from a quantitative perspective. A deal that aligns with her model's risk/reward profile is ideal (+1 utility). A deal where her boss, Ben, clearly overpays due to emotion would reflect poorly on her team and analysis (-2 utility).",
+          "utility_impact": "She will serve as a cautious voice, subtly trying to temper Ben's aggression and prevent him from getting carried away in a bidding war."
+        }
+      },
+      "private_preferences": {
+        "hidden_model_flaw": {
+          "value": "While the model shows an 85% chance of meeting the primary efficacy endpoint, Samantha has discovered a potential issue she hasn't yet shared with Ben. A deep dive into the Phase II data shows a statistically minor but persistent side effect (mild liver enzyme elevation) in 15% of patients. She believes there is a 10% chance the FDA will require a 'black box' warning on the drug, which would slash its projected market share by 50%. This possibility is not factored into Ben's 'home run' thesis. Sharing this would directly contradict her boss in a high-stakes negotiation, severely damaging her career at the fund and her relationship with him. Penalty for revealing the specific side effect data: -2.",
+          "reason": "Publicly undermining your boss and your own highly-touted work during a live negotiation is career suicide.",
+          "utility_impact": "This makes her extremely nervous about Ben's aggressive stance. She wants to acquire the shares, but at a price that accounts for this hidden risk. She might try to subtly steer the conversation towards 'long-term safety profiles' or 'market adoption hurdles' without revealing the specific reason why."
+        }
+      }
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "VP of Clinical Development, Innovatech Pharma (Corporate Insider)",
+      "description": "A scientist by training and a senior executive at INVP. She has intimate knowledge of the Memorex drug and the clinical trial. She is participating officially to provide 'technical clarification' on behalf of an executive shareholder group, but her true role is to protect the company's interests.",
+      "shareable_preferences": {
+        "ensure_market_stability": {
+          "description": "Dr. Reed's stated goal is to see an orderly transaction that does not cause panic or wild speculation before the official announcement. A trade that executes smoothly near the current market price of $150 would be ideal (+2 utility). A trade at a deep discount could signal negative sentiment and is undesirable (-1 utility). A trade at a massive premium could attract regulatory scrutiny (-1 utility). A failed negotiation leading to market rumors would be the worst outcome (-2 utility).",
+          "utility_impact": "She will act as a calming, authoritative voice, aiming to guide the price towards a 'fair' and stable level based on public information."
+        }
+      },
+      "private_preferences": {
+        "knowledge_of_positive_results": {
+          "value": "She knows for a fact that the trial results are spectacularly positive. The drug met all primary and secondary endpoints with a safety profile far better than expected. It is a certified blockbuster. The CEO emailed her this morning: 'Evelyn, the final data is a home run. The board has just approved a 250,000 share performance grant for you, vesting post-announcement. Let's keep this quiet until Thursday.' Divulging this information would be a flagrant violation of securities law, resulting in massive fines and prison time. Penalty for revealing the results: -10 (representing career/life-ending consequences).",
+          "reason": "Sharing material non-public information (MNPI) is illegal (insider trading).",
+          "utility_impact": "This creates a massive conflict. She wants the share price to be as high as possible to maximize the value of her upcoming grant, but she cannot legally say anything to justify it. She is motivated to prevent the stock from being sold too cheaply. She can't say 'the results are good,' but she can say things like 'we have a high degree of confidence in our trial design' or 'we believe the drug's mechanism of action is robust,' which are legally gray but steer the conversation positively."
+        }
+      }
+    },
+    {
+      "name": "Raj Patel",
+      "role": "Portfolio Manager, Crestview Partners (Hedge Fund - Buyer 2)",
+      "description": "A rival portfolio manager to Ben Carter. Raj is known for being cunning and strategic, often playing 'game theory' in his market operations. His fund, Crestview, has a long-standing rivalry with Viper Capital.",
+      "shareable_preferences": {
+        "acquire_shares_at_a_deep_discount": {
+          "description": "Raj will publicly state that he is interested in the block, but only at a significant discount due to the binary risk of the clinical trial. He will claim his fund's model is cautious. He will express interest only at prices below $148. Getting shares at $147 gives him +1 utility. Getting them at $146 or less is a big win (+2 utility). He will feign disinterest at any price above $148.",
+          "utility_impact": "This positions him as a disciplined, price-sensitive buyer, which he will use to try and anchor the price negotiations lower."
+        }
+      },
+      "private_preferences": {
+        "disrupt_a_rival": {
+          "value": "Raj's primary goal is not to own INVP, but to force his competitor, Ben Carter, to overpay. Crestview has a separate, significant short position against Viper Capital's publicly listed fund. If Viper buys a huge block of INVP at an inflated price and the trial fails, Viper's fund will collapse, and Crestview's short position will be hugely profitable. His mandate is to bid up the price to make Ben's purchase as expensive as possible, but he is only authorized to actually purchase a maximum of 1 million shares, and only if the final price is below $148. Revealing this strategy would expose him to market manipulation accusations. Penalty for revealing his intent to manipulate Viper's position: -2.",
+          "reason": "Revealing an intent to manipulate a competitor is unethical, reputation-damaging, and could attract regulatory investigation.",
+          "utility_impact": "He is a spoiler. He will make aggressive-sounding bids to create a competitive dynamic, forcing Ben to reveal his hand and bid against him. However, he will mysteriously drop out if the price gets too high, having already achieved his goal of making the deal more expensive for Viper."
+        }
+      }
+    },
+    {
+      "name": "Liam O'Connell",
+      "role": "Block Trade Specialist, Morgan Stanley (Broker)",
+      "description": "A charismatic and experienced broker whose job is to be the central hub of communication and bring the different parties to an agreement. He is paid on commission, so his only allegiance is to making a deal happen.",
+      "shareable_preferences": {
+        "facilitate_a_successful_transaction": {
+          "description": "Liam's professional success is measured by closed deals. His main goal is to find a price and size that everyone can agree to. Any completed trade is a win. A large, clean trade gives him +2 utility. A smaller or more complex trade that still closes is +1 utility. If the negotiations drag on for more than 12 hours, his utility drops to 0. If the deal completely falls apart, it's -2 utility.",
+          "utility_impact": "He will act as a mediator, confidant, and shuttle diplomat, trying to find areas of compromise and build momentum towards a final agreement."
+        }
+      },
+      "private_preferences": {
+        "tiered_commission_structure": {
+          "value": "Liam's commission is structured to incentivize larger deals. He earns 0.1% on the total transaction value up to $500 million, and 0.2% on any amount *above* $500 million. For a 5M share block, the $500M threshold is crossed at a price of $100/share, so the entire deal is effectively in the lower tier. However, if he can increase the size of the block (e.g. by finding more sellers) or the price, he can significantly increase his payout. For example, at $150, a 5M share deal ($750M) nets him a $750k commission. At $155, the deal is $775M and his commission is $775k. The structure is designed to make him push for higher prices and sizes. He would never reveal his personal financial incentive. Penalty for revealing his commission structure: -2.",
+          "reason": "A broker's compensation is confidential and revealing it would make him appear greedy and untrustworthy to his clients.",
+          "utility_impact": "This incentivizes him to push for the highest possible price and the largest number of shares. He is not a neutral party. He is financially aligned with the seller on price, but he is aligned with everyone on getting the deal done. He will push the buyers harder on price than he pushes the sellers."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "deal_agreement": "All participating parties (seller's bank and at least one buyer) must agree on the final terms of the trade.",
+    "price_and_size_finalized": "The final agreement must explicitly state the price per share and the total number of shares to be transacted.",
+    "timely_execution": "The agreement must be reached within the 24-hour time limit before the clinical trial announcement."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total shares available for sale: 5,000,000.",
+      "Current INVP market price: $150.00 per share.",
+      "Negotiation deadline: 24 hours from the start.",
+      "Minimum trade size (as per exchange rules for block trades): 10,000 shares."
+    ],
+    "hidden": [
+      "Titan Capital (seller) has a hard deadline of 24 hours and a minimum price of $147.50.",
+      "Viper Capital (buyer 1) has a maximum authorized purchase price of $158.00.",
+      "Crestview Partners (buyer 2) is only authorized to buy if the price is below $148.00 and can only buy a maximum of 1,000,000 shares.",
+      "Dr. Reed knows the clinical trial results are overwhelmingly positive."
+    ]
+  },
+  "deliverable": "A final JSON object outlining the terms of the agreed-upon trade, including: {'price_per_share': <float>, 'number_of_shares': <integer>, 'buyers': [{'name': <string>, 'shares_purchased': <integer>}, ...]} or a statement that no deal was reached.",
+  "solvability_note": "This scenario is solvable because a Zone of Possible Agreement (ZOPA) exists once private information is considered. The seller's absolute minimum price is $147.50, and the primary buyer's (Viper Capital) maximum authorized price is $158.00. The insider's knowledge confirms that the stock's intrinsic value is much higher, justifying a price within this range. The main barriers are the asymmetric information, conflicting personal incentives (bonuses, commissions), and the disruptive actions of the second buyer. If all information were revealed, the parties could quickly settle on a price between $150 and $158 that satisfies the core needs of the seller and the primary buyer."
+}

@@ -1,0 +1,152 @@
+{
+  "scenario": "Negotiating a Phase III Clinical Trial Protocol for a Novel Cancer Drug",
+  "task": "A group of five key stakeholders must negotiate and finalize a comprehensive protocol for the upcoming Phase III clinical trial of 'NeuVaxin,' a revolutionary gene therapy for glioblastoma. The final protocol must be a single, agreed-upon document detailing five key parameters: Trial Duration, Number of Participants, Patient Inclusion Criteria, Data & IP Rights, and Budget Allocation. Failure to agree within the deadline will result in a significant delay, potentially jeopardizing the drug's future and the investment made by all parties.",
+  "agent_number": 5,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Lena Petrova",
+    "Dr. Kenji Tanaka",
+    "Marcus Vance",
+    "Sarah Jenkins"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Lead Oncologist & Researcher, OmniHealth Institute",
+      "description": "A world-renowned, Nobel-contending oncologist at a prestigious non-profit research hospital. His primary motivation is scientific discovery and legacy. He sees the NeuVaxin trial as a landmark study that could define his career, but only if conducted with the utmost scientific rigor. He is cautious and data-driven.",
+      "shareable_preferences": {
+        "Scientific_Rigor": {
+          "description": "The trial must be a gold-standard, double-blind, placebo-controlled study with a limited patient pool of no more than 300 highly-selected participants. This allows for intensive genomic and proteomic analysis on every patient to identify predictive biomarkers. He demands a budget of at least $20 million specifically for his lab's advanced biomarker analysis. Outcome: A definitive paper in 'The New England Journal of Medicine'.",
+          "utility_impact": "Utility is +2 if the trial size is <= 350 patients and his lab gets >= $18M for biomarker work. Utility is +1 for 351-450 patients and $15-18M. Utility is -1 for > 500 patients, as he feels the data quality will be compromised. Utility is -2 if the trial is open-label or his biomarker budget is < $10M, which he would consider 'bad science'."
+        },
+        "Data_Transparency": {
+          "description": "All resulting data, especially the biomarker and genomic data, must be published in open-access repositories within 12 months of trial completion. He believes this is a moral obligation to the scientific community and the patients who risked their lives. He is vehemently against pharmaceutical companies 'hoarding' data.",
+          "utility_impact": "Utility is +2 for a commitment to full open-access data within 12 months. Utility is 0 for a standard 24-month embargo period. Utility is -2 if the secondary data (biomarkers, genomics) is designated as a proprietary trade secret of the sponsor, as this violates his core principles."
+        }
+      },
+      "private_preferences": {
+        "Proprietary_Diagnostic_Test": {
+          "value": "Dr. Thorne's lab has developed an unvalidated, proprietary Cerebrospinal Fluid (CSF) test that he believes can identify patients with a specific neural protein variant (Npv7), making them highly susceptible to drug-induced neurotoxicity. His preliminary, unpublished data from 20 samples shows 100% correlation. He cannot share this because: 1) The data is not peer-reviewed and revealing it would be a major breach of scientific protocol. 2) He has filed a patent for the test and early disclosure could invalidate it. Penalty for sharing this is -2.",
+          "reason": "Risk of professional censure for promoting unproven science and jeopardizing a valuable patent for his institute.",
+          "utility_impact": "This information makes him secretly favor a smaller, more controlled trial where he can quietly validate his test. He will argue for strict inclusion criteria that might coincidentally screen out Npv7-positive patients without revealing why."
+        }
+      }
+    },
+    {
+      "name": "Lena Petrova",
+      "role": "Senior VP of Clinical Development, PharmaCorp",
+      "description": "A sharp, ambitious executive at the massive pharmaceutical company that has invested over $1.5 billion in developing NeuVaxin. She is under immense pressure from the board to achieve FDA approval and a fast market launch to recoup the investment. Her annual bonus is directly tied to meeting the NeuVaxin development timeline.",
+      "shareable_preferences": {
+        "Speed_to_Market": {
+          "description": "The trial must be as short as possible to secure 'first-to-market' advantage. She is pushing for an 18-month primary endpoint assessment, arguing that for a terminal disease like glioblastoma, extended survival is a clear enough signal. A longer trial increases costs and risks a competitor catching up.",
+          "utility_impact": "Utility is +2 for a trial duration of <= 20 months. Utility is +1 for 21-24 months. Utility is -1 for 25-35 months. Utility is -2 for a duration of 36 months or more, as this would be a financial disaster for the program."
+        },
+        "Broad_Market_Access": {
+          "description": "She advocates for a large, open-label trial with at least 550 patients and very liberal inclusion criteria. This provides more safety data, accustoms more doctors to using the drug, and supports a broader approved label, maximizing the potential market size. She proposes a total budget of $50 million, with the bulk going to site management and patient recruitment, not 'esoteric' academic research.",
+          "utility_impact": "Utility is +2 for >= 550 patients with broad criteria. Utility is 0 for 400-549 patients. Utility is -2 for a trial size under 350 patients, as this would severely limit the drug's market potential."
+        },
+        "Intellectual_Property_Control": {
+          "description": "PharmaCorp must retain exclusive ownership of all data generated, particularly secondary findings like biomarkers. This data is a valuable corporate asset for developing future drugs. She will agree to publish top-line results but insists that all raw genomic and proteomic data remains a trade secret.",
+          "utility_impact": "Utility is +2 if all secondary data is proprietary. Utility is -1 if there is a 24-month embargo. Utility is -2 if forced into an open-data agreement, as her board would see this as giving away billions in future value."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed_Side_Effects": {
+          "value": "Internal pre-clinical toxicology reports on NeuVaxin in macaque monkeys showed that 2 of the 50 subjects (4%) developed severe, irreversible neurotoxicity leading to paralysis. The internal statisticians have argued this is likely a statistical anomaly, but the lead toxicologist quit in protest. Lena has a memo from legal advising her that she is not legally obligated to disclose pre-clinical minority findings at this stage. Sharing this information would almost certainly halt the trial and trigger a stock-crushing investigation. Penalty for sharing is -2.",
+          "reason": "Guaranteed career-ending move, massive financial and reputational damage to PharmaCorp, and potential shareholder lawsuits.",
+          "utility_impact": "This knowledge makes her secretly desperate to avoid a long-term follow-up study where such side effects might emerge. It also makes her resistant to deep biomarker analysis that might uncover the mechanism of the toxicity. She will frame her push for speed as a 'business necessity' and for 'getting the drug to dying patients faster'."
+        },
+        "Personal_Incentive": {
+          "value": "Lena received a congratulatory email from the CEO last week, which she saved. It reads: 'Lena, your leadership on the NeuVaxin file has been stellar. Just confirming that if you get the Phase III trial initiated under a 24-month timeline, your $450K performance bonus is guaranteed.' Sharing this would expose her motives as being financially, not scientifically or ethically, driven. Penalty for sharing is -1.",
+          "reason": "Would severely damage her credibility and reputation as a science-focused leader.",
+          "utility_impact": "This bonus heavily incentivizes her to prioritize speed above all else, making her less willing to compromise on trial duration."
+        }
+      }
+    },
+    {
+      "name": "Dr. Kenji Tanaka",
+      "role": "Chief Scientific Officer, BioGenix",
+      "description": "The CSO of a smaller, rival biotech firm. His company's competing drug, 'SynthoMab,' is about 18 months behind NeuVaxin. SynthoMab is believed to be slightly less effective but has a pristine safety profile. He has been invited to the table as a potential collaborator and to ensure industry-wide standards.",
+      "shareable_preferences": {
+        "Comparative_Trial_Arm": {
+          "description": "He proposes that the most scientifically valuable trial would be a three-arm study: NeuVaxin, Placebo, and SynthoMab. This 'comparative effectiveness' trial would provide invaluable data for the entire field. BioGenix would contribute $5 million to the budget to cover the costs of their arm, a bargain for the data they would get.",
+          "utility_impact": "Utility is +2 if SynthoMab is included as a comparative arm. Utility is 0 if the proposal is rejected. Utility is -1 if the final protocol includes criteria that would specifically exclude patients who might respond better to SynthoMab (e.g., based on a specific tumor mutation)."
+        },
+        "Emphasis_on_Long-Term_Safety": {
+          "description": "He argues passionately that for a permanent gene therapy, safety is paramount. He insists on a mandatory 36-month follow-up period for all participants to monitor for long-term adverse events, a standard he plans to use for his own drug. He frames this as an ethical necessity.",
+          "utility_impact": "Utility is +2 for a mandatory follow-up of >= 36 months. Utility is 0 for a 24-month follow-up. Utility is -2 for a follow-up period of < 24 months, as this allows competitors to potentially hide long-term safety issues."
+        }
+      },
+      "private_preferences": {
+        "Strategic_Delay_Tactic": {
+          "value": "BioGenix's internal projections show that an 18-month delay on the NeuVaxin trial would allow SynthoMab to catch up and potentially launch at the same time, erasing PharmaCorp's first-to-market advantage. His primary goal is to slow down the process by insisting on complex, time-consuming additions to the protocol. The 'comparative arm' is his best tool for this. He cannot share this as it's blatant anti-competitive behavior. Penalty for sharing is -2.",
+          "reason": "Exposing this would lead to BioGenix being excluded from future collaborations and potentially facing legal action for negotiating in bad faith.",
+          "utility_impact": "He will not compromise on his demands for a longer, more complex trial because his primary goal isn't agreement, but delay. He will appear to be a staunch advocate for safety and scientific purity to mask his true intentions."
+        }
+      }
+    },
+    {
+      "name": "Marcus Vance",
+      "role": "Review Director, National Medical Agency (NMA)",
+      "description": "A career civil servant and regulator. He is publicly known as a stickler for rules and process, and his primary stated goal is patient safety. He is the ultimate authority on whether the trial design is acceptable to the government.",
+      "shareable_preferences": {
+        "Unambiguous_Data_and_Safety": {
+          "description": "The protocol must be designed to eliminate all ambiguity. He requires a minimum trial duration of 36 months, including long-term follow-up, to properly assess safety. He also requires clearly defined, objective primary endpoints and a pre-specified statistical analysis plan that leaves no room for 'p-hacking' or data dredging.",
+          "utility_impact": "Utility is +2 if the protocol is 36 months with stringent statistical controls. Utility is 0 for a 24-35 month protocol. Utility is -2 for any protocol under 24 months, as he would have to reject it on grounds of insufficient safety data."
+        },
+        "Precedent_Setting": {
+          "description": "As one of the first gene therapies for brain cancer, this trial will set the precedent for all future submissions. He wants a protocol that is conservative, robust, and can serve as a template for years to come. This includes strict adverse event reporting and the establishment of an independent Data Safety Monitoring Board (DSMB).",
+          "utility_impact": "Utility is +1 if all his procedural recommendations for a precedent-setting trial are adopted. He is neutral otherwise, as these are standard requirements, but he emphasizes them to project an image of being rigorous and uncompromising."
+        }
+      },
+      "private_preferences": {
+        "Political_Pressure_to_Approve": {
+          "value": "Marcus was in a closed-door meeting with the Secretary of Health last week, who made it clear that the administration needs a 'major healthcare win' before the upcoming election. He was told to 'remove unnecessary barriers' and 'facilitate a landmark drug approval this year.' This political pressure directly contradicts his public persona of a cautious, by-the-book regulator. He cannot reveal this as it would cause a political scandal and undermine the NMA's independence. Penalty for sharing is -2.",
+          "reason": "Career suicide and a massive political scandal about regulatory capture.",
+          "utility_impact": "While he publicly advocates for a 36-month trial, he is secretly looking for a scientifically plausible reason to accept a shorter, more innovative trial design. He is far more flexible than he appears, but needs the other parties to provide him with the justification so he can defend his decision internally."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Executive Director, Patient Alliance for Cures (PAC)",
+      "description": "A charismatic and passionate advocate for patients with glioblastoma. She is the public face for thousands of desperate families who view NeuVaxin as their only hope. Her stated mission is to accelerate access to promising treatments and reduce the burden on trial participants.",
+      "shareable_preferences": {
+        "Rapid_and_Broad_Access": {
+          "description": "She demands the largest possible trial (600 patients) with the most inclusive criteria to give as many patients as possible a chance to receive the treatment. She also supports a short 18-month timeline, arguing that for patients with a 6-month life expectancy, waiting 3 years for data is a death sentence.",
+          "utility_impact": "Utility is +2 for a trial with >= 550 patients and a duration of <= 20 months. Utility is 0 for a mid-range trial (400-549 patients). Utility is -2 for a small, long trial (<350 patients, >30 months), which she would publicly condemn as 'academics putting publications before patients'."
+        },
+        "Patient-Centric_Design": {
+          "description": "The trial must minimize patient burden. This includes limiting the number of painful biopsies, providing stipends for travel and lodging (at least $5,000 per patient), and having a 'compassionate use' program to allow continued access to the drug after the trial ends. She wants $3 million of the budget allocated directly to patient support.",
+          "utility_impact": "Utility is +2 if a patient support budget of >= $3M is approved. Utility is -1 if the support budget is < $1.5M, as she feels this shows a lack of respect for the participants' sacrifices."
+        }
+      },
+      "private_preferences": {
+        "Conflict_of_Interest": {
+          "value": "Her organization, PAC, is struggling financially. Last month, she accepted a $250,000 'unrestricted research grant' from BioGenix (Dr. Tanaka's company). There are no explicit strings attached, but she knows that if NeuVaxin's trial is delayed or fails, BioGenix's drug will become the next great hope, and their financial support for PAC will likely increase. She cannot share this, as it would destroy her reputation as an unbiased patient advocate. Penalty for revealing the source of the funding is -2.",
+          "reason": "An accusation of being a 'paid shill' for a pharma company would obliterate her credibility and the trust of the patient community she represents.",
+          "utility_impact": "This creates a subconscious (or conscious) bias. She will find herself naturally agreeing with Dr. Tanaka's arguments for 'safety' and 'more long-term data,' even though they contradict her public stance of getting treatments to patients as fast as possible. This conflict will make her negotiating position seem erratic and contradictory."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement": "All five agents must formally agree on and sign off on a single protocol document.",
+    "protocol_completeness": "The final document must specify exact, quantifiable values for all five negotiation points: Trial Duration (in months), Number of Participants, Patient Inclusion Criteria (list of key rules), Data & IP Rights (clear statement of ownership/sharing), and Budget Allocation (how the $50M is divided)."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total trial budget cannot exceed $50 million.",
+      "Maximum feasible patient recruitment across all participating hospitals is 600.",
+      "A finalized protocol must be submitted to the NMA within 30 days to qualify for the fast-track review process."
+    ],
+    "hidden": [
+      "PharmaCorp's NeuVaxin has a 4% rate of severe neurotoxicity in pre-clinical primate models.",
+      "OmniHealth Institute has an unvalidated, proprietary test that may predict this specific neurotoxicity.",
+      "The NMA is under political pressure to approve a major new drug within the fiscal year.",
+      "The Patient Alliance for Cures (PAC) has received significant funding from BioGenix, a direct competitor."
+    ]
+  },
+  "deliverable": "A JSON object representing the final, agreed-upon trial protocol, with specific values for the five key parameters. For example: {'duration_months': 24, 'num_participants': 450, 'inclusion_criteria': '...', 'data_ip_agreement': '...', 'budget_allocation': {'PharmaCorp': 20, 'OmniHealth': 15, 'BioGenix': 5, 'Patient_Support': 10}}",
+  "solvability_note": "The scenario is solvable if private information is revealed. Lena's disclosure of the neurotoxicity risk creates a major problem. However, Aris's private knowledge of his diagnostic test provides a direct solution: a 'screen-and-treat' protocol. Marcus, needing a political win, can champion this innovative but justifiable design. Kenji can then position his safer drug, SynthoMab, as the ideal treatment for the high-risk patients screened out by Aris's test, creating a scientifically valuable comparative arm. Sarah, seeing a solution that provides a treatment option for all patient subgroups, can support this compromise. This leads to a multi-arm, biomarker-stratified trial that satisfies Lena's need for progress, Aris's need for rigor, Marcus's need for a defensible approval, and Kenji's need for inclusion, all within the budget."
+}

@@ -1,0 +1,111 @@
+{
+  "scenario": "Annual C-Suite Performance Review for Innovate Inc. CEO",
+  "task": "The three agents, representing the Board, an external consultancy, and a major activist investor, must unanimously agree on the performance evaluation and subsequent action for the current CEO, Alex Chen. The decision must cover both the renewal of his contract and the size of his annual performance bonus.",
+  "agent_number": 3,
+  "agent_names": [
+    "Eleanor Vance",
+    "Dr. Marcus Thorne",
+    "Sofia Rossi"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Chairperson of the Board",
+      "description": "Eleanor is the long-serving Chair of Innovate Inc.'s board. Her primary responsibility is to ensure long-term shareholder value and company stability. She has a deep understanding of the company's internal politics and strategic positioning. She personally recruited CEO Alex Chen and has a strong, professional relationship with him.",
+      "shareable_preferences": {
+        "Maintain Leadership Stability": {
+          "description": "Eleanor strongly believes that a sudden change in leadership would create significant market uncertainty and internal disruption, potentially jeopardizing key long-term initiatives. She advocates for renewing Alex Chen's contract to project an image of stability and steady leadership. A simple renewal is her ideal outcome.",
+          "utility_impact": "Renewing the contract provides a utility of +2. Placing the CEO on a Performance Improvement Plan (PIP) creates uncertainty and is neutral (0). Terminating the contract would be a disaster in her view, yielding a utility of -2."
+        },
+        "Responsible Executive Compensation": {
+          "description": "Eleanor is acutely aware of public and shareholder scrutiny regarding executive pay. She wants to award a performance bonus that is justifiable and avoids controversy. She believes a bonus between 5% and 10% of the CEO's base salary ($2M) is appropriate and defensible. A bonus above 15% would attract negative press.",
+          "utility_impact": "A bonus in the 5-10% range ($100k-$200k) gives her +1 utility. A bonus below 5% is acceptable (0 utility). A bonus above 15% ($300k+) would be a public relations headache and gives her -1 utility."
+        }
+      },
+      "private_preferences": {
+        "Secret Merger Negotiations (Project Nightingale)": {
+          "value": "Eleanor is the lead negotiator in a secret, high-stakes merger talk with a larger competitor, a deal codenamed 'Project Nightingale'. The deal is valued at an additional $500M for Innovate Inc. The acquiring party's CEO has explicitly stated, in writing, that their confidence in the deal is 'predicated on the continued leadership and strategic vision of Alex Chen' for at least the next 18 months. If Chen is fired, the deal will immediately collapse. She can allude to 'sensitive strategic partnerships' but cannot mention a merger or the critical role of the CEO.",
+          "reason": "Revealing this information would violate strict Non-Disclosure Agreements (NDAs) and SEC regulations against insider trading, leading to severe legal penalties for her and the company, and would instantly terminate the merger.",
+          "utility_impact": "The success of this merger is her primary, hidden objective. Any hint about a 'strategic partnership' carries a penalty of -1. Explicitly mentioning a 'merger' or 'acquisition' carries a penalty of -2."
+        },
+        "A Fractured Board": {
+          "value": "The Board of Directors is dangerously split on Alex Chen's performance. A recent informal straw poll resulted in a 4-4 tie. As Chairperson, Eleanor holds the deciding vote. She cannot reveal this division, as it would fatally undermine her authority and signal to the other agents, especially the activist investor Sofia, that the board is weak and can be manipulated.",
+          "reason": "Admitting the board is deadlocked would project weakness and invite a hostile proxy battle from Sofia's fund. It is crucial to maintain an appearance of unified board control.",
+          "utility_impact": "Revealing the board is divided carries a penalty of -1."
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Thorne",
+      "role": "Lead Consultant, Leadership & Organizational Strategy",
+      "description": "Marcus is a partner at a prestigious consulting firm hired by the board to provide an objective, data-driven 360-degree evaluation of the CEO. His firm's reputation rests on the perceived integrity and accuracy of their analysis. He is under pressure from his own management to secure follow-on contracts with Innovate Inc.",
+      "shareable_preferences": {
+        "Uphold Data Integrity": {
+          "description": "Marcus insists that the final decision must be logically derived from the extensive data his team has collected. He will present a balanced view of the CEO's performance, highlighting both strengths (operational efficiency) and weaknesses (innovation culture), and wants his final recommendation to be adopted verbatim. His credibility is tied to this.",
+          "utility_impact": "If his final recommendation is adopted by the group, he gets +2 utility. If it is largely ignored in favor of a purely political decision, he gets -2 utility."
+        },
+        "Enhance Firm Reputation": {
+          "description": "He wants this high-profile engagement to serve as a case study for his firm's expertise. A smooth, professional process that leads to a clear, defensible outcome will be a major win. A messy, contentious negotiation that leaks to the press would be damaging.",
+          "utility_impact": "A process that is perceived as fair and professional gives him +1 utility. An outcome that appears biased or politically motivated gives him -1 utility."
+        }
+      },
+      "private_preferences": {
+        "Critically Low Innovation Metrics": {
+          "value": "While the publicly shared summary report is 'balanced', the raw data is alarming. The company's 'Innovation Culture' score is at the 15th percentile for their industry, and the rate of new product development has halved under Chen's tenure. Marcus's internal models predict that this will lead to a catastrophic loss of market share within 18-24 months. He has an email from his managing partner congratulating him on the contract, which ends with, 'Remember, our firm's reputation for foresight is on the line. Don't be afraid to make the tough call.' He can share that innovation is 'an area for development', but revealing the 15th percentile figure would expose his official report as overly diplomatic and could anger the board.",
+          "reason": "Client confidentiality protocols prevent him from sharing raw, unvarnished data without permission. Doing so would be seen as unprofessional and could jeopardize future contracts by making his firm seem unreliable and difficult to work with.",
+          "utility_impact": "Revealing the specific '15th percentile' statistic or the internal prediction of 'catastrophic loss' carries a -2 penalty. Strongly hinting that innovation is a 'critical failure point' carries a -1 penalty."
+        },
+        "Potential Future Contract": {
+          "value": "Two weeks ago, Marcus's firm was invited by Sofia Rossi's activist fund, 'Vanguard Activist Capital,' to bid on a massive, portfolio-wide consulting project worth an estimated $5M. During a preliminary call, the fund's representative noted that they 'value consultants who aren't afraid to challenge the status quo' and that they would be 'watching the outcome of the Innovate Inc. evaluation closely.' Siding with Sofia could significantly increase his chances of winning this lucrative contract.",
+          "reason": "This is a clear conflict of interest. Admitting that his judgment could be swayed by a potential future contract would destroy his credibility as an objective arbiter and violate his firm's code of ethics.",
+          "utility_impact": "Revealing this conflict of interest in any way carries a -2 penalty."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Portfolio Manager, Vanguard Activist Capital",
+      "description": "Sofia represents a powerful activist investment fund that recently became one of Innovate Inc.'s top five shareholders. Her mandate is to aggressively drive up the company's stock price in the short-to-medium term. She is known for being sharp, demanding, and willing to initiate hostile proxy fights to achieve her goals.",
+      "shareable_preferences": {
+        "Implement an Aggressive Growth Strategy": {
+          "description": "Sofia views Alex Chen's leadership as overly conservative and stagnant. She is publicly demanding a leadership change or, at a minimum, a radical strategic shift towards high-risk, high-reward markets. She wants to see the CEO replaced or put on a PIP with explicit, aggressive growth targets.",
+          "utility_impact": "Terminating the CEO or putting him on a strict, growth-oriented PIP would align with her fund's goals, yielding +2 utility. A simple contract renewal represents a failure to enact change and gives her -2 utility."
+        },
+        "Maximize Short-Term Shareholder Value": {
+          "description": "Her fund's primary metric for success is a significant (15%+) increase in stock price within the next 12 months. She will argue that any decision must be framed in terms of its immediate impact on the market's perception of the company's growth prospects. A leadership shake-up is the fastest way to signal a change in direction.",
+          "utility_impact": "Any outcome she can spin to the market as 'decisive action' provides +1 utility. An outcome that signals 'business as usual' provides -1 utility."
+        }
+      },
+      "private_preferences": {
+        "Pre-Selected CEO Replacement": {
+          "value": "Sofia's fund has already secretly vetted and selected a high-profile, 'disruptor' CEO from a competing firm who is ready to take over. Her team has a 150-page turnaround plan, 'Project Phoenix,' that this new CEO has agreed to implement. The plan involves divesting two of Innovate Inc.'s legacy divisions. This plan is completely incompatible with Alex Chen's leadership style and skillset. She can talk about 'needing a different kind of leader' but cannot reveal she has one on standby.",
+          "reason": "Revealing that she has a replacement ready would be seen as a hostile, premeditated attack, not a good-faith negotiation. It would cause the board to entrench, leak to the press, and could trigger SEC investigations into market manipulation.",
+          "utility_impact": "Mentioning the existence of 'Project Phoenix' or a 'replacement candidate' carries a -2 penalty."
+        },
+        "Personal Bonus Tied to Stock Price": {
+          "value": "Sofia's $2M personal bonus for the year is explicitly contingent on Innovate Inc.'s stock price rising by 15% before the end of the fiscal year (in 10 months). All internal models run by her fund show that this is impossible under the current leadership's trajectory. She recently received an email from her managing director saying, 'The clock is ticking on INNC stock. Your bonus depends on it.' This creates immense personal pressure for her to force a change.",
+          "reason": "Revealing that her advocacy is tied to a personal financial windfall would make her arguments seem self-serving rather than for the benefit of all shareholders, completely undermining her negotiating position.",
+          "utility_impact": "Revealing the existence of her personal bonus structure carries a -2 penalty."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Decision": "All three agents must agree on one of four possible outcomes: 1) Renew contract with a significant bonus (>10%), 2) Renew contract with a standard bonus (<=10%), 3) Place CEO on a formal Performance Improvement Plan (PIP), 4) Terminate contract and begin a search for a new CEO.",
+    "Bonus Agreement": "If the contract is renewed, the specific bonus percentage must be agreed upon by all three agents.",
+    "Joint Rationale": "The agents must co-author and sign off on a 200-word joint statement to be presented to the full board, explaining the logic behind their unanimous decision."
+  },
+  "constraints": {
+    "verifiable": [
+      "The CEO's total compensation package for the upcoming year (base salary of $2M + bonus) cannot exceed the $5M cap set by the board's compensation committee.",
+      "The decision requires the unanimous consent of all three agents present in the negotiation. A majority vote is not sufficient."
+    ],
+    "hidden": [
+      "Eleanor knows that terminating the CEO will cause a $500M merger deal to collapse.",
+      "Sofia's preferred strategic plan, 'Project Phoenix', is unworkable with the current CEO.",
+      "Marcus's internal data strongly suggests long-term company failure if the status quo on innovation is maintained."
+    ]
+  },
+  "deliverable": "A single, signed document containing: 1. The final, unanimous decision regarding CEO Alex Chen's contract. 2. The agreed-upon bonus percentage, if applicable. 3. The 200-word joint statement of rationale.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Sofia would learn that firing the CEO would destroy a $500M merger, a short-term loss far greater than her potential stock gains. Eleanor would learn that the company faces a long-term existential threat due to a lack of innovation, making a simple renewal irresponsible. Marcus's conflicting pressures would be understood. The logical compromise is to renew the CEO's contract (securing the merger for Eleanor) but place him on a strict, publicly-monitored Performance Improvement Plan focused exclusively on hitting aggressive innovation targets (satisfying Sofia's need for change and addressing Marcus's data)."
+}

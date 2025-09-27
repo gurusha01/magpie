@@ -1,0 +1,226 @@
+{
+  "scenario": "Annual Course Scheduling and Resource Allocation at Northwood University",
+  "task": "A committee of five key university personnel must negotiate and finalize the course schedule, classroom assignments, and the allocation of a new course development budget for the upcoming Fall semester. The negotiation involves resolving conflicts over limited prime-time slots, a state-of-the-art lecture hall, and discretionary funds, all while navigating internal politics and confidential departmental information. The final plan requires unanimous approval.",
+  "agent_number": 5,
+  "agent_names": [
+    "Dr. Eleanor Vance",
+    "Dr. Marcus Thorne",
+    "Dr. Isabella Rossi",
+    "Dr. Samuel Chen",
+    "Dean Katherine Miller"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Eleanor Vance",
+      "role": "Head of Computer Science Department",
+      "description": "Ambitious and forward-thinking, Dr. Vance is determined to position her department as a national leader in Artificial Intelligence. She believes securing the right resources for her new flagship AI course is the first, most critical step. She is under immense pressure from her faculty and the Provost to grow her program.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Secure the 'Tech Hub Auditorium' (Room 301) for the new 'CS450: Applied Machine Learning' course. This room is the only one on campus with the necessary multi-screen projection capabilities and integrated GPU computing access points required for the hands-on labs she has planned. Anything less would compromise the course's integrity and prestige.",
+          "utility_function": {
+            "get_room_301": "+2 (This is a major victory, crucial for the course's success)",
+            "get_room_205_with_upgrade_promise": "+1 (Acceptable compromise, but creates uncertainty)",
+            "get_standard_lecture_hall": "-1 (Significantly hampers the course delivery, reflects poorly on the department)",
+            "course_cannot_be_offered_due_to_room": "-2 (A complete failure and public embarrassment)"
+          }
+        },
+        "preference2": {
+          "description": "Obtain the Tuesday/Thursday 10:00 AM - 11:30 AM prime-time slot. This slot is essential to attract the maximum number of students, especially high-achieving ones from other departments like Engineering and Business, maximizing cross-departmental enrollment for the new course.",
+          "utility_function": {
+            "get_tth_10:00_slot": "+2 (Ideal for maximizing enrollment and prestige)",
+            "get_mwf_11:00_slot": "+1 (A good alternative, still high-traffic)",
+            "get_late_afternoon_slot": "-1 (Drastically reduces enrollment potential)",
+            "get_friday_only_slot": "-2 (Seen as a 'graveyard slot', signals the course is not a priority)"
+          }
+        },
+        "preference3": {
+          "description": "Secure at least $60,000 from the $100,000 New Course Development Fund. This money is earmarked for purchasing specialized software licenses for the AI course, hiring two expert Teaching Assistants, and funding a cloud computing budget for student projects. She can publicly justify this by pointing to the high setup costs of tech-intensive courses.",
+          "utility_function": {
+            "get_over_60k": "+2 (Fully funds the course's ambitious goals)",
+            "get_40k_to_59k": "+1 (Can launch the course, but with significant compromises on student projects)",
+            "get_20k_to_39k": "-1 (Barely covers TAs, jeopardizes the course's quality)",
+            "get_less_than_20k": "-2 (Cannot responsibly launch the course)"
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Dr. Vance is in the final, confidential stages of securing a $500,000 grant from a major tech corporation, 'Innovate Inc.'. A key condition, stipulated in a non-disclosure agreement, is the successful launch of 'CS450: Applied Machine Learning' this Fall semester with an enrollment of at least 100 students. She has an email from her corporate contact congratulating her on being the top candidate and stating the grant is hers 'barring any last-minute failures to launch'. She can vaguely hint at 'significant industry interest' but cannot mention the company or the amount.",
+          "reason": "Revealing the grant prematurely violates a strict NDA and would cause Innovate Inc. to immediately withdraw the offer, causing catastrophic financial and reputational damage to her and her department.",
+          "utility_impact": {
+            "hint_at_industry_partnership": "-1 penalty (Risky, but might be necessary to show the stakes)",
+            "reveal_company_name_or_grant_amount": "-5 penalty (Immediate and disastrous consequences)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Thorne",
+      "role": "Head of Humanities Department",
+      "description": "A passionate defender of the liberal arts, Dr. Thorne has spent years fighting declining enrollments and budget cuts. He is deeply skeptical of the university's focus on 'trendy' tech programs at the expense of foundational education. His primary goal is to protect his department's core offerings and the morale of his long-serving faculty.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Retain the Tuesday/Thursday 10:00 AM - 11:30 AM slot for 'HUM101: History of Thought'. This flagship course has run in this prime slot for over 20 years, taught by the highly respected (and notoriously stubborn) Professor Alistair Finch. Moving it would be seen as a deep disrespect to the department and could cause a revolt among senior faculty.",
+          "utility_function": {
+            "retain_tth_10:00_slot": "+2 (Maintains stability and prestige, keeps senior faculty happy)",
+            "move_to_mwf_11:00_slot": "0 (Not ideal, but Professor Finch might accept it with grumbling)",
+            "move_to_afternoon_slot": "-1 (Considered a major slight, will cause significant faculty backlash)",
+            "move_to_early_morning_or_friday_slot": "-2 (Professor Finch would likely refuse to teach it, creating a crisis)"
+          }
+        },
+        "preference2": {
+          "description": "Prevent any cuts to the Humanities operating budget. He fears the New Course Development Fund is a zero-sum game, and any money allocated to CS or Business will be quietly clawed back from his department later in the year. He wants a public commitment from the Dean that his budget will be held harmless.",
+          "utility_function": {
+            "get_public_no_cut_guarantee": "+2 (Provides security for his department for the fiscal year)",
+            "get_vague_reassurance_from_dean": "0 (Better than nothing, but doesn't trust it)",
+            "any_new_course_funding_exceeds_50k": "-1 (Makes him extremely nervous about future cuts)",
+            "dean_refuses_to_comment_on_his_budget": "-2 (Confirms his worst fears)"
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Dr. Thorne has just received a confidential preliminary enrollment report for the Fall semester. To his astonishment, it shows a 15% year-over-year increase in declared Humanities majors among incoming freshmen, the first increase in over a decade. The Provost's office has classified this data as 'unverified and confidential' and strictly forbidden its dissemination until the official census day. He can allude to 'renewed student interest' but cannot cite the specific, powerful number.",
+          "reason": "Sharing unverified data is a serious breach of university protocol. If the final numbers don't match, he would lose all credibility with the Dean and other department heads, and be seen as manipulative and incompetent.",
+          "utility_impact": {
+            "mention_positive_enrollment_trends": "0 penalty (Acceptable negotiation tactic)",
+            "reveal_the_specific_15_percent_figure": "-3 penalty (High risk, high reward. If it works, he's a hero; if it backfires or he's caught, his career is damaged.)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Isabella Rossi",
+      "role": "Head of the Business School",
+      "description": "Pragmatic and market-savvy, Dr. Rossi is focused on keeping the Business School curriculum relevant and prestigious. She sees interdisciplinary collaboration, especially with the tech sector, as the future. Her goal is to launch a new FinTech program that will attract top-tier students and corporate partnerships.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Secure the 'Tech Hub Auditorium' (Room 301) for her new 'FIN480: Blockchain and Financial Technology' course. The room's tiered, semi-circular layout is essential for the case-study and debate-style pedagogy the course is built on. The advanced AV is also needed for virtual guest speakers from the finance industry.",
+          "utility_function": {
+            "get_room_301": "+2 (Perfectly matches the pedagogical needs of this high-profile course)",
+            "get_a_standard_case_study_room": "0 (Workable, but lacks the 'wow' factor and tech integration)",
+            "get_a_standard_lecture_hall": "-2 (Completely inappropriate for the teaching style, forces a redesign of the entire course)"
+          }
+        },
+        "preference2": {
+          "description": "Obtain a prime morning time slot, preferably T/Th, to accommodate guest lecturers from the financial sector who are typically only available before their workday begins in earnest. An afternoon slot is a non-starter.",
+          "utility_function": {
+            "get_any_tth_morning_slot": "+2 (Maximizes potential for industry guest lecturers)",
+            "get_any_mwf_morning_slot": "+1 (Also very good, provides flexibility)",
+            "get_any_afternoon_slot": "-2 (Makes securing high-profile guest speakers nearly impossible)"
+          }
+        },
+        "preference3": {
+          "description": "Secure at least $40,000 from the New Course Development Fund to pay for proprietary financial modeling software (like a Bloomberg Terminal license) and to provide stipends for the industry guest lecturers.",
+          "utility_function": {
+            "get_over_40k": "+2 (Fully funds the course's tech and guest speaker needs)",
+            "get_25k_to_39k": "+1 (Covers software, but significantly reduces speaker budget)",
+            "get_less_than_25k": "-1 (Cannot afford the necessary software, undermining the course's premise)"
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Dr. Rossi has a tentative 'yes' from Dr. Julian Croft, a world-renowned FinTech innovator and venture capitalist, to co-teach the course as a visiting Executive Professor. Dr. Croft's involvement would be a massive coup for the university. However, his non-negotiable conditions are the T/Th morning slot (he flies in from another city) and the use of the Tech Hub Auditorium, which he has personally vetted. The contract is not yet signed, and he has explicitly stated he will walk away if his name is used publicly before it is official.",
+          "reason": "Publicly revealing Dr. Croft's name before a signed contract is a major breach of trust and academic protocol. It would insult Dr. Croft, who values his privacy, and likely cause him to withdraw, scuttling the entire initiative.",
+          "utility_impact": {
+            "hint_at_a_high_profile_guest": "-1 penalty (A calculated risk to add weight to her request)",
+            "reveal_dr_crofts_name": "-5 penalty (Guaranteed to lose him and suffer immense reputational damage)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Samuel Chen",
+      "role": "University Registrar",
+      "description": "Meticulous and impartial, Dr. Chen is the guardian of university scheduling rules and policies. His primary motivation is to create a functional, efficient, and clash-free schedule that maximizes classroom utilization and serves the greatest number of students. He is not aligned with any department but must enforce the constraints of the system.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Maximize classroom utilization rate, aiming for 85% occupancy during prime hours (9 AM - 3 PM). This is a key performance indicator for his office. Assigning large courses to large rooms and small courses to small rooms is critical.",
+          "utility_function": {
+            "achieve_over_85_percent_utilization": "+2 (Exceeds his performance goals)",
+            "achieve_75_to_84_percent_utilization": "+1 (Meets expectations)",
+            "utilization_drops_below_75_percent": "-1 (Requires explanation to his superiors)",
+            "major_inefficiencies_in_schedule": "-2 (A failure in his core duty)"
+          }
+        },
+        "preference2": {
+          "description": "Avoid any manual overrides or exceptions to the standard scheduling time blocks. Exceptions create a domino effect of complications and are a nightmare to manage. He wants the departments to agree on courses within the existing, established blocks.",
+          "utility_function": {
+            "zero_manual_overrides": "+2 (A perfectly clean and manageable schedule)",
+            "one_or_two_minor_exceptions": "0 (Annoying but manageable)",
+            "three_or_more_major_exceptions": "-2 (Creates chaos and undermines the integrity of the scheduling system)"
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Dr. Chen knows that the university's classroom scheduling software, 'ScheduleSource', has a critical bug that miscalculates the capacity of all tiered lecture halls, reporting them as having 10% more seats than they actually do. IT has informed him that a patch is a month away, well after the schedule must be finalized. If a 100-student class is booked into a room the system lists as having 105 seats, it may in reality only have 95, which would be a fire code violation and a logistical disaster on the first day of class.",
+          "reason": "Revealing a major failure in a critical university-wide software system would cause widespread panic, erode trust in his office, and could halt all registration. His boss has instructed him to 'manage the situation quietly' without disclosing the bug's existence.",
+          "utility_impact": {
+            "sharing_this_information": "-4 penalty (He would likely be fired for causing a university-wide panic and violating a direct order)"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dean Katherine Miller",
+      "role": "Dean of the College of Arts & Sciences",
+      "description": "As the Dean overseeing both the CS and Humanities departments, Katherine Miller must balance competing interests while advancing the strategic goals of the university. She is a visionary leader who believes in interdisciplinary studies but is also accountable for the college's overall budget. She has convened this meeting to force a collaborative solution.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Foster a successful inter-departmental collaboration. She wants to see at least one tangible outcome of cooperation, such as a cross-listed course or a shared resource agreement, to justify her push for a more integrated college.",
+          "utility_function": {
+            "cs_and_business_agree_to_share_room_301": "+1 (A good sign of cooperation)",
+            "cs_humanities_and_business_agree_on_joint_funding": "+2 (An ideal outcome demonstrating true collaboration)",
+            "departments_refuse_to_cooperate": "-1 (A frustrating setback)",
+            "negotiation_ends_in_stalemate": "-2 (A failure of her leadership)"
+          }
+        },
+        "preference2": {
+          "description": "Ensure the $100,000 New Course Development Fund is fully and strategically allocated. She does not want the money to be divided equally in a simple compromise; she wants it invested in initiatives that promise the most growth and innovation.",
+          "utility_function": {
+            "funds_allocated_to_innovative_interdisciplinary_courses": "+2 (Perfectly aligns with her strategic vision)",
+            "funds_allocated_to_a_single_strong_proposal": "+1 (A good, focused investment)",
+            "funds_split_evenly_with_no_clear_strategy": "-1 (A waste of a strategic opportunity)",
+            "funds_not_fully_allocated_due_to_disagreement": "-2 (A failure to capitalize on a university investment)"
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "The $100,000 fund is secretly the seed money for a much larger, university-wide strategic initiative she is championing: a new 'Data Science & Society' interdisciplinary major. This major would require core courses from CS (like AI), Business (like FinTech), and Humanities (like a new 'Digital Ethics' course). She is using this negotiation as a test to see which department heads are collaborative and forward-thinking enough to lead this new venture. She wants to award the funds to the departments that show a willingness to work together towards this implicit goal.",
+          "reason": "Revealing the full scope of the new major before getting buy-in from the Provost and before assessing her department heads' collaborative spirit would be premature. It could lead to departments fighting over control of the new major from the outset, rather than genuinely co-creating it.",
+          "utility_impact": {
+            "hinting_at_a_larger_strategic_plan": "-1 penalty (Could cause people to become suspicious and start posturing)",
+            "revealing_the_data_science_and_society_major": "-4 penalty (Derails the current negotiation and shows her hand too early, potentially jeopardizing the entire initiative at the university level)"
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "Unanimous agreement on the final allocation of the Tech Hub Auditorium (Room 301) and the prime T/Th 10:00 AM slot.",
+    "criterion2": "A complete and finalized, clash-free course schedule for all courses discussed by the committee is produced and signed off on.",
+    "criterion3": "The full $100,000 New Course Development Fund is allocated to one or more departments, with no remaining balance.",
+    "criterion4": "The final plan is formally approved by all five agents, with no outstanding objections."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total New Course Development Fund available: $100,000.",
+      "There is only one 'Tech Hub Auditorium' (Room 301).",
+      "Standard university time blocks must be used (e.g., T/Th 10:00-11:30, MWF 11:00-11:50).",
+      "No two courses from the represented departments can be assigned to the same room at the same time.",
+      "Professor Alistair Finch has seniority rights that guarantee him a prime-time teaching slot (defined as 9 AM - 2 PM)."
+    ],
+    "hidden": [
+      "The scheduling software overstates the capacity of tiered lecture halls by 10%. (Known only to Dr. Chen)",
+      "The $100k fund is seed money for a new 'Data Science & Society' major. (Known only to Dean Miller)",
+      "A $500k corporate grant for the CS department is contingent on the successful launch of the AI course. (Known only to Dr. Vance)",
+      "A world-renowned industry expert has agreed to co-teach the Business course, but only in Room 301 during the T/Th morning slot. (Known only to Dr. Rossi)",
+      "Preliminary data shows a 15% surge in Humanities major declarations. (Known only to Dr. Thorne)"
+    ]
+  },
+  "deliverable": "A single, agreed-upon JSON object detailing the final schedule and resource plan. The object should contain a list of courses, each with keys for 'course_name', 'department', 'assigned_room', 'assigned_time_slot', and a separate object detailing the 'budget_allocations' from the New Course Development Fund to each department.",
+  "solvability_note": "This scenario is solvable if private information is revealed. The massive $500k CS grant makes funding the AI course a top university priority. The prestigious visiting professor for Business justifies their claim to high-end resources. The Dean's secret plan for a 'Data Science & Society' major provides a perfect framework for these two courses to coexist as foundational pillars of a new program. They could share Room 301 (e.g., CS on T/Th, Business on M/W) or co-list their courses. The surprising surge in Humanities enrollment justifies protecting their budget and prime slots, and they could be brought into the new major via a required 'Digital Ethics' course, funded by a portion of the development budget. Dr. Chen's software bug can be mitigated by this new plan, as the new high-profile courses would get priority for manual verification of their room capacity, avoiding disaster."
+}
