@@ -105,13 +105,26 @@ class Agent:
         self.role = role
         self.description = description
         self.shareable_preferences = shareable_preferences
-        self.private_preferences = private_preferences
         self.llm_type = llm_type
         self.memory = []  # Main memory - strategic notes and important observations
         self.temp_memory = []  # Temp memory - current conversation state
         self.current_proposal = None
         self.proposal_status = "none"  # "none", "pending", "accepted", "rejected"
         self.api_key = api_key
+        # private_preferences_string = f"The private preferences are: {private_preferences}. Can you remove everything hinting the penalty to disclose this information to other agents, and just retain the description of the private preference and the value of the private preference. give the response in json format."
+        # private_pref_response = generate_single_gemini(private_preferences_string)
+        # # extract the json between ```json and ``` from the response
+        # try:
+        #     private_pref_response = private_pref_response.split("```json")[1].split("```")[0]
+        #     private_pref_response = json.loads(private_pref_response)
+        # except:
+        #     private_pref_response = private_preferences
+
+        
+        # print(f"The initial private preferences were: {private_preferences} and the final private preferences are: {private_pref_response}")
+        # # print(f"The private preferences are: {private_pref_response}")
+
+        self.private_preferences = private_preferences
         
     def write_to_memory(self, text: str):
         """Write text to agent's main memory (strategic notes)."""
@@ -212,12 +225,12 @@ class Agent:
     def get_llm_response(self, prompt: str) -> str:
         """Get response from the configured LLM."""
         try:
-            if self.llm_type == "openai":
+            if self.llm_type == "gpt5":
                 if not os.getenv("OPENAI_API_KEY"):
                     raise RuntimeError("OPENAI_API_KEY environment variable is required for OpenAI")
                 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
                 response = client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model="gpt-5",
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.7
                 )
@@ -228,9 +241,31 @@ class Agent:
         except Exception as e:
             return f"Error generating response: {e}"
     
+    def get_visible_conversation(self, conversation_log: List[Dict]) -> List[Dict]:
+        """Get only the conversation events visible to this agent."""
+        visible_events = []
+        
+        for event in conversation_log:
+            # System messages are visible to all agents
+            if event.get('from') == 'system':
+                visible_events.append(event)
+            # Messages from this agent are visible to this agent
+            elif event.get('from') == self.name:
+                visible_events.append(event)
+            # Messages directed to this agent are visible
+            elif self.name in event.get('to', []):
+                visible_events.append(event)
+            # Messages to 'all' or broadcast are visible to all agents
+            elif 'all' in event.get('to', []) or len(event.get('to', [])) == 0:
+                visible_events.append(event)
+        
+        return visible_events
+
     def observe_environment(self, conversation_log: List[Dict], other_agents: List['Agent']) -> str:
         """Observe the environment and write current state to temp memory."""
-        recent_events = conversation_log[-5:] if len(conversation_log) > 5 else conversation_log
+        # Get only events visible to this agent
+        visible_events = self.get_visible_conversation(conversation_log)
+        recent_events = visible_events[-10:] if len(visible_events) > 10 else visible_events
         
         # Analyze recent events (including own actions)
         analysis = f"Recent events observed by {self.name}:\n"
@@ -240,14 +275,14 @@ class Agent:
                 content = ''
             elif not isinstance(content, str):
                 content = str(content)
-            content_preview = content[:100] if content else 'No content'
-            analysis += f"- {event.get('type', 'unknown')} from {event.get('from', 'unknown')}: {content_preview}...\n"
+            # Show full content instead of truncating
+            analysis += f"- {event.get('type', 'unknown')} from {event.get('from', 'unknown')}: {content}\n"
         
         # Check for proposal status changes
         current_proposals = [e for e in recent_events if e.get("type") == "proposal"]
         if current_proposals:
             latest_proposal = current_proposals[-1]
-            analysis += f"Latest proposal by {latest_proposal.get('from')}: {latest_proposal.get('content', '')[:100]}...\n"
+            analysis += f"Latest proposal by {latest_proposal.get('from')}: {latest_proposal.get('content', '')}\n"
         
         # Check other agents' proposal statuses
         for agent in other_agents:
@@ -264,6 +299,7 @@ class Agent:
         """Decide what to write to main memory based on current state."""
         
         # Build context for memory decision
+        # Your private preferences (DO NOT SHARE THESE):
         context = f"""
         You are {self.name}, a {self.role} in a negotiation scenario.
         Description: {self.description}
@@ -286,7 +322,7 @@ class Agent:
         {json.dumps(self.temp_memory[-3:], indent=2) if self.temp_memory else "No recent observations"}
         
         Recent conversation:
-        {json.dumps(conversation_log[-10:], indent=2) if conversation_log else "No conversation yet"}
+        {json.dumps(self.get_visible_conversation(conversation_log)[-10:], indent=2) if conversation_log else "No conversation yet"}
         
         Your current proposal status: {self.proposal_status}
         Other agents' proposal statuses: {[f"{agent.name}: {agent.proposal_status}" for agent in other_agents if agent.name != self.name]}
@@ -332,6 +368,7 @@ class Agent:
         """Decide what action to take based on current state."""
         
         # Build context for LLM
+        # Your private preferences (DO NOT SHARE THESE):
         context = f"""
         You are {self.name}, a {self.role} in a negotiation scenario.
         Description: {self.description}
@@ -354,7 +391,7 @@ class Agent:
         {json.dumps(self.temp_memory[-3:], indent=2) if self.temp_memory else "No recent observations"}
         
         Recent conversation:
-        {json.dumps(conversation_log[-10:], indent=2) if conversation_log else "No conversation yet"}
+        {json.dumps(self.get_visible_conversation(conversation_log)[-10:], indent=2) if conversation_log else "No conversation yet"}
         
         Your current proposal status: {self.proposal_status}
         Other agents' proposal statuses: {[f"{agent.name}: {agent.proposal_status}" for agent in other_agents if agent.name != self.name]}
@@ -643,7 +680,7 @@ class Simulation:
 def main():
     parser = argparse.ArgumentParser(description="Multi-agent negotiation simulation")
     parser.add_argument("--scenario_file", help="Path to scenario JSON file", default="budget_allocation_3agents.json")
-    parser.add_argument("--llm", choices=["openai", "gemini"], default="gemini", help="LLM to use")
+    parser.add_argument("--llm", choices=["gpt5", "gemini"], default="gemini", help="LLM to use")
     parser.add_argument("--api-key", help="API key for the LLM (overrides environment variables)")
     parser.add_argument("--max-rounds", type=int, default=10, help="Maximum number of rounds")
     parser.add_argument("--output", help="Output file path (default: simulations/<scenario_name>_<llm>.json)", default="sim_budget_allocation_3agents_gemini-2.5-pro.json")
@@ -653,7 +690,7 @@ def main():
     # Get API key
     api_key = args.api_key
     if not api_key:
-        if args.llm == "openai":
+        if args.llm == "gpt5":
             api_key = os.getenv("OPENAI_API_KEY")
             if not api_key:
                 print("Error: No OpenAI API key provided. Set OPENAI_API_KEY environment variable or use --api-key")
@@ -685,7 +722,7 @@ def main():
         output_file = f"simulations/{scenario_name}_{args.llm}.json"
     
     # Create simulations directory if it doesn't exist
-    os.makedirs("simulations", exist_ok=True)
+    # os.makedirs("simulations", exist_ok=True)
     sim.save_simulation_log(output_file)
 
 if __name__ == "__main__":

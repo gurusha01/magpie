@@ -5,12 +5,15 @@
 
 # Configuration
 DATA_DIR="data2"
-OUTPUT_DIR="simulations"
+OUTPUT_DIR="explicit-${DATA_DIR}"
 MAX_PARALLEL=5
 MAX_ROUNDS=10
+LLM="gemini"
 
 # Create output directory if it doesn't exist
-mkdir -p "$OUTPUT_DIR"
+mkdir -p "simulations"
+mkdir -p "simulations/$OUTPUT_DIR"
+mkdir -p "simulations/$OUTPUT_DIR/${LLM}"
 
 # Function to run a single simulation
 run_simulation() {
@@ -18,15 +21,15 @@ run_simulation() {
     # This line extracts the base name of the file (removing the directory path and the .json extension)
     # For example, if file="data2/example_scenario.json", then basename="example_scenario"
     local basename=$(basename "$file" .json)
-    local output_file="$OUTPUT_DIR/sim_${basename}_gemini-2.5-pro.json"
+    local output_file="simulations/$OUTPUT_DIR/${LLM}/sim_${basename}.json"
     
     echo "Starting simulation for: $file"
     python simulate_agents.py \
         --scenario_file "$file" \
-        --llm gemini \
+        --llm ${LLM} \
         --max-rounds $MAX_ROUNDS \
         --output "$output_file" \
-        > "logs_${basename}.txt" 2>&1
+        > "logs/explicit_logs_${basename}_${LLM}.txt" 2>&1
     
     local exit_code=$?
     if [ $exit_code -eq 0 ]; then
