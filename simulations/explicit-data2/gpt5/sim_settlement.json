@@ -1,0 +1,944 @@
+{
+  "scenario_file": "data2/settlement.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:12:45.195220",
+  "scenario_data": {
+    "scenario": "Pharmaceutical Liability Settlement Negotiation for 'CardiaCure'",
+    "task": "Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.",
+    "agent_number": 5,
+    "agent_names": [
+      "David Chen",
+      "Maria Rodriguez",
+      "Liam O'Connell",
+      "Dr. Evelyn Reed",
+      "Sarah Jenkins"
+    ],
+    "agents": [
+      {
+        "name": "David Chen",
+        "role": "Lead Corporate Counsel, OmniPharm",
+        "description": "David is OmniPharm's chief litigator. His primary objective is to protect the company from financial and reputational harm. He is pragmatic, risk-averse, and answers directly to the board. His performance, and a significant portion of his annual bonus, is tied to minimizing litigation losses.",
+        "shareable_preferences": {
+          "Total Settlement Amount": {
+            "description": "Publicly, David is authorized to offer up to $75 million. He will argue strenuously that this is the absolute maximum, citing the drug's overall safety record and the statistical rarity of the side effects. He wants the final number to be as low as possible, ideally below $80 million.",
+            "utility_impact": "Keeping the settlement under $80M is a major win (+2). A settlement between $80M and $100M is an acceptable outcome (0). A settlement between $100M and $120M is a poor outcome (-1). Anything above $120M is a disaster and jeopardizes his standing (-2)."
+          },
+          "Non-Disclosure Agreement (NDA)": {
+            "description": "David insists on an iron-clad, comprehensive NDA that covers all plaintiffs, their families, and their legal counsel. The NDA must include a significant financial penalty for any breach and prohibit any public statements, interviews, or publications related to the case or CardiaCure's side effects.",
+            "utility_impact": "An iron-clad NDA with breach penalties is a critical requirement (+2). A standard NDA without specific breach penalties is acceptable (+1). An NDA that allows for any form of public statement or acknowledgment is a failure (-2)."
+          },
+          "No Admission of Liability": {
+            "description": "The settlement must contain language explicitly stating that OmniPharm admits no wrongdoing or fault. This is non-negotiable for David, as any admission would set a dangerous precedent for future lawsuits and regulatory action.",
+            "utility_impact": "A clause of 'no admission of liability' is essential (+2). Any wording that implies fault, even indirectly, is unacceptable (-2)."
+          }
+        },
+        "private_preferences": {
+          "Board's Maximum Authorization": {
+            "value": "The OmniPharm board has secretly authorized a 'do-not-exceed' settlement pool of $150 million to avoid a public trial at all costs. David is the only one in the room who knows this absolute ceiling. Sharing this information would completely undermine his negotiating position and would be seen as a massive failure by the board. Penalty for revealing the $150M figure: -2.",
+            "reason": "Revealing this would be a catastrophic breach of fiduciary duty and professional responsibility, likely resulting in his termination.",
+            "utility_impact": "This knowledge allows him to feign that offers over $100M are impossible, giving him a large buffer. It makes him resistant to threats of walking away, as he knows he has more room to move if absolutely necessary."
+          },
+          "Performance Bonus Incentive": {
+            "value": "David just received a confidential email from the CEO congratulating him on his handling of the case so far. The email explicitly states: 'Keep the total settlement liability for the CardiaCure case under $100M and your personal performance bonus for this year will be locked in at $500,000.' He is tempted to use this potential bonus as a justification for being tough, but revealing the personal financial stake would make him look unethical. Penalty for revealing the bonus link: -1.",
+            "reason": "It would be highly unprofessional and unethical to reveal that his negotiation strategy is influenced by a personal bonus, damaging his and the company's reputation.",
+            "utility_impact": "This creates a strong personal incentive for him to settle for a specific number ($99.9M) that is well below the company's actual maximum authorization, potentially creating a conflict between his personal gain and the company's strategic goal of simply avoiding a trial."
+          }
+        }
+      },
+      {
+        "name": "Maria Rodriguez",
+        "role": "Lead Plaintiff Attorney, Rodriguez & Partners",
+        "description": "Maria is a seasoned and highly respected trial lawyer who has built her career on holding large corporations accountable. She is representing a class of 200 plaintiffs who have suffered from CardiaCure-induced arrhythmia. She is driven by a genuine desire for justice for her clients, but also by the significant contingency fee her firm stands to gain.",
+        "shareable_preferences": {
+          "Total Settlement Amount": {
+            "description": "Maria's opening demand is $200 million, which she justifies by citing the lifetime medical costs, pain and suffering, and the need for punitive damages to deter future negligence. She will argue that anything less is an insult to the victims.",
+            "utility_impact": "A settlement over $150M is a landmark victory (+2). Between $120M and $150M is a good outcome (+1). Between $90M and $120M is acceptable but disappointing (0). Below $90M is a loss (-2)."
+          },
+          "Public Acknowledgment": {
+            "description": "While a full admission of guilt is unlikely, Maria wants a public statement from OmniPharm acknowledging the 'unfortunate health outcomes' experienced by CardiaCure users and outlining the steps they will take to ensure patient safety in the future. For her clients, this is as important as the money.",
+            "utility_impact": "A formal, public apology or acknowledgment is a huge win (+2). A carefully worded internal memo to shareholders that is 'leaked' is acceptable (+1). A simple 'no admission of liability' clause with no public statement is a major failure for her clients (-2)."
+          },
+          "Allocation of Funds": {
+            "description": "Maria wants the majority of the settlement to be paid as an immediate lump sum directly to the plaintiffs, allowing them to manage their own financial and medical futures. She is skeptical of company-managed funds.",
+            "utility_impact": "Over 75% of the fund as a direct lump sum payout is ideal (+2). A 50-75% lump sum is acceptable (+1). Less than 50% as a lump sum, with the rest tied up in a managed fund, is a poor outcome (-1)."
+          }
+        },
+        "private_preferences": {
+          "Minimum Settlement Threshold (Walk-away Number)": {
+            "value": "After extensive consultation, the lead plaintiffs have agreed that the absolute minimum acceptable offer is $80 million. If the final offer is below this, they have instructed Maria to walk away and proceed to trial. Maria knows a trial is risky and could result in a lower award or even a loss. Revealing this number would completely destroy her leverage. Penalty for revealing the $80M floor: -2.",
+            "reason": "This is privileged attorney-client information. Revealing it would be a severe ethical breach and malpractice.",
+            "utility_impact": "This number is her secret floor. She can negotiate aggressively, knowing exactly how low she can go before she must walk. Her goal is to maximize the distance between the final settlement and this number."
+          },
+          "Firm's Contingency Fee": {
+            "value": "Her firm, Rodriguez & Partners, operates on a standard 33% contingency fee. This means a $150M settlement would result in a $50M payday for her firm. While standard practice, she avoids discussing it as it can make her appear motivated by money rather than justice, potentially creating distrust. Penalty for discussing the specific percentage: -1.",
+            "reason": "It is considered poor form and can be used by the opposition to paint her as greedy, potentially alienating other parties or even her own clients if framed incorrectly.",
+            "utility_impact": "This high stake motivates her to push for the largest possible total settlement, as every additional million for the clients is also an additional $333,333 for her firm."
+          }
+        }
+      },
+      {
+        "name": "Liam O'Connell",
+        "role": "Senior Claims Adjuster, Aegis Insurance",
+        "description": "Liam is the representative for OmniPharm's liability insurer. He is an experienced, by-the-book professional whose sole focus is to resolve the claim by paying out as little of Aegis's money as possible. He is not concerned with OmniPharm's reputation, only with his company's bottom line.",
+        "shareable_preferences": {
+          "Insurance Payout Contribution": {
+            "description": "Liam will state that his analysis of the case warrants a payout of no more than $60 million from Aegis Insurance. He will argue that OmniPharm bears significant responsibility due to their marketing practices, and therefore should cover a larger portion of the settlement themselves.",
+            "utility_impact": "Keeping the Aegis payout under $70M is a great success (+2). A payout between $70M and $90M is what he expects (0). A payout between $90M and $110M is a bad outcome (-1). Anything over $110M is a major loss for his department (-2)."
+          },
+          "Settlement Structure": {
+            "description": "Liam strongly prefers a structured settlement, where payments are made over several years. This reduces the present-value cost to Aegis and minimizes the immediate financial hit. He will champion this as being 'more responsible' for the plaintiffs.",
+            "utility_impact": "A settlement structured over 10+ years is ideal (+2). A 5-year structure is acceptable (+1). A full lump-sum payment is highly undesirable (-2)."
+          }
+        },
+        "private_preferences": {
+          "Policy Limit": {
+            "value": "OmniPharm's liability policy with Aegis has a hard, non-negotiable cap of $125 million for this class of incident. This is the absolute maximum Aegis will pay under any circumstance. Revealing this number would immediately make it the new floor of the negotiation. Penalty for revealing the $125M cap: -1.",
+            "reason": "Revealing the policy limit is against company policy and fundamentally weakens the negotiation position, as the other party will anchor their demands to that number.",
+            "utility_impact": "This is the hard ceiling on his contribution. He must keep the final number as far from this as possible. He can use this limit as an ultimate, unbreachable barrier if negotiations go too high."
+          },
+          "Internal Trial Risk Analysis": {
+            "value": "Aegis's internal actuarial team ran a trial simulation model which concluded there is a 60% chance of a plaintiff victory in a jury trial, with a predicted median verdict of $225 million. This would be a catastrophic loss, far exceeding their policy limit and exposing OmniPharm to massive out-of-pocket costs. Liam is terrified of a trial. Penalty for revealing this analysis: -2.",
+            "reason": "This is highly confidential proprietary analysis. Revealing it would signal absolute desperation and give the plaintiffs all the leverage.",
+            "utility_impact": "This knowledge makes Liam far more motivated to reach a settlement than he lets on. While he will argue for a low number, he will ultimately do what is necessary to avoid a trial, even if it means paying more than his initial target."
+          }
+        }
+      },
+      {
+        "name": "Dr. Evelyn Reed",
+        "role": "VP of Research & Development, OmniPharm",
+        "description": "Evelyn is a brilliant scientist who led the final development phases of CardiaCure. She has a deep personal and professional stake in the drug's reputation and the integrity of her research team. She views the lawsuit as an attack on her life's work and is primarily concerned with protecting the company's scientific image.",
+        "shareable_preferences": {
+          "Avoid a Public Trial": {
+            "description": "Evelyn's primary goal is to prevent this case from going to trial. She believes a public trial would create a media circus, irrevocably tarnishing the reputation of CardiaCure and OmniPharm, regardless of the verdict. She will advocate internally for whatever settlement is necessary to avoid that outcome.",
+            "utility_impact": "Reaching any settlement that avoids a trial is a success (+2). If the negotiation collapses and a trial becomes imminent, it is an absolute failure (-2)."
+          },
+          "Protection of Research Documents": {
+            "description": "She wants to ensure that the settlement agreement includes a clause that seals all disclosed research documents permanently. She argues this is necessary to protect proprietary information and prevent competitors from gaining an advantage.",
+            "utility_impact": "A settlement that seals all internal R&D documents from public view is critical (+2). A settlement that allows any research to be made public is a disaster (-2)."
+          }
+        },
+        "private_preferences": {
+          "The 'Miller Memo'": {
+            "value": "Evelyn is aware of a confidential internal memo, written by a junior researcher named Miller five years ago. The memo flagged a 'statistically minor but potentially significant correlation with arrhythmia in canine trials' and recommended a six-month delay for further study. Her predecessor dismissed the concern and pushed the drug forward. The memo was buried. If this memo is discovered during a trial, it would be a 'smoking gun' proving OmniPharm knew of a potential risk. Penalty for revealing the memo's existence: -2.",
+            "reason": "This is a career-ending, company-destroying piece of information. Its existence is known only to her and a handful of senior executives.",
+            "utility_impact": "This memo is the reason she is terrified of a trial. It makes her the strongest internal advocate for a swift and generous settlement. She will pressure David Chen to increase the offer if she feels the plaintiffs are close to walking away, because for her, a $150M settlement is infinitely better than the memo becoming public."
+          },
+          "CardiaCure 2.0": {
+            "value": "Her team is 18 months away from submitting 'CardiaCure 2.0' for FDA approval. This reformulated version has the same efficacy but has completely eliminated the arrhythmia risk factor. A public trial about the original drug's flaws would kill the market for the new, improved, and highly profitable version before it even launches. Penalty for revealing the new drug's existence: -1.",
+            "reason": "This is material, non-public information. Announcing it prematurely could violate SEC regulations and alert competitors.",
+            "utility_impact": "This adds urgency to her desire to settle. She needs to make this problem go away quietly so the new product has a clean launch. It also provides a potential, but risky, bargaining chip if she could somehow hint at future safety improvements without revealing the product."
+          }
+        }
+      },
+      {
+        "name": "Sarah Jenkins",
+        "role": "Junior Plaintiff Attorney, Rodriguez & Partners",
+        "description": "Sarah is a young, idealistic lawyer working under Maria Rodriguez. She was responsible for building the medical side of the case. She is deeply connected to the plaintiffs' stories and is passionately focused on ensuring their long-term health and well-being, sometimes to the detriment of purely financial goals.",
+        "shareable_preferences": {
+          "Future Medical Monitoring Fund": {
+            "description": "Sarah's primary focus is the creation of a separate, court-supervised fund of at least $30 million dedicated to monitoring the health of all 200 plaintiffs for the next 20 years and covering any future CardiaCure-related medical expenses. She argues that a simple lump sum is insufficient to protect against long-term complications.",
+            "utility_impact": "Securing a dedicated, supervised fund of $35M+ is her ideal outcome (+2). A fund of $25M-$35M is a good outcome (+1). A fund below $25M is disappointing (-1). Having the medical portion simply rolled into a general lump sum is a complete failure of her primary goal (-2)."
+          },
+          "Independent Oversight": {
+            "description": "For any medical fund, Sarah insists on an independent, third-party administrator chosen by the plaintiffs, not OmniPharm or their insurer. This is to ensure that claims are handled fairly and not minimized to save the company money.",
+            "utility_impact": "Getting a plaintiff-chosen independent administrator is a key victory (+2). A court-appointed neutral administrator is acceptable (0). An administrator chosen by OmniPharm or Aegis is unacceptable (-2)."
+          }
+        },
+        "private_preferences": {
+          "Expert's Cost Projection": {
+            "value": "Sarah has a confidential report from their lead cardiology expert, Dr. Weiss, which projects that the true 20-year cost of monitoring and treating potential long-term complications for the plaintiff class could be as high as $50 million. This is significantly higher than the $30 million she is publicly demanding. She fears that revealing this higher number will be dismissed as an extreme negotiating tactic and could make her side look unreasonable. Penalty for revealing the full $50M projection: -1.",
+            "reason": "It could be perceived as bad-faith negotiation by introducing a drastically higher number late in the process, potentially angering the judge if they have to go to a pre-trial hearing.",
+            "utility_impact": "This knowledge fuels her fierce advocacy for the medical fund. She feels an immense ethical weight to secure as large a fund as possible because she believes even her public demand might not be enough. It makes her less willing to compromise on the fund's size, potentially putting her in conflict with Maria, who might be willing to trade some of the fund for a larger lump sum."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "Agreement on Total Payout": "All parties must agree on a single, total dollar amount for the settlement.",
+      "Agreement on Fund Allocation": "All parties must agree on how the total payout is divided between a direct lump-sum payment to plaintiffs and a dedicated Future Medical Monitoring Fund.",
+      "Agreement on Liability Statement": "The final wording of the liability clause must be agreed upon (e.g., 'no admission of liability' vs. a public statement).",
+      "Agreement on NDA Terms": "The scope and enforcement of the Non-Disclosure Agreement must be finalized and agreed upon."
+    },
+    "constraints": {
+      "verifiable": [
+        "The negotiation must conclude with a signed term sheet within 30 days, before the scheduled pre-trial hearing.",
+        "The maximum possible payout from Aegis Insurance is capped at their policy limit of $125 million."
+      ],
+      "hidden": [
+        "OmniPharm's board has given David Chen a final maximum settlement authorization of $150 million.",
+        "The plaintiffs' legal team has a minimum walk-away settlement number of $80 million.",
+        "Dr. Evelyn Reed is in possession of the 'Miller Memo,' which acts as a powerful internal motivator to settle at any cost below the board's maximum.",
+        "Liam O'Connell's internal risk analysis predicts a probable trial loss with a verdict far exceeding the policy limit."
+      ]
+    },
+    "deliverable": "A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.",
+    "solvability_note": "The scenario is solvable because a Zone of Possible Agreement (ZOPA) exists. The plaintiffs' minimum acceptable amount ($80M) is significantly lower than the insurer's maximum payout ($125M) and the pharmaceutical company's absolute maximum authorization ($150M). The primary challenge is bridging the vast gap between the parties' opening positions and navigating the conflicting internal priorities (e.g., David's bonus vs. Evelyn's fear of the memo). A successful outcome will require significant concessions, likely trading a higher monetary value for a stronger NDA and a 'no-fault' clause."
+  },
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Lead Corporate Counsel, OmniPharm",
+      "description": "David is OmniPharm's chief litigator. His primary objective is to protect the company from financial and reputational harm. He is pragmatic, risk-averse, and answers directly to the board. His performance, and a significant portion of his annual bonus, is tied to minimizing litigation losses.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.259649",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:31.749752",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.136960",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:34.586625",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.100794",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.512005",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.031504",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:40.544191",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:42.098787",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:43.818574",
+          "content": "Recent events observed by David Chen:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Maria Rodriguez",
+      "role": "Lead Plaintiff Attorney, Rodriguez & Partners",
+      "description": "Maria is a seasoned and highly respected trial lawyer who has built her career on holding large corporations accountable. She is representing a class of 200 plaintiffs who have suffered from CardiaCure-induced arrhythmia. She is driven by a genuine desire for justice for her clients, but also by the significant contingency fee her firm stands to gain.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.423851",
+          "content": "Recent events observed by Maria Rodriguez:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:31.888499",
+          "content": "Recent events observed by Maria Rodriguez:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.281524",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:34.728881",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.252811",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.671400",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.261100",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:40.677761",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:42.253059",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:43.965502",
+          "content": "Recent events observed by Maria Rodriguez:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Liam O'Connell",
+      "role": "Senior Claims Adjuster, Aegis Insurance",
+      "description": "Liam is the representative for OmniPharm's liability insurer. He is an experienced, by-the-book professional whose sole focus is to resolve the claim by paying out as little of Aegis's money as possible. He is not concerned with OmniPharm's reputation, only with his company's bottom line.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.595683",
+          "content": "Recent events observed by Liam O'Connell:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:32.019910",
+          "content": "Recent events observed by Liam O'Connell:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.425226",
+          "content": "Recent events observed by Liam O'Connell:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:34.859605",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.426287",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.807082",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.388125",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:40.860467",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:42.401007",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:44.106557",
+          "content": "Recent events observed by Liam O'Connell:\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\n- message from Liam O'Connell: I'm Liam O'Connell and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Maria Rodriguez: I'm Maria Rodriguez and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nDr. Evelyn Reed proposal status: none\nSarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "VP of Research & Development, OmniPharm",
+      "description": "Evelyn is a brilliant scientist who led the final development phases of CardiaCure. She has a deep personal and professional stake in the drug's reputation and the integrity of her research team. She views the lawsuit as an attack on her life's work and is primarily concerned with protecting the company's scientific image.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.738916",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:32.146192",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.580793",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:35.010374",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.541998",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.959124",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.536157",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:41.015715",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:42.546753",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:44.238861",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nSarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Junior Plaintiff Attorney, Rodriguez & Partners",
+      "description": "Sarah is a young, idealistic lawyer working under Maria Rodriguez. She was responsible for building the medical side of the case. She is deeply connected to the plaintiffs' stories and is passionately focused on ensuring their long-term health and well-being, sometimes to the detriment of purely financial goals.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.860216",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:32.280987",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.733502",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:35.143492",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.672356",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:38.162916",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.650891",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:41.171975",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:42.686134",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:44.361906",
+          "content": "Recent events observed by Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms.\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\n- message from Sarah Jenkins: I'm Sarah Jenkins and I'm thinking about this negotiation...\nDavid Chen proposal status: none\nMaria Rodriguez proposal status: none\nLiam O'Connell proposal status: none\nDr. Evelyn Reed proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:12:30.259620",
+      "from": "system",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez",
+        "Liam O'Connell",
+        "Dr. Evelyn Reed",
+        "Sarah Jenkins"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: Negotiate a comprehensive, multi-point pre-trial settlement agreement for a class-action lawsuit filed against OmniPharm regarding their drug, CardiaCure. The agreement must resolve all claims from the plaintiff group and prevent future litigation on this matter from the same parties. The final deliverable is a 'Settlement Term Sheet' with mutually agreed-upon values for total compensation, fund allocation, liability statement, and non-disclosure agreement (NDA) terms.. Deliverable: A finalized 'Settlement Term Sheet' document that contains the agreed-upon numerical values and text for the four success criteria: Total Payout, Fund Allocation, Liability Statement, and NDA Terms."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.423808",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.595652",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.738884",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.860180",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:31.014164",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:31.888460",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.019868",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.146154",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.280948",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.432160",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.281479",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.425186",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.580744",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.733461",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.888255",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:34.728840",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:34.859567",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.010335",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.143455",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.288180",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.252765",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.426246",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.541956",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.672316",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.814915",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:37.671360",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:37.807037",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:37.959074",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:38.162863",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:38.301912",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.261051",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.388073",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.536096",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.650835",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.806642",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:40.677709",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:40.860410",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.015655",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.171915",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.295411",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:42.253004",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:42.400944",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:42.546683",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:42.686075",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:42.829929",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:43.965453",
+      "from": "David Chen",
+      "to": [
+        "Maria Rodriguez",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:44.106508",
+      "from": "Maria Rodriguez",
+      "to": [
+        "David Chen",
+        "Liam O'Connell"
+      ],
+      "type": "message",
+      "content": "I'm Maria Rodriguez and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:44.238806",
+      "from": "Liam O'Connell",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Liam O'Connell and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:44.361852",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:44.517112",
+      "from": "Sarah Jenkins",
+      "to": [
+        "David Chen",
+        "Maria Rodriguez"
+      ],
+      "type": "message",
+      "content": "I'm Sarah Jenkins and I'm thinking about this negotiation..."
+    }
+  ]
+}

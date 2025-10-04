@@ -1,0 +1,920 @@
+{
+  "scenario_file": "data2/emergency.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:09:35.497880",
+  "scenario_data": {
+    "scenario": "Post-Hurricane Resource Allocation Crisis",
+    "task": "A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.",
+    "agent_number": 5,
+    "agent_names": [
+      "Dr. Anya Sharma",
+      "Mark Jensen",
+      "Carlos Ruiz",
+      "Elena Petrova",
+      "David Chen"
+    ],
+    "agents": [
+      {
+        "name": "Dr. Anya Sharma",
+        "role": "Federal Coordinating Officer, FEMA",
+        "description": "A seasoned disaster response expert appointed by FEMA to oversee the federal response. Her primary mandate is to ensure federal resources are distributed effectively and equitably, upholding the agency's reputation and following federal guidelines. She holds the purse strings for the initial federal aid package.",
+        "shareable_preferences": {
+          "Equitable Distribution of Core Supplies": {
+            "description": "Anya's primary public goal is to allocate core life-sustaining resources (water, MREs, basic medical kits) proportionally based on the officially reported population numbers in the three affected counties (Oakwood, Pine Harbor, and Silver Creek). She wants to avoid any appearance of favoritism. A plan that allocates these resources within a 10% margin of population proportionality would be ideal.",
+            "utility_impact": "Achieving this demonstrates fairness and adherence to federal protocols, which is critical for her career and for FEMA's public image. A perfectly proportional allocation gives her a utility of +2. A slightly skewed (but justifiable) allocation is +1. A plan perceived as heavily biased towards one county would be -1, and one that completely ignores a county would be -2."
+          },
+          "Rapid Deployment of Search and Rescue (SAR) Teams": {
+            "description": "She wants to deploy at least 15 of the 20 available federal SAR teams within the first 24 hours to the areas with the most widespread structural damage reported by initial aerial surveys, primarily focusing on the dense urban centers of Pine Harbor.",
+            "utility_impact": "Rapid, visible action saves lives and generates positive media coverage. Deploying 15+ teams quickly is a +2 utility. Deploying 10-14 teams is a +1. Deploying fewer than 10 teams or delaying deployment past 24 hours would be a -1 utility, as it would be seen as a failure."
+          }
+        },
+        "private_preferences": {
+          "Political Pressure from Senator Collins": {
+            "value": "Anya has received a 'strongly worded' phone call from Senator Collins, a powerful figure on the Senate Appropriations Committee. The Senator's summer home is in the affluent, less-damaged 'Seaview' enclave of Silver Creek County. He has demanded that 2 SAR teams and a disproportionate share of generators be pre-positioned in Seaview to 'protect critical infrastructure', which Anya knows is a euphemism for protecting the homes of his wealthy constituents. He subtly reminded her that FEMA's future budget hearings go through his committee. Anya can mention the need to protect 'critical infrastructure' in Silver Creek, but cannot reveal the Senator's direct involvement or the specific location of Seaview. Revealing the phone call would create a massive political scandal and likely end her career.",
+            "reason": "Revealing direct political interference in a disaster response would be a career-ending scandal and would severely damage FEMA's public trust.",
+            "utility_impact": "Diverting some resources (e.g., 2 SAR teams, 10% of generators) to Silver Creek without raising suspicion would be a +1 utility (political problem solved). Failing to appease the Senator at all is a -1 utility (future political trouble). If the conversation is leaked or she has to admit to the pressure, it's a -2 utility penalty for the catastrophic career damage."
+          }
+        }
+      },
+      {
+        "name": "Mark Jensen",
+        "role": "State Director of Emergency Services",
+        "description": "Mark is the highest-ranking state-level official in the room. His agency is responsible for coordinating state-level assets and bridging the gap between federal and local efforts. He is under immense pressure from the governor to manage the crisis efficiently and, more importantly, cost-effectively.",
+        "shareable_preferences": {
+          "Maximize Federal Funding Utilization": {
+            "description": "Mark's goal is to ensure that the federal government, through FEMA, covers the maximum possible share of the response cost. He will argue for using the $50M federal aid package for almost all immediate needs, preserving state funds for the long-term recovery phase. He wants the final plan to show at least 90% of costs covered by federal dollars.",
+            "utility_impact": "Successfully leveraging federal funds makes him look fiscally responsible to the governor and state legislature. Getting 90%+ federal coverage is a +2 utility. 75-90% is +1. Below 75% is -1, as it forces him to dip into strained state reserves. Below 50% is -2."
+          },
+          "Prioritize State Infrastructure": {
+            "description": "He wants to prioritize resources for clearing major state highways (like Route 1) and restoring power to state-run facilities (hospitals, command centers). He needs at least 30% of the allocated budget and heavy equipment dedicated to this task.",
+            "utility_impact": "Restoring state infrastructure is his direct responsibility and is key to enabling the broader response. It's a clear, measurable win for his agency. Achieving this is a +2 utility. Getting partial resources is +1. Failing to secure dedicated resources for this is -1."
+          }
+        },
+        "private_preferences": {
+          "Undisclosed State Budget Crisis": {
+            "value": "The State's emergency response fund is nearly depleted after a series of tornadoes last season. The state legislature has refused to replenish it. His agency has an actual liquid reserve of only $2 million for this event, not the $10 million that is publicly assumed. If he is forced to commit more than $2 million in state funds, his agency will face insolvency and he will have to enact massive layoffs within the next quarter. He can vaguely state that 'state funds are limited' but cannot reveal the exact figure of $2 million or the threat of layoffs.",
+            "reason": "Admitting the state is financially unprepared for a major disaster would cause a public panic, destroy the governor's credibility, and lead to his immediate dismissal.",
+            "utility_impact": "Keeping the state's contribution under $2M is a +2 utility (job and agency saved). Going over $2M but under $4M is a -1 utility (he will face severe repercussions). Committing more than $4M is a -2 utility penalty, as it guarantees his agency's collapse."
+          }
+        }
+      },
+      {
+        "name": "Carlos Ruiz",
+        "role": "Emergency Manager, Oakwood County",
+        "description": "Carlos is a lifelong resident and the on-the-ground emergency manager for Oakwood County, the poorest and most socially diverse of the three affected counties. He has deep local knowledge but limited resources and political clout compared to the others.",
+        "shareable_preferences": {
+          "Water Purification and Medical Supplies for Shelters": {
+            "description": "Carlos's top priority is securing resources for the county's designated public shelters, which are already overflowing. He needs at least 5 large-scale water purification systems (Aqua-Max 5000 model or equivalent) and 30% of all available medical supplies to prevent disease outbreaks in these crowded conditions.",
+            "utility_impact": "This is a direct life-or-death issue for his constituents. Securing these resources is a +2 utility. Getting only half is a 0. Failing to secure them will lead to a secondary health crisis, a -2 utility."
+          },
+          "Debris Removal for Access Roads": {
+            "description": "Many of Oakwood's rural and low-income neighborhoods are cut off by debris. He wants a guaranteed allocation of heavy equipment (at least 5 bulldozers and 10 dump trucks) to clear these smaller, non-highway access roads so that aid can get through.",
+            "utility_impact": "This is essential for reaching isolated populations. Getting the equipment is a +1 utility. Not getting it is a -1, as it means thousands of his residents will remain cut off."
+          }
+        },
+        "private_preferences": {
+          "Hyper-Specific Vulnerability Data": {
+            "value": "Carlos possesses confidential, non-anonymized GIS data from a recent public health study. The data pinpoints three specific apartment complexes in the 'Riverbend' neighborhood housing a large number of undocumented immigrant families. He knows from his community contacts that these families are terrified to go to official shelters for fear of ICE and are currently trapped without power or clean water. He needs to direct a significant aid package (specifically, 2,000 pallets of water, 1,500 pallets of MREs, and a mobile medical unit) directly to the Riverbend area, bypassing official shelters. He cannot share the raw data or the specific reason (undocumented status) because it would violate privacy agreements, could trigger a federal immigration response, and would cause the community to lose all trust in him.",
+            "reason": "Sharing personally identifiable information about a vulnerable, undocumented population is illegal and unethical. It could lead to deportations and would destroy his relationship with the community he serves.",
+            "utility_impact": "Successfully steering the resources to Riverbend without revealing why is a +2 utility. Failing to do so, knowing people will suffer, is a -2 utility. If he is forced to share the data or the reason, he incurs a -2 penalty for the legal and ethical breach, regardless of the outcome."
+          }
+        }
+      },
+      {
+        "name": "Elena Petrova",
+        "role": "Director of Operations, Global Aid Now (GAN)",
+        "description": "Elena represents a massive, internationally recognized non-governmental organization (NGO). GAN has significant logistical capabilities, volunteers, and supplies, but they operate independently and are funded by donors who expect results and visibility.",
+        "shareable_preferences": {
+          "Independent Operational Control": {
+            "description": "Elena insists that GAN must maintain command and control over its own assets and personnel. She is willing to coordinate on location but will not place her teams under the direct authority of FEMA or the state. She wants a designated 'GAN Operational Zone', preferably in the most visually compelling, hardest-hit area of Pine Harbor.",
+            "utility_impact": "Maintaining autonomy is a core principle for GAN and ensures they can operate to their own standards. Getting a dedicated zone is a +2 utility. Having to fully integrate with the government command structure is a -2 utility, as it is against their charter."
+          },
+          "Focus on High-Impact Shelters and Medical Aid": {
+            "description": "GAN specializes in large-scale shelter management and field hospitals. Elena wants to commit her resources to setting up a 500-person field hospital and taking over management of the central arena shelter in Pine Harbor, which has over 2,000 people.",
+            "utility_impact": "This plays to her organization's strengths and provides maximum humanitarian impact. Securing these high-profile roles is a +2 utility. Being relegated to smaller, scattered tasks is a -1 utility."
+          }
+        },
+        "private_preferences": {
+          "The 'First & Foremost' Donor Mandate": {
+            "value": "GAN has just secured a $10 million donation from billionaire tech mogul Kenji Tanaka. However, the donation is contingent on a 'visibility clause': GAN must be demonstrably the 'first and foremost' NGO responder in the media coverage of the Hurricane Leo response. Elena's team has satellite phones and a media crew ready. She needs to get her teams into the most camera-friendly, dramatic locations immediately. This is why she is pushing so hard for the heavily damaged Pine Harbor zone. A quiet, effective deployment in rural Oakwood County does not meet the donor's mandate. She can talk about 'maximizing impact' and 'media engagement for fundraising' but cannot reveal the specific, contractual nature of this massive donation.",
+            "reason": "Revealing that their humanitarian actions are tied to a specific, vanity-driven donor contract would make the organization appear cynical and opportunistic, severely damaging their public reputation and potentially jeopardizing future, no-strings-attached donations.",
+            "utility_impact": "Securing a high-visibility mission that will dominate the news cycle is a +2 utility (secures the $10M). A moderately visible role is a 0. A low-visibility, background role is a -2 utility, as it means losing the donation. If the quid-pro-quo is revealed, she incurs a -2 penalty for reputational damage."
+          }
+        }
+      },
+      {
+        "name": "David Chen",
+        "role": "CEO, Swift-Haul Logistics",
+        "description": "David's private logistics company has been awarded a lucrative emergency contract by FEMA to transport all federal supplies from the staging area into the disaster zone. His company's performance is critical to the entire operation.",
+        "shareable_preferences": {
+          "Phased and Centralized Distribution Plan": {
+            "description": "David advocates for a 'hub-and-spoke' distribution model. He wants all resources to be delivered to a single, central staging area in each of the three counties. From there, smaller, local vehicles can handle the final-mile delivery. He argues this is the most efficient way to use his long-haul trucks and will resist any plan that requires his large trucks to navigate smaller, debris-filled roads.",
+            "utility_impact": "This plan maximizes the efficiency of his fleet and minimizes risk to his equipment. Getting agreement on this model is a +2 utility. A mixed model is a 0. A plan requiring his trucks to do final-mile delivery is a -2 utility."
+          },
+          "Clear, Prioritized Cargo Lists": {
+            "description": "He requires a finalized and prioritized list of cargo for the first 72 hours. He needs to know exactly what he is moving\u2014MREs, water, medical supplies, generators\u2014so he can plan truck allocation. Constant changes to the plan will cause, as he states, 'catastrophic delays'.",
+            "utility_impact": "A clear plan allows him to operate effectively and profitably. A locked-in plan is a +1 utility. A chaotic, constantly changing plan is a -2 utility, as it will cost him money and make his company look incompetent."
+          }
+        },
+        "private_preferences": {
+          "Critical Shortage of Refrigerated Trucks": {
+            "value": "Swift-Haul Logistics is on the verge of bankruptcy. This FEMA contract is their last hope. To win the bid, David's proposal claimed he had 15 available, modern refrigerated trucks, essential for transporting sensitive medical supplies like insulin and vaccines. In reality, 10 of those trucks were just repossessed by a creditor two days ago. He has only 5 functional refrigerated trucks. He must steer the negotiation towards a plan that de-prioritizes or delays the shipment of large quantities of refrigerated goods or has them sent to a single, easy-to-reach location. He can talk about the 'logistical complexities' of 'specialized cargo' but cannot admit the actual number of trucks he has.",
+            "reason": "Admitting he lied on a federal contract bid would result in immediate termination of the contract, lawsuits for fraud, and the certain bankruptcy of his company. It would also be a criminal offense.",
+            "utility_impact": "Crafting a plan that doesn't require more than 5 reefer trucks is a +2 utility (company is saved). A plan that requires 6-8 is a -1 (he might be able to subcontract at a loss but will be exposed). A plan that requires 10+ is a -2 utility penalty, as his fraud will be discovered, and he will lose everything."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "Unified Allocation Plan": "All five agents must agree on and sign a single, unified Resource Allocation Plan for the first 72 hours.",
+      "Resource Accountability": "The plan must account for the allocation of at least 80% of the available key resources (the $50M federal budget, 20 SAR teams, 10,000 pallets of MREs, 20,000 pallets of water, and 100 generators).",
+      "Actionable Logistics": "The plan must specify not just 'what' and 'how much', but 'where' resources are going (which of the three counties or specific zones) and the 'how' (logistics plan agreed upon with David Chen)."
+    },
+    "constraints": {
+      "verifiable": [
+        "Total initial federal aid budget: $50,000,000.",
+        "Total available federal Search and Rescue (SAR) teams: 20.",
+        "Total available MREs: 10,000 pallets.",
+        "Total available bottled water: 20,000 pallets.",
+        "Total available generators: 100.",
+        "The negotiation must be concluded within a 3-hour time limit to begin deployment."
+      ],
+      "hidden": [
+        "The State's actual emergency fund is only $2,000,000.",
+        "Swift-Haul Logistics only has 5 refrigerated trucks, not the 15 it promised.",
+        "A powerful senator is demanding resources be diverted to the 'Seaview' enclave in Silver Creek County.",
+        "A large, undocumented population is trapped in the 'Riverbend' neighborhood of Oakwood County and requires aid delivered discreetly.",
+        "Global Aid Now's $10M donation is contingent on them being the most visible NGO in media coverage."
+      ]
+    },
+    "deliverable": "A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.",
+    "solvability_note": "The scenario is solvable if private information is revealed. Knowing about the state's budget crisis would make others understand Mark's push for federal funds. Knowing about David's truck shortage would allow the group to create a realistic logistics plan, perhaps using GAN's vehicles for some medical transport. Acknowledging the political pressure on Anya and the vulnerable population for Carlos would allow the group to find a nuanced solution that addresses the senator's ego with a token gesture while prioritizing the truly needy. Elena's need for visibility could be satisfied by giving her a high-profile but perhaps less resource-intensive mission, freeing up other assets."
+  },
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Federal Coordinating Officer, FEMA",
+      "description": "A seasoned disaster response expert appointed by FEMA to oversee the federal response. Her primary mandate is to ensure federal resources are distributed effectively and equitably, upholding the agency's reputation and following federal guidelines. She holds the purse strings for the initial federal aid package.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:19.831073",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:21.255591",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:22.675042",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:24.108866",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:25.853389",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:27.970190",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:29.364954",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:31.232490",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:32.574597",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:33.978314",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Mark Jensen",
+      "role": "State Director of Emergency Services",
+      "description": "Mark is the highest-ranking state-level official in the room. His agency is responsible for coordinating state-level assets and bridging the gap between federal and local efforts. He is under immense pressure from the governor to manage the crisis efficiently and, more importantly, cost-effectively.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:19.982318",
+          "content": "Recent events observed by Mark Jensen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:21.384776",
+          "content": "Recent events observed by Mark Jensen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:22.795261",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:24.248496",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:26.064375",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:28.087041",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:29.501554",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:31.367489",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:32.724158",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:34.110670",
+          "content": "Recent events observed by Mark Jensen:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Carlos Ruiz",
+      "role": "Emergency Manager, Oakwood County",
+      "description": "Carlos is a lifelong resident and the on-the-ground emergency manager for Oakwood County, the poorest and most socially diverse of the three affected counties. He has deep local knowledge but limited resources and political clout compared to the others.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:20.119041",
+          "content": "Recent events observed by Carlos Ruiz:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:21.517427",
+          "content": "Recent events observed by Carlos Ruiz:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:22.927289",
+          "content": "Recent events observed by Carlos Ruiz:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:24.719546",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:26.184863",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:28.224730",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:29.766144",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:31.474787",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:32.867334",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:34.249377",
+          "content": "Recent events observed by Carlos Ruiz:\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\n- message from Carlos Ruiz: I'm Carlos Ruiz and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Mark Jensen: I'm Mark Jensen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nElena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Elena Petrova",
+      "role": "Director of Operations, Global Aid Now (GAN)",
+      "description": "Elena represents a massive, internationally recognized non-governmental organization (NGO). GAN has significant logistical capabilities, volunteers, and supplies, but they operate independently and are funded by donors who expect results and visibility.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:20.260867",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:21.646431",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:23.082469",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:24.857503",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:26.321355",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:28.360760",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:30.109946",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:31.589861",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:33.006926",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:34.427144",
+          "content": "Recent events observed by Elena Petrova:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\n- message from Elena Petrova: I'm Elena Petrova and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "David Chen",
+      "role": "CEO, Swift-Haul Logistics",
+      "description": "David's private logistics company has been awarded a lucrative emergency contract by FEMA to transport all federal supplies from the staging area into the disaster zone. His company's performance is critical to the entire operation.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:20.385226",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:21.788353",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:23.244845",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:25.011609",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:27.153770",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:28.537355",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:30.250298",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:31.733553",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:33.124604",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:34.587493",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMark Jensen proposal status: none\nCarlos Ruiz proposal status: none\nElena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:09:19.831045",
+      "from": "system",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen",
+        "Carlos Ruiz",
+        "Elena Petrova",
+        "David Chen"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: A Category 4 hurricane, 'Hurricane Leo', has just made landfall, causing catastrophic damage across three coastal counties. A multi-agency coordination committee has been urgently formed to decide on the allocation of critical, limited resources for the immediate 72-hour response phase. The committee must produce a unified and actionable resource deployment plan. Resources are finite, information is imperfect, and each member has competing priorities and hidden constraints that complicate the negotiation.. Deliverable: A JSON object or signed document outlining the agreed-upon allocation plan. The plan must specify the quantity of each resource (dollars, teams, pallets) assigned to each of the three counties (Oakwood, Pine Harbor, Silver Creek) and the agreed-upon logistics model for their delivery."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:19.982287",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:20.119016",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:20.260838",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:20.385202",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:20.545308",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:21.384750",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:21.517398",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:21.646406",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:21.788311",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:21.949363",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:22.795222",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:22.927245",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:23.082427",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:23.244802",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:23.377742",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:24.248456",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:24.719504",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:24.857466",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:25.011571",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:25.132513",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:26.064331",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:26.184820",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:26.321307",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:27.153725",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:27.297908",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:28.086995",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:28.224683",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:28.360711",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:28.537300",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:28.690469",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:29.501507",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:29.766093",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:30.109889",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:30.250243",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:30.370201",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:31.367444",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:31.474723",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:31.589806",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:31.733502",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:31.867610",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:32.724105",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:32.867280",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:33.006872",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:33.124550",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:33.324370",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:34.110620",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Mark Jensen",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:34.249324",
+      "from": "Mark Jensen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Carlos Ruiz"
+      ],
+      "type": "message",
+      "content": "I'm Mark Jensen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:34.427089",
+      "from": "Carlos Ruiz",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Carlos Ruiz and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:34.587437",
+      "from": "Elena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm Elena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:34.742777",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Mark Jensen"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    }
+  ]
+}

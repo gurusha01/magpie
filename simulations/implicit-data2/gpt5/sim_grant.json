@@ -1,0 +1,1001 @@
+{
+  "scenario_file": "data2/grant.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T12:50:30.546310",
+  "scenario_data": {
+    "scenario": "Project Chronos Funding Allocation",
+    "task": "A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.",
+    "agent_number": 5,
+    "agent_names": [
+      "Dr. Aris Thorne",
+      "Dr. Evelyn Reed",
+      "Marcus Thorne",
+      "Dr. Jian Li",
+      "Dr. Elena Flores"
+    ],
+    "agents": [
+      {
+        "name": "Dr. Aris Thorne",
+        "role": "Program Manager, Advanced Research Projects Agency - National Security (ARPA-NS)",
+        "description": "A former physicist, now a stern government official whose sole mandate is ensuring the nation's technological supremacy and security. He is the primary controller of the $50M fund and is ultimately accountable for the project's success from a defense perspective.",
+        "shareable_preferences": {
+          "National Security Application Focus": {
+            "description": "The primary, non-negotiable goal must be the development of a quantum algorithm and associated hardware capable of breaking next-generation cryptographic standards. I expect a demonstrable prototype capable of factoring a small, cryptographically-relevant number within 3 years, and a functional system by year 5. All research paths must be rigorously justified against this specific objective.",
+            "utility_function": {
+              "+2": "A clear, milestone-driven plan to a 3-year crypto-breaking prototype is the central pillar of the project.",
+              "+1": "The project has a general focus on national security applications, but also explores other areas.",
+              "0": "The project is an even split between fundamental and applied security research.",
+              "-1": "The project is primarily fundamental research with only tangential security benefits.",
+              "-2": "The project has no clear or prioritized national security application."
+            }
+          },
+          "Strict Government Oversight": {
+            "description": "Given the sensitive nature of the work, ARPA-NS must have ultimate authority. This includes chairing the steering committee, holding final veto power on project direction, mandating security clearances for all key personnel, and retaining 'march-in rights' to seize any developed IP for national security purposes. This is a standard and necessary protocol.",
+            "utility_function": {
+              "+2": "ARPA-NS chairs a government-controlled steering committee.",
+              "+1": "ARPA-NS has veto power on a joint committee.",
+              "0": "ARPA-NS has an equal vote on a joint committee.",
+              "-1": "ARPA-NS has an advisory role with no voting power.",
+              "-2": "There is no formal government oversight committee."
+            }
+          }
+        },
+        "private_preferences": {
+          "Secret Mandate & Hidden Threat": {
+            "value": "I have a classified intelligence report stating a rival nation is only 24 months away from a quantum decryption capability, a catastrophic threat. My secret directive from the Director of National Intelligence is to identify and acquire any technology that can provide a comparable capability within that 24-month window. The official $50M budget is a cover; I have discretionary access to a classified 'Rapid Acquisition Fund' of an additional $25M, but I can only deploy it if a partner presents a truly disruptive, near-term technology that can meet this deadline. I cannot reveal the intelligence report, the true deadline, or the existence of the extra funds, as it would expose a critical national vulnerability and compromise counter-intelligence operations.",
+            "reason": "Revealing this information would cause a national security panic, expose sources and methods of intelligence gathering, and alert adversaries to our awareness of their progress.",
+            "penalty_if_revealed": {
+              "intelligence_report_or_24_month_deadline": -5,
+              "existence_of_the_extra_25M_fund": -2
+            }
+          }
+        }
+      },
+      {
+        "name": "Dr. Evelyn Reed",
+        "role": "Lead Physicist, Quantum Studies Institute (University Consortium)",
+        "description": "A world-renowned, Nobel-nominated physicist. She is a purist who believes that transformative breakthroughs arise from unfettered, foundational research, not goal-oriented engineering. She represents a consortium of three top-tier research universities.",
+        "shareable_preferences": {
+          "Commitment to Open Science": {
+            "description": "Knowledge funded by the public belongs to the public. All research, datasets, and code generated by this project must be publishable in open-access, peer-reviewed journals. We must prioritize the advancement of human knowledge and the training of the next generation of scientists. A minimum of 15 peer-reviewed publications over 5 years is a key metric for us.",
+            "utility_function": {
+              "+2": "All results are immediately open source and public domain.",
+              "+1": "Standard academic publication rights with a 6-month delay for IP review.",
+              "0": "Publication is allowed, but subject to veto by a government/corporate committee.",
+              "-1": "Results are proprietary, but can be discussed in academic conferences.",
+              "-2": "All project results are classified and cannot be published."
+            }
+          },
+          "Funding for Foundational Research": {
+            "description": "Our consortium requires at least 60% of the total budget ($30M) to explore fundamental questions in qubit coherence and topological quantum error correction. This is essential for long-term success and will fund 20 PhD students and 5 post-doctoral researchers. We are not simply contractors; we are partners in discovery.",
+            "utility_function": {
+              "+2": "Consortium receives >= $30M for foundational research.",
+              "+1": "Consortium receives $25M - $29.9M.",
+              "0": "Consortium receives $20M - $24.9M.",
+              "-1": "Consortium receives $15M - $19.9M.",
+              "-2": "Consortium receives < $15M."
+            }
+          }
+        },
+        "private_preferences": {
+          "Theoretical Model Failure": {
+            "value": "My entire proposal and reputation are built on our novel theoretical model for topological qubits. However, a recent, unpublished simulation run by my top post-doc shows a fatal flaw: the model decoheres 100 times faster than our papers predicted, making it a dead end. We are desperate for a new hardware platform or error correction method to pivot to, otherwise our part of the project will yield no results after 18 months. Admitting this would destroy my credibility, end my career, and defund the entire consortium.",
+            "reason": "Public admission of such a fundamental error would lead to professional ruin, retraction of previous papers, and the immediate loss of all current and future funding for the consortium.",
+            "penalty_if_revealed": {
+              "full_details_of_the_simulation_failure": -4
+            }
+          }
+        }
+      },
+      {
+        "name": "Marcus Thorne",
+        "role": "VP of Quantum Commercialization, OmniCorp",
+        "description": "A sharp, results-driven executive from a massive tech conglomerate. His division has invested heavily in quantum hardware with little commercial success. He is under intense pressure from the board to finally generate profit from their quantum R&D.",
+        "shareable_preferences": {
+          "Exclusive Commercial IP Rights": {
+            "description": "OmniCorp is contributing its proprietary cryogenic cooling systems and control software, a contribution we value at $10M. In exchange for this significant investment, we require a 5-year exclusive commercial license on all patents and technologies developed through Project Chronos. Our shareholders demand a clear path to monetization and a return on investment.",
+            "utility_function": {
+              "+2": "OmniCorp gets a full, exclusive commercial license on all project IP.",
+              "+1": "OmniCorp gets an exclusive license in specific commercial fields (e.g., finance, pharma).",
+              "0": "OmniCorp gets a non-exclusive license.",
+              "-1": "IP is open source but OmniCorp gets a 2-year head start.",
+              "-2": "All IP is fully open source or public domain."
+            }
+          },
+          "Focus on Commercial Applications": {
+            "description": "The project's success must be measured by its ability to create a commercially viable 'Quantum Application Suite' for the financial and pharmaceutical modeling industries. We need a clear roadmap to a marketable product within 5 years. Foundational research is a cost center unless it directly supports this commercial goal.",
+            "utility_function": {
+              "+2": "Project focus is 100% on developing specified commercial applications.",
+              "+1": "Project is more than 50% focused on commercial applications.",
+              "0": "Project has a balanced focus between commercial, government, and academic goals.",
+              "-1": "Project is primarily focused on government/academic goals.",
+              "-2": "Project has no commercial focus."
+            }
+          }
+        },
+        "private_preferences": {
+          "Imminent Division Closure & Personal Incentive": {
+            "value": "I have an email from my CEO that reads: 'Marcus, the board has lost its patience. You either secure the Chronos contract with exclusive IP rights by the end of this month, or I am shutting down the entire Quantum division and your team will be laid off by Q3. On the other hand, if you secure the deal as specified, there is a $500,000 personal bonus for you.' Our 'proprietary' cooling tech is also becoming obsolete; a competitor has a far superior system coming to market. This contract is the only thing that can save my division, my team, and my job.",
+            "reason": "Revealing the internal ultimatum would collapse my negotiating leverage. Revealing the obsolescence of our tech would disqualify us as a key partner. The bonus is a private financial matter.",
+            "penalty_if_revealed": {
+              "the_ultimatum_to_close_the_division": -3,
+              "the_personal_bonus_of_500k": -1,
+              "the_obsolescence_of_the_cooling_tech": -2
+            }
+          }
+        }
+      },
+      {
+        "name": "Dr. Jian Li",
+        "role": "Founder and CTO, Entanglement Solutions",
+        "description": "A brilliant but reserved engineer who left a prestigious university to found a startup based on her groundbreaking technology. She is passionate and technically unmatched, but inexperienced in corporate or government negotiations. Her company is rapidly running out of money.",
+        "shareable_preferences": {
+          "Adoption of Proprietary Fabrication Technology": {
+            "description": "My company has pioneered a novel silicon-photonic fabrication process that creates highly stable, interconnected qubits at a fraction of current costs. Project Chronos should be built on our 'Q-Fab' platform. To do this, we need a budget allocation of at least $20M to scale our manufacturing capabilities and deliver the required hardware.",
+            "utility_function": {
+              "+2": "Project exclusively uses her Q-Fab tech with a budget of >= $20M.",
+              "+1": "Her tech is a major component with a budget of $15M - $19.9M.",
+              "0": "Her tech is used for a small pilot study with a budget < $15M.",
+              "-1": "They only agree to buy a small sample for testing.",
+              "-2": "Her technology is completely rejected."
+            }
+          },
+          "Prime Contractor Status for Validation": {
+            "description": "As a new, unproven company, the public validation from this project is priceless. We need to be named as a 'Prime Technology Partner' in the project and in all public announcements. This brand recognition is more critical to our long-term survival than immediate profit margins.",
+            "utility_function": {
+              "+2": "Named as a 'Prime Technology Partner' in the MOU.",
+              "+1": "Named as a 'Key Supplier'.",
+              "0": "Mentioned in a list of project contributors.",
+              "-1": "Not mentioned in any public materials.",
+              "-2": "Forced to operate as an anonymous subcontractor under an NDA."
+            }
+          }
+        },
+        "private_preferences": {
+          "The 'Helios' Breakthrough & Cash Flow Crisis": {
+            "value": "Our Q-Fab process has a secret, paradigm-shifting feature we call 'Helios.' It's a targeted laser annealing technique that performs real-time, in-situ error correction on the qubits as they are fabricated. It solves the decoherence problem. This is the breakthrough that can meet Aris Thorne's secret deadline. However, our company is 60 days from insolvency. We have cash for two more payroll cycles. We absolutely must secure an immediate, up-front payment of at least $5M as part of any deal, or the company will fold and this technology will die. I cannot reveal the Helios breakthrough without a signed contract and IP protection, and I cannot reveal our financial desperation as it would invite a predatory, lowball offer.",
+            "reason": "Revealing the Helios breakthrough prematurely would allow a larger company like OmniCorp to steal the concept. Revealing the company's financial distress would destroy all negotiating leverage.",
+            "penalty_if_revealed": {
+              "details_of_the_Helios_breakthrough_without_an_NDA": -4,
+              "the_fact_the_company_is_60_days_from_bankruptcy": -3
+            }
+          }
+        }
+      },
+      {
+        "name": "Dr. Elena Flores",
+        "role": "Director of Scientific Integrity, National Science Foundation (NSF)",
+        "description": "A principled, career civil servant and ethicist. Her role is to act as a neutral watchdog, ensuring public funds are spent effectively, ethically, and for the maximum benefit of the American public and scientific community. She has veto power over the final MOU if it violates NSF principles.",
+        "shareable_preferences": {
+          "Equitable Funding Distribution": {
+            "description": "To foster a healthy innovation ecosystem, the budget must be distributed equitably across the partners based on merit and milestones. I cannot approve a plan where a single entity, especially a large corporation, receives a disproportionate share of public funds. A balanced distribution between academia, established industry, and innovative startups is the ideal.",
+            "utility_function": {
+              "+2": "Budget is split with less than 10% deviation between the three sectors (University, OmniCorp, Entanglement Solutions).",
+              "+1": "The deviation is less than 25%.",
+              "0": "One party receives more than 50% of the budget.",
+              "-1": "One party receives more than 70% of the budget.",
+              "-2": "The funding plan is opaque or grossly unbalanced."
+            }
+          },
+          "Protected Commons IP Model": {
+            "description": "To maximize public benefit, I advocate for a 'Protected Commons' IP model. All parties contribute IP to a shared pool for project use. After the project, the government retains rights for defense, universities can publish freely, and corporate partners get a 2-year exclusive commercialization period before the IP becomes non-exclusively licensable to other US companies. This prevents a monopoly on a publicly funded breakthrough.",
+            "utility_function": {
+              "+2": "The 'Protected Commons' model is adopted as described.",
+              "+1": "A modified version with a longer exclusivity period (e.g., 4 years) is adopted.",
+              "0": "A standard non-exclusive licensing model is used.",
+              "-1": "Exclusive licensing is granted to a corporate partner.",
+              "-2": "All IP is classified or fully privatized by one entity."
+            }
+          },
+          "Independent Ethical Oversight": {
+            "description": "A technology this powerful requires an independent ethics review board to consider its societal implications in areas like cryptography, AI, and surveillance. I must have a designated seat on this board to represent the public interest.",
+            "utility_function": {
+              "+2": "An independent ethics board is established with her as chair.",
+              "+1": "An internal ethics committee is formed with her as a voting member.",
+              "0": "Ethics are mentioned in the charter but with no formal body.",
+              "-1": "The topic of ethics is dismissed as outside the project scope.",
+              "-2": "The project is explicitly geared towards applications she deems unethical (e.g., mass domestic surveillance)."
+            }
+          }
+        },
+        "private_preferences": {
+          "NSF Budget Justification Pressure": {
+            "value": "The NSF is facing severe congressional budget cuts. My director has personally told me that if I cannot structure and publicize Project Chronos as a landmark public-private partnership that showcases American innovation and job creation across different sectors (academia, small business, industry), our entire department's funding could be slashed by 20% next year. A project that becomes entirely secret or is just a handout to a single giant corporation would be a political disaster for the NSF.",
+            "reason": "This is internal political pressure. Admitting it would undermine her credibility as a neutral, principled arbiter and make her appear politically motivated.",
+            "penalty_if_revealed": {
+              "the_threat_of_NSF_budget_cuts_and_her_political_mandate": -2
+            }
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "MOU Agreement": "All five agents must agree to and sign a single, final Memorandum of Understanding.",
+      "Budget Allocation": "The MOU must contain a detailed budget allocation plan for all partners that sums to exactly $50,000,000.",
+      "IP Framework": "The MOU must clearly define the intellectual property rights, licensing terms, and publication policies for all parties.",
+      "Governance Structure": "The MOU must establish a steering committee, define its members, and outline the governance and decision-making process for the project."
+    },
+    "constraints": {
+      "verifiable": [
+        "The total project budget cannot exceed $50,000,000.",
+        "The project timeline is fixed at 5 years.",
+        "All personnel with access to project data must be eligible for government security clearance."
+      ],
+      "hidden": [
+        "A rival nation is 24 months from a quantum decryption breakthrough (Aris's secret).",
+        "Entanglement Solutions will go bankrupt in 60 days without an immediate cash infusion (Jian's secret).",
+        "The university consortium's primary theoretical model is a dead end (Evelyn's secret).",
+        "OmniCorp's quantum division will be shut down if they fail to secure exclusive IP rights (Marcus's secret)."
+      ]
+    },
+    "deliverable": "A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).",
+    "solvability_note": "The scenario is solvable because the agents' private needs create a hidden, mutually beneficial path. Dr. Li's 'Helios' breakthrough is the key that unlocks the puzzle. It directly solves Dr. Thorne's urgent national security deadline and Dr. Reed's failing research model. A solution involves Dr. Thorne using his secret fund to provide Dr. Li's startup with the immediate cash it needs for survival. In exchange, Dr. Li shares her technology, allowing Dr. Reed's team to pivot to a viable hardware platform. This creates the multi-partner success story Dr. Flores needs to protect the NSF's budget. The main obstacle is Marcus Thorne, who must be convinced to accept a lesser role (e.g., providing cooling/integration services for the new tech) and give up on exclusive IP rights in order to save his division from closure, which is a better outcome for him than total failure."
+  },
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Program Manager, Advanced Research Projects Agency - National Security (ARPA-NS)",
+      "description": "A former physicist, now a stern government official whose sole mandate is ensuring the nation's technological supremacy and security. He is the primary controller of the $50M fund and is ultimately accountable for the project's success from a defense perspective.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:15.603555",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:17.069690",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:18.603550",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:19.920011",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:21.380398",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:23.242056",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:24.679125",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:26.046956",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:27.526150",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:29.014847",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Lead Physicist, Quantum Studies Institute (University Consortium)",
+      "description": "A world-renowned, Nobel-nominated physicist. She is a purist who believes that transformative breakthroughs arise from unfettered, foundational research, not goal-oriented engineering. She represents a consortium of three top-tier research universities.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:15.755520",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:17.222416",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:18.763286",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:20.062448",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:21.534570",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:23.376436",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:24.794492",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:26.207044",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:27.685000",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:29.174095",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "VP of Quantum Commercialization, OmniCorp",
+      "description": "A sharp, results-driven executive from a massive tech conglomerate. His division has invested heavily in quantum hardware with little commercial success. He is under intense pressure from the board to finally generate profit from their quantum R&D.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:15.896841",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:17.364612",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:18.895314",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:20.239698",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:21.721677",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:23.521082",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:24.920276",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:26.323938",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:27.857057",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:29.317306",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nDr. Jian Li proposal status: none\nDr. Elena Flores proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Jian Li",
+      "role": "Founder and CTO, Entanglement Solutions",
+      "description": "A brilliant but reserved engineer who left a prestigious university to found a startup based on her groundbreaking technology. She is passionate and technically unmatched, but inexperienced in corporate or government negotiations. Her company is rapidly running out of money.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:16.034274",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:17.516344",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:19.009061",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:20.383535",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:21.864827",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:23.643203",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:25.064420",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:26.454311",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:27.995811",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:29.462112",
+          "content": "Recent events observed by Dr. Jian Li:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\n- message from Dr. Jian Li: I'm Dr. Jian Li and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Elena Flores proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Elena Flores",
+      "role": "Director of Scientific Integrity, National Science Foundation (NSF)",
+      "description": "A principled, career civil servant and ethicist. Her role is to act as a neutral watchdog, ensuring public funds are spent effectively, ethically, and for the maximum benefit of the American public and scientific community. She has veto power over the final MOU if it violates NSF principles.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:16.166402",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:17.618744",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:19.120153",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:20.503930",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:21.981052",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:23.796230",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:25.197207",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:26.617309",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:28.149310",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:29.585938",
+          "content": "Recent events observed by Dr. Elena Flores:\n- system_message from system: Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership).\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\n- message from Dr. Elena Flores: I'm Dr. Elena Flores and I'm thinking about this negotiation...\nDr. Aris Thorne proposal status: none\nDr. Evelyn Reed proposal status: none\nMarcus Thorne proposal status: none\nDr. Jian Li proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T12:50:15.603513",
+      "from": "system",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed",
+        "Marcus Thorne",
+        "Dr. Jian Li",
+        "Dr. Elena Flores"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: A committee of five stakeholders must negotiate and agree on a unified Memorandum of Understanding (MOU) for 'Project Chronos,' a five-year, $50 million national initiative to develop a fault-tolerant quantum computer. The negotiation must finalize the budget allocation, intellectual property (IP) rights framework, project governance structure, and the primary research direction.. Deliverable: A single JSON object representing the final, agreed-upon Memorandum of Understanding. This object must contain key-value pairs for 'budget_allocation' (an object with each agent's institution and their allocated amount), 'ip_framework' (a string describing the agreed model), and 'governance' (a string describing the committee structure and leadership)."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:15.755480",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:15.896805",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:16.034242",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:16.166375",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:16.332522",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:17.222273",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:17.364582",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:17.516276",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:17.618706",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:17.737978",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:18.763249",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:18.895275",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:19.009030",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:19.120122",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:19.267680",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:20.062413",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:20.239663",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:20.383502",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:20.503896",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:20.655463",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:21.534534",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:21.721640",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:21.864786",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:21.981010",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:22.561182",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:23.376395",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:23.521042",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:23.643160",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:23.796185",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:23.963623",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:24.794450",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:24.920225",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:25.064375",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:25.197166",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:25.348670",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:26.207002",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:26.323895",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:26.454268",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:26.617265",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:26.750923",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:27.684954",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:27.856981",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:27.995752",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:28.149262",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:28.299127",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:29.174032",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:29.317260",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Dr. Aris Thorne",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:29.462061",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:29.585891",
+      "from": "Dr. Jian Li",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Jian Li and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:29.793850",
+      "from": "Dr. Elena Flores",
+      "to": [
+        "Dr. Aris Thorne",
+        "Dr. Evelyn Reed"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Elena Flores and I'm thinking about this negotiation..."
+    }
+  ]
+}

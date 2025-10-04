@@ -1,0 +1,1252 @@
+{
+  "scenario_file": "data2/grants.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:10:03.128855",
+  "scenario_data": {
+    "scenario": "Aethelgard Health Institute Funding Committee Negotiation",
+    "task": "A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.",
+    "agent_number": 7,
+    "agent_names": [
+      "Dr. Eleanor Vance",
+      "Dr. Ben Carter",
+      "Dr. Sofia Rossi",
+      "Dr. Kenji Tanaka",
+      "Mr. Marcus Thorne",
+      "Ms. Lena Petrova",
+      "Dr. Aisha Khan"
+    ],
+    "agents": [
+      {
+        "name": "Dr. Eleanor Vance",
+        "role": "Committee Chairperson & Institute Director",
+        "description": "A respected administrator whose primary goal is to maintain the Institute's reputation and ensure a smooth, decisive process. She is ultimately responsible for the outcome and answers to the Board of Directors.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Achieve a strong consensus on the funding allocation. A fractured 4-3 vote would signal dysfunction to the Board and the wider scientific community. A unanimous or 6-1 decision would be a major success, demonstrating clear, unified strategic direction.",
+            "utility_impact": "Unanimous Decision (+2), Strong Majority (6-1, 5-2) (+1), Weak Majority (4-3) (-1), Failure to reach agreement (-2)."
+          },
+          "preference2": {
+            "description": "Ensure the selected portfolio of projects enhances the Institute's prestige. This means funding research that is perceived as innovative, ambitious, and likely to produce significant results, thereby attracting future talent and funding.",
+            "utility_impact": "Funding what she perceives as a 'game-changing' project like NeuroRegen or OncoSIGHT with a lead role (>$4.5M) provides a utility of +1. A portfolio seen as 'safe' or 'incremental' (e.g., ViroGuard getting the largest share) provides a utility of -1."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "The Board Chairman, Mr. Harrington, took me aside after our last meeting and said, 'Eleanor, we're courting the Henderson family for a nine-figure donation. We need a big, flashy win from this grant cycle to get them over the line. Find us a cure for something, not a public health program. Your future at the Institute depends on delivering a headline.' This puts immense pressure on me to favor a high-risk, high-reward project.",
+            "reason": "Revealing this would expose the committee's process as being manipulated by fundraising pressures, destroying its scientific integrity and her credibility as an impartial chair. (Penalty: -2)",
+            "utility_impact": "This private pressure forces her to subtly steer the conversation away from the 'safer' ViroGuard project and towards NeuroRegen or OncoSIGHT, even if the evidence doesn't fully support it. She will be resistant to any outcome where ViroGuard is the primary beneficiary."
+          }
+        }
+      },
+      {
+        "name": "Dr. Ben Carter",
+        "role": "Principal Investigator, Project NeuroRegen",
+        "description": "A brilliant but ambitious neuroscientist. He is the driving force behind Project NeuroRegen, a proposal to develop a revolutionary gene therapy for Alzheimer's disease.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Secure at least $4,500,000 for Project NeuroRegen. He argues this amount is non-negotiable to complete all three critical phases: $1.5M for advanced primate model trials, $2M for securing a GMP facility and launching a Phase 1 human safety trial, and $1M for parallel biomarker development and data analysis.",
+            "utility_impact": "Getting >= $4.5M (+2), $3M - $4.49M (+1), $1M - $2.99M (-1), < $1M (-2)."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "My team's preliminary, unpublished data from primate trials is extraordinary. The lead compound shows a 70% reversal of amyloid plaque buildup and a corresponding 50% improvement in cognitive function tests. This is a breakthrough. However, our main rival lab at Stanford is working on a similar pathway. If I share these specific results before our manuscript is accepted by *Nature*, we will be scooped, and my career-defining discovery will be credited to them. I can hint at 'extremely promising results' (Penalty: -0.5), but revealing the numbers is out of the question (Penalty: -2).",
+            "reason": "Protecting intellectual property and ensuring primary credit for a major scientific breakthrough.",
+            "utility_impact": "This knowledge makes him feel his project is vastly superior and deserving of the lion's share of the funding. It makes him inflexible and potentially arrogant in his negotiation, as he feels he knows something the others don't."
+          },
+          "private_info2": {
+            "value": "My wife is a co-founder and 30% shareholder in 'Synapse Therapeutics,' the biotech startup that holds the patent for the novel viral vector delivery system NeuroRegen will use. If the project is funded and successful, the value of her shares will skyrocket from a few hundred thousand to potentially over $50 million. The success of this project would secure my family's financial future for generations.",
+            "reason": "This is a massive, disqualifying conflict of interest. Revealing it would torpedo his project, destroy his professional reputation, and initiate a formal investigation. (Penalty: -2)",
+            "utility_impact": "This creates immense personal pressure to win the funding at any cost. He will be deaf to arguments about opportunity cost or the merits of other projects because the personal stakes are astronomically high."
+          }
+        }
+      },
+      {
+        "name": "Dr. Sofia Rossi",
+        "role": "Principal Investigator, Project OncoSIGHT",
+        "description": "A leading oncologist and data scientist. Her proposal, OncoSIGHT, aims to use AI and genomic sequencing to create personalized treatment plans for late-stage cancer patients.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Secure a minimum of $5,000,000 for Project OncoSIGHT. She has a detailed budget: $2M for state-of-the-art genomic sequencing machines, $1.5M for the high-performance computing cluster and cloud resources needed for the AI model, and $1.5M to coordinate a multi-center clinical trial across three partner hospitals.",
+            "utility_impact": "Getting >= $5M (+2), $3.5M - $4.99M (+1), $1M - $3.49M (-1), < $1M (-2)."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "My close friend and former colleague, Dr. Evans at PharmaCorp, sent me a confidential text last week. It said: 'Sofia, heads up. We're shuttering Project Gemini next month. Spent $50M and hit a hard wall. The AI can't handle epigenetic drift in metastatic tumors. The predictive accuracy collapses. Don't make the same mistake.' Project Gemini is almost identical to OncoSIGHT. This news, if public, would kill my funding chances. I believe I can solve it, but the risk is enormous.",
+            "reason": "Revealing this would be a betrayal of a professional confidence, getting her friend fired and making her a pariah in the industry. It also admits her project has a potentially fatal, unaddressed flaw. (Penalty: -2)",
+            "utility_impact": "This information makes her desperate. She needs to secure the funding and start the work before this news becomes public. She will be overly aggressive in defending her project's feasibility and will dismiss concerns about technical risk, knowing full well how significant it is."
+          },
+          "private_info2": {
+            "value": "My father is currently battling Stage IV glioblastoma. The standard treatments have failed, and he has been given less than six months to live. The technology proposed in OncoSIGHT represents his only remaining hope for a viable treatment. This isn't just a research project for me; it is a desperate attempt to save my father's life.",
+            "reason": "Using a personal family tragedy to influence a professional funding decision is considered highly unprofessional and emotionally manipulative. It would undermine her scientific credibility. (Penalty: -1.5)",
+            "utility_impact": "Her motivation is absolute. She will fight for this funding with a ferocity that may seem disproportionate or irrational to others, as the outcome is, for her, a matter of life and death."
+          }
+        }
+      },
+      {
+        "name": "Dr. Kenji Tanaka",
+        "role": "Principal Investigator, Project ViroGuard",
+        "description": "A respected virologist with a background in public health. His proposal, ViroGuard, is a less glamorous but potentially vital project to develop a universal mRNA vaccine platform for novel coronaviruses.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Obtain $3,000,000 for Project ViroGuard. His needs are more modest but firm: $1M for critical upgrades to the Institute's BSL-3 lab, $1.5M for synthesizing and testing the core mRNA platform components, and $0.5M to build a diverse library of coronavirus spike proteins for proactive testing.",
+            "utility_impact": "Getting >= $3M (+2), $2M - $2.99M (+1), $1M - $1.99M (0), < $1M (-1)."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "My former mentor, who is now a high-level director at BARDA (Biomedical Advanced Research and Development Authority), told me over a private dinner, 'Kenji, between us, we have a black budget project, 'Cerberus,' doing exactly what you're proposing. We're 18 months ahead of you and our budget is north of $100M.' This means my project may be entirely redundant and a waste of the Institute's limited funds.",
+            "reason": "His mentor's disclosure was highly confidential and could be construed as revealing classified information related to national health security. Sharing this would betray his mentor and could have serious professional repercussions. (Penalty: -2)",
+            "utility_impact": "He is in a moral bind. He knows his project might be a poor use of money, which makes him more willing to compromise or accept a smaller grant. However, he also needs to keep his lab funded and his staff employed. He might argue for his project as a 'second, independent approach,' a common practice for national security, but he knows it's a weak justification."
+          }
+        }
+      },
+      {
+        "name": "Mr. Marcus Thorne",
+        "role": "Venture Capitalist & Philanthropist",
+        "description": "A sharp, results-oriented businessman who sits on the board as a representative of the Institute's major private donors. He sees the grant as an investment and is looking for the highest possible return.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Prioritize funding for projects with strong commercialization potential and the ability to generate intellectual property (patents, licensing deals). A breakthrough that can be spun off into a successful company is his ideal outcome. He often says, 'A cure that no one can afford to produce is not a cure at all.'",
+            "utility_impact": "Funding NeuroRegen >$4M (+2), Funding OncoSIGHT >$4M (+1), Funding ViroGuard >$2M (-1). A balanced portfolio with no clear 'winner' is a (0)."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "My venture capital fund, Thorne Bioventures, is the lead investor in 'Synapse Therapeutics,' holding a $5M preferred stock position. I just received a congratulatory email from my partner that said: 'Marcus, our deal with Carter's wife is pure genius. If NeuroRegen gets funded by Aethelgard, our internal models project our $5M stake will be worth $100M upon a successful Phase 1 trial. This is our fund's unicorn.' I must ensure Carter gets his funding.",
+            "reason": "This is a severe, undisclosed financial conflict of interest. Revealing it would force his immediate recusal, trigger an ethics investigation by the Institute, and could lead to lawsuits from his fund's limited partners. (Penalty: -2)",
+            "utility_impact": "He will act as Dr. Carter's most powerful and articulate ally, using sophisticated financial and strategic arguments to champion Project NeuroRegen. He will ruthlessly attack the other proposals' weaknesses\u2014the technical risk of OncoSIGHT and the lack of commercial return from ViroGuard\u2014to make NeuroRegen seem like the only logical choice."
+          }
+        }
+      },
+      {
+        "name": "Ms. Lena Petrova",
+        "role": "Patient Advocate",
+        "description": "A passionate and well-respected advocate who represents several large patient coalitions. Her mandate is to ensure the funded research has a clear and timely path to helping actual patients.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Champion the project with the most immediate clinical application for currently suffering patients. She argues that while foundational research is important, the Institute has a moral obligation to prioritize work that can alleviate suffering now. She demands clear timelines for patient trials.",
+            "utility_impact": "Funding OncoSIGHT >$4M (+2), Funding NeuroRegen (longer timeline) >$3M (+1), Funding ViroGuard (preventative, no current patients) >$2M (-1)."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "I have a printed email in my briefcase from the head of the National Cancer Patient Coalition, which provides 60% of my organization's funding. It reads: 'Lena, we are watching this Aethelgard vote closely. Our members expect the oncology project to be the clear priority. If you fail to deliver significant funding for Dr. Rossi's work, we will be forced to publicly withdraw our support for your advocacy group and your position on that committee.' This is a direct threat to my career and my organization's existence.",
+            "reason": "Admitting this would show she is not an impartial advocate for all patients, but a political operative beholden to her funders. It would destroy her credibility. (Penalty: -1.5)",
+            "utility_impact": "She is locked into supporting Dr. Rossi. She cannot compromise or be swayed by scientific arguments against OncoSIGHT. She will use emotional appeals and moral arguments about helping suffering cancer patients to counter technical or financial arguments from others."
+          }
+        }
+      },
+      {
+        "name": "Dr. Aisha Khan",
+        "role": "Ethicist & Public Policy Advisor",
+        "description": "A thoughtful academic whose role is to consider the long-term societal and ethical implications of the research. She is the committee's conscience, focused on equity and broad public good.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Advocate for an equitable allocation that prioritizes public health over private profit. She believes the Institute, as a non-profit, should fund research that benefits the many, not just the few who can afford it. Preventative medicine is, to her, the highest ethical calling.",
+            "utility_impact": "Funding ViroGuard >$3M (+2), A balanced allocation where all three projects are funded (+1), An allocation where one project receives >60% of the funds (-1), Funding a project with high commercial potential (NeuroRegen) >$5M (-2)."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "I was the sole committee member given access to the confidential 'Henderson Report,' an internal 5-year audit of the Institute's grant outcomes. Its primary conclusion was damning: 'Projects with high commercial potential have a 90% correlation with eventual treatment prices exceeding $100,000/year, creating severe socio-economic disparities in access. The report strongly recommends prioritizing non-commercializable public health infrastructure.' The Board has embargoed this report.",
+            "reason": "Leaking a confidential, embargoed board report would be a severe breach of protocol, leading to her immediate dismissal from the committee and potential legal action from the Institute. (Penalty: -2)",
+            "utility_impact": "This report provides her with an evidence-based, powerful argument against the very type of projects championed by Thorne, Carter, and Rossi. She is deeply skeptical of their motives and will strongly advocate for ViroGuard as the only ethically sound choice, but she cannot reveal her strongest piece of evidence."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "criterion1": "A final funding allocation for the $10,000,000 is agreed upon by a majority vote (at least 4 of the 7 members).",
+      "criterion2": "Every funded project must receive at least $1,000,000.",
+      "criterion3": "The sum of all allocated funds must be exactly $10,000,000."
+    },
+    "constraints": {
+      "verifiable": [
+        "Total budget is $10,000,000.",
+        "The entire budget must be allocated.",
+        "There are only three proposals under consideration: NeuroRegen, OncoSIGHT, ViroGuard.",
+        "The minimum funding for a proposal to be considered 'funded' is $1,000,000. Anything less results in an allocation of $0."
+      ],
+      "hidden": [
+        "The true viability of Project OncoSIGHT is questionable due to a competitor's failure.",
+        "The novelty of Project ViroGuard is questionable due to a secret government program.",
+        "Two committee members (Carter and Thorne) have a massive, shared, and undisclosed financial conflict of interest.",
+        "The Chairperson and the Patient Advocate are both under extreme external pressure that biases their decision-making.",
+        "There is a confidential internal report that argues against funding the types of projects that are most popular."
+      ]
+    },
+    "deliverable": "A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}",
+    "solvability_note": "The scenario is solvable if private information is revealed. The exposure of the shared Carter/Thorne conflict of interest would neutralize their powerful bloc. The revelation of OncoSIGHT's technical risk and ViroGuard's redundancy would force a re-evaluation of all proposals. A logical compromise would emerge: provide minimal 'proof-of-concept' funding to OncoSIGHT ($1M) to see if Rossi can solve the core AI problem, and to NeuroRegen ($1.5M) to independently verify Carter's now-suspect claims. The remaining majority of the funds ($7.5M) would be allocated to ViroGuard, with its mission re-scoped to act as a complementary, open-source alternative to the secret government project, fulfilling the ethical mandate of the now-revealed Henderson Report. This outcome is almost impossible to reach without the private information being shared."
+  },
+  "agents": [
+    {
+      "name": "Dr. Eleanor Vance",
+      "role": "Committee Chairperson & Institute Director",
+      "description": "A respected administrator whose primary goal is to maintain the Institute's reputation and ensure a smooth, decisive process. She is ultimately responsible for the outcome and answers to the Board of Directors.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:42.412127",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:44.392010",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:46.508658",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:48.769944",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:50.738478",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:52.677867",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:54.991932",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:56.984497",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:58.973697",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:00.984058",
+          "content": "Recent events observed by Dr. Eleanor Vance:\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Principal Investigator, Project NeuroRegen",
+      "description": "A brilliant but ambitious neuroscientist. He is the driving force behind Project NeuroRegen, a proposal to develop a revolutionary gene therapy for Alzheimer's disease.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:42.608090",
+          "content": "Recent events observed by Dr. Ben Carter:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:44.546338",
+          "content": "Recent events observed by Dr. Ben Carter:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:46.649192",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:48.939636",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:50.880981",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:52.830834",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:55.145089",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:57.122585",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:59.127479",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:01.128997",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Sofia Rossi",
+      "role": "Principal Investigator, Project OncoSIGHT",
+      "description": "A leading oncologist and data scientist. Her proposal, OncoSIGHT, aims to use AI and genomic sequencing to create personalized treatment plans for late-stage cancer patients.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:42.729732",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:44.685894",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:46.784116",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:49.070237",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:51.029581",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:52.962091",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:55.273750",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:57.265650",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:59.247511",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:01.280523",
+          "content": "Recent events observed by Dr. Sofia Rossi:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Dr. Sofia Rossi: I'm Dr. Sofia Rossi and I'm thinking about this negotiation...\n- message from Dr. Eleanor Vance: I'm Dr. Eleanor Vance and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Kenji Tanaka",
+      "role": "Principal Investigator, Project ViroGuard",
+      "description": "A respected virologist with a background in public health. His proposal, ViroGuard, is a less glamorous but potentially vital project to develop a universal mRNA vaccine platform for novel coronaviruses.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:42.893640",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:44.964859",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:46.909685",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:49.218657",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:51.141531",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:53.092087",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:55.431119",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:57.409196",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:59.414079",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:01.426889",
+          "content": "Recent events observed by Dr. Kenji Tanaka:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\n- message from Dr. Kenji Tanaka: I'm Dr. Kenji Tanaka and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Mr. Marcus Thorne",
+      "role": "Venture Capitalist & Philanthropist",
+      "description": "A sharp, results-oriented businessman who sits on the board as a representative of the Institute's major private donors. He sees the grant as an investment and is looking for the highest possible return.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:43.019834",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:45.107560",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:47.052399",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:49.366985",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:51.260382",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:53.562974",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:55.567084",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:57.552538",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:59.538892",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:01.592339",
+          "content": "Recent events observed by Mr. Marcus Thorne:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\n- message from Mr. Marcus Thorne: I'm Mr. Marcus Thorne and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMs. Lena Petrova proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Ms. Lena Petrova",
+      "role": "Patient Advocate",
+      "description": "A passionate and well-respected advocate who represents several large patient coalitions. Her mandate is to ensure the funded research has a clear and timely path to helping actual patients.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:43.155205",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:45.247299",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:47.198409",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:49.485712",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:51.392567",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:53.720239",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:55.681151",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:57.690270",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:59.687951",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:01.752772",
+          "content": "Recent events observed by Ms. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\n- message from Ms. Lena Petrova: I'm Ms. Lena Petrova and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nDr. Aisha Khan proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Aisha Khan",
+      "role": "Ethicist & Public Policy Advisor",
+      "description": "A thoughtful academic whose role is to consider the long-term societal and ethical implications of the research. She is the committee's conscience, focused on equity and broad public good.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:09:43.291267",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:45.373155",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:47.340980",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:49.610038",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:51.537572",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:53.862097",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:55.817185",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:57.829271",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:09:59.824969",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:01.903891",
+          "content": "Recent events observed by Dr. Aisha Khan:\n- system_message from system: Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\n- message from Dr. Aisha Khan: I'm Dr. Aisha Khan and I'm thinking about this negotiation...\nDr. Eleanor Vance proposal status: none\nDr. Ben Carter proposal status: none\nDr. Sofia Rossi proposal status: none\nDr. Kenji Tanaka proposal status: none\nMr. Marcus Thorne proposal status: none\nMs. Lena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:09:42.412091",
+      "from": "system",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi",
+        "Dr. Kenji Tanaka",
+        "Mr. Marcus Thorne",
+        "Ms. Lena Petrova",
+        "Dr. Aisha Khan"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: A committee of seven members must decide on the allocation of a $10,000,000 grant among three competing, high-stakes medical research proposals: 'Project NeuroRegen' (Alzheimer's), 'Project OncoSIGHT' (Personalized Cancer Therapy), and 'Project ViroGuard' (Pandemic Preparedness). The entire budget must be allocated. Any proposal receiving less than $1,000,000 is considered rejected and its allocation becomes $0. The committee must reach a majority-supported decision within a single meeting.. Deliverable: A final JSON object representing the agreed-upon funding allocation, for example: {\"Project NeuroRegen\": 4000000, \"Project OncoSIGHT\": 3000000, \"Project ViroGuard\": 3000000}"
+    },
+    {
+      "timestamp": "2025-09-28T21:09:42.608057",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:42.729705",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:42.893611",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:43.019807",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:43.155178",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:43.291240",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:43.432798",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:44.546305",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:44.685840",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:44.964824",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:45.107526",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:45.247264",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:45.373122",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:45.480085",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:46.649156",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:46.784079",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:46.909645",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:47.052362",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:47.198371",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:47.340943",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:47.456872",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:48.939593",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:49.070193",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:49.218615",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:49.366944",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:49.485673",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:49.609998",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:49.746330",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:50.880940",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:51.029536",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:51.141485",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:51.260338",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:51.392519",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:51.537524",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:51.694942",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:52.830791",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:52.962036",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:53.092034",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:53.562922",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:53.720188",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:53.862047",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:53.994313",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:55.145035",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:55.273695",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:55.431063",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:55.567030",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:55.681096",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:55.817124",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:56.003741",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.122528",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.265589",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.409111",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.552475",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.690206",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.829202",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:57.966502",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.127418",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.247447",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.414013",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.538813",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.687881",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.824899",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:09:59.941670",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:01.128938",
+      "from": "Dr. Eleanor Vance",
+      "to": [
+        "Dr. Ben Carter",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Eleanor Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:01.280463",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Sofia Rossi"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:01.426826",
+      "from": "Dr. Sofia Rossi",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Sofia Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:01.592265",
+      "from": "Dr. Kenji Tanaka",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Kenji Tanaka and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:01.752693",
+      "from": "Mr. Marcus Thorne",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:01.903811",
+      "from": "Ms. Lena Petrova",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:02.079885",
+      "from": "Dr. Aisha Khan",
+      "to": [
+        "Dr. Eleanor Vance",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aisha Khan and I'm thinking about this negotiation..."
+    }
+  ]
+}

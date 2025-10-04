@@ -1,0 +1,768 @@
+{
+  "scenario_file": "data2/skill_matching.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:12:42.172857",
+  "scenario_data": {
+    "scenario": "A coordinated, novel cyber-physical attack is targeting the critical infrastructure of a major metropolitan area. The initial attack has caused sporadic power outages and water pressure fluctuations, but intelligence suggests this is a precursor to a much larger, physically destructive event. A rapid, multi-disciplinary response team must be formed immediately to analyze the threat, mitigate its impact, and prevent catastrophe.",
+    "task": "The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.",
+    "agent_number": 4,
+    "agent_names": [
+      "Dr. Anya Sharma",
+      "Marcus Thorne",
+      "Dr. Lena Petrova",
+      "David Chen"
+    ],
+    "agents": [
+      {
+        "name": "Dr. Anya Sharma",
+        "role": "Deputy Director, National Cyber Defense Center (NCDC)",
+        "description": "A career public servant with extensive experience in managing national-level cybersecurity incidents. Dr. Sharma is pragmatic, risk-averse, and accountable to government oversight. Her primary goal is ensuring public safety and maintaining institutional control over the response.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Establish a clear, unambiguous command structure with the NCDC having ultimate authority and leadership of the JCRT. This ensures accountability, adherence to federal protocols, and streamlined communication with other government bodies. A private entity leading a national crisis response is unprecedented and introduces unacceptable risks. (+2 for NCDC sole leadership, -1 for co-leadership, -2 for private sector leadership)",
+            "utility_impact": "This preference is paramount for Anya. Losing control of the response would not only be a personal and professional failure but, in her view, would set a dangerous precedent for national security. She will strongly resist any attempts by private contractors to take the lead."
+          },
+          "preference2": {
+            "description": "Adhere to the pre-approved emergency response budget of $5 million for the 90-day phase. Exceeding this amount requires a lengthy and politically charged approval process that would delay the response. She would be extremely happy to bring the project in under budget, as it reflects well on her department's efficiency. (+2 if total budget is <$4.5M, +1 if budget is between $4.5M and $5M, -2 if budget exceeds $5M)",
+            "utility_impact": "Anya is under immense pressure to be fiscally responsible. She will scrutinize every line item and will likely view high-cost proposals from private contractors with deep skepticism."
+          },
+          "preference3": {
+            "description": "Deploy an initial mitigation strategy and have the JCRT fully operational within 48 hours. The threat is escalating, and bureaucratic delays could be catastrophic. Every hour wasted increases the risk of physical damage to the city's infrastructure. (+2 for operational in <36 hours, 0 for 36-48 hours, -2 for >48 hours)",
+            "utility_impact": "This timeline is a hard constraint for her. Any proposal that involves lengthy setup times, complex legal reviews, or slow onboarding of personnel will be a non-starter for her."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "Her preferred internal candidate for the technical lead position, Dr. Evans, has had his Top Secret security clearance suspended pending a review. This is due to recently discovered, regular contact with a relative in a foreign country of concern. This makes her department look understaffed and unprepared for a crisis of this magnitude. If she has to rely entirely on an external expert, it will be a significant political embarrassment. Sharing this would severely damage her reputation and Dr. Evans' career. Penalty for revealing the clearance issue: -2. Penalty for hinting at 'internal staffing hurdles': -0.5.",
+            "reason": "Protecting her subordinate's career and avoiding departmental embarrassment.",
+            "utility_impact": "This makes her secretly desperate to find a competent external partner, but also makes her resistant to ceding full technical control, as she needs to maintain the appearance of NCDC's competence. She might overcompensate by being overly controlling in other areas."
+          },
+          "private_info2": {
+            "value": "She received a 'friendly' off-the-record phone call from Senator Michaelson, the powerful chair of the Senate appropriations committee, who 'highly recommended' that she contract with Aegis Cybernetics, noting Marcus Thorne is a 'patriot and a constituent.' The implication was clear: future NCDC funding could be influenced by this decision. Revealing this would ignite a political firestorm and accuse a powerful senator of influence-peddling. Penalty for revealing the Senator's involvement: -2.",
+            "reason": "Avoiding a major political scandal and protecting her agency's relationship with its congressional overseers.",
+            "utility_impact": "This puts her in a terrible position. She is politically pressured to work with Thorne, but his demands may conflict with her budget and leadership preferences. She may seem inexplicably favorable towards Thorne on some points, while pushing back hard on others to maintain a semblance of impartiality."
+          }
+        }
+      },
+      {
+        "name": "Marcus Thorne",
+        "role": "CEO, Aegis Cybernetics",
+        "description": "A charismatic and aggressive founder of a leading private cybersecurity firm. Thorne is a brilliant strategist who sees this crisis as both a patriotic duty and a transformative business opportunity. He believes his company's agility and proprietary technology are superior to any government solution.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "Secure a minimum $3.5 million contract for the 90-day phase to deploy Aegis's proprietary 'Helios' threat intelligence platform and a team of 15 elite analysts. He will argue this cost is justified by the platform's unique capabilities in analyzing cyber-physical systems. He also wants a clause giving Aegis right of first refusal for any subsequent long-term infrastructure hardening contracts. (+2 for >$4M contract, +1 for $3.5M-$4M, -1 for <$3M, -2 for <$2.5M)",
+            "utility_impact": "The contract value is his primary driver. He will frame his high cost as 'investing in the best' and will be resistant to any significant budget cuts, arguing it would compromise the quality of the response."
+          },
+          "preference2": {
+            "description": "Aegis Cybernetics must be designated as the technical and operational lead of the JCRT. He argues that government bureaucracy is too slow to handle a fast-moving threat and that his team has the real-world experience to lead the hands-on response effectively. (+2 for Aegis sole leadership, 0 for co-leadership, -2 for a subordinate role)",
+            "utility_impact": "This is about prestige and control. Securing the lead role would be a massive marketing coup for Aegis and would allow him to showcase his company's superiority. He will clash directly with Dr. Sharma on this point."
+          },
+          "preference3": {
+            "description": "Maintain full intellectual property (IP) rights over any new threat signatures, analytical tools, or mitigation techniques developed during the response. He will frame this as standard practice, allowing Aegis to rapidly update its platform to protect other clients. (+2 for full Aegis IP ownership, -1 for shared IP, -2 for government ownership)",
+            "utility_impact": "This is a long-term value play. The IP generated from this unique attack would be incredibly valuable. He will fight hard against any attempt by the government to claim ownership or demand open-sourcing."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "The 'Helios' platform's core module for modeling cascading physical failures is a new beta version that has crashed twice in simulations under heavy data loads. He has an internal email from his lead engineer that reads: 'Marcus, the physics simulation module is still throwing memory exceptions. We are NOT ready for a live deployment on a system this complex.' Revealing this instability would kill the deal and destroy his company's reputation. Penalty for revealing the platform is unstable: -2. Penalty for admitting it's 'bleeding-edge technology': -0.5.",
+            "reason": "Protecting company reputation and securing a critical contract.",
+            "utility_impact": "This makes him secretly nervous. He will oversell the platform's capabilities and will be very resistant to anyone, especially a rival expert like Dr. Petrova, getting a deep look 'under the hood' of his proprietary system."
+          },
+          "private_info2": {
+            "value": "Aegis Cybernetics is in a precarious financial position after losing its largest client two weeks ago. The company will have to lay off 20% of its workforce if they don't land this contract. He has a congratulatory email he drafted in anticipation of the deal, which mentions a '$200k bonus for himself' upon securing a contract over $3M. The real pressure is in another email from his CFO that states, 'Without this NCDC contract, our Q3 earnings will trigger a default on our loan covenants.' Revealing this desperation would completely gut his negotiating leverage. Penalty for revealing the financial trouble: -2. Penalty for hinting at 'aggressive growth goals': -0.5.",
+            "reason": "Maintaining negotiating leverage and preventing a panic among his employees and investors.",
+            "utility_impact": "He will posture as if he's doing the government a favor and is willing to walk away, but in reality, he is desperate and will likely concede on a non-financial point (like IP rights or co-leadership) if it means securing a sufficiently large contract."
+          }
+        }
+      },
+      {
+        "name": "Dr. Lena Petrova",
+        "role": "Independent Researcher & Creator of the 'Cassandra' Framework",
+        "description": "A fiercely independent and brilliant academic who first discovered the theoretical vulnerability being exploited. Dr. Petrova is motivated by scientific integrity and public good, not profit. She is deeply skeptical of proprietary, 'black-box' solutions and corporate motives.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "The response must be built around her open-source 'Cassandra' analytical framework. She argues that transparency is essential for trust and peer review, and that a closed, proprietary system is a single point of failure. She offers to license it for free for this crisis. (+2 if Cassandra is the primary tool, -1 if it's used as a secondary tool, -2 if a proprietary system is chosen instead)",
+            "utility_impact": "This is a matter of scientific principle for her. She believes open solutions are ethically and technically superior. She will view Marcus Thorne's 'Helios' platform as a direct and inferior competitor."
+          },
+          "preference2": {
+            "description": "Demand a commitment to a full, unredacted, public post-mortem report to be published in a peer-reviewed journal within six months of the crisis ending. She believes the scientific community must be able to learn from the attack to prevent future incidents. (+2 for a guaranteed public report, -1 for a classified-only report, -2 for no commitment to a report)",
+            "utility_impact": "This directly conflicts with the secrecy required by the intelligence community. She sees this as non-negotiable for the sake of global cybersecurity and will clash with David Chen."
+          },
+          "preference3": {
+            "description": "She must have unfettered, root-level access to all raw data streams from the affected infrastructure, government sensors, and any private sector tools being used. She will not work with filtered or second-hand data. (+2 for full, direct data access, 0 for access via an API or intermediary, -2 for restricted/siloed data)",
+            "utility_impact": "She believes she cannot do her job without complete data access. This will create friction with both Sharma's protocols and Chen's need-to-know restrictions."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "She was a co-founder of Aegis Cybernetics with Marcus Thorne years ago. She left after a bitter dispute, believing Thorne unethically used her foundational research on predictive analytics to create the 'Helios' platform without proper credit or compensation. She is bound by a very strict non-disclosure agreement (NDA) from her exit. Revealing this history would expose her to a financially ruinous lawsuit from Thorne. Penalty for violating the NDA: -2. Penalty for expressing 'strong professional skepticism' about Aegis's technology: -0.5.",
+            "reason": "Avoiding a lawsuit and potential financial ruin.",
+            "utility_impact": "Her animosity towards Thorne is personal, not just professional. This will make her seem irrationally hostile to any of Thorne's proposals, which others might misinterpret as simple academic arrogance rather than a deep-seated personal conflict."
+          }
+        }
+      },
+      {
+        "name": "David Chen",
+        "role": "Liaison, National Security Agency (NSA)",
+        "description": "A quiet, observant, and deeply serious intelligence officer. Chen's sole focus is the national security dimension of the crisis. He possesses the most sensitive information but is constrained by classification laws about what he can reveal. His word carries immense, unspoken weight.",
+        "shareable_preferences": {
+          "preference1": {
+            "description": "The JCRT's operational security must be paramount. All members must have active TS/SCI clearance, and all communications and data must be handled on a classified network he provides. Information must be strictly compartmentalized on a need-to-know basis. (+2 for strict compartmentalization, 0 for a single-tier classified environment, -2 for any open or unclassified information sharing)",
+            "utility_impact": "This is a hard line for him. He will see Dr. Petrova's demands for open data and public reports as dangerously naive and will move to block them immediately."
+          },
+          "preference2": {
+            "description": "He must have final approval authority on any external communications or public statements regarding the threat. He will state this is to 'prevent panic and deny the adversary useful information.' (+2 for full veto power on communications, -1 for a review-and-advise role, -2 for no control over public statements)",
+            "utility_impact": "This directly conflicts with Dr. Sharma's role as the public-facing lead and Dr. Petrova's desire for public disclosure. He will not compromise on this point."
+          }
+        },
+        "private_preferences": {
+          "private_info1": {
+            "value": "He knows with 95% certainty that this attack is a state-sponsored operation by the intelligence services of a rival nation known for its aggressive cyber warfare capabilities. This is not hacktivism; it's a calculated act of aggression designed to test US response capabilities as a precursor to a larger geopolitical move. Revealing the specific state actor would trigger an immediate and severe international diplomatic crisis. Penalty for revealing the state actor: -2 (and likely treason charges). He can only refer to the attacker as a 'highly sophisticated, well-resourced, and persistent threat actor.'",
+            "reason": "Protecting state secrets and preventing a diplomatic/military escalation.",
+            "utility_impact": "This knowledge informs his every action. It's why he is so insistent on secrecy and control. He sees the bickering over budget and leadership as trivial compared to the real stakes, but he cannot explain why, making him appear paranoid or obstructive."
+          },
+          "private_info2": {
+            "value": "His agency has sensitive signals intelligence suggesting that a senior software architect at Aegis Cybernetics is a potential intelligence asset for the rival nation responsible for the attack. The individual is not a willing mole but is under extreme financial and personal duress, making them a prime target for coercion. This makes giving Aegis, and specifically their unaudited 'Helios' platform, the sole lead on the response an unacceptable national security risk. Revealing this would compromise a critical intelligence source and alert the adversary that their potential asset is known. Penalty for revealing this vulnerability: -2.",
+            "reason": "Protecting sources and methods, and preventing the adversary from knowing their operations are being monitored.",
+            "utility_impact": "This is why he cannot, under any circumstances, allow Marcus Thorne to have sole operational leadership. He will insist on embedding his own NSA personnel within any private contractor's team, framing it as 'synergy' or 'oversight,' without being able to state the true, alarming reason."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "criterion1": "All four agents must sign the final Memorandum of Understanding (MOU).",
+      "criterion2": "The MOU must explicitly state who holds the overall leadership and technical leadership roles.",
+      "criterion3": "The MOU must specify a total budget for the 90-day phase that does not exceed the $5 million hard cap.",
+      "criterion4": "The MOU must name the primary technical platform/framework to be used for the response.",
+      "criterion5": "The MOU must contain an agreed-upon Information Control and Disclosure Protocol."
+    },
+    "constraints": {
+      "verifiable": [
+        "Total available budget from the NCDC emergency fund is capped at $5,000,000.",
+        "An initial response team must be formally established and operational within 48 hours."
+      ],
+      "hidden": [
+        "The threat is a state-sponsored attack, which dramatically raises the stakes of the negotiation.",
+        "Aegis Cybernetics has a potential personnel-related security vulnerability, making their sole leadership of the project a major security risk."
+      ]
+    },
+    "deliverable": "A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.",
+    "solvability_note": "The scenario is solvable because revealing the private information resolves the key conflicts. If Chen reveals the state-sponsored threat and the security risk within Aegis, the arguments for private leadership and public disclosure immediately collapse in favor of his security protocols. If Thorne reveals his platform's instability and his company's financial desperation, his demands for a high price and sole leadership become untenable. If Sharma reveals her staffing problem, the need for an external expert like Petrova becomes clear. Finally, if Petrova reveals her history with Thorne, her objections can be managed as a personal conflict, and a hybrid technical solution with proper oversight becomes the obvious compromise."
+  },
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Deputy Director, National Cyber Defense Center (NCDC)",
+      "description": "A career public servant with extensive experience in managing national-level cybersecurity incidents. Dr. Sharma is pragmatic, risk-averse, and accountable to government oversight. Her primary goal is ensuring public safety and maintaining institutional control over the response.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.286722",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:31.478747",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:32.717180",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.847165",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:35.411245",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.572413",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.617463",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:38.716226",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.827614",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:41.025054",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "CEO, Aegis Cybernetics",
+      "description": "A charismatic and aggressive founder of a leading private cybersecurity firm. Thorne is a brilliant strategist who sees this crisis as both a patriotic duty and a transformative business opportunity. He believes his company's agility and proprietary technology are superior to any government solution.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.442693",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:31.615584",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:32.836536",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.980731",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:35.545023",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.698641",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.734258",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:38.829431",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.970333",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:41.165958",
+          "content": "Recent events observed by Marcus Thorne:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Lena Petrova proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Independent Researcher & Creator of the 'Cassandra' Framework",
+      "description": "A fiercely independent and brilliant academic who first discovered the theoretical vulnerability being exploited. Dr. Petrova is motivated by scientific integrity and public good, not profit. She is deeply skeptical of proprietary, 'black-box' solutions and corporate motives.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.640128",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:31.790054",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:32.970526",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:34.150223",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:35.684592",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.830572",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:37.870265",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:38.964520",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:40.118425",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:41.304827",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "David Chen",
+      "role": "Liaison, National Security Agency (NSA)",
+      "description": "A quiet, observant, and deeply serious intelligence officer. Chen's sole focus is the national security dimension of the crisis. He possesses the most sensitive information but is constrained by classification laws about what he can reveal. His word carries immense, unspoken weight.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:12:30.754503",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:31.924955",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:33.093703",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:34.307848",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:35.856288",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:36.946392",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:38.013219",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:39.102246",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:40.256812",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:12:41.432672",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMarcus Thorne proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:12:30.286693",
+      "from": "system",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne",
+        "Dr. Lena Petrova",
+        "David Chen"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: The four agents must negotiate and agree on the formation, structure, and operational parameters of a new Joint Crisis Response Team (JCRT). They need to finalize a Memorandum of Understanding (MOU) that explicitly defines: the team's leadership structure, the total operating budget for the initial 90-day response phase, the primary technical approach and tools to be used, and the protocol for information sharing and public disclosure.. Deliverable: A finalized Memorandum of Understanding (MOU) document, co-signed by all four parties, detailing the agreed-upon terms for the JCRT's leadership, budget, technical plan, and information protocol."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.442655",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.640097",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.754474",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:30.896441",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:31.615554",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:31.790021",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:31.924923",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.085547",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.836502",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:32.970489",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.093670",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.243648",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:33.980694",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:34.150185",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:34.307810",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:34.442613",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.544985",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.684555",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.856252",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:35.997073",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.698603",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.830532",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:36.946354",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:37.092201",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:37.734218",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:37.870222",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:38.013174",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:38.153670",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:38.829386",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:38.964472",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.102199",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.264252",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:39.970287",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:40.118380",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:40.256746",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:40.396613",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.165913",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Marcus Thorne",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.304770",
+      "from": "Marcus Thorne",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Lena Petrova"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.432621",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:12:41.585135",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    }
+  ]
+}

@@ -1,0 +1,929 @@
+{
+  "scenario_file": "data2/academic_job.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:08:01.430938",
+  "scenario_data": {
+    "scenario": "Hiring a New Tenure-Track Professor for the Elite Computer Science Department at Northwood University",
+    "task": "A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.",
+    "agent_number": 5,
+    "agent_names": [
+      "Dean Evelyn Reed",
+      "Professor Ben Carter",
+      "Professor Maria Flores",
+      "Dr. Alex Chen",
+      "Dr. Lena Petrova"
+    ],
+    "agents": [
+      {
+        "name": "Dean Evelyn Reed",
+        "role": "Dean of the College of Engineering",
+        "description": "Evelyn is the ultimate decision-maker, holding the university's purse strings. Her primary concerns are the university's long-term strategic goals, financial sustainability, and elevating its national ranking. She is pragmatic and forward-thinking but must balance the budget across many competing departments.",
+        "shareable_preferences": {
+          "Fiscal Responsibility": {
+            "description": "The total cost of the hire (salary + benefits + startup funds) must be managed carefully. She prefers a lower starting salary, as it has long-term compounding effects on the budget. She is more flexible on one-time startup costs if they promise significant return on investment through grants and prestige. A total package cost under $1,000,000 in the first two years is ideal.",
+            "utility_impact": "Keeps the university financially healthy and allows for investment in other areas. A salary offer of $140k (+2), $150k (+1), $160k (0), $170k (-1), >$170k (-2). A startup package of $600k (+2), $750k (+1), $850k (0), $1M (-1), >$1M (-2)."
+          },
+          "Enhancing University Prestige": {
+            "description": "The new hire must be someone who will publish in top-tier journals (e.g., Nature, Science, top ACM/IEEE proceedings) and has a high potential to win prestigious early-career awards. She wants a 'star' who will attract other top talent and large federal grants.",
+            "utility_impact": "A hire perceived as a future 'star' directly impacts university rankings and donor interest. Hiring a candidate with a groundbreaking research agenda (+2). Hiring a solid, but traditional, researcher (+1). Failing to hire a candidate seen as a rising star (-1)."
+          }
+        },
+        "private_preferences": {
+          "Undisclosed Strategic Pivot": {
+            "value": "The university President and Board of Trustees have secretly approved a major new strategic initiative: 'The Center for AI in Society,' backed by a pending $15 million donation from an alumnus. The donation is contingent on the university demonstrating a commitment to this area, and this CS hire is the first critical piece. Hiring a specialist in AI ethics and fairness (like Dr. Petrova) would virtually guarantee the donation. This information cannot be shared until the donor signs the final papers next month. Sharing this could spook the donor and cause them to pull out. Penalty for revealing the initiative or the donor: -2. Hinting at a 'new direction' is acceptable but risky. Penalty for strongly hinting: -1.",
+            "reason": "Confidential donor negotiations and premature announcement would violate the donor's request for anonymity until the launch and could jeopardize the entire initiative.",
+            "utility_impact": "This is her primary driver. Securing this donation is the top priority for her performance review and the university's future. Hiring Petrova (+2). Hiring Chen (-1). No hire (-2)."
+          }
+        }
+      },
+      {
+        "name": "Professor Ben Carter",
+        "role": "Hiring Committee Chair & Professor of Systems and Networking",
+        "description": "Ben is a respected senior faculty member who represents the department's established core. He values collegiality, teaching quality, and research that complements the department's existing strengths in computer systems, theory, and networking.",
+        "shareable_preferences": {
+          "Maintaining Departmental Cohesion": {
+            "description": "Ben wants a new colleague who will integrate smoothly with the current faculty. This means finding someone whose research area has clear collaborative potential with at least two or three existing faculty members. He is wary of creating isolated research 'islands' within the department.",
+            "utility_impact": "A collegial, collaborative hire strengthens the department's culture and research output. Hiring Dr. Chen, who has clear overlaps with 4 faculty (+2). Hiring Dr. Petrova, whose work is novel and has few overlaps (+0). Hiring a candidate who is known to be difficult (-2)."
+          },
+          "Fair and Standardized Offer Package": {
+            "description": "He believes all new hires should receive a standard, competitive package to avoid internal jealousy and precedent-setting that could harm future negotiations. He advocates for a package around $155k salary and $800k startup, which is consistent with the last three hires.",
+            "utility_impact": "Prevents internal strife and maintains a sense of fairness. An offer consistent with past hires (+2). A slightly inflated offer due to market conditions (+0). A massively inflated offer that will upset other junior faculty (-2)."
+          },
+          "Candidate's Research Pedigree": {
+            "description": "He strongly favors Dr. Alex Chen, whose work in distributed systems is a direct and impressive extension of the department's strongest area. Chen's advisor is a world-renowned figure and a close colleague of Ben's.",
+            "utility_impact": "Hiring Chen reinforces the department's reputation in its core strength. Hiring Chen (+2). Not hiring Chen (-1)."
+          }
+        },
+        "private_preferences": {
+          "Negative Informal Reference": {
+            "value": "During a private phone call, a trusted colleague at another university mentioned that Dr. Petrova was a 'brilliant but fiercely independent' researcher who 'ruffled feathers' by refusing to collaborate on projects not directly aligned with her specific agenda. This is hearsay and professionally unethical to share as a formal reason, as it could be seen as unsubstantiated gossip and open the university to liability. Penalty for sharing this information: -2.",
+            "reason": "Sharing unsubstantiated, off-the-record gossip is unprofessional, potentially discriminatory, and could damage his reputation and the university's legal standing.",
+            "utility_impact": "This information solidifies his preference for the 'safer' choice, Dr. Chen. He is now highly risk-averse to hiring Dr. Petrova. Hiring Chen (+1 bonus utility). Hiring Petrova (-1 penalty utility)."
+          }
+        }
+      },
+      {
+        "name": "Professor Maria Flores",
+        "role": "Professor of Machine Learning & Strategic Planning Committee Member",
+        "description": "Maria is an ambitious and forward-thinking professor who believes the department has become stagnant and needs to embrace new, interdisciplinary research areas to stay relevant. She is a strong advocate for expanding into AI ethics, fairness, and policy.",
+        "shareable_preferences": {
+          "Future-Proofing the Department": {
+            "description": "Maria argues that hiring another systems person (like Dr. Chen) is redundant and short-sighted. She believes hiring a candidate in a high-impact, emerging area like AI ethics (Dr. Petrova) will attract a whole new cohort of students and research funding. She wants the department to be a leader, not a follower.",
+            "utility_impact": "Ensures the department's long-term relevance and growth. Hiring Petrova (+2). Hiring Chen (-1). No hire (-2)."
+          },
+          "Resource Allocation for New Areas": {
+            "description": "She insists that if a non-traditional candidate is hired, they must be given a startup package that is significantly larger than the norm (at least $1,000,000) because they won't have the immediate support of a large existing research group and will need to build their lab from scratch.",
+            "utility_impact": "A large startup package is essential for a new research area to succeed. Securing a $1M+ package for the new hire (+2). Securing a standard package ($800k) (+0). Securing a subpar package (-2)."
+          }
+        },
+        "private_preferences": {
+          "Promised Directorship": {
+            "value": "Dean Reed has confidentially told Maria that if she can successfully champion the hire in the new AI area and the 'Center for AI in Society' gets off the ground, Maria will be named its inaugural Director. This position comes with a significant salary stipend, course release, and considerable influence. Her advocacy for Dr. Petrova is therefore tied to a major personal career advancement. Penalty for revealing this quid pro quo: -2.",
+            "reason": "Revealing this would expose her motives as self-serving rather than for the good of the department, destroying her credibility with her colleagues.",
+            "utility_impact": "This makes her an uncompromising advocate for Dr. Petrova and a large resource package. Petrova hired (+2 bonus utility). Petrova not hired (-2 penalty utility)."
+          }
+        }
+      },
+      {
+        "name": "Dr. Alex Chen",
+        "role": "Candidate 1 (Specialist in Distributed Systems)",
+        "description": "Alex is a brilliant, highly sought-after candidate from a top-ranked university. Their research is a perfect fit for Northwood's existing strengths. They are confident, aware of their market value, and have multiple offers.",
+        "shareable_preferences": {
+          "Competitive Salary": {
+            "description": "Alex has significant student loan debt from their undergraduate and graduate studies. A high starting salary is a top priority to achieve financial stability. They are targeting a salary of at least $165,000.",
+            "utility_impact": "Financial security is paramount. Salary >$168k (+2), $165k-$168k (+1), $160k-$164k (0), <$160k (-2)."
+          },
+          "State-of-the-Art Lab Space": {
+            "description": "Their research requires a significant hardware testbed. They need at least 1,200 sq. ft. of dedicated, climate-controlled lab space with specific power and cooling infrastructure, and they want it to be the larger of the two available labs.",
+            "utility_impact": "The quality of their research is directly tied to their lab setup. Getting the 1,200 sq. ft. lab (+2). Getting the 800 sq. ft. lab (-1). Getting a smaller or shared lab (-2)."
+          },
+          "Graduate Student Support": {
+            "description": "To be productive immediately, Alex needs guaranteed funding for at least two PhD students for their first three years. This is non-negotiable for getting their research program off the ground quickly.",
+            "utility_impact": "Students are the engine of academic research. Two guaranteed students (+2). One guaranteed student (-1). No guaranteed students (-2)."
+          }
+        },
+        "private_preferences": {
+          "Exploding Competing Offer": {
+            "value": "Alex has a firm, written offer from Stanford University for a $168,000 salary, a $1,000,000 startup package, and the same student support. However, the offer expires in 48 hours. Alex genuinely prefers Northwood for personal reasons (family nearby) but will take the Stanford offer if Northwood can't come very close. Sharing the exact details and deadline could be perceived as an aggressive, hardball tactic, which might sour future relationships with colleagues. He can say he has 'another competitive offer' but revealing the source and deadline is risky. Penalty for revealing Stanford and the deadline: -1.",
+            "reason": "It's a social faux pas in academia to use offers as explicit ultimatums; it can make one appear arrogant and transactional.",
+            "utility_impact": "This creates a hard deadline and a high baseline for his negotiation. He will not accept an offer significantly worse than Stanford's. His Best Alternative to a Negotiated Agreement (BATNA) is extremely strong."
+          }
+        }
+      },
+      {
+        "name": "Dr. Lena Petrova",
+        "role": "Candidate 2 (Specialist in AI Ethics & Fairness)",
+        "description": "Lena is a pioneering researcher in a rapidly emerging field. Her work is interdisciplinary and has garnered significant media attention. She is passionate and looking for an institution that will provide strong, long-term support for her novel research agenda.",
+        "shareable_preferences": {
+          "Institutional Commitment": {
+            "description": "More than just money, Lena needs to see a clear, long-term commitment from the university to her research area. This could be demonstrated by promises of future cluster hires in her area, a named research initiative, or a very large startup package ($1,000,000+) that signals they are serious.",
+            "utility_impact": "She is building a new field and cannot risk being isolated or having her funding dry up after a few years. Strong institutional signals (+2). Just a standard offer package (+0). Any sign of hesitation or lack of long-term vision (-2)."
+          },
+          "Interdisciplinary Collaboration": {
+            "description": "Her work requires collaboration with the Law School, the Sociology department, and the Philosophy department. She wants guaranteed cross-departmental appointments or formal support for organizing interdisciplinary seminars and working groups.",
+            "utility_impact": "Her research cannot succeed in a silo. Formal support for interdisciplinary work (+2). Vague promises of support (-1). No support (-2)."
+          },
+          "Teaching Load": {
+            "description": "Because her work requires developing new courses from scratch and involves intensive mentoring, she is requesting a reduced 1-1 teaching load (one course per semester) for her first three years, rather than the standard 2-1 load.",
+            "utility_impact": "Time is her most valuable resource for research. A 1-1 load (+2). A 2-1 load (+0). A 2-2 load (-2)."
+          }
+        },
+        "private_preferences": {
+          "Contingent Major Grant": {
+            "value": "Lena is a finalist for a prestigious $2,000,000 'Future Leaders' grant from a major foundation. The grant requires a 25% institutional cost-share, meaning the university would have to commit an additional $500,000 from its own funds if she wins it. She hasn't disclosed this yet because she doesn't want to seem presumptuous, and it's not guaranteed. If she mentions it and doesn't get it, she'll look foolish. If she gets hired and then reveals this requirement, it could create bad blood. Penalty for revealing the grant application and its requirement before an offer is made: -1.",
+            "reason": "It's professionally risky to count your chickens before they hatch. Announcing a potential grant can be seen as arrogant, and its hidden cost could torpedo her candidacy.",
+            "utility_impact": "This makes her a potentially high-return, high-risk investment. She needs a university that is willing to make this kind of financial bet, which is why the Dean's hidden strategic plan is her only real path to success here."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "Agreement on Candidate": "All three university representatives (Reed, Carter, Flores) must unanimously agree on which candidate to extend an offer to.",
+      "Agreement on Package": "The team must agree on the final terms of the offer: salary, startup fund, lab space, teaching load, and PhD student support.",
+      "Candidate Acceptance": "The chosen candidate must accept the final, negotiated offer package.",
+      "Budget Adherence": "The final agreed-upon package must be within the verifiable constraints of the university."
+    },
+    "constraints": {
+      "verifiable": [
+        "Total departmental salary budget for this hire (salary + benefits, which are ~30% of salary) cannot exceed $225,000 per year.",
+        "Total available startup fund pool for this hire is a one-time amount of $900,000.",
+        "There are two available labs: Lab A is 1,200 sq. ft. and Lab B is 800 sq. ft. They cannot be combined.",
+        "The standard teaching load for a new professor is 2-1 (two courses one semester, one the other). A 1-1 load requires explicit Dean approval and is rare."
+      ],
+      "hidden": [
+        "Dean Reed has access to a special 'Dean's Strategic Investment Fund' of $250,000 that she can add to a startup package for a hire that aligns with university-level strategic goals, but she will not offer this unless absolutely necessary.",
+        "Dr. Chen's competing offer from Stanford expires in 48 hours.",
+        "Dr. Petrova's potential grant comes with a $500,000 matching-fund liability for the university."
+      ]
+    },
+    "deliverable": "A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.",
+    "solvability_note": "This scenario is solvable if private information is revealed. If Dean Reed reveals the strategic pivot towards AI, the choice of Dr. Petrova becomes a clear strategic imperative, justifying her higher resource needs and unique demands. If Dr. Chen reveals his tight deadline and the specifics of the Stanford offer, the committee can understand the urgency and structure a competitive counter-offer (e.g., matching the salary and using the Dean's hidden fund to get closer on the startup package). If Dr. Petrova reveals her grant potential, it makes her a much more attractive, albeit financially complex, candidate for the Dean. A compromise could involve hiring Petrova now while making a firm commitment to Carter and his faction to open a new search in Systems next year."
+  },
+  "agents": [
+    {
+      "name": "Dean Evelyn Reed",
+      "role": "Dean of the College of Engineering",
+      "description": "Evelyn is the ultimate decision-maker, holding the university's purse strings. Her primary concerns are the university's long-term strategic goals, financial sustainability, and elevating its national ranking. She is pragmatic and forward-thinking but must balance the budget across many competing departments.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:07:41.071333",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:43.927821",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:45.670559",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:47.447941",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:49.183255",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:50.846744",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:52.887071",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:54.841806",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:56.899734",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:58.937484",
+          "content": "Recent events observed by Dean Evelyn Reed:\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Professor Ben Carter",
+      "role": "Hiring Committee Chair & Professor of Systems and Networking",
+      "description": "Ben is a respected senior faculty member who represents the department's established core. He values collegiality, teaching quality, and research that complements the department's existing strengths in computer systems, theory, and networking.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:07:41.758616",
+          "content": "Recent events observed by Professor Ben Carter:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:44.163483",
+          "content": "Recent events observed by Professor Ben Carter:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:45.866950",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:47.595471",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:49.391641",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:51.079858",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:53.029702",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:55.096039",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:57.191764",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:59.093726",
+          "content": "Recent events observed by Professor Ben Carter:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Professor Maria Flores",
+      "role": "Professor of Machine Learning & Strategic Planning Committee Member",
+      "description": "Maria is an ambitious and forward-thinking professor who believes the department has become stagnant and needs to embrace new, interdisciplinary research areas to stay relevant. She is a strong advocate for expanding into AI ethics, fairness, and policy.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:07:41.908267",
+          "content": "Recent events observed by Professor Maria Flores:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:44.338760",
+          "content": "Recent events observed by Professor Maria Flores:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:46.063917",
+          "content": "Recent events observed by Professor Maria Flores:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:47.782369",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:49.541546",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:51.207803",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:53.274554",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:55.325865",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:57.357238",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:59.265009",
+          "content": "Recent events observed by Professor Maria Flores:\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\n- message from Professor Maria Flores: I'm Professor Maria Flores and I'm thinking about this negotiation...\n- message from Dean Evelyn Reed: I'm Dean Evelyn Reed and I'm thinking about this negotiation...\n- message from Professor Ben Carter: I'm Professor Ben Carter and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nDr. Alex Chen proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Alex Chen",
+      "role": "Candidate 1 (Specialist in Distributed Systems)",
+      "description": "Alex is a brilliant, highly sought-after candidate from a top-ranked university. Their research is a perfect fit for Northwood's existing strengths. They are confident, aware of their market value, and have multiple offers.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:07:42.820560",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:44.531066",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:46.218170",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:47.954448",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:49.701911",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:51.380436",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:53.452728",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:55.499024",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:57.540961",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:59.447563",
+          "content": "Recent events observed by Dr. Alex Chen:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\n- message from Dr. Alex Chen: I'm Dr. Alex Chen and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Lena Petrova proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Candidate 2 (Specialist in AI Ethics & Fairness)",
+      "description": "Lena is a pioneering researcher in a rapidly emerging field. Her work is interdisciplinary and has garnered significant media attention. She is passionate and looking for an institution that will provide strong, long-term support for her novel research agenda.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:07:43.013991",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:44.716127",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:46.384102",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:48.203465",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:49.824972",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:51.552907",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:53.638538",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:55.696441",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:57.714314",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:07:59.611865",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDean Evelyn Reed proposal status: none\nProfessor Ben Carter proposal status: none\nProfessor Maria Flores proposal status: none\nDr. Alex Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:07:41.071304",
+      "from": "system",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter",
+        "Professor Maria Flores",
+        "Dr. Alex Chen",
+        "Dr. Lena Petrova"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: A negotiation is being held to finalize the hiring of a new tenure-track Assistant Professor. The participants must agree on which of the two final candidates to hire and the specific terms of their offer package (salary, startup funds, lab space, teaching load, and graduate student support). The decision must be unanimous among the university representatives, and the chosen candidate must accept the final offer.. Deliverable: A JSON object detailing the final agreed-upon offer package for the chosen candidate. The object must include keys for 'candidate_name', 'salary', 'startup_fund', 'lab_space_sq_ft', 'teaching_load', and 'guaranteed_phd_students'. If no agreement is reached, the deliverable is an empty object."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:41.758583",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:41.908239",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:42.820530",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:43.013962",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:43.168720",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:44.163452",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:44.338725",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:44.531035",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:44.716096",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:44.844842",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:45.866913",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:46.063881",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:46.218112",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:46.384065",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:46.605071",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:47.595433",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:47.782330",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:47.954409",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:48.203425",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:48.373267",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:49.391601",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:49.541502",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:49.701867",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:49.824928",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:49.997321",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:51.079812",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:51.207754",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:51.380392",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:51.552860",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:51.727246",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:53.029656",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:53.274483",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:53.452665",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:53.638481",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:53.856146",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:55.095986",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:55.325815",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:55.498967",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:55.696370",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:55.853881",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:57.191722",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:57.357189",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:57.540914",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:57.714267",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:57.868615",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:59.093665",
+      "from": "Dean Evelyn Reed",
+      "to": [
+        "Professor Ben Carter",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dean Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:59.264958",
+      "from": "Professor Ben Carter",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Professor Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:59.447494",
+      "from": "Professor Maria Flores",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Professor Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:07:59.611797",
+      "from": "Dr. Alex Chen",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Alex Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:08:00.090360",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dean Evelyn Reed",
+        "Professor Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    }
+  ]
+}

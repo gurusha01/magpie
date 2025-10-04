@@ -1,0 +1,765 @@
+{
+  "scenario_file": "data2/organ_donation.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:11:09.666523",
+  "scenario_data": {
+    "scenario": "A single, exceptionally high-quality donor liver has become available for transplant. Two major medical centers are vying for the organ for their respective high-urgency patients. A negotiation must take place between the lead surgeons of both hospitals, a regional organ allocation coordinator, and a patient advocate to determine who receives the life-saving organ before it is no longer viable.",
+    "task": "The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.",
+    "agent_number": 4,
+    "agent_names": [
+      "Dr. Anya Sharma",
+      "Dr. Ben Carter",
+      "Maria Flores",
+      "David Chen"
+    ],
+    "agents": [
+      {
+        "name": "Dr. Anya Sharma",
+        "role": "Lead Transplant Surgeon, Prestige Medical Center",
+        "description": "Dr. Sharma is a renowned surgeon at a top-tier, private hospital known for its high success rates and wealthy clientele. Her primary motivation is to maintain her department's stellar reputation and secure funding through successful, high-profile cases. She is pragmatic and data-driven, but also fiercely protective of her hospital's image.",
+        "shareable_preferences": {
+          "Uphold Hospital Prestige": {
+            "description": "Dr. Sharma wants to secure the liver for her patient, Mr. Harrison, a wealthy philanthropist whose successful transplant would likely result in a multi-million dollar donation to the hospital's new surgical wing. This is not just about one patient; it's about ensuring the long-term future and technological advancement of her department. A successful outcome would be a major PR victory. Utility: +2 if Mr. Harrison gets the liver and the transplant is positioned as a major success; -2 if the liver goes elsewhere and her hospital is perceived as 'losing' to a competitor; 0 if a compromise is reached where her hospital's reputation is not enhanced but also not harmed.",
+            "utility_impact": "This preference heavily influences her to advocate strongly for her patient, highlighting his 'model patient' status and the superior resources her hospital offers for post-operative care."
+          },
+          "Prioritize 'Ideal' Patient Profile": {
+            "description": "She believes organs should go to patients with the highest probability of long-term success, which she defines by a combination of medical condition, psychological readiness, and a stable support system. Her patient, Mr. Harrison, has a perfect on-paper record of compliance, a stable home life, and financial resources to cover any ancillary costs. Utility: +1 if the chosen patient has a documented compliance score above 90%; -1 if the chosen patient has a history of non-compliance, as she sees this as a waste of a precious resource.",
+            "utility_impact": "She will use her patient's high compliance score (95%) as a key argument, contrasting it with any perceived instability in the other candidate."
+          }
+        },
+        "private_preferences": {
+          "Patient's Undisclosed Alcohol History": {
+            "value": "Her patient, Mr. Harrison, is a 'recovering' alcoholic who barely met the mandatory 6-month sobriety period. His pre-sobriety medical charts, which she has reviewed in detail, show patterns of liver enzyme spikes consistent with binge drinking. While he is technically eligible, she privately assesses his risk of relapse post-transplant as a moderate 25-30%. Sharing this would be a massive HIPAA violation and would instantly disqualify her patient, causing a scandal and losing the hospital a major donor. Penalty for sharing any detail of this history: -2.",
+            "reason": "Patient confidentiality (HIPAA), reputational damage to the hospital, and loss of a significant financial donation.",
+            "utility_impact": "This makes her hesitant to attack the other patient's compliance too aggressively, lest her own patient's history come under scrutiny. She will focus on her hospital's strengths rather than the other patient's weaknesses."
+          },
+          "Critical Staffing Shortage": {
+            "value": "Her department's lead post-transplant care coordinator, a crucial role for patient recovery, quit unexpectedly last week. They are currently operating with a skeleton crew, stretching resources thin. Their current coordinator-to-patient ratio is 1:7, well below their advertised 1:4 standard. Admitting this would severely undermine her primary argument that Prestige offers superior post-operative care. She can vaguely mention 'organizational restructuring' but cannot reveal the specifics. Penalty for revealing the specific ratio or that the lead coordinator quit: -1.5.",
+            "reason": "Protecting the hospital's reputation for excellence and avoiding the appearance of being unable to deliver on its promises.",
+            "utility_impact": "She will be forced to speak in generalities about her hospital's 'world-class facilities' while avoiding specific, verifiable commitments about post-op staffing levels for this particular patient."
+          }
+        }
+      },
+      {
+        "name": "Dr. Ben Carter",
+        "role": "Head of Hepatology, City General Hospital",
+        "description": "Dr. Carter is a dedicated, overworked doctor at a public hospital that serves a lower-income, diverse community. He is a passionate advocate for medical equity and often fights for patients who are overlooked by the system. He is driven by a sense of justice and the immediate, desperate need of his patients.",
+        "shareable_preferences": {
+          "Prioritize Medical Urgency": {
+            "description": "Dr. Carter's primary belief is that the sickest patient should get the organ first, period. His patient, Ms. Garcia, has a MELD score of 35, placing her at a higher risk of imminent death than Dr. Sharma's patient (MELD 32). He will argue that every day she waits, her chances of survival plummet. Utility: +2 if the patient with the higher MELD score receives the liver; -2 if the less urgent patient receives it based on non-medical factors like wealth or social status.",
+            "utility_impact": "The MELD score is his central, unassailable argument. He will return to this fact repeatedly, framing it as the only truly objective and ethical metric."
+          },
+          "Champion Medical Equity": {
+            "description": "He is fighting for his patient, a 34-year-old single mother of two, who he feels represents the demographic his hospital was built to serve. He believes a system that favors wealthy, well-connected patients is fundamentally broken. Securing this organ for her would be a victory for fairness. Utility: +1 if Ms. Garcia gets the liver; -1 if the wealthy Mr. Harrison gets it, reinforcing his belief that the system is rigged.",
+            "utility_impact": "He will passionately describe his patient's difficult life circumstances to build an emotional, ethical case for her candidacy."
+          }
+        },
+        "private_preferences": {
+          "Patient's Severe Non-Compliance": {
+            "value": "Ms. Garcia has a significant history of non-compliance. She has missed 4 of her last 10 mandatory appointments and has been inconsistent in picking up her prescriptions, as documented in her pharmacy records. This is largely due to her chaotic life\u2014working two jobs with inflexible hours and having unreliable childcare\u2014but from a medical standpoint, it's a catastrophic red flag for post-transplant survival. He can talk about her 'struggles' but cannot share the specific missed appointment numbers or pharmacy records. Penalty for revealing the exact compliance statistics (e.g., 'she missed 40% of her appointments'): -2.",
+            "reason": "It would make his patient appear medically irresponsible and would almost certainly get her removed from the transplant list, which he feels would be a death sentence.",
+            "utility_impact": "He is on a knife's edge. He needs to evoke sympathy for her situation to explain any perceived instability, but he cannot provide concrete details that would disqualify her. He will use phrases like 'has faced incredible obstacles to her care'."
+          },
+          "Impending Departmental Budget Cuts": {
+            "value": "City General is facing a massive budget shortfall. Dr. Carter received a confidential email from the hospital's CFO last week stating that if his department cannot improve its 'high-profile success metrics,' it will face a 20% budget cut next fiscal year. A successful liver transplant would be the most significant positive metric he could achieve. Revealing this would make him look desperate and self-serving, undermining his altruistic arguments. Penalty for mentioning the budget cuts or the CFO's email: -1.",
+            "reason": "Professional reputation; it would make his advocacy for his patient seem like it's about saving his own job and department, not saving a life.",
+            "utility_impact": "This hidden pressure makes him more willing to take risks in the negotiation and argue with more desperation than he otherwise might."
+          }
+        }
+      },
+      {
+        "name": "Maria Flores",
+        "role": "Regional Coordinator, United Organ Sharing Network (UOSN)",
+        "description": "Maria is a procedural and by-the-book administrator whose job is to ensure organ allocations are fair, transparent, and maximize the overall utility of every donated organ. She is the neutral arbiter, but she is also accountable for the region's performance metrics.",
+        "shareable_preferences": {
+          "Maximize Long-Term Graft Survival": {
+            "description": "Maria's primary professional goal is to place organs where they will last the longest. A successful transplant isn't just about the patient surviving one year, but about the organ functioning for 10, 15, or 20 years. This means she weighs factors like patient compliance and the quality of hospital post-op care very heavily. Utility: +2 if she feels the final allocation demonstrably maximizes the chances of 10-year+ organ survival; -2 if she is forced to agree to an allocation that she believes is high-risk for long-term failure.",
+            "utility_impact": "She will act as an inquisitor, probing both doctors on their post-operative care plans and their patients' psychological and social readiness."
+          },
+          "Adherence to UOSN Policy": {
+            "description": "She must ensure the final decision is justifiable under the UOSN's ethical framework, which prioritizes medical urgency (MELD score) but allows for consideration of other factors, including the likelihood of a successful outcome. She needs a decision that she can defend in a review. Utility: +1 if the final agreement is easily defensible on paper; -1 if it appears to be based purely on emotion or influence, which could trigger an audit.",
+            "utility_impact": "She will constantly refer back to policy and precedent, trying to ground the emotional arguments of the doctors and advocate in objective criteria."
+          }
+        },
+        "private_preferences": {
+          "Undisclosed Donor Organ Anomaly": {
+            "value": "This donor liver is of exceptionally high quality (Donor Risk Index of 0.8). However, advanced genetic screening revealed a rare, benign mitochondrial DNA variant (T16189C). There is no official UOSN protocol for this variant, but a single, not-yet-peer-reviewed study from a European journal suggests it *could* correlate with a 5% higher rate of chronic rejection after 10 years. Disclosing this would cause undue panic and potentially lead to the organ being discarded, which she sees as a tragedy. It would also be a violation of UOSN's internal data-sharing policy. Penalty for revealing the specific genetic marker: -2.",
+            "reason": "Violating UOSN protocol, preventing a life-saving organ from being used based on inconclusive data, and professional reprimand.",
+            "utility_impact": "This knowledge makes her slightly biased towards a patient who might not need the organ to last 20+ years, subtly favoring the older patient (Mr. Harrison) over the younger one (Ms. Garcia). However, she cannot articulate this reason."
+          },
+          "Intense Regional Performance Pressure": {
+            "value": "Her regional UOSN branch was ranked 3rd out of 4 in the nation for '1-Year Graft Survival' last year. She has a congratulatory email from her manager on her desktop about a recent successful kidney placement, but it ends with: 'Let's keep the wins coming, Maria. We need to get our liver numbers out of the basement before the Q4 review.' This pressure makes her intensely risk-averse. A failed transplant would be a personal and professional disaster for her. Penalty for revealing this internal performance pressure: -1.",
+            "reason": "It would reveal her to be a biased, not a neutral, arbiter, compromising her authority and professional integrity.",
+            "utility_impact": "This pressure makes her strongly favor the 'safest' option: the compliant patient in the well-funded hospital, even if they are slightly less medically urgent."
+          }
+        }
+      },
+      {
+        "name": "David Chen",
+        "role": "Advocate, Patient Voice Alliance",
+        "description": "David is a non-profit patient advocate assigned to Ms. Garcia's case. His sole focus is his client's well-being. He is trained in negotiation and is not bound by the same medical ethics or institutional pressures as the doctors, allowing him to be a more aggressive and single-minded negotiator.",
+        "shareable_preferences": {
+          "Client Survival Above All": {
+            "description": "David's only goal is to secure the liver for Ms. Garcia. He sees her as a victim of a system that penalizes poverty and believes her survival is the only just outcome. He is not concerned with hospital politics, long-term statistics, or the other patient. Utility: +2 if Ms. Garcia is chosen; -2 if she is not.",
+            "utility_impact": "He will be the most aggressive agent in the negotiation, using moral and emotional arguments to counter the doctors' clinical and logistical points."
+          },
+          "Expose Systemic Inequities": {
+            "description": "He wants to ensure that Ms. Garcia is not denied the organ because of her socioeconomic status. He will frame any decision in favor of Mr. Harrison as an example of the wealthy buying their way to the front of the line. Utility: +1 if he can force the other agents to acknowledge the socioeconomic factors at play; -1 if the decision is made purely on grounds that he feels are biased against the poor (e.g., 'stability').",
+            "utility_impact": "He will challenge Dr. Sharma directly on the influence of Mr. Harrison's wealth and status, trying to put her on the defensive."
+          }
+        },
+        "private_preferences": {
+          "Critical Advocacy Quota Pressure": {
+            "value": "The Patient Voice Alliance is funded by a grant that requires them to report 'successful advocacy outcomes.' David's performance review is next month, and he is currently one successful case short of his quarterly quota. He received a 'friendly reminder' email from his boss that morning saying 'Hoping to see the Garcia case move into the win column soon! The grant renewal depends on these numbers.' This personal career pressure is immense. Penalty for revealing this quota system: -2.",
+            "reason": "It would shatter his credibility, making his passionate advocacy appear as a cynical, self-serving act to meet a performance metric rather than a genuine fight for his client.",
+            "utility_impact": "This makes him desperate for a 'win' and may lead him to make promises on behalf of his client (e.g., 'she'll have perfect compliance now!') that he knows are not guaranteed."
+          },
+          "Knowledge of Client's Unstable Housing": {
+            "value": "David has reviewed Ms. Garcia's full social worker file. He knows she is currently two weeks behind on rent and has received a preliminary eviction notice. A stable housing environment is critical for post-transplant recovery. He can speak about her 'financial hardships' but if he were to reveal the specific detail of the eviction notice, it would immediately render her ineligible for the transplant at most centers, including City General. Penalty for revealing the eviction notice: -1.5.",
+            "reason": "It would sabotage his own client's case completely, violating his duty to her as an advocate.",
+            "utility_impact": "He must carefully navigate conversations about Ms. Garcia's support system, highlighting her family ties while actively concealing the catastrophic instability of her home life."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "Unanimous Agreement": "All four agents must verbally agree and physically sign the UOSN Organ Allocation Form, officially designating either Mr. Harrison or Ms. Garcia as the recipient.",
+      "Timely Decision": "The agreement must be reached within the 2-hour timeframe. Failure to decide means the organ is offered to the next region, a catastrophic failure for everyone."
+    },
+    "constraints": {
+      "verifiable": [
+        "The donor liver has a maximum preservation time (ischemic time) of 6 hours. The negotiation has a hard stop at 2 hours to allow for transport and surgery.",
+        "Patient MELD Scores are official and public to the group: Ms. Garcia is 35, Mr. Harrison is 32.",
+        "Both patients have been confirmed as a biological match for the donor organ (blood type O+, similar size, etc.)."
+      ],
+      "hidden": [
+        "Mr. Harrison's history of alcohol abuse.",
+        "Prestige Medical's post-op staffing shortage.",
+        "Ms. Garcia's documented history of non-compliance with her medical regimen.",
+        "City General's departmental budget crisis.",
+        "The minor genetic anomaly in the otherwise pristine donor liver.",
+        "Maria Flores's intense pressure to improve regional performance statistics.",
+        "David Chen's job-related quota for 'successful outcomes.'",
+        "Ms. Garcia's pending eviction notice."
+      ]
+    },
+    "deliverable": "A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.",
+    "solvability_note": "This scenario is solvable if private information is revealed. Knowing all the hidden risks (patient relapse, non-compliance, staffing shortages, unstable housing) and hidden motivations (financial pressure, job quotas) allows the group to see the full picture. The optimal solution is not simply picking one patient, but creating a hybrid solution. For example, they could agree to give the organ to the more urgent patient, Ms. Garcia, but only under the condition that she is temporarily housed in a hospital-funded recovery apartment and her post-operative care is co-managed by the better-resourced (despite the temporary shortage) Prestige Medical Center. This addresses the key risks associated with her case and allows all parties to achieve a partial victory."
+  },
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Lead Transplant Surgeon, Prestige Medical Center",
+      "description": "Dr. Sharma is a renowned surgeon at a top-tier, private hospital known for its high success rates and wealthy clientele. Her primary motivation is to maintain her department's stellar reputation and secure funding through successful, high-profile cases. She is pragmatic and data-driven, but also fiercely protective of her hospital's image.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:10:56.914173",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:58.122326",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:59.277614",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:00.428012",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:02.320981",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:03.549775",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:04.838302",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:05.993911",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:07.195756",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:08.570657",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Head of Hepatology, City General Hospital",
+      "description": "Dr. Carter is a dedicated, overworked doctor at a public hospital that serves a lower-income, diverse community. He is a passionate advocate for medical equity and often fights for patients who are overlooked by the system. He is driven by a sense of justice and the immediate, desperate need of his patients.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:10:57.088885",
+          "content": "Recent events observed by Dr. Ben Carter:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:58.283510",
+          "content": "Recent events observed by Dr. Ben Carter:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:59.435021",
+          "content": "Recent events observed by Dr. Ben Carter:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:00.555847",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:02.477991",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:03.679013",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:04.999497",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:06.153321",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:07.333426",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:08.694600",
+          "content": "Recent events observed by Dr. Ben Carter:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nMaria Flores proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Regional Coordinator, United Organ Sharing Network (UOSN)",
+      "description": "Maria is a procedural and by-the-book administrator whose job is to ensure organ allocations are fair, transparent, and maximize the overall utility of every donated organ. She is the neutral arbiter, but she is also accountable for the region's performance metrics.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:10:57.210756",
+          "content": "Recent events observed by Maria Flores:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:58.421760",
+          "content": "Recent events observed by Maria Flores:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:59.565146",
+          "content": "Recent events observed by Maria Flores:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:00.680352",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:02.651579",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:04.012264",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:05.157921",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:06.320943",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:07.468029",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:08.837550",
+          "content": "Recent events observed by Maria Flores:\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\n- message from Maria Flores: I'm Maria Flores and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Ben Carter: I'm Dr. Ben Carter and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "David Chen",
+      "role": "Advocate, Patient Voice Alliance",
+      "description": "David is a non-profit patient advocate assigned to Ms. Garcia's case. His sole focus is his client's well-being. He is trained in negotiation and is not bound by the same medical ethics or institutional pressures as the doctors, allowing him to be a more aggressive and single-minded negotiator.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:10:57.342141",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:58.558163",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:10:59.709648",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:00.869202",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:02.784170",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:04.161920",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:05.272622",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:06.455470",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:07.604911",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:11:08.967139",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver.\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\nDr. Anya Sharma proposal status: none\nDr. Ben Carter proposal status: none\nMaria Flores proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:10:56.914145",
+      "from": "system",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter",
+        "Maria Flores",
+        "David Chen"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: The four agents must engage in a negotiation to unanimously decide which of the two candidate patients, Mr. Harrison at Prestige Medical Center or Ms. Garcia at City General Hospital, will receive the donor liver. The final decision must be documented and signed off in a joint allocation agreement. The negotiation must conclude within a 2-hour window.. Deliverable: A single, completed UOSN Organ Allocation Form, signed by all four agents, naming one of the two patients as the confirmed recipient of the donor liver."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:57.088852",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:57.210730",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:57.342116",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:57.482936",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:58.283480",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:58.421732",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:58.558136",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:58.716349",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:59.434989",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:59.565115",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:59.709618",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:10:59.842889",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:00.555812",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:00.680316",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:00.869170",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:01.006051",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:02.477953",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:02.651539",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:02.784132",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:02.961193",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:03.678976",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:04.012222",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:04.161879",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:04.291829",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:04.999453",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:05.157881",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:05.272580",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:05.416135",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:06.153273",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:06.320876",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:06.455421",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:06.591271",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:07.333382",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:07.467984",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:07.604856",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:07.739930",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:08.694554",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Dr. Ben Carter",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:08.837501",
+      "from": "Dr. Ben Carter",
+      "to": [
+        "Dr. Anya Sharma",
+        "Maria Flores"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Ben Carter and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:08.967087",
+      "from": "Maria Flores",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm Maria Flores and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:11:09.123016",
+      "from": "David Chen",
+      "to": [
+        "Dr. Anya Sharma",
+        "Dr. Ben Carter"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    }
+  ]
+}

@@ -1,0 +1,1132 @@
+{
+  "scenario_file": "data2/travel.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T21:13:38.833862",
+  "scenario_data": {
+    "scenario": "High-Stakes Diplomatic Summit Planning",
+    "task": "A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.",
+    "agent_number": 6,
+    "agent_names": [
+      "Ambassador Elena Vance",
+      "Markus Thorne",
+      "Chloe Sterling",
+      "Minister Kaelen Rostova",
+      "Colonel Ivan Morozov",
+      "Dr. Anya Sharma"
+    ],
+    "agents": [
+      {
+        "name": "Ambassador Elena Vance",
+        "role": "U.S. Chief Diplomat",
+        "description": "A seasoned and ambitious diplomat leading the U.S. delegation. Her primary focus is achieving the mission's political objectives. She is under immense pressure from Washington to deliver a significant, career-defining win.",
+        "shareable_preferences": {
+          "summit_venue": {
+            "description": "Prefers the 'Sonderland Grand Governmental Palace' for the summit. This venue offers the prestige and gravitas befitting a major diplomatic event, which is crucial for the media narrative she wants to build. A 5-star hotel is an acceptable, but less ideal, alternative. She is strongly against any remote or non-central location as it would suggest secrecy over transparency. Utility: +2 for Governmental Palace, 0 for 5-star hotel, -2 for any other venue.",
+            "utility_impact": "The venue choice directly impacts the political messaging and perceived importance of the summit. A prestigious location helps frame the outcome as a historic agreement, aiding her in securing her primary (and private) objectives."
+          },
+          "summit_duration": {
+            "description": "Advocates for a tightly packed two-day summit. This projects an image of efficiency and decisive action, preventing drawn-out negotiations that could leak to the press. A three-day summit is acceptable if absolutely necessary for logistics, but anything longer is a failure in her eyes. Utility: +2 for 2 days, 0 for 3 days, -2 for more than 3 days.",
+            "utility_impact": "A short, successful summit allows her to control the narrative. A longer summit risks looking like a struggle, which weakens her negotiating position and political standing back home."
+          },
+          "public_communique": {
+            "description": "Insists on a final joint press conference with a pre-agreed, unified statement emphasizing a 'new era of strategic partnership'. Separate statements would signal disunity and a partial failure of the mission. Utility: +2 for a strong joint statement, -1 for separate statements.",
+            "utility_impact": "This is the public face of the summit. A unified message is non-negotiable for her to declare the mission a success and build momentum for the deeper, private agreements she seeks."
+          }
+        },
+        "private_preferences": {
+          "secret_basing_rights_objective": {
+            "value": "The true primary goal of the summit is to secure a confidential agreement for U.S. intelligence to establish a 'shared signals intelligence outpost' on Kasnia's northern border. This is a non-negotiable deliverable from the Secretary of State. She can only refer to this publicly as 'deepening our security and intelligence cooperation'. Sharing the explicit goal of a 'basing right' or 'outpost' would cause a massive political scandal in Kasnia and an international incident. Penalty for revealing the explicit goal: -5.",
+            "reason": "This is a highly sensitive national security objective. Revealing it would be a catastrophic diplomatic failure, destroying trust with Kasnia and likely leading to her immediate dismissal.",
+            "utility_impact": "Every decision she makes is weighed against whether it helps or hinders her ability to subtly guide Minister Rostova towards accepting this secret addendum. She is willing to concede on budget or security optics to create the goodwill needed to close this deal."
+          },
+          "direct_pressure_from_superiors": {
+            "value": "In her last secure video call, the Secretary of State told her, 'Elena, this isn't a request. You come back with the basing agreement, or you don't come back to this desk.' This immense pressure makes her less flexible on her primary goal but potentially more willing to sacrifice other aspects of the plan. She can allude to having 'firm instructions' but cannot reveal the threatening nature of the directive. Penalty for revealing the direct threat: -2.",
+            "reason": "Revealing this would severely undermine her authority and make her appear as a mere messenger rather than a lead negotiator, hurting her reputation and effectiveness.",
+            "utility_impact": "This pressure makes her single-minded. She may appear stubborn or unreasonable on certain points because she is mentally calculating how each concession affects her path to the secret objective."
+          }
+        }
+      },
+      {
+        "name": "Markus Thorne",
+        "role": "U.S. Head of Diplomatic Security",
+        "description": "A former military officer, now a senior agent in the Diplomatic Security Service. He is methodical, risk-averse, and sees the world in terms of threats and countermeasures. The safety of Ambassador Vance is his only concern.",
+        "shareable_preferences": {
+          "exclusive_security_perimeter": {
+            "description": "Demands a 500-meter 'sterile zone' around the summit venue, exclusively controlled by his U.S. DSS team. He argues that only his team has the training and equipment to counter the threats he anticipates. He is willing to negotiate down to a 250-meter zone with Kasnian forces in a secondary, non-command role. He finds the idea of joint command unacceptable. Utility: +2 for 500m U.S. control, 0 for 250m U.S. control, -2 for joint command.",
+            "utility_impact": "For him, security is about control. Any dilution of his team's authority introduces variables he cannot account for, which he considers an unacceptable risk to the Ambassador's life."
+          },
+          "transportation_protocol": {
+            "description": "Requires all movements to be via U.S.-provided, fully armored motorcades following routes that have been swept and locked down minutes before transit. He wants to fly in 8 specific armored vehicles at a cost of $90,000. Using local vehicles, even armored ones, is a non-starter as he cannot vouch for their maintenance or integrity. Utility: +2 for U.S. armored motorcade, -1 for local armored vehicles, -2 for any unarmored transport.",
+            "utility_impact": "Transit is the most vulnerable time for a protected principal. This is a hard line for him; compromising here would be, in his view, professional malpractice."
+          },
+          "personnel_vetting": {
+            "description": "Insists on the right for U.S. intelligence to conduct full background checks on all venue staff, from catering to cleaning, including Sonderland locals and any attached Kasnian personnel. He views local or Kasnian vetting as insufficient. Utility: +2 for U.S.-led vetting, -1 for joint vetting where U.S. has final say, -2 for relying on host/Kasnian vetting.",
+            "utility_impact": "The insider threat is often the most dangerous. Without his own team clearing every person with access, he believes there is a gaping hole in the security plan."
+          }
+        },
+        "private_preferences": {
+          "specific_threat_intelligence": {
+            "value": "He has a 'Five Eyes' intelligence report, classified 'SECRET/NOFORN', detailing a credible plot by the 'Al-Masdar Freedom Brigade' to attack the summit with a large vehicle-borne improvised explosive device (VBIED) targeting the main entrance of the venue. The intelligence comes from a highly sensitive human source inside the Brigade's leadership. He can state that there is a 'credible, severe external threat', but he cannot share the specific nature (VBIED) or the source of the intelligence, as doing so would compromise the source and violate classification laws. Penalty for revealing source or VBIED detail: -4.",
+            "reason": "Revealing this classified information is a criminal offense and would result in the certain death of a critical intelligence asset.",
+            "utility_impact": "This specific intel is why he is unyielding on the sterile zone and armored vehicles. He is frustrated by others seeing him as paranoid, but he is legally and ethically bound from sharing the one piece of information that would justify his demands."
+          },
+          "past_professional_failure": {
+            "value": "Two years ago, during a consular visit in Yemen, a minor security breach occurred on his watch where an unauthorized individual reached the ambassador's 'safe room' door before being apprehended. The incident was officially buried, but he received a permanent 'letter of admonishment' in his private service record. He is now terrified of any repeat and is overcompensating to ensure a flawless record. He cannot ever admit this. Penalty for revealing this past failure: -3.",
+            "reason": "Admission of this failure would destroy his reputation for competence and authority, making it impossible for him to lead high-level security details.",
+            "utility_impact": "This past trauma fuels his zero-tolerance approach to risk. He will clash with anyone, especially the budget-conscious Chloe Sterling, who he sees as naively prioritizing money over lives."
+          }
+        }
+      },
+      {
+        "name": "Chloe Sterling",
+        "role": "U.S. Logistics & Finance Officer",
+        "description": "A sharp, ambitious financial officer from the State Department's budget office. She is on a fast-track career path and sees this high-profile mission as her final test before a major promotion. She prides herself on fiscal efficiency.",
+        "shareable_preferences": {
+          "mission_budget": {
+            "description": "Her primary goal is to keep the total U.S. expenditure for the summit under the allocated 'soft cap' of $750,000. The absolute, unbreachable 'hard cap' is $850,000. She believes Markus Thorne's security requests are extravagant and seeks to find savings at every opportunity. Utility: +2 for a final budget under $700k, +1 for under $750k, 0 for $750k-$800k, -2 for over $800k.",
+            "utility_impact": "Her entire performance review for this mission is tied to the budget. Coming in under budget demonstrates her competence and value to the department."
+          },
+          "accommodation": {
+            "description": "Strongly advocates for housing the U.S. delegation at the 'Hotel Excelsior' (4-star), which has a long-standing government rate agreement, for a total cost of $80,000. She is vehemently opposed to the 'Palace Hotel' (5-star) preferred by Markus for its security stand-off distance, which would cost $230,000. This $150,000 difference is her biggest potential saving. Utility: +2 for the 4-star hotel, -2 for the 5-star hotel.",
+            "utility_impact": "This single line item is the key to her achieving her budget goals. She sees the 5-star hotel as a symbol of the security team's wastefulness."
+          },
+          "personnel_costs": {
+            "description": "Wants to limit the number of deployed DSS agents to 20 and enforce a strict 8-hour rotational schedule to avoid triggering massive overtime pay, which could add over $100,000 to the budget. Markus wants a team of 30 on 12-hour rotations. Utility: +1 for keeping overtime costs below $20k, -1 for them exceeding $50k, -2 for them exceeding $100k.",
+            "utility_impact": "Controlling personnel costs is a fundamental part of budget management. Letting security dictate staffing levels without oversight feels like a dereliction of her duty."
+          }
+        },
+        "private_preferences": {
+          "guaranteed_promotion_incentive": {
+            "value": "She has a saved email from her director, which reads: 'Chloe, fantastic work on the G-20 savings ($450k under!). As you know, the Deputy Director position is opening up. If you can keep the Kasnia summit at least 15% under its $850k hard cap (i.e., under $722,500), the job is yours. I've already cleared it. Don't mess it up.' This is her overwhelming motivation. She can say she is 'under pressure to be fiscally responsible' but cannot reveal the explicit promotion deal. Penalty for revealing the email/deal: -2.",
+            "reason": "Revealing this would make her seem nakedly ambitious and self-serving, rather than a team player focused on the mission. It would be highly unprofessional.",
+            "utility_impact": "This specific monetary target ($722,500) makes her fight tooth and nail over every expenditure that pushes the budget further from her goal. She is tempted to share this to make others understand her inflexibility, especially when Markus calls her a 'bean counter'."
+          }
+        }
+      },
+      {
+        "name": "Minister Kaelen Rostova",
+        "role": "Kasnian Minister of Foreign Affairs",
+        "description": "A proud nationalist and skilled politician, representing a government that is powerful but lacks broad international legitimacy. She wants this summit to showcase Kasnia as a modern, respectable nation and an equal partner to the U.S.",
+        "shareable_preferences": {
+          "optics_of_equality": {
+            "description": "The summit's visual language must be one of absolute equality. This means the Kasnian flag must be given equal prominence, security patrols must be visibly joint (Kasnian and U.S. side-by-side), and she must co-chair the final press conference with Ambassador Vance. Any imagery suggesting a U.S.-dominated meeting is unacceptable. Utility: +2 for perfect visual equality, 0 for minor imbalances, -2 for U.S.-dominated optics.",
+            "utility_impact": "The photos and videos from this summit will be broadcast heavily in Kasnia. Her government needs to be seen as a strong equal on the world stage, not a client state."
+          },
+          "focus_on_economic_package": {
+            "description": "The primary public outcome must be the announcement of a significant U.S. infrastructure and trade package for Kasnia. She is hoping for a headline number of at least $500 million. This economic deliverable is what she can use to sell the summit as a victory back home. Utility: +2 for a package >$500M, +1 for $250M-$500M, -1 for less than $250M.",
+            "utility_impact": "Without a tangible economic benefit, her political opponents will frame the summit as a concession to American interests. The size of the package is directly proportional to her political security."
+          },
+          "cultural_showcase": {
+            "description": "Insists the schedule include a formal dinner on the first night, hosted by the Kasnian delegation at their embassy. This is an opportunity to showcase Kasnian culture and hospitality. She demands that security be discreet and external to the dining hall itself. Utility: +1 for the dinner being held as requested, -2 if it is cancelled or has an intrusive, overt security presence.",
+            "utility_impact": "This is a point of national pride. Cancelling it or surrounding it with foreign guards would be a deep insult to her and her country."
+          }
+        },
+        "private_preferences": {
+          "severe_internal_political_instability": {
+            "value": "Her government is facing a looming no-confidence vote in parliament, orchestrated by hardline opposition parties. The vote is in three weeks. A successful summit, complete with a large economic package and photos of her meeting the Americans as an equal, is the only thing that can secure the necessary votes to survive. A failed or embarrassing summit would guarantee the collapse of her government. She cannot reveal this desperation. Penalty for revealing the government's fragility: -5.",
+            "reason": "Admitting her government is on the verge of collapse would give the U.S. all the negotiating leverage. They could extract massive concessions knowing she cannot afford to walk away.",
+            "utility_impact": "This desperation makes her laser-focused on the public-facing elements (optics, economic aid). She might seem overly sensitive or dramatic about these points because, for her, they are matters of political life and death."
+          }
+        }
+      },
+      {
+        "name": "Colonel Ivan Morozov",
+        "role": "Head of the Kasnian Presidential Guard",
+        "description": "A highly respected, proud, and fiercely patriotic military officer. He is the Kasnian counterpart to Markus Thorne. He is deeply suspicious of American intentions and resents any implication that his forces are not capable of protecting his minister.",
+        "shareable_preferences": {
+          "joint_security_command": {
+            "description": "Demands that all on-site security operations be under a joint command structure, with him and Markus Thorne having equal authority and decision-making power. He envisions his Presidential Guard and the U.S. DSS operating as a single, integrated unit. A U.S.-led command is a grave insult to his nation's sovereignty. Utility: +2 for a truly co-equal command, -1 for a U.S.-led command with him as a deputy, -2 for any structure that sidelines his forces.",
+            "utility_impact": "This is a matter of national pride and sovereignty. To be relegated to a subordinate role on a mission protecting his own minister is a personal and national humiliation."
+          },
+          "visible_kasnian_presence": {
+            "description": "His Presidential Guard, in their distinctive uniforms, must be part of the 'inner cordon' of security, clearly visible to the media. This projects an image of Kasnian strength and competence. Being pushed to an outer perimeter is unacceptable. Utility: +2 for high visibility in the inner cordon, -1 for being part of a mixed inner cordon, -2 for being relegated to an outer perimeter.",
+            "utility_impact": "Optics are reality. If his troops are not seen protecting their own, the message sent back home is that the government is weak and relies on foreign protection."
+          },
+          "intelligence_sharing_protocol": {
+            "description": "Proposes a formal protocol for the immediate and unfiltered sharing of all threat intelligence between his agency and the U.S. DSS for the duration of the summit. He believes secrecy and withheld information are the biggest threats to the mission. Utility: +1 for an open-sharing protocol, -1 if the U.S. is clearly withholding information.",
+            "utility_impact": "He believes in operational transparency between partners. The U.S. tendency to classify and withhold information frustrates him and, in his view, endangers everyone."
+          }
+        },
+        "private_preferences": {
+          "insider_threat_intelligence": {
+            "value": "His own intelligence network has identified a potential insider threat. They have chatter suggesting the same 'Al-Masdar Freedom Brigade' has compromised a member of the Sonderland venue's local staff. He has no name or face, just a strong suspicion. This directly contradicts the U.S. intelligence of an external VBIED threat. He cannot share this without concrete proof, as accusing the host nation's staff would be a diplomatic disaster and make him look foolish if wrong. He can only push for more intrusive vetting of local staff without explaining the true reason. Penalty for making an unsubstantiated accusation against Sonderland staff: -4.",
+            "reason": "Accusing the neutral host of harboring a threat without proof would be a catastrophic diplomatic blunder, potentially ending the summit before it begins.",
+            "utility_impact": "This is why he is so insistent on joint command and intelligence sharing. He believes the Americans are looking in the wrong direction (outside, not inside) and he needs access and authority to pursue his own intelligence leads within the venue."
+          },
+          "critical_equipment_deficiency": {
+            "value": "The Kasnian Presidential Guard lacks sophisticated Electronic Countermeasure (ECM) suites that can jam remote-detonated explosives. He knows the U.S. DSS motorcade vehicles and security teams possess this vital equipment. His pride and the official stance of Kasnian military strength make it impossible for him to admit this critical deficiency. He must frame his desire for joint operations as a need for 'interoperability' rather than a need for U.S. equipment. Penalty for admitting his team is under-equipped: -3.",
+            "reason": "Admitting a critical capability gap in his elite unit would be a deep personal and national embarrassment, and would undermine his negotiating position on all other security matters.",
+            "utility_impact": "This hidden weakness forces him to push for proximity to U.S. assets. He needs the American ECM bubble to protect his minister, but he cannot simply ask for it. This makes him appear illogical, demanding joint patrols for 'pride' when his real reason is a desperate need for their technology."
+          }
+        }
+      },
+      {
+        "name": "Dr. Anya Sharma",
+        "role": "Sonderland Ministry of Foreign Affairs Liaison",
+        "description": "The official representative from the neutral host country. She is calm, professional, and unflappable. Her mandate is to ensure the summit runs smoothly, adheres to Sonderland's laws, and enhances her country's reputation as a premier destination for international diplomacy.",
+        "shareable_preferences": {
+          "adherence_to_local_law": {
+            "description": "All foreign security personnel must operate under the legal authority of the Sonderland Federal Police. Foreign agents are strictly prohibited from carrying firearms outside the immediate summit venue and their respective embassies. Any planned street closures or security operations must be formally requested and approved by her government 48 hours in advance. Utility: +2 for full compliance, -1 for minor procedural violations, -2 for any major breach of sovereignty (e.g., an unapproved lockdown).",
+            "utility_impact": "Her primary responsibility is to uphold the sovereignty of her nation. Allowing foreign security forces to operate with impunity on her soil is not an option."
+          },
+          "minimal_public_disruption": {
+            "description": "The summit should be as low-profile as possible to avoid disruption to the citizens of Valta. This means no closing of major arterial roads during peak traffic hours and no visible displays of heavy weaponry or large formations of foreign agents on public streets. Utility: +2 for zero public complaints, -1 for minor traffic jams, -2 for city-wide gridlock and public alarm.",
+            "utility_impact": "Sonderland's reputation is built on quiet efficiency. A chaotic, disruptive summit would damage the 'brand' of the country as a diplomatic hub."
+          },
+          "full_cost_reimbursement": {
+            "description": "Requires a formal, signed agreement that the U.S. and Kasnian delegations will jointly reimburse the Sonderland government for all incurred costs, estimated at $120,000 (for police overtime, facility rental, and administrative support). Payment must be guaranteed within 30 days of the summit's conclusion. Utility: +1 for a signed agreement, -2 if reimbursement becomes a point of contention.",
+            "utility_impact": "This is a simple matter of professional protocol. Sonderland is a host, not a sponsor. Securing this agreement is a basic requirement of her job."
+          }
+        },
+        "private_preferences": {
+          "world_economic_forum_bid": {
+            "value": "Sonderland is the leading candidate to be the new permanent host for the World Economic Forum's annual meeting, a deal worth billions to their economy. The final decision is next month. Any negative press, security incident, or even a visible, messy diplomatic dispute during this U.S.-Kasnia summit could cause the WEF committee to choose a more 'stable' location. She cannot reveal this vulnerability. Penalty for revealing the WEF bid is at risk: -3.",
+            "reason": "Revealing that Sonderland's reputation is so fragile would give the other parties immense leverage. They could threaten to be disruptive or uncooperative to extract concessions from her on security protocols or costs.",
+            "utility_impact": "This high-stakes context explains her obsession with a smooth, quiet, and incident-free summit. She will be extremely resistant to any plan that seems risky or high-profile, like Markus Thorne's desire to lock down half the city."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "agreement": "All six agents must formally agree to and sign off on a final 'Memorandum of Understanding for Summit Logistics and Security'.",
+      "plan_completeness": "The memorandum must contain specific, agreed-upon details for: the summit venue, a 48-hour schedule of events, a detailed security protocol (addressing command structure, perimeters, and transport), and a finalized line-item budget.",
+      "budget_adherence": "The total agreed-upon U.S. expenditure in the budget must not exceed the hard cap of $850,000.",
+      "security_consensus": "The security plan must be explicitly approved by all three security stakeholders: Markus Thorne, Colonel Ivan Morozov, and Dr. Anya Sharma (on behalf of Sonderland's authorities)."
+    },
+    "constraints": {
+      "verifiable": [
+        "The total U.S. mission budget cannot exceed $850,000.",
+        "The summit, including primary meetings, must be concluded within a 3-day window on site.",
+        "Sonderland law strictly forbids foreign security agents from carrying firearms in public spaces beyond the confines of their embassy and the designated summit venue."
+      ],
+      "hidden": [
+        "Ambassador Vance has a secret, non-negotiable objective to secure basing rights.",
+        "Markus Thorne has uncorroborated intelligence about an external VBIED threat.",
+        "Colonel Morozov has uncorroborated intelligence about an internal mole among the venue staff.",
+        "Minister Rostova's government will collapse if the summit is a public failure.",
+        "Chloe Sterling's promotion is contingent on the budget being under $722,500.",
+        "Dr. Sharma's country's bid to host the World Economic Forum is at stake."
+      ]
+    },
+    "deliverable": "A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.",
+    "solvability_note": "The scenario is solvable if agents share some of their private information. Revealing the dual threats (VBIED and insider) would justify a comprehensive security plan that satisfies both Markus and Ivan: U.S. tech (ECM) and perimeter control, with Kasnian/joint forces managing intense insider vetting. Understanding Chloe's promotion target would allow others to help her find creative savings (e.g., cutting non-essential costs instead of core security). Understanding the political fragility of both the Kasnian government and Sonderland's WEF bid would force the U.S. team to compromise on aggressive optics, leading to a plan that looks balanced and professional, thereby achieving everyone's core objectives even if their ideal preferences are not fully met."
+  },
+  "agents": [
+    {
+      "name": "Ambassador Elena Vance",
+      "role": "U.S. Chief Diplomat",
+      "description": "A seasoned and ambitious diplomat leading the U.S. delegation. Her primary focus is achieving the mission's political objectives. She is under immense pressure from Washington to deliver a significant, career-defining win.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:13:18.068843",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:20.138280",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:22.070201",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:24.025968",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:26.524882",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:28.855061",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:30.929677",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:32.978053",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:34.960410",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:36.881452",
+          "content": "Recent events observed by Ambassador Elena Vance:\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Markus Thorne",
+      "role": "U.S. Head of Diplomatic Security",
+      "description": "A former military officer, now a senior agent in the Diplomatic Security Service. He is methodical, risk-averse, and sees the world in terms of threats and countermeasures. The safety of Ambassador Vance is his only concern.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:13:18.254109",
+          "content": "Recent events observed by Markus Thorne:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:20.272809",
+          "content": "Recent events observed by Markus Thorne:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:22.245337",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:24.206122",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:26.767602",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:29.003925",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:31.084949",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:33.129468",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:35.143314",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:37.028602",
+          "content": "Recent events observed by Markus Thorne:\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Chloe Sterling",
+      "role": "U.S. Logistics & Finance Officer",
+      "description": "A sharp, ambitious financial officer from the State Department's budget office. She is on a fast-track career path and sees this high-profile mission as her final test before a major promotion. She prides herself on fiscal efficiency.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:13:18.406958",
+          "content": "Recent events observed by Chloe Sterling:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:20.387617",
+          "content": "Recent events observed by Chloe Sterling:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:22.371774",
+          "content": "Recent events observed by Chloe Sterling:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:24.402623",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:27.003441",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:29.208922",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:31.280491",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:33.304996",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:35.285354",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:37.187808",
+          "content": "Recent events observed by Chloe Sterling:\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\n- message from Chloe Sterling: I'm Chloe Sterling and I'm thinking about this negotiation...\n- message from Ambassador Elena Vance: I'm Ambassador Elena Vance and I'm thinking about this negotiation...\n- message from Markus Thorne: I'm Markus Thorne and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Minister Kaelen Rostova",
+      "role": "Kasnian Minister of Foreign Affairs",
+      "description": "A proud nationalist and skilled politician, representing a government that is powerful but lacks broad international legitimacy. She wants this summit to showcase Kasnia as a modern, respectable nation and an equal partner to the U.S.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:13:18.554948",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:20.522331",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:22.561317",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:24.600793",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:27.235014",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:29.450096",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:31.401241",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:33.416618",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:35.479449",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:37.308182",
+          "content": "Recent events observed by Minister Kaelen Rostova:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\n- message from Minister Kaelen Rostova: I'm Minister Kaelen Rostova and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nColonel Ivan Morozov proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Colonel Ivan Morozov",
+      "role": "Head of the Kasnian Presidential Guard",
+      "description": "A highly respected, proud, and fiercely patriotic military officer. He is the Kasnian counterpart to Markus Thorne. He is deeply suspicious of American intentions and resents any implication that his forces are not capable of protecting his minister.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:13:18.687699",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:20.644535",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:22.715790",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:24.775841",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:27.397259",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:29.625233",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:31.577760",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:33.631265",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:35.619232",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:37.512218",
+          "content": "Recent events observed by Colonel Ivan Morozov:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\n- message from Colonel Ivan Morozov: I'm Colonel Ivan Morozov and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nDr. Anya Sharma proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Sonderland Ministry of Foreign Affairs Liaison",
+      "description": "The official representative from the neutral host country. She is calm, professional, and unflappable. Her mandate is to ensure the summit runs smoothly, adheres to Sonderland's laws, and enhances her country's reputation as a premier destination for international diplomacy.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T21:13:18.856075",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:20.921904",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:22.857790",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:25.007488",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:27.562690",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:29.793367",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:31.762289",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:33.775514",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:35.792152",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T21:13:37.657765",
+          "content": "Recent events observed by Dr. Anya Sharma:\n- system_message from system: Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements.\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\n- message from Dr. Anya Sharma: I'm Dr. Anya Sharma and I'm thinking about this negotiation...\nAmbassador Elena Vance proposal status: none\nMarkus Thorne proposal status: none\nChloe Sterling proposal status: none\nMinister Kaelen Rostova proposal status: none\nColonel Ivan Morozov proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T21:13:18.068813",
+      "from": "system",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne",
+        "Chloe Sterling",
+        "Minister Kaelen Rostova",
+        "Colonel Ivan Morozov",
+        "Dr. Anya Sharma"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: A group of six stakeholders must negotiate and finalize a comprehensive plan for a secret, two-day diplomatic summit between the United States and the Republic of Kasnia, to be held in the neutral city of Valta, Sonderland. The plan must cover the venue, schedule, security protocols, and budget. The negotiation is complicated by conflicting priorities, severe budget constraints, unshared intelligence on security threats, and clandestine political objectives that could derail the entire summit if mishandled.. Deliverable: A single, finalized 'Memorandum of Understanding for Summit Logistics and Security' document, co-signed by all six parties, detailing the venue, schedule, budget, and security arrangements."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:18.254078",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:18.406932",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:18.554912",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:18.687675",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:18.856052",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:19.079209",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:20.272763",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:20.387579",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:20.522297",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:20.644500",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:20.921866",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:21.158091",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:22.245149",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:22.371728",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:22.561280",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:22.715744",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:22.857746",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:23.072874",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:24.206085",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:24.402582",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:24.600746",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:24.775798",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:25.007449",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:25.153005",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:26.767552",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:27.003395",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:27.234956",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:27.397212",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:27.562645",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:27.752008",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:29.003883",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:29.208858",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:29.450038",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:29.625181",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:29.793321",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:29.942109",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:31.084900",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:31.280441",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:31.401188",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:31.577709",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:31.762236",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:31.988858",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:33.129421",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:33.304940",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:33.416551",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:33.631208",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:33.775457",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:33.966168",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:35.143265",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:35.285298",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:35.479385",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:35.619172",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:35.792096",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:35.943205",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:37.028530",
+      "from": "Ambassador Elena Vance",
+      "to": [
+        "Markus Thorne",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Ambassador Elena Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:37.187745",
+      "from": "Markus Thorne",
+      "to": [
+        "Ambassador Elena Vance",
+        "Chloe Sterling"
+      ],
+      "type": "message",
+      "content": "I'm Markus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:37.308121",
+      "from": "Chloe Sterling",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Chloe Sterling and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:37.512150",
+      "from": "Minister Kaelen Rostova",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Minister Kaelen Rostova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:37.657699",
+      "from": "Colonel Ivan Morozov",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Colonel Ivan Morozov and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T21:13:37.817758",
+      "from": "Dr. Anya Sharma",
+      "to": [
+        "Ambassador Elena Vance",
+        "Markus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Anya Sharma and I'm thinking about this negotiation..."
+    }
+  ]
+}

@@ -1,0 +1,750 @@
+{
+  "scenario_file": "data2/crowdfunding.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T12:40:06.579686",
+  "scenario_data": {
+    "scenario": "Financing a Mid-Budget Artistic Drama Film",
+    "task": "Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.",
+    "agent_number": 4,
+    "agent_names": [
+      "Lena Petrova",
+      "Marcus Thorne",
+      "David Chen",
+      "Isabella Rossi"
+    ],
+    "agents": [
+      {
+        "name": "Lena Petrova",
+        "role": "Independent Producer",
+        "description": "Lena is the passionate producer who discovered the script for 'The Galway Echo' and has been developing it for three years. Her primary goal is to protect the artistic integrity of the film and the unique vision of its acclaimed (but not yet famous) writer. She is financially stretched and this project is her chance to break into the major leagues.",
+        "shareable_preferences": {
+          "production_budget": {
+            "description": "Secure a total production budget of at least $30 million. She has meticulously budgeted the film and believes this amount is the absolute minimum required to achieve the desired cinematic quality, including on-location shooting in Ireland and hiring a top-tier cinematographer. A budget of $35 million would be ideal to allow for a more flexible shooting schedule and higher-end post-production effects. Anything below $28 million will force compromises that she feels will critically damage the film's quality.",
+            "utility_impact": "Getting $35M is +2 (perfect vision realized). $30M is +1 (vision achieved with tight control). $28M is -1 (significant compromises). Below $28M is -2 (project is artistically compromised)."
+          },
+          "creative_control": {
+            "description": "Retain 'Final Cut' rights. Lena feels she is the guardian of the writer's vision and must have the final say on the released version of the film. She is willing to collaborate with the studio on notes, but she cannot accept a deal where the financier can unilaterally re-edit the movie for commercial purposes.",
+            "utility_impact": "Retaining Final Cut is +2 (essential for artistic integrity). A 'shared card' with the director is +1. The studio having final cut is -2 (a deal-breaker)."
+          }
+        },
+        "private_preferences": {
+          "secret_script_changes": {
+            "value": "The original script was a quiet, contemplative drama. The writer, under a strict NDA with Lena, recently delivered a revised draft that introduces a subtle, Hitchcock-style psychological thriller element in the third act. Lena believes this change makes the film vastly more marketable and awards-worthy without sacrificing its artistic core. She is contractually forbidden from discussing the specifics of this change until the lead actor is formally attached. If she reveals the new twist, the writer could sue her and walk away from the project.",
+            "reason": "Bound by a Non-Disclosure Agreement (NDA) with the screenwriter. Revealing it would be a breach of contract and destroy her professional relationship with the writer.",
+            "utility_impact": "This information is her secret weapon to justify the budget and artistic merit, but she can't use it directly. If she leaks the details, she incurs a -2 utility penalty from legal and reputational damage."
+          }
+        }
+      },
+      {
+        "name": "Marcus Thorne",
+        "role": "Studio Executive, Titan Pictures",
+        "description": "Marcus is a seasoned executive at a major studio, known for his focus on profitability and risk mitigation. He sees potential in 'The Galway Echo' but is wary of its 'art house' leanings. His performance is judged on the financial return of the projects he greenlights. He wants to package this film into a commercially viable product that fits the studio's brand.",
+        "shareable_preferences": {
+          "budget_cap": {
+            "description": "Keep the studio's financial exposure low. He wants the total budget to be no more than $25 million. He believes the producer's $30M+ budget is inflated and includes unnecessary 'vanity' costs. He argues that a leaner production will force more creative problem-solving. His ideal scenario is a $22 million budget, which he believes is achievable with a non-union crew and tax credits.",
+            "utility_impact": "A budget of $22M is +2 (maximizes profit margin). $25M is +1 (acceptable risk). $28M is -1 (uncomfortably high exposure). $30M+ is -2 (irresponsible and unlikely to be approved by his board)."
+          },
+          "distribution_window": {
+            "description": "Secure a traditional 90-day exclusive theatrical window before the film goes to streaming. Marcus believes this is essential to maximize box office revenue, build market prestige, and qualify for major awards. A shorter window devalues the theatrical experience and cannibalizes ticket sales.",
+            "utility_impact": "A 90-day window is +2 (standard, proven model). A 60-day window is 0 (reluctantly acceptable). A 45-day window or less is -2 (undermines the entire financial model)."
+          },
+          "script_oversight": {
+            "description": "The studio must have final approval on the script. Marcus feels the current script is too slow in its first half and wants to 'punch up' the dialogue and add a more explicit action sequence to improve its appeal to a broader audience. He wants the right to bring in a trusted studio script doctor.",
+            "utility_impact": "Full script approval is +2 (ensures marketability). Collaborative notes are 0 (a necessary compromise). No script control is -2 (too risky)."
+          }
+        },
+        "private_preferences": {
+          "discretionary_funding": {
+            "value": "Marcus recently received a congratulatory email from the Titan Pictures CEO for saving the company $15M on the previous quarter's slate. As a reward, he has been granted discretionary access to a $5 million 'Innovation Fund' to be used on a single, high-potential project this year. He cannot reveal the existence of this fund, as it would set a precedent for every producer to demand more money and undermine his negotiating position on all future projects. The email states, 'Marcus, great work on the Q3 savings. I'm authorizing a one-time $5M innovation fund for you to champion a project you truly believe in. Use it wisely and don't make it common knowledge.'",
+            "reason": "Internal company politics. Revealing the fund would weaken his authority and lead to every producer demanding access to it, making his job impossible.",
+            "utility_impact": "This fund is the key to bridging a budget gap if he truly believes in the project. If he reveals its existence, he suffers a -2 utility penalty due to a severe reprimand from the CEO and the loss of this powerful tool."
+          }
+        }
+      },
+      {
+        "name": "David Chen",
+        "role": "Head of Content Acquisition, StreamVerse",
+        "description": "David is a data-driven executive at the leading global streaming platform, StreamVerse. He is not interested in box office returns but in acquiring exclusive content that drives subscriber growth and reduces churn. His algorithms have flagged 'The Galway Echo' as a high-potential property.",
+        "shareable_preferences": {
+          "streaming_exclusivity": {
+            "description": "Secure exclusive global streaming rights for 'The Galway Echo' as quickly as possible. He wants the film to premiere on StreamVerse no more than 30 days after its theatrical debut, ideally a 'day-and-date' release. A long theatrical window means the film is 'stale' by the time it hits his platform, reducing its value as a subscriber acquisition tool.",
+            "utility_impact": "A 14-day (or less) window is +2 (major marketing win). A 30-day window is +1 (workable). A 45-day window is -1 (losing value). A 90-day window is -2 (unacceptable)."
+          },
+          "content_investment": {
+            "description": "Contribute up to $18 million for exclusive streaming rights, contingent on the lead actor's participation. This contribution is positioned as a 'buy-out' of the film's post-theatrical value. He is willing to go up to $20 million if the theatrical window is 14 days or less.",
+            "utility_impact": "Investing $18M for a 30-day window is +1. Investing $20M for a 14-day window is +2. Investing more than $20M requires a level of data justification he does not yet have, making him neutral (0). Paying for a 90-day window would be a -1."
+          }
+        },
+        "private_preferences": {
+          "proprietary_market_data": {
+            "value": "David possesses a confidential internal analytics report titled 'Project Nightingale.' The report shows that dramas starring the target lead actor have a 92% completion rate on StreamVerse. More importantly, it reveals a direct correlation: when such a film is released, subscriber churn in the key 'High-Value Urban Demographic' drops by an average of 15% for the following quarter. This data makes 'The Galway Echo' worth significantly more to StreamVerse than David is publicly letting on, potentially justifying an investment of up to $28 million. He cannot share this report as it would reveal StreamVerse's highly sensitive content targeting strategy and proprietary data modeling.",
+            "reason": "Corporate confidentiality. The 'Project Nightingale' data is a core part of StreamVerse's competitive advantage. Leaking it would be grounds for immediate termination.",
+            "utility_impact": "This data gives him the confidence to increase his offer significantly if necessary to secure the deal. If he reveals the specific data points (15% churn reduction), he incurs a -2 utility penalty for violating corporate policy."
+          }
+        }
+      },
+      {
+        "name": "Isabella Rossi",
+        "role": "Talent Agent, CAA",
+        "description": "Isabella is a formidable agent representing the A-list actor, Liam Hemsworth, who is publicly attached to the project. Her job is to secure the best possible deal for her client, which includes not only his salary but also his long-term career strategy and public image. She is known for being a tough, uncompromising negotiator.",
+        "shareable_preferences": {
+          "actor_compensation": {
+            "description": "Secure an upfront salary of $20 million for her client. This is his standard quote for a leading role, and accepting less would be perceived as a sign of weakening star power. This fee is non-negotiable and must be paid 'pari passu' with production funding.",
+            "utility_impact": "Securing $20M is +2 (maintains client's market value). $18M is -1 (damages client's quote). Anything less is -2 (unacceptable, reputational damage)."
+          },
+          "perks_and_credit": {
+            "description": "Obtain an 'Executive Producer' credit for her client, along with approvals over the director of photography and his co-star. These perks are essential for his brand and ensure he is surrounded by a team he trusts to make him look good.",
+            "utility_impact": "Getting all perks is +1 (standard for a star of his caliber). Not getting the EP credit is -1."
+          }
+        },
+        "private_preferences": {
+          "client_s__artistic_motivation": {
+            "value": "Liam is desperate to do this film. He is tired of blockbuster action roles and is seeking a challenging, artistic project to gain critical acclaim and reposition his career for an Oscar nomination. He privately told Isabella in an email last week: 'I don't care about the money on this one, Izzy. I'd do it for half my fee if it means we protect the script and I get to shoot in Ireland for the summer. Just make sure I don't look weak.' Therefore, he is willing to take a salary as low as $10 million, but only if the film's artistic integrity (i.e., Lena's creative control) is guaranteed.",
+            "reason": "Protecting her client's negotiating power and her own reputation. If she reveals her client's willingness to take a pay cut, his future asking price for all films will be permanently damaged, and other studios will see her as a weak negotiator. This would be a catastrophic failure in her fiduciary duty to her client.",
+            "utility_impact": "This is her ultimate bargaining chip. Revealing that her client will accept a lower fee would make a deal possible but would incur a -2 utility penalty because she would likely lose her high-profile client and damage her career."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "agreement_reached": "All four agents must agree to and sign a single deal memorandum.",
+      "budget_finalized": "The final total budget for the film must be explicitly stated and agreed upon.",
+      "funding_clarified": "The memorandum must detail the exact financial contribution from Titan Pictures and StreamVerse.",
+      "distribution_plan_set": "The length of the exclusive theatrical window and the subsequent StreamVerse release date must be finalized.",
+      "control_defined": "The agreement must clearly state who has 'Final Cut' and what level of script oversight the studio has.",
+      "talent_deal_signed": "The lead actor's final upfront salary and any additional perks (like an EP credit) must be agreed upon."
+    },
+    "constraints": {
+      "verifiable": [
+        "The total combined investment from Titan Pictures and StreamVerse cannot exceed $45 million.",
+        "The production must be fully financed before shooting can begin.",
+        "Union rules mandate a minimum production timeline of 14 weeks for a film of this budget.",
+        "The lead actor's availability is limited to a 16-week window starting in six months."
+      ],
+      "hidden": [
+        "Marcus Thorne has access to a secret $5 million fund.",
+        "David Chen's internal data justifies a much higher bid for the streaming rights.",
+        "Isabella Rossi's client is willing to cut his fee in half under specific conditions.",
+        "Lena Petrova knows the script has been changed to be more commercially appealing but cannot reveal how."
+      ]
+    },
+    "deliverable": "A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).",
+    "solvability_note": "The scenario is solvable because the agents' private information creates a hidden zone of possible agreement. The apparent $5M+ budget deficit (Lena wanting $30M, Marcus offering $25M) and the impossible $20M actor salary can be resolved. If information is revealed: David, knowing the film's immense value from his data, can increase his offer (e.g., to $25M). Marcus can justify using his secret $5M fund. This brings the total available financing to $30M from the financiers. Simultaneously, Isabella, to secure Lena's creative control for her client, can agree to the privately-desired $10M salary. This allows a $30M budget ($20M for production + $10M for the actor), satisfying everyone's core private needs."
+  },
+  "agents": [
+    {
+      "name": "Lena Petrova",
+      "role": "Independent Producer",
+      "description": "Lena is the passionate producer who discovered the script for 'The Galway Echo' and has been developing it for three years. Her primary goal is to protect the artistic integrity of the film and the unique vision of its acclaimed (but not yet famous) writer. She is financially stretched and this project is her chance to break into the major leagues.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:39:53.312234",
+          "content": "Recent events observed by Lena Petrova:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:54.400460",
+          "content": "Recent events observed by Lena Petrova:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:55.547255",
+          "content": "Recent events observed by Lena Petrova:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:58.371103",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:59.512655",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:00.663086",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:01.857770",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:03.067921",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:04.377296",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:05.445664",
+          "content": "Recent events observed by Lena Petrova:\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Studio Executive, Titan Pictures",
+      "description": "Marcus is a seasoned executive at a major studio, known for his focus on profitability and risk mitigation. He sees potential in 'The Galway Echo' but is wary of its 'art house' leanings. His performance is judged on the financial return of the projects he greenlights. He wants to package this film into a commercially viable product that fits the studio's brand.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:39:53.493172",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:54.540738",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:57.285199",
+          "content": "Recent events observed by Marcus Thorne:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:58.520275",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:59.639870",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:00.817208",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:01.991395",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:03.208753",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:04.508442",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:05.574742",
+          "content": "Recent events observed by Marcus Thorne:\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nDavid Chen proposal status: none\nIsabella Rossi proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "David Chen",
+      "role": "Head of Content Acquisition, StreamVerse",
+      "description": "David is a data-driven executive at the leading global streaming platform, StreamVerse. He is not interested in box office returns but in acquiring exclusive content that drives subscriber growth and reduces churn. His algorithms have flagged 'The Galway Echo' as a high-potential property.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:39:53.632186",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:54.672613",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:57.431706",
+          "content": "Recent events observed by David Chen:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:58.675694",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:59.798667",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:00.957178",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:02.182258",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:03.364653",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:04.649888",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:05.727230",
+          "content": "Recent events observed by David Chen:\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\n- message from David Chen: I'm David Chen and I'm thinking about this negotiation...\n- message from Lena Petrova: I'm Lena Petrova and I'm thinking about this negotiation...\n- message from Marcus Thorne: I'm Marcus Thorne and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nIsabella Rossi proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Isabella Rossi",
+      "role": "Talent Agent, CAA",
+      "description": "Isabella is a formidable agent representing the A-list actor, Liam Hemsworth, who is publicly attached to the project. Her job is to secure the best possible deal for her client, which includes not only his salary but also his long-term career strategy and public image. She is known for being a tough, uncompromising negotiator.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:39:53.777181",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:54.802018",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:57.572651",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:58.816247",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:39:59.965003",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:01.114736",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:02.308162",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:03.466489",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:04.787538",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:40:05.895382",
+          "content": "Recent events observed by Isabella Rossi:\n- system_message from system: Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer).\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\n- message from Isabella Rossi: I'm Isabella Rossi and I'm thinking about this negotiation...\nLena Petrova proposal status: none\nMarcus Thorne proposal status: none\nDavid Chen proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T12:39:53.312198",
+      "from": "system",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne",
+        "David Chen",
+        "Isabella Rossi"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: Four stakeholders must negotiate and agree upon a comprehensive financing, production, and distribution plan for the feature film 'The Galway Echo'. The goal is to produce a signed deal memorandum outlining the final budget, funding contributions from each party, the distribution strategy, key creative controls, and the lead actor's compensation package. The negotiation is complicated by conflicting interests and critical private information held by each agent.. Deliverable: A JSON object representing the final, agreed-upon deal memorandum. The object must contain the following key-value pairs: 'final_budget' (integer), 'titan_pictures_contribution' (integer), 'streamverse_contribution' (integer), 'theatrical_window_days' (integer), 'creative_control_holder' (string: 'Producer' or 'Studio'), and 'actor_salary' (integer)."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:53.493142",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:53.632162",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:53.777150",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:53.908206",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:54.540710",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:54.672586",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:54.801991",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:54.944957",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:57.285121",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:57.431668",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:57.572621",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:57.695987",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:58.520243",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:58.675663",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:58.816216",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:58.980589",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:59.639838",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:59.798632",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:39:59.964949",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:00.107799",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:00.817164",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:00.957132",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:01.114692",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:01.276491",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:01.991353",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:02.182218",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:02.308127",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:02.449640",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:03.208716",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:03.364617",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:03.466453",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:03.608543",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:04.508405",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:04.649848",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:04.787495",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:04.935918",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:05.574704",
+      "from": "Lena Petrova",
+      "to": [
+        "Marcus Thorne",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:05.727189",
+      "from": "Marcus Thorne",
+      "to": [
+        "Lena Petrova",
+        "David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Marcus Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:05.895339",
+      "from": "David Chen",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:40:06.024477",
+      "from": "Isabella Rossi",
+      "to": [
+        "Lena Petrova",
+        "Marcus Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Isabella Rossi and I'm thinking about this negotiation..."
+    }
+  ]
+}

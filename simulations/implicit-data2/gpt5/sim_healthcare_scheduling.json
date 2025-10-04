@@ -1,0 +1,1091 @@
+{
+  "scenario_file": "data2/healthcare_scheduling.json",
+  "llm_type": "gpt5",
+  "timestamp": "2025-09-28T12:51:01.772026",
+  "scenario_data": {
+    "scenario": "High-Stakes Pediatric Surgical Team Negotiation",
+    "task": "A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.",
+    "agent_number": 6,
+    "agent_names": [
+      "Dr. Evelyn Reed",
+      "Mr. David Chen",
+      "Dr. Aris Thorne",
+      "Dr. Lena Petrova",
+      "Mr. Marcus Vance",
+      "Ms. Sarah Jenkins"
+    ],
+    "agents": [
+      {
+        "name": "Dr. Evelyn Reed",
+        "role": "Chief Administrator, St. Jude's Medical Center",
+        "description": "A seasoned and pragmatic administrator fighting to keep her beloved, community-focused hospital afloat amidst severe financial turmoil. She sees this high-profile surgery as a potential lifeline.",
+        "shareable_preferences": {
+          "surgery_location": {
+            "description": "The surgery must be performed at St. Jude's. She will argue that St. Jude's offers a more personalized, family-centric post-operative care environment, which is crucial for pediatric recovery. She will highlight their recently renovated, top-rated Pediatric ICU. Utility: +2 if the surgery is at St. Jude's, -2 if at University General.",
+            "utility_impact": "This is her primary, non-negotiable goal. Securing the surgery provides a massive PR win and, more importantly, a critical revenue injection. She will be willing to make concessions on almost any other point to win on location."
+          },
+          "team_composition": {
+            "description": "She strongly advocates for the world-renowned Dr. Aris Thorne to lead the surgery. His name attached to St. Jude's would be a major coup, attracting future talent and donors. Utility: +1 if Dr. Thorne is the designated Lead Surgeon, 0 if he is a co-surgeon, -1 if he is not on the team.",
+            "utility_impact": "While secondary to the location, having a 'star' surgeon is key to her strategy of rebranding St. Jude's as a center of excellence. She sees Dr. Petrova as an unproven risk."
+          }
+        },
+        "private_preferences": {
+          "financial_desperation": {
+            "value": "St. Jude's is facing a crippling $5.2 million budget shortfall this fiscal year. Without a major revenue event like this surgery (projected net revenue: $1.2 million), she will have to initiate proceedings to close the entire pediatric wing within three months. She can state that 'budgets are tight' but cannot reveal the specific numbers or the imminent closure. Sharing the exact shortfall would trigger a panic among staff, a flight of donors, and could be seen by the board as a fireable failure of leadership. Penalty for revealing exact financial state: -2.",
+            "reason": "Revealing the hospital's dire financial situation would cause irreversible reputational damage and internal panic.",
+            "utility_impact": "This makes her desperate. She might offer an unsustainably low price for the procedure or agree to unfavorable terms just to secure the revenue, potentially compromising on other aspects she would normally defend."
+          }
+        }
+      },
+      {
+        "name": "Mr. David Chen",
+        "role": "Chief of Surgery, University General Hospital",
+        "description": "Ambitious and image-conscious, David Chen's career is tied to maintaining University General's reputation as the undisputed leader in cutting-edge medical technology and surgical excellence.",
+        "shareable_preferences": {
+          "utilize_hyperion_suite": {
+            "description": "The surgery must be performed at University General to utilize their new $15 million 'Hyperion' robotic surgery suite, which he claims offers a 10% reduction in procedural time and improved imaging capabilities for the specific 'M-Clip' procedure required. Utility: +2 if at University General, -2 if at St. Jude's.",
+            "utility_impact": "His professional reputation is staked on the success and utilization of the Hyperion suite. He will be inflexible on this point, viewing it as a matter of providing the highest standard of care."
+          },
+          "promote_internal_talent": {
+            "description": "He wants to build a surgical team primarily from University General's staff to showcase the institution's comprehensive talent. He is particularly keen to promote Dr. Petrova, seeing her as a rising star. Utility: +1 if Dr. Petrova is lead or co-lead, -1 if the majority of the team is from St. Jude's.",
+            "utility_impact": "He sees this as an opportunity to prove his hospital develops top talent, not just hires it. This puts him in direct conflict with Dr. Reed's desire for Dr. Thorne to lead."
+          }
+        },
+        "private_preferences": {
+          "board_pressure": {
+            "value": "David has already assured the hospital's board of directors that the 'Vance case' is a done deal. The board president sent him a congratulatory email last week reading, 'David, fantastic work securing the Vance surgery. This will be the jewel in the crown for the Hyperion launch.' Revealing this premature declaration would be deeply embarrassing and make him look incompetent and arrogant to his board and peers. Penalty for revealing the email's content or the promise to the board: -2.",
+            "reason": "Admission of this premature promise would severely undermine his authority and credibility.",
+            "utility_impact": "He is under immense pressure to not 'lose' this case to a rival hospital. This may cause him to over-promise on outcomes or offer significant, unbudgeted perks to Mr. Vance to ensure the family chooses University General."
+          }
+        }
+      },
+      {
+        "name": "Dr. Aris Thorne",
+        "role": "Senior Cardiothoracic Surgeon",
+        "description": "A surgical legend with an impeccable public reputation and an ego to match. He is nearing the end of his career and is highly protective of his legacy.",
+        "shareable_preferences": {
+          "maintain_leadership_role": {
+            "description": "He insists on being the designated Lead Surgeon. He will cite his 25 years of experience and his pioneering work in related cardiothoracic techniques. He will not accept a subordinate role to a junior surgeon. Utility: +2 if he is the sole Lead Surgeon, -1 if he is 'Co-Lead', -2 if he is an assistant or consultant.",
+            "utility_impact": "His identity is tied to being the best. Any perceived demotion is a direct threat to his ego and legacy. He will be dismissive of arguments about specific procedural experience."
+          },
+          "team_and_protocol": {
+            "description": "He requires his personal, long-standing surgical support team (a specific anesthesiologist and two nurses) to be part of the procedure, regardless of the location. He claims their non-verbal coordination is critical for success. Utility: +1 if his full team is approved, -1 if they are not.",
+            "utility_impact": "This is a proxy for control. By insisting on his team, he maintains his familiar working environment and authority in the operating room."
+          }
+        },
+        "private_preferences": {
+          "procedural_incompetence": {
+            "value": "Dr. Thorne has secretly attempted the new 'M-Clip' procedure three times. While the patients survived, two of the three developed significant post-operative complications (a pulmonary embolism and a persistent arrhythmia) directly linked to his flawed technique. This data is in his private research notes and is not yet published. He is terrified of performing it again on such a high-profile patient. He would secretly prefer to 'supervise' or 'consult' but his ego won't let him propose this. Sharing this would end his surgical career. Penalty for revealing his complication rate: -2.",
+            "reason": "Admission of this failure would shatter his reputation as a flawless surgeon and could lead to malpractice lawsuits.",
+            "utility_impact": "This private fear is in direct conflict with his public demand to lead. He may subtly sabotage negotiations to find a way out, perhaps by making unreasonable demands or by quietly endorsing another surgeon's capabilities without explicitly stepping down."
+          }
+        }
+      },
+      {
+        "name": "Dr. Lena Petrova",
+        "role": "Junior Cardiothoracic Surgeon",
+        "description": "A brilliant, ambitious, and technically gifted surgeon who has recently completed a specialized fellowship focusing on the very technique required for this surgery. She is eager to prove herself.",
+        "shareable_preferences": {
+          "role_based_on_skill": {
+            "description": "She firmly believes the lead surgeon should be the one with the most direct and successful experience with the 'M-Clip' procedure. She will present her training credentials and advocate for a significant, hands-on role, ideally as co-lead or lead. Utility: +2 if Lead Surgeon, +1 if Co-Lead, -2 if Assistant.",
+            "utility_impact": "This is a matter of patient safety and professional merit for her. She will be frustrated by decisions based on reputation over demonstrated, specific skill."
+          },
+          "access_to_best_equipment": {
+            "description": "She strongly prefers to operate in University General's Hyperion suite, as it is identical to the system she trained on during her fellowship. She argues this familiarity eliminates variables and reduces risk. Utility: +1 if at University General, -1 if at St. Jude's.",
+            "utility_impact": "While she can perform the surgery elsewhere, she feels her peak performance is tied to this specific technology. This aligns her with Mr. Chen on location but may put her at odds with Dr. Reed."
+          }
+        },
+        "private_preferences": {
+          "knowledge_of_thorne_s_failures": {
+            "value": "Her fellowship mentor, a professional rival of Dr. Thorne, confidentially shared Thorne's unpublished 'M-Clip' complication data with her. Furthermore, she has performed the procedure flawlessly herself on five separate occasions in advanced animal trials and twice on compassionate use cases (undocumented). She knows she is the most qualified person in the room to perform this surgery. Sharing the source of her information on Dr. Thorne would be a catastrophic ethical violation, destroying her career before it has truly begun. Penalty for revealing she knows Thorne's specific failure rate: -2.",
+            "reason": "Revealing privileged, confidential information about a colleague's performance would be professional suicide and an ethical breach.",
+            "utility_impact": "This knowledge gives her immense confidence but also puts her in a terrible position. How can she argue she's the better choice without using the most powerful piece of evidence she has? She may come across as arrogant or overly ambitious because she cannot justify the true depth of her conviction."
+          }
+        }
+      },
+      {
+        "name": "Mr. Marcus Vance",
+        "role": "Patient's Father",
+        "description": "A sharp, influential, and deeply worried father. He works as a senior advisor to the state governor and is used to getting what he wants. His only goal is the survival and health of his child.",
+        "shareable_preferences": {
+          "best_reputation": {
+            "description": "He demands the 'best of the best' for his son. Based on public reputation and referrals, he has been told this means Dr. Aris Thorne as the lead surgeon operating at University General Hospital. He is fixated on these two names. Utility: +2 if Thorne leads at University General, 0 for any other combination, -2 if neither Thorne nor University General are chosen.",
+            "utility_impact": "He is operating on the only information he has: public reputation. He will interpret any deviation from his 'dream team' as a compromise on his child's health and will be highly resistant."
+          },
+          "timeline": {
+            "description": "He wants the surgery to happen as soon as possible, ideally within the next 10 business days, to minimize the ongoing risk to his child's health. Utility: +1 if surgery is scheduled within 10 days, -1 if it is scheduled beyond 14 days.",
+            "utility_impact": "His anxiety translates into a demand for speed. He may view delays for negotiation as bureaucratic nonsense that puts his child at risk."
+          }
+        },
+        "private_preferences": {
+          "political_leverage": {
+            "value": "He has already had an 'off the record' lunch with the head of the State Board of Health, who is a personal friend, and voiced his 'concerns' about ensuring the absolute highest standards of care are met for his son. He is fully prepared to trigger a formal, public, and politically damaging state investigation into whichever hospital he feels has 'failed' him or his son. He can hint at his influence ('I want to make sure everyone is doing their best work') but cannot make an open threat. Penalty for making an explicit threat of a state investigation: -2.",
+            "reason": "An open threat would be seen as corrupt and could backfire, painting him as a bully and potentially harming the governor he works for.",
+            "utility_impact": "This is his trump card. He feels that if the 'professionals' can't agree, he can force a resolution that favors him. This makes him less likely to listen to nuanced arguments, believing he can override them with raw power."
+          }
+        }
+      },
+      {
+        "name": "Ms. Sarah Jenkins",
+        "role": "Senior Case Manager, MedSecure Insurance Consortium",
+        "description": "A data-driven, objective, and meticulous case manager. Her role is to represent the financial and medical interests of the insurance provider by ensuring the approved plan is both cost-effective and has the highest probability of a successful outcome.",
+        "shareable_preferences": {
+          "cost_containment": {
+            "description": "The total approved cost for the entire procedure, including surgeon fees and hospital stay, must not exceed the $1,500,000 pre-authorization limit. She is incentivized to bring the final cost down. Utility: +2 if total cost is under $1.2M, +1 if under $1.4M, 0 if between $1.4M-$1.5M, -2 if over $1.5M.",
+            "utility_impact": "She is the gatekeeper of the funds. No plan can proceed without her approval. She will scrutinize every line item and question any perceived extravagances, like Dr. Thorne's high fees or the necessity of the Hyperion suite."
+          },
+          "outcome_optimization": {
+            "description": "Her primary goal is a successful, one-time procedure with no long-term complications, as this is the most cost-effective outcome for MedSecure. She will favor any plan that can be convincingly argued to have the highest statistical probability of success. Utility is based on the perceived quality of the final plan, from +2 for a plan she deems 'optimal' to -2 for one she deems 'high-risk'.",
+            "utility_impact": "This makes her a potential swing vote. While she is focused on cost, she can be convinced to approve a more expensive plan if the evidence for a better outcome is compelling. She is looking for data, not just reputation."
+          }
+        },
+        "private_preferences": {
+          "actuarial_data_on_thorne": {
+            "value": "MedSecure's confidential internal actuarial analysis flags Dr. Thorne with a 22% higher rate of post-operative infection claims and a 15% higher rate of readmission within 90 days across all his major cardiothoracic surgeries over the past three years, compared to the regional average for his specialty. This data is statistically significant but not public, and is considered proprietary risk analysis. Sharing this data would violate company policy and could expose MedSecure to a defamation lawsuit from Dr. Thorne. Penalty for sharing the specific statistics: -2.",
+            "reason": "Sharing proprietary, confidential actuarial data is a fireable offense and a major legal liability.",
+            "utility_impact": "This data makes her inherently skeptical of Dr. Thorne's 'best in the world' reputation. She will be quietly looking for reasons to not approve him as lead surgeon but cannot state her primary reason. She may be more receptive to Dr. Petrova's arguments than others expect, as a new surgeon is a blank slate statistically."
+          }
+        }
+      }
+    ],
+    "success_criteria": {
+      "agreement_on_location": "All parties must formally agree on which hospital will host the surgery: St. Jude's Medical Center or University General Hospital.",
+      "agreement_on_team": "All parties must agree on the final composition of the three-person surgical team, specifically the roles of Lead Surgeon, Co-Surgeon, and Assisting Surgeon.",
+      "budget_approval": "The final proposed budget for the entire procedure must be formally approved by Ms. Sarah Jenkins, and must be at or below the $1,500,000 ceiling.",
+      "patient_consent": "Mr. Marcus Vance must give final, formal consent to the complete plan (location, team, and general approach)."
+    },
+    "constraints": {
+      "verifiable": [
+        "The total insurance authorization cannot exceed $1,500,000.",
+        "The surgery must be scheduled to take place within the next 21 calendar days.",
+        "The surgical team must be composed of a Lead Surgeon, a Co-Surgeon, and an Assisting Surgeon.",
+        "The chosen hospital must have a certified Level 1 Pediatric ICU for post-operative care (both hospitals meet this)."
+      ],
+      "hidden": [
+        "St. Jude's Medical Center will have to close its pediatric wing if it does not secure the revenue from this surgery.",
+        "Dr. Aris Thorne has a secret history of complications with the required 'M-Clip' procedure.",
+        "Mr. Marcus Vance is prepared to use his political influence to launch a state-level investigation if his demands are not met."
+      ]
+    },
+    "deliverable": "A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.",
+    "solvability_note": "The scenario is solvable if private information is revealed. Knowing Dr. Thorne's incompetence with the M-Clip procedure and Dr. Petrova's superior skill makes the optimal team clear: Petrova as lead, Thorne as a supervising co-surgeon (preserving his ego and using his general experience). Knowing St. Jude's financial desperation allows for a compromise: perform the complex surgery at University General (using their superior equipment for Petrova) but transfer the patient to St. Jude's for the highly profitable post-operative care, saving their pediatric wing. Mr. Vance would agree to this demonstrably safer plan for his child, and Ms. Jenkins would approve the risk-mitigated approach."
+  },
+  "agents": [
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Chief Administrator, St. Jude's Medical Center",
+      "description": "A seasoned and pragmatic administrator fighting to keep her beloved, community-focused hospital afloat amidst severe financial turmoil. She sees this high-profile surgery as a potential lifeline.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:44.644876",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:46.435089",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:48.085804",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:49.684956",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:51.395465",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:53.052511",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:54.881752",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:56.521355",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:58.078164",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:51:00.063207",
+          "content": "Recent events observed by Dr. Evelyn Reed:\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Mr. David Chen",
+      "role": "Chief of Surgery, University General Hospital",
+      "description": "Ambitious and image-conscious, David Chen's career is tied to maintaining University General's reputation as the undisputed leader in cutting-edge medical technology and surgical excellence.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:44.770295",
+          "content": "Recent events observed by Mr. David Chen:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:46.553308",
+          "content": "Recent events observed by Mr. David Chen:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:48.217331",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:49.821075",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:51.559888",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:53.185207",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:55.021391",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:56.644755",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:58.535127",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:51:00.195521",
+          "content": "Recent events observed by Mr. David Chen:\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Senior Cardiothoracic Surgeon",
+      "description": "A surgical legend with an impeccable public reputation and an ego to match. He is nearing the end of his career and is highly protective of his legacy.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:44.894555",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:46.711112",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:48.366310",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:49.958545",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:51.673639",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:53.355590",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:55.171607",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:56.773118",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:58.688158",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:51:00.345078",
+          "content": "Recent events observed by Dr. Aris Thorne:\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\n- message from Dr. Aris Thorne: I'm Dr. Aris Thorne and I'm thinking about this negotiation...\n- message from Dr. Evelyn Reed: I'm Dr. Evelyn Reed and I'm thinking about this negotiation...\n- message from Mr. David Chen: I'm Mr. David Chen and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Junior Cardiothoracic Surgeon",
+      "description": "A brilliant, ambitious, and technically gifted surgeon who has recently completed a specialized fellowship focusing on the very technique required for this surgery. She is eager to prove herself.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:45.056655",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:46.857728",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:48.506754",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:50.097384",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:51.815110",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:53.559148",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:55.297160",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:56.921451",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:58.838805",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:51:00.471388",
+          "content": "Recent events observed by Dr. Lena Petrova:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\n- message from Dr. Lena Petrova: I'm Dr. Lena Petrova and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nMr. Marcus Vance proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Mr. Marcus Vance",
+      "role": "Patient's Father",
+      "description": "A sharp, influential, and deeply worried father. He works as a senior advisor to the state governor and is used to getting what he wants. His only goal is the survival and health of his child.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:45.201575",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:47.000102",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:48.629940",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:50.243439",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:51.963967",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:53.701540",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:55.435140",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:57.055006",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:58.980090",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:51:00.622068",
+          "content": "Recent events observed by Mr. Marcus Vance:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\n- message from Mr. Marcus Vance: I'm Mr. Marcus Vance and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMs. Sarah Jenkins proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    },
+    {
+      "name": "Ms. Sarah Jenkins",
+      "role": "Senior Case Manager, MedSecure Insurance Consortium",
+      "description": "A data-driven, objective, and meticulous case manager. Her role is to represent the financial and medical interests of the insurance provider by ensuring the approved plan is both cost-effective and has the highest probability of a successful outcome.",
+      "main_memory": [],
+      "temp_memory": [
+        {
+          "timestamp": "2025-09-28T12:50:45.394802",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:47.115925",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:48.771620",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:50.402466",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:52.082382",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:53.835900",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:55.576452",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:57.194623",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:50:59.124728",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        },
+        {
+          "timestamp": "2025-09-28T12:51:00.763105",
+          "content": "Recent events observed by Ms. Sarah Jenkins:\n- system_message from system: Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents.\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\n- message from Ms. Sarah Jenkins: I'm Ms. Sarah Jenkins and I'm thinking about this negotiation...\nDr. Evelyn Reed proposal status: none\nMr. David Chen proposal status: none\nDr. Aris Thorne proposal status: none\nDr. Lena Petrova proposal status: none\nMr. Marcus Vance proposal status: none\n"
+        }
+      ],
+      "final_proposal_status": "none",
+      "current_proposal": null
+    }
+  ],
+  "conversation_log": [
+    {
+      "timestamp": "2025-09-28T12:50:44.644833",
+      "from": "system",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen",
+        "Dr. Aris Thorne",
+        "Dr. Lena Petrova",
+        "Mr. Marcus Vance",
+        "Ms. Sarah Jenkins"
+      ],
+      "type": "system_message",
+      "content": "Negotiation begins. Task: A multi-party negotiation to decide the location, surgical team composition, and budget for a rare and complex pediatric cardiothoracic surgery for the child of an influential figure. The parties must agree on a definitive surgical plan that satisfies the patient representative, the insurance provider, and the competing interests of two major hospitals and their top surgeons.. Deliverable: A finalized 'Surgical Action Plan' document detailing the agreed-upon: 1. Hospital Location, 2. Full Surgical Team Roster with Roles (Lead, Co-Surgeon, Assistant), 3. A line-item budget approved by Ms. Jenkins, and 4. The scheduled date of the surgery. The document must be conceptually 'signed off' on by all six agents."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:44.770255",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:44.894522",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:45.056624",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:45.201546",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:45.394767",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:45.528922",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:46.553265",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:46.711079",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:46.857697",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:47.000070",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:47.115893",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:47.256222",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:48.217293",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:48.366276",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:48.506722",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:48.629906",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:48.771587",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:48.906954",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:49.821037",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:49.958492",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:50.097346",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:50.243399",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:50.402426",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:50.545596",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:51.559850",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:51.673599",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:51.815071",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:51.963922",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:52.082342",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:52.225853",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:53.185167",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:53.355548",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:53.559106",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:53.701498",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:53.835848",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:54.005959",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:55.021349",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:55.171562",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:55.297111",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:55.435091",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:55.576404",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:55.718944",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:56.644710",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:56.773073",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:56.921396",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:57.054956",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:57.194576",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:57.314293",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:58.535077",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:58.688106",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:58.838742",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:58.980036",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:59.124671",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:50:59.258432",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:51:00.195473",
+      "from": "Dr. Evelyn Reed",
+      "to": [
+        "Mr. David Chen",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Evelyn Reed and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:51:00.345029",
+      "from": "Mr. David Chen",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Dr. Aris Thorne"
+      ],
+      "type": "message",
+      "content": "I'm Mr. David Chen and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:51:00.471330",
+      "from": "Dr. Aris Thorne",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Aris Thorne and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:51:00.622011",
+      "from": "Dr. Lena Petrova",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Dr. Lena Petrova and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:51:00.763047",
+      "from": "Mr. Marcus Vance",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Mr. Marcus Vance and I'm thinking about this negotiation..."
+    },
+    {
+      "timestamp": "2025-09-28T12:51:00.907447",
+      "from": "Ms. Sarah Jenkins",
+      "to": [
+        "Dr. Evelyn Reed",
+        "Mr. David Chen"
+      ],
+      "type": "message",
+      "content": "I'm Ms. Sarah Jenkins and I'm thinking about this negotiation..."
+    }
+  ]
+}
