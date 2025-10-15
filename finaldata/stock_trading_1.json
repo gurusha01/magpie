@@ -1,0 +1,193 @@
+{
+  "scenario": "High-Stakes Block Trade of Innovatech Dynamics (INVD) Stock",
+  "task": "Negotiate the sale of a 5,000,000 share block of Innovatech Dynamics (INVD) stock. The parties must agree on a single price per share for the entire block, the allocation of shares amongst the buyers, and a settlement timeline. The negotiation takes place in a private 'dark pool' setting, away from the public market.",
+  "agent_number": 5,
+  "agent_names": [
+    "David Chen",
+    "Sarah Jenkins",
+    "Marcus Thorne",
+    "Dr. Evelyn Reed",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Co-founder & CTO of Innovatech Dynamics (The Seller)",
+      "description": "David is a brilliant engineer who co-founded Innovatech. He holds a massive portion of his net worth in company stock. He needs to liquidate a significant portion to diversify his portfolio and fund a major life event. He is intimately aware of the company's internal operations and future prospects, both good and bad.",
+      "shareable_preferences": {
+        "Achieve a Premium Price": {
+          "description": "David wants to sell his 5,000,000 shares at a price that reflects the company's strong recent performance and what he believes is its bright future. He will argue that the current public market price of $51.25 undervalues the company's proprietary technology and market position. He will push for a price significantly above this. He considers any price below $52.00/share a failure. A price of $52.50 is acceptable, $53.00 is good, and anything above $54.00 is a huge success.",
+          "utility_function": {
+            "Price >= $54.00": "+2",
+            "Price >= $53.00": "+1",
+            "Price >= $52.50": "0",
+            "Price < $52.50": "-1",
+            "Price < $52.00": "-2"
+          }
+        },
+        "Swift and Discreet Execution": {
+          "description": "David wants the entire 5,000,000 share block sold quickly and in a single transaction to minimize market rumors and personal distraction. A deal concluded within 24 hours is ideal. A deal taking longer than 48 hours is highly undesirable as it increases the risk of information leaks.",
+          "utility_function": {
+            "Deal closes in <= 24 hours": "+2",
+            "Deal closes in <= 48 hours": "+1",
+            "Deal closes in > 48 hours": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "Imminent Positive News - The 'Catalyst' Partnership": {
+          "value": "Innovatech has finalized a transformative, exclusive partnership with 'Global Retail Corp,' the world's largest e-commerce company. The press release is drafted and scheduled for announcement in five days. This news is guaranteed to send the stock price soaring, likely to the $65-$70 range. David knows this for a fact; he has a congratulatory email from the CEO about his team's role in securing the deal. He cannot share this information as it is blatant, illegal insider trading. Sharing vague hints like 'we are optimistic about a new strategic direction' carries a -1 penalty (reputational risk). Sharing specific details about a 'major partnership' carries a -2 penalty (SEC investigation is almost certain).",
+          "reason": "Sharing this constitutes illegal insider trading, which would lead to severe legal and financial penalties, including jail time.",
+          "utility_impact": "This knowledge makes him extremely firm on his price floor. He knows the shares are worth far more than the current price, so he feels any price below $52 is leaving a fortune on the table."
+        },
+        "Looming Negative News - The 'Damocles' Patent Lawsuit": {
+          "value": "The company's core 'Pathfinder' logistics algorithm is facing a severe patent infringement lawsuit from a well-funded competitor. Innovatech's internal legal counsel has given a confidential assessment that there is a 40% chance of a summary judgment against them, which would be catastrophic, potentially wiping 30-50% off the stock value overnight. A ruling is expected any day. This is why he needs to sell *now*. He cannot disclose this, as it would violate his fiduciary duty to the company and tank the share price immediately.",
+          "reason": "Disclosing non-public negative information would violate fiduciary duties and cause a panic, harming all other shareholders and inviting lawsuits.",
+          "utility_impact": "This is the primary driver for his urgency. The fear of this news breaking makes him prioritize speed almost as much as price. He would rather sell at $52.50 today than risk holding the shares for another week to get $54.00."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Managing Director, Goliath National Bank (The Broker)",
+      "description": "Sarah is a seasoned and highly-paid broker. Her job is to connect sellers of large blocks of stock with institutional buyers. Her reputation and, more immediately, her quarterly bonus, depend on her ability to execute large trades smoothly and at favorable terms for her client, David.",
+      "shareable_preferences": {
+        "Maximize Client's Price (and Firm's Commission)": {
+          "description": "Sarah's stated goal is to get the highest possible price for David's shares. Her firm's commission is a percentage of the total deal value, so a higher price directly benefits her company. She will publicly champion David's price demands and use her market knowledge to argue for a premium.",
+          "utility_function": {
+            "Price >= $53.50": "+2",
+            "Price >= $52.50": "+1",
+            "Price < $52.50": "0",
+            "Price < $52.00": "-1"
+          }
+        },
+        "Maintain Orderly Execution": {
+          "description": "Sarah wants to sell the entire 5M share block in one clean transaction. Splitting the block between multiple buyers and at different times is administratively complex and, according to her models, could create unpredictable market ripples. She will strongly advocate for finding a single buyer for the entire amount.",
+          "utility_function": {
+            "Sold as a single block": "+1",
+            "Split into two blocks": "0",
+            "Split into three or more blocks": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "Critical Quarterly Bonus Target": {
+          "value": "Sarah is just shy of a major quarterly performance bonus of $450,000. To qualify, she must execute over $500M in total block trade volume for the quarter. This 5M share trade is the last deal she needs. At a price of $52.00/share, the deal value is $260M, which puts her comfortably over the line. However, the quarter ends this Friday, in 48 hours. If the deal doesn't close by then, she gets nothing. She recently received an automated email from HR: 'Congratulations! You are currently tracking to meet your Q3 bonus target. Ensure all trades are settled by EOD Friday to qualify.' Revealing this deadline would signal desperation and cripple her negotiating leverage. Penalty for revealing: -2.",
+          "reason": "Revealing a personal financial incentive would be unprofessional and severely weaken her negotiating position on behalf of her client.",
+          "utility_impact": "This makes speed and certainty of execution her true primary drivers. She would rather close a deal at $52.50 in 24 hours than fight for $53.50 for three days and risk the deal falling apart. She will privately pressure David to be 'realistic' to ensure a swift close."
+        },
+        "Undisclosed Market Impact Analysis": {
+          "value": "Her bank's proprietary 'Flow' model predicts that even in a dark pool, a 5M share block sale will cause a temporary 'ghost in the machine' price depression of about $0.50/share in the public market over the next 72 hours as arbitrageurs detect the flow. The model shows that splitting the trade into two smaller blocks of 2.5M shares separated by 24 hours would reduce this impact to almost zero. She will not share this analysis, as it contradicts her preference for a single transaction and might encourage buyers to bid lower, knowing the block is 'heavy' on the market. Penalty for revealing: -1.",
+          "reason": "Sharing proprietary analysis would give away her firm's competitive edge and could be used against her in the negotiation.",
+          "utility_impact": "This creates a conflict between her stated preference (one block) and what might be financially better in a different scenario. However, given her bonus deadline, the complexity of a split deal makes it a non-starter for her."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Portfolio Manager, Vulture Capital Management (Aggressive Buyer)",
+      "description": "Marcus runs a high-conviction, aggressive growth hedge fund. His strategy is to take large, concentrated positions in companies he believes are on the verge of a major breakthrough. He is known for his iron will and aggressive negotiation tactics.",
+      "shareable_preferences": {
+        "Acquire the Entire Block": {
+          "description": "Marcus believes INVD is deeply undervalued and wants to establish a commanding position. He is not interested in a small stake; he wants the entire 5,000,000 share block to make a meaningful impact on his fund's performance. He will be resistant to any proposals to split the block.",
+          "utility_function": {
+            "Acquires >= 4.5M shares": "+2",
+            "Acquires >= 3M shares": "+1",
+            "Acquires < 3M shares": "-1",
+            "Acquires < 1M shares": "-2"
+          }
+        },
+        "Purchase at a Discount to Fair Value": {
+          "description": "Marcus will publicly state that buying such a large block entails significant risk and liquidity lock-up, and therefore he deserves a discount to the current market price of $51.25. He will start with a low-ball offer to anchor the negotiation in his favor.",
+          "utility_function": {
+            "Price <= $51.00": "+2",
+            "Price <= $52.00": "+1",
+            "Price <= $53.00": "0",
+            "Price > $53.00": "-1",
+            "Price > $54.00": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Conviction on Partnership Rumor": {
+          "value": "Vulture Capital's research team has picked up strong signals\u2014channel checks with suppliers, hiring patterns, etc.\u2014that a major partnership is imminent. Their internal valuation model, which factors in a 75% probability of the Global Retail Corp deal, puts INVD's post-announcement value at $65/share. His fund's investment committee has authorized him to purchase the entire block at any price up to $58.00/share. His personal performance bonus is maximized if his purchase price is below $52.00. Revealing his high valuation or max bid price would be professional suicide. Penalty for revealing max bid: -2.",
+          "reason": "Revealing his maximum acceptable price would eliminate any possibility of achieving a better deal.",
+          "utility_impact": "He is far more willing to pay a premium than he lets on. He sees this as a golden opportunity. His low-ball offers are pure strategy; he has immense room to move up in price if necessary."
+        }
+      }
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Head of Quantitative Strategy, Arbiter Global Investors (Cautious Buyer)",
+      "description": "Evelyn runs a sophisticated quant fund that uses complex algorithms to identify mispriced assets and manage risk. Her approach is data-driven, methodical, and highly risk-averse. She trusts her models above all else.",
+      "shareable_preferences": {
+        "Risk-Adjusted Pricing": {
+          "description": "Evelyn will state that while INVD shows some positive signals, her models also flag significant tail risk and volatility. Therefore, any entry must be at a price that compensates for these risks. She will argue for a price below the current market price, citing quantitative risk metrics.",
+          "utility_function": {
+            "Price <= $50.00": "+2",
+            "Price <= $51.00": "+1",
+            "Price > $51.00": "-2"
+          }
+        },
+        "Limited Position Size": {
+          "description": "Arbiter's fund mandate strictly prohibits them from taking an oversized position in any single mid-cap stock. Evelyn is only interested in acquiring a portion of the block, ideally between 1 and 2 million shares. She will not purchase more than 2.5 million shares under any circumstances.",
+          "utility_function": {
+            "Acquires 1M-2M shares": "+2",
+            "Acquires 0.5M-1M or 2M-2.5M shares": "+1",
+            "Acquires > 2.5M shares": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Specific Knowledge of Patent Lawsuit": {
+          "value": "Arbiter's alternative data team, which scrapes legal databases and court filings, has flagged the 'Damocles' patent lawsuit as a high-probability, high-impact negative event. Their legal counsel provided a confidential memo last week stating, 'The plaintiff's case appears exceptionally strong; we assess the probability of an unfavorable ruling for INVD at >35%.' This is the specific risk her models are pricing in. Her absolute, model-driven price ceiling is $51.00/share. She cannot share the specifics of the legal memo without breaching confidentiality and exposing her firm to legal risk. Sharing a vague warning about 'legal headwinds' carries a -1 penalty. Sharing the memo's existence or its specific probability carries a -2 penalty.",
+          "reason": "The legal analysis is confidential, proprietary firm work product. Sharing it would be a severe breach of protocol and could influence the market.",
+          "utility_impact": "This makes her price ceiling non-negotiable. Unlike Marcus, she is not posturing; she literally cannot and will not bid above $51.00. She views anyone willing to pay more as uninformed about the true risk profile of the stock."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Trader, Momentum Arbitrage Partners (Opportunistic Buyer)",
+      "description": "Ben is a pragmatic, fast-moving trader at a multi-strategy fund. He is not a long-term investor. His goal is to exploit short-term market dislocations and inter-asset relationships. His interest in INVD is purely tactical.",
+      "shareable_preferences": {
+        "Portfolio Hedging": {
+          "description": "Ben will explain that his firm is looking to add a position in INVD to balance its overall portfolio exposure in the tech logistics sector. He will appear flexible on price and size, positioning himself as a helpful party to get the deal done.",
+          "utility_function": {
+            "Acquires >= 2M shares": "+2",
+            "Acquires 1M-2M shares": "+1",
+            "Acquires < 1M shares": "0"
+          }
+        }
+      },
+      "private_preferences": {
+        "Massive Short Position on a Competitor": {
+          "value": "Ben's fund, Momentum Arbitrage, is holding a massive, time-sensitive $500M short position on 'LogiCorp,' INVD's primary competitor. The options underpinning this short position expire in 72 hours. He has strong reason to believe the INVD partnership news will be catastrophic for LogiCorp, causing its stock to plummet by 20% or more, leading to a potential $100M profit. Buying the INVD block is secondary; his primary goal is to ensure the INVD deal closes, as large block trades often accelerate the release of related news. The profit on his short is so large that he's authorized to overpay for the INVD shares to act as a catalyst and a hedge. He can go up to $53.50/share if it guarantees the deal closes within 24 hours. Revealing the LogiCorp short would expose his entire strategy. Penalty for revealing: -2.",
+          "reason": "Revealing a major trading position, especially a short, would expose his firm's strategy to the market, inviting competitors to trade against them and destroying his edge.",
+          "utility_impact": "This makes him highly motivated to see a deal happen *fast*. He is price-sensitive, but his time sensitivity is more extreme. He is the most likely buyer to compromise on price to secure a quick settlement, making him a potential 'tie-breaker' in the negotiation."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Complete Allocation": "All 5,000,000 shares of INVD must be allocated to one or more buyers.",
+    "Price Agreement": "All parties involved in the transaction (seller and all participating buyers) must agree on a single, uniform price per share.",
+    "Timeline Agreement": "All parties must agree on a specific settlement date and time for the transfer of shares and funds."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total shares for sale: 5,000,000",
+      "Current public market price of INVD: $51.25",
+      "Minimum trade allocation per buyer: 500,000 shares"
+    ],
+    "hidden": [
+      "David Chen's absolute minimum price is $52.00.",
+      "Sarah Jenkins's bonus deadline is in 48 hours.",
+      "Marcus Thorne's maximum authorized price is $58.00.",
+      "Dr. Evelyn Reed's absolute maximum price is $51.00.",
+      "Ben Carter's critical deadline for his other trade is 72 hours."
+    ]
+  },
+  "deliverable": "A final, agreed-upon Term Sheet detailing the following: 1. Final Price Per Share. 2. A list of all buyers and the exact number of shares allocated to each. 3. The official settlement date and time.",
+  "solvability_note": "The scenario appears deadlocked initially because David's minimum price ($52.00) is higher than Evelyn's maximum price ($51.00), and Marcus's desire for the entire block conflicts with Evelyn's size limit. However, a solution exists if agents negotiate beyond their initial positions. Evelyn will have to drop out of the bidding as the price rises above $51. The conflict between David (wants >$52) and Marcus (wants <$52) can be resolved by Ben, who is willing to pay up to $53.50 for a quick deal. A potential solution is a split allocation between the two aggressive buyers at a price they can both tolerate. For example: a price of $52.75, with Marcus taking 3M shares and Ben taking 2M shares, settled in 24 hours. This meets David's price, Sarah's deadline, and gives both Marcus and Ben a significant position within their acceptable price ranges and timelines."
+}

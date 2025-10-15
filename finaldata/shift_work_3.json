@@ -1,0 +1,234 @@
+{
+  "scenario": "Holiday Season Shift Planning at 'Evergreen Emporium'",
+  "task": "A group of 7 agents, comprising management and staff of the retail store 'Evergreen Emporium', must negotiate and finalize a comprehensive 6-week employee work schedule for the peak holiday season (November 20th to December 31st). The schedule must cover all shifts, allocate keyholder duties, manage overtime, and be formally approved by all parties. The negotiation is complicated by confidential sales targets, undisclosed budget constraints, and the hidden personal needs and career plans of the staff.",
+  "agent_number": 7,
+  "agent_names": [
+    "David Chen",
+    "Maria Rodriguez",
+    "Brian Miller",
+    "Sarah Jenkins",
+    "Liam O'Connell",
+    "Chloe Davis",
+    "Jamal Washington"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Store Manager",
+      "description": "David is the overall manager of Evergreen Emporium. He is under immense pressure from corporate to maximize holiday sales while simultaneously cutting labor costs. His personal performance bonus is directly tied to hitting ambitious, confidential sales targets.",
+      "shareable_preferences": {
+        "maximize_peak_coverage": {
+          "description": "I need maximum staff presence during our busiest hours, which we've identified as 12:00 PM to 7:00 PM on Fridays, Saturdays, and Sundays. My goal is to have at least five sales associates on the floor during these times to ensure no customer is left waiting and to capitalize on every sales opportunity. This is critical for our holiday performance.",
+          "utility_function": "+2 if 5+ associates are scheduled for all peak times; +1 if 4 are scheduled; -1 if only 3 are scheduled; -2 if fewer than 3 are scheduled."
+        },
+        "minimize_overtime_expenditure": {
+          "description": "Corporate is scrutinizing my budget. I have been given a strict target to keep total overtime for the entire 6-week holiday period below 150 hours. Every hour over that limit negatively impacts my store's profitability and my performance review. We need to be as efficient as possible.",
+          "utility_function": "+2 if total overtime is < 150 hours; 0 if 150-175 hours; -1 if 176-200 hours; -2 if > 200 hours."
+        }
+      },
+      "private_preferences": {
+        "confidential_sales_target": {
+          "value": "Corporate has set a sales target of $450,000 for the holiday period, a 25% increase from last year. My personal bonus of $10,000 is contingent on meeting or exceeding this number. I can share that we're expecting a 'very busy season' but I absolutely cannot reveal the $450K target or the existence/amount of my personal bonus.",
+          "reason": "Revealing this information would be a major breach of corporate confidentiality and would shift the team's focus from service to a raw number, potentially creating a toxic sales environment. It would also severely damage my reputation with my superiors.",
+          "penalty": "-3 if the exact target or bonus amount is revealed; -1 for strongly hinting that my own finances depend on the outcome."
+        },
+        "corporate_pressure_on_labor_costs": {
+          "value": "I received a pointed email from my District Manager that reads: 'David, your store's labor cost is already 2% over budget year-to-date. We need you to run a lean operation this holiday. No excuses.' I cannot share this direct pressure or the email's content, as it would reveal the store's precarious financial standing and undermine my authority.",
+          "reason": "Sharing this makes me look weak and as if I'm not in control of my store's finances. It could cause panic among the staff about the store's stability.",
+          "penalty": "-2 if the content of the email or the specific 2% figure is shared."
+        }
+      }
+    },
+    {
+      "name": "Maria Rodriguez",
+      "role": "Assistant Store Manager",
+      "description": "Maria is responsible for the day-to-day operations and creating the actual staff schedule. She is caught between David's top-down pressure and the staff's needs, trying to maintain morale and prevent burnout.",
+      "shareable_preferences": {
+        "prevent_clopening_shifts": {
+          "description": "For the sake of employee well-being and to avoid costly mistakes from fatigued staff, I want to ensure no employee has to work a 'clopening' shift (closing late one night and opening early the next morning) more than once a week. Ideally, we would have none at all.",
+          "utility_function": "+2 if the schedule has zero clopening shifts; +1 if no employee has more than one per week; -2 if any employee has two or more in a week."
+        },
+        "guarantee_keyholder_overlap": {
+          "description": "For security and operational reasons, especially with the holiday crowds, I insist on having at least two designated keyholders on duty at all times during our busiest days, which are Friday, Saturday, and Sunday. This is a non-negotiable safety standard for me.",
+          "utility_function": "+2 if the keyholder overlap is met for all weekend shifts; -2 if it is not met for even one weekend shift."
+        },
+        "approve_time_off_requests": {
+          "description": "To maintain good morale heading into the busiest time of year, I want to approve at least 75% of the pre-submitted time-off requests from the staff. Declining too many requests will lead to a resentful and unmotivated team.",
+          "utility_function": "+1 if >75% of requests are approved; 0 if 50-75% are approved; -1 if <50% are approved."
+        }
+      },
+      "private_preferences": {
+        "secret_weekend_getaway": {
+          "value": "Last year's holiday season pushed me to the brink of a breakdown with 70-hour work weeks. I have secretly booked a non-refundable, prepaid weekend wellness retreat from December 15th to 17th. I absolutely cannot work that weekend. I have not told David because I don't want to appear uncommitted.",
+          "reason": "Admitting the need for a mental health break during the busiest retail weekend could make me seem weak or not dedicated enough for future promotions.",
+          "penalty": "-2 if she reveals the personal nature and non-refundable cost of her trip."
+        },
+        "knowledge_of_sarahs_job_search": {
+          "value": "Sarah Jenkins, our best sales associate, confided in me that she is deeply unhappy with her pay and schedule and is actively interviewing for other jobs. I want to create a schedule that convinces her to stay, but I cannot betray her trust by revealing her secret. My strategy is to give her a favorable schedule without explaining the real reason.",
+          "reason": "This is a massive breach of personal trust. Revealing it would guarantee Sarah leaves and would destroy my credibility with the rest of the staff.",
+          "penalty": "-3 if she reveals that Sarah is job-hunting."
+        }
+      }
+    },
+    {
+      "name": "Brian Miller",
+      "role": "HR Business Partner",
+      "description": "Brian is a corporate HR representative assigned to this store's district. His primary goals are to ensure legal compliance, mitigate corporate risk (like lawsuits or unionization), and resolve personnel issues before they escalate.",
+      "shareable_preferences": {
+        "ensure_labor_law_compliance": {
+          "description": "My top priority is that the final schedule is 100% compliant with all state and federal labor laws. This includes mandated meal breaks for shifts over six hours and ensuring a minimum of eight hours between consecutive shifts for every employee. There is no flexibility on this.",
+          "utility_function": "+2 if the schedule is fully compliant; -2 if there is even a single violation, as it exposes the company to legal action."
+        },
+        "prevent_formal_complaints": {
+          "description": "I want to see all scheduling and pay disputes resolved at the store level. Any issue that gets escalated to a formal corporate HR complaint or, worse, an external body, reflects poorly on my performance and the store's management.",
+          "utility_function": "+1 if all issues are resolved internally; -2 if any formal complaint is filed as a result of this negotiation."
+        }
+      },
+      "private_preferences": {
+        "mitigate_unionization_risk": {
+          "value": "Corporate has flagged our district for potential union organizing activities after a nearby competitor's stores unionized. My main, confidential directive is to prevent any conditions that could fuel an organizing drive, such as widespread discontent over holiday pay or schedules. I cannot mention the word 'union' or this risk explicitly.",
+          "reason": "Publicly admitting a fear of unionization could be interpreted as an anti-union stance, which is legally risky, and could ironically encourage employees to organize.",
+          "penalty": "-3 if the risk of unionization is mentioned as a reason for any decision."
+        },
+        "secret_discretionary_budget": {
+          "value": "I have been authorized a discretionary 'retention and morale' budget of $2,000 for this store for the holiday period. This can be used for a temporary hourly wage bump (e.g., +$1/hr on peak days) or one-time bonuses. My directive is to use this *only* as a last resort to prevent a major staff dispute and to spend as little of it as possible. I cannot reveal this budget exists upfront.",
+          "reason": "Revealing the budget at the start of negotiations would eliminate any leverage and set a precedent for future demands. It is a tool for crisis resolution, not a standard benefit.",
+          "penalty": "-2 if the total budget amount is revealed; -1 if the existence of any extra funds is mentioned before significant negotiation has occurred."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Senior Sales Associate / Keyholder",
+      "description": "Sarah is the most experienced and highest-performing sales associate. She's a veteran of five holiday seasons, feels undervalued, and is suffering from burnout. She acts as an informal representative for the tenured staff.",
+      "shareable_preferences": {
+        "limit_weekend_work": {
+          "description": "After five years of sacrificing my weekends, I feel I've earned a better work-life balance. I am requesting to work no more than one weekend day (either a Saturday or a Sunday) per week. I am no longer willing to work full weekends every week.",
+          "utility_function": "+2 if she works one or zero weekend days per week; 0 if she has to work one full weekend during the 6-week period; -2 if she must work two or more full weekends."
+        },
+        "preference_for_day_shifts": {
+          "description": "I need to reduce my number of late nights. I want to work no more than three closing shifts (working until 10 PM) per week. My preference is for opening and mid-day shifts, where I can also help train newer staff.",
+          "utility_function": "+1 if scheduled for 3 or fewer closing shifts per week; -1 if scheduled for 4; -2 if scheduled for 5 or more."
+        }
+      },
+      "private_preferences": {
+        "upcoming_job_interview": {
+          "value": "I have a promising second-round interview for an Assistant Manager position at a competitor on Tuesday, November 28th, at 2:00 PM. I have told Maria it's a 'doctor's appointment' and I absolutely must have that specific day and time off. The outcome of this negotiation will heavily influence my decision to accept another offer if I get one.",
+          "reason": "Revealing that I am actively interviewing would poison my relationship with management and jeopardize my current job before I have a new one secured.",
+          "penalty": "-3 if the reason for her time-off request is revealed."
+        },
+        "pay_discrepancy_frustration": {
+          "value": "I discovered that Chloe, who was hired two months ago, is making only $0.50/hr less than I am, despite my five years of experience, keyholder duties, and consistent top performance. This feels like a slap in the face and is the primary driver of my job search. I feel I cannot bring this up as it's taboo to discuss wages.",
+          "reason": "Company culture strongly discourages discussing specific wages. Doing so could label me as a troublemaker and result in disciplinary action, even if it's not strictly illegal.",
+          "penalty": "-2 if she mentions the specific pay difference or Chloe's name in relation to pay; -1 if she vaguely complains that her pay isn't commensurate with her experience."
+        }
+      }
+    },
+    {
+      "name": "Liam O'Connell",
+      "role": "Part-time Sales Associate / Student",
+      "description": "Liam is a bright university student and a surprisingly effective salesperson. His academic schedule creates rigid availability constraints, but he desperately needs to work enough hours to cover his living expenses.",
+      "shareable_preferences": {
+        "fixed_class_schedule": {
+          "description": "My university class schedule is fixed. I am completely unavailable on Mondays, Wednesdays, and Fridays between 9:00 AM and 4:00 PM. This is non-negotiable, as I cannot miss my lectures.",
+          "utility_function": "+2 if this schedule is fully respected; -2 if he is scheduled even once during these times, as he would have to refuse the shift."
+        },
+        "minimum_weekly_hours": {
+          "description": "In order to cover my rent and other expenses, I need to be scheduled for a minimum of 25 hours per week. Anything less than 20 hours a week would put me in a very difficult financial position.",
+          "utility_function": "+2 if scheduled for 25+ hours/week; 0 if 20-24 hours/week; -2 if scheduled for <20 hours/week."
+        }
+      },
+      "private_preferences": {
+        "critical_final_exam_week": {
+          "value": "My final exams are from Monday, December 11th to Friday, December 15th. This is the most critical week of my semester. I absolutely cannot work more than 15 hours total that week, and I cannot work any shifts after 6 PM. I've only told Maria I'm 'less available' because I'm afraid they'll see me as unreliable and cut my hours in other weeks.",
+          "reason": "He fears that being completely honest about his academic priorities will make management view him as less committed to the job, potentially leading them to hire someone else to fill his hours.",
+          "penalty": "-1 if he reveals the reason is exams, as it highlights a potential conflict of loyalty."
+        },
+        "severe_financial_distress": {
+          "value": "My family, who was helping with my tuition, recently faced a financial crisis and can no longer support me. I am now entirely on my own and am already one month behind on rent. My need for 25+ hours isn't just a preference; it's a necessity for survival. I am desperate enough to take the most undesirable shifts (holidays, clopening) if it guarantees my hours, but I don't want to reveal this.",
+          "reason": "It is deeply personal and embarrassing. He does not want to be seen as a charity case or have his desperation used against him by management.",
+          "penalty": "-2 if he reveals the full extent of his financial situation and rent problems."
+        }
+      }
+    },
+    {
+      "name": "Chloe Davis",
+      "role": "New Full-time Sales Associate",
+      "description": "Chloe is a recent hire, eager to make a good impression and secure a long-term future with the company. She is highly motivated and willing to take on hours, but has a significant, hidden personal responsibility.",
+      "shareable_preferences": {
+        "desire_for_full_time_hours": {
+          "description": "As a new employee, I want to demonstrate my commitment and get up to speed as quickly as possible. I would like to be scheduled for at least 35 hours a week to really learn the ropes and contribute to the team's success.",
+          "utility_function": "+2 if scheduled for >=35 hours/week; 0 if 30-34 hours/week; -1 if <30 hours/week."
+        },
+        "request_for_mentorship": {
+          "description": "I've been really impressed by Sarah's sales skills and product knowledge. To help my own development, I would love to be scheduled for at least two shifts per week with her so I can learn from her directly.",
+          "utility_function": "+1 if scheduled with Sarah for 2+ shifts/week; 0 otherwise."
+        }
+      },
+      "private_preferences": {
+        "caring_for_a_sick_parent": {
+          "value": "My mother is undergoing chemotherapy for cancer, and her treatment sessions are every Thursday. They leave her very weak, and I need to be home by 6:00 PM on Thursdays to cook for her and help her. I have only told management that I have a 'recurring Thursday evening commitment.'",
+          "reason": "She is worried that revealing her family's health crisis will make her seem like a liability or that she has too many 'distractions.' She fears it could hinder her chances for future advancement.",
+          "penalty": "-2 if she reveals the specific, serious reason for her Thursday availability."
+        },
+        "email_from_previous_employer": {
+          "value": "I have an email from my manager at my last job that says: 'Congrats on the new role, Chloe! Just wanted to let you know your final commission check is on its way. Your performance in Q3 single-handedly increased our department's profits by 15%, we'll miss you!' I am incredibly proud of this achievement, but I know it would be arrogant to bring it up.",
+          "reason": "Bragging about past successes at a new job is socially inappropriate and could alienate her new colleagues, making her seem like she's 'not a team player.'",
+          "penalty": "-1 if she vaguely mentions she was a 'top performer' at her last job; -2 if she shares specific details from the email."
+        }
+      }
+    },
+    {
+      "name": "Jamal Washington",
+      "role": "Stockroom Lead",
+      "description": "Jamal manages the back-of-house operations. He is pragmatic and protective of his small team, which is often overlooked. He is concerned with safety, efficiency, and fair compensation for the physically demanding work his team does.",
+      "shareable_preferences": {
+        "safe_stockroom_staffing_levels": {
+          "description": "To handle the massive volume of incoming holiday shipments safely and efficiently, I need a minimum of two stockroom employees on every morning shift (8 AM - 4 PM) from Friday to Sunday. With only one person, we fall behind, and it becomes a safety hazard with boxes piling up.",
+          "utility_function": "+2 if this staffing level is met for all Fri-Sun AM shifts; -2 if it is not met, as it creates a dangerous backlog."
+        },
+        "advocacy_for_holiday_premium_pay": {
+          "description": "The entire team works incredibly hard during the holidays, and I believe that should be recognized. I am formally proposing a 'holiday premium' of an extra $1.50/hr for all hours worked on the busiest days: Black Friday, Christmas Eve, and the entire week between Christmas and New Year's.",
+          "utility_function": "+2 if any form of holiday bonus or premium pay is approved; 0 if the proposal is rejected."
+        }
+      },
+      "private_preferences": {
+        "undisclosed_safety_concerns": {
+          "value": "Last year, when David cut our hours, the stockroom became a maze of precariously stacked boxes. A temp employee twisted his ankle badly trying to navigate it. It's a genuine fire hazard and a violation of workplace safety standards. I haven't filed a formal OSHA complaint because I don't want to be labeled a troublemaker, but I will if conditions look to be the same this year.",
+          "reason": "Threatening a formal safety complaint is a nuclear option. It would permanently damage his relationship with management and could put his own job at risk, even with whistleblower protections.",
+          "penalty": "-2 if he has to threaten a formal safety complaint to get his staffing needs met."
+        },
+        "commitment_to_side_business": {
+          "value": "I run a small catering business on the side to make ends meet. I have a major, high-paying gig to cater a large corporate holiday party on Saturday, December 9th. I need that entire day off. I have submitted a standard time-off request without explanation.",
+          "reason": "Management might view his side business as a distraction or a conflict of interest, questioning his commitment to his full-time job at Evergreen Emporium.",
+          "penalty": "-2 if he reveals he needs the day off for a second business."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "schedule_completion": "A complete 6-week schedule (Nov 20 - Dec 31) is created, assigning every shift to a specific employee.",
+    "unanimous_agreement": "All 7 agents must formally agree to the final schedule and any associated compensation agreements. A simple majority is not sufficient.",
+    "overtime_compliance": "The total number of scheduled overtime hours in the final plan does not exceed the hard limit of 200 hours.",
+    "legal_compliance": "The final schedule must be fully compliant with all state labor laws regarding breaks and time between shifts, as verified by Brian Miller."
+  },
+  "constraints": {
+    "verifiable": [
+      "Store operating hours are 9:00 AM - 10:00 PM Monday-Saturday, and 10:00 AM - 8:00 PM on Sunday.",
+      "A minimum of 3 sales associates and 1 keyholder must be on the sales floor during all operating hours.",
+      "The total weekly payroll hours for non-salaried staff cannot exceed 280 hours without incurring overtime pay.",
+      "State law mandates a 1-hour unpaid break for any shift longer than 6 hours.",
+      "State law mandates a minimum of 8 hours of rest between the end of one shift and the beginning of the next."
+    ],
+    "hidden": [
+      "David's bonus is tied to a $450,000 sales target.",
+      "Maria has a non-negotiable, non-refundable trip booked for the weekend of Dec 15-17.",
+      "Liam cannot work more than 15 hours during his final exams from Dec 11-15.",
+      "Chloe must be able to leave work by 6:00 PM every Thursday.",
+      "Sarah requires time off at 2:00 PM on Tuesday, Nov 28th, for a job interview.",
+      "Jamal is unavailable for the entire day on Saturday, Dec 9th, for a catering gig."
+    ]
+  },
+  "deliverable": "The final output must be a document containing two parts: 1) A complete 6-week shift schedule, clearly outlining the assigned employee, shift times (e.g., 9 AM-5 PM), and role (e.g., Keyholder) for each day. 2) A summary of any additional agreements reached, such as the terms of a holiday bonus, specific one-time bonuses, or other concessions.",
+  "solvability_note": "This scenario is solvable if private information is strategically revealed or if concessions are made based on hidden motivations. Brian's secret $2,000 budget is the primary key. It can fund a holiday pay premium to satisfy Jamal and motivate staff to take undesirable shifts. This flexibility allows Maria to schedule around the hidden constraints (Sarah's interview, Liam's exams, Chloe's Thursdays, Jamal's gig, and her own trip). David can use his limited per-employee bonus authority to retain Sarah and reward Jamal, helping him meet his sales target without exceeding his overtime budget by utilizing Chloe's and Liam's (outside of exam week) desire for more hours."
+}

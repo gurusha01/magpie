@@ -1,0 +1,189 @@
+{
+  "scenario": "Pioneer Fellowship Selection Committee",
+  "task": "A committee of seven members at the prestigious Interdisciplinary Science & Engineering (ISE) Department must decide which 3 of the 5 top-tier applicants will receive the highly coveted 3-year Pioneer Fellowship. The fellowship covers full tuition and a generous stipend. The committee must reach a majority consensus on a final ranked list of 3 awardees and 2 alternates before the 5 PM admissions deadline.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Evelyn Reed",
+    "Dr. Ben Carter",
+    "Dr. Anya Sharma",
+    "Dr. Marcus Thorne",
+    "Dr. Lena Petrova",
+    "Dr. Samuel Jones",
+    "Ms. Chloe Davis"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Committee Chair & Dean of Graduate Studies",
+      "description": "As the Dean, Dr. Reed's primary concern is the overall prestige and reputation of the university. She wants a smooth, defensible selection process that balances the interests of various high-powered faculty members and avoids any appearance of favoritism or political infighting.",
+      "shareable_preferences": {
+        "Maintain Interdisciplinary Balance": {
+          "description": "Dr. Reed strongly advocates for distributing the fellowships across different sub-disciplines (e.g., not all in Computer Science). She believes this showcases the department's breadth and strength, which is crucial for university rankings and alumni donations. She would be very happy if the three chosen fellows represent at least two, and ideally three, distinct research areas (CS, BioE, Materials, Robotics).",
+          "utility_impact": "Utility: +2 if fellows are from 3 different sub-disciplines; +1 if from 2; -2 if all 3 are from the same sub-discipline (e.g., all CS/AI-focused)."
+        },
+        "Select Unquestionable Superstars": {
+          "description": "She wants to select candidates who are 'sure bets'\u2014those with near-perfect GPAs, publications in top journals, and glowing recommendations from world-renowned academics. This minimizes risk and makes for great press releases. She is particularly impressed by candidates who have already won other prestigious undergraduate awards.",
+          "utility_impact": "Utility: +1 for each selected candidate who has a prior major award (e.g., Goldwater Scholarship), up to a max of +2."
+        }
+      },
+      "private_preferences": {
+        "Provost's Mandate on CS Funding": {
+          "value": "The University Provost had a private meeting with her last week. He was firm: due to recent, very large capital investments in the new AI institute, there are complaints from other departments about CS absorbing all internal resources. To placate the heads of other departments, the Provost has mandated that 'at least one, and preferably two' of the Pioneer fellowships this year must be awarded to students whose primary research is NOT in core AI/CS. She can share that 'the university encourages diversity of research,' but if she reveals the direct mandate from the Provost, it will cause a political firestorm.",
+          "reason": "Revealing this direct order would expose a deep political rift at the university leadership level, undermine her authority as Dean by showing her hands are tied, and anger the powerful CS faculty.",
+          "utility_impact": "Utility Penalty: -2 for revealing the Provost's direct mandate. This information forces her to steer the conversation away from a CS-dominated slate, even if the candidates are stellar."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Professor, Computer Science",
+      "description": "A senior, highly influential professor with a massive research lab and numerous government grants. He is a titan in the field of AI and is used to getting what he wants. His lab's productivity is a major source of prestige for the department.",
+      "shareable_preferences": {
+        "Recruit Alice Chen": {
+          "description": "Dr. Carter is adamant that Alice Chen, a brilliant AI student with offers from MIT and Stanford, is a generational talent. He has already spoken with her extensively and has planned a project for her that he believes will result in a breakthrough paper in the journal 'Nature'. He will argue that failing to land her would be a significant blow to the department's reputation.",
+          "utility_impact": "Utility: +2 if Alice Chen is awarded a fellowship; -2 if she is not."
+        },
+        "Prioritize Immediate Impact": {
+          "description": "He believes fellowships should go to students who can 'hit the ground running' and produce high-impact publications within their first two years. This means prioritizing students with extensive prior research experience and advanced computational skills, rather than those who need more foundational training.",
+          "utility_impact": "Utility: +1 for each selected candidate who has already co-authored a peer-reviewed publication."
+        }
+      },
+      "private_preferences": {
+        "Grant Contingency": {
+          "value": "Dr. Carter just secured a 5-year, $5 million grant from DARPA. However, he received a congratulatory email from the program manager which reads: 'Ben, thrilled to move forward with the funding. As you know, this is contingent on securing the key personnel outlined in your proposal. The 'Lead PhD Researcher - AI/ML Specialist' profile you based on Alice Chen is critical. We expect a progress report with your key personnel hired within 6 months.' If he doesn't recruit Alice, he may have to forfeit the grant or, at best, see it drastically reduced. He can vaguely say 'My funding is tied to getting a top student,' but revealing the specific grant and the explicit contingency on Alice would make him look incredibly desperate and could weaken his negotiating position on other matters for years.",
+          "reason": "It's unprofessional to air specific grant contingencies and would reveal that his lab's financial stability is precariously tied to a single student recruit, damaging his reputation as a powerhouse.",
+          "utility_impact": "Utility Penalty: -2 for revealing the specific grant name (DARPA) and its direct contingency on Alice Chen. This private information makes him almost single-minded in his goal."
+        }
+      }
+    },
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Assistant Professor, Bioengineering",
+      "description": "A brilliant junior faculty member trying to establish her lab. She is passionate about high-risk, high-reward science and is not yet part of the 'old guard'. Securing a top-tier fellowship student would be a major coup for her and would significantly accelerate her tenure case.",
+      "shareable_preferences": {
+        "Fund Brian Miller": {
+          "description": "Dr. Sharma is convinced that Brian Miller, a student with a novel idea for CRISPR-based therapies, is the most innovative applicant. His proposal is unconventional but, if it works, could lead to a paradigm shift. She needs a student who is not just smart, but also creative and fearless, and Brian fits that mold perfectly.",
+          "utility_impact": "Utility: +2 if Brian Miller is awarded a fellowship; -1 if he is not."
+        },
+        "Support for Emerging Research Areas": {
+          "description": "She will argue that the committee has a duty to invest in the future, not just the established fields. Funding a student in a novel, emerging area of bioengineering is a strategic investment in the department's long-term relevance and will attract more diverse talent down the line.",
+          "utility_impact": "Utility: +1 if at least one fellow is from a new or emerging sub-field (like synthetic biology), -1 otherwise."
+        }
+      },
+      "private_preferences": {
+        "Brian's Financial Situation": {
+          "value": "During a private video call, Brian confided in Dr. Sharma that he comes from a low-income family and has significant undergraduate debt. He was very direct: 'I would love to come work with you, but I simply cannot afford it without a guaranteed fellowship for my first few years. I have a fully-funded offer from Johns Hopkins, and I'll have to take it if I don't get the Pioneer.' Dr. Sharma's own startup grant is small, and she absolutely cannot afford to pay him as a Research Assistant (RA) for the first two years. It's the fellowship or nothing.",
+          "reason": "Sharing a student's personal financial details is a major breach of privacy and trust. It would also make her look weak, as if she can't support her own students.",
+          "utility_impact": "Utility Penalty: -1 for revealing Brian's financial situation. This makes her advocacy for Brian extremely urgent, as she knows there is no other way to recruit him."
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Thorne",
+      "role": "Professor, Materials Science",
+      "description": "An established, pragmatic professor with strong ties to industry. He believes the university's mission includes economic development and producing graduates who can lead in the tech sector. His lab is heavily funded by corporate partnerships.",
+      "shareable_preferences": {
+        "Champion Carlos Ruiz": {
+          "description": "Dr. Thorne is backing Carlos Ruiz, a materials science student with stellar internship experience at the tech giant 'Innovate Corp'. He argues that Carlos's practical skills and industry mindset make him an ideal candidate to bridge the gap between academic research and real-world application, which ultimately benefits the university through patents and partnerships.",
+          "utility_impact": "Utility: +2 if Carlos Ruiz is awarded a fellowship; 0 otherwise."
+        },
+        "Value Industry Experience": {
+          "description": "He consistently advocates for applicants who have demonstrated success outside of academia. He believes internships and co-ops are better indicators of a student's potential for impact than 'ivory tower' metrics alone. He feels students with this experience are more focused and require less hand-holding.",
+          "utility_impact": "Utility: +1 for each selected candidate with significant industry internship experience."
+        }
+      },
+      "private_preferences": {
+        "Pending Corporate Collaboration": {
+          "value": "The head of R&D at Innovate Corp, a personal friend of Dr. Thorne, sent him a text message last week that read: 'Marcus, great catching up. That student you mentioned, Carlos Ruiz, really impressed us. If you can bring him into your lab, I think I can get the green light for that joint research center we discussed. He's the perfect person to lead the project from your end. We're talking a $250k/year commitment from us.' This collaboration would be a huge boost for his lab and the department.",
+          "reason": "This is a blatant conflict of interest. Revealing the text would look like he's trading a fellowship slot for personal lab funding, a serious ethical breach.",
+          "utility_impact": "Utility Penalty: -2 for revealing the explicit quid-pro-quo offer from Innovate Corp. His motivation to land Carlos is therefore not just preferential, but financial."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Professor, Robotics",
+      "description": "A mid-career professor and a staunch defender of traditional academic values. She believes the primary purpose of a PhD program is to train the next generation of professors and researchers. She is often skeptical of students with corporate ambitions.",
+      "shareable_preferences": {
+        "Advocate for Diana Wells": {
+          "description": "Her top choice is Diana Wells, a robotics prodigy with a clear and passionate goal of becoming a professor and running her own academic lab. Dr. Petrova sees Diana as the ideal candidate to carry the torch of academic inquiry and will argue that this is the best long-term investment for the university's intellectual legacy.",
+          "utility_impact": "Utility: +2 if Diana Wells is awarded a fellowship; -1 if she is not."
+        },
+        "Commitment to Academia": {
+          "description": "Dr. Petrova will openly question the motivation of students who seem overly interested in industry. She'll argue that fellowships are a sacred trust, meant to foster fundamental knowledge, not to subsidize training for private corporations. She wants to see evidence of a genuine passion for teaching and research.",
+          "utility_impact": "Utility: +1 for each selected candidate who explicitly states a goal of becoming a professor; -1 for each candidate whose goal is explicitly industry-focused."
+        }
+      },
+      "private_preferences": {
+        "Confidential Information on Alice Chen": {
+          "value": "Dr. Petrova also serves on the admissions committee for Carnegie Mellon University. She reviewed Alice Chen's application there as well. In Alice's Statement of Purpose for CMU (a more industry-oriented program), she wrote a very different narrative: 'While I value fundamental research, my ultimate five-year goal is to lead an AI research division at a company like Google or OpenAI, leveraging my PhD to drive real-world product innovation.' This directly contradicts the purely academic ambitions she described in her application to this university.",
+          "reason": "Revealing this information is a massive breach of confidentiality. She would be using information from another university's private admissions process to sabotage a candidate at her own institution, an act of extreme academic misconduct.",
+          "utility_impact": "Utility Penalty: -2 for revealing the contents of Alice Chen's CMU application. This knowledge makes her vehemently opposed to Dr. Carter's top choice, but she cannot state the true reason why."
+        }
+      }
+    },
+    {
+      "name": "Dr. Samuel Jones",
+      "role": "Director of Diversity & Inclusion",
+      "description": "Dr. Jones is a non-voting member of the committee but serves as its conscience. His role is to ensure the selection process is equitable and that the cohort of fellows reflects the diversity of the wider population. He has the authority to halt the proceedings if he feels the process is biased.",
+      "shareable_preferences": {
+        "Promote Diversity": {
+          "description": "He will strongly advocate for selecting a diverse cohort, not just in terms of research area but also in background, ethnicity, and gender. He will point out that one of the candidates, Ethan Grant, is a highly qualified underrepresented minority (URM) student and that funding him would be a tangible step towards the university's stated diversity goals.",
+          "utility_impact": "Utility: +2 if at least one URM candidate (Ethan Grant) is selected; -2 if no URM candidates are selected."
+        },
+        "Holistic Review": {
+          "description": "Dr. Jones champions a holistic review process, urging the committee to look beyond simple metrics like GPA. He wants them to consider factors like 'distance traveled'\u2014the obstacles a student has overcome. He will argue that a student from a disadvantaged background who achieves a 3.8 GPA shows more resilience and potential than a privileged student with a 4.0.",
+          "utility_impact": "Utility: +1 if the committee spends significant time discussing non-quantitative aspects of the candidates."
+        }
+      },
+      "private_preferences": {
+        "Accreditation Board Pressure": {
+          "value": "Dr. Jones was part of a confidential briefing with the university's legal counsel. The university's accreditation is up for review next year, and the board has issued a private 'preliminary concern' about the lack of diversity in several flagship STEM graduate programs, including ISE. A failure to show 'demonstrable progress' in this admissions cycle (e.g., by awarding a high-profile fellowship to a URM student) could escalate this into a formal, public sanction, which would be a PR and recruiting nightmare.",
+          "reason": "This information is legally sensitive and market-sensitive. Leaking it would cause widespread panic among faculty and administration and could negatively impact the university's bond rating and applicant pool.",
+          "utility_impact": "Utility Penalty: -2 for revealing the accreditation board's private warning. This makes his advocacy for Ethan Grant not just a preference but a critical, time-sensitive necessity to protect the university."
+        }
+      }
+    },
+    {
+      "name": "Ms. Chloe Davis",
+      "role": "Graduate Program Coordinator",
+      "description": "The administrative backbone of the department. Ms. Davis manages the budget, logistics, and paperwork. She knows all the official and unofficial rules. While she has no vote, her role is to provide factual information and ensure the committee's final decision is logistically and financially viable.",
+      "shareable_preferences": {
+        "Adhere to Deadlines": {
+          "description": "Ms. Davis is responsible for processing the offers and rejections. The university's system locks at 5:00 PM. She needs a final, definitive list from the committee by 4:30 PM at the latest to get everything processed. She will become increasingly anxious as the deadline approaches.",
+          "utility_impact": "Utility: +2 if a decision is made by 4:30 PM; -1 if it is made between 4:30 and 5:00 PM; -2 if the deadline is missed."
+        },
+        "Ensure Viable Advisor Pairing": {
+          "description": "She wants to ensure that the chosen students are a good fit for the labs they want to join. A bad pairing can lead to students dropping out, which is an administrative nightmare and a waste of fellowship money. She will raise concerns if a student is chosen whose intended advisor has a reputation for not mentoring students well or has too many students already.",
+          "utility_impact": "Utility: +1 for a slate of students who are all excellent fits for their intended advisors."
+        }
+      },
+      "private_preferences": {
+        "Hidden Departmental Quotas": {
+          "value": "The 'Interdisciplinary' nature of the department is a point of pride, but the budget is not truly fungible. The funds are secretly allocated based on historical enrollment and grant overhead. This year, the unwritten rule from the finance office is a 'soft quota': one fellowship should go to a core CS student, one to a bio-related (BioE/ChemE) student, and the third is an 'at-large' slot for other engineering fields (Materials/Robotics). Funding two CS students, for example, would cause a deficit in her operating budget, forcing cuts to TA lines next semester. She can say 'we should aim for balance,' but she cannot reveal the hard financial reason why.",
+          "reason": "Revealing the hidden quotas would destroy the illusion of a purely merit-based, interdisciplinary process. Faculty would be furious, and it would expose the department's political and financial fault lines.",
+          "utility_impact": "Utility Penalty: -1 for revealing the existence of the soft quota system. This information is a critical constraint that makes certain combinations of candidates (e.g., Alice Chen and another CS-heavy student) nearly impossible to fund, but she can't explain exactly why."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Majority Agreement": "A final, ranked list of 3 fellowship awardees and 2 alternates must be agreed upon by a majority vote of the 6 voting members (4 out of 6 votes required). Dr. Jones and Ms. Davis are non-voting.",
+    "Unanimous Assent": "Following the vote, every voting committee member must verbally assent to the final decision to present a united front. This prevents appeals and complaints after the fact.",
+    "Timely Decision": "The final, assented-to list must be delivered to Ms. Chloe Davis no later than 5:00 PM."
+  },
+  "constraints": {
+    "verifiable": [
+      "There are exactly 3 Pioneer Fellowship slots to be awarded.",
+      "There are 5 final candidates under consideration: Alice Chen (CS/AI), Brian Miller (BioE), Carlos Ruiz (Materials), Diana Wells (Robotics), and Ethan Grant (Interdisciplinary/URM).",
+      "The meeting must conclude and a decision must be registered by the 5:00 PM deadline."
+    ],
+    "hidden": [
+      "Provost's Mandate: At least one fellow must be from a non-CS/AI discipline. (Known to Dr. Reed)",
+      "Departmental Soft Quota: The budget is structured to ideally support 1 CS, 1 Bio-related, and 1 other engineering fellow. (Known to Ms. Davis)",
+      "University Accreditation Risk: The university is under pressure to improve diversity metrics in this program. (Known to Dr. Jones)"
+    ]
+  },
+  "deliverable": "A single, ranked list containing the names of the 3 students awarded the fellowship and the 2 students designated as alternates, approved by a majority of the committee.",
+  "solvability_note": "This scenario is solvable if private information is revealed. For example, revealing Dr. Petrova's information about Alice Chen's industry goals would severely weaken Dr. Carter's case. Revealing Dr. Carter's grant contingency would explain his desperation but also highlight the risk of betting on a student who may not be committed. Revealing the Provost's mandate (Dr. Reed) and the soft budget quota (Ms. Davis) makes a CS-heavy slate impossible. This combination of revelations would neutralize the strongest advocates for Alice Chen, opening the door for a compromise slate. A logical solution would be: Brian Miller (satisfies Dr. Sharma, fits bio quota), Carlos Ruiz (satisfies Dr. Thorne, fits 'other' quota), and Ethan Grant (satisfies Dr. Jones's critical diversity need and serves as a strong interdisciplinary candidate). Diana and Alice would become the alternates."
+}

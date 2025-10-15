@@ -1,0 +1,163 @@
+{
+  "scenario": "Veridian University School of Medicine Admissions Committee Final Selection",
+  "task": "A committee of 7 members must unanimously select the final 5 students for the incoming class from a pool of 10 highly qualified finalists. Concurrently, they must allocate scholarship funds for these 5 admitted students, ensuring the total allocation does not exceed the remaining budget. The decision is complicated by conflicting priorities, confidential institutional goals, and private information held by individual members.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Eleanor Vance",
+    "Dr. Ben Carter",
+    "Dr. Maria Flores",
+    "Mr. David Chen",
+    "Dr. Lena Petrova",
+    "Ms. Aisha Khan",
+    "Dr. Samuel Jones"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Eleanor Vance",
+      "role": "Dean of Admissions (Committee Chair)",
+      "description": "A seasoned administrator, Dr. Vance is responsible for shaping a well-rounded and prestigious incoming class. Her primary goal is to maintain the school's top-10 national ranking, which requires balancing high academic metrics, research potential, and institutional harmony. She acts as the facilitator but is under immense external pressure.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Maintain Class Profile Stability: Dr. Vance wants the average MCAT score of the 5 selected students to be at or above 518 and the average GPA to be at or above 3.85. Falling below these thresholds, even slightly, could be flagged by ranking publications and harm the school's prestige. She will strongly advocate for candidates who elevate these averages.",
+          "utility_impact": "If avg MCAT >= 518 AND avg GPA >= 3.85, utility is +2. If only one is met, utility is +1. If neither is met, utility is -2. She sees this as the most objective measure of the class's quality and her performance as Dean."
+        },
+        "preference2": {
+          "description": "Achieve Committee Consensus Smoothly: Dr. Vance wants to finalize the list of 5 students and the scholarship budget within the scheduled 3-hour meeting. A prolonged, contentious debate reflects poorly on her leadership. She values compromise and efficiency over getting any single preferred candidate in.",
+          "utility_impact": "If a unanimous decision is reached within the meeting time, utility is +2. If it requires a follow-up meeting, utility is -1. If the committee deadlocks and she has to make an executive decision, utility is -2 because it signals a failure of process."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "An email from the university president pressures her to admit a specific finalist, applicant 'Julian Croft'. The email explicitly links this admission to securing a crucial state grant for a new $50 million research wing, which is being championed by Julian's mother, a powerful state senator. The president's email ends with 'Eleanor, we can't afford to lose this grant. Make sure the committee understands the stakes.' She can share that 'some applicants have connections that could be beneficial to the university's strategic goals,' but revealing the direct pressure and the quid-pro-quo would cause a massive academic scandal. Penalty for revealing the senator's involvement is -2. Penalty for revealing the president's direct order is -2.",
+          "reason": "Revealing direct political interference in admissions would destroy the integrity of the process, lead to public outcry, and severely damage her career and the school's reputation.",
+          "utility_impact": "Admitting Julian Croft gives her an automatic +2 utility (as it solves a major problem for her), but she must achieve this without revealing why. If Julian is rejected, her utility is -2 due to the anticipated fallout from the president's office."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Head of the Surgical Department",
+      "description": "Dr. Carter is a renowned surgeon and a dominant voice on the committee. He believes the school's reputation is built on producing elite specialists. He views admissions as a talent pipeline for his department and others like it, prioritizing raw academic firepower and resilience above all else.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Maximize Top-Tier Academic Metrics: Dr. Carter's primary goal is to admit candidates with the highest possible MCAT and science GPA. He believes these are the strongest predictors of success in rigorous specialties like surgery. He wants at least 3 of the 5 admitted students to have an MCAT score of 520 or higher.",
+          "utility_impact": "If 3+ students have MCAT >= 520, utility is +2. If 2 students meet this, utility is +1. If 0-1 students meet this, utility is -2. He will fight hard for these high-stat applicants and dismiss others as 'risks'."
+        },
+        "preference2": {
+          "description": "Identify 'Surgical Personality': Beyond scores, Dr. Carter looks for evidence of stamina, confidence, and leadership, often found in activities like being a former collegiate athlete or holding leadership roles in competitive organizations. He is skeptical of applicants with extensive time in 'soft' volunteer roles.",
+          "utility_impact": "For each student admitted with a background he deems as demonstrating 'grit' (e.g., D1 athlete, military experience), he gets +1 utility, up to a max of +2. For each student admitted whose primary experience is in community organizing or advocacy, he gets -1 utility, down to a max of -2."
+        }
+      },
+      "private_preferences": {}
+    },
+    {
+      "name": "Dr. Maria Flores",
+      "role": "Director of Community Health and Family Medicine",
+      "description": "Dr. Flores is a passionate advocate for primary care and addressing health disparities. She believes the school has a social responsibility to train physicians who will serve underserved communities, not just fill elite hospital residencies. She often clashes with Dr. Carter.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Commitment to Underserved Populations: Dr. Flores wants to admit at least 2 students who have significant, long-term experience (1000+ hours) working with medically underserved or rural populations. She believes this is the best indicator that a student will choose a career in primary care or work in a high-need area.",
+          "utility_impact": "If 2+ such students are admitted, utility is +2. If 1 is admitted, utility is 0. If 0 are admitted, utility is -2. She will argue that these experiences are more valuable than a few extra MCAT points."
+        },
+        "preference2": {
+          "description": "Prioritize Students Needing Financial Aid: Dr. Flores believes that socioeconomic diversity is critical and that high tuition should not be a barrier. She advocates for allocating larger scholarship packages to students from low-income backgrounds, even if it means fewer funds are available for 'merit-based' awards for wealthier students.",
+          "utility_impact": "If the majority of the $350k budget is allocated to need-based aid for at least 3 of the 5 admitted students, utility is +2. If the budget is primarily used for merit awards or to attract full-pay students, utility is -2."
+        }
+      },
+      "private_preferences": {}
+    },
+    {
+      "name": "Mr. David Chen",
+      "role": "Chief Financial Officer, School of Medicine",
+      "description": "Mr. Chen is not a physician; he is a businessman. His responsibility is the financial viability of the medical school. He views every admitted student through the lens of revenue, either as a source of tuition or as a potential future donor.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Maximize Tuition Revenue: Mr. Chen's goal is to minimize the scholarship budget outlay. He wants to admit as many students as possible who can pay the full tuition of $80,000 per year. His ideal slate would require less than $200,000 in total scholarship funds.",
+          "utility_impact": "If the total scholarship allocation is under $200k, utility is +2. Between $200k-$300k, utility is +1. Between $300k-$350k, utility is -1. If the committee insists on spending the full $350k, utility is -2."
+        },
+        "preference2": {
+          "description": "Cultivate Future Donors: He is interested in admitting candidates from wealthy families or those with connections to industry leaders. He argues this is a long-term financial strategy for the school, securing future gifts for buildings and programs.",
+          "utility_impact": "For each student admitted with a noted high capacity for future donations (based on background information in the file), he gains +1 utility, up to a max of +2. He is indifferent to students without this potential."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "He has conducted a confidential wealth screening on the finalists. One applicant, 'Penelope Hayes,' has a family with an estimated net worth of over $500 million. Through back-channels, her family's foundation has indicated they are prepared to make an immediate $2 million donation to the school's endowment if Penelope is admitted. He can vaguely say she has 'extraordinary philanthropic potential,' but revealing the specific $2 million offer would be a massive ethical breach and could be seen as selling a spot. Penalty for revealing the exact amount is -2. Penalty for revealing that a direct offer was made is -2.",
+          "reason": "This information constitutes a potential quid-pro-quo that violates accreditation standards. Its exposure would cause a scandal and jeopardize the school's reputation and his job.",
+          "utility_impact": "Admitting Penelope Hayes is a +2 utility for him, as it secures a massive donation he can take credit for. If she is rejected, it's a -2 utility because he has lost a transformative financial opportunity for the school."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Professor of Basic Sciences & Research Lead",
+      "description": "Dr. Petrova is a highly respected, grant-funded researcher. She sees the medical school as an engine for scientific discovery. She wants students who will not just become clinicians, but who will join MD/PhD programs or pursue careers as physician-scientists, bringing in prestigious NIH grants in the future.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Prioritize Extensive Research Experience: Dr. Petrova's key criterion is a deep and productive research background. She wants to admit at least 2 students who have multiple years of research experience and are co-authors on a published paper in a peer-reviewed journal.",
+          "utility_impact": "If 2+ students with publications are admitted, utility is +2. If 1 is admitted, utility is +1. If 0 are admitted, utility is -2. She will argue this is a proven track record of scientific aptitude, unlike test scores."
+        },
+        "preference2": {
+          "description": "Recruit for a Specific Research Initiative: Her lab just received a large grant for neuroscience research. There is one applicant in the finalist pool with a very specific and rare skillset in computational neuroscience that would be a huge asset to her project. She wants to recruit this student specifically.",
+          "utility_impact": "If this specific student ('Kenji Tanaka') is admitted, she gets +2 utility. If he is not, she gets -1, as it's a missed opportunity but not a disaster. She can frame this as 'filling a strategic research need for the university.'"
+        }
+      },
+      "private_preferences": {}
+    },
+    {
+      "name": "Ms. Aisha Khan",
+      "role": "Director of Diversity, Equity, and Inclusion (DEI)",
+      "description": "Ms. Khan is the newest member of the committee, tasked with ensuring the school meets its institutional goals for diversity. She is a data-driven advocate for a holistic review process that looks beyond traditional metrics to build a class that reflects the patient population.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Promote Holistic Review: Ms. Khan advocates for a 'whole-person' evaluation, weighing life experiences, resilience, and cultural background as heavily as academic scores. She will consistently champion applicants with non-traditional paths or who have overcome significant adversity.",
+          "utility_impact": "If the final admitted group includes at least 2 students with MCAT scores below the class average but who have compelling personal stories, her utility is +2. If it includes none, her utility is -2, as she feels the committee has reverted to a numbers-only approach."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "She has access to the university's confidential, non-public DEI dashboard. To maintain accreditation and meet goals set by the Board of Trustees, the incoming class must have at least 20% of students who identify as Underrepresented in Medicine (URM). With 95 students already admitted, the class is currently at 18% URM. To reach the 20% target for the 100-student class, at least 2 of the final 5 admits MUST be URM candidates. There are exactly 3 URM candidates in the pool of 10 finalists. She can speak about the 'importance of diversity' and 'building a representative class,' but she cannot say 'we are legally and institutionally required to admit two URM students from this pool to meet our target.' Penalty for revealing the specific 20% target is -1. Penalty for revealing the 'must-admit-2' mandate is -2.",
+          "reason": "Revealing a hard quota is legally perilous and opens the university to lawsuits for reverse discrimination. The university's official stance is that race is only one of many factors in a holistic review.",
+          "utility_impact": "If at least 2 of the 3 URM candidates are admitted, her utility is +2. If only 1 is admitted, utility is -1 (as the target is missed). If 0 are admitted, utility is -2 (a complete failure of her role on the committee)."
+        }
+      }
+    },
+    {
+      "name": "Dr. Samuel Jones",
+      "role": "Alumni Representative & Major Donor",
+      "description": "A retired, highly respected cardiologist, Dr. Jones sits on the committee to provide the perspective of a seasoned clinician and the alumni community. He is part of the 'old guard' and values tradition, character, and personal connections. His opinion carries weight due to his reputation and personal donations.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Uphold Tradition and Character: Dr. Jones is drawn to applicants from multigenerational physician families and those who attended prestigious undergraduate institutions. He believes this indicates a deep-seated commitment to the values of the medical profession. He will advocate for 'legacy' candidates.",
+          "utility_impact": "If at least one legacy applicant is admitted, his utility is +2. If none are, his utility is -1, as he feels the school is losing its connection to its own history."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "One of the finalists, 'Emily White,' has a file that appears good but not exceptional. However, last week Dr. Jones received a personal, off-the-record phone call from his close friend and former mentee, Dr. Chen-Wei Li, who is now a world-famous transplant surgeon at Johns Hopkins. Dr. Li trained Emily in his lab for a summer and said, 'Sam, her file doesn't show it, but she has the best hands I've seen in a decade. She's a future surgical superstar. You have to get her in.' He cannot share the source of this information because Dr. Li explicitly said, 'This is just between us, I don't want to be seen as meddling.' He can say 'I have a very strong feeling about this candidate's potential,' but revealing the secret endorsement from such a prominent figure would betray his friend's confidence. Penalty for revealing Dr. Li's name is -2.",
+          "reason": "Betraying a personal confidence from a respected colleague would damage his professional relationships and reputation for discretion, which he has built over a 50-year career.",
+          "utility_impact": "Admitting Emily White gives him a utility of +2 because he trusts his friend's judgment implicitly and feels he is securing a future star for the school. If she is rejected, his utility is -1 because he feels the committee made a mistake by ignoring his intuition."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "Unanimous agreement: All 7 committee members must verbally assent to the final list of 5 admitted students.",
+    "criterion2": "Budget Adherence: The sum of the scholarship packages assigned to the 5 admitted students must not exceed the $350,000 verifiable budget limit.",
+    "criterion3": "Complete Allocation: A specific scholarship amount (which can be $0) must be assigned to each of the 5 admitted students."
+  },
+  "constraints": {
+    "verifiable": [
+      "Exactly 5 students must be chosen from the final pool of 10 applicants.",
+      "The total scholarship allocation cannot exceed $350,000.",
+      "Each of the 10 finalists has a pre-determined 'financial need' score, and any scholarship package offered cannot exceed their calculated need."
+    ],
+    "hidden": [
+      "At least 2 of the 5 admitted students must be from URM backgrounds to meet the university's confidential 20% diversity target.",
+      "The university president has unofficially mandated that applicant 'Julian Croft' must be admitted.",
+      "Applicant 'Penelope Hayes' comes with a potential $2 million donation, contingent on her admission."
+    ]
+  },
+  "deliverable": "A final list of the 5 admitted students' names and the corresponding scholarship amount allocated to each, which has been unanimously approved by the committee and adheres to the budget.",
+  "solvability_note": "This scenario is solvable if all private information is revealed. The committee could openly debate the pros and cons of admitting the senator's child versus the potential $2 million donation. They could explicitly factor in Dr. Li's powerful endorsement for Emily White and transparently work to meet the 2-student URM target. The negotiation would shift from a game of persuasion with incomplete information to a multi-objective optimization problem where the group can logically prioritize and trade off between financial gain, political necessity, hidden talent, and diversity mandates."
+}

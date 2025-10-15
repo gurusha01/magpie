@@ -1,0 +1,172 @@
+{
+  "scenario": "High-Stakes CFO Search for InnovateNext Corp.",
+  "task": "Six agents must negotiate to select and finalize a comprehensive employment offer for a new Chief Financial Officer (CFO) for InnovateNext Corp. The negotiation involves the Board Chair, the CEO, a headhunter, and three distinct candidates. The final agreement must specify the chosen candidate, base salary, signing bonus, performance bonus structure, equity grant, and start date, while respecting a set of public and private constraints. The goal is to maximize individual utility by achieving personal preferences, which are often in direct conflict and shrouded in private information.",
+  "agent_number": 6,
+  "agent_names": [
+    "Eleanor Vance",
+    "David Chen",
+    "Marcus Thorne",
+    "Dr. Anya Sharma",
+    "Ben Carter",
+    "Liam Goldberg"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Board Chair, InnovateNext Corp.",
+      "description": "Eleanor is the pragmatic and fiscally conservative Chair of the Board. Her primary responsibility is to ensure the long-term stability and strategic growth of the company for its shareholders. She views the CFO role as critical for executing a major strategic pivot she has planned.",
+      "shareable_preferences": {
+        "Fiscal Prudence in Compensation": {
+          "description": "Eleanor strongly believes in responsible spending and wants the new CFO's total first-year compensation (salary + signing bonus + target performance bonus) to be below $750,000. She feels anything higher sets a bad precedent and eats into capital needed for growth initiatives.",
+          "utility_impact": "Utility: +2 if total compensation is under $700k; +1 if between $700k-$800k; 0 if between $800k-$900k; -1 if between $900k-$1.1M; -2 if over $1.1M. She will argue that high executive pay is a sign of poor corporate governance."
+        },
+        "Proven Public Company Experience": {
+          "description": "The candidate must have at least 5 years of experience as a CFO or VP of Finance in a publicly-traded company. This is non-negotiable for Eleanor, as she needs someone who can confidently handle SEC reporting, investor relations, and quarterly earnings calls from day one.",
+          "utility_impact": "Utility: +2 if the candidate has 7+ years of public company CFO experience; +1 for 5-7 years; -2 if the candidate has no public company CFO experience. She will not approve a candidate who fails this test."
+        },
+        "Swift Onboarding": {
+          "description": "Eleanor wants the new CFO to start as soon as possible to oversee the end-of-year financial planning. An ideal start date is within 45 days of the offer being signed.",
+          "utility_impact": "Utility: +1 for a start date within 45 days; 0 for 46-90 days; -1 for any start date beyond 90 days."
+        }
+      },
+      "private_preferences": {
+        "Secret M&A Experience Requirement": {
+          "value": "InnovateNext's board has secretly approved a $50M fund for a strategic acquisition of a smaller competitor, 'SynergyTech,' within the next 18 months. This is top-secret. Eleanor's primary, unstated goal is to hire a CFO with significant experience in leading mergers and acquisitions, specifically in post-merger integration. Sharing this plan prematurely could alert SynergyTech and drive up their price or invite competing bids. Penalty for revealing the acquisition plan: -2 (violates fiduciary duty, could derail the deal).",
+          "reason": "Revealing the acquisition strategy is a material, non-public event that would violate SEC regulations and jeopardize the entire deal.",
+          "utility_impact": "This is her most important criterion. Utility: +2 if the chosen candidate has led at least two successful M&A integrations; -2 if they have none. This private preference will make her strongly favor a candidate like Anya Sharma, even if she is more expensive, creating conflict with her stated preference for fiscal prudence."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "CEO, InnovateNext Corp.",
+      "description": "David is the dynamic and culture-focused CEO. He has built the company's collaborative environment from the ground up and is protective of his team. He needs a CFO who is a strategic partner and a cultural fit, not just a numbers person.",
+      "shareable_preferences": {
+        "Emphasis on Cultural Fit": {
+          "description": "David wants a CFO who will be a collaborative partner and respected leader, not an authoritarian 'cost-cutter'. He will prioritize a candidate who demonstrates loyalty to the company and has a history of mentoring their teams.",
+          "utility_impact": "Utility: +2 for hiring an internal candidate who knows the culture (Ben); +1 for an external candidate with glowing reviews about their leadership style; -2 for a candidate known for aggressive, 'slash-and-burn' tactics. He will use phrases like 'guardian of our culture' to describe his ideal CFO."
+        },
+        "Operational Partnership": {
+          "description": "The CEO needs a CFO who will work with him to find creative ways to fund his strategic initiatives, particularly a new R&D project he is championing. He is wary of a CFO who will simply say 'no' to every new spending request.",
+          "utility_impact": "Utility: +1 if the candidate expresses enthusiasm for investing in R&D and innovation; -1 if their primary focus is on cutting costs across the board."
+        }
+      },
+      "private_preferences": {
+        "Informal Promise to Internal Candidate": {
+          "value": "David has been mentoring Ben Carter, his VP of Finance, for this role for over a year. He sent Ben a congratulatory email last month for saving the company $450k on a vendor contract, which ended with 'Keep this up, and you'll be ready for the big chair soon.' David feels a strong sense of personal loyalty and guilt. He fears that hiring an outsider will cause Ben to resign, which would be a huge loss of institutional knowledge and would damage team morale. Penalty for revealing the 'promise' email: -1 (it makes him look unprofessional and like he pre-judged the hiring process).",
+          "reason": "Admitting he made an informal promise undermines the integrity of the official search process and exposes him to criticism from the board.",
+          "utility_impact": "This creates a significant internal conflict. His primary goal is to get Ben hired. Utility: +2 if Ben is selected; -2 if Ben is rejected and subsequently resigns. He will advocate for Ben by highlighting the risks of an external hire, without revealing the full extent of his personal commitment."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Executive Recruiter, Apex Search Partners",
+      "description": "Marcus is a charismatic and highly-driven headhunter. His income is directly tied to his success. He is motivated by closing the deal quickly and for the highest possible compensation package, as his firm charges a 33% fee on the candidate's guaranteed first-year cash compensation (salary + signing bonus).",
+      "shareable_preferences": {
+        "Maximize Candidate Compensation": {
+          "description": "Marcus will argue that to attract 'top-tier talent,' InnovateNext must be prepared to pay a premium. He will present market data (which may be slightly inflated) to justify a high compensation package for his candidates.",
+          "utility_impact": "His utility is directly tied to his commission. Utility: +2 if first-year cash is over $900k; +1 if $800k-$900k; 0 if $700k-$800k; -2 if under $700k."
+        },
+        "Efficient Process": {
+          "description": "Marcus wants to finalize the offer within the next two weeks. He will create a sense of urgency by mentioning that his best candidates have 'competing offers' and 'expiring windows of opportunity'.",
+          "utility_impact": "Utility: +1 if a deal is signed within 14 days; -1 if the process drags on for more than 30 days."
+        }
+      },
+      "private_preferences": {
+        "Hidden Candidate Flaw & Quarter-End Pressure": {
+          "value": "Marcus knows that his star candidate, Anya Sharma, was discreetly 'managed out' of her last role after a major disagreement with her CEO over strategic direction. It was not a performance issue, but it's a red flag he has intentionally omitted from her profile. He also has a massive personal quarterly bonus riding on closing this deal before the end of the month (25 days away). If he doesn't place a candidate, he misses his target and a $75k payout. This makes him desperate. He is representing both Anya and Liam. Penalty for revealing Anya's departure reason: -2 (destroys his credibility and relationship with InnovateNext). Penalty for revealing his bonus pressure: -1 (weakens his negotiating position significantly).",
+          "reason": "Revealing negative information about his candidate is a breach of trust and bad for business. Admitting his personal financial pressure makes him appear desperate rather than confident.",
+          "utility_impact": "This desperation will tempt him to over-promise, hide negative information, and push for a quick deal over the right deal. He will push Anya as the 'perfect fit' for Eleanor's needs and Liam as an 'innovative alternative' for David, playing both sides."
+        }
+      }
+    },
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "CFO Candidate (The Star)",
+      "description": "Anya is a highly respected CFO from a Fortune 500 competitor. She has a stellar resume, extensive M&A experience, and is a brilliant strategist. She presents herself as confident and in high demand.",
+      "shareable_preferences": {
+        "Strategic Authority and Board Seat": {
+          "description": "Anya is not interested in being just a financial steward; she wants to be a key strategic architect of the company's future. She is requesting a significant voice in corporate strategy and a guaranteed seat on the board of directors after her first year.",
+          "utility_impact": "Utility: +2 for a guaranteed board seat in the contract; 0 for a 'path to the board' discussion; -2 if the request is flatly denied. This is a matter of status and influence for her."
+        },
+        "Premium Compensation Package": {
+          "description": "To leave her current prestigious role, she requires a compensation package that reflects her value. She is asking for a base salary of $850,000, a $200,000 signing bonus, and a significant equity grant of 100,000 stock options.",
+          "utility_impact": "This is her opening position. Utility: +2 if she gets over $1M in first-year cash; +1 if $850k-$1M; 0 if $750k-$850k; -2 if below $700k."
+        }
+      },
+      "private_preferences": {
+        "Desperate Need for a Quick Exit": {
+          "value": "Anya was not just 'managed out'; she discovered her CEO was misrepresenting key financial metrics to the board. After confronting him, she was forced to sign a non-disclosure agreement and resign in exchange for a neutral reference. The full story could leak within the next 1-2 months. She needs to secure a new, high-profile job immediately to control the narrative and protect her career from the fallout. Her actual 'walk-away' first-year cash compensation is only $700,000, but she knows appearing desperate would kill her leverage. Penalty for revealing the real reason for her departure: -2 (career-ending, potential legal action for violating her NDA).",
+          "reason": "Admitting she's fleeing a potentially scandalous situation would make her seem like a massive risk to a new company.",
+          "utility_impact": "Her desperation for a quick and prestigious landing makes her more flexible than she appears. She will seem rigid and demanding, but if pushed to a final 'take-it-or-leave-it' offer that meets her minimum needs, she will likely accept. She will prioritize a quick signing date over maximizing every last dollar."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "CFO Candidate (The Internal Contender)",
+      "description": "Ben is the current VP of Finance at InnovateNext. He is incredibly loyal, hardworking, and possesses unparalleled knowledge of the company's financials and operations. He feels he has earned this promotion and is well-liked within the company.",
+      "shareable_preferences": {
+        "Recognition of Loyalty and Knowledge": {
+          "description": "Ben believes his 10 years of service and deep institutional knowledge should be heavily weighted. He wants a compensation package that is at the top end of the internal pay band for a C-suite executive, around $600,000 base salary, and a title of 'CFO and Executive Vice President'.",
+          "utility_impact": "Utility: +2 if he gets the promotion with the EVP title; +1 if he just gets the CFO role; -2 if he is passed over entirely. For him, this is about respect as much as money."
+        },
+        "Autonomy to Implement New Initiatives": {
+          "description": "Ben wants a clear mandate and budget to implement a new financial planning and analysis (FP&A) system that he has been advocating for, which he projects will improve forecasting accuracy by 30%.",
+          "utility_impact": "Utility: +1 if he is given explicit control over the FP&A project; -1 if an external hire is brought in and shelves his project."
+        }
+      },
+      "private_preferences": {
+        "Knowledge of a Major Cost-Saving Opportunity": {
+          "value": "Ben has identified a massive operational inefficiency in the company's supply chain logistics that is currently costing InnovateNext approximately $2 million per year. He has a detailed, ready-to-implement plan to fix it, which he intended to be his signature achievement in his first 100 days as CFO. He is afraid to share the full details of this plan before he has the job, as an external hire could easily steal his idea and take the credit. He has a competing offer to be a CFO at a smaller, private company, and he will resign if he is not promoted. Penalty for sharing the full $2M plan before getting the job: -1 (he loses his biggest piece of leverage).",
+          "reason": "Sharing his best idea before securing the role would be naive; he would be giving away his most valuable contribution for free, potentially to his replacement.",
+          "utility_impact": "This information makes him a far more valuable candidate than he appears on paper. The $2M savings would easily pay for his salary multiple times over. His hidden competing offer gives him a hard line. He will not stay as VP of Finance if someone else is hired. Utility: +2 if he gets to implement his plan as CFO; -2 if he is passed over and has to resign."
+        }
+      }
+    },
+    {
+      "name": "Liam Goldberg",
+      "role": "CFO Candidate (The Dark Horse)",
+      "description": "Liam is the current CFO of 'VentureFlow,' a fast-growing but unprofitable tech startup. He is an expert in fundraising, venture capital, and scaling high-growth businesses. He is seen as a high-risk, high-reward candidate.",
+      "shareable_preferences": {
+        "Significant Equity Stake": {
+          "description": "Liam is less concerned with base salary and more interested in the long-term upside. He believes InnovateNext is undervalued and wants a substantial equity grant of at least 150,000 non-qualified stock options, vesting over 4 years. He argues this aligns his interests directly with shareholders.",
+          "utility_impact": "Utility: +2 for 150k+ options; +1 for 100k-150k options; -2 for less than 75k options. This is his primary motivator."
+        },
+        "Focus on Innovation and Growth": {
+          "description": "He wants to know that InnovateNext is committed to investing heavily in new technologies and market expansion. He is not interested in a 'maintenance' role focused on cost-cutting.",
+          "utility_impact": "Utility: +1 if the company's leadership (David) expresses a strong commitment to a growth-oriented budget; -1 if the conversation is dominated by cost control (Eleanor's preference)."
+        }
+      },
+      "private_preferences": {
+        "Impending Job Redundancy and Legal Complication": {
+          "value": "Liam's startup, VentureFlow, is being acquired in a deal that will close in 90 days. His position is being eliminated, and he will be out of a job. He is job hunting out of necessity, not choice. Furthermore, he has a strict non-compete agreement with his current company that InnovateNext's legal team would need to challenge for him to accept the role. He has not disclosed the non-compete because it adds a significant hurdle to his candidacy. Penalty for revealing his job is being eliminated: -1 (reduces his negotiating leverage). Penalty for revealing the non-compete issue too early: -2 (might disqualify him immediately).",
+          "reason": "Admitting his job is disappearing makes him look like damaged goods. Revealing a legal problem before the company is invested in him is a surefire way to get his resume thrown out.",
+          "utility_impact": "Like Anya, Liam is more desperate than he appears. He is very flexible on salary and would accept a much lower number than Marcus is suggesting, provided the equity is strong and the company is willing to take on his legal battle. This makes him a potentially cheap but complicated hire."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "CFO Hired": "A single candidate (Anya Sharma, Ben Carter, or Liam Goldberg) must be selected and agree to the terms.",
+    "Offer Letter Finalized": "All components of the offer (Candidate, Salary, Signing Bonus, Performance Bonus, Equity, Start Date) must be agreed upon by Eleanor Vance, David Chen, and the chosen candidate.",
+    "Constraint Adherence": "The final agreement must not violate any of the verifiable constraints.",
+    "Majority Satisfaction": "At least 4 of the 6 agents must conclude the negotiation with a total utility score of 0 or greater."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total first-year compensation package (Base Salary + Signing Bonus + Target Performance Bonus) cannot exceed $1,200,000.",
+      "The hiring decision must be finalized with a signed offer letter within 30 days.",
+      "The new CFO must have a confirmed start date within 90 days of the offer signing."
+    ],
+    "hidden": [
+      "Eleanor has a hard requirement for M&A integration experience due to the secret SynergyTech acquisition plan.",
+      "Ben Carter will resign if he is not promoted, taking his institutional knowledge and his $2M cost-saving plan with him.",
+      "Anya Sharma must secure a job before news of the scandal at her former company potentially breaks.",
+      "Liam Goldberg's current role will cease to exist in 90 days."
+    ]
+  },
+  "deliverable": "A single, finalized JSON object representing the signed offer letter, structured as: { 'candidate_name': '...', 'role': 'Chief Financial Officer', 'start_date': 'YYYY-MM-DD', 'base_salary': ..., 'signing_bonus': ..., 'performance_bonus_target': ..., 'equity_options': ... }",
+  "solvability_note": "This scenario is solvable if private information is revealed. Knowing the candidates' desperation (Anya's scandal, Liam's redundancy) would give InnovateNext immense negotiating leverage on compensation. Knowing about Ben's $2M cost-saving plan would make him a financially irresistible candidate, likely satisfying Eleanor's core desire for value creation and David's desire to promote him. Knowing Eleanor's hidden M&A requirement would allow the agents to have an honest discussion about whether Ben's internal knowledge and savings plan outweighs Anya's specific M&A experience. The conflicts, which seem to be about money and experience, are actually about risk, leverage, and hidden motivations. Full transparency would turn it into an optimization problem rather than a bluffing game."
+}

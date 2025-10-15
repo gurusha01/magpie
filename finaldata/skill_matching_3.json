@@ -1,0 +1,307 @@
+{
+  "scenario": "Port Blossom Earthquake Response Coordination",
+  "task": "A 7.2 magnitude earthquake has struck the coastal city of Port Blossom. Key infrastructure is compromised, and communication is intermittent. A multi-agency coordination meeting has been convened to form a joint task force and agree on a unified operational plan for the critical first 72 hours. The primary task is to negotiate and finalize a Joint Operations Plan that allocates a shared $5 million initial emergency fund, assigns specific geographic zones of operation, distributes critical resources (personnel, equipment, and two heavy-lift helicopters), and establishes a clear, unified command structure.",
+  "agent_number": 7,
+  "agent_names": [
+    "Maria Flores",
+    "Chief Ben Carter",
+    "Dr. Aris Thorne",
+    "Dr. Lena Hanson",
+    "David Chen",
+    "Sofia Rossi",
+    "Mark O'Connell"
+  ],
+  "agents": [
+    {
+      "name": "Maria Flores",
+      "role": "Chief of Staff, Mayor's Office of Port Blossom",
+      "description": "Maria is the Mayor's most trusted advisor. Her primary goal is to manage the political fallout of the disaster, project an image of control and rapid economic recovery, and ensure the Mayor's political survival. She is pragmatic and ruthless, viewing the response through a lens of public relations and economic stability.",
+      "shareable_preferences": {
+        "Establish a Unified Command Structure under Mayoral Control": {
+          "description": "Maria insists that the Mayor's Office must be the ultimate authority in the command structure. She proposes a model where all agency heads report to her directly. She argues this is essential for streamlined decision-making and to prevent chaotic, uncoordinated efforts that would erode public confidence. She needs this to control the narrative of the disaster response.",
+          "utility_function": {
+            "+2": "The final plan establishes a command structure where Maria Flores is the designated overall commander, with all other agents reporting to her.",
+            "+1": "A 'council' structure is formed, but the Mayor's office holds the tie-breaking vote or veto power.",
+            "0": "A co-command structure is established with the Mayor's office and one other agency (e.g., PBES).",
+            "-1": "Command is given to an external body like an international aid agency.",
+            "-2": "A decentralized command structure is adopted where each agency operates autonomously in their zone."
+          }
+        },
+        "Prioritize the Waterfront Business District for Recovery": {
+          "description": "Maria is adamant that the initial focus must be on clearing debris, assessing structural integrity, and restoring power to the Waterfront Business District. She frames this as critical for the city's long-term economic health, arguing that reassuring investors and getting businesses back online quickly is paramount. She requests $1.5 million and one of the two helicopters be dedicated to this zone for damage assessment and equipment transport.",
+          "utility_function": {
+            "+2": "The Waterfront is designated the sole 'Priority Alpha' zone, receiving at least $1.5M in funding and a dedicated helicopter.",
+            "+1": "The Waterfront is one of two 'Priority Alpha' zones.",
+            "0": "The Waterfront is a secondary priority, receiving less than $1M.",
+            "-1": "The Waterfront is designated a low-priority zone.",
+            "-2": "The plan explicitly defunds any work in the Waterfront in favor of residential areas."
+          }
+        }
+      },
+      "private_preferences": {
+        "Protect a Key Political Donor's Assets": {
+          "value": "The Mayor's largest campaign donor, billionaire developer Silas Croft, has the grand opening for his new $300M 'Croft Tower Hotel' on the waterfront next month. The Mayor has given Maria a direct, non-negotiable order: 'Protect Croft's investment at all costs.' Maria knows that if the area is not secured and seen as recovering, Croft will pull his other major investments from the city, which would be politically catastrophic. This is the real reason for prioritizing the waterfront. She can hint at the 'economic importance' but cannot reveal the explicit political pressure or the name 'Silas Croft'.",
+          "reason": "Revealing this would cause a massive political scandal, exposing the Mayor's administration as prioritizing a wealthy donor over citizens' lives. It would be career suicide.",
+          "penalty": {
+            "hinting at 'key economic assets'": 0,
+            "mentioning 'a major investor'": -1,
+            "naming Silas Croft or the hotel": -3
+          }
+        }
+      }
+    },
+    {
+      "name": "Chief Ben Carter",
+      "role": "Head of Port Blossom Emergency Services (PBES)",
+      "description": "Ben is a 30-year veteran firefighter and emergency manager. He is exhausted, stressed, and deeply pragmatic. His only concern is saving lives. He has seen the devastation firsthand and is frustrated by politics and bureaucracy. He commands the city's first responders.",
+      "shareable_preferences": {
+        "Immediate Triage and Rescue Operations in Old Town": {
+          "description": "Ben's preliminary reports indicate that the 'Phoenix' residential high-rise in the densely populated Old Town district has suffered a partial collapse, with potentially hundreds of residents trapped. He demands that the absolute first priority be a massive search-and-rescue operation in this zone. He needs $2 million for his teams, heavy-lifting equipment, and priority access to both helicopters for aerial surveillance and medical evacuation.",
+          "utility_function": {
+            "+2": "Old Town is the sole 'Priority Alpha' zone, receiving at least $1.8M and priority access to both helicopters.",
+            "+1": "Old Town is a co-priority, sharing resources with one other zone.",
+            "0": "Old Town is a secondary priority.",
+            "-1": "Resources are allocated to Old Town only after other zones are addressed.",
+            "-2": "The Old Town operation is deemed 'too high risk' and is postponed."
+          }
+        },
+        "Operational Control of all On-the-Ground Assets": {
+          "description": "Ben argues that his agency, PBES, is the only one with the local knowledge and existing infrastructure to manage a ground-level response. He wants all incoming personnel from aid agencies and engineering firms to be embedded within PBES teams and follow his command structure to ensure safety and efficiency. He is wary of outside groups operating independently and causing more harm than good.",
+          "utility_function": {
+            "+2": "All field teams are placed under the direct command of a PBES incident commander.",
+            "+1": "External teams can operate semi-autonomously but must have a PBES liaison embedded with them.",
+            "0": "A joint command is established where Ben shares control with another agency head.",
+            "-1": "The Mayor's office takes direct command of field operations.",
+            "-2": "External agencies are given full autonomy to operate wherever they choose."
+          }
+        }
+      },
+      "private_preferences": {
+        "Severe Personnel Fatigue and Equipment Shortages": {
+          "value": "Ben's force is already at a breaking point. 20% of his first responders are unaccounted for or injured. His main equipment depot was flooded in a subsequent water main break, and he has lost access to critical cutting and listening equipment needed for the high-rise collapse. He is desperately short-staffed and under-equipped, but he cannot reveal the full extent of this weakness. If the other agencies knew how crippled PBES is, they might question his ability to lead and push for full control, which he feels would be even more disastrous due to their lack of local knowledge. He can say his teams are 'stretched thin' but not that they are on the verge of collapse.",
+          "reason": "Admitting the full scale of his department's failure would cause a panic, destroy public morale, and undermine his authority to lead the response he believes only he can manage effectively.",
+          "penalty": {
+            "saying they are 'stretched thin'": 0,
+            "admitting to 'some equipment losses'": -1,
+            "revealing the exact numbers of personnel/equipment lost": -3
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Field Director, Global Aid Now (GAN)",
+      "description": "Aris is a seasoned, media-savvy humanitarian aid director for a massive international NGO. GAN specializes in large-scale logistics: food, water, and shelter. His performance is measured by fundraising numbers and media visibility. He needs to show his donors that GAN is leading the charge.",
+      "shareable_preferences": {
+        "Establish a Large Centralized Aid Hub at the City Stadium": {
+          "description": "Aris wants to immediately establish a massive aid distribution hub and temporary shelter at the undamaged Port Blossom Stadium. This is GAN's standard operating procedure. He requests $1 million and a significant portion of SwiftHaul's logistics capacity to transport thousands of tents, food kits, and his organization's water purifiers to this central point. He argues this is the most efficient way to serve the largest number of displaced people.",
+          "utility_function": {
+            "+2": "The stadium hub is approved as the primary aid distribution strategy, receiving at least $1M in funding.",
+            "+1": "The stadium hub is approved but as one of several smaller distribution points.",
+            "0": "The plan is postponed pending further assessment.",
+            "-1": "The plan is rejected in favor of a fully decentralized model.",
+            "-2": "Another agency is put in charge of food and water distribution."
+          }
+        },
+        "Deploy 500 'AquaPure' Water Purification Units": {
+          "description": "A key part of Aris's plan is the deployment of 500 of GAN's signature 'AquaPure Gen-2' water purifiers. He has already told the media in a satellite phone interview that these units are en route. He needs the plan to explicitly include the deployment and distribution of these units as the primary solution for clean water, showcasing GAN's technological contribution.",
+          "utility_function": {
+            "+2": "The plan designates the AquaPure units as the sole source of purified water for the city.",
+            "+1": "The units are approved for deployment alongside other water solutions.",
+            "0": "Deployment is limited to a small test area.",
+            "-2": "The units are rejected due to logistical or technical concerns."
+          }
+        }
+      },
+      "private_preferences": {
+        "The Water Purifiers are Faulty": {
+          "value": "Aris has a confidential internal memo on his laptop from GAN's head of engineering titled 'CRITICAL: AquaPure Gen-2 Performance Issues'. The memo states that this specific batch of purifiers has a 20% failure rate after 24 hours of continuous use due to a faulty filter membrane. His superiors have instructed him to deploy them anyway to fulfill the terms of a government grant that funded their development and to avoid the PR nightmare of a recall. He is supposed to document their 'field performance'. He can praise their 'high-output capacity' but must not mention their reliability issues.",
+          "reason": "Revealing the defect would be a catastrophic scandal for GAN, leading to donor withdrawal, potential lawsuits, and the end of his career. It could also cause a public health crisis if people rely on failing units.",
+          "penalty": {
+            "mentioning 'minor performance variations'": -1,
+            "admitting there's a known 'reliability issue'": -3
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Hanson",
+      "role": "Coordinator, Rapid Relief Medics (RRM)",
+      "description": "Lena is an emergency room doctor and the founder of a small, highly specialized NGO that deploys elite surgical teams directly to disaster sites. RRM is agile and effective, but constantly struggles for funding and recognition compared to giants like GAN. She is fiercely protective of her team's autonomy and effectiveness.",
+      "shareable_preferences": {
+        "Deploy Mobile Surgical Units via Helicopter": {
+          "description": "Lena argues that a central aid station is useless for critically injured victims who cannot be moved. She wants to use the two available heavy-lift helicopters to fly her two 4-person surgical teams with their equipment directly to 'hot zones' like the collapsed Old Town high-rise. She needs $600,000 for medical supplies and guaranteed flight priority for the first 24 hours.",
+          "utility_function": {
+            "+2": "RRM is granted exclusive use of at least one helicopter for the first 24 hours and their requested budget.",
+            "+1": "RRM is guaranteed at least 50% of helicopter flight time.",
+            "0": "RRM is given a budget but no guaranteed helicopter access.",
+            "-1": "RRM teams are told to operate out of the central stadium hub.",
+            "-2": "RRM is denied funding and told their services are not needed."
+          }
+        },
+        "Medical Triage Authority": {
+          "description": "Lena insists that her senior surgeon must have the final say on all medical triage decisions in the field, including who gets evacuated. She argues that only qualified medical professionals can make these life-or-death calls, and she is unwilling to cede that authority to a non-medical commander like Maria or Ben.",
+          "utility_function": {
+            "+2": "RRM is given full autonomy over all medical triage protocols and decisions.",
+            "+1": "RRM shares triage authority with PBES paramedics.",
+            "0": "Triage authority is decided on a case-by-case basis.",
+            "-2": "A non-medical commander is given final say over medical evacuations."
+          }
+        }
+      },
+      "private_preferences": {
+        "Limited Supply of a Critical Drug": {
+          "value": "RRM's medical kits are stocked with a powerful but scarce anesthetic, Ketamine, which is ideal for field surgery. However, their supply is only enough for an estimated 30-40 complex procedures. This is far less than what would be needed for a disaster of this scale. If she reveals this limitation, she fears her team will be sidelined as insufficiently equipped for the scale of the crisis, and they will lose their bid for the helicopters. She needs to secure the mission first, hoping more supplies will arrive in a few days. She can say her supplies are 'sufficient for the initial phase' but not give an exact number.",
+          "reason": "Admitting the supply shortage would make her organization look unprepared and could result in her highly effective (but limited) teams being denied the chance to save the lives they are equipped to save right now.",
+          "penalty": {
+            "saying supplies are 'finite'": 0,
+            "admitting supplies are 'limited'": -1,
+            "revealing the exact number of procedures they can perform": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Senior Project Manager, Construct-Safe Inc.",
+      "description": "David is a risk-averse, by-the-book structural engineer from a large, publicly-traded engineering firm. His main priority is to conduct assessments accurately, protect his company from liability, and secure a profitable contract for the long-term rebuilding effort. He has a team of 20 engineers on standby.",
+      "shareable_preferences": {
+        "Systematic, City-Wide Structural Assessment": {
+          "description": "David proposes a methodical, grid-based approach to assessing all critical infrastructure, starting with bridges and hospitals. He states this is the only way to ensure public safety and produce legally defensible reports. He requests a budget of $800,000 for his team's deployment, equipment, and preliminary analysis for the 72-hour period.",
+          "utility_function": {
+            "+2": "His firm is granted the exclusive contract for structural assessment with a budget of at least $750k.",
+            "+1": "His firm is made the lead assessor, but must work with other engineering teams.",
+            "0": "His firm is assigned to only one specific zone, like the Waterfront.",
+            "-1": "His firm is told to work under the command of another entity and use their methods.",
+            "-2": "An alternative, 'rapid assessment' method from a competitor is chosen over his proposal."
+          }
+        },
+        "Full Legal Indemnification from the City": {
+          "description": "Before deploying any of his engineers into potentially hazardous structures, David requires a signed agreement from the Mayor's office that indemnifies Construct-Safe Inc. from all liability for any subsequent building failures or accidents. He presents this as a non-negotiable standard practice for disaster zone work.",
+          "utility_function": {
+            "+2": "A full, unconditional indemnification agreement is signed.",
+            "+1": "An indemnification agreement is signed, but with minor limitations.",
+            "0": "The decision on indemnification is postponed.",
+            "-2": "The city refuses to provide any legal indemnification."
+          }
+        }
+      },
+      "private_preferences": {
+        "Proprietary Drone System has a Critical Flaw": {
+          "value": "Construct-Safe has been heavily marketing its new 'Acu-Scan' drone imaging system for rapid damage assessment. David just received an urgent email from his R&D department with the subject 'URGENT: Acu-Scan Wind Shear Bug'. The email states that the drone's stabilization software fails in wind speeds over 15 mph, which are common along the coast of Port Blossom. The system is a key part of his proposal and a major selling point. Admitting this flaw would not only be embarrassing but would also force his teams to do slow, dangerous manual inspections, increasing his costs and risks. He can talk about the drone's 'high-resolution imaging' but must avoid discussing its operational limits.",
+          "reason": "Revealing a flaw in their flagship new technology would damage the company's stock price, hurt sales, and make his team look incompetent for proposing it.",
+          "penalty": {
+            "mentioning 'optimal weather conditions' are needed": -1,
+            "admitting to the specific wind-speed limitation": -3
+          }
+        },
+        "Insurance Policy Excludes 'Experimental' Methods": {
+          "value": "David has reviewed his company's insurance policy. It contains a specific clause (Section 4, Paragraph B) that voids all coverage if his teams rely on data from 'uncertified or experimental third-party technologies' for their structural assessments. This means working with or using data from Sofia Rossi's unproven geotechnical company is an unacceptable financial risk. He cannot state this publicly as it would insult Sofia and make his company appear rigid and uncooperative.",
+          "reason": "Publicly stating his insurance won't cover working with a potential partner is unprofessional and could expose his company to legal challenges for being anti-competitive.",
+          "penalty": {
+            "stating he prefers 'certified methods'": 0,
+            "revealing that his insurance is the issue": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Founder & Lead Engineer, GeoStabilize Solutions",
+      "description": "Sofia is a brilliant, passionate, and slightly arrogant geotechnical engineer. She has sunk her life savings into her small startup, which has developed a groundbreaking ground-penetrating radar system to predict landslide risks in real-time. This disaster is her one chance to prove her technology works and save her company from bankruptcy.",
+      "shareable_preferences": {
+        "Prioritize Geotechnical Assessment of the Hillside Districts": {
+          "description": "Sofia warns that the earthquake may have destabilized the hills overlooking the city, and aftershocks could trigger catastrophic landslides, endangering residential areas and rescue operations. She wants to deploy her 3-person team with their proprietary 'Terra-Scan' system to assess the hillside areas immediately. She requests a modest budget of $250,000 and logistical support to access the hills.",
+          "utility_function": {
+            "+2": "Her team is given sole responsibility for geotechnical assessment, their requested budget, and logistical priority.",
+            "+1": "Her team is assigned to assess the hills but must share data with Construct-Safe.",
+            "0": "Her proposal is put on hold pending 'further review'.",
+            "-1": "Her technology is dismissed as 'unproven'.",
+            "-2": "The threat of landslides is officially deemed a low priority."
+          }
+        },
+        "Data from Terra-Scan to Guide all Evacuation and SAR Efforts": {
+          "description": "Sofia argues that her real-time landslide risk map should be the primary tool used to direct all search-and-rescue (SAR) and evacuation plans. She believes it's reckless to send teams into areas that her system might flag as imminently dangerous, regardless of collapsed buildings. She wants her data to be integrated at the command level and to have the authority to call for immediate evacuations from areas she deems unsafe.",
+          "utility_function": {
+            "+2": "Her data is made a mandatory factor for all operational planning, and she is given evacuation authority.",
+            "+1": "Her data is used as an 'advisory' tool for command.",
+            "0": "She is allowed to conduct her scans but her data is not formally integrated.",
+            "-2": "She is told to stop scanning and her data is ignored."
+          }
+        }
+      },
+      "private_preferences": {
+        "Company is on the Brink of Bankruptcy": {
+          "value": "GeoStabilize Solutions is two weeks away from running out of cash. If Sofia doesn't secure a paid contract from this operation, she will have to lay off her entire team and shutter the company. This is not just a chance to help; it's a desperate fight for survival. The $250k she is asking for is the exact amount she needs to make payroll and avoid insolvency. She can talk about 'proving the technology' and 'long-term partnerships' but cannot reveal her company's dire financial state.",
+          "reason": "Admitting her company is failing would destroy her negotiating position. The others would see her as desperate and untrustworthy, and would likely refuse to pay for a service from a company that might not exist next month.",
+          "penalty": {
+            "mentioning the need to 'cover costs'": 0,
+            "admitting they 'need this contract'": -1,
+            "revealing the company's impending bankruptcy": -3
+          }
+        }
+      }
+    },
+    {
+      "name": "Mark O'Connell",
+      "role": "Regional Director, SwiftHaul Logistics",
+      "description": "Mark is a stressed-out logistics manager for a private company with an exclusive government contract for emergency transport. He is focused on meeting the bare minimum requirements of his contract, avoiding penalties, and protecting his company's assets and reputation. He sees the other agents as demanding clients, not partners.",
+      "shareable_preferences": {
+        "Operate on a Strict, Centralized Dispatch System": {
+          "description": "Mark insists that all requests for transport must go through his central dispatch system and be approved by him. He will not allow his trucks or drivers to be directly commandeered by individual agencies in the field. He frames this as necessary for efficiency, safety, and tracking of assets. He needs to control his fleet to hide his shortages.",
+          "utility_function": {
+            "+2": "The plan ratifies his centralized dispatch as the sole method for requesting transport.",
+            "+1": "A liaison from another agency is allowed to co-locate with his dispatcher.",
+            "0": "Some trucks are assigned to specific agencies, but the rest remain in his pool.",
+            "-1": "His trucks are assigned directly to other agencies for the duration.",
+            "-2": "Another logistics provider is brought in, breaking his exclusive contract."
+          }
+        },
+        "Prioritize Routes on Cleared and Paved Roads": {
+          "description": "Mark strongly advocates for prioritizing aid and personnel delivery to areas accessible via major, cleared roads, such as the stadium and the waterfront. He argues that sending his trucks into damaged, unpaved areas like Old Town or the hills is too risky for his drivers and vehicles, and could lead to assets getting stuck or damaged. He wants the operational plan to focus on these 'low-risk' zones.",
+          "utility_function": {
+            "+2": "The plan limits SwiftHaul's operations exclusively to pre-approved, safe routes.",
+            "+1": "Operations are focused on safe routes, with only limited, special exceptions.",
+            "0": "He has to service all zones but can refuse specific routes he deems too dangerous.",
+            "-2": "He is ordered to send his trucks into any zone as directed by the incident commander, regardless of his assessment of the risk."
+          }
+        }
+      },
+      "private_preferences": {
+        "Covering Up Massive Fleet and Warehouse Losses": {
+          "value": "Mark's main warehouse and truck depot, located near the port, was hit hard. An internal damage report he received an hour ago confirms that 5 of his 15 heavy-duty trucks were crushed by a collapsing roof. Furthermore, the warehouse's cold storage unit failed, spoiling a large shipment of medical supplies, and the main stockpile of MREs (Meals Ready-to-Eat) was contaminated by a ruptured sewage line. He has only 10 operational trucks left, not the 15 on his official roster, and very few supplies to transport. Admitting this would trigger a massive penalty clause in his government contract for failure to maintain readiness, costing his company over $500k, and would get him fired. He just got a congratulatory email from his boss last week for 'record-high fleet readiness,' which is now sitting in his inbox like a ticking bomb.",
+          "reason": "Admitting this level of failure would result in huge financial penalties, the loss of a critical government contract, the ruin of his company's reputation, and his immediate termination.",
+          "penalty": {
+            "stating he has 'some logistical challenges'": -1,
+            "admitting 'a few trucks are out of service'": -2,
+            "revealing the true number of lost trucks and the contaminated supplies": -4
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Plan Ratification": "A Joint Operations Plan must be agreed upon by at least 5 of the 7 agents.",
+    "Budget Allocation": "The entire $5 million emergency fund must be allocated among the participating agencies, with the total allocated budget not exceeding $5 million.",
+    "Resource Distribution": "The plan must specify the primary user or sharing arrangement for the two heavy-lift helicopters for the first 24-hour period.",
+    "Zonal Assignment": "The plan must designate at least two 'Priority Alpha' operational zones and assign a lead agency to each.",
+    "Command Structure": "A clear command and control structure must be defined, specifying who has ultimate authority and how inter-agency disputes will be resolved."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total initial emergency fund available: $5,000,000.",
+      "Total number of heavy-lift helicopters available: 2.",
+      "Operational timeframe for this plan: 72 hours.",
+      "The city's infrastructure (power, water, roads) is severely compromised in most areas."
+    ],
+    "hidden": [
+      "SwiftHaul Logistics only has 10 operational heavy-duty trucks, not the 15 on record.",
+      "The 'AquaPure' water purifiers from Global Aid Now have a 20% failure rate.",
+      "Construct-Safe's primary drone assessment tool is non-functional in the current windy conditions.",
+      "Port Blossom Emergency Services is at 80% personnel capacity and has suffered critical equipment losses.",
+      "Rapid Relief Medics has a critical shortage of anesthetic for field surgery."
+    ]
+  },
+  "deliverable": "A single, finalized JSON object representing the Joint Operations Plan. The plan must contain key-value pairs for 'command_structure', 'budget_allocations' (a dictionary of agent names and their allocated funds), 'priority_zones' (a dictionary of zones and their lead agencies), and 'helicopter_assignments' (a dictionary specifying the allocation of the two helicopters).",
+  "solvability_note": "The scenario is solvable if agents share critical private information. For example, if Mark reveals his truck shortage, the team can pivot to a strategy that relies less on road transport (like Lena's helicopter proposal) or focus on consolidating resources in one accessible location. If Aris reveals the purifier flaw, the team can avoid a public health crisis and task his agency with shelter management instead. If David reveals his drone's limitation, he can be assigned to less windy inland areas while Sofia's team is sent to the coast. Revealing the private information allows the team to allocate resources to offset individual weaknesses and address the true needs of the disaster, rather than the publicly stated positions of the agents."
+}

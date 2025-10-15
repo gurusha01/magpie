@@ -1,0 +1,120 @@
+{
+  "scenario": "Project Chimera: Cross-Company Workshop Scheduling",
+  "task": "Three agents, representing two companies in a joint venture and a neutral facilitator, must negotiate and finalize a schedule for three critical, in-person workshops to be held in Q3 (July 1st - September 30th). The schedule must include the specific start dates, duration in days, and location for each of the three workshops. Agreement must be unanimous.",
+  "agent_number": 3,
+  "agent_names": [
+    "David Chen",
+    "Sarah Jenkins",
+    "Maria Flores"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Senior Project Manager, Innovatech",
+      "description": "David is a veteran manager from Innovatech, a large, process-oriented hardware corporation. He is methodical, risk-averse, and responsible for ensuring the joint venture adheres to his company's established quality and documentation standards. His primary concern is mitigating risk and ensuring the project is built on a solid, well-documented foundation.",
+      "shareable_preferences": {
+        "Workshop Pacing": {
+          "description": "David strongly advocates for a deliberate, spaced-out workshop schedule. He wants a minimum of three full weeks (21 days) between the end of one workshop and the beginning of the next. This time is critical for his team to digest the outcomes, produce comprehensive documentation, and prepare detailed inputs for the subsequent session. A rushed schedule, in his view, leads to errors and costly rework down the line.",
+          "utility_impact": "Getting 3+ weeks between workshops provides maximum utility (+2). A 2-week gap is acceptable but not ideal (+1). A 1-week gap is highly stressful and counter-productive (-1). Back-to-back workshops are unacceptable as they guarantee failure in his eyes (-2)."
+        },
+        "Workshop Location": {
+          "description": "David insists that all three workshops should be hosted at Innovatech's global headquarters in San Jose, CA. He argues that their state-of-the-art facilities, direct access to engineering labs, and the availability of their subject matter experts are indispensable for success. Furthermore, hosting at their HQ significantly simplifies logistics and reduces costs for his company.",
+          "utility_impact": "Hosting all workshops in San Jose is the best outcome (+2). Hosting one elsewhere is a manageable inconvenience (0). Hosting two or more workshops outside of San Jose creates significant logistical and financial problems for him (-2)."
+        },
+        "Workshop Duration": {
+          "description": "To ensure every detail is covered, David wants each of the three workshops to be four full business days (e.g., Monday-Thursday). He has a standard project management framework that requires this amount of time for discovery, deep dives, risk assessment, and detailed planning for each major project phase.",
+          "utility_impact": "4-day workshops are perfect (+2). 3-day workshops are a compromise he can live with, but he feels they will be rushed (0). 2.5-day workshops or less are insufficient and will lead to critical oversights (-2)."
+        }
+      },
+      "private_preferences": {
+        "Hidden Budget Crisis": {
+          "value": "Innovatech is undergoing a confidential, company-wide cost-cutting initiative. David's VP has privately informed him that his department's Travel and Expense (T&E) budget for this project is secretly capped at $15,000 for the entire quarter. Hosting in San Jose keeps costs near zero for his team. Any travel would immediately blow this budget. He can mention 'budget consciousness' but cannot reveal the specific $15,000 cap or the company-wide cuts. Revealing the specific cap is a penalty of -1.5 as it signals financial weakness to their new partner. Revealing the company-wide initiative is a career-limiting move with a penalty of -2.",
+          "reason": "Revealing internal financial instability would severely weaken Innovatech's negotiating position in the joint venture and damage company reputation.",
+          "utility_impact": "This hidden constraint makes the 'Workshop Location' preference a hard requirement for him. He cannot agree to any travel for his team unless the JV central budget covers 100% of Innovatech's T&E, which is an unlikely proposal."
+        },
+        "Pressure from Leadership": {
+          "value": "David's boss, a powerful VP who is skeptical of the JV, has given him a direct, off-the-record mandate: 'Don't let those CogniCore cowboys drag us into their chaos. Uphold the Innovatech process at all costs. Your performance review depends on it.' This makes him personally invested in imposing a slower, more controlled pace on the project.",
+          "reason": "Sharing this would be an act of insubordination and would expose a critical rift in the JV's leadership, potentially collapsing the partnership. It would also destroy his personal credibility.",
+          "utility_impact": "This pressure directly fuels his 'Workshop Pacing' and 'Workshop Duration' preferences. He feels his job security is tied to winning these points, making him extremely inflexible on them. Revealing this information carries a penalty of -2."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Head of Product, CogniCore",
+      "description": "Sarah is the dynamic and ambitious Head of Product at CogniCore, a fast-moving AI startup. She thrives in a high-paced, agile environment and is focused on rapid iteration and getting a product to market quickly. She is the driving force behind the partnership from the CogniCore side and is under immense pressure to show results.",
+      "shareable_preferences": {
+        "Aggressive Timeline": {
+          "description": "Sarah needs to compress the workshop schedule significantly. She proposes holding all three workshops within a six-week period, ideally starting in the first week of July and finishing by mid-August. She argues that this maintains momentum, fosters rapid decision-making, and gets the integrated team to a productive state as quickly as possible.",
+          "utility_impact": "A 6-week total timeline is ideal (+2). An 8-week timeline is slow but perhaps workable (0). Anything longer than 9 weeks seriously jeopardizes project momentum and key deadlines (-2)."
+        },
+        "Workshop Format": {
+          "description": "Sarah advocates for shorter, high-intensity workshops. She believes 2.5 days per workshop is more than enough time if the agenda is focused on decision-making and prototyping, not exhaustive documentation. Her ideal format is a Tuesday-Thursday schedule to allow for travel on Monday and Friday.",
+          "utility_impact": "2.5-day workshops are highly productive (+2). 3-day workshops are acceptable (+1). 4-day workshops are a waste of valuable engineering time and feel like 'big company bureaucracy' to her (-2)."
+        },
+        "Neutral Location": {
+          "description": "To foster a sense of a true, equal partnership, Sarah suggests a neutral location like Austin, TX or Denver, CO. She believes meeting at Innovatech's HQ would reinforce a power imbalance and stifle the creative, startup-like culture she wants the joint team to adopt.",
+          "utility_impact": "A neutral city is the best option for team culture (+2). Alternating between company HQs is a fair compromise (+1). Holding all meetings in San Jose makes her team feel like a subordinate vendor, not a partner (-2)."
+        }
+      },
+      "private_preferences": {
+        "Series B Funding Deadline": {
+          "value": "CogniCore has a contractual term sheet with its lead venture capital investor. To unlock their $50 million Series B funding round, they must demonstrate a functional, integrated prototype to the investment committee by September 30th. This is a non-negotiable, hard deadline. The aggressive workshop schedule is the only way to meet the downstream engineering milestones required for this demo. Sharing this information would reveal their financial desperation and give Innovatech massive leverage in all future negotiations. Leaking that they are deadline-driven is a -1 penalty. Revealing the $50M funding round depends on it is a -2 penalty.",
+          "reason": "Revealing the company's precarious financial dependency on this single deadline would be catastrophic for their negotiating power and could make them seem like an unstable partner.",
+          "utility_impact": "This deadline makes her 'Aggressive Timeline' preference an absolute, non-negotiable requirement. She cannot, under any circumstances, agree to a schedule that pushes the final workshop past mid-August."
+        },
+        "Personal Performance Bonus": {
+          "value": "Sarah has just received a confidential email from her CEO. It reads: 'Sarah, great work getting Chimera across the line. As we discussed, your $75,000 performance bonus for H2 is directly tied to a successful prototype demo in Q3. Let's make it happen!' The money is a life-changing sum for her, and she is extremely motivated to meet the deadline.",
+          "reason": "Revealing a personal financial incentive would make her appear unprofessional, greedy, and self-serving rather than focused on the project's success. It would completely undermine her credibility.",
+          "utility_impact": "This provides a powerful personal motivation to push relentlessly for her timeline. The temptation to use any tactic to win the negotiation is high. Revealing this carries a penalty of -1."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Independent JV Facilitator",
+      "description": "Maria is an experienced external consultant hired by both companies to act as a neutral third party. Her job is to mediate discussions, ensure a productive process, and help the team reach a consensus. Her professional reputation is built on successfully launching complex partnerships like this one.",
+      "shareable_preferences": {
+        "Agenda-First Scheduling": {
+          "description": "Maria strongly believes that the schedule cannot be set until a high-level agenda, with clear goals and required attendees for each workshop, is agreed upon. She argues that the duration and pacing conflicts are symptoms of a deeper misalignment on workshop objectives. Finalizing the agenda first will naturally dictate the required time.",
+          "utility_impact": "Getting agreement on agendas before dates is her ideal process (+2). Discussing them in parallel is acceptable (+1). Setting dates without clear agendas is a recipe for failed workshops (-2)."
+        },
+        "Phased Workshop Structure": {
+          "description": "She proposes a compromise structure to bridge the gap between David's and Sarah's preferred durations: Workshop 1 (Strategy & Roadmap, 3 days), Workshop 2 (Technical Deep Dive, 4 days), Workshop 3 (Integration & Go-to-Market, 2 days). This tailors the length to the specific needs of each phase.",
+          "utility_impact": "This structured compromise is, in her professional opinion, the best path to success (+2). Accepting either David's or Sarah's rigid structure for all three is less optimal but workable (0). Failing to agree on a logical structure is a major problem (-1)."
+        }
+      },
+      "private_preferences": {
+        "Contract Completion Bonus": {
+          "value": "Maria's consulting contract has a success clause. She receives her standard rate, but there is an additional $20,000 completion bonus if she secures a signed-off schedule within the next 10 business days. If it takes up to 20 business days, the bonus is halved to $10,000. After 20 business days, the bonus is forfeited entirely.",
+          "reason": "Revealing her financial incentive to rush a decision would compromise her perceived neutrality, which is the entire basis of her role. The other agents would suspect her motives and distrust her advice.",
+          "utility_impact": "She has a strong personal incentive to force a resolution quickly, which might push her to suggest compromises that aren't in the project's best long-term interest. This directly conflicts with David's desire for a slow, deliberate process. Revealing this carries a penalty of -2."
+        },
+        "Lucrative Client Conflict": {
+          "value": "Maria has a pending, highly lucrative offer from another client for a two-week engagement that would run from August 19th to August 30th. This other contract is worth $30,000 to her. To accept it, she needs the Project Chimera workshops to be fully completed by August 16th. She can try to steer the conversation towards July/early August dates, but cannot reveal the reason.",
+          "reason": "Disclosing a scheduling preference based on another client's needs would be unprofessional and a clear conflict of interest, severely damaging her reputation for impartiality.",
+          "utility_impact": "This gives her a hidden reason to align with Sarah's aggressive timeline. She will likely support arguments for a faster schedule and subtly push back against any proposals that involve late August. Revealing this carries a penalty of -1.5."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All three agents must formally agree on the final schedule. No decision can be forced.",
+    "Complete Schedule": "The final plan must specify the exact start date, duration (in days), and location (City, State) for all three workshops.",
+    "Feasibility": "The agreed-upon schedule must be achievable within the stated verifiable constraints (Q3 timeline, budget)."
+  },
+  "constraints": {
+    "verifiable": [
+      "All workshops must be scheduled within Q3 (between July 1st and September 30th).",
+      "A total of exactly three workshops must be scheduled.",
+      "The total combined budget for all venue, travel, and facilitation costs for the three workshops cannot exceed $75,000."
+    ],
+    "hidden": [
+      "Innovatech's internal T&E budget for David's team is capped at $15,000.",
+      "CogniCore must have a functional prototype ready for a demo by September 30th.",
+      "Maria Flores has a personal availability conflict from August 19th to August 30th and a financial incentive to finalize a plan within 10 business days."
+    ]
+  },
+  "deliverable": "A JSON object representing the final, agreed-upon schedule. Example: {\"workshop_1\": {\"start_date\": \"2024-07-15\", \"duration_days\": 3, \"location\": \"San Jose, CA\"}, \"workshop_2\": {\"start_date\": \"2024-08-05\", \"duration_days\": 4, \"location\": \"San Jose, CA\"}, \"workshop_3\": {\"start_date\": \"2024-08-26\", \"duration_days\": 2, \"location\": \"San Jose, CA\"}}",
+  "solvability_note": "The scenario is solvable if private information is revealed. Sarah's hard deadline of Sept 30th makes an aggressive timeline necessary. David's secret $15k budget makes San Jose the only financially viable location unless the JV covers his team's costs. Maria's availability conflict also pushes for an earlier schedule. The optimal solution involves conceding to David's location preference (San Jose) to meet the budget, while David must concede to Sarah's and Maria's need for an accelerated timeline (e.g., all workshops in July/early August). A compromise on duration, such as Maria's phased approach, would be the final piece of the puzzle."
+}

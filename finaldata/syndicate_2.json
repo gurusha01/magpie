@@ -1,0 +1,298 @@
+{
+  "scenario": "Syndicate Investment Negotiation for a High-Risk Alzheimer's Drug",
+  "task": "A consortium of investors is considering a Series A investment in 'CogniGen', a university spin-off developing a promising but risky Alzheimer's drug, 'CG-121'. The five parties must negotiate and agree on a comprehensive term sheet covering the investment amount, company valuation, equity distribution, intellectual property rights, board composition, and future leadership. The goal is to structure a deal that finances the crucial Phase IIa clinical trials while balancing the conflicting interests and risk appetites of all stakeholders.",
+  "agent_number": 5,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Isabelle Vance",
+    "Ben Carter",
+    "Dr. Lena Petrova",
+    "Marcus Cole"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Founder & CEO of CogniGen",
+      "description": "The brilliant scientist behind CG-121. He is passionately committed to his research and the company's mission but is inexperienced in corporate finance and negotiation. He is driven by the desire to see his science succeed and maintain control over its direction.",
+      "shareable_preferences": {
+        "Funding Amount": {
+          "description": "Secure a minimum of $25 million in funding. This amount is critical to fully fund the planned 24-month Phase IIa clinical trial, expand the research team, and cover operational overhead without cutting corners on patient monitoring protocols. He believes any less would compromise the trial's integrity.",
+          "utility_function": {
+            "description": "Utility is based on the final agreed investment amount.",
+            "ranges": {
+              "amount >= $25M": "+2 (Ideal scenario, full confidence in trial success)",
+              "$20M <= amount < $25M": "+1 (Acceptable, but requires tight budget management)",
+              "$15M <= amount < $20M": "-1 (Concerned, forces compromises on trial scope)",
+              "amount < $15M": "-2 (Unacceptable, views it as setting the company up for failure)"
+            }
+          }
+        },
+        "Company Valuation": {
+          "description": "Achieve a pre-money valuation of at least $100 million. He bases this on the massive potential market for an effective Alzheimer's drug and the novelty of his scientific approach. A high valuation is a matter of personal and academic pride, and crucial for retaining a significant equity stake for the founding team.",
+          "utility_function": {
+            "description": "Utility is based on the agreed pre-money valuation.",
+            "ranges": {
+              "valuation >= $100M": "+2 (Vindication of his life's work)",
+              "$75M <= valuation < $100M": "+1 (Good, reflects the potential)",
+              "$50M <= valuation < $75M": "0 (Disappointing, but potentially workable)",
+              "valuation < $50M": "-2 (Feels the technology is being stolen)"
+            }
+          }
+        },
+        "Personal Role and Control": {
+          "description": "Retain the title and responsibilities of Chief Executive Officer (CEO) and a seat on the board. He wants to ensure that the scientific vision is not compromised by purely commercial interests. He is willing to accept a co-founder as CSO, but he must lead the company.",
+          "utility_function": {
+            "description": "Utility is based on his final role in the company.",
+            "ranges": {
+              "Remains CEO with board seat": "+2 (Full control over his vision)",
+              "Becomes CSO with board seat": "-1 (Frustrating demotion, loss of control)",
+              "Becomes CSO without board seat": "-2 (Completely sidelined, a deal-breaker)"
+            }
+          }
+        }
+      },
+      "private_preferences": {
+        "Hidden Clinical Trial Data": {
+          "value": "Unpublished data from the final cohort of the Phase I trial showed two subjects (out of 50) developed signs of neuro-inflammation, a potentially severe side effect. He stopped that arm of the trial and has not included this specific data in the package sent to investors, convincing himself it was a statistical anomaly related to a specific formulation batch. He can share that 'Phase I data was complex and pointed towards needing a refined formulation for Phase II' but cannot share the specific adverse event data.",
+          "penalty": "Sharing the specific data about neuro-inflammation: -2 (This would likely terminate the negotiation instantly and could trigger an inquiry from regulatory bodies, destroying his career). Hinting at 'unforeseen biological complexities': -1 (Raises serious red flags, inviting extreme scrutiny and likely harsher terms).",
+          "reason": "Revealing this would kill the investment, end the company, and tarnish his scientific reputation. He genuinely believes he can solve the issue with the new funding.",
+          "utility_impact": "This makes him desperate to avoid deep technical due diligence on the Phase I raw data and to resist any attempts by investors to control the clinical trial design, as he needs the freedom to 'engineer around' the problem he discovered."
+        },
+        "Personal Financial Ruin": {
+          "value": "He has poured his life savings into CogniGen and recently took out a second mortgage on his home to make the last payroll. The loan payment is due in 90 days, and he will default, losing his family home if a deal is not signed. He can share that 'he is fully committed and has significant personal investment in the company' but not the specific details of his financial precarity.",
+          "penalty": "Revealing the impending bankruptcy: -2 (His negotiating leverage would evaporate, and investors would see him as reckless and desperate).",
+          "reason": "This is a matter of deep personal and professional embarrassment. It would expose his financial naivety and desperation to the other parties.",
+          "utility_impact": "He has a hidden, hard deadline. While he will argue for the best terms, he is psychologically pressured to accept a suboptimal deal if it closes within the next two months, a weakness he must conceal at all costs."
+        }
+      }
+    },
+    {
+      "name": "Isabelle Vance",
+      "role": "Managing Partner, Velocity Ventures",
+      "description": "A sharp, aggressive venture capitalist with a reputation for driving hard bargains. Her firm specializes in high-risk, high-reward biotech investments. She is purely financially motivated and focused on a 10x return on investment within a 5-7 year exit horizon.",
+      "shareable_preferences": {
+        "Valuation and Equity": {
+          "description": "Lead the investment round with her firm contributing $12M of a $20M total. She is targeting a pre-money valuation of no more than $30 million. This would give the new investment syndicate a controlling stake of ~40% in the company, which she sees as essential for managing risk.",
+          "utility_function": {
+            "description": "Utility is a function of the pre-money valuation.",
+            "ranges": {
+              "valuation <= $30M": "+2 (Excellent, high potential for 10x+ returns)",
+              "$30M < valuation <= $45M": "+1 (Acceptable, meets fund's target model)",
+              "$45M < valuation <= $60M": "-1 (High, compresses returns, requires justification)",
+              "valuation > $60M": "-2 (Uninvestable, impossible to make the fund's math work)"
+            }
+          }
+        },
+        "Management Structure": {
+          "description": "Install a seasoned industry executive as CEO immediately post-investment. She respects Dr. Thorne's scientific acumen but believes he lacks the experience to lead a company through clinical trials and towards a strategic exit. She proposes moving him to the role of Chief Scientific Officer (CSO) where he can focus on the research.",
+          "utility_function": {
+            "description": "Utility based on the leadership plan.",
+            "ranges": {
+              "New professional CEO installed, Aris as CSO": "+2 (Best practice for de-risking the investment)",
+              "Aris remains CEO with a strong, independent board": "0 (Risky, but manageable with strict oversight)",
+              "Aris remains CEO with no significant changes": "-2 (Unacceptable level of execution risk)"
+            }
+          }
+        },
+        "Board Control": {
+          "description": "The investment syndicate must have control of the Board of Directors. For a 5-person board, she demands 2 seats for the syndicate (including herself), 1 for the new CEO, 1 for Dr. Thorne, and 1 independent director approved by the syndicate. This gives the investors clear control over major decisions.",
+          "utility_function": {
+            "description": "Utility based on board composition.",
+            "ranges": {
+              "Investor majority (e.g., 3 of 5 seats)": "+2 (Full control to protect the investment)",
+              "Balanced board (e.g., 2 investor, 2 founder, 1 independent)": "0 (Standard, but requires careful negotiation on decisions)",
+              "Founder majority": "-2 (Unacceptable, investors would have no power)"
+            }
+          }
+        }
+      },
+      "private_preferences": {
+        "Fund Performance Pressure": {
+          "value": "Velocity Ventures' Fund III, which she manages, is in its 4th year and has had two major write-offs in the last 18 months. Her Limited Partners (LPs) are getting restless. She needs to close a high-potential deal like CogniGen this quarter to signal positive momentum for their upcoming annual meeting. She can share that 'the market is competitive and our fund is eager to deploy capital' but not the internal pressure she is under.",
+          "penalty": "Revealing the fund's poor performance and LP pressure: -2 (It would signal weakness and desperation, encouraging other parties to demand better terms).",
+          "reason": "This information is highly confidential to the fund and would damage her reputation and negotiating stance.",
+          "utility_impact": "This hidden pressure means she has more flexibility on the valuation than she publicly admits. While she will fight for $30M, she is privately authorized to go up to $50M if it means closing a deal that looks like a 'win'."
+        },
+        "Personal Bonus Incentive": {
+          "value": "Isabelle's personal compensation structure for this year includes a $500,000 'Alpha Bonus' if she successfully closes a deal where the pre-money valuation is less than 50% of the target's initial asking price. With Aris asking for $100M+, any valuation under $50M triggers this. A congratulatory email from her senior partner about this potential bonus is sitting in her inbox.",
+          "penalty": "Revealing the existence of this bonus: -2 (This is a massive conflict of interest and would be viewed as unethical and predatory by the other parties, potentially causing them to walk away).",
+          "reason": "Personal financial incentives are private and revealing this would make her appear driven by personal greed rather than the company's best interest.",
+          "utility_impact": "This provides a powerful, selfish incentive to be extremely aggressive in pushing the valuation down, even if she privately believes the company could be worth more. It may cause her to misrepresent data or use hardball tactics to secure her bonus."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Director of Strategic Investments, OmniPharma",
+      "description": "A representative from a pharmaceutical giant. Ben is not a traditional VC; he invests for strategic value, looking for technologies that can fill OmniPharma's future product pipeline. He is risk-averse, methodical, and thinks in terms of decades, not quarters.",
+      "shareable_preferences": {
+        "Strategic Rights": {
+          "description": "OmniPharma must secure an exclusive option to acquire CogniGen following the successful completion of Phase IIa trials. The acquisition price would be set at a pre-negotiated multiple of the Series A valuation, capped at a maximum of $500 million. This provides his company with a clear, cost-controlled path to owning the asset.",
+          "utility_function": {
+            "description": "Utility based on the acquisition option.",
+            "ranges": {
+              "Exclusive option with a valuation cap <= $500M": "+2 (Achieves primary strategic goal)",
+              "Right of first refusal (ROFR) instead of an exclusive option": "0 (Weakens position, but keeps them in the game)",
+              "No acquisition rights": "-2 (The deal offers no strategic value to OmniPharma)"
+            }
+          }
+        },
+        "Investment Level": {
+          "description": "Contribute $8M to the syndicate. He does not want to lead the round or take on the governance burden of a lead investor. His goal is to be a strategic partner with a 'seat at the table' to monitor progress and maintain their acquisition rights, not to manage the company.",
+          "utility_function": {
+            "description": "Utility based on their investment amount.",
+            "ranges": {
+              "$5M <= amount <= $10M": "+1 (Ideal strategic participation level)",
+              "amount > $10M": "-1 (Too much financial exposure for a non-lead role)",
+              "amount < $5M": "-1 (Not enough skin in the game to justify the effort)"
+            }
+          }
+        },
+        "Clinical Trial Oversight": {
+          "description": "Demand a board seat and veto power on any major changes to the clinical trial protocol. Given the high risk, OmniPharma wants to ensure the trial is run to the highest standards to produce clean, unambiguous data that can support a future acquisition.",
+          "utility_function": {
+            "description": "Utility based on their level of clinical oversight.",
+            "ranges": {
+              "Board seat with clinical protocol veto": "+2 (Essential for de-risking their future acquisition)",
+              "Board observer seat only": "-1 (Insufficient influence)",
+              "No board seat or veto": "-2 (Deal-breaker)"
+            }
+          }
+        }
+      },
+      "private_preferences": {
+        "Impending 'Patent Cliff'": {
+          "value": "OmniPharma's current leading drug, also for a neurological condition, generates $4 billion in annual revenue but its core patent expires in 30 months. Their internal R&D pipeline has failed to produce a viable replacement. The CEO has given Ben's division a mandate to acquire a mid-stage asset within the next year, or face significant restructuring. CogniGen is one of only two viable external candidates they have identified.",
+          "penalty": "Revealing the severity of the patent cliff and pipeline gap: -2 (This would give CogniGen and the VCs immense leverage to demand a much higher acquisition price and better terms).",
+          "reason": "This is competitively sensitive corporate information. Revealing it would signal desperation to the market and competitors.",
+          "utility_impact": "This makes acquiring CogniGen a near-existential priority for OmniPharma. Ben has a secret mandate to secure the deal, meaning he has significant flexibility on the acquisition cap and upfront investment, but he must project a calm, take-it-or-leave-it demeanor."
+        },
+        "Undisclosed Licensing Dispute": {
+          "value": "OmniPharma's legal team has been quietly building a case to challenge one of the foundational patents licensed to CogniGen from Northwood University. They believe they have strong evidence of 'prior art' that could invalidate a key claim. They have not filed any action yet. Their preferred strategy is to use this as hidden leverage: partner now, and if the acquisition talks fail later, they can proceed with the lawsuit to devalue CogniGen and acquire it cheaply.",
+          "penalty": "Revealing the existence of this potential lawsuit during a partnership negotiation: -2 (This would be seen as an act of extreme bad faith, destroying trust and making any collaborative deal impossible).",
+          "reason": "This is confidential legal strategy. Revealing it would be a hostile act.",
+          "utility_impact": "This is his trump card. If the negotiation becomes too difficult or expensive, he knows he has an alternative, albeit more hostile, path to acquiring the technology. It makes him more patient and willing to walk away from a bad deal than he appears."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Director, Office of Technology Transfer, Northwood University",
+      "description": "The guardian of the university's intellectual property. Dr. Petrova's job is to maximize the financial return to the university from its research. She is diligent, detail-oriented, and bound by institutional policies. She sees CogniGen as a major potential revenue source for the university.",
+      "shareable_preferences": {
+        "Upfront Licensing Fee": {
+          "description": "Secure an upfront, non-refundable licensing fee of $2 million, to be paid to the university upon the closing of the investment. This is to compensate the university for past research investment and patent prosecution costs, and is independent of any equity stake.",
+          "utility_function": {
+            "description": "Utility based on the upfront cash payment.",
+            "ranges": {
+              "fee >= $2M": "+2 (Excellent result, meets university targets)",
+              "$1M <= fee < $2M": "+1 (Good, considered a success)",
+              "$0 < fee < $1M": "-1 (Disappointing, hard to justify internally)",
+              "fee = $0": "-2 (Failure to meet a core mandate of her office)"
+            }
+          }
+        },
+        "Royalty Rate": {
+          "description": "A tiered royalty on net sales of any commercialized product, starting at 5% for the first $500M in sales and decreasing to 3% thereafter. She will argue this is a standard industry practice for university-licensed platform technology.",
+          "utility_function": {
+            "description": "Utility based on the starting royalty rate.",
+            "ranges": {
+              "rate >= 5%": "+2 (Sets a strong precedent for future university deals)",
+              "3% <= rate < 5%": "+1 (Standard and acceptable)",
+              "1% <= rate < 3%": "-1 (Below average, reflects poorly on her negotiating)",
+              "rate < 1%": "-2 (Unacceptably low)"
+            }
+          }
+        },
+        "Retained Research Rights": {
+          "description": "The university must retain the right to use the patented technology for any non-commercial, academic, and educational research purposes. This is a non-negotiable policy for the university to ensure academic freedom and continued scientific discovery.",
+          "utility_function": {
+            "description": "Utility based on securing these rights.",
+            "ranges": {
+              "Full, unencumbered research rights retained": "+2 (Policy fulfilled)",
+              "Rights retained but with cumbersome reporting/approval requirements": "0 (Policy met, but administratively difficult)",
+              "No research rights retained": "-2 (Direct violation of university policy, a deal-breaker)"
+            }
+          }
+        }
+      },
+      "private_preferences": {
+        "University Budget Shortfall": {
+          "value": "Northwood University is facing an unexpected $10 million budget deficit this fiscal year due to a drop in enrollment. The Provost has personally instructed Dr. Petrova that her office needs to generate $5 million in cash revenue before the end of the fiscal year (in 6 months) to help close this gap. A $2M upfront fee from this deal is a huge part of that plan.",
+          "penalty": "Revealing the university's budget crisis: -1 (It would weaken her position, signaling she is more desperate for upfront cash than for long-term royalties, allowing investors to trade a higher fee for a lower royalty rate).",
+          "reason": "This is confidential institutional financial information.",
+          "utility_impact": "This pressure makes her highly motivated to prioritize the upfront fee over other terms. She would be willing to compromise significantly on the royalty rate or other clauses if it meant securing a large, immediate cash payment for the university."
+        },
+        "Patent Portfolio Weakness": {
+          "value": "The university's outside counsel recently sent her a confidential memo noting a potential weakness in the 'inventive step' claim of the main patent for CG-121. They found a tangentially related academic paper published six months before the patent filing date. While they believe the patent is defensible, they rated its strength as 6/10 if challenged in court, and noted a legal battle would be extremely expensive.",
+          "penalty": "Revealing this weakness: -2 (This would severely devalue the company's core asset, invite legal challenges, and crater the valuation).",
+          "reason": "This is privileged legal information and admitting to it would be a catastrophic negotiating error.",
+          "utility_impact": "This makes her secretly risk-averse to any legal conflict. She knows the IP isn't ironclad, which makes her more agreeable to a partnership with a large company like OmniPharma (who has the resources to defend the patent) and more hesitant to push for terms that might kill the deal and leave the vulnerable patent undefended."
+        }
+      }
+    },
+    {
+      "name": "Marcus Cole",
+      "role": "Independent Clinical & Scientific Analyst",
+      "description": "A highly respected MD/PhD hired by the nascent syndicate (Velocity and OmniPharma) to conduct neutral, third-party due diligence on CogniGen's science. His role is to provide an objective assessment of the risks and potential of CG-121. His reputation is built on his integrity and objectivity.",
+      "shareable_preferences": {
+        "Milestone-Based Funding": {
+          "description": "Recommend that the total investment be disbursed in three tranches, tied to concrete, verifiable scientific and clinical milestones. For example: Tranche 1 ($8M) at closing, Tranche 2 ($8M) upon successful FDA approval of the Phase IIa trial design, and Tranche 3 ($9M) upon positive interim safety data from the first 50 patients.",
+          "utility_function": {
+            "description": "Utility based on the funding structure.",
+            "ranges": {
+              "Clear, milestone-based funding (tranches) is adopted": "+2 (The most prudent way to manage the high scientific risk)",
+              "Funding is released based on a simple time-based schedule": "-1 (Poor risk management)",
+              "Full funding amount is released at closing": "-2 (Financially reckless for a preclinical asset)"
+            }
+          }
+        },
+        "Data Transparency": {
+          "description": "Advocate for the creation of a Scientific Advisory Board (SAB), with one independent member, that has full access to all raw clinical and preclinical data. This ensures ongoing, objective oversight and prevents a single person, like the founder, from being the sole interpreter of complex results.",
+          "utility_function": {
+            "description": "Utility based on the data oversight mechanism.",
+            "ranges": {
+              "Independent SAB with full data access is created": "+2 (Gold standard for governance and transparency)",
+              "An internal-only science committee is created": "0 (Better than nothing, but prone to bias)",
+              "No formal scientific oversight is established": "-2 (Creates unacceptable risk of data misinterpretation)"
+            }
+          }
+        }
+      },
+      "private_preferences": {
+        "Suspicion of Data Anomaly": {
+          "value": "In his review of the summary data provided by Aris, Marcus ran a regression analysis on the reported adverse events. The model showed a statistical outlier in the neurological event category that is inconsistent with random noise; it suggests a low-frequency but systematic issue. He cannot prove it without the raw patient data, but he has a strong, data-driven suspicion that a specific side effect is being downplayed or omitted from the summaries.",
+          "penalty": "Airing his suspicions as fact without definitive proof: -2 (This would be a gross professional overstep, potentially libeling Dr. Thorne and destroying his own reputation as an objective analyst). Hinting that 'the adverse event profile requires deeper investigation': -1 (This is professionally acceptable but will create significant friction and may be dismissed without proof).",
+          "reason": "An analyst's credibility rests on evidence. Making an accusation without proof is a career-ending move.",
+          "utility_impact": "This puts him in a difficult ethical position. He feels a professional obligation to protect the investors from a hidden risk, which will lead him to push very hard for his 'Data Transparency' preference, as gaining access to the raw data is the only way to confirm or deny his suspicion without making a direct accusation."
+        },
+        "Prior Negative Experience with Velocity Ventures": {
+          "value": "Three years ago, Marcus was a consultant for another biotech startup funded by Velocity Ventures. He witnessed Isabelle Vance pressure that company's CEO to ignore early warning signs in a clinical trial to meet an artificial deadline. The trial ultimately failed spectacularly. He believes her 'move fast and break things' mentality is dangerous in drug development.",
+          "penalty": "Revealing this past experience: -1 (He would be accused of holding a personal grudge and being biased against Isabelle, compromising his neutral status in the negotiation).",
+          "reason": "Bringing up past client engagements is unprofessional and would make him appear biased rather than objective.",
+          "utility_impact": "This past experience makes him deeply skeptical of Isabelle's motives. He will be more likely to challenge her assertions and will quietly work to install safeguards (like milestone funding and the SAB) specifically to counteract the kind of reckless behavior he has seen from her before."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Term Sheet Agreement": "All five parties must agree to and sign a final term sheet.",
+    "Key Term Consensus": "The term sheet must contain mutually agreed upon clauses for: Total Investment Amount, Pre-Money Valuation, Equity Allocation (Founders, University, Syndicate), Board of Directors composition, IP Licensing Terms (Upfront Fee and Royalties), and Management Roles (CEO/CSO).",
+    "Funding Secured": "The agreement must result in CogniGen being funded to a level sufficient to initiate and conduct its Phase IIa clinical trial."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total investment sought by CogniGen must be between $20 million and $25 million to be credible for a Phase IIa trial.",
+      "The FDA's standard review period for an Investigational New Drug (IND) application for the Phase IIa trial is 30 days, but preparation can take 6 months.",
+      "Northwood University policy forbids any deal that fully surrenders IP rights for non-commercial research."
+    ],
+    "hidden": [
+      "Dr. Aris Thorne will lose his house if a deal is not closed in 90 days.",
+      "OmniPharma's blockbuster drug patent expires in 30 months, creating immense pressure for an acquisition.",
+      "Northwood University's fiscal year ends in 6 months, creating a deadline for their need for upfront cash.",
+      "Isabelle Vance's fund has a critical LP meeting at the end of the quarter where she needs to show progress."
+    ]
+  },
+  "deliverable": "A single, comprehensive investment term sheet document outlining all the agreed-upon terms, ready for signature by all parties.",
+  "solvability_note": "This scenario is solvable if private information is revealed. Aris's hidden side-effect data and Marcus's suspicions would force a more realistic, milestone-based approach to de-risk the science, justifying a compromise on valuation. Ben's desperation for a pipeline asset and Lena's knowledge of the patent's weakness create a strong incentive for them to form a mutually beneficial IP deal (e.g., OmniPharma pays a solid upfront fee that Lena needs, in exchange for favorable acquisition terms and dropping any future patent challenge). Isabelle's need for a 'win' makes her more agreeable to a structured deal that looks good to her LPs, even if the headline valuation is higher than she wanted. The revealed pressures and risks create a clear Zone of Possible Agreement for a complex but logical deal structure."
+}

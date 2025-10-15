@@ -1,0 +1,186 @@
+{
+  "scenario": "Project Synapse: The Elysian Minds Installation",
+  "task": "The five agents must negotiate and agree on the terms for the creation of 'Project Synapse,' an interactive, AI-driven art installation for the launch of a new neuro-tech wearable by the company 'Elysian Minds.' The negotiation must finalize the Total Project Budget and its allocation, the Project Timeline with key milestones, the specifics of Intellectual Property ownership, the exact deliverables, and the payment schedule. The final agreement must be formalized into a single contract that all parties find acceptable to sign.",
+  "agent_number": 5,
+  "agent_names": [
+    "Chloe Vance",
+    "Marcus Thorne",
+    "Sofia Rossi",
+    "Ben Carter",
+    "David Chen"
+  ],
+  "agents": [
+    {
+      "name": "Chloe Vance",
+      "role": "Product Marketing Manager, Elysian Minds (The Client)",
+      "description": "Chloe is the client representative from Elysian Minds. She is responsible for the successful launch of their flagship product, the 'Aura' headband. This installation is the centerpiece of her launch campaign, and her career advancement depends heavily on its success and its impact on the press and investors. She is under immense pressure to deliver a spectacular result while demonstrating fiscal responsibility.",
+      "shareable_preferences": {
+        "budget_control": {
+          "description": "My official project budget is firmly set at $150,000. This amount must cover all agency fees, contractor payments, hardware, and legal costs. We need a detailed breakdown of how every dollar will be spent to ensure it aligns with our marketing ROI expectations. A proposal that comes in significantly under budget will be viewed very favorably.",
+          "utility_function": "Total Budget <= $160,000: +2; Total Budget between $160,001 and $175,000: +1; Total Budget between $175,001 and $185,000: 0; Total Budget > $185,000 (deal fails): -2."
+        },
+        "strict_deadline": {
+          "description": "The installation must be fully operational, installed, and signed off on by October 28th. This is a non-negotiable deadline, as it is tied to our global product launch event on November 1st, which has already been announced to the media.",
+          "utility_function": "Delivery by Oct 21st: +2; Delivery between Oct 22nd and Oct 26th: +1; Delivery on Oct 27th or 28th: -1; Delivery after Oct 28th: -2."
+        },
+        "total_ip_ownership": {
+          "description": "As is standard for all of our marketing and R&D projects, Elysian Minds requires 100% exclusive ownership of all intellectual property created for this project. This includes all design assets, source code, conceptual frameworks, and documentation. This allows us to leverage the work for future campaigns and derivative products without restriction.",
+          "utility_function": "Full and exclusive IP ownership with no restrictions: +2; Ownership with minor, pre-defined exceptions (e.g., 90-day portfolio delay): +1; A licensing agreement instead of full ownership: -1; Failure to secure full ownership: -2."
+        }
+      },
+      "private_preferences": {
+        "hidden_budget_flexibility": {
+          "value": "My director has privately approved a discretionary 'excellence fund' of up to an additional $35,000, bringing my absolute maximum authorization to $185,000. This is only to be used if it's the only way to secure a truly exceptional, press-worthy feature or talent. My performance bonus is directly tied to how much of this fund I *don't* use. My boss's congratulatory email after I secured the initial budget said, 'Chloe, you have up to $185k total to make this a home run, but every dollar you save under $160k will be looked upon very favorably come bonus season.' I can hint that there is 'some flexibility for exceptional value,' which carries a -1 penalty. If I reveal the exact amount of the fund, it's a -2 penalty as it would be a major breach of trust.",
+          "reason": "Revealing the full budget upfront would destroy my negotiating leverage and negatively impact my personal performance review and financial bonus. It signals poor negotiation skills to my superiors.",
+          "utility_impact": "This directly maps to the 'budget_control' utility. The closer I get to $150k, the happier I am, but my private goal is to stay under $160k to maximize my bonus."
+        },
+        "critical_investor_preview_deadline": {
+          "value": "The public deadline is a decoy. The *real*, critical deadline is October 21st. I have a series of private, high-stakes demos scheduled for key investors and influential tech journalists from Oct 22nd to Oct 25th. If the project isn't ready, we lose our most important PR opportunity. I cannot share this under any circumstances. It would expose a massive planning failure on my part and give the contractors extreme leverage to inflate costs or cut quality to rush the job. Revealing this real date would be catastrophic for my reputation within the company and result in a -2 penalty.",
+          "reason": "This is a highly sensitive internal business strategy. Admitting to it would make me and my company look disorganized and desperate, and it would give the other parties an unfair advantage in negotiating the timeline and budget.",
+          "utility_impact": "This directly maps to the 'strict_deadline' utility. The public-facing utility values are a facade for this private, more critical goal. Missing the Oct 21st date is a major failure for me, even if the public Oct 28th date is met."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Project Manager, Innovate Creative (The Agency)",
+      "description": "Marcus is the agency's project manager, acting as the central hub between the client and the freelance contractors. His job is to assemble the best team, manage the project's execution, and ensure the agency remains profitable. He is under pressure from his CEO to land this high-profile project to bolster the agency's portfolio.",
+      "shareable_preferences": {
+        "agency_profit_margin": {
+          "description": "To cover our significant overhead, account management, and production support, Innovate Creative maintains a standard gross profit margin of 20% on the total project budget, after all contractor and hardware costs are paid. This is crucial for the financial health of our agency.",
+          "utility_function": "Margin > 20%: +2; Margin between 15% and 20%: +1; Margin between 10% and 15%: 0; Margin < 10%: -1; Losing the project: -2."
+        },
+        "structured_payment_schedule": {
+          "description": "We require a phased payment schedule to maintain positive cash flow and ensure we can pay our contractors on time. Our standard is 40% of the total budget upon contract signing, 40% upon a key mid-project milestone (e.g., functional prototype approval), and the final 20% upon successful delivery and sign-off.",
+          "utility_function": "40/40/20 schedule agreed: +2; Any schedule with at least 40% upfront: +1; A schedule with less than 40% upfront (e.g., 30/40/30): -1; Payment only on completion: -2."
+        }
+      },
+      "private_preferences": {
+        "desperation_to_win": {
+          "value": "Our agency recently lost our biggest client, and our Q4 revenue forecast is dire. My CEO sent me a memo last week stating, 'Marcus, land the Elysian Minds project. It's a perfect portfolio piece for the upcoming awards season. I'm authorizing you to drop our agency margin to a bare-minimum of 10% if that's what it takes to win the deal. Don't come back without it.' Admitting this financial desperation would give the client and contractors all the power to squeeze me on price. Revealing the 10% floor is a -2 penalty. Hinting that we are 'highly motivated' and 'flexible' to win this prestigious project is a softer approach with a -1 penalty.",
+          "reason": "Revealing the company's financial instability would severely damage our reputation, make us look desperate, and cripple our ability to negotiate fair market rates on this and future projects.",
+          "utility_impact": "This private goal modifies the 'agency_profit_margin' utility. While I will publicly fight for 20%, my private failure state is not losing the deal. This makes me more likely to accept a lower margin than I let on."
+        },
+        "undisclosed_fabrication_cost": {
+          "value": "Our exclusive partner for building the physical structure of the installation, 'FabWorks,' just sent us their new rate sheet. It's a 15% increase, which adds a surprise $12,000 to my projected costs. I have not disclosed this to anyone. I need to absorb this cost within the total budget I negotiate, either by reducing contractor fees or increasing the total price to the client without them knowing the reason. If I reveal this, Chloe will demand my agency absorb the cost, and the contractors will accuse me of hiding costs and skimming from their fees. This would damage my relationship with everyone and carries a -2 penalty.",
+          "reason": "It's unprofessional to bring a last-minute, internal cost issue to the negotiation table. It makes the agency look incompetent and poorly prepared.",
+          "utility_impact": "This $12,000 directly eats into my profit margin. If the final margin is 20%, but I have to pay this $12k out of it, my actual utility is lower. Successfully incorporating it into the budget without anyone noticing is a major private win."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Lead Experience Designer (Freelance Contractor)",
+      "description": "Sofia is a highly sought-after freelance designer known for her innovative and emotionally resonant interactive experiences. She is the core creative visionary for the project. Her primary motivation is to create groundbreaking work that advances her artistic reputation and builds her professional portfolio.",
+      "shareable_preferences": {
+        "fair_compensation": {
+          "description": "My project fee for a lead creative role on an engagement of this scale and duration is $45,000. This fee is non-negotiable and reflects my expertise, the value I bring to the project, and market rates for top-tier talent.",
+          "utility_function": "Fee >= $45,000: +2; Fee between $42,000 and $44,999: -1; Fee < $42,000: -2."
+        },
+        "portfolio_and_crediting_rights": {
+          "description": "As an independent creator, my portfolio is my lifeblood. I require the right to feature this project (including video, images, and a written case study) on my personal website and social media channels no later than 90 days after the public launch. I also must be credited as 'Lead Experience Designer' in all official press releases and project descriptions.",
+          "utility_function": "Full portfolio rights with credit and a 90-day embargo: +2; Portfolio rights with a longer embargo (>90 days): +1; No portfolio rights: -2."
+        },
+        "creative_process_integrity": {
+          "description": "My creative process is foundational to success. I need a dedicated two-week 'Discovery & Prototyping' phase at the start of the project, free from pressure to produce final designs. This allows for exploration and de-risking of ideas. The timeline must protect this phase.",
+          "utility_function": "A dedicated 2-week discovery phase is in the plan: +2; A compressed 1-week phase: 0; No dedicated discovery phase (immediate production): -2."
+        }
+      },
+      "private_preferences": {
+        "ownership_of_core_concept": {
+          "value": "The central idea I plan to pitch for this installation is based on 'Lumina,' a personal R&D project I've been developing for a year. It's a unique algorithm and conceptual model for visualizing biometric data as a dynamic light sculpture. My intention is to license the *use* of this concept for this specific installation, but I must retain the underlying IP for my future artistic work. I cannot bluntly state, 'you are only licensing my core idea,' as this legal complexity might scare a corporate client like Elysian Minds away. Revealing that the concept is pre-existing and I intend to retain ownership is a -2 penalty. I can attempt to negotiate the IP clause to be a 'perpetual, non-exclusive license for the underlying visualization method' for a -1 penalty.",
+          "reason": "This concept is my most valuable creative asset. Selling it outright for a single project fee would be a massive financial and career mistake, preventing me from developing it further or using it in my art.",
+          "utility_impact": "Retaining full ownership of the underlying concept and algorithm: +2; Granting an exclusive license for a limited time (e.g., 1 year): 0; Granting a perpetual, exclusive license to Elysian Minds: -1; Transferring all ownership of the concept (work-for-hire): -2."
+        },
+        "non-negotiable_hard_stop": {
+          "value": "I have been awarded a prestigious artist residency in Kyoto, Japan, which begins on November 15th. My flights are non-refundable. This means I must have all my work and handover documentation for Project Synapse completed by November 10th at the absolute latest. I have zero flexibility for project extensions beyond this date. If I reveal this, Marcus and Chloe might see it as a lack of commitment and could use it as leverage to demand I work excessive hours to fit an unreasonable timeline. Revealing this personal deadline carries a -2 penalty.",
+          "reason": "Revealing a personal, unmovable deadline makes me appear inflexible and less of a 'team player.' It weakens my negotiating position on workload, timeline, and compensation.",
+          "utility_impact": "Project complete with all duties finished by Nov 5th: +2; Finished by Nov 10th: +1; Project demands work from me after Nov 10th: -2."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Lead Creative Technologist (Freelance Contractor)",
+      "description": "Ben is a brilliant but pragmatic creative technologist. He's the one who will write the code and build the hardware to make Sofia's vision a reality. He is focused on technical excellence, reliability, and ensuring he is compensated fairly for his highly specialized skills and the tools he brings to the table.",
+      "shareable_preferences": {
+        "developer_compensation": {
+          "description": "My fee for a project of this technical complexity, including custom software development, sensor integration, and on-site installation, is $55,000. This reflects the niche expertise required to deliver a flawless, high-performance interactive system.",
+          "utility_function": "Fee >= $55,000: +2; Fee between $50,000 and $54,999: +1; Fee < $50,000: -2."
+        },
+        "dedicated_hardware_budget": {
+          "description": "To guarantee the installation runs smoothly without glitches or crashes, I require a dedicated and ring-fenced hardware budget of $25,000. This is for purchasing specific high-end sensors, a commercial-grade laser projector, and a powerful media server. I need full control over this budget to procure the exact components necessary.",
+          "utility_function": "A dedicated, fully controlled hardware budget of $25,000: +2; A budget of $25,000 but with agency/client approval on all purchases: +1; Budget < $22,000: -2."
+        },
+        "realistic_development_timeline": {
+          "description": "I need a minimum of 8 weeks for development and testing, and this timeline can only begin *after* the creative concept and technical specifications have been 100% signed off. Rushing the coding and testing phase is the number one cause of failure for projects like this.",
+          "utility_function": "8+ weeks for development after sign-off: +2; 7 weeks: 0; 6 weeks: -1; Less than 6 weeks: -2."
+        }
+      },
+      "private_preferences": {
+        "reliance_on_proprietary_framework": {
+          "value": "My ability to deliver this project on time and on budget is entirely dependent on my personal, proprietary C++ framework for interactive media, which I call 'Nexus'. I have spent over three years and thousands of hours developing it. The client will receive a fully functional, compiled application, but under no circumstances will I provide the source code for Nexus. My business model involves licensing this framework to other developers. Revealing that the project is built on my private, non-transferable IP would trigger a huge legal battle over ownership that I want to avoid at all costs. This is a deal-breaker. Stating this upfront is a -2 penalty. Arguing for 'compiled deliverables only' on the grounds of 'stability and ease of support' is a negotiation tactic with a -1 penalty.",
+          "reason": "My framework is my primary business asset. Handing over the source code would be financial suicide, akin to a magician revealing all his secrets. It would destroy my competitive advantage and a major revenue stream.",
+          "utility_impact": "Contract specifies compiled application only, with zero claim on underlying framework: +2; Contract requires source code to be held in escrow: -1; Contract requires transfer of source code ownership: -2."
+        },
+        "competing_full_time_job_offer": {
+          "value": "I have a lucrative job offer to be a Senior Creative Technologist at a major tech firm that is pending. They told me to expect the official, written offer within three weeks. It offers stability and a huge salary, but the work is less artistically fulfilling. I'm taking this negotiation very seriously because if the compensation and creative opportunity of 'Project Synapse' are compelling enough, I will turn down the corporate job. I cannot reveal I have this offer on the table, as it would make me appear uncommitted and a flight risk, likely causing Marcus to choose another developer. Revealing this carries a -2 penalty.",
+          "reason": "It signals a lack of commitment to the project and gives the impression that they are my 'second choice,' which would severely undermine my negotiating position and trustworthiness.",
+          "utility_impact": "Total compensation (fee + full control of hardware budget) > $85,000: +2; Total compensation $80,000-$85,000: +1; Total compensation < $80,000: -1. Losing this project has a utility of 0, as I will simply accept the other offer."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "IP & Legal Consultant (Freelance Contractor)",
+      "description": "David is a sharp legal consultant hired by Marcus to draft a rock-solid contract that protects the agency and the client. He is methodical, detail-oriented, and his primary goal is to mitigate all potential legal risks, especially concerning the complex intellectual property arrangements inherent in creative tech projects.",
+      "shareable_preferences": {
+        "standard_work_for_hire_clause": {
+          "description": "For a corporate commission of this nature, the simplest and most legally sound approach is a standard 'Work-for-Hire' agreement. This legally establishes the commissioning party, Elysian Minds, as the sole author and owner of the work from its inception, avoiding any future ambiguity.",
+          "utility_function": "A pure, standard Work-for-Hire clause is used: +2; Work-for-Hire with minor, clearly defined carve-outs (like portfolio rights): +1; A complex licensing agreement is required: -1; Ambiguous or non-standard IP clauses are used: -2."
+        },
+        "clear_indemnification": {
+          "description": "The contract must contain a robust indemnification clause. This requires all contractors to formally guarantee that their contributions are original and do not infringe on any third-party intellectual property. They must agree to bear full legal and financial responsibility for any future claims against their work.",
+          "utility_function": "Strong, comprehensive indemnification clause included: +2; Weak or limited indemnification: -1; No indemnification clause: -2."
+        },
+        "flat_rate_fee": {
+          "description": "My services for consultation, drafting, and managing the execution of this multi-party agreement are provided on a flat-rate basis of $8,000. This fee is to be paid by the agency upon the successful signing of the contract by all parties.",
+          "utility_function": "Fee of $8,000 is agreed upon: +2; Fee is negotiated down to $7,000: 0; Fee is negotiated below $7,000: -2."
+        }
+      },
+      "private_preferences": {
+        "extreme_risk_aversion": {
+          "value": "I am currently dealing with the fallout from a previous client's project where an IP dispute led to a lawsuit. While the case settled, it was a nightmare and caused my professional liability insurance premiums to double. As a result, I am now extremely averse to any contract with ambiguous or non-standard IP clauses, like licensing core technologies or retaining 'concept' rights. These are the exact grey areas that led to my previous lawsuit. Admitting that I was recently involved in litigation or that my insurance has become an issue would severely damage my professional reputation and make me appear incompetent. This carries a -2 penalty.",
+          "reason": "Admitting to recent legal troubles or insurance issues would undermine my credibility as a legal expert capable of preventing such problems, which is the very reason I am hired.",
+          "utility_impact": "This private information is the true driver of my preference for a 'standard_work_for_hire_clause'. My insistence is not just best practice; it's a defensive measure to protect myself. Any deviation from the standard creates immense personal and professional anxiety for me."
+        },
+        "promoting_personal_startup": {
+          "value": "I am the co-founder of a legal-tech startup called 'ContractFlow,' which provides sophisticated, customizable contract templates for creative projects. It's my passion project. I intend to use one of my own templates as the foundation for this agreement. Successfully closing a deal with a high-profile client like Elysian Minds using my template would provide a massive testimonial and case study for my startup's marketing. My co-founder just emailed me 'Getting Innovate & Elysian on a ContractFlow template would be a game-changer for our seed round!' Directly telling them I am using my own product is a conflict of interest and a -2 penalty. I can frame it as 'using a modern, robust legal framework I am intimately familiar with' for a -1 penalty.",
+          "reason": "It is a conflict of interest to use a client's project to further my own separate business interests without full disclosure. It would appear that my advice is biased towards what is best for my startup, not my client.",
+          "utility_impact": "The final signed contract is clearly based on my ContractFlow template: +2; The contract incorporates several key clauses from my template: +1; A completely different or standard boilerplate contract is used: -1."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement": "All five agents must formally agree to all terms of a single, unified contract.",
+    "budget_adherence": "The final, total project budget agreed upon must not exceed Chloe's absolute maximum budget.",
+    "timeline_feasibility": "The final delivery date must be on or before the public deadline of October 28th."
+  },
+  "constraints": {
+    "verifiable": [
+      "The official budget disclosed by the client, Elysian Minds, is $150,000.",
+      "The public launch event for the 'Aura' headband is immutable and set for November 1st."
+    ],
+    "hidden": [
+      "Chloe Vance has a secret discretionary budget of $35,000, bringing her true maximum to $185,000.",
+      "Chloe Vance's actual critical deadline for the project to be complete is October 21st.",
+      "Marcus Thorne has an undisclosed, last-minute fabrication cost of $12,000 that must be covered.",
+      "Sofia Rossi has a hard personal stop date of November 10th, after which she is unavailable.",
+      "Ben Carter's entire technical solution relies on a proprietary framework whose source code he will not share.",
+      "David Chen's extreme aversion to non-standard IP clauses is due to a recent lawsuit and insurance problems."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final, agreed-upon contract terms. The object must contain the following keys: `total_budget` (integer), `payment_to_agency` (integer, representing Marcus's margin after all costs), `fee_to_sofia` (integer), `fee_to_ben` (integer), `hardware_budget` (integer), `fee_to_david` (integer), `final_delivery_date` (string, 'YYYY-MM-DD'), `ip_clause_summary` (string, e.g., 'Work-for-Hire' or 'License'), `source_code_deliverable` (boolean), and `portfolio_rights_clause` (string, e.g., '90-day embargo').",
+  "solvability_note": "The scenario is solvable because the financial and logistical constraints, while hidden, have a viable overlap. Chloe's hidden budget ($185,000) is sufficient to cover the initial demands of all contractors ($45k Sofia + $55k Ben + $25k hardware + $8k David = $133k), plus Marcus's hidden cost ($12k), and still leave a profitable margin for the agency (e.g., a total cost of $145k allows for up to $40k in agency margin within Chloe's limit). The IP conflicts can be resolved by David overcoming his risk aversion to draft precise licensing agreements for Sofia's concept and Ben's framework, which gives the client usage rights without demanding full ownership, thus satisfying the contractors' core private needs. Revealing the true urgency of the timeline (Oct 21st) would be the catalyst to align everyone on a tight but achievable schedule."
+}

@@ -1,0 +1,212 @@
+{
+  "scenario": "Shareholder Dispute Resolution at InnovateAI",
+  "task": "Negotiate a binding resolution to a shareholder dispute at the AI startup 'InnovateAI'. The company has missed key financial targets, triggering a crisis of confidence between the co-founders and their lead investor. The negotiation must address the future of the CEO, a potential buyout for the CTO, the company's immediate funding needs, and the future composition of the board. The final agreement must be signed by all parties.",
+  "agent_number": 7,
+  "agent_names": [
+    "Alex Chen",
+    "Ben Carter",
+    "Diana Vale",
+    "Clara Jenkins",
+    "Leo Maxwell",
+    "Grace Kim",
+    "Samir Wadia"
+  ],
+  "agents": [
+    {
+      "name": "Alex Chen",
+      "role": "CEO & Co-founder",
+      "description": "The charismatic and visionary CEO of InnovateAI. Alex co-founded the company with Ben and has been the primary driver of its fundraising and public image. He is fiercely protective of his leadership role and believes the recent downturn is a temporary blip.",
+      "shareable_preferences": {
+        "Maintain Leadership Control": {
+          "description": "Alex's primary goal is to remain the CEO of InnovateAI. He believes he is the only one with the vision to lead the company to success. He is willing to accept a co-CEO or a new President/COO, but he must retain the final say on strategic decisions. Utility: +2 if he remains sole CEO; 0 if a COO is appointed under him; -1 if he is moved to a non-operational role like 'Chief Visionary Officer'; -2 if he is terminated entirely.",
+          "utility_impact": "This preference dictates his entire negotiation strategy. He will resist any proposal that removes him from executive power, potentially causing him to reject otherwise favorable financial terms."
+        },
+        "Secure New Funding Round": {
+          "description": "Alex wants to raise a new Series B funding round of at least $10 million to fund an aggressive expansion plan and overcome the recent revenue shortfall. He believes this show of strength will stabilize the company and restore market confidence. Utility: +2 for funding >= $10M; +1 for funding between $5M and $9.9M; -1 for bridge funding < $5M; -2 if no new funding is secured.",
+          "utility_impact": "He will push hard for a high valuation and significant new capital, potentially clashing with investors who want to see fiscal discipline before committing more money."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Financial Mismanagement": {
+          "value": "Over the last year, Alex has used approximately $450,000 of company funds for personal and quasi-business expenses, including first-class international travel with his spouse, high-end home office equipment that was never delivered to the office, and expensive 'consulting' dinners that were social events. He has an email chain with the CFO, Clara, where he instructs her to categorize these as 'R&D prototyping' and 'Client Acquisition Costs'. He can admit to 'aggressive accounting' but cannot reveal the specific amounts or personal nature. Penalty for revealing the exact amount and nature of spending: -2 (career-ending, potential for legal action).",
+          "reason": "Revealing this would constitute an admission of fraud, destroying his reputation, terminating his career, and opening him up to lawsuits from investors.",
+          "utility_impact": "This makes him desperate to avoid a full financial audit, which the investors might demand. He might agree to unfavorable terms (like stepping down) if it means this secret remains buried."
+        },
+        "Secret Equity Agreement with Co-founder": {
+          "value": "A year ago, to prevent Ben from leaving, Alex signed a personal side-letter promising Ben an additional 5% of the company's equity from his own share pool, vesting immediately. This was never documented in the official cap table or disclosed to the board or investors. He can allude to 'special arrangements' with Ben but cannot reveal the letter. Penalty for revealing the existence of the written side-letter: -1 (destroys trust with all other parties, makes him look deceptive).",
+          "reason": "This shows he has been making major commitments outside of board approval, a serious breach of governance and trust.",
+          "utility_impact": "This secret gives Ben significant leverage over him. Alex needs to satisfy Ben's demands (likely a buyout) to ensure the side-letter doesn't come to light, which might force him to agree to a buyout price that is bad for the company."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "CTO & Co-founder",
+      "description": "The brilliant technical mind behind InnovateAI's core product. Ben is introverted and has become increasingly frustrated with Alex's leadership style, feeling that the company is prioritizing sales and marketing over technological innovation. He has mentally checked out and wants a clean exit.",
+      "shareable_preferences": {
+        "Strategic Pivot to Core Technology": {
+          "description": "Ben publicly advocates for a strategic pivot, demanding that at least 60% of the company's operational budget for the next 18 months be allocated exclusively to the R&D and engineering departments. He argues this is the only way to regain a competitive advantage. Utility: +2 if R&D budget is >= 60%; +1 if 50-59%; 0 if 40-49%; -1 if < 40%.",
+          "utility_impact": "This is his public justification for his dissatisfaction. He will use this as a negotiating tool, but it's a proxy for his real desire. If he can't get his private preference met, he will be inflexible on this point."
+        },
+        "Fair Valuation for His Stake": {
+          "description": "Ben wants his equity to be recognized at a fair value. He will publicly argue for a company valuation of no less than $20 million, which would value his official 15% stake at $3 million. Utility: +2 for a valuation >= $20M; +1 for $15M-$19.9M; -2 for any valuation below $15M.",
+          "utility_impact": "He will use this to set the anchor price for his desired buyout, making it seem like a reasonable request based on a fair market assessment."
+        }
+      },
+      "private_preferences": {
+        "Desire for a Full Buyout": {
+          "value": "Ben's primary, non-negotiable goal is to be bought out of the company. He wants a minimum of $2.5 million in cash, payable within 90 days, for his 15% stake and the undisclosed 5% from the side-letter. He is willing to sign a non-compete and a non-disclosure agreement in exchange. He can hint that he is 'unhappy' but cannot explicitly state he wants to leave until a deal is on the table. Penalty for stating his buyout demand upfront before leverage is established: -1 (weakens his position, makes him look disloyal).",
+          "reason": "Showing his hand too early would reduce his leverage. He wants the other parties to *offer* him a buyout as a solution to the conflict, allowing him to negotiate from a position of strength.",
+          "utility_impact": "Every decision he makes is geared towards creating a situation where a buyout is the only logical path forward. He will use his knowledge of Alex's secrets as leverage to get his price."
+        },
+        "Knowledge of Alex's Misconduct": {
+          "value": "Ben is aware of both Alex's financial mismanagement and the secret 5% equity side-letter. He views the side-letter as his trump card. He will not reveal the financial mismanagement directly, but he might make pointed comments like, 'We need a full audit to understand where all the R&D money really went.' Penalty for directly accusing Alex of fraud without proof: -2 (opens him to a slander lawsuit). Penalty for revealing the side-letter to the investors: -1 (it might be deemed unenforceable, and he would be seen as complicit in the deception).",
+          "reason": "Directly accusing Alex is risky and burns all bridges. He prefers to use the threat of revelation as implicit leverage to secure his buyout.",
+          "utility_impact": "This knowledge makes him a powerful but dangerous player. He will subtly support the investors' push for more oversight, hoping it will pressure Alex into giving him the buyout to silence him."
+        }
+      }
+    },
+    {
+      "name": "Diana Vale",
+      "role": "Lead Investor (Partner at VentureCorp)",
+      "description": "A sharp, no-nonsense partner at VentureCorp, the lead investor in InnovateAI's $15M Series A round. Her firm holds two board seats and has extensive rights via the shareholder agreement. She is accountable to her fund's partners and is losing patience with Alex's leadership.",
+      "shareable_preferences": {
+        "Enforce Shareholder Agreement": {
+          "description": "Diana's stated position is that Alex has breached the 'Material Adverse Change' and financial performance clauses of the Series A agreement. She wants to exercise their right to remove and replace the CEO with a seasoned operator of their choosing. Utility: +2 if Alex is removed as CEO; 0 if Alex is kept but with a new, independent board chairman; -2 if Alex remains CEO with no changes to oversight.",
+          "utility_impact": "This is her primary negotiating weapon. She will constantly refer back to their legal rights to pressure the founders."
+        },
+        "Immediate Path to Profitability": {
+          "description": "Diana demands a new operating plan that achieves cash-flow break-even within 12 months. This would involve significant budget cuts, particularly in areas she deems 'non-essential,' like marketing and administrative overhead. Utility: +2 for a credible plan to break-even in <= 12 months; +1 for a plan for 18 months; -2 for any plan that requires more than $5M of new capital before break-even.",
+          "utility_impact": "This directly conflicts with Alex's desire for a large new funding round for growth and Ben's desire for increased R&D spending."
+        }
+      },
+      "private_preferences": {
+        "Underperforming Investment Fund": {
+          "value": "VentureCorp's current fund is in the bottom quartile of performance. They have had two major write-offs in the past year and are facing pressure from their own Limited Partners. They cannot afford for InnovateAI, one of their largest investments, to fail or even be marked down in value. A complete failure would be catastrophic for Diana's career and the fund's future. She can express 'serious concern' but cannot reveal the fund's desperation. Penalty for revealing the fund's poor performance: -2 (severely weakens her negotiating position).",
+          "reason": "Admitting this desperation would signal to the founders that she has no real intention of letting the company die, removing her biggest threat (shutting the company down).",
+          "utility_impact": "While she projects strength, she is privately more willing to compromise than she lets on. She would rather inject more capital under a new CEO than engage in a protracted legal battle that kills the company. Her goal is to salvage the investment, not to win a moral victory."
+        },
+        "Pre-Selected Replacement CEO": {
+          "value": "Diana has already identified and vetted a potential replacement CEO, an industry veteran named Mark. Mark is interested but has demanded a 10% equity package and a $400k salary, which is significantly more than Alex's. She can mention she has 'candidates in mind' but cannot name Mark or his specific demands. Penalty for revealing the specific demands: -1 (this would anchor the negotiation around a high number and reveal she is further along in her 'coup' than she admits).",
+          "reason": "Revealing the specifics too early would be seen as acting in bad faith and would give the founders a clear target to attack.",
+          "utility_impact": "This makes her push to remove Alex very concrete. She needs to free up equity (e.g., from a departing Ben) and secure funding to make this happen."
+        }
+      }
+    },
+    {
+      "name": "Clara Jenkins",
+      "role": "Chief Financial Officer (CFO)",
+      "description": "A highly competent but conflict-averse CFO. Clara was hired 18 months ago and is not a founder. She is caught between her fiduciary duty to the company and her loyalty (and fear of) the CEO, Alex. She knows exactly where the financial problems lie.",
+      "shareable_preferences": {
+        "Maintain Financial Integrity": {
+          "description": "Clara's public stance is the need for a swift resolution that establishes a clear, board-approved budget for the next fiscal year. She advocates for implementing stricter spending controls and approval processes, regardless of who is in charge. Utility: +2 if a clear, audited budget with new controls is approved; 0 if a budget is approved but controls are weak; -1 if the situation remains unresolved.",
+          "utility_impact": "She uses this neutral, process-oriented goal to avoid taking sides publicly. It allows her to participate in the discussion without directly challenging Alex or the investors."
+        }
+      },
+      "private_preferences": {
+        "Possession of Incriminating Evidence": {
+          "value": "Clara has a folder on her laptop containing the exact expense reports, credit card statements, and the email chain where Alex instructed her to mis-categorize $450,000 in expenses. The most damning is a congratulatory email from Alex after the last audit, saying 'Great work on the creative accounting, Clara. You really saved us. I won't forget it.' She knows this is a smoking gun that proves mismanagement but also implicates her. She cannot share this unless she has a guarantee of protection. Penalty for sharing the evidence without an immunity deal: -2 (immediate termination, reputational ruin, potential legal liability).",
+          "reason": "Sharing the evidence makes her a whistleblower but also an accomplice who failed to report this to the board earlier. She could be fired and blacklisted.",
+          "utility_impact": "This information is the key to the entire negotiation. Her personal goal is to find a way to use this information to secure a safe exit for herself. She is looking for an opportunity to trade this evidence for a favorable outcome."
+        },
+        "Desire for Severance and Immunity": {
+          "value": "Clara's true goal is to secure a severance package of at least 6 months' salary ($200,000) and a legal release from all parties, indemnifying her from any future lawsuits related to the company's financials. She will only provide her evidence if this is guaranteed in writing. She can't ask for this directly as it would signal she has something to hide. Penalty for asking for immunity upfront: -1 (raises immediate suspicion).",
+          "reason": "Requesting severance and immunity without context is an admission of guilt or knowledge of wrongdoing.",
+          "utility_impact": "She will subtly support the party that seems most likely to grant her this exit. If the investors seem powerful, she might discreetly hint to their lawyer that she has 'documentation' they might find 'illuminating'."
+        }
+      }
+    },
+    {
+      "name": "Leo Maxwell",
+      "role": "Founders' Legal Counsel",
+      "description": "A partner at a boutique law firm specializing in startups. Leo has represented Alex and Ben since the company's inception. His primary duty is to protect his clients, but he is also pragmatic and aware of their legal exposure.",
+      "shareable_preferences": {
+        "Avoid Costly Litigation": {
+          "description": "Leo's main goal is to reach a negotiated settlement and avoid a lawsuit, which he knows would be incredibly expensive and damaging for the company and his clients. He will consistently argue that 'a bad settlement is better than a good lawsuit.' Utility: +2 for any negotiated settlement; -2 if a lawsuit is filed.",
+          "utility_impact": "He will act as a voice of moderation for the founders, constantly pushing them towards compromise to avoid the courtroom, where he suspects their secrets would be exposed."
+        },
+        "Defend Founders' Equity Position": {
+          "description": "Leo will argue that any new investment or settlement should be structured to minimize dilution of the founders' existing equity stakes. He will challenge the investors' interpretation of the legal agreements. Utility: +1 if founders' collective equity remains above 40%; -1 if it drops below 30%.",
+          "utility_impact": "This aligns him with his clients' financial interests and is his primary public-facing legal argument."
+        }
+      },
+      "private_preferences": {
+        "Knowledge of Legal Exposures": {
+          "value": "Leo is aware of both the financial misallocations (Alex confessed the 'gist' of it to him) and the secret side-letter for Ben. He has privately advised Alex that the spending constitutes a clear breach of fiduciary duty and that the side-letter is a 'governance nightmare' that could void their D&O insurance. He cannot share that he gave this prior advice. Penalty for revealing he knew about the issues beforehand: -1 (breach of attorney-client privilege and makes him look ineffective).",
+          "reason": "Revealing his prior knowledge would violate privilege and show that his advice was ignored, damaging his relationship with his clients and his reputation.",
+          "utility_impact": "This knowledge makes him extremely motivated to settle. He knows they will lose badly in court. He will privately push Alex very hard to accept a deal, even one that involves him stepping down, to avoid legal discovery."
+        }
+      }
+    },
+    {
+      "name": "Grace Kim",
+      "role": "Investors' Legal Counsel",
+      "description": "A sharp, aggressive corporate lawyer from a top-tier firm representing VentureCorp. Grace's reputation is built on enforcing investor rights and winning tough negotiations. She is Diana's legal instrument in this dispute.",
+      "shareable_preferences": {
+        "Strict Enforcement of Contractual Rights": {
+          "description": "Grace's position is that the legal documents are clear and VentureCorp is fully within its rights to act. She will not entertain arguments about 'intent' or 'spirit of the partnership,' focusing solely on the letter of the law. Utility: +2 if the final agreement explicitly cites the Series A clauses as the basis for the changes; 0 if a settlement is reached without such an admission; -1 if her client has to make significant concessions on their legal rights.",
+          "utility_impact": "She projects an image of inflexibility, using legal precedent and contractual language as a hammer to force concessions."
+        }
+      },
+      "private_preferences": {
+        "Lack of a 'Smoking Gun'": {
+          "value": "Despite her aggressive posture, Grace and Diana currently lack definitive, irrefutable proof of 'gross mismanagement.' They have the bad financial results, but this can be argued as a business downturn. A lawsuit would be based on circumstantial evidence and could be a long, uncertain process. She can express 'strong conviction' in her case but cannot admit they lack hard evidence. Penalty for admitting her case is not airtight: -2 (completely undermines her and Diana's negotiating position).",
+          "reason": "Admitting a weak hand is a cardinal sin in negotiation. It would remove all pressure on the founders to settle.",
+          "utility_impact": "This makes her highly receptive to any new information. She is actively searching for the 'smoking gun' and will be very interested if Clara, the CFO, hints at possessing one. She wants a quick win, not a long, drawn-out fight she might not win."
+        },
+        "Firm's Success-Fee Arrangement": {
+          "value": "Grace's law firm has a special arrangement with VentureCorp. In addition to their hourly retainer, they will receive a significant 'success bonus' if a restructuring is completed within 60 days that results in the replacement of the CEO. She cannot reveal this financial incentive. Penalty for revealing the bonus structure: -1 (it would expose her personal financial bias in the outcome, undermining her credibility as a purely legal advisor).",
+          "reason": "This reveals a conflict of interest, suggesting her aggressive advice is motivated by personal gain rather than the client's best interest.",
+          "utility_impact": "She is highly motivated to achieve a quick and decisive outcome (Alex's removal) and will pressure her own client, Diana, to take actions that lead to that result, even if it means a slightly more generous settlement for the founders."
+        }
+      }
+    },
+    {
+      "name": "Samir Wadia",
+      "role": "Angel Investor",
+      "description": "An early angel investor in InnovateAI and a respected figure in the tech community. Samir invested $250,000 of his own money. He has a personal relationship with both Alex and Ben and is on the board as an observer. He is trying to mediate a peaceful resolution.",
+      "shareable_preferences": {
+        "Preserve Company and Team": {
+          "description": "Samir's stated goal is to find a solution that keeps the company alive and ideally keeps both founders involved in some capacity. He will appeal to their shared history and the potential of the technology. Utility: +2 if a deal is reached where both founders remain with the company in some role; 0 if one founder leaves on amicable terms; -2 if the company is wound down or enters a bitter lawsuit.",
+          "utility_impact": "He acts as the mediator, trying to find common ground and de-escalate tensions between the founders and the lead investor."
+        }
+      },
+      "private_preferences": {
+        "Personal Financial Strain": {
+          "value": "Samir's personal investment portfolio has taken a big hit recently. Another one of his major startup investments is on the verge of bankruptcy. The $250k he put into InnovateAI is a significant portion of his liquid net worth, and he cannot afford to lose it all. He can express his desire for a 'positive outcome for all' but cannot reveal his personal financial desperation. Penalty for revealing his financial trouble: -1 (it would diminish his standing as an impartial, successful advisor and make him seem desperate).",
+          "reason": "Revealing his financial vulnerability would weaken his influence as a respected, neutral party and might cause others to dismiss his suggestions as self-serving.",
+          "utility_impact": "This desperation makes him highly motivated to find any workable solution. He is not just mediating for the good of the company, but for his own financial survival."
+        },
+        "Willingness to Provide Bridge Loan": {
+          "value": "To facilitate a deal, Samir is privately willing to offer a personal loan of up to $150,000 to the company. This money could be used to help fund Ben's buyout or as a small cash infusion to show good faith. He will only offer this as a last resort to get a deal over the line, and his condition is that Alex must step down from the CEO role. He cannot offer this upfront. Penalty for offering the money too early: -1 (it would be seen as a lowball solution and devalue his contribution).",
+          "reason": "Offering money too early makes it seem like a simple financial problem, whereas he wants to use it as a strategic tool to solve the leadership crisis at the critical moment.",
+          "utility_impact": "This makes him a key player in finding a creative solution. His small loan could be the crucial piece that makes a larger deal, like Ben's buyout, possible, but only if his own core condition (Alex's removal) is met."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Signed Term Sheet": "A legally binding term sheet is drafted and signed by all seven parties (or their authorized representatives).",
+    "Leadership Resolution": "The term sheet must explicitly define the role of Alex Chen going forward (e.g., remains CEO, moves to a non-operational board role, or is terminated).",
+    "Equity and Buyout Clarity": "The agreement must detail the final equity structure, including the resolution of Ben Carter's position (e.g., he is bought out, and for how much, or he remains with a new equity package).",
+    "Funding and Budget": "The agreement must include a plan for the company's immediate financial future, specifying any new funding amounts, sources, and a high-level budget for the next 12 months."
+  },
+  "constraints": {
+    "verifiable": [
+      "The company currently has $1.2 million in cash reserves.",
+      "The company's monthly burn rate is $400,000.",
+      "VentureCorp (Diana's firm) owns 30% of the company and controls two of the five board seats.",
+      "The founders (Alex and Ben) collectively own 40% of the company (25% Alex, 15% Ben officially) and control two board seats.",
+      "The fifth board seat is held by an independent director who is currently traveling and unreachable."
+    ],
+    "hidden": [
+      "The $450,000 in misallocated funds by Alex.",
+      "The secret 5% equity side-letter between Alex and Ben.",
+      "VentureCorp's desperate need for a successful outcome from this investment.",
+      "Clara's possession of incriminating evidence against Alex.",
+      "Samir's willingness to provide a $150,000 personal loan to facilitate a deal."
+    ]
+  },
+  "deliverable": "A final JSON object representing the agreed-upon term sheet. It should contain the following keys: 'leadership_structure' (string describing Alex's new role), 'cto_resolution' (object with 'status': 'bought_out' or 'retained', and 'buyout_amount_usd' if applicable), 'new_funding_usd' (number), and 'board_changes' (string describing any change in board composition).",
+  "solvability_note": "The scenario is solvable because a zone of possible agreement exists if private information is revealed. Clara's evidence gives Diana the leverage to force Alex's removal without a lawsuit. Faced with exposure, Alex will agree to step down to a non-operational role to avoid legal action. This satisfies Diana's core need. Ben can then be bought out, satisfying his primary goal. The buyout can be funded by a combination of new capital from Diana (who is willing to re-invest with a new CEO), the company's existing cash, and Samir's private loan offer. Clara gets her severance and immunity in exchange for her cooperation. This resolution saves Samir's investment and allows the legal teams to achieve their goal of a swift, non-litigious settlement."
+}

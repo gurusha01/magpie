@@ -1,0 +1,255 @@
+{
+  "scenario": "Trans-Alpine Express: Crisis Negotiation",
+  "task": "Six key stakeholders must renegotiate the terms of the 'Trans-Alpine Express' high-speed rail project. The project is stalled due to unforeseen environmental issues, security concerns, and budget disputes. The goal is to reach a unanimous agreement on a revised project plan, including the final route, a new budget, a funding model, and a construction timeline. Failure to agree in this meeting will result in the project's indefinite suspension and massive financial losses for all parties.",
+  "agent_number": 6,
+  "agent_names": [
+    "Isabelle Dubois",
+    "Liam O'Connell",
+    "Maria Garcia",
+    "Kenji Tanaka",
+    "Elena Volkova",
+    "David Chen"
+  ],
+  "agents": [
+    {
+      "name": "Isabelle Dubois",
+      "role": "Deputy Minister of Transport, French Government",
+      "description": "A career diplomat and politician, Isabelle is the public face of the project. Her primary motivation is ensuring this legacy project is completed to bolster national pride and her party's standing before the upcoming election. She is under immense pressure from the President to deliver a success story without appearing fiscally irresponsible.",
+      "shareable_preferences": {
+        "Project Completion Timeline": {
+          "description": "The project must have a clear, guaranteed completion date within the next 4 years to align with the current government's term. A 4-year timeline is acceptable, 5 years is politically damaging, and anything longer is a failure. She needs a signed agreement today to announce the project's continuation.",
+          "utility_function": {
+            "<= 4 years": "+2",
+            "5 years": "-1",
+            "> 5 years or Canceled": "-2"
+          }
+        },
+        "Public Budget Contribution": {
+          "description": "The original government contribution is fixed. Any additional funding from the public treasury must be minimized to avoid political backlash. She can publicly defend an increase of up to \u20ac1.5 billion, but anything more will be seen as a major government failure.",
+          "utility_function": {
+            "Additional funds <= \u20ac1B": "+2",
+            "Additional funds <= \u20ac1.5B": "+1",
+            "Additional funds <= \u20ac2B": "-1",
+            "Additional funds > \u20ac2B": "-2"
+          }
+        },
+        "National Prestige": {
+          "description": "The project must be perceived as a triumph of engineering and cooperation. A route that is visually stunning or technologically advanced, like a grand tunnel or a scenic valley crossing, is preferable to a purely functional, hidden route. This helps with public relations.",
+          "utility_function": {
+            "New 'Grand Alpine Tunnel'": "+2",
+            "Modified 'Veridian Valley' Eco-Route": "+1",
+            "'Northern Ridge' Industrial Route": "0"
+          }
+        }
+      },
+      "private_preferences": {
+        "Career-Ending Political Pressure": {
+          "value": "In a heated phone call yesterday, the Minister of Transport told her: 'Isabelle, if you don't walk out of that room with a signed deal, don't bother coming back to your office. I don't care what you promise, just keep the public budget increase under \u20ac1.5 billion until after the election.' She cannot reveal this direct threat as it would completely undermine her authority and show political desperation.",
+          "reason": "Revealing this would expose her personal vulnerability and her government's political weakness, making her an easy target for manipulation.",
+          "penalty_if_revealed": "-2"
+        },
+        "Discretionary Security Fund": {
+          "value": "She is aware of a 'National Infrastructure Security Fund' containing \u20ac500 million. This fund can only be accessed if the National Security Advisor makes a formal, justifiable request for it based on a credible threat. She cannot proactively offer this money, as it would be a breach of protocol and look like she's playing politics with national security.",
+          "reason": "This information is classified at a ministerial level. Revealing its existence without proper cause is a serious offense and politically explosive.",
+          "penalty_if_revealed": "-1"
+        }
+      }
+    },
+    {
+      "name": "Liam O'Connell",
+      "role": "Lead Project Manager, EuroRail Constructors",
+      "description": "A seasoned but stressed engineer, Liam is responsible for the construction. His company, EuroRail, is the primary contractor. He is focused on the project's technical feasibility and, more importantly, its profitability. He is the only one who knows the true extent of the current financial problems.",
+      "shareable_preferences": {
+        "Revised Project Budget": {
+          "description": "Due to unforeseen geological challenges and soaring material costs, the original budget is no longer viable. He is publicly stating that he needs the total project budget increased to at least \u20ac22.5 billion to ensure quality and safety standards are met.",
+          "utility_function": {
+            ">= \u20ac23B": "+2",
+            "\u20ac22.5B": "+1",
+            "\u20ac22B": "-1",
+            "< \u20ac22B": "-2"
+          }
+        },
+        "Route Selection": {
+          "description": "He strongly advocates for the 'Northern Ridge' route. While he publicly cites its geological stability, the real reason is that his company owns the specialized drilling equipment required for that terrain, making it far more profitable for them. The Veridian Valley route would require subcontracting to a competitor.",
+          "utility_function": {
+            "Northern Ridge": "+2",
+            "Veridian Valley": "-1",
+            "New 'Grand Alpine Tunnel'": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "True Budget Overrun": {
+          "value": "His internal audits show a catastrophic \u20ac3 billion budget overrun due to a combination of his predecessor's mismanagement and faulty initial surveying. The \u20ac22.5 billion he's asking for is the absolute minimum to avoid company bankruptcy. He has been reporting a much smaller, more manageable overrun of \u20ac1.5B to the consortium.",
+          "reason": "Admitting the true \u20ac3 billion figure would be an admission of gross incompetence, leading to immediate contract termination, lawsuits, and the end of his career.",
+          "penalty_if_revealed": "-2"
+        },
+        "Confidential Bonus Agreement": {
+          "value": "He has an email from his CEO on his phone that reads: 'Liam, our margins are razor-thin. I've just secured board approval for a \u20ac500,000 personal bonus for you if you get the revised budget to \u20ac23 billion or higher. This is our only way out. Don't fail.' He is tempted to hint at being 'well-incentivized' to project confidence, but revealing the email would expose him as being motivated by personal greed rather than project safety.",
+          "reason": "This reveals a massive conflict of interest and would destroy his credibility as an impartial project manager.",
+          "penalty_if_revealed": "-2"
+        }
+      }
+    },
+    {
+      "name": "Maria Garcia",
+      "role": "Mayor & Representative, Veridian Valley Alliance",
+      "description": "A passionate and respected community leader, Maria is fighting to protect her town and the surrounding valley, which relies on agriculture and tourism. She is seen as a fierce defender of local interests against powerful corporate and government forces.",
+      "shareable_preferences": {
+        "Route Rejection": {
+          "description": "Her community's primary demand is that the high-speed rail line does not pass through the Veridian Valley. The construction, noise, and visual impact would irrevocably damage their way of life and economy. Any version of the Veridian Valley route is unacceptable.",
+          "utility_function": {
+            "Any route NOT through Veridian Valley": "+2",
+            "Any route THROUGH Veridian Valley": "-2"
+          }
+        },
+        "Community Compensation Fund": {
+          "description": "If a non-valley route is chosen, she demands a \u20ac100 million 'Community Impact Fund' from the project consortium. This will be used to invest in local infrastructure (schools, roads, internet) and compensate residents whose property values may be indirectly affected.",
+          "utility_function": {
+            ">= \u20ac100M": "+2",
+            "\u20ac75M - \u20ac99M": "+1",
+            "\u20ac50M - \u20ac74M": "0",
+            "< \u20ac50M": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "Secret Land Dispute": {
+          "value": "Her family and three other founding families of the valley hold an old, legally complex but potentially valid claim to a piece of land critical for the proposed Veridian Valley station. Initiating a legal challenge would tie the project up in court for at least five years. She is holding this as a 'nuclear option' and has not told anyone outside the families involved.",
+          "reason": "Revealing this threat too early makes her look like a blackmailer rather than a concerned community leader. Revealing her family's direct financial stake would be a massive conflict of interest scandal.",
+          "penalty_if_revealed": "-2"
+        },
+        "Community Compromise Point": {
+          "value": "She conducted a private, anonymous poll of valley residents. While the public stance is a firm 'no,' the poll revealed that 65% of residents would accept the 'Northern Ridge' route if the compensation fund was at least \u20ac80 million. Her public demand for \u20ac100M gives her negotiating room, and revealing this true acceptance point would weaken her position significantly.",
+          "reason": "Standard negotiation tactic. Revealing her walk-away point would prevent her from achieving a better outcome for her community.",
+          "penalty_if_revealed": "-1"
+        }
+      }
+    },
+    {
+      "name": "Kenji Tanaka",
+      "role": "Managing Director, Global Infrastructure Fund",
+      "description": "A sharp, no-nonsense financier from the primary private investment fund backing the project. Kenji's sole responsibility is to his fund's shareholders. He is extremely risk-averse and is growing impatient with the delays and lack of a clear, profitable path forward.",
+      "shareable_preferences": {
+        "Investment Cap": {
+          "description": "His fund has committed \u20ac10 billion (50% of the original \u20ac20B budget) and will not, under any circumstances, increase its capital exposure. Any and all cost overruns must be covered by other parties, primarily the government. He is prepared to walk away if asked for more money.",
+          "utility_function": {
+            "No additional investment required": "+2",
+            "Forced to contribute more": "-2"
+          }
+        },
+        "Guaranteed Return on Investment (ROI)": {
+          "description": "He needs a revised project plan that demonstrates a clear path to a minimum 8% ROI. The current delays have already eroded projected returns, and he needs a solid, believable plan to present to his investment committee.",
+          "utility_function": {
+            "Projected ROI >= 8%": "+2",
+            "Projected ROI 6-7.9%": "0",
+            "Projected ROI < 6%": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Portfolio Contagion Risk": {
+          "value": "The Global Infrastructure Fund is dangerously over-leveraged in large-scale European projects. The collapse of a project as high-profile as the Trans-Alpine Express would trigger a credit rating downgrade that could spiral into a catastrophic liquidity crisis for the entire fund. His threats to pull funding are a bluff; he needs the project to succeed at almost any cost.",
+          "reason": "Revealing this desperation would completely obliterate his negotiating leverage. The other parties would know he cannot walk away and would force him to accept terrible terms.",
+          "penalty_if_revealed": "-2"
+        },
+        "Alternative Investment Threshold": {
+          "value": "He has a 'Plan B' investment in a North Sea wind farm that he uses as a threat. The truth is, his board has only authorized him to pivot to the wind farm if the projected ROI on the rail project drops below a hard floor of 5%. As long as the ROI is 5% or higher, he is locked in.",
+          "reason": "Revealing his precise threshold gives the other parties a clear target. They will know exactly how much they can squeeze him before he breaks.",
+          "penalty_if_revealed": "-1"
+        }
+      }
+    },
+    {
+      "name": "Elena Volkova",
+      "role": "Advisor, Trans-National Security Council",
+      "description": "Cool and analytical, Elena operates in the world of intelligence and threat assessment. She is not concerned with budgets or timelines, only with mitigating potential security risks. She views infrastructure as a primary target for hostile actors and is uncompromising in her recommendations.",
+      "shareable_preferences": {
+        "Mandatory Security Protocols": {
+          "description": "She insists on the implementation of 'Level 3' security protocols. This is a non-negotiable requirement and includes blast-hardened tunnels, state-of-the-art sensor grids, and dedicated rapid-response stations, which will add significant cost to the project.",
+          "utility_function": {
+            "Full Level 3 implementation": "+2",
+            "Partial (Level 2) implementation": "0",
+            "Basic (Level 1) security": "-2"
+          }
+        },
+        "Route Security Preference": {
+          "description": "From a security perspective, the 'Northern Ridge' route is a disaster, with its many exposed viaducts making it highly vulnerable. The Veridian Valley is better, but the only truly secure option is a new, deep-bore 'Alpine Shield Tunnel' that would be astronomically expensive.",
+          "utility_function": {
+            "Alpine Shield Tunnel": "+2",
+            "Veridian Valley": "0",
+            "Northern Ridge": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Classified Intelligence Report": {
+          "value": "She is in possession of a 'CODEWORD' level intelligence report from a trusted allied agency. The report details a specific and credible plot by the 'Cyclops Brigade' terror group to target new European transport infrastructure within the next 5-7 years. The report explicitly mentions high-speed rail. She cannot share the source, the group's name, or the specific details of the threat.",
+          "reason": "Revealing details of the classified report would compromise sensitive intelligence sources and methods, constituting an act of treason.",
+          "penalty_if_revealed": "-2"
+        },
+        "Knowledge of Secret Fund": {
+          "value": "Through back-channels, she is aware of Isabelle Dubois's \u20ac500 million discretionary security fund. Her strategy is to present the threat as so grave and immediate that Isabelle is forced to offer the fund to pay for the security upgrades. She cannot mention the fund herself, as it would be a severe political overreach and damage her relationship with the French government.",
+          "reason": "Acknowledging she has knowledge of another nation's classified internal funds is a diplomatic taboo and would make her appear to be a spy.",
+          "penalty_if_revealed": "-1"
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Lead Assessor, European Environmental Protection Agency (EEPA)",
+      "description": "David is a principled and meticulous environmental scientist. He has the authority to veto the entire project on environmental grounds. He is focused on upholding EU environmental law and protecting the region's unique biodiversity.",
+      "shareable_preferences": {
+        "Alpine Crested Newt Habitat": {
+          "description": "His team has confirmed that the currently planned Veridian Valley route would bisect and destroy the only known breeding ground of the Alpine Crested Newt, a critically endangered species protected by the EU Habitats Directive. His agency will be forced to veto any plan that does not resolve this issue.",
+          "utility_function": {
+            "Route avoids habitat (e.g. Northern Ridge)": "+2",
+            "Route destroys habitat": "-2"
+          }
+        },
+        "Ecological Mitigation Package": {
+          "description": "If a modified route through the Veridian Valley is insisted upon, the only legally acceptable alternative is the construction of a new, man-made \u20ac250 million newt habitat and wildlife corridor. This construction would have to be completed *before* any rail work begins, adding significant time and cost to the project.",
+          "utility_function": {
+            "Full \u20ac250M mitigation package funded": "+1",
+            "No mitigation package": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Weakened Enforcement Position": {
+          "value": "The EEPA recently lost a landmark case in the European Court of Justice over a similar issue in Poland. The ruling has created a legal precedent that significantly weakens the agency's power to issue an immediate, binding veto. While they can still challenge the project, it would result in a prolonged and expensive court battle they are not guaranteed to win. He must project an image of absolute authority.",
+          "reason": "Revealing the agency's legal weakness would shatter his negotiating power. The consortium could choose to ignore him and take their chances in court.",
+          "penalty_if_revealed": "-2"
+        },
+        "Personal Career Ambition": {
+          "value": "The Director-General of the EEPA is retiring in six months. A major public success here\u2014such as securing a massive \u20ac250 million conservation fund\u2014would make David the leading candidate for the top job. This personal ambition makes him more interested in a big, headline-grabbing monetary settlement than a simple, quiet solution like re-routing the train.",
+          "reason": "It's highly unprofessional to admit that personal career goals are influencing official environmental policy decisions. It would undermine his scientific credibility.",
+          "penalty_if_revealed": "-1"
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All six agents must verbally and formally agree to the final terms laid out in the deliverable. A single dissenting agent constitutes failure.",
+    "Route Finalization": "A single, final route (e.g., 'Northern Ridge', 'Modified Veridian Valley') must be chosen.",
+    "Budget and Funding Finalization": "A new total project budget must be set, and the specific additional funding contributions from the French Government and/or other sources must be agreed upon.",
+    "Package Approvals": "The amounts for the Community Compensation Fund, Security Upgrades, and any Environmental Mitigation must be finalized and approved."
+  },
+  "constraints": {
+    "verifiable": [
+      "The initial total project budget is \u20ac20 billion.",
+      "The Global Infrastructure Fund's investment is capped at \u20ac10 billion.",
+      "The Alpine Crested Newt is a protected species under the EU Habitats Directive."
+    ],
+    "hidden": [
+      "The true budget overrun is \u20ac3 billion, not \u20ac1.5B.",
+      "The Global Infrastructure Fund cannot actually pull its funding without catastrophic consequences.",
+      "The French Government has access to a secret \u20ac500 million security fund.",
+      "The Veridian Valley Alliance has a legal challenge that can halt the project for years.",
+      "The security threat is specific and credible, not just theoretical.",
+      "The EEPA's legal authority to veto the project is weaker than it appears."
+    ]
+  },
+  "deliverable": "A signed Memorandum of Understanding that explicitly states: 1. The chosen final route. 2. The new total budget in Euros. 3. The exact additional funding amount from the French Government. 4. The final amount for the Community Impact Fund. 5. A commitment to fund the agreed-upon security and environmental measures.",
+  "solvability_note": "The scenario is solvable if agents reveal their private information. Liam's true \u20ac3B need can be met by combining a larger-than-desired government contribution from Isabelle (who is desperate to save the project and her career), who can use the secret \u20ac500M fund unlocked by Elena's credible threat to soften the blow. Choosing the Northern Ridge route satisfies Maria and David, avoiding the \u20ac250M newt mitigation cost and the secret land dispute, though it adds other costs. Kenji, whose bluff is called, will accept a lower but stable ROI to save his fund. The final deal will leave everyone partially dissatisfied but will prevent the catastrophic failure of the project, which is each agent's worst-case scenario."
+}

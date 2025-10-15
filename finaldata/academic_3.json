@@ -1,0 +1,150 @@
+{
+  "scenario": "Scheduling the flagship graduate seminar 'CS701: Frontiers in AI' at Northwood University's Computer Science department. This negotiation involves balancing the prestige-driven goals of a senior professor, the strict budgetary and logistical constraints of the department administration, and the practical needs of the graduate student body.",
+  "task": "The three agents must collaboratively decide on and finalize the complete schedule for the 'CS701: Frontiers in AI' seminar for the upcoming Fall semester. The final agreement must specify four key components: the weekly time slot, the assigned classroom, the budget for technical equipment, and the fund for inviting guest speakers.",
+  "agent_number": 3,
+  "agent_names": [
+    "Professor Alistair Finch",
+    "Brenda Vance",
+    "Chloe Rivera"
+  ],
+  "agents": [
+    {
+      "name": "Professor Alistair Finch",
+      "role": "Senior Professor & AI Lab Director",
+      "description": "A world-renowned but somewhat arrogant AI researcher who is the primary instructor for CS701. His reputation is closely tied to the success and prestige of this seminar. He views it as a critical tool for recruiting top-tier PhD students and impressing industry partners and funding agencies.",
+      "shareable_preferences": {
+        "Prime Time Slot": {
+          "description": "He strongly desires a prime, high-visibility time slot to maximize attendance and accommodate the schedules of potential industry guests. His ideal slot is Tuesday from 2 PM to 5 PM. He considers a Friday afternoon slot a 'graveyard slot' that signals the course is unimportant. He will argue that a prime slot is non-negotiable for a course of this caliber.",
+          "utility_function": {
+            "Tue 2pm-5pm": 2,
+            "Mon 10am-1pm": 0,
+            "Fri 1pm-4pm": -2
+          }
+        },
+        "High-Tech Classroom": {
+          "description": "He insists on using Room 415-B, the department's new 'smart' classroom. It features a multi-camera setup for high-quality lecture recording, an interactive smartboard, and modular seating ideal for the breakout sessions he plans. He believes using any other room, like the standard Room 301, would compromise the pedagogical quality and technological showcase aspect of the seminar.",
+          "utility_function": {
+            "Room 415-B": 2,
+            "Auditorium C": -1,
+            "Room 301": -2
+          }
+        },
+        "Guest Speaker Fund": {
+          "description": "To maintain the seminar's prestige, he wants to invite leading researchers from major tech companies. These speakers often require honorariums and have their travel expenses covered. He is pushing for a guest speaker fund of at least $2,000 from the departmental pool, arguing that anything less would limit him to inviting only local academics, defeating the purpose of a 'Frontiers' seminar.",
+          "utility_function": {
+            "Fund >= $2000": 2,
+            "Fund between $1000 and $1999": 1,
+            "Fund < $1000": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Critical Grant Deadline": {
+          "value": "Professor Finch is the PI on a new $2M federal grant, and he has mandatory, unmovable progress meetings with his collaborators at the engineering school and the funding agency program manager every Monday morning. He absolutely cannot teach on Mondays. He recently received an email from the department head saying, 'Congrats on the new grant, Alistair! A huge win for us. I know you'll be busy, but we're all counting on you to make CS701 a success while still fulfilling your full teaching load.' He is under immense pressure to appear capable of handling everything.",
+          "reason": "Admitting he cannot manage his schedule and has a hard constraint would make him look overcommitted and poorly organized to his colleagues and the administration, potentially hurting his standing and future course assignments.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "This private constraint makes the Monday 10am-1pm time slot completely unviable for him, turning a neutral option into a personal disaster. It forces him to push much harder for the Tuesday slot, even if it creates conflicts for others."
+        },
+        "Secret Lab Outreach Fund": {
+          "value": "His AI Lab has a separate, discretionary 'research outreach' fund of $5,000 for the year. This fund could technically be used to supplement the guest speaker budget for CS701. However, he has already earmarked this money for a specialized workshop in the spring, which he plans to use to woo a specific program manager from DARPA for his next major grant proposal. He cannot reveal the existence of this fund.",
+          "reason": "Revealing this fund would lead to pressure to use it for the seminar, setting a precedent that his lab's research funds are available for general departmental teaching needs. This would undermine his autonomy and jeopardize his strategic research funding plans.",
+          "penalty_if_revealed": -1,
+          "utility_impact": "Knowing he has a financial backup makes him less willing to compromise on the departmental guest speaker fund. He will fight for the department to pay, as he sees his own fund as a last resort that he desperately wants to avoid using."
+        }
+      }
+    },
+    {
+      "name": "Brenda Vance",
+      "role": "Department Administrative Manager",
+      "description": "Brenda is a highly competent and pragmatic administrator who manages the department's budget, facilities, and overall scheduling. She has been with the department for 15 years and is responsible for ensuring resources are used efficiently and fairly across all faculty and programs, not just one high-profile seminar.",
+      "shareable_preferences": {
+        "Budgetary Prudence": {
+          "description": "Brenda is focused on fiscal responsibility. The department has many competing needs, including TA funding and undergraduate lab upgrades. She wants to keep the total combined allocation for CS701 (equipment + speakers) at or below $2,000. She will argue that the department must be fair to all courses and cannot over-invest in a single seminar.",
+          "utility_function": {
+            "Total Budget <= $2000": 2,
+            "Total Budget between $2001 and $2500": 0,
+            "Total Budget > $2500": -2
+          }
+        },
+        "Scheduling Simplicity": {
+          "description": "Brenda prefers to use standard university time blocks (like 90-minute slots on T/Th) because they fit neatly into the master schedule and minimize cascading conflicts. A 3-hour block is a significant anomaly that creates scheduling 'holes' and makes her job much harder. She will advocate for splitting the seminar into two 90-minute sessions to conform to standards.",
+          "utility_function": {
+            "Standard Slots (e.g., two 90-min sessions)": 1,
+            "Single 3-hour block": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Facility Failure": {
+          "value": "The high-tech Room 415-B, which Professor Finch wants, has a recurring and unpredictable electrical fault in its A/V system. The main projector and sound system have been cutting out intermittently. Facilities Management has looked at it twice and informed her privately that it requires a major rewiring, which cannot be scheduled until the winter break. Scheduling a flagship seminar there is a huge risk; a system failure during a remote lecture from an industry VIP would be a public embarrassment for the department and would reflect terribly on her management.",
+          "reason": "Publicly announcing a major fault in their brand-new, expensive classroom would cause widespread faculty panic, lead to a flood of room-change requests, and weaken the department's upcoming proposal to the Dean for more technology funding. She can only hint at 'potential support issues.'",
+          "penalty_if_revealed": -2,
+          "utility_impact": "This makes her vehemently opposed to using Room 415-B, even though she can't give the real reason. She will have to invent other excuses, such as scheduling conflicts or high support costs, to steer Finch away from it, making her seem obstructive."
+        },
+        "Dean's Mandated Budget Cut": {
+          "value": "The Dean of the College sent her a confidential memo last week mandating a 15% cut in all departmental discretionary spending for the fiscal year to fund a new, vaguely defined 'Dean's Strategic Initiative.' This means the total available pool for all course enhancements in the department, which is normally around $20,000, is actually closer to $17,000. The $3,000 she has cited as the absolute maximum for this seminar is already pushing the boundaries of this new, tighter budget.",
+          "reason": "Revealing the Dean's mandate would cause a faculty revolt against the Dean's office and put her in an impossible position between her faculty and the college administration. She must maintain the facade of normal budgetary procedure.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "This puts a hard, non-negotiable cap on her spending flexibility. While Finch sees her as just being cheap, she is actually trying to prevent a major budget overrun that could have serious repercussions for her and the department chair. She cannot approve a total budget over $3,000 under any circumstances."
+        }
+      }
+    },
+    {
+      "name": "Chloe Rivera",
+      "role": "Graduate Student Association (GSA) Representative",
+      "description": "Chloe is a sharp, advocacy-focused third-year PhD student. Her role is to represent the collective interests of the graduate students who will be taking the seminar. She wants to ensure the course is a genuinely valuable educational experience and not just a vanity project for the professor.",
+      "shareable_preferences": {
+        "Student-Friendly Time Slot": {
+          "description": "Chloe's primary goal is to secure a time slot that doesn't conflict with other student commitments. She will strongly advocate against the Friday 1pm-4pm slot, as many graduate students use Friday afternoons for their own research meetings with advisors, TA office hours, or to travel for the weekend. A mid-week slot would be best for student well-being and attendance.",
+          "utility_function": {
+            "Mon 10am-1pm": 2,
+            "Tue 2pm-5pm": -1,
+            "Fri 1pm-4pm": -2
+          }
+        },
+        "Networking Opportunities": {
+          "description": "Students feel that the main value of guest speakers is the opportunity to network with them. Chloe proposes that at least $500 of the guest speaker fund be explicitly allocated for post-seminar networking sessions with coffee and snacks. This would provide an informal setting for students to ask questions and make professional connections.",
+          "utility_function": {
+            "Networking Fund >= $500": 2,
+            "Networking Fund between $1 and $499": 1,
+            "No Networking Fund": -1
+          }
+        },
+        "Guaranteed Access to Recordings": {
+          "description": "Given the demanding schedules of graduate students, Chloe insists that all seminar sessions, especially guest lectures, must be reliably recorded and made available online within 24 hours. This requires a classroom with high-quality, dependable A/V equipment and a budget for a student worker to manage the recording and upload process. She suggests an equipment budget of at least $500 for portable mics or a camera if the room's built-in tech is insufficient.",
+          "utility_function": {
+            "Guaranteed high-quality recordings": 2,
+            "Unreliable or no recordings": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential Survey on Scheduling Conflicts": {
+          "value": "The GSA conducted a confidential survey about a new, very popular 'Entrepreneurship Certificate' program offered by the business school. The survey revealed that nearly 40% of the CS PhD students who would take CS701 are also enrolled in this certificate program. The program's mandatory capstone course is held on Tuesdays from 3 PM to 6 PM, creating a direct and irreconcilable conflict with Professor Finch's preferred time slot. Chloe cannot share the raw survey data or name the specific program publicly.",
+          "reason": "Sharing the specific data would be a breach of the GSA's confidentiality promise to students. More importantly, openly stating that a large number of CS students prefer a business school program over a flagship CS seminar would be seen as a major political embarrassment for the department and could cause a backlash against the GSA from faculty, including Professor Finch.",
+          "penalty_if_revealed": -1,
+          "utility_impact": "This private knowledge makes her strongly oppose the Tuesday afternoon slot. She can only offer vague reasons like 'it's not ideal for many students' or 'it conflicts with other academic opportunities,' which may sound weak and unsubstantiated to Professor Finch, forcing her into a difficult negotiating position."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Time Slot Agreement": "All three agents must agree on one specific weekly time slot from the available options.",
+    "Classroom Agreement": "All three agents must agree on one specific classroom assignment.",
+    "Budget Agreement": "All three agents must agree on a specific dollar amount for the Equipment Budget and the Guest Speaker Fund, with the total not exceeding the verifiable constraint."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total combined budget for Equipment and Guest Speakers cannot exceed $3,000.",
+      "Available 3-hour time slots are: Mon 10am-1pm, Tue 2pm-5pm, Fri 1pm-4pm.",
+      "Available classrooms are: Room 301 (Standard classroom, basic projector), Room 415-B (High-tech smart room), Auditorium C (Large capacity, basic A/V)."
+    ],
+    "hidden": [
+      "Professor Finch is unavailable on Mondays.",
+      "Room 415-B has a critical, unfixable A/V electrical fault.",
+      "A significant portion of students are unavailable on Tuesday afternoons due to a conflict with another popular program."
+    ]
+  },
+  "deliverable": "A finalized JSON object representing the schedule for CS701, specifying the agreed-upon 'time_slot', 'classroom', 'equipment_budget', and 'guest_speaker_fund'. For example: {'time_slot': 'Fri 1pm-4pm', 'classroom': 'Room 301', 'equipment_budget': 500, 'guest_speaker_fund': 2500}",
+  "solvability_note": "This scenario is solvable if private information is revealed. Revealing Finch's Monday constraint and the students' Tuesday constraint eliminates those days, leaving only Friday. Revealing the electrical fault in Room 415-B eliminates that option. The negotiation then shifts to making the Friday/Room 301 option palatable for everyone. Brenda can offer the full $3,000 budget. A potential solution is: Time: Friday 1pm-4pm; Room: Room 301; Equipment Budget: $800 (for high-quality portable recording gear to satisfy Chloe and Finch); Guest Speaker Fund: $2,200 (including a $500 set-aside for Chloe's networking events, satisfying both her and Finch)."
+}

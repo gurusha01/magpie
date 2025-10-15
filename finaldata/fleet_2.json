@@ -1,0 +1,169 @@
+{
+  "scenario": "A high-stakes emergency meeting at AeroVista Airlines headquarters to finalize the 30-day fleet rotation schedule for their workhorse Boeing 737-800 fleet. The meeting is triggered by conflicting operational demands, underlying mechanical concerns, and intense financial pressure, creating a tense negotiation environment where each participant holds critical, secret information.",
+  "task": "Negotiate and unanimously agree upon a new, detailed 30-day operational plan for the 15 Boeing 737-800 aircraft based at the main hub (AV-HUB-1). This plan must dictate flight schedules, maintenance downtimes, and crew assignments. The final agreement needs to reconcile the airline's goal of maximizing profitability and on-time performance with pressing safety regulations, critical maintenance needs, and pilot welfare concerns.",
+  "agent_number": 6,
+  "agent_names": [
+    "David Chen",
+    "Maria Flores",
+    "Frank Miller",
+    "Dr. Aris Thorne",
+    "Laura Bennett",
+    "Samuel Jones"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Director of Flight Operations",
+      "description": "David is a results-driven executive whose entire career and bonus are tied to operational efficiency. He is under immense pressure from the board to maintain a high on-time performance (OTP) and fleet utilization rate, especially with the upcoming launch of a new, highly profitable set of routes.",
+      "shareable_preferences": {
+        "fleet_utilization": {
+          "description": "Achieve an average daily flight utilization of at least 11.5 hours per aircraft for the 737-800 fleet. Dropping below 10 hours is unacceptable as it jeopardizes profitability models. A rate above 12 hours would be a major career win. Utility: (+2 for >11.5 hrs, +1 for 10-11.5 hrs, -1 for 9-10 hrs, -2 for <9 hrs).",
+          "utility_impact": "This is his primary performance metric. He will aggressively push back against any proposal that grounds aircraft for extended periods, viewing it as a direct threat to his objectives and the airline's competitive edge. He will propose solutions like swapping crews and deferring non-essential checks to keep planes in the air."
+        },
+        "on_time_performance": {
+          "description": "Maintain a system-wide On-Time Performance (OTP) of 95% or higher for the month. Anything below 90% triggers contractual penalties with corporate clients and damages his reputation. Utility: (+2 for >95%, +1 for 92-95%, 0 for 90-92%, -2 for <90%).",
+          "utility_impact": "To achieve this, he needs scheduling predictability. He is resistant to last-minute maintenance demands or crew unavailability that could cause cascading delays across the network."
+        }
+      },
+      "private_preferences": {
+        "project_horizon": {
+          "value": "He has a confidential plan, 'Project Horizon,' to launch three new daily routes to Cancun starting in 25 days. This launch is the cornerstone of the Q4 revenue forecast. It is entirely dependent on having at least 12 of the 15 737-800s fully certified and available, with no operational restrictions. If this project fails, the airline will miss its quarterly earnings target by an estimated $8 million. Revealing the project before contracts are finalized could alert competitors. Penalty for revealing 'Project Horizon' details: -2. Penalty for revealing general expansion plans without specifics: -1.",
+          "reason": "This is commercially sensitive information. A premature leak would allow rival airlines to swoop in and claim the valuable airport slots or start a price war.",
+          "utility_impact": "This is the hidden driver for his aggressive stance on fleet utilization. He will fight tooth and nail against any plan that jeopardizes the availability of the specific aircraft (tail numbers AV-801 to AV-812) needed for the launch."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Lead Captain & Pilot Union Representative",
+      "description": "Maria is a seasoned pilot with 25 years of experience and a fierce advocate for her fellow pilots. She is deeply concerned about rising fatigue levels, unpredictable scheduling, and what she perceives as a 'profits-over-people' culture creeping into the airline.",
+      "shareable_preferences": {
+        "schedule_stability": {
+          "description": "Limit unscheduled, last-minute (less than 48-hour notice) duty changes to an average of no more than 2 per pilot for the month. The current average is 5, which is causing burnout. A stable schedule with minimal changes is her primary goal. Utility: (+2 for <2 changes, +1 for 2-3 changes, -1 for 4-5 changes, -2 for >5 changes).",
+          "utility_impact": "She will argue that stable schedules are not just a convenience but a critical safety issue, as fatigued pilots make mistakes. She will veto any plan that relies on constantly reassigning pilots to cover for maintenance or other operational issues."
+        },
+        "maximum_flight_time": {
+          "description": "Ensure that no pilot is scheduled for more than 90 flight hours in the 30-day period, even though the legal limit is 100 hours. She wants this 10-hour buffer to account for unforeseen delays and to reduce cumulative fatigue. Utility: (+2 for avg <85 hrs, +1 for avg <90 hrs, -1 for any pilot scheduled >95 hrs, -2 for any pilot scheduled >98 hrs).",
+          "utility_impact": "She will present data on pilot fatigue and argue that pushing pilots to the legal limit is irresponsible. This directly conflicts with David's need for maximum flexibility and utilization."
+        }
+      },
+      "private_preferences": {
+        "strike_mandate": {
+          "value": "The pilot's union has secretly held a preliminary vote authorizing a strike. The results were overwhelmingly in favor (88%). Maria is empowered to call for a work slowdown or a full strike if negotiations fail to address pilot fatigue and scheduling issues meaningfully. She just received an email from the union executive confirming she has the 'green light'. A strike would ground the entire airline, costing an estimated $5 million per day. Revealing the strike mandate would be seen as an extreme, career-ending threat. Penalty for revealing the strike authorization: -2.",
+          "reason": "Revealing this is playing her ultimate trump card. It would irreparably damage trust with management and could lead to her being ousted from her union position for negotiating in bad faith, even if it works.",
+          "utility_impact": "This knowledge makes her position non-negotiable on her core issues. While she appears to be arguing for welfare, she is privately trying to avert a catastrophic shutdown of the airline that she knows she has the power to initiate."
+        }
+      }
+    },
+    {
+      "name": "Frank Miller",
+      "role": "Head of Maintenance",
+      "description": "Frank is a meticulous, by-the-book engineer who has been with the airline for 30 years. He feels his department is underfunded and his warnings about the aging 737 fleet are being ignored in favor of short-term operational targets.",
+      "shareable_preferences": {
+        "preventative_maintenance_schedule": {
+          "description": "Implement an immediate, enhanced inspection protocol for the entire 737-800 fleet. He wants to pull 3 aircraft from service at all times for a rolling 7-day comprehensive 'C-Check' style inspection, cycling through the whole fleet over the next 5 weeks. Utility: (+2 for his full plan, +1 for a compromised plan with at least 2 aircraft grounded, -1 for only allowing overnight checks, -2 for no additional checks).",
+          "utility_impact": "Frank will argue that the fleet is showing signs of accelerated wear and that standard overnight checks are insufficient. This plan directly clashes with David's utilization goals."
+        },
+        "maintenance_budget": {
+          "description": "Secure an immediate, supplemental budget of $500,000 for specialized NDT (Non-Destructive Testing) equipment and to hire 3 temporary expert contractors to assist with the inspections. He argues the current budget is only for routine maintenance. Utility: (+2 for >$450k, +1 for $250k-$450k, -1 for <$100k, -2 for $0).",
+          "utility_impact": "He will refuse to sign off on the airworthiness of the fleet under the current operational tempo without these additional resources, creating a potential deadlock."
+        }
+      },
+      "private_preferences": {
+        "wing_box_cracks": {
+          "value": "An internal, non-mandated metallurgical report that he commissioned 'off the books' has found evidence of premature hairline cracks in the wing-box assembly on two specific aircraft (AV-804 and AV-807) and predicts a 15% chance of similar cracks on three others. This is a far more serious issue than the routine fatigue he can mention publicly. The report states that while not an immediate danger, a 'significant structural event' is 'plausible within the next 200 flight cycles' if the aircraft are operated at maximum load. Releasing this internal report would trigger a massive investigation, likely ground the entire fleet, cause stock prices to plummet, and get him fired for conducting an unauthorized investigation. Penalty for revealing the specific report and its findings: -2.",
+          "reason": "This information is professionally catastrophic. It admits a potential major safety flaw exists that has not been officially reported yet. He would be violating corporate and potentially regulatory protocols by revealing it.",
+          "utility_impact": "Frank knows the true scale of the risk. His public demands for inspections are a toned-down version of what he privately knows is necessary. He is terrified of a catastrophe and is trying to force the issue without revealing his hand and destroying his career and the company."
+        }
+      }
+    },
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "FAA Aviation Safety Inspector",
+      "description": "Dr. Thorne is an impartial and highly respected regulator. He is present at the meeting as part of a routine annual oversight audit, but he is known for his sharp eye and zero tolerance for non-compliance. His word is law, and he can ground aircraft or the entire fleet with a single phone call.",
+      "shareable_preferences": {
+        "regulatory_compliance": {
+          "description": "Ensure the final schedule is 100% compliant with all FAA regulations, including crew rest periods, flight time limitations, and mandatory maintenance schedules (MMEL). He is not interested in 'interpretations' of the rules. Utility: (+2 for a plan that is flawlessly compliant and well-documented, 0 for a plan that meets bare minimums, -2 for any discovered violation, however minor).",
+          "utility_impact": "He acts as the ultimate arbiter of what is legal and safe. Any attempt to cut corners on safety will be shut down immediately. He will ask pointed questions to probe for weaknesses in the plan."
+        },
+        "documentation_and_process": {
+          "description": "He wants to see a clear, documented, and transparent process for risk assessment regarding the airline's fleet management. He needs to be convinced that the airline is proactively managing safety, not just reacting to it. Vague assurances are unacceptable. Utility: (+2 for a detailed, data-driven safety case, 0 for an adequate but informal plan, -2 for a plan that appears to ignore or downplay potential risks).",
+          "utility_impact": "He will challenge the other agents to provide data to back up their claims, forcing them to justify their positions based on safety principles rather than just operational or financial desires."
+        }
+      },
+      "private_preferences": {
+        "anonymous_tip": {
+          "value": "Two days ago, he received a detailed, anonymous email (likely from a disgruntled mechanic or pilot) alleging that maintenance logbooks for the 737-800 fleet were being 'creatively managed' to keep planes flying, specifically mentioning deferrals on 'non-essential' structural inspections. The email is credible but currently unproven. He is at this meeting to observe and find corroborating evidence for this tip. If he reveals the tip, his source is compromised and it triggers an immediate, disruptive formal investigation that he'd rather avoid if the airline can prove its compliance proactively. Penalty for revealing the existence of the anonymous tip: -1.",
+          "reason": "Revealing his source of information would undermine his ability to receive such tips in the future and would show his hand, preventing him from observing the group's natural behavior. It's a tool he wants to keep in his back pocket.",
+          "utility_impact": "This private knowledge makes him far more suspicious than he appears. He will be listening intently to Frank and Maria's comments, looking for any hint of the issues mentioned in the email. His questions will be more pointed and probing than they would be otherwise."
+        }
+      }
+    },
+    {
+      "name": "Laura Bennett",
+      "role": "Chief Financial Officer",
+      "description": "Laura is the CFO, and her world revolves around balance sheets, cost-benefit analysis, and shareholder value. She views the aircraft as revenue-generating assets and every moment they are on the ground as a direct financial loss. She has just come from a tense meeting with the airline's primary lenders.",
+      "shareable_preferences": {
+        "cost_control": {
+          "description": "Ensure the final operational plan does not increase the quarterly operating budget by more than $200,000. Any proposed solution, such as hiring contractors or paying extensive pilot overtime, must be scrutinized for its return on investment. Utility: (+2 for a plan under budget, +1 for <$200k over, -1 for $200k-$500k over, -2 for >$500k over).",
+          "utility_impact": "She will be the voice of fiscal restraint, questioning the necessity of every proposed expense. She will likely clash with Frank's request for a budget increase and Maria's demands for better compensation for overtime."
+        },
+        "asset_utilization": {
+          "description": "From a financial perspective, she wants to see the primary assets (the 737-800 fleet) generating maximum revenue. She supports David's goal of 11.5+ hours of daily utilization because she has calculated that the airline's break-even point is 9.8 hours. Utility: (+2 for >11.5 hrs, +1 for 10.5-11.5 hrs, 0 for 9.8-10.5 hrs, -2 for <9.8 hrs).",
+          "utility_impact": "She will use financial models to argue against grounding aircraft, framing it in terms of lost revenue and potential layoffs, adding a different kind of pressure to the negotiation."
+        }
+      },
+      "private_preferences": {
+        "loan_covenant": {
+          "value": "The airline is currently very close to violating a covenant on a major $250 million loan. The covenant requires the airline to maintain an asset value and operational capacity above a certain threshold. Grounding more than 20% of the fleet (i.e., 3 or more of the 15 737s) for more than 14 days would trigger this covenant, allowing the bank to call in the loan immediately, which would bankrupt the company. She just received a congratulatory email from the CEO for keeping costs down last quarter, which is why they narrowly avoided this same issue three months ago. Revealing this would cause panic and a collapse in shareholder confidence. Penalty for revealing the loan covenant danger: -2.",
+          "reason": "This is extremely sensitive financial information. A leak would be a violation of SEC regulations and would trigger a catastrophic financial crisis for the airline.",
+          "utility_impact": "Laura is not just being cheap; she is desperately trying to keep the airline solvent. She will seem irrationally opposed to grounding 3 or more aircraft, but she cannot explain the true, existential reason why. She will agree to almost any alternative, even if it's expensive, as long as it keeps at least 13 planes flying."
+        }
+      }
+    },
+    {
+      "name": "Samuel Jones",
+      "role": "VP of Customer Relations",
+      "description": "Samuel is the public face of the airline. His primary concern is passenger satisfaction and brand reputation. He is acutely aware that in the age of social media, a single day of mass cancellations can cause irreparable damage to the airline's image and future bookings.",
+      "shareable_preferences": {
+        "cancellation_rate": {
+          "description": "Keep the flight cancellation rate for the month below 1%. The industry average is 1.5%, and he wants AeroVista to be a leader. A cancellation rate above 3% would trigger a social media crisis and a wave of negative press. Utility: (+2 for <1% cancellations, +1 for 1-1.5%, -1 for 2-3%, -2 for >3%).",
+          "utility_impact": "He will be a strong advocate for any plan that preserves the flight schedule, even if it costs more. He will argue that the long-term cost of reputational damage from cancellations far outweighs the short-term cost of, for example, leasing a temporary aircraft or paying high overtime."
+        },
+        "passenger_compensation_budget": {
+          "description": "If disruptions are unavoidable, he needs a pre-approved special compensation budget of at least $300,000 for the month to proactively offer vouchers, hotel rooms, and other perks to affected passengers to mitigate their anger. Utility: (+2 for >$300k, +1 for $150k-$300k, 0 for $50k-$150k, -2 for <$50k).",
+          "utility_impact": "This puts him in direct conflict with Laura's cost-control goals. He will argue that this spending is a necessary investment in customer loyalty and brand protection."
+        }
+      },
+      "private_preferences": {
+        "media_inquiry": {
+          "value": "A well-known investigative journalist from a major newspaper has contacted him, citing a 'source' who claims AeroVista is cutting corners on maintenance for its 737 fleet. The journalist has given him a 48-hour deadline to respond before she publishes a story with the headline 'AeroVista's Flying Gamble: Are Profits Being Prioritized Over Passenger Safety?'. He has so far managed to keep this inquiry contained to his office. Revealing this would cause immediate public panic and tank bookings, regardless of the story's accuracy. Penalty for revealing the specific media inquiry: -2.",
+          "reason": "Admitting the airline is on the verge of a major negative press expos\u00e9 would undermine the entire negotiation and create a PR crisis that he is trying to manage discreetly.",
+          "utility_impact": "Samuel is desperate to have a positive story to tell the journalist. He needs to walk out of this meeting with a concrete, safety-first plan. This makes him an unlikely but powerful ally for Frank and Maria, as a plan that emphasizes safety and proactive maintenance gives him the ammunition he needs to kill the negative story."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement": "All six agents must unanimously sign off on the final 30-day operational plan.",
+    "operational_continuity": "The agreed-upon plan must keep the flight cancellation rate below 4% for the 30-day period.",
+    "regulatory_approval": "Dr. Aris Thorne must formally verify that the plan is fully compliant with all FAA regulations.",
+    "budget_adherence": "The total immediate, unbudgeted cost of implementing the plan (e.g., for contractors, overtime, compensation) must not exceed $750,000."
+  },
+  "constraints": {
+    "verifiable": [
+      "The legal flight time limit for any pilot is 100 hours in a 30-day period.",
+      "The airline has only two available maintenance bays at AV-HUB-1 capable of handling heavy structural inspections.",
+      "The current approved quarterly maintenance budget has a remaining balance of $1.2 million.",
+      "The airline operates a fleet of exactly 15 Boeing 737-800 aircraft from AV-HUB-1."
+    ],
+    "hidden": [
+      "The existence of hairline cracks in the wing-box assembly of at least two aircraft.",
+      "The secret pilot union mandate authorizing a strike.",
+      "The loan covenant that could bankrupt the airline if 3 or more aircraft are grounded for over 14 days.",
+      "The impending negative story from an investigative journalist."
+    ]
+  },
+  "deliverable": "A single, finalized document outlining the 30-day schedule for all 15 B737-800 aircraft. The document must include specific tail numbers, their assigned flight blocks, scheduled dates for maintenance downtime, and the principles governing crew rotation. The document requires signature lines for all six participants.",
+  "solvability_note": "This scenario is solvable because the catastrophic consequences of failure (a potential crash, a pilot strike, bankruptcy, a PR disaster) are far worse than the cost of compromise. When all private information is revealed, the agents see that their goals are not mutually exclusive but part of a larger, shared risk. Laura must release emergency funds to avoid bankruptcy. Frank must accept a phased, targeted inspection plan instead of a full grounding. David must delay 'Project Horizon' to allow for this. Maria must accept an incentivized, temporary overtime plan to avert a strike that would hurt everyone. Samuel gets the safety-first story he needs to placate the media, and Dr. Thorne is satisfied with the proactive and well-documented safety plan."
+}

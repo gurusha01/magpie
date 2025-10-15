@@ -1,0 +1,180 @@
+{
+  "scenario": "A multi-stakeholder negotiation to finalize a three-year, three-state partnership for expanding a telepsychiatry service. The partnership involves a hospital system (MetroHealth), a health insurer (Veridian Health), and a tech startup (ConnectMind). The negotiation is complicated by undisclosed technical flaws, significant legal hurdles, and sensitive patient privacy concerns known only to certain parties.",
+  "task": "The seven stakeholders must negotiate and agree on a comprehensive Memorandum of Understanding (MOU) for the telepsychiatry service expansion. The MOU must detail the budget allocation, rollout timeline and scope, Key Performance Indicators (KPIs), a data governance policy, and a clinical/technical oversight plan. Failure to reach a unanimous agreement will dissolve the partnership.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Alisha Gupta",
+    "Ben Carter",
+    "Chloe Davis",
+    "David Chen",
+    "Emily Vance",
+    "Frank Miller",
+    "Grace Gonzalez"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Alisha Gupta",
+      "role": "Chief of Psychiatry, MetroHealth",
+      "description": "A respected, 25-year veteran psychiatrist. Dr. Gupta is the clinical lead for MetroHealth. She is cautiously optimistic about technology but her primary allegiance is to patient safety and clinical excellence. She fears that a rushed, tech-first approach will compromise the nuanced care required for psychiatric patients.",
+      "shareable_preferences": {
+        "phased_rollout": {
+          "description": "Proposes a phased, state-by-state rollout over 18 months. Year 1: Pilot in one state with a maximum of 5,000 patients to identify and resolve clinical workflow issues. Year 2: Expand to the second state. Year 3: Expand to the third. This cautious approach ensures patient safety and allows for iterative improvement. An 18-month timeline gets a +2 utility, a 12-month timeline is a +1, anything under 12 months is a -1, and a simultaneous 3-state launch is a -2.",
+          "utility_impact": "This preference is central to her professional ethics. A slower, more deliberate rollout allows her team to adapt, provide proper training, and ensure the technology is a tool for clinicians, not a replacement. She will strongly resist any plan that feels like a 'tech-bro' move-fast-and-break-things approach to her patients' mental health."
+        },
+        "strong_clinical_oversight": {
+          "description": "Demands the creation of a Clinical Review Board, chaired by her, with the authority to halt the service if patient safety metrics (e.g., adverse events, missed appointments) exceed a predefined threshold. She also wants final say on all patient-facing clinical content and workflows within the app. Full authority for the board (+2), advisory-only role for the board (0), no board (-2).",
+          "utility_impact": "This is non-negotiable for her. She needs to ensure that clinical, not business, priorities are the ultimate decider in care delivery. She sees this as her duty to her patients and her profession."
+        }
+      },
+      "private_preferences": {
+        "clinician_override_feature": {
+          "value": "Wants a 'red button' feature in the clinician's dashboard that allows a psychiatrist to instantly disable specific automated features of the app (like automated medication reminders or AI-driven symptom checkers) for a specific patient if they deem it clinically inappropriate. Ben Carter has previously dismissed this as 'technically complex and unnecessary.' If she shares this desire too early, she fears being labeled as anti-technology. Penalty for revealing this demand before a basic safety framework is agreed upon: -1.",
+          "reason": "She fears being perceived as obstructive or Luddite, which could undermine her authority in other areas of the negotiation. She wants to use this as a bargaining chip later.",
+          "utility_impact": "This feature is critical for her to trust the platform. It represents the principle of clinical judgment superseding algorithmic processes. Gaining this feature is a +2 utility, as it would secure her full buy-in. Failing to get it is a -1, as she would remain deeply skeptical of the platform's safety."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "CEO, ConnectMind",
+      "description": "The ambitious, charismatic founder of the tech startup ConnectMind. He is under immense pressure from his investors to scale the company rapidly. He is a master salesman but tends to overpromise on the platform's capabilities and downplay its current limitations.",
+      "shareable_preferences": {
+        "rapid_deployment_and_high_valuation": {
+          "description": "Advocates for a simultaneous 3-state launch within 4 months. He needs a total contract value of at least $5 million over the 3 years to justify the company's valuation for the upcoming Series B funding round. A contract of $5M+ gives him a +2 utility. A contract between $4.5M and $4.9M is a +1. Between $4.0M and $4.4M is a -1. Anything less than $4.0M is a -2, as it would trigger clawback clauses from his investors.",
+          "utility_impact": "His company's survival depends on this. He will project confidence and frame speed as a competitive advantage, arguing that a phased rollout gives competitors time to catch up. He will use growth projections and market opportunity to justify his aggressive timeline and budget."
+        },
+        "platform_autonomy": {
+          "description": "Wants the MOU to define ConnectMind as the sole arbiter of the platform's technical roadmap and feature development. He wants to avoid 'design by committee,' especially from clinicians who he feels don't understand software development. Full autonomy gets a +2 utility, joint approval on major features is a 0, and clinical veto power over features is a -2.",
+          "utility_impact": "He believes his team knows best how to build and scale a tech product. External oversight, in his view, stifles innovation and speed. He will argue that MetroHealth's role is to use the tool, not to design it."
+        }
+      },
+      "private_preferences": {
+        "imminent_funding_crisis": {
+          "value": "He has a term sheet for his Series B funding that is contingent on securing this specific contract, valued at a minimum of $4.5M, with a launch in at least two states within 6 months. His lead VC, Grace Gonzalez, sent him an email this morning stating: 'Ben, no deal, no check. If the MetroHealth MOU isn't signed within 30 days on these terms, we're pulling the bridge funding.' The company has less than 60 days of cash runway left. Revealing the full extent of this desperation would give the other parties all the leverage. Penalty for revealing the funding crisis: -2. Penalty for admitting he has a hard deadline from his board: -1.",
+          "reason": "Revealing this financial desperation would shatter his negotiating position and the perception of his company as a stable, long-term partner.",
+          "utility_impact": "This is his primary, all-consuming driver. He will agree to almost anything that doesn't overtly contradict his shareable preferences if it means getting a deal signed that meets his VCs' minimum requirements. Every day of delay causes him immense stress."
+        }
+      }
+    },
+    {
+      "name": "Chloe Davis",
+      "role": "VP of Payer Strategy, Veridian Health Insurance",
+      "description": "A sharp, data-driven executive from the insurance company funding the project. Chloe is focused on measurable outcomes, cost reduction, and managing financial risk. She is pragmatic and unsentimental, viewing this project as a large-scale experiment in reducing high-cost medical events.",
+      "shareable_preferences": {
+        "performance_based_reimbursement": {
+          "description": "Insists that at least 30% of ConnectMind's payments be tied to achieving specific, measurable KPIs, such as a 10% reduction in psychiatric emergency room visits or a 15% reduction in hospital readmission rates for the patient cohort. A 30%+ performance-based model is a +2 utility. 20-29% is a +1. 10-19% is 0. Less than 10% is a -1.",
+          "utility_impact": "This aligns the project with Veridian's core financial objectives. She needs to prove to her board that this isn't just a cost center but a strategic investment in value-based care. She cannot approve a purely fee-for-service model."
+        },
+        "data_access_for_analytics": {
+          "description": "Requires access to fully anonymized and aggregated patient data from the platform to run Veridian's own actuarial and efficacy models. This includes data on app engagement, symptom tracking scores, and treatment adherence. She is firm that this is for 'improving patient outcomes and managing population health.' Getting full, unrestricted access to the anonymized dataset is a +2 utility. Access to pre-canned reports from ConnectMind is a -1. No data access is a -2.",
+          "utility_impact": "Without this data, the project is a black box for Veridian. They cannot validate its effectiveness or justify the expense to regulators and their board. This is a foundational requirement for her."
+        }
+      },
+      "private_preferences": {
+        "intense_internal_pressure": {
+          "value": "Chloe's entire department's annual bonus, and her own promotion to Senior VP, are tied to reducing overall mental healthcare costs by 10% this fiscal year. The executive board has made it clear that the failure of this telepsychiatry initiative will result in her department being 'restructured.' This project is her only viable path to hitting that target. She can't reveal this personal and professional stake. Penalty for revealing the personal/departmental consequences: -2.",
+          "reason": "Admitting this level of personal and political pressure would weaken her position and make her seem desperate, especially when negotiating financial terms and KPIs.",
+          "utility_impact": "She has more flexibility than she lets on. While she will fight hard for her stated preferences, she is privately willing to compromise on the specifics (e.g., accept a slightly lower performance-based percentage or a slower rollout) as long as the project launches and can start generating cost-saving data before her end-of-year review."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Lead Software Engineer, ConnectMind",
+      "description": "The brilliant but ethically-conflicted lead engineer who built the ConnectMind platform. David is introverted and avoids conflict, but he has a deep sense of responsibility for the code he writes. He is intimidated by his CEO, Ben.",
+      "shareable_preferences": {
+        "adequate_technical_budget": {
+          "description": "Requires a minimum of $500,000 of the total contract value to be earmarked specifically for infrastructure upgrades, including server scaling, security audits, and hiring one additional DevOps engineer. He argues this is essential to maintain platform stability and security for the proposed user load. Getting $500k+ is a +2 utility. $400k-$499k is a +1. Anything less than $400k is a -2, as he believes the system would be unstable.",
+          "utility_impact": "He knows the platform is running on a fragile infrastructure that was fine for a small pilot but is not ready for a multi-state launch. This budget is crucial for him to do his job responsibly."
+        }
+      },
+      "private_preferences": {
+        "critical_safety_bug": {
+          "value": "David knows of a critical, intermittent bug in the e-prescription module. During a pilot, it caused a prescription for an antidepressant to be duplicated in the pharmacy's queue. The error was caught by the pharmacist, but David has traced it to a fundamental flaw in the database architecture. A proper fix requires a 6-month code refactor. He has confessed the full extent of this only to Ben, who told him to 'keep it under your hat' and framed it to others as a 'minor networking glitch.' Revealing the bug's existence would likely get him fired and make him a pariah in the industry. Penalty for revealing the bug: -2.",
+          "reason": "Fear of professional ruin, legal liability, and direct orders from his CEO to remain silent.",
+          "utility_impact": "This information haunts him. His highest utility outcome (+2) is a project plan that includes a 6-month pre-launch 'technical preparation phase,' which he could use to fix the bug without admitting its severity. A rapid launch of less than 6 months is a -2 utility for him, as he would live in constant fear of a catastrophic patient safety event."
+        }
+      }
+    },
+    {
+      "name": "Emily Vance",
+      "role": "Director, Minds Aligned Patient Advocacy Group",
+      "description": "A passionate and articulate patient advocate. Emily's brother suffered from severe depression, and she has dedicated her life to fighting mental health stigma and advocating for patient rights. She is deeply suspicious of for-profit companies in the mental health space.",
+      "shareable_preferences": {
+        "accessibility_and_equity_provisions": {
+          "description": "Demands that 15% of the total service slots be reserved for uninsured or underinsured patients, provided pro-bono. She also requires the platform to be fully compliant with WCAG 2.1 AA accessibility standards and available in both English and Spanish. A 15% pro-bono tier gets a +2 utility. 10% is a +1. 5% is 0. Less than 5% is a -2.",
+          "utility_impact": "This is the core of her organization's mission. She believes mental healthcare is a right, not a privilege. She will see any resistance to this as evidence that the partners are driven solely by profit, confirming her worst fears."
+        },
+        "transparent_data_policy": {
+          "description": "Insists on a 'Data Bill of Rights' for patients, written in plain language, that explicitly states what data is collected, how it is used, and that it will never be sold to third-party data brokers. She wants this to be a prominent, unmissable feature of the app's sign-up process. A clear policy with a no-selling clause gets a +2 utility. A standard, jargon-filled privacy policy is a -1. Any ambiguity about selling data is a -2.",
+          "utility_impact": "Protecting patients from exploitation is paramount. She views the potential for data misuse in mental health as a catastrophic, stigma-inducing risk."
+        }
+      },
+      "private_preferences": {
+        "damaging_focus_group_data": {
+          "value": "Emily recently conducted a confidential focus group with mental health patients. The report contains quotes expressing extreme fear and distrust of their data being handled by insurance companies, with Veridian Health (Chloe's company) being named specifically and unfavorably multiple times due to a past data breach. She promised the participants anonymity. Sharing the raw report would be a breach of trust, but the findings directly contradict Chloe's request for data access. Penalty for sharing the report or naming Veridian: -2. Penalty for strongly alluding to it: -1.",
+          "reason": "She would lose all credibility with the patient community she represents if she broke their confidence.",
+          "utility_impact": "This data fuels her insistence on an independent ethics board. Her ideal outcome (+2) is the formation of a third-party Data Ethics Council with binding veto power over how Veridian can use the patient data. She will use the general 'patient concerns' as her public reason, but the private data makes her completely inflexible on this point."
+        }
+      }
+    },
+    {
+      "name": "Frank Miller",
+      "role": "General Counsel, MetroHealth",
+      "description": "A meticulous, risk-averse lawyer for the hospital system. Frank's job is to protect MetroHealth from liability. He speaks in carefully chosen words and is concerned with contracts, regulations, and insurance. He sees every clause as a potential lawsuit.",
+      "shareable_preferences": {
+        "liability_indemnification": {
+          "description": "Requires that ConnectMind and Veridian fully indemnify MetroHealth against any and all liability arising from platform failures, data breaches, or cross-state licensing violations. He wants ConnectMind to hold a cyber-insurance policy of at least $10 million. Full indemnification gets a +2 utility. Shared liability is a -1. MetroHealth holding primary liability is a -2.",
+          "utility_impact": "This is the absolute bedrock of his position. The hospital will not expose itself to the novel risks of a third-party tech platform without a comprehensive liability shield. He has been instructed by the hospital board to walk away if this condition is not met."
+        }
+      },
+      "private_preferences": {
+        "undisclosed_licensing_blocker": {
+          "value": "Frank has discovered through his legal research that one of the three target states for the expansion, a key market for MetroHealth, has just passed a law (Statute 22.A-5) requiring an in-person physical examination with a patient before a doctor can provide telepsychiatry services. This directly contradicts ConnectMind's 'all-remote' model and makes a launch in that state legally impossible without a major change to the clinical workflow. He hasn't shared this yet because he doesn't want to be seen as the person who killed the deal before it even started. Penalty for revealing this too early, before understanding others' flexibility: -1.",
+          "reason": "He wants to avoid being labeled as an obstructionist. He is trying to find a solution (like changing the rollout order) before presenting the problem, to show he is a team player.",
+          "utility_impact": "This knowledge makes him strongly favor a phased rollout, which aligns with Dr. Gupta's preference. His ideal outcome (+2) is an MOU that starts with the two legally viable states first, with the third state's launch contingent on 'navigating the evolving regulatory landscape.' A plan that insists on a 3-state simultaneous launch is a -2, as he knows it is illegal."
+        }
+      }
+    },
+    {
+      "name": "Grace Gonzalez",
+      "role": "Partner, Innovate Capital (Venture Capitalist)",
+      "description": "A high-powered, influential venture capitalist and the lead investor in ConnectMind. Grace is laser-focused on a 10x return on her investment. She sees the partnership as a vehicle for massive data aggregation and user growth, which will lead to a lucrative exit (IPO or acquisition).",
+      "shareable_preferences": {
+        "aggressive_growth_kpis": {
+          "description": "Demands that the MOU includes aggressive user acquisition targets: 50,000 active users by the end of Year 1 and 200,000 by the end of Year 3. She wants these targets to be tied to performance bonuses for ConnectMind. Meeting these targets gives a +2 utility. 25k in Y1 is a +1. Anything less is a -1 as it signals a 'lifestyle business', not a unicorn.",
+          "utility_impact": "These are not just goals; they are the numbers she will use to sell the company to the next round of investors or a potential acquirer. She needs to show an exponential growth curve."
+        },
+        "scalability_over_customization": {
+          "description": "Argues that the platform must remain standardized to ensure rapid, low-cost scaling. She will push back against any requests for 'one-off' customizations for MetroHealth, such as Dr. Gupta's potential feature requests. A standardized platform gets a +2 utility. A few minor customizations is 0. A highly customized platform is a -2.",
+          "utility_impact": "Customization kills profit margins and slows growth. She sees MetroHealth as the first of many customers and will not allow the product to become a bespoke solution for just one hospital system."
+        }
+      },
+      "private_preferences": {
+        "data_monetization_strategy": {
+          "value": "Grace's investment thesis is not based on the service fees; it's based on the value of the aggregated, anonymized mental health data. Her confidential strategy memo to her partners outlines a plan to eventually package and sell this data as a 'market insights' product to pharmaceutical companies. She believes this is where the real 10x return lies. Revealing this would be catastrophic, framing her and ConnectMind as exploitative. Penalty for revealing this: -2.",
+          "reason": "This is a socially and ethically unacceptable business model to publicly admit. It would instantly destroy the trust of the patient advocates and clinicians, making the deal (and any future deals) impossible.",
+          "utility_impact": "This hidden agenda makes her strongly support Chloe's request for data access, as it sets a precedent. However, it also makes her vehemently opposed to Emily's idea of a Data Ethics Council with veto power, as it would kill her long-term monetization plan. Blocking the council is a +2 utility for her."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "unanimous_agreement": "All seven agents must formally agree to the final terms of the Memorandum of Understanding. A single dissenting agent constitutes failure.",
+    "comprehensive_mou": "The final MOU must contain specific, quantifiable, and agreed-upon terms for all five key areas: Budget Allocation, Rollout Timeline & Scope, KPIs, Data Governance Policy, and Oversight Plan."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total project budget from Veridian Health cannot exceed $5 million over the three-year term.",
+      "The partnership must launch in at least one state within 12 months to maintain regulatory approval.",
+      "MetroHealth policy requires that any third-party software handling Patient Health Information (PHI) must be HIPAA compliant and pass a security audit, which takes a minimum of 60 days."
+    ],
+    "hidden": [
+      "ConnectMind will go bankrupt in under 60 days without a signed contract of at least $4.5M.",
+      "A law in one of the three target states makes the proposed all-remote model illegal.",
+      "The ConnectMind platform has a critical patient safety bug that requires a 6-month engineering effort to fix properly."
+    ]
+  },
+  "deliverable": "A single, finalized Memorandum of Understanding (MOU) document that all seven agents have approved. The document must clearly articulate the agreed-upon terms for the budget, timeline, scope, KPIs, data governance, and oversight structure of the telepsychiatry partnership.",
+  "solvability_note": "The scenario is solvable if private information is revealed. David's bug and Frank's legal issue force a slower, phased rollout, which Dr. Gupta supports. This addresses the primary safety and legal risks. Ben's and Chloe's financial desperation makes them willing to accept the revised timeline to save the deal and their careers. Emily's data concerns, amplified by Grace's hidden monetization plan, can be addressed by creating a robust data governance policy and oversight board, which Frank would support for liability reasons. A compromise could involve a 2-state launch after an 8-month technical refactor and legal review period, with a budget of $4.8M and a data ethics board with advisory (but not veto) power, allowing all parties to achieve their core, non-negotiable goals."
+}

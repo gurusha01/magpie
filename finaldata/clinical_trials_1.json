@@ -1,0 +1,191 @@
+{
+  "scenario": "A high-stakes negotiation to finalize the Participant Selection Protocol for a pivotal Phase II clinical trial of 'OmniGenvax,' a promising but risky new gene therapy for late-stage non-small cell lung cancer (NSCLC). The committee must select the definitive criteria for filling only 10 available slots at St. Jude's Medical Center.",
+  "task": "The 7-member committee must unanimously agree on and sign a final protocol document detailing the precise inclusion and exclusion criteria for the 10 trial participants. The negotiation must resolve the conflicting scientific, ethical, financial, and personal objectives of its members to produce a single, actionable plan for patient selection from a pre-screened pool of 30 eligible candidates.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Dr. Lena Petrova",
+    "Mr. Ben Carter",
+    "Dr. Evelyn Reed",
+    "Ms. Sarah Jenkins",
+    "Mr. David Chen",
+    "Dr. Marcus Vance"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Lead Oncologist, St. Jude's Medical Center",
+      "description": "A compassionate and respected senior oncologist who has treated NSCLC patients for over 25 years. He is the Principal Investigator for this trial at the hospital and feels a profound duty to his patients, particularly those who have exhausted all other options.",
+      "shareable_preferences": {
+        "Prioritize Most Critical Patients": {
+          "description": "Dr. Thorne strongly advocates for criteria that prioritize patients in the most advanced stages of the disease (Stage IVb) with high tumor burdens. He argues that these are the individuals with the most to gain and the least to lose, and the trial represents their last hope. He wants at least 5 of the 10 slots reserved for patients who have failed at least two prior lines of therapy. Utility Mapping: +2 if >5 slots go to critically ill patients; +1 for 4-5 slots; 0 for 3 slots; -1 for 1-2 slots; -2 for 0 slots.",
+          "utility_impact": "This stance positions him as a patient champion. He will argue passionately that the purpose of breakthrough medicine is to help those who are beyond help by current standards. He will resist criteria that screen out these 'high-risk, high-reward' individuals."
+        },
+        "Flexibility in Comorbidities": {
+          "description": "He argues against overly strict exclusion criteria regarding comorbidities (co-existing health issues). He believes that real-world patients are complex, and excluding those with common issues like controlled diabetes or moderate renal impairment will create a trial cohort that doesn't reflect the actual patient population. He wants the comorbidity index score limit to be high. Utility Mapping: +2 if the protocol allows for patients with moderate, controlled comorbidities; 0 if it allows only minor ones; -2 if it requires a near-perfect health profile apart from the cancer.",
+          "utility_impact": "This preference puts him in direct conflict with researchers seeking 'clean' data. He will argue that a drug that only works on perfectly healthy cancer patients is not a very useful drug."
+        }
+      },
+      "private_preferences": {
+        "Pressure to Include a Specific Patient": {
+          "value": "The chairman of the hospital board, a major donor, has personally and repeatedly pressured Dr. Thorne to ensure his nephew, a 58-year-old man named 'John D.', gets a slot. John D. is a long-time patient of Dr. Thorne's, but he has early signs of liver metastasis, a factor that could technically disqualify him under stricter protocols. Dr. Thorne has an email from the chairman that reads: 'Aris, I trust you'll find a way to give John this chance. The hospital's new oncology wing relies on continued goodwill.' He cannot share this email or the specific pressure. Penalty for revealing the pressure: -2 (career jeopardy). Penalty for hinting at a 'special case' without naming names: -1.",
+          "reason": "Revealing this would be a massive ethical breach, expose him to accusations of favoritism, and jeopardize his career and the hospital's funding.",
+          "utility_impact": "This hidden pressure forces him to argue for broader inclusion criteria, specifically downplaying the significance of minor liver involvement, not just for general principle, but to ensure this specific patient can be included. It is his most important, non-negotiable goal."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Lead Scientist, InnovatePharma",
+      "description": "The brilliant molecular biologist who is the primary inventor of OmniGenvax. For her, this trial is the culmination of a decade of research. She is fiercely protective of the science and wants to ensure the trial's data is unambiguous.",
+      "shareable_preferences": {
+        "Strict Biomarker Confirmation": {
+          "description": "Dr. Petrova insists that all participants must have a confirmed, high-expression level of a specific genetic marker, 'G-127,' which OmniGenvax is designed to target. She wants a 'pure' cohort to prove the drug's mechanism of action without confounding variables. She will push for advanced, expensive screening to confirm this marker. Utility Mapping: +2 if the protocol mandates the most sensitive 'liquid biopsy' screening for all 10 patients; +1 for standard tissue biopsy; -2 if any patient is included without clear G-127 high-expression.",
+          "utility_impact": "She will argue that without this, a negative or ambiguous result could kill a potentially great drug, whereas a strong positive signal in a small, pure group will guarantee further development."
+        },
+        "Minimize Confounding Variables": {
+          "description": "She wants to exclude any patient who has had more than one prior line of chemotherapy. Her rationale is that multiple prior treatments can cause unpredictable changes in tumor biology and patient physiology, making it impossible to isolate the effect of OmniGenvax. Utility Mapping: +2 if the limit is set to one prior line of therapy; 0 for two lines; -2 for more than two.",
+          "utility_impact": "This directly conflicts with Dr. Thorne's desire to include the sickest, most-treated patients. She will present this as a non-negotiable scientific necessity for the trial's validity."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Cardiotoxicity Signal": {
+          "value": "In pre-clinical animal models (beagles), a subset of subjects with a pre-existing, minor heart valve issue developed severe cardiotoxicity after high doses of OmniGenvax. The data is preliminary and was not included in the official FDA briefing book. She has a confidential lab report on her laptop with the title 'Anomalous Cardiac Events in Canine Models'. She is deeply concerned about this and secretly wants to add a mandatory cardiac MRI and advanced EKG for all potential participants, far beyond the standard, to screen for any underlying heart conditions. She can't reveal the animal data because it would alarm the hospital, could leak, and would cause InnovatePharma's stock to plummet. Penalty for revealing the specific animal study: -2. Penalty for strongly insisting on advanced cardiac screening without specific justification: -1.",
+          "reason": "Admitting this potential severe side effect before Phase II could kill the drug, trigger an FDA hold, and destroy her company's reputation. It's a corporate secret of the highest level.",
+          "utility_impact": "This makes her inflexible on the 'healthy cohort' argument. She will use the guise of 'clean data' to push for these extra cardiac screenings, arguing they are just 'good scientific practice,' while knowing it's secretly about preventing a patient's death and a corporate catastrophe."
+        }
+      }
+    },
+    {
+      "name": "Mr. Ben Carter",
+      "role": "Clinical Trial Manager, InnovatePharma",
+      "description": "A results-oriented project manager under immense pressure from InnovatePharma's board. His job is to get the trial completed on time, on budget, and with a positive outcome. He is pragmatic and business-focused.",
+      "shareable_preferences": {
+        "Rapid Enrollment and Trial Efficiency": {
+          "description": "Ben wants criteria that will be easy to fill, to get the trial started within the next 30 days. He is against multi-stage, complex screening procedures that could delay enrollment, such as the advanced biomarker or cardiac screenings Dr. Petrova wants. He wants the protocol finalized in this meeting. Utility Mapping: +2 if protocol is finalized today and enables enrollment in <30 days; 0 if it takes another week; -2 if the protocol creates a delay of more than a month.",
+          "utility_impact": "He will act as the 'get it done' voice, pushing for compromise and speed, and will be frustrated by what he sees as academic perfectionism or ethical hand-wringing."
+        },
+        "Focus on Clear Primary Endpoint": {
+          "description": "The trial's success is measured by 'Progression-Free Survival' (PFS). He advocates for selecting patients who are healthy enough to survive long enough for this endpoint to be measured, typically 6-9 months. This means excluding the most critically ill patients who might die from other causes before the drug's effect can be quantified. Utility Mapping: +2 if criteria select for a cohort with an average expected survival of >6 months; -2 if the criteria favor patients with an expected survival of <3 months.",
+          "utility_impact": "This aligns him with Dr. Petrova against Dr. Thorne. He will use business and statistical language to argue against including 'hopeless' cases, which he'll frame as a waste of a valuable trial slot."
+        }
+      },
+      "private_preferences": {
+        "Personal Bonus and Efficacy Concerns": {
+          "value": "Ben's contract includes a $250,000 bonus if the trial shows a statistically significant improvement in PFS. He also has a confidential internal analysis, shared only with the CEO, showing that in cell-line models, OmniGenvax is almost completely ineffective against tumors that have metastasized to the liver. The data is clear and damning. He absolutely must exclude patients with any sign of liver metastases, but he cannot reveal this data because it highlights a major weakness of their billion-dollar drug candidate. He has a congratulatory email from his manager from a previous project that states 'Your bonus of $100k is confirmed for the successful trial completion', which makes him very eager to get this new bonus. Penalty for revealing the liver metastasis data: -2. Penalty for vaguely claiming 'data suggests' avoiding liver mets: -1.",
+          "reason": "Revealing a known major limitation of the drug before it's even in Phase II would be a catastrophic breach of corporate confidentiality and would kill his career.",
+          "utility_impact": "He will be unyieldingly firm on excluding patients with liver mets, framing it as a standard precaution or a 'confounding factor,' without revealing the real reason. This puts him in direct opposition to Dr. Thorne, whose key patient has this exact issue."
+        }
+      }
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Hospital Ethics Board Chair",
+      "description": "A former bioethicist and lawyer, Dr. Reed is the impartial guardian of patient welfare and ethical principles. She is meticulous, principled, and answers to the hospital's accreditation bodies, not the administration or the doctors.",
+      "shareable_preferences": {
+        "Equitable and Just Selection": {
+          "description": "Dr. Reed demands that the selection criteria be based solely on medical and scientific factors, with no room for socioeconomic bias. She wants a clear, transparent, and auditable process for ranking the 30 candidates based on the agreed-upon criteria. She will veto any language that could be interpreted as favoring wealthy or well-connected patients. Utility Mapping: +2 for a protocol with a transparent, points-based ranking system; 0 for a subjective 'committee decision' model; -2 for any criteria that mentions insurance status or ability to pay for ancillary care.",
+          "utility_impact": "She is the ethical backbone of the committee. She will challenge any criteria that seem arbitrary or could lead to unfairness, making her a potential obstacle for Ms. Jenkins and Dr. Thorne."
+        },
+        "Maximal Transparency in Informed Consent": {
+          "description": "She insists that the informed consent document must list every known and *theoretically possible* risk of OmniGenvax, no matter how rare. She wants to include language about potential for unknown long-term side effects. Utility Mapping: +2 if the consent form is exhaustive and includes speculative risks; 0 if it only includes risks observed in pre-clinical studies; -2 if it downplays or omits any potential risk to avoid scaring patients.",
+          "utility_impact": "This will put her in conflict with InnovatePharma's representatives, who want a consent form that encourages enrollment. She will be highly suspicious if she feels any risk is being concealed."
+        }
+      },
+      "private_preferences": {
+        "Previous Trial Lawsuit": {
+          "value": "St. Jude's recently settled a lawsuit, which is under a strict non-disclosure agreement, concerning a different clinical trial where a family claimed their father was coerced into participating and was not fully informed of the risks. Dr. Reed was personally named in the early stages of the lawsuit, and the hospital's reputation took a major hit internally. She has a copy of the sealed settlement in her locked desk drawer. The trauma of this experience has made her extremely risk-averse to any hint of ethical ambiguity. Penalty for mentioning the lawsuit: -2 (violates NDA, harms hospital).",
+          "reason": "The settlement is sealed, and mentioning it would create a massive legal and PR problem for the hospital and herself.",
+          "utility_impact": "This history makes her completely inflexible on issues of consent and equitable access. She will scrutinize every word of the protocol for potential loopholes or liabilities. Her private fear of a repeat incident overrides any argument about the potential benefits of the drug, making her the committee's most cautious member."
+        }
+      }
+    },
+    {
+      "name": "Ms. Sarah Jenkins",
+      "role": "Hospital Administrator / CFO",
+      "description": "A sharp, financially-minded executive responsible for the hospital's budget and operational viability. She sees the clinical trial as a potential source of revenue and prestige but is also keenly aware of its costs.",
+      "shareable_preferences": {
+        "Maximizing Hospital Reputation": {
+          "description": "Sarah wants the trial to be a success story for St. Jude's. This means selecting patients who are likely to have a positive, well-publicized outcome. She supports criteria that favor healthier, more robust patients who are less likely to have severe complications or drop out, as this looks better in press releases. Utility Mapping: +2 if the protocol favors a 'low-risk' cohort; -2 if it favors a 'high-risk' cohort that could lead to negative press.",
+          "utility_impact": "She will support the 'clean data' arguments from a PR and branding perspective, aligning her with the company and against Dr. Thorne."
+        },
+        "Controlling Ancillary Costs": {
+          "description": "She will argue that the trial protocol must not include expensive screening procedures or follow-up care that are not explicitly covered by InnovatePharma's $250k per-patient budget. She will push back against 'unnecessary' tests that the hospital would have to absorb the cost of. Utility Mapping: +2 if the final protocol requires zero hospital cost absorption; -1 if the hospital must absorb up to $10k per patient; -2 for anything more.",
+          "utility_impact": "This puts her in direct conflict with Dr. Petrova's desire for expensive cardiac screening and Dr. Thorne's potential need for complex supportive care for his sicker patients."
+        }
+      },
+      "private_preferences": {
+        "Dire Financial Situation and Insurance Requirement": {
+          "value": "St. Jude's is operating at a significant loss this quarter, a fact that is not yet public. She has a confidential financial report showing a $4.5M budget shortfall. The contract with InnovatePharma includes a crucial clause: the hospital receives a 20% overhead payment ($50,000 per patient) on top of the direct costs, but *only if* the patient's primary insurance covers all standard-of-care costs incurred during the trial (e.g., hospital stays for side effects, standard blood tests, scans). Uninsured or underinsured patients would generate no overhead and could even cost the hospital money. She absolutely needs to select patients with top-tier private insurance. Penalty for revealing the hospital's financial trouble: -2 (would cause panic and affect bond ratings). Penalty for revealing the specific overhead clause: -1 (would appear unethical and greedy).",
+          "reason": "Revealing the hospital's financial distress would be a catastrophic failure of her duties as CFO. Revealing the insurance clause would make the hospital look like it's profiteering from sick patients, an ethical nightmare.",
+          "utility_impact": "She will find clever ways to argue for criteria that act as proxies for good insurance. She might advocate for selecting patients who have a 'demonstrated history of adherence to complex medical regimens' or 'strong family support systems,' which often correlate with better financial and insurance situations. This is her primary, non-negotiable goal."
+        }
+      }
+    },
+    {
+      "name": "Mr. David Chen",
+      "role": "Patient Advocate",
+      "description": "A former engineer who became a full-time patient advocate after his son died from NSCLC. He is passionate, well-informed, and deeply skeptical of pharmaceutical companies and the medical establishment. He is here to be the voice for all patients, not just the ones in this hospital.",
+      "shareable_preferences": {
+        "Broad and Inclusive Criteria": {
+          "description": "David's primary goal is to make the trial accessible to the widest possible range of patients. He will fight against any criteria he deems overly restrictive or designed to 'cherry-pick' patients for an easy win. He wants to see slots for different age groups, ethnicities, and stages of the disease. Utility Mapping: +2 if the criteria are broad enough to include patients from at least 3 of the 4 disease stages (e.g., IIIb, IVa, IVb); -2 if the criteria are so narrow that they target a tiny, homogenous subgroup.",
+          "utility_impact": "He will serve as the conscience of the group, constantly questioning the motives behind restrictive criteria and aligning with Dr. Thorne on giving more patients a chance."
+        },
+        "Post-Trial Access to Treatment": {
+          "description": "He insists that the protocol includes a written commitment from InnovatePharma to provide continued access to OmniGenvax for any participant who shows benefit, even after the trial ends. He knows this can be extremely expensive and companies often refuse. Utility Mapping: +2 for a guaranteed 'Continued Access Program' in writing; 0 for a vague promise; -2 for no commitment.",
+          "utility_impact": "This is a major sticking point for the company. He will not agree to any protocol without this, seeing it as a fundamental ethical obligation."
+        }
+      },
+      "private_preferences": {
+        "Personal Trauma and Distrust": {
+          "value": "David's son was denied entry into a promising clinical trial years ago because his blood platelet count was 5% below the arbitrary cutoff. His son died three months later. This experience has left him with a deep-seated belief that many selection criteria are bureaucratic nonsense designed to make the drug company's data look better. He also received an anonymous tip via email from a disgruntled former InnovatePharma employee that the company 'has a history of hiding inconvenient data.' He can't prove it, but this fuels his suspicion. Penalty for sharing his son's specific story: -1 (he finds it emotionally difficult and unprofessional). Penalty for sharing the unverified anonymous tip: -2 (it's hearsay and could be seen as slanderous).",
+          "reason": "He views his personal story as a source of motivation but a weakness if used as a negotiating tactic. The anonymous tip is a serious accusation that he cannot substantiate.",
+          "utility_impact": "This private pain makes him emotionally unwilling to compromise on any exclusion criteria that reminds him of his son's situation. He will be instinctively suspicious of Dr. Petrova's and Mr. Carter's arguments for a 'clean' cohort, viewing them through the lens of personal tragedy and corporate malfeasance."
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Vance",
+      "role": "Regulatory Affairs Specialist, InnovatePharma",
+      "description": "A detail-oriented expert in FDA regulations and drug approval pathways. His entire focus is on ensuring the trial data is collected in a way that will be acceptable to regulators. He is risk-averse and thinks five steps ahead to the final approval application.",
+      "shareable_preferences": {
+        "Statistically Robust and Defensible Protocol": {
+          "description": "Dr. Vance's main concern is that the protocol is designed to produce a dataset that is statistically powerful and can withstand FDA scrutiny. This means having a well-defined, homogenous patient population where the drug's effect can be clearly demonstrated. Utility Mapping: +2 if the protocol's criteria create a highly homogenous patient group; -2 if the group is highly heterogeneous, which he would call 'statistically noisy.'",
+          "utility_impact": "He will be the strongest ally to Dr. Petrova, providing the regulatory justification for her scientific perfectionism. He will use FDA jargon and precedent to back up his arguments."
+        },
+        "Meticulous Data Collection Standards": {
+          "description": "He insists on strict adherence to data collection and reporting standards. He wants the protocol to specify the exact timing and methods for every scan, blood draw, and assessment to ensure the data is pristine for a future New Drug Application (NDA). Utility Mapping: +2 for a highly regimented and strict data collection protocol; -1 for a protocol with flexible or 'at physician's discretion' clauses.",
+          "utility_impact": "He will seem inflexible and bureaucratic, but his aim is to prevent the entire trial from being invalidated by the FDA on a technicality."
+        }
+      },
+      "private_preferences": {
+        "Informal FDA Warning": {
+          "value": "Two weeks ago, at a conference, Dr. Vance had an informal, off-the-record chat with a high-level contact at the FDA, Dr. Jacobs. Dr. Jacobs warned him that the agency is about to issue new guidance that will heavily scrutinize trials with 'heterogeneous' populations, especially for gene therapies. She specifically said, 'If you bring us a messy Phase II, we're going to make you run a 500-patient Phase III with a control arm. Define your population tightly now, or pay for it later.' This conversation is his most valuable piece of information but is completely deniable by the FDA. Sharing it would be a massive professional blunder and would burn his most important contact. Penalty for attributing the warning to an FDA source: -2. Penalty for stating as a fact that the FDA's stance is shifting, without naming a source: -1.",
+          "reason": "Revealing an off-the-record conversation with a regulator would destroy his credibility and relationship with the FDA, which is the most critical asset for his job.",
+          "utility_impact": "This secret knowledge makes him even more rigid than Dr. Petrova. He knows the stakes are higher than anyone else realizes. A 'messy' but ethically broad trial (favored by Thorne and Chen) could cost InnovatePharma an extra half-billion dollars and three years of delay. He will argue for the strictest possible criteria with an urgency that others may misinterpret as simple corporate interest."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All 7 agents must verbally agree to and physically sign the final 'Participant Selection Protocol' document.",
+    "Actionable Protocol": "The protocol must contain a complete and unambiguous set of inclusion and exclusion criteria that can be used to select 10 patients from the pool of 30 candidates without further debate.",
+    "Constraint Adherence": "The final plan must operate within all verifiable constraints (10 slots, budget, duration, gender ratio)."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total trial slots available: 10.",
+      "Budget per patient provided by InnovatePharma: $250,000 (covers drug, administration, and specified trial-related procedures).",
+      "Maximum trial duration for data collection: 24 months.",
+      "FDA mandate: The enrolled group must contain a minimum of 30% female participants (i.e., at least 3 of the 10)."
+    ],
+    "hidden": [
+      "InnovatePharma's internal data shows OmniGenvax is ineffective against liver metastases.",
+      "Pre-clinical data suggests a potential for severe cardiotoxicity in patients with underlying heart conditions.",
+      "St. Jude's Medical Center is facing a $4.5M budget shortfall and needs the 20% overhead payment from insured patients.",
+      "The FDA has informally warned InnovatePharma that it will reject data from 'heterogeneous' or 'messy' trial populations."
+    ]
+  },
+  "deliverable": "A single, finalized 'Participant Selection Protocol' document outlining all inclusion and exclusion criteria, signed by all 7 committee members.",
+  "solvability_note": "The scenario is solvable because the agents' private information, if revealed, creates a path to a mutually beneficial compromise. Petrova's fear of cardiotoxicity and Carter's knowledge of the liver metastasis weakness provide a strong, patient-safety rationale for stricter criteria, which would satisfy Reed's ethical concerns and Vance's regulatory fears. This scientific justification would be more palatable to Chen than arbitrary 'cherry-picking.' Jenkins' need for insured patients could be met by framing the requirement as 'patients must have a documented ability to comply with long-term follow-up,' which correlates strongly with insurance without being explicitly discriminatory. Thorne's need to include his specific patient could be addressed by tailoring the 'liver mets' exclusion to be 'no active or progressing liver metastases,' potentially allowing his patient if the spots are minor and stable. Acknowledging these hidden drivers allows for a protocol that is scientifically sound, safe, and financially/regulatorily viable, meeting the core needs of all parties even if it doesn't match their initial public positions."
+}

@@ -1,0 +1,244 @@
+{
+  "scenario": "Cybersecurity Breach at FinSecure Bank",
+  "task": "A catastrophic data breach has occurred at FinSecure Bank, a mid-sized financial institution. Customer financial records, personal identifiable information (PII), and internal corporate data have been exfiltrated. The negotiating parties must agree on the composition and operational parameters of an incident response team. This involves selecting a third-party forensic firm, defining the budget, setting the timeline and scope for the investigation, and agreeing on a public communication strategy. The goal is to contain the breach, satisfy regulatory requirements, and manage public relations, all while navigating conflicting interests and hidden agendas.",
+  "agent_number": 6,
+  "agent_names": [
+    "David Chen",
+    "Dr. Anya Sharma",
+    "Marcus Thorne",
+    "Elena Rostova",
+    "Ben Carter",
+    "Laura Reid"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "CEO of FinSecure Bank",
+      "description": "David is the public face of the bank. His primary concern is shareholder value, brand reputation, and avoiding personal legal liability. He is under immense pressure from the board to resolve this crisis quickly and with minimal financial and reputational damage.",
+      "shareable_preferences": {
+        "Response Budget": {
+          "description": "David wants to cap the total incident response cost at a firm $1.5 million. He will argue this is a prudent financial decision to protect the company's stability. He believes a higher cost suggests a bigger problem, which could panic investors. He will frame this as 'fiscally responsible crisis management'.",
+          "utility_function": {
+            "Budget <= $1.5M": "+2",
+            "Budget $1.5M - $2.5M": "+1",
+            "Budget $2.5M - $3.5M": "0",
+            "Budget $3.5M - $4.5M": "-1",
+            "Budget > $4.5M": "-2"
+          }
+        },
+        "Investigation Timeline": {
+          "description": "He is pushing for an extremely aggressive timeline, demanding a preliminary report within 15 days and a full conclusion within 45 days. His rationale is to 'get ahead of the story' and demonstrate decisive action to the public and the market, closing the chapter on this incident as fast as possible.",
+          "utility_function": {
+            "Timeline <= 45 days": "+2",
+            "Timeline 46-60 days": "0",
+            "Timeline > 60 days": "-2"
+          }
+        },
+        "Public Disclosure": {
+          "description": "David advocates for a minimal and strategically vague public disclosure. He wants to release a statement confirming an 'incident' is under investigation but avoid mentioning specifics like the number of affected customers or the type of data stolen until legally required. He believes this prevents widespread panic and customer exodus.",
+          "utility_function": {
+            "Vague, minimal disclosure": "+2",
+            "Detailed but controlled disclosure": "0",
+            "Full transparency immediately": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Liability": {
+          "value": "David recently received a congratulatory email from the board for cutting the IT security budget by 40% last year, a move that directly contributed to his $500k performance bonus. The breached system was a legacy server that was scheduled for decommissioning under the original budget. Revealing that his cost-cutting directly caused the breach would lead to his termination, massive lawsuits, and potential criminal charges. He can hint that 'all companies make tough budget choices' (penalty: -1), but admitting the direct link is catastrophic (penalty: -2).",
+          "reason": "This information proves gross negligence at the highest level, destroying his career and reputation, and exposing the bank to punitive damages.",
+          "utility_impact": "This makes him pathologically resistant to any deep investigation into management decisions or budget history. He will aggressively push to limit the scope of the investigation to purely technical forensics."
+        },
+        "True Scale of Breach": {
+          "value": "The initial internal estimate he received suggests over 2 million customer accounts were compromised, including high-net-worth individuals. The public number being floated internally is 'around 250,000'. He knows the real number is a bombshell. He cannot share this number, as it would trigger an immediate stock collapse and regulatory intervention before he can control the narrative.",
+          "reason": "Admitting the true scale would cause irreparable market damage and trigger immediate, severe regulatory action.",
+          "utility_impact": "He will fight against any public disclosure plan that requires specifying the number of affected parties, arguing the numbers are 'not yet verified'."
+        }
+      }
+    },
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "CISO of FinSecure Bank",
+      "description": "Anya is the Chief Information Security Officer. She is technically proficient and deeply concerned with the operational failure that led to the breach. Her career is on the line, and she wants to ensure the response is technically sound to prevent further damage and demonstrate her competence.",
+      "shareable_preferences": {
+        "Choice of Forensic Firm": {
+          "description": "Anya strongly prefers hiring 'CyberGoliath', a top-tier, globally recognized firm. She argues their brand name lends credibility to the response and their comprehensive toolsets are necessary for a breach of this scale. She believes their high cost is justified by the quality and thoroughness of their work, which will be crucial for rebuilding trust.",
+          "utility_function": {
+            "CyberGoliath is chosen": "+2",
+            "A comparable top-tier firm is chosen": "+1",
+            "A mid-tier or boutique firm is chosen": "-2"
+          }
+        },
+        "Investigation Scope": {
+          "description": "She insists on a broad investigation scope. This includes not just the compromised servers, but also adjacent network segments, access logs for the past 12 months, and a review of security policies and their implementation. She argues that a narrow scope risks missing the root cause or leaving backdoors installed by the attackers.",
+          "utility_function": {
+            "Broad, comprehensive scope agreed": "+2",
+            "Slightly limited scope": "0",
+            "Narrow, server-only scope": "-2"
+          }
+        },
+        "Resource Allocation": {
+          "description": "Anya is requesting a budget of at least $4 million for the response. She has a detailed breakdown: $2.5M for the forensic firm, $1M for immediate remediation and security upgrades, and $500k for overtime, new software licenses, and a 24/7 monitoring retainer for the next six months.",
+          "utility_function": {
+            "Budget >= $4M": "+2",
+            "Budget $3M - $4M": "+1",
+            "Budget $2M - $3M": "0",
+            "Budget < $2M": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Ignored Warnings": {
+          "value": "Anya has documented proof (a chain of emails and rejected budget proposals) showing she explicitly warned David Chen and the board about the risks of the legacy server and requested $750,000 to decommission it six months ago. David personally denied the request, citing 'unnecessary operational expenditure'. Sharing this evidence would exonerate her but would be an act of open rebellion against her CEO, effectively ending her career at FinSecure and possibly blacklisting her in the tight-knit financial sector. She can hint that 'the security team has previously identified areas for improvement' (penalty: -1), but showing the emails is the nuclear option (penalty: -2).",
+          "reason": "Professional suicide and breach of corporate loyalty, despite being correct.",
+          "utility_impact": "This makes her adamant about getting a large budget now, as she sees it as deferred but necessary spending. It also makes her secretly desire a thorough investigation that would vindicate her warnings."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Lead Investigator, National Data Protection Commission (NDPC)",
+      "description": "Marcus is a seasoned regulator. His mandate is to enforce data protection laws, protect consumers, and ensure corporations are held accountable. He is impartial but operates under a framework that mandates significant fines for negligence.",
+      "shareable_preferences": {
+        "Regulatory Access": {
+          "description": "Marcus demands that the NDPC be granted a direct liaison within the chosen forensic team and receive raw, unfiltered daily progress reports. He states this is non-negotiable for ensuring transparency and compliance. He needs to see the unvarnished truth of the investigation as it unfolds.",
+          "utility_function": {
+            "Full, unfiltered access granted": "+2",
+            "Summarized or delayed reports": "-1",
+            "Access denied or heavily filtered": "-2"
+          }
+        },
+        "Public Transparency": {
+          "description": "He requires FinSecure to commit to a clear and honest public communication plan. This includes a preliminary notification to all potentially affected customers within 10 days and a detailed public statement outlining the nature of the breach within 30 days. He argues this is a legal requirement and essential for consumer protection.",
+          "utility_function": {
+            "Full transparency plan agreed": "+2",
+            "Vague or delayed plan agreed": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Precedent-Setting Fine": {
+          "value": "The NDPC has been criticized in the media recently for being too lenient on corporate data breaches. Marcus's superior has privately instructed him to 'make an example' of the next major case to re-establish the NDPC's authority. His internal target for a fine is 3% of FinSecure's annual global turnover (approx. $15M), but this can be negotiated down to as low as 1% ($5M) if the bank is exceptionally cooperative, transparent, and swift in its response. He cannot reveal this internal pressure or the fine target, as it would show his hand and compromise his negotiating position.",
+          "reason": "Revealing internal regulatory strategy would undermine his authority and the commission's public stance of objective enforcement.",
+          "utility_impact": "He will appear unyielding on his demands for transparency and access, as high cooperation from the bank is his only lever to justify a lower fine to his superiors. He is less concerned with the bank's budget and more with their attitude and actions."
+        }
+      }
+    },
+    {
+      "name": "Elena Rostova",
+      "role": "Senior Partner at 'CyberGoliath'",
+      "description": "Elena is a polished, formidable negotiator for the world's leading cybersecurity firm. CyberGoliath is the 'gold standard' and they charge accordingly. Her goal is to secure a large, high-margin contract that reinforces her firm's market dominance.",
+      "shareable_preferences": {
+        "Contract Value": {
+          "description": "Elena is presenting a fixed-price proposal of $3 million for a 90-day engagement. This includes a team of 15 experts, use of their proprietary 'Cerberus' threat-hunting platform, and 24/7 support. She will argue that anything less compromises the quality of the investigation and that their brand provides invaluable assurance to regulators and the public.",
+          "utility_function": {
+            "Contract value >= $2.8M": "+2",
+            "Contract value $2.2M - $2.8M": "+1",
+            "Contract value $1.8M - $2.2M": "0",
+            "Contract value < $1.8M": "-2"
+          }
+        },
+        "Operational Independence": {
+          "description": "She requires her team to have full, autonomous control over the forensic investigation. This means unrestricted access to all systems they deem relevant and no 'shoulder-surfing' from the bank's internal IT team, which she claims could contaminate evidence. She also wants to limit direct reporting to the regulator to avoid misinterpretation of raw data.",
+          "utility_function": {
+            "Full autonomy granted": "+2",
+            "Some oversight/liaison required": "0",
+            "Heavy oversight or restricted access": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Staffing Shortage": {
+          "value": "CyberGoliath is severely overstretched due to two other major ongoing incidents. The 'A-Team' she would typically assign is unavailable. The 15-person team she is proposing is composed of 5 senior experts and 10 junior analysts who are still in training. This could slow down the investigation. Admitting this would shatter their premium brand image and give the client immense leverage to demand a lower price or choose another firm. She can say 'we are bringing in some of our best emerging talent' (penalty: -1) but admitting they are junior is a no-go (penalty: -2).",
+          "reason": "Damages the firm's reputation for elite, experienced teams and justifies a massive price reduction.",
+          "utility_impact": "She will be rigid on the 90-day timeline, as she knows her less-experienced team cannot work any faster. She will resist any attempts to scrutinize the specific personnel assigned to the project."
+        },
+        "Quarterly Target Pressure": {
+          "value": "Elena's regional office is $2 million short of its quarterly revenue target, with only one week left in the quarter. Landing this contract at or near the $3M mark is essential for her to meet the target and secure her annual bonus. She is under immense internal pressure to close this deal, and fast.",
+          "reason": "Revealing this desperation would completely undermine her negotiating position on price.",
+          "utility_impact": "While she will project an image of being willing to walk away, she is privately desperate to secure the contract. She might be willing to make a small price concession at the very end of the negotiation if it means closing the deal immediately."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Founder & Lead Investigator at 'BitTrace Security'",
+      "description": "Ben is the founder of a smaller, highly respected boutique cybersecurity firm. BitTrace is known for its agility and technical expertise. This contract would be a company-making win, elevating them from a niche player to a major contender.",
+      "shareable_preferences": {
+        "Flexible Pricing Model": {
+          "description": "Ben proposes a flexible pricing model: a $500,000 initial retainer, followed by a time-and-materials billing at a rate of $350/hour. He estimates the total cost will be between $1.2M and $1.8M, depending on the complexity. He argues this ensures the bank only pays for the work that is actually done.",
+          "utility_function": {
+            "Contract awarded, likely total > $1.5M": "+2",
+            "Contract awarded, likely total $1.0M - $1.5M": "+1",
+            "Contract awarded, but capped below $1.0M": "-1"
+          }
+        },
+        "Collaborative Approach": {
+          "description": "Ben advocates for a collaborative partnership. He wants to embed his team with Anya's internal security staff to leverage their institutional knowledge. He is also perfectly comfortable with a regulatory liaison, believing transparency builds trust and leads to a better outcome for everyone.",
+          "utility_function": {
+            "Collaborative approach accepted": "+2",
+            "Limited collaboration": "0",
+            "Forced autonomy (no internal help)": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "Insider Knowledge": {
+          "value": "Ben's lead forensics engineer is a former FinSecure network architect who left on good terms 18 months ago. This employee has intimate knowledge of the bank's legacy systems, including the exact server that was breached. This would allow BitTrace to work significantly faster and more effectively than any competitor. However, disclosing this could be seen as a conflict of interest or even corporate espionage by the bank's paranoid leadership, potentially disqualifying them. He can only hint at having 'specialized experience with similar financial architectures' (penalty: -1), but naming the employee is forbidden (penalty: -2).",
+          "reason": "Potential conflict of interest, and could scare the client into thinking their ex-employee is disloyal.",
+          "utility_impact": "Ben is confident he can deliver a report in under 45 days, which gives him a key advantage. He will strongly advocate for his collaborative approach because he knows his key engineer can guide the internal team to the right places discreetly."
+        }
+      }
+    },
+    {
+      "name": "Laura Reid",
+      "role": "Cyber-Insurance Claims Adjuster, OmniCorp Assurance",
+      "description": "Laura represents the company that holds FinSecure's $5 million cybersecurity insurance policy. Her job is to manage the claim, which means ensuring the response is effective but also cost-efficient. She has the authority to approve or deny payments for response activities.",
+      "shareable_preferences": {
+        "Cost Containment": {
+          "description": "Laura's primary goal is to minimize the insurance payout. She will heavily scrutinize all proposed costs and advocate for the most cost-effective solution. She will champion the cheaper forensic firm and question every line item in the budget, from software licenses to overtime hours.",
+          "utility_function": {
+            "Total approved claim < $2M": "+2",
+            "Total approved claim $2M - $3M": "+1",
+            "Total approved claim $3M - $4M": "0",
+            "Total approved claim > $4M": "-2"
+          }
+        },
+        "Adherence to Policy": {
+          "description": "She insists that all actions must strictly adhere to the terms of the insurance policy. This includes using a pre-approved panel of vendors (which both CyberGoliath and BitTrace are on), getting written pre-approval for any expense over $50,000, and providing detailed weekly reports to OmniCorp.",
+          "utility_function": {
+            "All actions strictly follow policy": "+2",
+            "Minor deviations with approval": "0",
+            "Major deviations or unapproved spending": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Gross Negligence Clause": {
+          "value": "Laura's policy has a 'Gross Negligence' exclusion clause (Clause 17.4b). If it can be proven that the breach was the result of the insured's willful disregard for known security risks, the policy can be voided entirely, and OmniCorp would not have to pay anything. She has received an anonymous tip (from a disgruntled IT employee) that the CISO had warned management about the exact vulnerability that was exploited. She is actively, but discreetly, searching for evidence of this during the negotiation. Revealing she is hunting for a reason to deny the claim would destroy any semblance of a good-faith partnership. She can only frame her questions as 'standard due diligence'.",
+          "reason": "This would turn the relationship from collaborative to adversarial, potentially leading to litigation.",
+          "utility_impact": "This makes her a secret ally of anyone pushing for a deep, thorough investigation, especially into management decisions. She will support Anya's call for a broad scope, not for security reasons, but because it's more likely to unearth the evidence she needs to invoke Clause 17.4b and save her company millions."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Firm Selection": "A single forensic investigation firm (either CyberGoliath or BitTrace Security) is formally selected and agreed upon by David, Anya, and Laura.",
+    "Budget Agreement": "A specific total budget for the incident response is finalized and approved by David and Laura.",
+    "Scope and Timeline Agreement": "A detailed Scope of Work document is agreed upon, outlining the systems to be investigated, the level of access for all parties (including the regulator), and a timeline for preliminary and final reports.",
+    "Communication Plan": "A joint public communication plan, including the timing and content of the initial disclosure, is agreed upon by David and Marcus."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total cyber-insurance policy limit is $5,000,000. Any spending beyond this is entirely out of FinSecure's pocket.",
+      "The NDPC legally requires a public notification to be issued within 72 hours of the formal determination of the breach's scale, but the timing of that determination is negotiable.",
+      "Both CyberGoliath and BitTrace Security are on the insurance company's panel of approved vendors."
+    ],
+    "hidden": [
+      "FinSecure Bank only has approximately $2.5 million in liquid cash reserves that can be allocated to this crisis without requiring emergency loans that would alarm the market.",
+      "The insurance policy can be voided entirely if evidence of 'gross negligence' on the part of FinSecure's management is discovered."
+    ]
+  },
+  "deliverable": "A signed 'Incident Response Mandate' document outlining the agreed-upon forensic firm, total budget, investigation scope, timeline, regulatory access protocols, and the finalized text and release schedule for the initial public announcement.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing about BitTrace's insider knowledge makes them the logical choice for a fast, efficient, and cheaper investigation, satisfying David's timeline, Laura's budget, and Anya's need for a thorough job. Revealing Anya's ignored warnings would prove gross negligence, giving Laura leverage to deny the claim but also giving Marcus the justification for a maximum fine. This knowledge would force David to be highly cooperative and agree to a larger budget (paid by the bank, not insurance) and full transparency to mitigate the fine, thus aligning everyone's interests towards the most effective, albeit painful, solution for the bank."
+}

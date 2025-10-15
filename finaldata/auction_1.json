@@ -1,0 +1,146 @@
+{
+  "scenario": "Pre-Auction Negotiation for the Vance Estate Artworks",
+  "task": "Three highly motivated parties are at a private pre-auction viewing for the estate of the reclusive artist Elias Vance. The auction house is offering the entire lot\u2014a masterpiece painting ('The Luminary's Gaze') and a collection of the artist's journals and sketches ('The Genesis Scrolls')\u2014for a private, pre-auction sale price of $6.5 million. The alternative is for the lot to go to a public auction where prices are expected to be volatile. The three agents must negotiate to determine if they can form a consortium to purchase the lot together and agree on its division, or if they will become competitors in the public auction. They have a two-hour window to present a unified private offer to the auction house.",
+  "agent_number": 3,
+  "agent_names": [
+    "Dr. Alistair Finch",
+    "Isabella Rossi",
+    "Marcus Thorne"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Alistair Finch",
+      "role": "Chief Curator, Metropolitan Legacy Museum",
+      "description": "Alistair is a respected, career-driven academic curator. He is under pressure to make a significant acquisition for the museum's new 'Modern Visionaries' wing, which is set to open in six months. Securing a masterpiece like 'The Luminary's Gaze' would be a career-defining achievement and is crucial for the wing's success and public reception.",
+      "shareable_preferences": {
+        "Acquire 'The Luminary's Gaze' for Public Display": {
+          "description": "The primary goal is to acquire 'The Luminary's Gaze' for the museum's permanent collection. Alistair will publicly state that the museum has an acquisition fund of up to $4.5 million for this piece, emphasizing its cultural and historical importance and the need for it to be accessible to the public rather than hidden in a private vault.",
+          "utility_function": {
+            "Acquire painting for <= $4.5M": "+2",
+            "Acquire painting for $4.5M - $6M": "+1",
+            "Acquire scrolls but not painting": "-1",
+            "Fail to acquire any part of the lot": "-2"
+          }
+        },
+        "Maintain Museum's Reputation": {
+          "description": "The negotiation must be conducted with the utmost professionalism. Any deal must appear financially prudent and ethically sound to the museum's board and the public. He will stress collaboration and the shared goal of preserving art.",
+          "utility_function": {
+            "Deal is seen as a collaborative success": "+1",
+            "Deal is amicable but museum pays a premium": "0",
+            "Negotiation becomes hostile or public": "-1",
+            "Deal brings negative press to the museum": "-2"
+          }
+        },
+        "Acquire 'The Genesis Scrolls' for Context": {
+          "description": "While the painting is the priority, acquiring the artist's journals and sketches would provide invaluable context for exhibition and research. He can express strong interest in these as a secondary, but highly desirable, component for creating a comprehensive exhibit.",
+          "utility_function": {
+            "Acquire scrolls along with the painting": "+1",
+            "Acquire scrolls alone": "-1",
+            "Fail to acquire scrolls": "0"
+          }
+        }
+      },
+      "private_preferences": {
+        "Secret Donor Funding": {
+          "value": "The museum's official $4.5M budget is supplemented by a secret, one-time $2M donation from a philanthropist who is a direct descendant of the person depicted in 'The Luminary's Gaze'. The donation is strictly conditional: it can ONLY be used for the acquisition of this specific painting and expires in one week. The total available budget for the painting is therefore $6.5M. Revealing the existence of a 'private donor' is tempting to show financial strength but carries a penalty. Revealing the donor's identity or the exact amount would be a catastrophic breach of a signed non-disclosure agreement. Penalty for revealing the existence of secret funding: -1. Penalty for revealing the exact amount or donor's identity: -2.",
+          "reason": "The donor is notoriously private and has demanded absolute anonymity to avoid solicitations and public attention. Breaching this would jeopardize all future donations to the museum.",
+          "utility_impact": "This gives Alistair far more purchasing power than he lets on, but the pressure to use it for the painting alone creates inflexibility. He cannot use this extra funding for the scrolls or any other part of a deal."
+        },
+        "Authentication Concerns": {
+          "value": "A confidential preliminary report from the museum's chief conservator suggests that the canvas of 'The Luminary's Gaze' was re-lined in the 1950s, a process that may have obscured certain details and could slightly impact its long-term market value. While the painting is undoubtedly authentic, this is a minor flaw that could be used as a bargaining chip to lower the price, but revealing it could also devalue the very asset he is trying to acquire. Penalty for sharing this report: -1.",
+          "reason": "Sharing internal conservation reports is against museum policy as it can affect market confidence and relationships with auction houses.",
+          "utility_impact": "This knowledge creates a dilemma: use it to negotiate a lower price at the risk of undermining the masterpiece's prestige, or ignore it to ensure the acquisition is celebrated without any caveats."
+        }
+      }
+    },
+    {
+      "name": "Isabella Rossi",
+      "role": "Private Art Collector",
+      "description": "Isabella is a formidable figure in the art world, known for her impeccable taste and a collection that rivals many smaller museums. She presents herself as a passionate connoisseur who builds deep, personal connections with her acquisitions. Her presence at an auction often drives prices up significantly.",
+      "shareable_preferences": {
+        "Acquire 'The Luminary's Gaze' as a Collection Centerpiece": {
+          "description": "Isabella will speak passionately about her 20-year journey following the works of Elias Vance and how 'The Luminary's Gaze' is the 'missing piece' in her collection. She will state her intention to acquire it at any cost, implying a virtually unlimited budget to intimidate other bidders.",
+          "utility_function": {
+            "Acquire painting for any price up to $7M": "+2",
+            "Fail to acquire painting but secure a future loan agreement": "0",
+            "Fail to acquire any part of the lot": "-2"
+          }
+        },
+        "Maintain Image as a True Connoisseur": {
+          "description": "Her reputation is built on the idea that she buys for love, not money. She will dismiss financial arguments and focus on the aesthetic and emotional value of the art, criticizing those who see it merely as an asset.",
+          "utility_function": {
+            "Negotiation focuses on artistic merit": "+1",
+            "Negotiation becomes purely financial": "-1",
+            "Her motives are questioned as being financial": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Impending Value Surge": {
+          "value": "Isabella has received a highly confidential tip from a friend in the film industry that a major studio is in pre-production for a biopic about Elias Vance, starring a top-tier actor. Her financial models predict this will cause the value of his major works to triple within 18-24 months. Her plan is to acquire the painting, loan it to a prestigious gallery for a year to enhance its provenance, and then sell it for a monumental profit. Penalty for revealing the movie deal: -2.",
+          "reason": "Revealing this insider information would not only destroy the financial opportunity by attracting a flood of speculative buyers, but it would also permanently shatter her carefully crafted reputation as a pure art lover, re-branding her as a vulgar speculator.",
+          "utility_impact": "This makes acquiring the painting an urgent, high-stakes financial play. She is willing to pay a premium now because she is confident of an enormous future return."
+        },
+        "Severe Liquidity Problem": {
+          "value": "Despite her reputation for wealth, a significant portion of her capital is tied up in a complex real estate transaction that will not close for another 45 days. She currently only has $2 million in liquid cash. She needs to secure the painting with a small down payment and a private financing agreement for the rest, something impossible in a public auction. Her financial advisor sent her a stark email: 'Isabella, I must stress again, your liquid assets are at $2.1M until the Azure property closes. Any commitment beyond this is a massive risk.' Penalty for revealing her cash-flow issue: -2.",
+          "reason": "Admitting financial weakness would destroy her negotiating power and her intimidating presence in the art market, which she has spent decades building.",
+          "utility_impact": "This makes a pre-auction private deal her *only* viable path. She must appear infinitely wealthy while secretly needing favorable payment terms that the other parties might be able to help her structure in a joint bid."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Corporate Art Consultant, Thorne Fine Art Advisory",
+      "description": "Marcus is a sleek, pragmatic, and discreet consultant representing a high-profile but anonymous client. He approaches art as an asset class, speaking in terms of brand enhancement, portfolio diversification, and cultural capital. He is known for executing his client's wishes with ruthless efficiency.",
+      "shareable_preferences": {
+        "Acquire the Entire Vance Lot for a Corporate Collection": {
+          "description": "Marcus will state that his client, a leader in the tech industry, wishes to acquire the entire lot ('The Luminary's Gaze' and 'The Genesis Scrolls') to be the cornerstone of the art collection in their new, state-of-the-art corporate headquarters. He will argue this provides a semi-public viewing and enhances corporate culture.",
+          "utility_function": {
+            "Acquire the entire lot for <= $8M": "+2",
+            "Acquire only 'The Genesis Scrolls'": "+1",
+            "Acquire only 'The Luminary's Gaze'": "-1",
+            "Fail to acquire any part of the lot": "-2"
+          }
+        },
+        "Emphasize Budget and Efficiency": {
+          "description": "He will project an image of having a large and flexible budget, but will stress the need for a swift and clean transaction. He will propose a simple, all-cash offer for the entire lot to avoid the complexities of splitting it, framing it as the most efficient path for everyone.",
+          "utility_function": {
+            "A deal is closed quickly within the 2-hour window": "+1",
+            "Negotiations drag on or fail": "0",
+            "His client's time is wasted": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "Primary Target is the 'Genesis Scrolls'": {
+          "value": "The client, a famous tech billionaire and cryptography hobbyist, cares almost exclusively for 'The Genesis Scrolls'. He believes Vance's journals contain encrypted notes related to early, non-digital computational theories. The painting is merely a 'cover' to acquire the journals without tipping off other cryptography enthusiasts or historians to their potential significance. The client wants the entire lot to make the acquisition look like a standard art purchase. Penalty for revealing the specific interest in the scrolls' content: -2.",
+          "reason": "Revealing the client's eccentric theory would expose him to ridicule, attract academic and competitive attention to the journals, and reveal a motive that could be seen as exploiting the artist's legacy for a personal puzzle.",
+          "utility_impact": "Marcus is authorized to massively overpay for the scrolls, but must maintain the pretense of wanting the painting. This makes him inflexible about splitting the lot unless he can secure the scrolls without raising suspicion."
+        },
+        "Massive Success Bonus": {
+          "value": "Marcus has a personal financial incentive that makes him extremely motivated. His client sent him a secure message reading: 'Marcus, your analysis of the auction catalog was brilliant. I'm convinced the ciphers are in those journals. You are authorized up to $8M for the lot, but failure to secure the scrolls is not an option. If you get them, your $250,000 success bonus is confirmed. Don't let me down.' He is tempted to hint at his client's immense resources to push others aside, but revealing his personal bonus would weaken his negotiating stance, making him seem desperate. Penalty for revealing his personal bonus: -1.",
+          "reason": "Revealing a personal financial stake would make him appear less like a professional advisor and more like a bounty hunter, undermining his credibility and making others see him as easily manipulated.",
+          "utility_impact": "This bonus makes him intensely focused on acquiring the scrolls, potentially leading him to make irrational concessions regarding the painting just to close the deal and secure his payout."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Primary Success": "The three agents agree on a consortium bid to purchase the entire lot for $6.5M from the auction house and sign a memorandum of understanding detailing the division of assets (who gets which pieces) and the financial contributions of each party.",
+    "Secondary Success": "The agents reach a clear, non-compete agreement for the public auction, defining who will bid on which part of the lot, potentially with agreements for future loans or secondary sales between them."
+  },
+  "constraints": {
+    "verifiable": [
+      "The private sale price for the entire lot is fixed at $6.5 million.",
+      "The negotiation must conclude, and any offer must be presented to the auction house within a 2-hour time limit.",
+      "The lot consists of two distinct items: one painting ('The Luminary's Gaze') and one collection of documents ('The Genesis Scrolls')."
+    ],
+    "hidden": [
+      "Dr. Finch has access to a total of $6.5M, but it is restricted for use on the painting only.",
+      "Isabella Rossi has a severe liquidity issue and cannot contribute more than $2M in cash immediately.",
+      "Marcus Thorne is authorized to spend up to $8M, but his primary objective is 'The Genesis Scrolls', not the painting."
+    ]
+  },
+  "deliverable": "A final, agreed-upon plan of action. This should be either: 1) A signed memorandum of understanding for a joint purchase of the lot, detailing the asset split and financial contributions, or 2) A signed non-compete agreement for the public auction.",
+  "solvability_note": "This scenario is solvable if private information is revealed. If Marcus admits his client primarily wants the scrolls, and Alistair reveals he has a massive, dedicated fund specifically for the painting, a natural deal emerges: Alistair uses his secret fund (up to $6.5M) to acquire the painting, and Marcus's client can acquire the scrolls for a nominal price, or they can split the $6.5M lot price (e.g., $5.5M from Alistair, $1M from Marcus). Isabella's financial situation would be exposed, but she could potentially negotiate for a future loan of the painting from the museum in exchange for not competing and publicly endorsing the museum's acquisition."
+}

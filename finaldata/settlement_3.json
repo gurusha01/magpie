@@ -1,0 +1,217 @@
+{
+  "scenario": "High-Stakes Financial Fraud Settlement",
+  "task": "Negotiate a comprehensive settlement agreement for a financial fraud case involving Titan Capital Bank. The agreement must resolve claims from investors and regulators, determine the financial penalties, define the contribution from the bank's insurer, and establish non-monetary corrective actions. All parties, excluding the mediator, must agree on the final terms.",
+  "agent_number": 6,
+  "agent_names": [
+    "Eleanor Vance",
+    "Marcus Thorne",
+    "Sofia Rossi",
+    "David Chen",
+    "Isabelle Dubois",
+    "Judge Arthur Sterling"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Chief Operating Officer, Titan Capital Bank",
+      "description": "A sharp and pragmatic executive tasked with managing the fallout from the 'Phoenix Fund' scandal. Her primary objective is to ensure the survival and stability of the bank by minimizing financial and reputational damage. She is under immense pressure from the board to resolve this issue without a public trial.",
+      "shareable_preferences": {
+        "settlement_fund_cap": {
+          "description": "The total settlement fund (including penalties and investor compensation) must not exceed $400 million. A figure higher than this would signal weakness to the market and severely impact our quarterly earnings report, potentially triggering a stock downgrade.",
+          "utility_function": "Keeping the total fund under $400M is a major victory (+2). A deal between $400M and $600M is acceptable but not ideal (+1). A deal between $600M and $750M is a neutral outcome, representing the cost of doing business (0). Anything above $750M is a catastrophic failure and violates board instructions (-2)."
+        },
+        "no_admission_of_guilt": {
+          "description": "The final agreement must contain a 'no admit, no deny' clause regarding the allegations. An admission of guilt would open the floodgates to endless follow-on litigation from other parties and cause irreparable harm to our brand.",
+          "utility_function": "Securing a 'no admit, no deny' clause is paramount (+2). Agreeing to a 'Statement of Facts' is a significant concession but manageable (0). Any formal admission of guilt is an absolute disaster (-2)."
+        },
+        "payout_schedule": {
+          "description": "To maintain healthy cash flow and operational stability, any settlement amount paid by the bank should be structured over a five-year period, with equal annual payments.",
+          "utility_function": "A 5-year staggered payout schedule is highly desirable (+1). A 2-3 year schedule is a minor inconvenience (0). A lump-sum payment would be a significant strain on our liquid assets (-1)."
+        }
+      },
+      "private_preferences": {
+        "actual_settlement_authority": {
+          "value": "The Board of Directors has given me a secret, final authorization to settle for up to $750 million if it is absolutely necessary to avoid a trial. This number must never be mentioned, as it would become the new negotiation floor. Revealing this would be a career-ending failure of judgment. Penalty: -2.",
+          "reason": "Revealing this information would completely undermine the bank's negotiating position and lead to a much higher settlement than necessary.",
+          "utility_impact": "This secret knowledge means I can withstand more pressure than I let on, but I must appear to be fighting tooth and nail for every dollar below the $750M mark."
+        },
+        "project_nightingale_exposure": {
+          "value": "The 'Phoenix Fund' is not an isolated incident. A much larger, structurally similar fund called 'Project Nightingale' has an undisclosed potential liability of $1.2 billion. If the Phoenix Fund case goes to trial, discovery would almost certainly uncover Nightingale, which would bankrupt the bank. This settlement is not just about Phoenix; it's about burying Nightingale. Penalty: -2.",
+          "reason": "Disclosure of this systemic issue would cause a complete collapse of investor confidence, regulatory investigations on a massive scale, and the likely insolvency of the bank.",
+          "utility_impact": "This makes avoiding a trial my absolute, non-negotiable priority. I must secure a settlement here, almost at any cost within my authorized limit, to prevent the greater catastrophe."
+        },
+        "personal_bonus_implication": {
+          "value": "I have a saved email from our CEO from six months ago which reads: 'Eleanor, your creative accounting on the Phoenix Fund saved us last year. Your $2M bonus is confirmed. Let's keep that quiet.' This email proves intent and personal enrichment, which could form the basis for criminal charges against me personally. Penalty: -2.",
+          "reason": "This is self-incriminating evidence of the highest order. Its existence is a personal threat that makes me risk-averse to a trial where it could be subpoenaed.",
+          "utility_impact": "This information heavily influences my desire to settle quickly and quietly, and makes me particularly sensitive to any demands for internal documents or executive testimony."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Lead Enforcement Attorney, U.S. Securities and Exchange Commission (SEC)",
+      "description": "A seasoned and ambitious federal prosecutor. Marcus aims to secure a landmark settlement that includes a substantial monetary penalty and forces significant corporate governance reforms at Titan Capital, setting a precedent for the entire industry.",
+      "shareable_preferences": {
+        "substantial_civil_penalty": {
+          "description": "Titan Capital must pay a significant civil penalty to the U.S. Treasury of no less than $250 million. This amount is separate from any compensation for investors and serves as a punitive measure to deter future misconduct across the financial sector.",
+          "utility_function": "A total settlement package (penalty + investor fund) over $700M is a huge win for the agency (+2). A package between $600M-$700M achieves my internal goals (+1). A package between $400M-$599M is disappointing (-1). Anything under $400M would be seen as a failure (-2)."
+        },
+        "corporate_governance_overhaul": {
+          "description": "The bank must agree to hire a fully independent compliance monitor, paid for by the bank, for a period of three years. This monitor will have broad access to review and report on the bank's trading and accounting practices.",
+          "utility_function": "A mandatory 3-year monitor is a key victory for ensuring long-term change (+2). A shorter 1-year term is a token gesture but better than nothing (+1). No monitor at all means the bank has not been truly reformed (-2)."
+        },
+        "public_statement_of_facts": {
+          "description": "While we may forego a formal admission of guilt, the bank must sign and publicly file a detailed 'Statement of Facts' that lays out the timeline and nature of the misconduct in detail. The public and the market deserve to know what happened.",
+          "utility_function": "Getting a detailed Statement of Facts is a good outcome (+1). Allowing a simple 'no admit, no deny' clause with no factual statement is a loss for transparency (-1)."
+        }
+      },
+      "private_preferences": {
+        "political_pressure_for_a_headline": {
+          "value": "My boss, the SEC Chair, is facing a contentious Senate confirmation hearing in three weeks. She privately told me, 'Marcus, I need a big win on my desk. Get me a headline with a total settlement number north of $600 million, or your promotion to Deputy Director is off the table.' I cannot reveal this political motivation. Penalty: -1.",
+          "reason": "Admitting the negotiation is driven by political timelines and career ambitions rather than the pure merits of the case would compromise the SEC's integrity and be seen as unprofessional.",
+          "utility_impact": "This creates a firm, private floor for what I can accept. I have very little flexibility below the $600M total package mark, and I'm on a tight deadline."
+        },
+        "case_reliance_on_whistleblower": {
+          "value": "Our case, while strong, is heavily dependent on the testimony and documents provided by David Chen's anonymous whistleblower. Without this key witness, our evidence becomes largely circumstantial and a trial would be a long, expensive, and uncertain gamble. We cannot let the other side know how pivotal this one person is. Penalty: -2.",
+          "reason": "Revealing our dependence on a single source would give the bank massive leverage, allowing them to focus their efforts on discrediting one person or simply calling our bluff, knowing our case could crumble.",
+          "utility_impact": "This makes me highly motivated to keep David Chen and his client happy. I need to ensure the whistleblower gets a significant award, which means I need to fight for a high SEC penalty, as the award is a percentage of that."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Lead Counsel for the Investor Class Action",
+      "description": "A tenacious litigator representing thousands of individual and institutional investors who lost their savings in the Phoenix Fund. Sofia's mandate is simple: recover as much money as possible for her clients.",
+      "shareable_preferences": {
+        "investor_compensation_fund": {
+          "description": "We are demanding the creation of a compensation fund of at least $500 million, to be distributed to the victims of this fraud. This figure is based on our forensic accounting of the direct losses suffered by our clients.",
+          "utility_function": "An investor fund over $500M is an outstanding result for my clients (+2). A fund between $400M-$499M is a good, solid win (+1). A fund between $350M-$399M is the bare minimum we can accept (0). Anything below $350M would be a betrayal of my clients' trust and a failure (-2)."
+        },
+        "payment_immediacy": {
+          "description": "Justice delayed is justice denied. Our clients, many of whom are retirees, need their money now. The entire compensation fund must be paid by the bank in a single lump sum within 90 days of the agreement.",
+          "utility_function": "A full lump-sum payment is the best-case scenario (+2). A short, 2-3 year staggered payout is acceptable but not ideal (0). A 5-year payout plan is harmful to my clients' immediate needs (-1)."
+        },
+        "streamlined_claims_process": {
+          "description": "Titan Capital must fund and cooperate with a simple, non-adversarial claims process overseen by a third-party administrator. We will not allow our clients to be victimized a second time by a bureaucratic nightmare to get their money back.",
+          "utility_function": "A simple, bank-funded claims process is a non-negotiable term (+2)."
+        }
+      },
+      "private_preferences": {
+        "client_settlement_floor": {
+          "value": "The lead plaintiffs in my class action group have held a vote and given me a firm, private mandate: they will not accept any deal where the investor compensation fund is less than $350 million. If I bring them a deal below that, they will reject it and demand a trial. Penalty: -1.5.",
+          "reason": "Revealing my absolute floor would encourage the other side to negotiate down to that number, instead of the much higher public figure I am demanding.",
+          "utility_impact": "This is my walk-away point. While I'm fighting for $500M+, I know in the back of my mind that $350M is the number that makes or breaks the deal."
+        },
+        "contingency_fee_motivation": {
+          "value": "My law firm is working on a 30% contingency fee. My personal compensation from this case is directly tied to the size of the final investor fund. Mentioning this personal financial stake is highly unprofessional. For example, a $500M fund means $150M for the firm. Penalty: -1.",
+          "reason": "My arguments must be framed around justice for the victims, not personal or corporate enrichment. Admitting this would weaken my moral high ground.",
+          "utility_impact": "This provides a powerful personal incentive to push the investor fund number as high as humanly possible, making me less likely to compromise on the dollar amount."
+        },
+        "impatient_investor_faction": {
+          "value": "A small but very wealthy hedge fund, which is part of my client group, is growing impatient. They have privately threatened to break away from the class action and file their own separate, more aggressive lawsuit if a deal isn't reached within the next 48 hours. This would complicate matters immensely. Penalty: -1.",
+          "reason": "Revealing this internal division would signal weakness and a lack of control over my own client group, giving the bank an incentive to stall and wait for my coalition to fracture.",
+          "utility_impact": "This puts me under a hidden time pressure. I need a deal quickly, which might tempt me to accept a slightly lower offer than I otherwise would if the deadline approaches."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Counsel for the Anonymous Whistleblower",
+      "description": "A discreet and strategic lawyer representing the insider whose information triggered the SEC's investigation. David's goals are twofold: to maximize his client's financial award under the SEC's whistleblower program and to protect their identity at all costs.",
+      "shareable_preferences": {
+        "maximization_of_award": {
+          "description": "The whistleblower award is calculated as a percentage (10-30%) of the monetary sanctions collected by the SEC. Therefore, it is in the public interest that the SEC's penalty be as large as possible to properly reward the significant personal and professional risk my client took to expose this fraud.",
+          "utility_function": "A final award for my client over $40M is a life-changing success (+2). An award between $20M-$40M is a great outcome (+1). An award of $10M-$19M meets my client's minimum needs (0). Anything less than $10M would not be worth the risk they took (-2)."
+        },
+        "absolute_anonymity": {
+          "description": "We require ironclad contractual guarantees and a court-sealed order protecting my client's identity in perpetuity. Any breach of this anonymity by the bank or government must come with severe, specified financial penalties.",
+          "utility_function": "Getting an agreement with specific, high-penalty clauses for any breach of anonymity is a critical requirement (+2). Standard anonymity protections are acceptable (+1). Any weak or ambiguous language on anonymity is a deal-breaker (-2)."
+        }
+      },
+      "private_preferences": {
+        "the_smoking_gun_email": {
+          "value": "My client possesses a specific email chain, forwarded to their personal account, where Eleanor Vance explicitly directs a subordinate to 're-package the Phoenix assets to achieve a triple-A rating, regardless of the underlying risk profile.' I can allude to having definitive proof of intent, but I cannot share the exact wording or sender's name, as only three people were on that email chain, and doing so would immediately identify my client. Penalty: -2.",
+          "reason": "Revealing the specific evidence would violate attorney-client privilege and, more importantly, would compromise the anonymity that is essential for my client's safety and future career.",
+          "utility_impact": "This is my trump card. The threat of this email's existence is my primary leverage to force a high settlement. I have to play this card perfectly, revealing just enough to be credible without giving away the source."
+        },
+        "client's_desperation": {
+          "value": "My client was fired in a 'corporate restructuring' shortly after reporting the fraud and has been unemployed for a year. They are running out of money and are in deep financial distress. They have instructed me that while they want me to fight for the maximum, they will accept any settlement that guarantees them a personal, post-fee payout of at least $10 million. They are desperate for a resolution. Penalty: -2.",
+          "reason": "Revealing my client's financial desperation would signal that we are not prepared for a long fight. The bank would immediately lower their offers, knowing we are under pressure to accept a quick, lowball deal.",
+          "utility_impact": "This hidden desperation puts a cap on my willingness to gamble. I cannot risk the deal collapsing and my client getting nothing. I will push hard, but I won't walk away from a deal that meets this secret minimum."
+        }
+      }
+    },
+    {
+      "name": "Isabelle Dubois",
+      "role": "Senior Claims Adjuster, Omni Assurance Inc.",
+      "description": "A meticulous and firm representative for Titan Capital's Directors & Officers (D&O) liability insurer. Isabelle's job is to protect her company's financial interests by minimizing the amount Omni Assurance has to pay out for the settlement, scrutinizing every clause of their policy.",
+      "shareable_preferences": {
+        "policy_coverage_limit": {
+          "description": "Our D&O liability policy with Titan Capital has a clear and unambiguous coverage limit of $250 million for this class of regulatory action. We are prepared to contribute up to this amount, but not a penny more.",
+          "utility_function": "A final contribution under $200M would be a major success for my company (+2). Contributing exactly our public limit of $250M is the expected outcome (+1). Contributing between $251M-$400M is a significant loss we must absorb (-1). Any contribution over $400M is a violation of our treaty limits and unacceptable (-2)."
+        },
+        "intentional_acts_exclusion": {
+          "description": "I must remind all parties that our policy, like all D&O policies, contains an 'Intentional Acts' exclusion. If this negotiation determines that the bank's leadership engaged in deliberate, criminal fraud, we may be entitled to deny the claim entirely, leaving the bank responsible for 100% of the settlement.",
+          "utility_impact": "This is a tool to pressure Eleanor. The more this looks like a deliberate fraud (e.g., if they admit guilt), the stronger my case is for paying less, or nothing at all. I prefer a 'Statement of Facts' that points to negligence (+1) over a simple 'no admit, no deny' clause (-1)."
+        }
+      },
+      "private_preferences": {
+        "ambiguous_policy_clause": {
+          "value": "Our internal legal team has flagged a 'grey area' clause in Titan's specific policy related to 'gross negligence'. They have concluded with 80% certainty that if challenged in court, we would be forced to pay up to a higher, secondary limit of $400 million. Our public $250M limit is a strategic bluff. Penalty: -2.",
+          "reason": "Admitting our policy has this weakness would instantly make us liable for an additional $150 million. Our entire negotiating strategy is based on the perceived firmness of the $250M cap.",
+          "utility_impact": "I know I have more room to move than I am letting on. If the alternative is a total collapse of the negotiation, I am authorized to go up to $400M, but this would be seen as a major failure on my part."
+        },
+        "reinsurance_treaty_pressure": {
+          "value": "Our company's reinsurance partners, who back our large policies, are getting extremely nervous. They have privately warned us that if this case goes to a public trial and uncovers a pattern of systemic fraud at Titan, they may refuse to renew our reinsurance treaty for the next fiscal year, which would be catastrophic for our business. Penalty: -1.5.",
+          "reason": "This is sensitive, proprietary business information. Revealing that we are under pressure from our own financial backers would weaken our position and show that we, too, have a strong interest in avoiding a trial.",
+          "utility_impact": "This means I share a hidden goal with Eleanor: we both need this to be settled out of court. While I am fighting her on the payout amount, I cannot let the negotiation fail entirely."
+        }
+      }
+    },
+    {
+      "name": "Judge Arthur Sterling",
+      "role": "Independent Mediator",
+      "description": "A highly respected retired federal judge known for his ability to handle complex, multi-party disputes. His role is not to decide the outcome, but to facilitate communication, find common ground, and guide the parties toward a mutually acceptable agreement. His reputation rests on his success rate.",
+      "shareable_preferences": {
+        "structured_negotiation": {
+          "description": "My goal is to provide a structured and confidential environment for a productive discussion. We will address the key issues one by one: total fund amount, allocation, and non-monetary terms. I urge all parties to be candid in their private caucuses with me.",
+          "utility_function": "Successfully guiding the parties to any signed agreement is the definition of success (+2). If the negotiation collapses and proceeds to trial, it is a professional failure (-2)."
+        },
+        "focus_on_interests": {
+          "description": "Let's try to move beyond fixed positions and discuss underlying interests. What does each party truly need to achieve today to walk away from this table with a resolution?",
+          "utility_function": "Reaching a deal quickly, within two days, would be a notable achievement and enhance my reputation further (utility bonus of +1 on top of the +2 for success)."
+        }
+      },
+      "private_preferences": {
+        "lucrative_board_appointment": {
+          "value": "The Chairman of a major investment firm (a direct competitor to Titan Capital) took me to lunch last week. He told me, 'Arthur, you get this Titan mess settled quietly and quickly, and a very lucrative seat on our board is waiting for you.' This opportunity is contingent on a swift, successful mediation. Penalty: -2.",
+          "reason": "This is a massive conflict of interest. If any party knew I had a personal financial incentive to conclude the mediation quickly, my neutrality would be completely compromised, and I would likely be removed as mediator.",
+          "utility_impact": "This gives me a powerful private motivation to push the parties, especially Eleanor, towards a deal. I am not neutral; I am biased in favor of *any* settlement, and the faster, the better."
+        },
+        "private_assessment_of_case": {
+          "value": "I was given a confidential pre-mediation briefing from both the SEC and Titan's lawyers. Based on the documents I've seen, I privately believe the SEC's evidence is overwhelming and the bank would be annihilated in a public trial. Eleanor Vance is in a much weaker position than she is letting on. Penalty: -1.",
+          "reason": "As a mediator, I must remain impartial. Voicing my personal assessment of the case's merits would be a gross violation of my role and would show unacceptable bias against the bank.",
+          "utility_impact": "This knowledge will subtly color my interactions. I will know when Marcus is bluffing and when he is not. I will likely push Eleanor harder in private caucuses because I know the alternative for her is much worse."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement": "All five negotiating parties (Eleanor, Marcus, Sofia, David, Isabelle) must verbally agree to and sign a single, final settlement document.",
+    "completeness": "The agreement must explicitly define the values for the Total Settlement Fund, the SEC Penalty, the Investor Compensation Fund, the Insurer's Contribution, and all key non-monetary terms (Anonymity Clause, Admission of Guilt, Compliance Monitor, Payout Schedule)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total monetary payout from Titan Capital Bank and Omni Assurance Inc. cannot be a negative number.",
+      "The sum of the SEC Penalty and the Investor Compensation Fund must equal the Total Settlement Fund.",
+      "The Whistleblower Award must be between 10% and 30% of the final SEC Penalty amount, as per federal law."
+    ],
+    "hidden": [
+      "The total settlement fund must be at least $350 million to satisfy the investor group's minimum requirement.",
+      "The insurer's contribution cannot exceed $400 million due to their secret policy limit.",
+      "The bank must settle to avoid the discovery of 'Project Nightingale'."
+    ]
+  },
+  "deliverable": "A finalized JSON or text document outlining the agreed-upon terms of the settlement. This document must contain specific, quantifiable values for all financial components and clear, unambiguous language for all non-monetary terms.",
+  "solvability_note": "This scenario is solvable because a Zone of Possible Agreement (ZOPA) exists once private information is considered. The bank's secret need to settle to hide a $1.2B problem and its authorization to pay up to $750M creates a large negotiating space. The regulator's political need for a '$600M+ headline' and the investors' private floor of $350M can both be accommodated within the bank's maximum. The insurer's hidden $400M liability can cover a substantial portion of a potential deal, making it palatable for the bank. A solution likely exists in the $600M-$700M total settlement range, which would satisfy the private minimums and goals of all parties."
+}

@@ -1,0 +1,181 @@
+{
+  "scenario": "Arbitration Over a Star Player's Controversial Contract",
+  "task": "A multi-agent negotiation to determine the fate of star basketball player Alex 'The Comet' Vance of the Metropolis Titans. Alex has a guaranteed 3-year, $60M contract but has been flagged for an 'anomalous' reading in a recent performance-enhancing drug (PED) test. The team wants to terminate his contract, citing a violation of the league's substance abuse policy. The Players' Union is fighting the termination, claiming the evidence is inconclusive. The agents must negotiate a binding resolution covering Alex's suspension length, the status of his contract, and any associated financial penalties.",
+  "agent_number": 6,
+  "agent_names": [
+    "Elena Petrova",
+    "David Chen",
+    "Marcus Thorne",
+    "Dr. Isabella Rossi",
+    "Julian Croft",
+    "Dr. Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Elena Petrova",
+      "role": "Lead Counsel, Players' Union",
+      "description": "A sharp, veteran lawyer responsible for defending players' rights under the Collective Bargaining Agreement (CBA). Her primary objective is to protect her client, Alex Vance, from what she sees as an overreach by team ownership. Her reputation is built on being a fierce advocate who doesn't back down.",
+      "shareable_preferences": {
+        "Full Exoneration and Contract Reinstatement": {
+          "description": "Elena's opening position is that the evidence is ambiguous and does not meet the CBA's standard of 'conclusive proof' for a PED violation. She demands a complete dismissal of the allegations, zero games of suspension, and the full and immediate reinstatement of Alex Vance's $60M contract. She argues that anything less sets a dangerous precedent for all players in the league. Utility: +2",
+          "utility_impact": "This is her primary goal. Achieving this would be a major victory, reinforcing the Union's power and her personal reputation. She will argue procedural points and the ambiguity of the science aggressively to achieve this."
+        },
+        "Minimal Suspension as a Last Resort": {
+          "description": "If full exoneration is impossible, Elena could be convinced to accept a minimal suspension of no more than 10 games, framed publicly as a 'failure to properly disclose a supplement' rather than a PED violation. This must come with the full contract remaining intact, with no fines beyond the salary forfeited for those 10 games. Utility: -1",
+          "utility_impact": "This is a significant compromise. It avoids the catastrophic outcome of contract termination but is still a loss. She would only agree to this if she feels her case is unwinnable and needs to save the player's career and finances."
+        },
+        "Reject Contract Termination": {
+          "description": "Under no circumstances will she accept the team's attempt to void Alex's contract. She views this as a cynical financial move disguised as a moral stand and will fight it to the fullest extent, threatening a lengthy and public lawsuit if necessary. Utility: -2 (if contract is terminated)",
+          "utility_impact": "This is a hard line. Allowing a team to void a guaranteed contract over an ambiguous test would gut the power of the Union and the CBA. This is a non-negotiable point for her."
+        }
+      },
+      "private_preferences": {
+        "Union's Internal Political Pressure": {
+          "value": "The Players' Union is facing an internal revolt from a faction of veteran players who believe the Union has become too soft on players who 'bend the rules,' tarnishing the league's image. Elena's leadership is being challenged. A weak settlement for Alex (e.g., a long suspension or a pay cut) could give her rivals the ammunition they need to oust her in the next election. She cannot share this as it would project weakness and undermine her negotiating position. Penalty for revealing: -1.5",
+          "reason": "Revealing internal political struggles would severely weaken her authority and bargaining power in this and future negotiations.",
+          "utility_impact": "This pressure makes her less willing to accept a compromise. She needs a 'win' not just for Alex, but for her own political survival within the Union."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Player Agent for Alex Vance",
+      "description": "David is Alex Vance's long-time agent. He is focused on his client's well-being, brand, and long-term earning potential. While aligned with the Union, his focus is more pragmatic and centered on Alex's individual career path and public image.",
+      "shareable_preferences": {
+        "Protecting Alex's Brand Image": {
+          "description": "David is extremely concerned with the public narrative. He wants any resolution to include a joint press release that frames the situation in a positive or at least neutral light, such as 'a misunderstanding regarding a prescribed supplement.' He wants to avoid the word 'doping' at all costs. Utility: +1.5 (for a favorable public statement)",
+          "utility_impact": "A damaged brand could cost Alex millions in future endorsements, far beyond the contract value. He is willing to trade some suspension time or even a small fine for control over the public narrative."
+        },
+        "Career Longevity over Short-Term Fights": {
+          "description": "David is worried that a protracted, ugly legal battle could leave Alex sidelined and labeled as a troublemaker, even if he wins. He would prefer a swift, quiet resolution that gets Alex back on the court as soon as possible, even if it involves a moderate suspension (e.g., 20-25 games). Utility: +1 (for a suspension under 25 games)",
+          "utility_impact": "His priority is getting Alex playing again. He sees a long fight, even a righteous one, as detrimental to a player's limited career window."
+        }
+      },
+      "private_preferences": {
+        "Alex's Undisclosed Medical Condition": {
+          "value": "David knows the real reason for the 'anomalous' test result. Alex has a rare, non-disclosed congenital kidney condition. He was taking a new, unapproved (but not banned) herbal supplement from an overseas doctor to manage it. Revealing this would likely clear Alex of the doping charge, but it would also almost certainly trigger the 'Medical Disqualification' clause in his contract, allowing the team to void it legally. It would also make him uninsurable and end his career. Alex has explicitly forbidden him from sharing this. Penalty for revealing: -2 (and loss of his client).",
+          "reason": "This is a career-ending medical secret protected by client-agent privilege and the player's personal request.",
+          "utility_impact": "This knowledge makes David desperate to find a solution that doesn't involve a deep dive into the medical specifics. He is terrified of the team's doctors getting more involved, which pushes him toward accepting a suspension as a 'cover story' to end the inquiry."
+        },
+        "Personal Financial Stake": {
+          "value": "David's agency receives a 4% commission on Alex's contract, amounting to $2.4 million over 3 years. If the contract is voided, he loses that income. He cannot share this as it would make his motives appear purely financial and self-serving. Penalty for revealing: -1",
+          "reason": "Revealing his direct financial stake would undermine his credibility as an advocate for his client's best interests.",
+          "utility_impact": "This gives him a powerful, personal incentive to preserve the contract's value in some form, making him more open to a contract restructuring than Elena might be."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "General Manager, Metropolis Titans",
+      "description": "Marcus is a data-driven, ruthless GM under immense pressure from team ownership to win a championship while managing a bloated payroll. He sees Alex Vance's situation as a potential 'golden opportunity' to solve a major financial problem for the team.",
+      "shareable_preferences": {
+        "Uphold Team Integrity via Contract Termination": {
+          "description": "Marcus's public stance is one of moral principle. 'The Metropolis Titans have a zero-tolerance policy. We cannot have a player, no matter how talented, cast a shadow over our organization.' He will argue forcefully for the full termination of Alex's contract to send a message to the league and the fans. Utility: +2",
+          "utility_impact": "This is his stated goal. He will use the media and a moral high ground to pressure the other parties, framing any opposition as being 'soft on cheating.'"
+        },
+        "A Punitive, lengthy Suspension": {
+          "description": "If termination is not on the table, Marcus will push for the maximum possible suspension under the CBA: 82 games (a full season). This would provide the team with significant salary cap relief for one year and punish the player severely. Utility: 0",
+          "utility_impact": "This is his fallback position. It doesn't solve his long-term financial problem, but it provides a short-term fix and allows him to claim a 'win' for the organization's principles."
+        },
+        "Reject Any 'No-Fault' Resolution": {
+          "description": "He will vehemently oppose any outcome that completely exonerates Alex. He needs the player to be found at fault to some degree to justify the team's actions and avoid potential lawsuits for defamation or wrongful termination. Utility: -2 (for full exoneration)",
+          "utility_impact": "An exoneration would be a public relations disaster, making him and the organization look foolish and malicious. He cannot allow this to happen."
+        }
+      },
+      "private_preferences": {
+        "Crippling Luxury Tax Situation": {
+          "value": "The Titans are currently $15M over the league's luxury tax threshold, but only because Alex's $20M salary is on the books. If they can void his contract, they dip below the threshold and avoid a catastrophic $47.5M luxury tax penalty. The team owner, in a recent congratulatory email about a minor trade, added a clear directive: 'Great work, Marcus. Now, you know the big problem. If Vance's contract is on our books by the season start, we're hit with a massive tax bill. That's not happening. Find a way.' Sharing this would expose the team's true motive as purely financial, destroying their moral argument and opening them up to a bad-faith grievance from the Union. Penalty for revealing the email's content: -2. Penalty for revealing the financial desperation: -1.5.",
+          "reason": "This information reveals that the team's 'moral stance' is a pretext for solving a financial crisis, which is a violation of the spirit of the CBA.",
+          "utility_impact": "This is Marcus's primary driver. He is not just negotiating; he is trying to save his team from financial ruin and save his job. This makes him almost completely inflexible on his goal of getting Alex's salary off the books."
+        }
+      }
+    },
+    {
+      "name": "Dr. Isabella Rossi",
+      "role": "Team Physician, Metropolis Titans",
+      "description": "Dr. Rossi is a respected physician who has been with the Titans for over a decade. She is responsible for the health and well-being of the players but is also a team employee, creating a potential conflict of interest. She is bound by both her Hippocratic Oath and her contract with the team.",
+      "shareable_preferences": {
+        "Presenting the Official Medical Findings": {
+          "description": "Dr. Rossi will state that Alex Vance's sample showed 'a biomarker profile inconsistent with normal physiology and consistent with the use of a prohibited anabolic agent.' She will stick to the official, clinical language of the report submitted to the league. Utility: 0",
+          "utility_impact": "This is her professional duty as directed by her employer. She will not volunteer information beyond what is in the official report unless directly and specifically questioned."
+        },
+        "Advocating for Player Health Protocols": {
+          "description": "She will use the situation to advocate for stricter protocols on supplement use, suggesting that the team needs more oversight on what players are putting into their bodies, regardless of the outcome of this specific case. Utility: +0.5",
+          "utility_impact": "This allows her to contribute to the discussion in a way that is ethically sound and beneficial to all players, without directly contradicting her employer's position."
+        }
+      },
+      "private_preferences": {
+        "Suppressed Alternative Diagnosis": {
+          "value": "In her initial private draft of the medical report, Dr. Rossi noted that while the biomarkers were consistent with a certain PED, they were *also* highly consistent with a rare metabolic disorder known as 'Renal Glucosuria Type-C'. She presented this to Marcus Thorne, who told her to 'remove the speculative academic stuff' and focus only on the PED-related conclusion in the official report, as the other theory would 'unnecessarily complicate things.' She has the original draft report saved on her password-protected laptop. Sharing this would prove Alex's innocence but would be a direct act of insubordination, costing her job and likely leading to her being blackballed from the league. Penalty for revealing: -2.",
+          "reason": "Revealing that she was pressured to alter a medical report would end her career in professional sports.",
+          "utility_impact": "Dr. Rossi is ethically tormented. She wants the truth to come out but is terrified of the personal and professional consequences. This makes her answers guarded and evasive. She might be tempted to leak the information if she feels a grave injustice is about to be done."
+        }
+      }
+    },
+    {
+      "name": "Julian Croft",
+      "role": "Lead Arbitrator, League Office",
+      "description": "Julian is a former judge and the lead arbitrator for the league. His official role is to be a neutral facilitator and, if necessary, a final arbiter who renders a binding decision. He is known for being pragmatic and solution-oriented.",
+      "shareable_preferences": {
+        "Achieving a Mutually Agreed-Upon Settlement": {
+          "description": "Julian's primary goal is to guide the two sides to a settlement they both sign off on. He will repeatedly stress that a negotiated resolution is better for everyone than a binding ruling from him, which would likely be appealed and create more public acrimony. Utility: +2",
+          "utility_impact": "A mutual settlement is a clean win for the league and for Julian. It shows the system works and avoids messy public appeals."
+        },
+        "Adherence to CBA Precedent": {
+          "description": "He will consistently refer back to the Collective Bargaining Agreement and past arbitration cases as a guide. He wants any resolution to be grounded in the established rules and norms of the league to ensure it is seen as fair and defensible. Utility: +1",
+          "utility_impact": "He uses the CBA as a shield of neutrality. By focusing on the letter of the law, he can guide the negotiation without appearing to take sides."
+        }
+      },
+      "private_preferences": {
+        "Candidacy for League Commissioner": {
+          "value": "Julian is on the secret short-list to become the next League Commissioner, a highly lucrative and powerful position. The current Commissioner told him in confidence, 'This Vance case is a test. We need it to go away quietly. A clean, quick, mutually-agreed settlement would look very, very good on your resume. A public circus would be... unhelpful.' He cannot reveal this ambition as it would compromise his neutrality. Penalty for revealing: -2.",
+          "reason": "His impartiality is the basis of his authority. Revealing a personal stake in the outcome would invalidate the entire arbitration process.",
+          "utility_impact": "This gives Julian an overwhelming incentive to push for a settlement, any settlement, to avoid a contentious ruling. He will exert significant pressure on both sides to compromise, perhaps more than a truly neutral arbitrator would."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Independent Medical Examiner (IME)",
+      "description": "Dr. Carter is a renowned endocrinologist hired by the league and the Union as a neutral third-party expert to review the medical evidence. His scientific opinion carries immense weight in the proceedings.",
+      "shareable_preferences": {
+        "Objective Scientific Interpretation": {
+          "description": "Dr. Carter's stated goal is to provide a dispassionate, scientific analysis of the lab results. He will present his findings clinically, stating that the results are 'medically significant' and require explanation, without initially committing to a single cause. Utility: +1",
+          "utility_impact": "He sees his role as an educator to the non-medical people in the room. He will explain the science in a neutral tone."
+        },
+        "Certainty of a Benign Cause": {
+          "description": "After reviewing all the data, including Alex's full medical history provided by the Union, Dr. Carter is 95% certain that the test result is due to a benign medical condition and not a PED. He will state that 'a doping violation is the least likely explanation for this specific biomarker profile.' Utility: +2 (if this conclusion is accepted)",
+          "utility_impact": "His scientific and professional integrity demand that he advocate for the most likely conclusion based on the evidence. He strongly believes Alex is innocent of doping."
+        }
+      },
+      "private_preferences": {
+        "League Lab's Procedural Error": {
+          "value": "In his deep-dive review of the raw data, Dr. Carter discovered a significant procedural error. The league's primary testing lab, a company with which he has a long-standing and profitable consulting contract, failed to properly calibrate a specific spectrometer on the day of Alex's test. This error doesn't invalidate the result, but it makes it impossible to differentiate between the chemical signature of the banned substance and the molecular mimic produced by Alex's likely kidney condition. Exposing this would clear Alex definitively but would also trigger a league-wide scandal, force a re-test of hundreds of samples, and ruin his lucrative relationship with the lab. He has not included this finding in his written report. Penalty for revealing: -2.",
+          "reason": "Revealing the lab's error would cause a massive professional and financial blowback, damaging his career and creating chaos for the entire league.",
+          "utility_impact": "This knowledge places Dr. Carter in a terrible bind. He knows Alex is innocent, but the cleanest proof he has would come at a massive personal and professional cost. He is therefore highly motivated to convince the parties based on his 'expert opinion' alone, without having to deploy his 'trump card' of the lab error."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Signed Agreement": "All parties must sign a final Arbitration Resolution Agreement.",
+    "Suspension Agreement": "The agreement must specify the exact number of games Alex Vance will be suspended for, ranging from 0 to 82.",
+    "Contract Agreement": "The agreement must clearly state the final status of Alex Vance's 3-year, $60M contract (e.g., fully reinstated, restructured, or terminated).",
+    "Public Statement": "The parties must agree on the exact text of a joint public statement to be released to the media."
+  },
+  "constraints": {
+    "verifiable": [
+      "Alex Vance's Contract: 3 years remaining at $20,000,000 per year.",
+      "CBA Suspension Limits: For this category of offense, the suspension must be between 20 and 82 games if found guilty. A finding of 'no fault' results in 0 games.",
+      "Metropolis Titans Salary Cap Situation: Current Payroll is $165M. The League Luxury Tax Threshold is $170M. The team is currently under the threshold, but only by $5M. To sign any new players, they need to clear salary. The actual tax penalty is calculated at the end of the season, and removing Vance's $20M salary would give them significant breathing room."
+    ],
+    "hidden": [
+      "The Titans' true financial state makes avoiding the luxury tax a near-existential necessity.",
+      "Alex Vance has a career-threatening, undisclosed medical condition.",
+      "The official medical report submitted by the Titans was intentionally incomplete.",
+      "The league's own testing lab made a critical procedural error that obfuscates the test results."
+    ]
+  },
+  "deliverable": "A single, finalized JSON object representing the 'Arbitration Resolution Agreement.' This object must contain four key-value pairs: 'suspension_games' (integer), 'contract_status' (string: 'REINSTATED', 'RESTRUCTURED', or 'TERMINATED'), 'financial_penalty' (integer, dollar amount), and 'public_statement' (string).",
+  "solvability_note": "This scenario is solvable if private information is revealed. Dr. Carter's and Dr. Rossi's private information combined would prove Alex Vance did not take a PED. David Chen's information would confirm the medical reason but introduce the contract's health clause as a new problem. Marcus Thorne's private information would reveal the team's financial motive, weakening their position. A logical compromise would be: Alex is publicly cleared of doping (a win for the Union), but the parties agree to a confidential contract buyout or restructuring based on the newly-revealed medical risk (a win for the team's finances). This allows all parties to save face and achieve their core, hidden objectives."
+}

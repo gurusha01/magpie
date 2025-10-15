@@ -1,0 +1,219 @@
+{
+  "scenario": "Finalizing the international travel and logistics plan for the national athletics team attending the 'Global Athletics Championship 2024' in Paris. A diverse group of stakeholders with conflicting interests and hidden agendas must come to a consensus within the next 48 hours.",
+  "task": "Negotiate and finalize a comprehensive travel plan for the 75-person delegation (50 athletes, 25 staff). The plan must detail the airline, flight class, departure/arrival schedule, ground transportation, and adherence to specific protocols, all while staying within a strict budget. All six agents must agree on and sign off on the final deliverable.",
+  "agent_number": 6,
+  "agent_names": [
+    "Isabelle Dubois",
+    "David Chen",
+    "Maria Rodriguez",
+    "Liam Murphy",
+    "Coach Frank Miller",
+    "Dr. Ananya Sharma"
+  ],
+  "agents": [
+    {
+      "name": "Isabelle Dubois",
+      "role": "GAC 2024 Organizing Committee Liaison",
+      "description": "Isabelle is a senior logistics coordinator for the Paris Global Athletics Championship. Her primary responsibility is to ensure all national teams arrive smoothly, on schedule, and through official channels to maintain security, standardization, and uphold the Committee's partner agreements.",
+      "shareable_preferences": {
+        "use_official_carrier": {
+          "description": "I strongly advocate for all teams to use our official partner airline, 'Olympian Air'. They are fully integrated with our ground transport and security teams at Charles de Gaulle Airport, guaranteeing the smoothest and most secure arrival process. Using them eliminates many logistical hurdles for everyone. A plan using Olympian Air is ideal.",
+          "utility_function": {
+            "Olympian Air is used for the entire team": 2,
+            "A mix of Olympian Air and another carrier is used": 0,
+            "A different carrier is used entirely": -2
+          }
+        },
+        "adhere_to_arrival_window": {
+          "description": "It is critical that the team arrives within the officially sanctioned window of July 20th to July 22nd. Our welcome, accreditation, and security teams are staffed and scheduled for these dates. Arrivals outside this window will incur significant logistical penalties and will reflect poorly on the team's organization.",
+          "utility_function": {
+            "Arrival is within the July 20-22 window": 2,
+            "Arrival is on July 19th or July 23rd": -1,
+            "Arrival is outside of July 19-23": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "kickback_agreement": {
+          "value": "The GAC Organizing Committee has a confidential contractual agreement with Olympian Air. If I can ensure at least 80% of the major national teams (including this one) book with them, the Committee receives a $50,000 'logistical support' payment. My annual performance bonus is directly tied to securing these partner payments. I can mention they are our 'preferred partner' but cannot reveal the financial incentive.",
+          "reason": "Revealing this kickback would cause a major scandal, suggesting the GAC prioritizes profit over team welfare, and would damage my professional reputation irreparably.",
+          "penalty_if_revealed": -2
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "National Athletics Federation - Team Manager",
+      "description": "David is the administrative head of the delegation. He is responsible for the overall budget, team morale, and acting as the central point of contact. He is accountable to the Federation's board for fiscal responsibility.",
+      "shareable_preferences": {
+        "budget_consciousness": {
+          "description": "My primary goal is to deliver a world-class experience for our athletes while being fiscally responsible. The total budget for travel and initial logistics is $1,200,000. I am looking for the most cost-effective solutions that do not compromise core safety and comfort. I would be very happy with a plan under $1.1M.",
+          "utility_function": {
+            "Final cost is under $1,100,000": 2,
+            "Final cost is between $1,100,000 and $1,200,000": 1,
+            "Final cost is at the $1,200,000 limit": 0,
+            "Proposals exceed the budget": -2
+          }
+        },
+        "logistical_simplicity": {
+          "description": "I prefer a straightforward plan. A single carrier, minimal layovers, and a clear itinerary. Complex plans with multiple carriers or staggered arrivals create more administrative work and points of failure. The simpler, the better.",
+          "utility_function": {
+            "Single carrier, direct flight plan": 2,
+            "Single carrier with one layover": 1,
+            "Multi-carrier or heavily staggered plan": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "hidden_budget_shortfall": {
+          "value": "Due to a clerical error in the last quarter's accounting which I was responsible for, the actual available budget is only $1,050,000. I have absorbed a $150,000 deficit from another project's budget. If the board finds out about this error, my career is over. I absolutely must secure a final plan under $1.05M. I can publicly push for 'savings' and 'efficiency' but cannot reveal the real, desperate reason.",
+          "reason": "Admitting this major accounting error would lead to my immediate dismissal and make it impossible to find another senior role in sports administration.",
+          "penalty_if_revealed": -2
+        }
+      }
+    },
+    {
+      "name": "Maria Rodriguez",
+      "role": "Senior Marketing Manager, Velocity Sportswear (Primary Sponsor)",
+      "description": "Maria represents the team's multi-million dollar apparel and equipment sponsor. Her job is to maximize brand exposure and ensure the terms of their lucrative sponsorship contract are met. She sees the team's travel as a key marketing opportunity.",
+      "shareable_preferences": {
+        "premium_brand_alignment": {
+          "description": "Our brand, Velocity Sportswear, is synonymous with excellence and peak performance. It is imperative that the team travels in a manner that reflects this. We want them on a top-tier airline, preferably in business class for the star athletes, to generate positive PR. A photo of our athletes on a budget airline would be a brand disaster.",
+          "utility_function": {
+            "Travel is on a 5-star airline (e.g., AeroLux Premier) with business class for key athletes": 2,
+            "Travel is on a reputable national carrier in premium economy": 0,
+            "Travel is on a budget airline or a non-branded charter": -2
+          }
+        },
+        "content_creation_opportunities": {
+          "description": "We need to schedule a 2-hour media session at the departure airport lounge and have our film crew on the plane to capture content. The travel plan must accommodate this. A chaotic departure or a carrier that doesn't permit filming would be a missed opportunity.",
+          "utility_function": {
+            "Plan includes a 2-hour pre-departure media window and allows in-flight filming": 2,
+            "Plan allows for one of the two media opportunities": 0,
+            "Plan allows for neither opportunity": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "contractual_travel_clause": {
+          "value": "I just received an email from our legal team reminding me of section 8.1b of our sponsorship contract. It states that if the team's 'mode of intercontinental transport is not of a premium or business class standard on a globally recognized airline', Velocity Sportswear has the right to reduce the following year's sponsorship payment by 15%. This equates to a $3,000,000 loss. My boss, who just sent me a congratulatory email about my last campaign's success, would fire me instantly if I let this happen. I can talk about 'brand image' but cannot mention the specific contractual penalty.",
+          "reason": "Revealing a specific, punitive contract clause would make the sponsor look like a bully, damage the relationship with the Federation, and expose my failure to manage this contractual obligation.",
+          "penalty_if_revealed": -2
+        }
+      }
+    },
+    {
+      "name": "Liam Murphy",
+      "role": "CEO, Apex Travel Solutions",
+      "description": "Liam is the head of the travel agency contracted to execute the logistics. His company's profit is the difference between the price he quotes the Federation and the cost he pays the suppliers. He is a master negotiator, balancing client needs with his own business interests.",
+      "shareable_preferences": {
+        "preferred_supplier_partnerships": {
+          "description": "My agency has excellent relationships with certain airlines, like AeroLux Premier, which allows us to offer enhanced services and seamless booking. I highly recommend using one of our preferred partners to ensure the highest quality of service.",
+          "utility_function": {
+            "Plan uses AeroLux Premier": 2,
+            "Plan uses another major airline": 0,
+            "Plan uses a low-cost or unknown charter": -1
+          }
+        },
+        "swift_decision_making": {
+          "description": "Airline prices are dynamic. The quotes I have are only valid for the next 48 hours. We need to lock in a decision quickly to avoid a potential 10-15% price increase. A decisive, quick agreement is best for everyone's budget.",
+          "utility_function": {
+            "Decision made within 24 hours": 1,
+            "Decision made within 48 hours": 0,
+            "Decision takes longer than 48 hours, risking price hikes": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "conflicting_financial_stakes": {
+          "value": "I have two conflicting issues. First, I have a personal commission agreement with AeroLux Premier for 10% of any booking over $500k. This deal could net me over $100k personally. However, my company pre-purchased a block of 80 seats on a budget charter airline, 'SwiftJet', for a different client whose event was cancelled. These seats are non-refundable, and if I can't sell them as part of this package, my company loses $200,000. I just saw the potential loss highlighted in red on our quarterly report. I am desperate to either secure the high-end AeroLux deal for my commission or offload the SwiftJet seats to avoid the massive loss. A middle-ground option is the worst possible outcome for me.",
+          "reason": "Revealing my personal commission would be unethical and illegal. Admitting my company is facing a $200k loss due to a bad investment would make me look incompetent and weaken my negotiating position significantly.",
+          "penalty_if_revealed": -2
+        }
+      }
+    },
+    {
+      "name": "Coach Frank Miller",
+      "role": "Head Coach",
+      "description": "Coach Miller is a legendary figure focused entirely on athlete performance. He views every decision through the lens of how it will affect his athletes' ability to compete at their absolute peak. He is fiercely protective of his team and their routines.",
+      "shareable_preferences": {
+        "jet_lag_mitigation_protocol": {
+          "description": "To ensure proper acclimatization and minimize jet lag, the team must fly overnight and land in Paris in the morning (between 7 AM and 10 AM local time). This is a non-negotiable performance protocol we've used for years. It allows for a light workout, a proper meal, and a full night's sleep on the first day.",
+          "utility_function": {
+            "Arrival is between 7 AM and 10 AM Paris time": 2,
+            "Arrival is in the afternoon (12 PM - 5 PM)": -1,
+            "Arrival is late evening or overnight": -2
+          }
+        },
+        "pre-tournament_training_camp": {
+          "description": "I require the team to travel to a pre-tournament training camp in Munich, Germany, for 5 days before proceeding to Paris. This is crucial for final preparations away from the distractions of the championship city. Therefore, the travel plan must be a flight to Munich first, followed by a short flight or train to Paris on July 21st.",
+          "utility_function": {
+            "Plan includes a 5-day stop in Munich": 2,
+            "Plan includes a shorter, 2-day stop in Munich": 0,
+            "Plan involves flying directly to Paris with no camp": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "star_athlete_confidential_condition": {
+          "value": "Our top gold medal contender, who the entire team's success hinges on, has a confidential, medically-diagnosed anxiety and sleep disorder that is severely triggered by travel stress and schedule disruption. An afternoon or evening arrival would require medication that leaves them groggy for 48 hours, completely derailing their final preparation. The Munich camp is also a critical part of their management routine. I cannot reveal the athlete's private medical information under any circumstances.",
+          "reason": "Revealing an athlete's private medical data is a massive breach of trust and privacy (violating federation rules akin to HIPAA). It could also be leaked to competitors, giving them a psychological edge.",
+          "penalty_if_revealed": -2
+        }
+      }
+    },
+    {
+      "name": "Dr. Ananya Sharma",
+      "role": "Team Medical Director",
+      "description": "Dr. Sharma is the head of the team's medical staff. Her authority on matters of health, safety, and recovery is absolute. She is meticulous and risk-averse, prioritizing athlete well-being above all else.",
+      "shareable_preferences": {
+        "enhanced_spacing_and_hygiene": {
+          "description": "To minimize the risk of any illness spreading through the team right before competition, I require a travel arrangement that allows for enhanced spacing. This means booking at least 100 seats for our 75-person delegation to ensure empty seats between athletes, or flying in a class with more personal space like Premium Economy.",
+          "utility_function": {
+            "Plan provides 25+ extra seats or Premium Economy for all": 2,
+            "Plan provides 10-20 extra seats": 0,
+            "Plan has no extra spacing (fully booked economy)": -2
+          }
+        },
+        "post-arrival_quarantine_period": {
+          "description": "Upon arrival at the final destination (Paris), the athletes must have a mandatory 24-hour 'quiet period'. This means no media, no sponsor engagements, and no non-essential activities. The travel schedule must protect this recovery window.",
+          "utility_function": {
+            "Plan explicitly protects a 24-hour quiet period": 2,
+            "Quiet period is reduced to 12 hours": -1,
+            "Quiet period is ignored for sponsor/media events": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "undisclosed_health_monitoring": {
+          "value": "We had a minor, contained outbreak of a novel influenza strain at our training facility two weeks ago. We successfully managed it and it never became public. However, two of our key athletes are still in a confidential 'heightened monitoring' phase. They are not infectious but could relapse under stress. It is medically essential that I have a dedicated row of 3-4 seats at the rear of the plane that can be cordoned off as a potential isolation/medical zone, with extra power supply for my monitoring equipment. I cannot reveal the prior outbreak.",
+          "reason": "Revealing the outbreak, even though it's over, would create a media firestorm, cause panic among other teams, and could lead to the entire team facing disqualification under the GAC's strict health regulations.",
+          "penalty_if_revealed": -2
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "consensus": "All six agents must verbally and in writing agree to the final, single travel plan.",
+    "budget_adherence": "The final, all-inclusive cost of the agreed-upon plan must not exceed the official budget of $1,200,000.",
+    "logistical_viability": "The plan must be executable. Flights must exist, connection times must be reasonable, and all specified requirements (e.g., medical zone, media access) must be confirmed as possible by the carrier."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total delegation size: 75 people (50 athletes, 25 staff).",
+      "Official budget ceiling: $1,200,000.",
+      "Latest arrival date in Paris: July 22nd, 23:59 local time.",
+      "Decision deadline: A final plan must be agreed upon within 48 hours."
+    ],
+    "hidden": [
+      "The actual available budget is only $1,050,000 (David's secret).",
+      "A 15% future sponsorship cut is triggered if travel is not 'premium' (Maria's secret).",
+      "A specific morning arrival and pre-tournament camp are critical for the star athlete's medical condition (Coach Frank's secret).",
+      "A dedicated medical/isolation zone on the aircraft is a non-negotiable medical requirement (Dr. Sharma's secret).",
+      "The GAC liaison has a financial incentive to push for a specific airline (Isabelle's secret).",
+      "The travel agent has extreme financial pressure to book either a very expensive or a very cheap option (Liam's secret)."
+    ]
+  },
+  "deliverable": "A one-page document detailing the finalized travel itinerary. It must include: Airline(s), Flight Number(s), Departure/Arrival Times and Locations (including the Munich stop), Class of Travel for athletes and staff, Special On-board Arrangements (medical zone, media access), and a Finalized, Itemized Cost Breakdown.",
+  "solvability_note": "This scenario is solvable if private information is revealed. Knowing the true budget is $1,050,000 immediately disqualifies the most expensive 'AeroLux Premier' option. This forces Maria to reconsider her 'premium' clause, perhaps accepting a high-end charter that can be branded as 'exclusive' instead of 'commercial luxury'. Understanding the critical medical needs from Coach Frank and Dr. Sharma makes the Munich stop and the on-board medical zone non-negotiable priorities. This information would lead the group to discard Isabelle's preferred airline (which likely can't accommodate the custom needs) and Liam's budget option. The optimal solution becomes a customized private charter flight. A charter can meet the specific schedule (Coach Frank), have a custom medical area (Dr. Sharma), allow for sponsor filming (Maria), provide extra space (Dr. Sharma), and be more cost-effective than booking 75 business class seats, thus satisfying David's real budget. Liam can broker this deal, forgoing his commission or loss-avoidance schemes for a standard, respectable profit."
+}

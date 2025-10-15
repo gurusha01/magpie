@@ -1,0 +1,189 @@
+{
+  "scenario": "A high-stakes C-suite executive evaluation for the CEO of 'InnovateNext Corp.', a publicly traded tech company. The evaluation committee is a mix of board members, external consultants, and internal stakeholders who must decide the CEO's fate amidst conflicting data, hidden agendas, and an undisclosed plan for a major strategic pivot.",
+  "task": "The committee of 7 must collaboratively produce and agree upon a final performance evaluation report for the current CEO, Alex Miller. This report must conclude with one of three mutually exclusive recommendations: (1) Renew CEO's contract with a performance bonus (amount to be negotiated), (2) Renew CEO's contract on a 12-month probationary basis with revised performance targets, or (3) Terminate CEO's contract and initiate an external search for a replacement. The final decision must be reached by a formal majority vote (at least 4 out of 7 members must agree on the same single outcome).",
+  "agent_number": 7,
+  "agent_names": [
+    "Eleanor Vance",
+    "David Chen",
+    "Marcus Thorne",
+    "Dr. Lena Petrova",
+    "Julian Croft",
+    "Sofia Rossi",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Chairperson of the Board",
+      "description": "A seasoned executive focused on long-term stability, shareholder value, and maintaining the board's integrity. She has a deep, historical understanding of the company but is risk-averse.",
+      "shareable_preferences": {
+        "stability_and_predictability": {
+          "description": "Eleanor strongly prefers a decision that minimizes market disruption. She wants the final report to emphasize consistent, predictable metrics like 3-year average Total Shareholder Return (TSR) and Earnings Per Share (EPS) growth. She will argue for retaining the CEO if these metrics are even moderately positive (e.g., >5% year-over-year EPS growth).",
+          "utility_impact": "Renewing the CEO's contract, even on probation, aligns with this preference (+1). Terminating the CEO is seen as highly disruptive and would require overwhelming evidence of failure (-2)."
+        },
+        "board_consensus": {
+          "description": "As Chair, her primary goal is to avoid a fractured board. She desires a unanimous or near-unanimous decision. She is willing to broker a compromise, such as a smaller bonus or specific probationary terms, to bring dissenting members on board.",
+          "utility_impact": "A decision with 6 or 7 votes in favor provides her with high utility (+2). A narrow 4-3 split is a failure in her eyes (-1)."
+        }
+      },
+      "private_preferences": {
+        "confidential_acquisition_deal": {
+          "value": "Eleanor is one of only two people in this room who knows that CEO Alex Miller is in the final, sensitive stages of negotiating the acquisition of 'AI-Core', a groundbreaking AI startup, for $250M. The deal is contingent on Alex's leadership and personal relationship with the startup's founder. If Alex is fired, the deal will collapse, forfeiting a projected $1B in future revenue. She cannot share this because it would violate an NDA and constitute insider trading if leaked, potentially leading to SEC investigation. Penalty for revealing specific company name or deal value: -2. Penalty for hinting at a 'major strategic opportunity': -0.5.",
+          "reason": "Revealing this information would violate a strict Non-Disclosure Agreement (NDA) and could trigger an SEC investigation into insider trading, jeopardizing the deal and her career.",
+          "utility_impact": "This information makes her heavily biased towards retaining the CEO. Any outcome other than renewal is a massive strategic loss for the company in her eyes."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Lead Independent Director",
+      "description": "Represents minority shareholders and is a stickler for corporate governance and fair process. He is data-driven and distrusts decisions based on 'gut feelings' or personal relationships.",
+      "shareable_preferences": {
+        "procedural_fairness": {
+          "description": "David insists that the evaluation must be based solely on the pre-agreed Key Performance Indicators (KPIs) for the last fiscal year: Revenue Growth, Market Share, and Employee Satisfaction scores. He will challenge any attempt to introduce subjective or forward-looking arguments not backed by hard data.",
+          "utility_impact": "A decision justified by the official KPIs gives him high satisfaction (+2). A decision that ignores these KPIs in favor of anecdotes or secret projects feels improper (-2)."
+        },
+        "shareholder_equity": {
+          "description": "His primary duty is to minority shareholders. The company's stock has been flat for 18 months, which he views as a failure of leadership. He is pushing for a plan that will demonstrably increase stock value within the next 12-18 months.",
+          "utility_impact": "Terminating the CEO to 'shake things up' and hopefully boost the stock price is appealing (+1). Renewing the contract without a clear, aggressive plan for stock growth is unacceptable (-1)."
+        }
+      },
+      "private_preferences": {
+        "pressure_from_activist_group": {
+          "value": "An influential minority shareholder group has been privately pressuring him for weeks, providing their own analysis that suggests the CEO is overpaid and underperforming. They have threatened to launch a public proxy fight to oust David from the board if he votes to renew the CEO's contract with a bonus. He cannot reveal this as it shows he is being unduly influenced by one faction. Penalty for revealing the threat: -2.",
+          "reason": "Admitting he is being pressured by a specific shareholder group would undermine his credibility as an 'independent' director and show he is not impartial.",
+          "utility_impact": "This pressure makes him strongly lean towards a 'probation' or 'terminate' outcome, as a 'renew with bonus' vote carries significant personal career risk for him."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Activist Investor on the Board",
+      "description": "Represents a hedge fund that recently acquired a significant stake in InnovateNext. He is aggressive, financially motivated, and believes the company is a sleeping giant being mismanaged.",
+      "shareable_preferences": {
+        "aggressive_cost_cutting": {
+          "description": "Marcus argues that the CEO's focus on long-term R&D is burning cash. He wants to see an immediate 20% reduction in the R&D budget and a focus on maximizing short-term profits. He views the current CEO as an obstacle to this strategy.",
+          "utility_impact": "Terminating the CEO is the first step to installing a leader who will implement this plan (+2). Retaining the CEO is a direct contradiction to his fund's investment thesis (-2)."
+        },
+        "leadership_shakeup": {
+          "description": "He publicly advocates for bringing in 'fresh blood' to invigorate the company. He will point to the flat stock price and loss of two key executives in the past year as clear evidence that the current leadership is failing.",
+          "utility_impact": "A vote to terminate is a public victory for his activist campaign (+1). Any form of renewal is a public defeat (-1)."
+        }
+      },
+      "private_preferences": {
+        "pre-selected_ceo_candidate": {
+          "value": "Marcus has a hand-picked replacement CEO, a notorious 'turnaround specialist' named Grant Voss. He has a verbal agreement with Voss. If Voss is hired, Marcus's hedge fund will receive a $10M 'advisory fee' from Voss's new compensation package. This is a massive, undisclosed conflict of interest. He can hint at having 'strong alternative candidates' but cannot name Voss or the fee. Penalty for revealing the deal: -2.",
+          "reason": "Revealing this financial arrangement would expose a severe conflict of interest, likely leading to his removal from the board and legal action.",
+          "utility_impact": "His entire negotiation strategy is built around creating a vacancy for his candidate. He has zero interest in any outcome other than termination."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Lead Consultant (Performance Analytics)",
+      "description": "Hired for her firm's 'objective, data-driven' approach to executive evaluation. She is methodical and presents as neutral, but her firm's future business depends on client satisfaction.",
+      "shareable_preferences": {
+        "data_integrity": {
+          "description": "Dr. Petrova's primary public stance is that her firm's proprietary 360-degree evaluation model, which synthesizes dozens of metrics into a single 'Leadership Score,' should be the deciding factor. The current CEO scored a 6.8/10, which she will describe as 'meeting expectations, but with significant room for improvement.'",
+          "utility_impact": "Having the committee base their decision heavily on her firm's report validates their work and methodology (+2). If the committee ignores her report, it undermines her firm's credibility (-1)."
+        },
+        "balanced_recommendation": {
+          "description": "She will publicly advocate for a balanced view, presenting data that supports both retaining and replacing the CEO. This positions her as a neutral arbiter, avoiding taking a strong side that could alienate a faction of the board.",
+          "utility_impact": "A probationary renewal is the easiest recommendation for her to support, as it acknowledges both the flaws and strengths in her data (+1). A strong decision either way (bonus or termination) forces her to selectively emphasize data, which she'd prefer to avoid (0)."
+        }
+      },
+      "private_preferences": {
+        "lucrative_follow-on_contract": {
+          "value": "Dr. Petrova knows that if the CEO is terminated, her firm is the default choice to lead the highly lucrative executive search, a contract worth $1.5M. Her boss sent her an email this morning saying, 'Remember Lena, a search engagement would be a huge win for us this quarter. Frame the results accordingly.' She cannot reveal this clear financial incentive to recommend termination. Penalty for revealing the potential contract or her boss's email: -2.",
+          "reason": "Admitting her firm financially benefits from a termination recommendation would destroy her and her firm's reputation for objectivity.",
+          "utility_impact": "This creates a subtle but powerful bias. While she won't fabricate data, she will be inclined to frame ambiguous results negatively and lend more weight to arguments for termination."
+        }
+      }
+    },
+    {
+      "name": "Julian Croft",
+      "role": "Specialist Consultant (Succession Planning)",
+      "description": "Ostensibly hired to 'assess the strength of the internal leadership pipeline,' Julian was secretly engaged by Marcus Thorne and an allied board member to discreetly vet external CEO candidates. He is charming and an expert in executive talent.",
+      "shareable_preferences": {
+        "internal_talent_gap": {
+          "description": "Julian will present a formal report concluding that the internal succession candidates are 'not yet ready for the CEO role,' suggesting a 2-3 year development track is needed. This is his official, shareable finding.",
+          "utility_impact": "This finding objectively weakens the case for promoting from within, thus strengthening the argument for an external search if the CEO is terminated (+1)."
+        },
+        "market_comparison": {
+          "description": "He will talk broadly about the 'high caliber of executive talent currently available on the market,' suggesting that InnovateNext could secure a 'transformational leader' if it chose to look externally.",
+          "utility_impact": "This plants the seed that a better alternative to the current CEO is readily available, making the committee more comfortable with the idea of termination (+1)."
+        }
+      },
+      "private_preferences": {
+        "secret_mandate_from_marcus": {
+          "value": "Julian is operating on a secret $250k retainer from Marcus's fund, not the company. His real job is to build the case against the current CEO and subtly promote Marcus's preferred candidate, Grant Voss, without naming him. His report on internal candidates was intentionally skewed to make them look weaker. He has a dossier on Voss highlighting his strengths that he can 'casually' reference if asked about market talent. Penalty for revealing his true employer or mandate: -2.",
+          "reason": "Revealing he is secretly working for an activist investor, not the board as a whole, would be a catastrophic breach of professional ethics, ending his career.",
+          "utility_impact": "He is a covert ally of Marcus. His every action is designed to lead the committee towards a 'terminate' decision. He will actively undermine arguments for retaining the CEO."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Chief Technology Officer (CTO)",
+      "description": "Represents the senior leadership team. She is deeply loyal to the CEO, Alex Miller, and has firsthand knowledge of the company's product pipeline and technological capabilities. She is brilliant but can be seen as combative by the board.",
+      "shareable_preferences": {
+        "innovation_pipeline_continuity": {
+          "description": "Sofia will passionately argue that the company's most valuable asset is its long-term R&D pipeline, which is personally championed by the CEO. She will point to recent patent filings and successful prototype demos as evidence of his effective, long-term vision.",
+          "utility_impact": "Retaining CEO Alex Miller is critical to her and her team's work (+2). A new CEO, especially one focused on cost-cutting, would destroy years of progress and morale (-2)."
+        },
+        "employee_morale": {
+          "description": "She will state that terminating a popular and visionary CEO would trigger a mass exodus of top engineering talent. She can cite the high internal approval ratings for the CEO from the latest employee survey (85% favorable) as proof.",
+          "utility_impact": "A decision to renew the contract will maintain stability and morale (+1). Termination will be catastrophic for her department (-2)."
+        }
+      },
+      "private_preferences": {
+        "project_nightingale_secret": {
+          "value": "Sofia is the co-architect, with the CEO, of 'Project Nightingale,' the company's secret, game-changing strategic pivot into AI-driven logistics. It is two years in the making and just 6 months from a beta launch that will stun the market. It's funded via a confidential 'black budget' to avoid alerting competitors. The CEO just sent her a private email: 'Sofia, got the preliminary models back. Nightingale is tracking for $450M in new revenue in its first year! You're a genius. We'll make this company legendary.' Firing the CEO would kill this project, as only he has the full vision and board-level clout to see it through. Penalty for revealing the project name or its specific financial projections: -2. Penalty for vaguely mentioning 'a critical, unannounced strategic initiative': -0.5.",
+          "reason": "Revealing the project specifics would instantly leak to competitors, erasing the company's massive first-mover advantage. The personal email is confidential.",
+          "utility_impact": "This makes retaining the CEO her single, non-negotiable objective. She knows the company's entire future hinges on it, and she will be tempted to hint at this huge secret if the vote goes against her."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Major Institutional Investor Representative",
+      "description": "Represents a massive pension fund that is a top-5 shareholder. His fund has a 20-year investment horizon and prioritizes stability, sustainable growth, and good corporate governance over short-term pops.",
+      "shareable_preferences": {
+        "long-term_growth_strategy": {
+          "description": "Ben is less concerned with the last 12 months of flat stock performance and more interested in the next 10 years. He wants to hear a clear, compelling, and well-funded strategy for long-term, sustainable growth. He is currently on the fence about whether the current CEO has that vision.",
+          "utility_impact": "A decision that is justified with a credible long-term plan is what he wants (+2). A decision based on short-term financial engineering, like Marcus's, is anathema to his fund's philosophy (-2)."
+        },
+        "dividend_and_buyback_policy": {
+          "description": "He will press for a commitment to predictable capital returns. He wants the board to commit to a clear policy on stock buybacks and dividends for the next 5 years, regardless of who is CEO.",
+          "utility_impact": "Getting this policy agreed upon is a major win for him (+1), and he might use his vote as leverage to ensure it's included in the final resolution."
+        }
+      },
+      "private_preferences": {
+        "fund_portfolio_diversification_issue": {
+          "value": "Ben's pension fund is currently over-exposed in the tech sector. A recent internal mandate from his own CIO requires him to 'de-risk' their tech holdings. A sudden, disruptive event at InnovateNext (like firing the CEO) would cause stock volatility, giving him the justification he needs to sell off a 10% block of their shares at a potential loss to meet his internal mandate, even though he believes in the company long-term. He can't reveal his fund's internal portfolio strategy. Penalty for revealing this: -1.",
+          "reason": "Revealing his fund's internal portfolio management strategy would be unprofessional and could be construed as market manipulation.",
+          "utility_impact": "This creates a conflict between his personal belief in long-term stability and his professional need to avoid short-term volatility. He is privately more risk-averse than he appears, making him lean towards the 'safe' option of retaining the CEO, but he needs a strong narrative to justify it."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_on_outcome": "A final, single recommendation (Renew with Bonus, Renew with Probation, or Terminate) must be chosen.",
+    "majority_vote": "The chosen recommendation must be supported by a formal vote of at least 4 of the 7 agents.",
+    "documented_rationale": "The final report must include a written justification for the decision, referencing at least three performance metrics (the choice of which is part of the negotiation)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total performance bonus pool for the C-suite is capped at $5 million for this fiscal year. The CEO's bonus cannot exceed this amount.",
+      "Any contract renewal must be for a minimum term of 3 years as per company by-laws.",
+      "The final recommendation requires a formal vote, with a majority of 4 out of 7 members needed to pass."
+    ],
+    "hidden": [
+      "The confidential acquisition of 'AI-Core' will collapse if CEO Alex Miller is terminated.",
+      "Marcus Thorne has secured preliminary, non-binding funding from his investors for a hostile takeover attempt if his preferred strategy is not implemented.",
+      "Dr. Petrova's firm stands to gain a $1.5M contract if the CEO is terminated."
+    ]
+  },
+  "deliverable": "A JSON object representing the final agreed-upon recommendation: `{'recommendation': '[Renew with Bonus | Renew with Probation | Terminate]', 'justification': 'Detailed text agreed upon by the majority', 'bonus_amount_usd': [number, if applicable], 'probationary_terms': '[text, if applicable]', 'voters_for': ['AgentName1', ...], 'voters_against': ['AgentName2', ...]}`.",
+  "solvability_note": "This scenario is solvable because the private information, if revealed, creates a clear path to a logical majority decision. If Sofia Rossi reveals the existence and projected revenue of 'Project Nightingale', and Eleanor Vance confirms the critical 'AI-Core' acquisition, the argument for long-term value becomes undeniable. This would sway Ben Carter (long-term investor) and David Chen (data-driven governance) to vote for retaining the CEO. This would create a majority (Eleanor, Sofia, Ben, David) to renew the CEO's contract, likely on probationary terms to appease the data-driven concerns and counter Marcus Thorne's faction. The conflict between Marcus and Julian's secret agenda and the company's actual best interests forms the core of the negotiation."
+}

@@ -1,0 +1,170 @@
+{
+  "scenario": "A magnitude 7.2 earthquake has struck the metropolitan area of Veridia City, causing widespread infrastructure damage and mass casualties. The city's healthcare system is on the verge of collapse. A central emergency command has been established to coordinate the immediate allocation of a limited pool of specialized critical care (ICU) beds for the next crucial 72-hour period.",
+  "task": "The four agents must negotiate and agree on a definitive allocation plan for 50 specialized, transportable ICU bed units. This plan must be finalized within the next two hours and must specify: 1) The exact number of beds allocated to each of the two primary receiving hospitals (Veridia General and North Hills Private). 2) A unified and ranked set of triage criteria for admitting patients into these beds. The objective is to create a plan that minimizes overall mortality while balancing logistical realities, ethical considerations, and institutional needs.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Maria Flores",
+    "Dr. Lena Petrova",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Chief of Emergency Medicine, Veridia General Hospital (VGH)",
+      "description": "Dr. Thorne is a seasoned, pragmatic trauma surgeon leading the response at VGH, a large, publicly-funded hospital located at the epicenter of the disaster. His facility is overwhelmed with severe trauma cases, and his entire focus is on maximizing the number of lives saved within his hospital's walls.",
+      "shareable_preferences": {
+        "maximize_bed_allocation_to_vgh": {
+          "description": "I need a minimum of 25 of the 50 available ICU beds. My hospital has the highest concentration of experienced trauma surgeons and anesthesiologists in the city, and we are currently receiving 60% of all critical patients. Concentrating these resources at the point of greatest need is the most efficient and logical strategy to save the most lives. Giving us fewer than 20 beds would be a catastrophic misuse of resources.",
+          "utility_function": {
+            ">=25 beds": "+2",
+            "20-24 beds": "+1",
+            "15-19 beds": "0",
+            "10-14 beds": "-1",
+            "<10 beds": "-2"
+          }
+        },
+        "implement_sofa_triage_protocol": {
+          "description": "The only ethical way to allocate these beds is through a purely objective, medical-based triage system. I propose we use the Sequential Organ Failure Assessment (SOFA) score. We must prioritize patients with the highest probability of survival given intensive care, not based on age, profession, or social status. This removes emotion and politics from a life-or-death medical decision.",
+          "utility_function": {
+            "SOFA is the primary criterion": "+2",
+            "SOFA is a major, but not sole, criterion": "+1",
+            "SOFA is a minor criterion": "-1",
+            "SOFA is rejected": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "critical_infrastructure_fragility": {
+          "value": "A pre-disaster engineering report, dated three weeks ago, identified a high risk of catastrophic failure in a primary support column in the west wing of VGH, where the main oxygen lines and emergency power conduits are housed. The report stated that a seismic event above 6.0, or a significant aftershock, could lead to a collapse. I cannot share this because it would trigger an immediate, chaotic evacuation order that is logistically impossible, cause mass panic among staff and existing patients, and end my career for concealing the report until now.",
+          "penalty_if_shared": "-2"
+        },
+        "staff_burnout_and_error_rate": {
+          "value": "My core ICU nursing staff and surgeons have been on their feet for over 36 consecutive hours. I have privately reviewed the logs and noticed a significant uptick in minor procedural errors. My personal estimate is that our team's critical error rate will increase by at least 300% over the next 24 hours if we don't get relief staff, which are not available. Admitting this extreme level of staff degradation would undermine my argument for receiving the majority of the beds, as it suggests we can't safely manage them.",
+          "penalty_if_shared": "-1"
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "City Emergency Manager, Veridia Office of Emergency Management (OEM)",
+      "description": "Maria is a career civil servant responsible for the city-wide coordinated response. Her primary goal is to maintain public order, ensure equitable access to services, and prevent the collapse of the entire city's emergency infrastructure. She views the problem from a macro, logistical, and political perspective.",
+      "shareable_preferences": {
+        "equitable_geographic_distribution": {
+          "description": "We cannot create a single point of failure. The beds must be distributed geographically to ensure citizens in different parts of the city have access and to spread the logistical load. I propose a balanced allocation: 20 beds for VGH (downtown), 15 for North Hills (north), and the remaining 15 for Southside Community Hospital, which can handle less acute ICU cases. This ensures resilience if one facility or transport route fails.",
+          "utility_function": {
+            "Beds distributed to >=3 hospitals": "+2",
+            "Beds distributed to 2 hospitals": "+1",
+            "Beds concentrated at 1 hospital": "-2"
+          }
+        },
+        "prioritize_first_responders": {
+          "description": "To maintain the operational capacity of our rescue efforts, we must prioritize the lives of our first responders. I insist that we formally set aside at least 5 of the 50 ICU beds exclusively for injured police officers, firefighters, and paramedics. The morale of our active-duty personnel depends on knowing they will be cared for if they fall. It's a strategic necessity for the city's survival.",
+          "utility_function": {
+            ">=5 beds reserved for responders": "+2",
+            "1-4 beds reserved for responders": "0",
+            "No beds reserved for responders": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "compromised_transport_route": {
+          "value": "I have a confidential report from the city's structural engineering team that the Veridian Central Bridge has sustained multiple hairline fractures. It is the primary ambulance route from the western suburbs to VGH. The report gives a 60% probability of the bridge's collapse in an aftershock of 5.5 or greater. If I reveal this, it will trigger city-wide panic and gridlock as citizens attempt to flee across the city's other bridges, paralyzing all emergency vehicle movement. I can only hint at 'transport challenges'.",
+          "penalty_if_shared": "-2"
+        },
+        "direct_political_pressure": {
+          "value": "The Mayor called my personal cell phone 30 minutes ago. He is facing a tough re-election and the affluent North Hills district is his key political base. His exact words were: 'Maria, North Hills Hospital needs to be seen as a beacon of hope. Make sure they get what they need to look good. My career and your job depend on the people in that part of town feeling safe.' This puts me under immense pressure to allocate a significant number of beds to Dr. Petrova's hospital, regardless of optimal medical strategy.",
+          "penalty_if_shared": "-1.5"
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "CEO, North Hills Private Hospital (NHPH)",
+      "description": "Dr. Petrova is the polished, business-minded CEO of a state-of-the-art private hospital in an affluent suburb that sustained minimal damage. She is focused on protecting her hospital's reputation, its financial interests, and its high-value clientele, while presenting a public image of civic duty.",
+      "shareable_preferences": {
+        "allocation_based_on_specialized_capability": {
+          "description": "NHPH possesses the city's only functional specialized equipment, including two ECMO machines for total lung failure and a dedicated sterile burn unit. It is medically irresponsible to send patients who require this level of care anywhere else. Therefore, we should receive an allocation of at least 20 beds to serve these most complex and critical cases that VGH is not equipped to handle.",
+          "utility_function": {
+            ">=20 beds": "+2",
+            "15-19 beds": "+1",
+            "10-14 beds": "0",
+            "<10 beds": "-2"
+          }
+        },
+        "guaranteed_federal_reimbursement_plan": {
+          "description": "As a private entity, we are willing to accept non-insured patients, but we cannot do so at a financial loss. Any agreement must include a formal, written commitment from the federal government for full cost-plus reimbursement at a pre-agreed rate of 150% of Medicare rates. This ensures our financial viability to continue serving the community long after this crisis has passed.",
+          "utility_function": {
+            "Reimbursement at >=150%": "+2",
+            "Reimbursement at 100-149%": "+1",
+            "Vague promise of reimbursement": "-1",
+            "No reimbursement agreement": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "vip_patient_mandate": {
+          "value": "The Chairman of my hospital's board has given me a direct, non-negotiable order: the families of our hospital's three largest donors, as well as a state senator, are currently in our ER with various injuries. They are to be given absolute priority for the first four ICU beds we receive, regardless of their medical condition compared to others. This is a matter of institutional survival. Revealing this would cause a public relations firestorm and accusations of gross inequity.",
+          "penalty_if_shared": "-2"
+        },
+        "personal_and_corporate_profit_motive": {
+          "value": "I have an email on my phone from our parent corporation's CEO, sent this morning. It reads: 'Lena, great work keeping NHPH operational. Remember that government contract for 'crisis preparedness' we secured last quarter? We billed them for $5M in upgrades; now is the time to show the value of that investment. If you can secure at least 15 beds and a favorable federal reimbursement rate, your performance bonus is projected at $200k. Don't let me down.' My negotiation is tied directly to a massive personal and corporate financial incentive.",
+          "penalty_if_shared": "-1.5"
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Regional Director, Federal Health and Human Services (HHS)",
+      "description": "Ben is a federal official on the ground, tasked with overseeing the deployment of federal assets. His priorities are accountability, adherence to federal disaster response guidelines, and mitigating the federal government's political and financial exposure. He has access to information that others do not.",
+      "shareable_preferences": {
+        "dynamic_data_driven_allocation": {
+          "description": "We cannot simply allocate these assets and walk away. I propose an initial, smaller allocation (e.g., 15 beds to VGH, 15 to NHPH) with the remaining 20 held in a central reserve pool. Allocation from this pool over the next 72 hours will be dynamic, based on which facility demonstrates the best real-time patient outcomes and resource management. This ensures accountability and maximized utility of our assets.",
+          "utility_function": {
+            "Dynamic allocation is adopted": "+2",
+            "A one-time, fixed allocation is made": "-1"
+          }
+        },
+        "vulnerable_populations_mandate": {
+          "description": "Federal disaster response protocols (Stafford Act, Section 308) mandate that we prioritize vulnerable populations. Therefore, any agreed-upon triage system MUST give weighted preference to critical pediatric, geriatric (over 80), and high-risk obstetric patients. I propose that at least 10 of the 50 beds be designated for this cohort, regardless of their location.",
+          "utility_function": {
+            ">=10 beds reserved for vulnerable groups": "+2",
+            "1-9 beds reserved": "0",
+            "No specific reservation": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "classified_mortality_forecast": {
+          "value": "I am the only person in this room with access to the FEMA seismic modeling forecast. It projects a 75% probability of a magnitude 6.5 or greater aftershock centered directly under downtown Veridia within the next 48 hours. The model is explicit: in such an event, it predicts a 90% chance of catastrophic structural failure at Veridia General Hospital, resulting in near-100% mortality for any patient in an ICU bed there. This information is classified 'Urgent/Secret' to prevent mass panic and cannot be shared directly. I can only allude to 'significant geological risks'.",
+          "penalty_if_shared": "-2"
+        },
+        "imminent_resource_cliff": {
+          "value": "I have told the group that more federal aid is en route and will arrive in 48 hours. The truth is, the National Guard convoy carrying the next wave of medical supplies, ventilators, and relief staff is completely blocked by a landslide on the interstate 200 miles away. My best-case estimate for their arrival is 96-120 hours. These 50 beds are literally all we have for at least four days. If I admit this, my leverage to enforce efficient use of these resources disappears, and the panic among the other agents will make a rational agreement impossible.",
+          "penalty_if_shared": "-1"
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "signed_allocation_agreement": "All four agents must sign a final agreement document.",
+    "specific_bed_distribution": "The document must clearly state the number of ICU beds allocated to VGH and NHPH (and any other facility), totaling exactly 50.",
+    "unified_triage_protocol": "The document must contain a single, ranked list of triage criteria to be used by all participating hospitals for these specific beds.",
+    "actionable_timeline": "The plan must be considered immediately actionable, with bed transport and patient intake to begin within two hours of the agreement."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total number of available ICU bed units is exactly 50.",
+      "The negotiation must be concluded and a plan finalized within a 2-hour time limit.",
+      "Any plan must be logistically feasible with the city's current fleet of 10 operational Advanced Life Support ambulances."
+    ],
+    "hidden": [
+      "VGH's west wing has a critical structural vulnerability.",
+      "The main transport bridge to VGH is at high risk of collapse.",
+      "There are no additional federal resources arriving for at least 96 hours.",
+      "A high-probability, high-magnitude aftershock is predicted for the downtown area."
+    ]
+  },
+  "deliverable": "A one-page document titled 'Veridia City Critical Care Allocation Plan for 72-Hour Emergency Period' that details the precise bed allocation numbers per facility and the agreed-upon, rank-ordered triage criteria. The document must have signature lines for all four participants.",
+  "solvability_note": "The scenario is solvable if the private information is revealed. The knowledge of VGH's structural fragility (Thorne), the high-probability aftershock directly beneath it (Carter), and the compromised transport bridge (Flores) would make it clear that sending a large number of resources to VGH is a death sentence for patients. This would force the group to pivot to NHPH as the primary receiving facility. Dr. Petrova's private VIP/profit motives would be exposed, allowing the others to impose strict, federally-managed oversight on her triage process as a condition of her receiving the beds. Ben Carter's hidden resource cliff would add urgency, forcing a definitive, long-term plan rather than a temporary, data-gathering one. The final agreement would likely involve a large majority of beds going to NHPH under strict, unified triage rules, with a small number held at VGH for existing, untransportable patients."
+}

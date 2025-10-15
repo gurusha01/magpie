@@ -1,0 +1,207 @@
+{
+  "scenario": "Formation of a multi-strategy hedge fund alliance, 'Apex Strategic Partners'",
+  "task": "A group of seven key stakeholders\u2014three portfolio managers, two institutional investors, and two prime brokers\u2014must negotiate the terms of a 'Founding Charter' for a new hedge fund alliance. The negotiation must finalize the total initial Assets Under Management (AUM), the specific percentage allocation of capital to each of the three trading strategies, a single overall leverage limit for the alliance, a unified fee structure (both management and performance fees), and the governance structure, specifically the composition of the investment committee. Agreement on all points is required to launch the fund.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Evelyn Reed",
+    "Julian Croft",
+    "Kenji Tanaka",
+    "Maria Flores",
+    "David Chen",
+    "Sofia Rossi",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Portfolio Manager, Quantitative Strategies",
+      "description": "A brilliant but secretive quantitative analyst who runs 'Helios Capital'. Her strategies rely on complex, proprietary high-frequency trading (HFT) algorithms. She is seen as the high-tech, high-alpha engine of the proposed alliance.",
+      "shareable_preferences": {
+        "strategy_allocation": {
+          "description": "Wants her quantitative strategies to receive at least 40% of the total AUM. She argues that her models have consistently outperformed the market with low correlation to traditional assets, and a significant allocation is necessary to achieve the scale required for HFT to be effective. She will accept as low as 30%, but her utility drops sharply below that. Utility: +2 for >=40%, +1 for [35%, 40%), 0 for [30%, 35%), -1 for [25%, 30%), -2 for <25%.",
+          "utility_impact": "This is her primary goal. A lower allocation questions the validity of her life's work and limits her ability to deploy capital effectively across multiple algorithmic models."
+        },
+        "fee_structure": {
+          "description": "Proposes a '1 and 25' fee structure (1% management fee, 25% performance fee). She argues that her operational costs are low (servers and data, not large teams), so a high management fee isn't justified. A high performance fee, however, directly aligns her with investors' success. She feels this is the modern, fair way to structure fees for high-alpha strategies. Utility: +2 for 1/25, +1 for 1.5/25, 0 for 1.5/20, -1 for 2/20, -2 for >2% management fee.",
+          "utility_impact": "She believes the '2 and 20' model is outdated and penalizes investors. Pushing for this structure is a matter of principle and financial incentive for her."
+        }
+      },
+      "private_preferences": {
+        "algorithm_decay": {
+          "value": "Her flagship algorithm, 'Cerberus', which accounts for 60% of her historical returns, has seen its alpha decay by 15% over the last 6 months in live testing. It's becoming less effective as the market adapts. She needs a massive capital injection from the alliance to fund a $5 million R&D project to build the next-generation model. Sharing that her core strategy is weakening would shatter confidence and likely kill the deal. Penalty for revealing this is -2.",
+          "reason": "Revealing a core competency is failing would be professional suicide, destroying her reputation and negotiating power.",
+          "utility_impact": "This makes her desperate for the alliance to form with a large AUM, creating pressure to concede on other points if her core allocation preference is threatened. She cannot afford for this deal to fall through."
+        },
+        "regulatory_scrutiny": {
+          "value": "She has a confidential source at the CFTC who informed her that a broad investigation into HFT practices, particularly concerning order spoofing, is in its early stages. New regulations within the next 12-18 months are a real possibility and could significantly impact the profitability of certain HFT strategies. She can vaguely hint at 'potential regulatory headwinds' (penalty -0.5), but revealing the specific investigation would cause panic (penalty -1.5).",
+          "reason": "Sharing non-public information about a regulatory investigation could have legal ramifications and would cause investors to flee her strategy.",
+          "utility_impact": "This makes her secretly more agreeable to diversification within the alliance than she lets on, as it hedges her personal career risk against a regulatory crackdown on her specialization."
+        }
+      }
+    },
+    {
+      "name": "Julian Croft",
+      "role": "Portfolio Manager, Long/Short Equity",
+      "description": "A traditional, fundamental-focused stock picker from 'Croft & Sterling'. He has a reputation for deep, bottom-up research and a 'boots on the ground' approach. He views himself as the stable, value-driven anchor of the alliance.",
+      "shareable_preferences": {
+        "strategy_allocation": {
+          "description": "Requires an allocation of at least 35% for his long/short equity strategy. He argues that in a volatile market, proven stock-picking provides the most reliable and understandable source of returns. His team of 12 analysts is expensive, and he needs this allocation to justify their overhead. Utility: +2 for >=40%, +1 for [35%, 40%), 0 for [30%, 35%), -1 for [25%, 30%), -2 for <25%.",
+          "utility_impact": "This allocation is critical for maintaining his team and covering the significant fixed costs of his research-intensive operation."
+        },
+        "governance_seat": {
+          "description": "Insists on a permanent seat on the investment committee. He believes that quantitative and macro strategies lack downside protection without the oversight of a fundamental investor who understands individual company risk. Utility: +1.5 for getting a seat, -1.5 for not getting a seat.",
+          "utility_impact": "He feels a responsibility to protect the fund from what he sees as 'black box' strategies and wants direct influence over major risk decisions."
+        }
+      },
+      "private_preferences": {
+        "compromised_position": {
+          "value": "His fund's largest single holding (15% of his portfolio) is in a mid-cap biotech firm, 'OmniGen' (Ticker: OMGN). He received a credible but anonymous tip from a source inside the company that the SEC has opened a formal investigation into their revenue recognition practices. If this news becomes public, the stock could fall over 50%. He needs the large trading volumes of the new alliance to mask his exit from this position over several weeks without causing a panic. Revealing this would not only tank the stock but expose him to accusations of trading on inside information. Penalty for revealing this is -2.",
+          "reason": "Admission could lead to personal legal jeopardy, career destruction, and immediate, catastrophic losses for his current fund.",
+          "utility_impact": "He is under immense pressure to ensure the alliance launches quickly and with substantial AUM. He will fight hard for his allocation, as a smaller allocation makes it harder to hide his large sell orders for OMGN."
+        }
+      }
+    },
+    {
+      "name": "Kenji Tanaka",
+      "role": "Portfolio Manager, Global Macro",
+      "description": "A charismatic and seasoned global macro trader from 'Tanaka Global'. He invests across currencies, commodities, and sovereign debt based on major geopolitical and economic trends. He brings a top-down, diversified perspective to the alliance.",
+      "shareable_preferences": {
+        "leverage_limit": {
+          "description": "Advocates for a flexible and high alliance leverage limit, ideally up to 6:1. He argues that macro strategies often involve trades with small margins (e.g., currency pairs), and high leverage is essential to generate meaningful returns. He claims that risk is managed by diversification, not by arbitrary leverage caps. Utility: +2 for >=6:1, +1 for [5:1, 6:1), 0 for [4:1, 5:1), -1 for [3:1, 4:1), -2 for <3:1.",
+          "utility_impact": "His entire strategy model depends on the ability to apply significant leverage to high-conviction trades. A low cap severely curtails his expected returns."
+        },
+        "strategy_allocation": {
+          "description": "Wants at least a 30% allocation to his global macro strategy. He positions his strategy as the ultimate diversifier, providing non-correlated returns that will smooth out the overall P&L of the alliance, especially when equity or quant strategies are struggling. Utility: +2 for >=35%, +1 for [30%, 35%), 0 for [25%, 30%), -2 for <25%.",
+          "utility_impact": "He believes his strategy is the crucial glue that will hold the alliance's risk profile together and needs a meaningful allocation to have this diversification effect."
+        }
+      },
+      "private_preferences": {
+        "key_person_risk": {
+          "value": "His lead analyst and strategist, who was the architect of his most profitable sovereign bond model, resigned last week to join a major competitor. He hasn't announced it publicly and is desperately trying to reverse-engineer her models while searching for a replacement. Her departure creates a massive, immediate hole in his team's capability. Disclosing this would cause investors to question the viability of his entire operation. Penalty for revealing this is -2.",
+          "reason": "Revealing that the 'secret sauce' of his strategy just walked out the door would destroy his credibility and negotiating position.",
+          "utility_impact": "This makes him secretly insecure and more desperate to lock in a long-term capital commitment from the alliance before his fund's recent performance begins to suffer. He might be more willing to compromise on leverage to secure his allocation."
+        },
+        "personal_income": {
+          "value": "He just received a private email from his current fund's CEO: 'Kenji, phenomenal work last quarter. The trades on the Turkish Lira netted us $15M. Your personal performance bonus for Q2 will be $2M. Let's keep this between us as we finalize the Apex deal.' He does not want the other partners, especially the investors, to know about this massive recent payout, as it would weaken his arguments for needing a certain fee structure or AUM to be 'fairly compensated'. Penalty for revealing the email/bonus amount is -1.",
+          "reason": "It's socially unacceptable and strategically foolish to reveal a huge personal windfall while negotiating for more compensation.",
+          "utility_impact": "This information makes his arguments about compensation less about necessity and more about ego, but he will frame them as essential for his business."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Chief Investment Officer, Public Pension Fund",
+      "description": "As CIO of the $50 billion 'State Teachers' Retirement System', Maria is a cautious, risk-averse, and highly influential investor. Her fund's participation would lend immense credibility to the alliance. She can commit up to $200M.",
+      "shareable_preferences": {
+        "leverage_limit": {
+          "description": "Her fund's mandate is capital preservation. She will not agree to an alliance-wide leverage limit greater than 3:1. She will point to public collapses of over-leveraged funds as case studies and will not compromise on this, as it is a core tenet of her fiduciary duty. Utility: +2 for <=3:1, 0 for [3:1, 3.5:1), -2 for >3.5:1.",
+          "utility_impact": "This is a hard line for her. Protecting the pensions of teachers is her primary, non-negotiable responsibility."
+        },
+        "governance_and_transparency": {
+          "description": "Demands at least one, preferably two, seats for her fund on the alliance's investment committee to ensure full transparency and oversight. She also requires monthly risk reports and full position-level transparency on demand. Utility: +2 for 2 seats, +1 for 1 seat, -2 for 0 seats.",
+          "utility_impact": "After being burned by 'black box' funds in the past, her board insists on direct oversight for any investment of this magnitude."
+        },
+        "management_fees": {
+          "description": "Wants the management fee to be no higher than 1.5%. She believes that in an era of low interest rates, high management fees are an unacceptable drag on performance and that managers should be rewarded through performance fees, not guaranteed salaries from investor capital. Utility: +2 for <=1.5%, 0 for [1.5%, 1.75%), -1 for [1.75%, 2%), -2 for >=2%.",
+          "utility_impact": "Fee reduction is a major political issue with her pension board, and she is under pressure to negotiate favorable terms."
+        }
+      },
+      "private_preferences": {
+        "job_insecurity": {
+          "value": "Her fund has underperformed its benchmark for two consecutive years. The pension board held a private meeting last month where they put her 'on notice'. She desperately needs a successful, high-profile investment to post strong returns in the next 12 months to save her job. This makes her secretly desperate to get a deal done, but also pushes her to be even more risk-averse in the terms she'll accept. Revealing her job is on the line would severely weaken her negotiating position, making her look desperate. Penalty for revealing this is -1.5.",
+          "reason": "Admitting professional vulnerability would undermine her authority and allow others to exploit her desperation.",
+          "utility_impact": "While she projects an image of conservative strength, she is privately anxious. She might concede on fee structure if her leverage and governance demands are met, as a 'safe' investment that performs moderately well is better for her than no deal at all."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Principal, Family Office",
+      "description": "David manages a $5 billion single-family office for a tech billionaire. He is young, aggressive, and empowered to take significant risks for outsized returns. He is looking for cutting-edge strategies and is less concerned with fees than with raw performance. He can commit up to $150M.",
+      "shareable_preferences": {
+        "aggressive_growth": {
+          "description": "Strongly supports the strategies with the highest potential alpha, particularly Evelyn's quant models and Kenji's leveraged macro trades. He wants to see at least 65% of the fund's capital allocated to these two managers. Utility: +2 for >=70% in Quant/Macro, +1 for [60%, 70%), 0 for [50%, 60%), -1 for <50%.",
+          "utility_impact": "His family's mandate is to pursue aggressive growth, not slow and steady preservation. He sees Julian's L/S strategy as 'old news'."
+        },
+        "high_leverage": {
+          "description": "He is a vocal proponent of high leverage, pushing for a limit of at least 5:1, and would be happy with more. He believes leverage is a tool, and the top-tier managers in this alliance should be trusted to use it effectively to maximize returns. Utility: +2 for >=6:1, +1 for [5:1, 6:1), 0 for [4:1, 5:1), -2 for <4:1.",
+          "utility_impact": "For him, the entire point of an elite fund is to do things a normal investor can't, and that includes using significant leverage."
+        }
+      },
+      "private_preferences": {
+        "family_liquidity_crisis": {
+          "value": "The patriarch of the family has a terminal illness with a prognosis of 12-18 months. Upon his passing, the estate will face an estimated $800 million tax bill. David is under immense private pressure to generate massive, short-term returns to help cover this liquidity event without having to sell core family holdings in private tech companies. He needs this alliance to target an annualized return of over 20%. This is the sole reason for his aggressive stance. Revealing this family tragedy and financial predicament would be a massive violation of privacy and would expose his non-financial motivations. Penalty for revealing this is -2.",
+          "reason": "Discussing the family's private health and financial matters is a severe breach of trust and would expose his desperation.",
+          "utility_impact": "This hidden timeline makes him impatient and willing to accept significant risk. He will clash directly with Maria on leverage and will see her conservatism as a direct obstacle to his critical family goal."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Managing Director, Prime Brokerage (Capital Introduction)",
+      "description": "Sofia works for the prime brokerage firm 'Goldman Stanley'. Her role is to connect hedge funds with large investors and win her firm's business for trading, custody, and financing. She is the deal-maker who brought this group together.",
+      "shareable_preferences": {
+        "large_aum": {
+          "description": "Wants the alliance to launch with a combined AUM of at least $500 million. A large launch is a major PR win for her and her firm, solidifies the alliance's importance, and ensures significant fee revenue for the brokerage. She will push the investors to commit as much as possible. Utility: +2 for >=$500M, +1 for [$400M, $500M), 0 for [$300M, $400M), -2 for <$300M (as the deal might not be worth her firm's time).",
+          "utility_impact": "The size of the deal is a direct measure of her success and influence within her firm. It's her main performance metric."
+        },
+        "brokerage_exclusivity": {
+          "description": "Insists that 'Goldman Stanley' be named the sole prime broker for the alliance for a minimum of three years. This guarantees a stable revenue stream for her firm from financing, execution, and other services. Utility: +2 for a 3-year exclusive contract, -1 for a non-exclusive contract.",
+          "utility_impact": "Securing an exclusive, long-term mandate with a flagship client like this is a major career achievement for her."
+        }
+      },
+      "private_preferences": {
+        "bonus_structure": {
+          "value": "Her personal bonus is directly tied to the AUM of new clients. A deal under $400M gets her a $250k bonus. However, if she closes a deal over $500M, a multiplier kicks in, and her bonus jumps to $750k. This creates a powerful personal incentive to push for the highest possible AUM, regardless of whether it's the right size for the strategies or investors. Revealing her compensation structure would be seen as unprofessional and greedy. Penalty for revealing this is -1.",
+          "reason": "It is highly unprofessional to discuss one's own bonus during a client negotiation, as it reveals a conflict of interest.",
+          "utility_impact": "She will act as a cheerleader for a larger fund, perhaps glossing over risks, because a specific number dramatically impacts her personal wealth."
+        },
+        "firm_credit_watch": {
+          "value": "Her firm, 'Goldman Stanley', was privately notified by Moody's last week that it is being placed on a 'negative watch' for a potential credit downgrade due to exposure to commercial real estate. Announcing a new, stable, high-AUM client like Apex Strategic Partners would be a major signal of strength to the market and could help avert the downgrade. Revealing the negative watch would cause the investors to question her firm's stability as a custodian for their assets. Penalty for revealing this is -2.",
+          "reason": "Leaking non-public, market-sensitive information about her own firm's financial health would get her fired and potentially sued.",
+          "utility_impact": "This adds a layer of desperation to her need to close the deal. The alliance isn't just a client; it's a crucial piece of PR to protect her entire firm."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Executive Director, Prime Brokerage (Risk Management)",
+      "description": "Ben is Sofia's colleague from the risk management department at 'Goldman Stanley'. His job is not to win the business, but to ensure the business doesn't blow up the firm. He is methodical, data-driven, and conservative by nature.",
+      "shareable_preferences": {
+        "strict_leverage_cap": {
+          "description": "Based on his department's models, he is recommending a maximum gross leverage limit for the alliance of 4:1. He will present data showing that risk concentration increases exponentially beyond this point for a multi-strategy fund and that it represents the most prudent ceiling to protect his firm from a potential client default. Utility: +2 for <=4:1, -2 for >4:1.",
+          "utility_impact": "This is his primary professional responsibility. He is the guardian of his firm's balance sheet."
+        },
+        "risk_transparency": {
+          "description": "Requires the alliance to provide his firm with real-time, read-only API access to all trading accounts and to submit to daily Value-at-Risk (VaR) and stress-test reporting. He will frame this as a non-negotiable standard for any fund of this complexity. Utility: +1.5 for full compliance, -1.5 for any resistance.",
+          "utility_impact": "Without full transparency, his team cannot effectively monitor risk, making the client an unacceptable liability."
+        }
+      },
+      "private_preferences": {
+        "prior_risk_failure": {
+          "value": "His department is under intense internal scrutiny after another client, a small family office, collapsed in an Archegos-style default three months ago, costing the firm $900 million. The failure was blamed on lax oversight by his team. The fine paid to regulators was kept private, but Ben's boss told him directly, 'If another client so much as gets a margin call you can't handle, you're out.' This means his stated 4:1 leverage limit is not just a recommendation; it's his absolute, career-ending, non-negotiable personal limit. He has no flexibility. Revealing this internal failure and personal threat would destroy his authority and expose his firm to reputational damage. Penalty for revealing this is -2.",
+          "reason": "Admitting a massive, recent professional failure would undermine his credibility and his firm's reputation for risk management.",
+          "utility_impact": "While Kenji and David might think Ben's 4:1 limit is a negotiable starting point, it is not. He will walk away from the deal before he will approve 4.1:1 leverage, as his job is literally on the line."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement": "All 7 agents must agree to and 'sign' a final Founding Charter.",
+    "charter_completeness": "The charter must unambiguously define five key terms: 1. Total Initial AUM (in USD), 2. Strategy Allocation (as percentages for Quant, L/S Equity, and Global Macro, summing to 100%), 3. A single, fund-wide Leverage Limit (as a ratio, e.g., 4:1), 4. A unified Fee Structure (e.g., 1.5% management, 20% performance), and 5. The composition of the Investment Committee (number of seats per party)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total initial AUM must be at least $300 million for the alliance to be viable.",
+      "The sum of the three strategy allocations must equal 100%.",
+      "The prime brokerage contract must be awarded to a single firm (in this case, 'Goldman Stanley' is the only option on the table)."
+    ],
+    "hidden": [
+      "Due to Ben Carter's personal job risk, the absolute maximum leverage the prime broker will ever approve is 4.0:1.",
+      "Julian Croft requires sufficient trading volume from the alliance to mask his exit from a $50M+ position in 'OmniGen'.",
+      "David Chen needs the alliance's strategy mix and leverage to plausibly target an annualized return of at least 20%."
+    ]
+  },
+  "deliverable": "A JSON object representing the final Founding Charter, with keys for 'Total AUM', 'Strategy Allocation' (an object with PM names as keys and percentages as values), 'Leverage Limit', 'Fee Structure' (an object with 'Management Fee' and 'Performance Fee'), and 'Investment Committee' (a list of members).",
+  "solvability_note": "The scenario is solvable because a compromise exists if private information is revealed. Knowing Ben's hard 4:1 leverage limit would force David and Kenji to concede. Knowing about Julian's compromised stock and Evelyn's decaying algorithm would lead to a more balanced strategy allocation (e.g., 35% L/S, 35% Macro, 30% Quant) with specific risk controls. Understanding David's and Maria's hidden motivations would allow for a fee structure compromise (e.g., 1.75% and 22.5%) that balances Maria's need for safety with David's need for upside. A final deal around $350M AUM, 4:1 leverage, and a balanced allocation/fee structure is achievable with full transparency."
+}

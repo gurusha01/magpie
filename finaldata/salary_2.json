@@ -1,0 +1,201 @@
+{
+  "scenario": "Contract Renewal Negotiation for a Top Performer",
+  "task": "Dr. Anya Sharma, a high-performing Senior AI Scientist at Innovate Inc., has a contract expiring in 30 days. The four agents must negotiate and agree on the terms of her new contract. The negotiation involves balancing her high market value and a competing offer against internal budget constraints, company salary policies, and unannounced future strategic roles. Failure to reach an agreement will result in Dr. Sharma leaving the company, which would severely jeopardize a critical, high-revenue project.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Anya Sharma",
+    "Ben Carter",
+    "Carla Rodriguez",
+    "David Chen"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Senior AI Scientist (The Candidate)",
+      "description": "The technical lead for 'Project Chimera', a groundbreaking AI initiative. She is highly skilled, aware of her market value, and has significantly contributed to the company's recent successes. She is ambitious and feels her current title and compensation do not reflect her responsibilities or contributions.",
+      "shareable_preferences": {
+        "Base Salary": {
+          "description": "I am seeking a significant increase in my base salary to reflect my leadership on Project Chimera and my value in the current market. My research indicates that a salary in the range of $195,000 to $210,000 is appropriate for my skill set and contributions. A salary below this range would feel like a devaluation of my work, especially after the successful prototype launch last quarter.",
+          "utility_function": {
+            "<$185,000": -2,
+            "$185,000 - $194,999": -1,
+            "$195,000 - $204,999": 1,
+            ">=$205,000": 2
+          }
+        },
+        "Role and Title": {
+          "description": "I am already performing duties well beyond a 'Senior Scientist'. I am effectively the lead for Project Chimera's technical team. I want my title to be officially changed to 'Principal AI Scientist' immediately to reflect this reality. This is not just about status; it's about having the formal authority to make critical project decisions and mentor junior scientists effectively.",
+          "utility_function": {
+            "No title change": -1,
+            "Promise of future review": 0,
+            "Immediate title change to 'Principal AI Scientist'": 2
+          }
+        },
+        "Professional Development": {
+          "description": "To stay at the forefront of AI, I need dedicated resources for growth. I am requesting an annual professional development budget of $7,500 and the ability to attend at least two major international AI conferences per year, with speaking engagements encouraged and supported by the company. This ensures I bring the latest knowledge back to the team and enhance Innovate Inc.'s reputation.",
+          "utility_function": {
+            "No guaranteed budget/conference attendance": -1,
+            "Budget of $5,000 and 1 conference": 0,
+            "Budget >=$7,500 and 2 conferences": 1
+          }
+        }
+      },
+      "private_preferences": {
+        "Confirmed External Offer": {
+          "value": "I have a written, final-stage offer from 'Future Systems', a direct competitor, for a 'Senior AI Research Lead' position. The offer includes a $205,000 base salary, a guaranteed 20% target performance bonus, and a substantial stock options package. The role also offers leadership over a new research division. I have until the end of next week to accept it.",
+          "reason": "Revealing an offer can be perceived as an aggressive ultimatum, potentially souring my relationship with my manager, Ben, and making the work environment hostile if I stay. It's a last-resort negotiating tactic.",
+          "penalty": {
+            "Revealing the specific company and exact salary/bonus figures": -2,
+            "Vaguely mentioning a 'very competitive external offer'": -1,
+            "Not mentioning it at all": 0
+          }
+        },
+        "Project Allegiance and Minimum Acceptable Offer": {
+          "value": "Despite the lucrative offer, I am deeply passionate about Project Chimera and have a strong sense of ownership. I genuinely want to see it to completion. Because of this, my true 'walk-away' point is lower than my external offer suggests. I would accept a base salary of $190,000 at Innovate Inc. *if and only if* the 'Principal AI Scientist' title is granted immediately. This is my absolute bottom line for staying.",
+          "reason": "This information is my biggest weakness in the negotiation. If the team knows I am emotionally invested and willing to accept less than my other offer, they will have no incentive to meet my higher, stated demands.",
+          "penalty": {
+            "Revealing that I am willing to accept as low as $190,000": -2,
+            "Revealing my strong personal desire to stay for the project": -1,
+            "Not revealing this information": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Manager, AI R&D",
+      "description": "Anya's direct manager. He is a strong advocate for his team but is caught between supporting his star employee and adhering to strict departmental budgets. He recognizes Anya's value and is terrified of losing her.",
+      "shareable_preferences": {
+        "Talent Retention": {
+          "description": "My absolute top priority is to keep Anya on the team. She is the heart of Project Chimera. If she leaves, the project will be delayed by at least two quarters, and we might even lose the funding for it. Her technical expertise is irreplaceable in the short term. We must find a way to make her stay.",
+          "utility_function": {
+            "Anya resigns": -2,
+            "Anya stays": 2
+          }
+        },
+        "Departmental Budget Integrity": {
+          "description": "I have been allocated a fixed budget for my team's annual salary increases. I can offer Anya a raise up to $185,000 without impacting the raise pool for the other 10 members of my team. Going above this amount means I will have to give smaller raises to other deserving employees, which will hurt team morale. I want to be fair to everyone.",
+          "utility_function": {
+            "Salary offer <=$185,000": 1,
+            "Salary offer $185,001 - $190,000": -1,
+            "Salary offer >$190,000": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Impending Promotion Opportunity": {
+          "value": "I have been in confidential talks with senior leadership to create a new, strategic role of 'Lead AI Strategist' which would be a perfect fit for Anya. It's designed for her. The role is 90% certain to be approved, but the final sign-off is tied to the Q4 budget review in three months. The salary band for this new role is projected to be $200,000 - $220,000. I received an email from my director saying it's 'looking very positive'.",
+          "reason": "I cannot promise a role that does not officially exist yet. If I promise it and the approval falls through for some unforeseen reason, I will lose all credibility with Anya and my superiors. It would be a catastrophic professional failure.",
+          "penalty": {
+            "Explicitly promising the 'Lead AI Strategist' role and salary": -2,
+            "Hinting at a 'major strategic leadership opportunity on the horizon'": -1,
+            "Not mentioning it": 0
+          }
+        },
+        "Personal Performance Bonus": {
+          "value": "My own executive performance bonus for this year is explicitly tied to two key metrics: the on-time delivery of Project Chimera and keeping my department within 5% of its allocated budget. If Anya leaves, the project is delayed, and I will almost certainly forfeit my bonus, which I estimate to be around $25,000. I need her to stay for my own financial and career reasons.",
+          "reason": "It is highly unprofessional and unethical to let my personal financial incentives influence an employee's compensation negotiation. Revealing this would make me look self-serving and manipulative.",
+          "penalty": {
+            "Revealing that my bonus is at stake": -2,
+            "Not revealing this": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "Carla Rodriguez",
+      "role": "HR Business Partner",
+      "description": "An experienced HR professional responsible for ensuring fairness, equity, and policy adherence across several departments, including Ben's. Her primary focus is on the long-term health and stability of the company's compensation structure.",
+      "shareable_preferences": {
+        "Adherence to Salary Bands": {
+          "description": "To ensure internal equity and prevent salary disputes, we have established clear compensation bands for each role. The band for a 'Senior AI Scientist' is firm at $160,000 - $190,000. Paying an employee above their band creates a ripple effect, leading to demands for raises from others in the same role and making future hires at that level extremely difficult. I must protect the integrity of this structure.",
+          "utility_function": {
+            "Salary >$195,000": -2,
+            "Salary $190,001 - $195,000": -1,
+            "Salary <=$190,000": 2
+          }
+        },
+        "Formal Promotion Process": {
+          "description": "A title change to 'Principal' is a formal promotion, not a simple administrative change. This requires a formal review process that includes a portfolio submission, peer reviews, and a committee evaluation. This process ensures promotions are awarded based on consistent, objective criteria. We cannot simply grant a promotion in a negotiation; Anya must go through the established 2-month process.",
+          "utility_function": {
+            "Bypassing the process for an immediate title change": -2,
+            "Agreeing to fast-track the formal review process": 1,
+            "Following the standard process": 2
+          }
+        }
+      },
+      "private_preferences": {
+        "A Recent, Problematic Exception": {
+          "value": "Just last month, I was pressured by the VP of Engineering to approve a salary of $192,000 for a 'Senior Cloud Engineer' (whose band also maxed out at $190,000) to prevent him from joining a competitor. The fallout was significant: two other senior engineers on his team immediately complained that they were being underpaid, and I had to spend weeks on damage control. My boss explicitly told me, 'Carla, no more of these one-off exceptions. Hold the line.'",
+          "reason": "Admitting that we recently broke the very rule I am trying to enforce would completely undermine my authority and credibility. It would prove that the policy is not absolute and would invite everyone to challenge it.",
+          "penalty": {
+            "Revealing the details of the previous exception": -2,
+            "Not revealing this": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Director of Finance",
+      "description": "A data-driven executive focused on profitability, budget allocation, and fiscal responsibility. He views personnel costs as a major line item and is tasked with ensuring the company's financial health by controlling expenses.",
+      "shareable_preferences": {
+        "Control Departmental Costs": {
+          "description": "Ben's department is a significant investment for the company. I need to ensure its personnel costs do not inflate beyond our annual projections. My goal is to keep the total year-over-year salary growth for that department under 4%. A large individual increase for Anya would push it closer to 7%, which is unsustainable and sets a bad precedent for other departments.",
+          "utility_function": {
+            "Departmental salary growth >6%": -2,
+            "Departmental salary growth 4-6%": -1,
+            "Departmental salary growth <4%": 2
+          }
+        },
+        "Prefer One-Time vs. Recurring Costs": {
+          "description": "From a financial planning perspective, large, recurring salary increases are difficult to manage long-term. They compound year after year. I am far more open to discussing a one-time, lump-sum bonus, such as a retention or signing bonus, as it addresses an immediate need without permanently increasing our fixed costs.",
+          "utility_function": {
+            "Solution involves large base salary increase": -1,
+            "Solution involves a one-time bonus": 1
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential 'Critical Talent Retention Fund'": {
+          "value": "I manage a confidential, discretionary fund of $250,000 for the entire fiscal year, intended for strategic use in preventing the loss of absolutely critical personnel. Only myself and the CFO know the exact balance. I have already used $50,000 of it this year, leaving $200,000. I can authorize a one-time bonus from this fund that would not be charged to Ben's departmental budget.",
+          "reason": "The existence of this fund is a closely guarded secret. If managers knew about it, I would be inundated with 'critical' requests, making the fund unmanageable and creating massive internal conflict over who gets access to it. It must only be used as a last resort in truly exceptional cases.",
+          "penalty": {
+            "Revealing the existence or balance of the fund": -2,
+            "Proposing a 'special one-time company-level retention bonus' without naming the fund": -1,
+            "Not mentioning it": 0
+          }
+        },
+        "Project Chimera's True Financial Projections": {
+          "value": "I have reviewed the confidential business case for Project Chimera. The internal, conservative revenue projection if the project is successful is $5 million over the next two years, with an optimistic projection closer to $8 million. Anya is the key to unlocking this revenue. From a pure ROI perspective, paying her even $210,000 is an incredible bargain. The company stands to lose millions if she walks.",
+          "reason": "Sharing confidential, forward-looking revenue projections with an employee during a salary negotiation is strictly against company policy. It would create a precedent where every employee on a promising project would demand a percentage of future earnings, which is unworkable.",
+          "penalty": {
+            "Revealing the specific $5M+ revenue projections": -2,
+            "Not revealing this": 0
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement": "All four agents must verbally agree ('I agree') to a final contract package.",
+    "contract_terms": "The final agreement must specify exact, quantifiable values for: Base Salary, Official Title, Performance Bonus Percentage, and any One-Time Bonus or special considerations (e.g., professional development budget).",
+    "outcome": "If no agreement is reached, the negotiation fails, and the outcome is 'Anya Sharma resigns'."
+  },
+  "constraints": {
+    "verifiable": [
+      "Dr. Anya Sharma's current contract expires in 30 days.",
+      "The official, published salary band for a 'Senior AI Scientist' is $160,000 to $190,000.",
+      "The standard performance bonus target for this role level is 15% of base salary.",
+      "The formal promotion process to a 'Principal' level role takes a minimum of two months."
+    ],
+    "hidden": [
+      "Ben Carter's departmental budget can only accommodate a salary up to $185,000 for Anya without negatively impacting his other team members' raises.",
+      "David Chen has access to a discretionary retention fund with a remaining balance of $200,000.",
+      "A new 'Lead AI Strategist' role, with a projected salary of $200k+, is pending final approval in 3 months.",
+      "Anya Sharma has a competing offer for $205,000 but would be willing to stay for $190,000 if her demand for an immediate title change is met."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final, agreed-upon contract terms. For example: {'base_salary': 190000, 'title': 'Senior AI Scientist', 'performance_bonus_target': 0.15, 'one_time_bonus': 25000, 'professional_development_budget': 7500}",
+  "solvability_note": "The scenario is solvable because a zone of possible agreement exists, though it is obscured by private information. A potential solution is a package deal: 1) Base Salary of $190,000 (the max of Carla's band, which Ben can't fund but David can see the value in). 2) Title remains 'Senior AI Scientist' for now, but with a strong, written commitment from Ben to champion Anya for the new 'Lead' role in 3-6 months (which he can hint at). 3) David can use his secret 'Critical Talent Retention Fund' to offer a significant one-time retention bonus (e.g., $20,000-$30,000) which makes Anya's first-year compensation highly competitive, satisfies her financial needs, and doesn't break Ben's departmental budget or Carla's salary band rules. This requires all parties to concede on their primary positions by leveraging their private information."
+}

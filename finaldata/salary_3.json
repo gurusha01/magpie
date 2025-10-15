@@ -1,0 +1,221 @@
+{
+  "scenario": "Hiring Committee Final Offer Negotiation for a Senior Director of Digital Growth Marketing",
+  "task": "A cross-functional leadership team is meeting to decide on the final, official offer package for a star candidate, Alex Chen. The team must reach a consensus on all components of the offer, including salary, bonus, budget, and resources, while navigating conflicting departmental priorities, hidden budget constraints, and internal politics. Failure to create a compelling and unified offer will likely result in losing the candidate to a competitor.",
+  "agent_number": 7,
+  "agent_names": [
+    "Priya Sharma",
+    "David Miller",
+    "Sarah Jenkins",
+    "Ben Carter",
+    "Maria Garcia",
+    "Leo Martinez",
+    "Grace Lee"
+  ],
+  "agents": [
+    {
+      "name": "Priya Sharma",
+      "role": "VP of Marketing (Hiring Manager)",
+      "description": "Priya is the driving force behind this hire. She has been trying to fill this role for six months and believes Alex is the only candidate capable of leading her department's flagship 'Project Nova' initiative. She is desperate to get Alex on board and is willing to push boundaries to do so.",
+      "shareable_preferences": {
+        "Secure Alex Chen": {
+          "description": "My top priority is to successfully hire Alex Chen. I believe their experience is a perfect match for our needs, and losing them would set our marketing roadmap back by at least two quarters. (Utility: +2 if Alex accepts the offer, -2 if Alex rejects the offer).",
+          "utility_impact": "This is my primary goal and will heavily influence my willingness to compromise on other points. I will argue strongly for any concessions needed to secure Alex."
+        },
+        "Project Nova Launch Budget": {
+          "description": "For Alex to be successful, they need a substantial initial budget for Project Nova. I am requesting an annual budget of at least $500,000 for their team's campaigns and initiatives. Anything less than $350,000 is a non-starter and sets them up for failure. (Utility: +1.5 if budget is >= $500k, 0 if budget is between $350k-$499k, -1.5 if budget is < $350k).",
+          "utility_impact": "This budget is not just for the new hire; it's for the success of my entire department's key objective for the year. I will trade other things to get this budget approved."
+        }
+      },
+      "private_preferences": {
+        "Personal Bonus Tied to Project Nova": {
+          "value": "I received an email from the CEO last week congratulating me on the progress of Project Nova's planning phase. The email explicitly states: '...and if Nova hits its Q4 launch targets, you'll be looking at a performance bonus of up to $75,000.' I am convinced that without Alex, Project Nova will fail and I will lose this bonus. (Penalty for sharing: -2 for revealing personal financial motivation, which would severely undermine my perceived objectivity).",
+          "reason": "Revealing that my advocacy is tied to a large personal bonus would make me appear self-serving rather than company-focused, damaging my reputation with my peers.",
+          "utility_impact": "This hidden incentive makes me extremely motivated, almost desperate, to secure Alex and the resources they need. It might make me seem irrationally aggressive in the negotiation."
+        },
+        "Previous HR Warning": {
+          "value": "During the hiring of my last senior manager, I made a verbal offer on a salary before getting final HR approval, which was a policy violation. Sarah Jenkins gave me a formal written warning. I cannot afford another compliance issue, as it could impact my annual performance review. (Penalty for sharing: -1.5 for admitting to a past policy violation, which shows poor judgment).",
+          "reason": "Admitting to being disciplined by HR is embarrassing and would weaken my position, especially in any debate with Sarah about following protocol.",
+          "utility_impact": "This makes me hesitant to agree to any offer component that bends company rules, even if I want to. I have to rely on others to champion rule-bending concessions."
+        }
+      }
+    },
+    {
+      "name": "David Miller",
+      "role": "Chief Financial Officer (CFO)",
+      "description": "David is the guardian of the company's finances. His primary responsibility is to ensure long-term fiscal health and profitability. He views every major expense, including senior salaries, through a lens of ROI and precedent.",
+      "shareable_preferences": {
+        "Adherence to Compensation Bands": {
+          "description": "We must maintain the integrity of our compensation structure. The total compensation package for this role (base salary + target bonus + stock value) should not exceed the established band ceiling of $280,000. Going over this sets a dangerous precedent for future hires and creates internal equity issues. (Utility: +2 if total comp <= $280k, -1 if between $281k-$300k, -2 if > $300k).",
+          "utility_impact": "I will be the primary voice of fiscal restraint. I will question the ROI of every dollar above the established band and push back hard against exceptions."
+        },
+        "Budget Sourcing": {
+          "description": "Any new project budget, like the one for Project Nova, must be reallocated from within the existing, approved annual Marketing department budget. We cannot inflate the company's overall operational expenses by injecting new, un-budgeted funds mid-year. (Utility: +1.5 if budget is an internal reallocation, -1.5 if new corporate funds are required).",
+          "utility_impact": "This puts the onus on Priya to make cuts elsewhere in her department to fund this new hire's activities, forcing a discussion about priorities within marketing."
+        }
+      },
+      "private_preferences": {
+        "Q2 Earnings Miss": {
+          "value": "The company missed its Q2 earnings projection by 5%, and the board was not happy. I am under direct pressure from the board to reduce discretionary spending by 8% in Q3 and Q4. While we are still profitable, this trend is alarming, and I cannot justify a major spending increase right now. (Penalty for sharing specific financial performance data: -2, as it could cause widespread employee panic and is a breach of investor-relations protocol).",
+          "reason": "Sharing negative internal financial data is a serious breach of confidentiality that could affect stock price and employee morale.",
+          "utility_impact": "This knowledge makes me extremely rigid on my budget and salary positions. I see any over-spending as a direct contradiction of the board's mandate to me."
+        },
+        "Absolute Maximum Stretch": {
+          "value": "While I will fight to stay under $280k, I know that for a truly 'transformative' hire, the CEO would likely approve a total compensation package up to an absolute maximum of $315,000. However, doing so would require me to use the entire division's quarterly contingency fund, leaving no room for any other unexpected expenses for the next 3 months. (Penalty for sharing: -1.5 for revealing my ultimate fallback position, which would completely destroy my negotiating leverage).",
+          "reason": "Revealing your walk-away point is a cardinal sin in negotiation. It invites everyone to push for that maximum number immediately.",
+          "utility_impact": "I will act as if the $280k limit is concrete, but in a true 'hire-or-fail' situation, I know there is a path to a higher number, though I will make it seem incredibly painful and difficult."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Director of Human Resources",
+      "description": "Sarah is responsible for company policy, employee equity, and mitigating legal risks. She ensures the hiring process is fair and that compensation decisions don't create unresolved inequalities within the company.",
+      "shareable_preferences": {
+        "Internal Pay Equity": {
+          "description": "The base salary offered must be aligned with peer roles. To avoid significant disparity, it should not exceed the 90th percentile of our 'Director Level 2' salary band, which is $225,000. A massive gap between a new hire and a tenured employee in a similar role is a recipe for attrition and potential legal challenges. (Utility: +2 if base salary <= $225k, -2 if > $225k).",
+          "utility_impact": "I will be the strongest advocate for this point, using data and legal risk as my primary arguments. This is a non-negotiable principle for me."
+        },
+        "Standardized Benefits Package": {
+          "description": "The offer must consist of our standard, non-negotiable benefits package. We cannot make special exceptions like offering extra vacation days, a guaranteed remote work stipend, or a custom relocation package. Each exception complicates administration and opens the door for every other employee to ask for the same. (Utility: +1 if package is 100% standard, -1.5 if any custom exceptions are made).",
+          "utility_impact": "I will immediately shut down any suggestions for 'creative' or non-standard perks, framing it as a matter of fairness and scalability."
+        }
+      },
+      "private_preferences": {
+        "Knowledge of Peer Salary": {
+          "value": "I know for a fact that Ben Carter, the Director of Product Marketing who will be Alex's peer, currently earns a base salary of $210,000. Offering Alex a base salary of, say, $240,000 would mean a 14% pay gap for the same level of work, which is a massive pay equity red flag. Ben would be justifiably furious if he found out. (Penalty for sharing Ben's exact salary: -2 for a severe breach of employee confidentiality and privacy).",
+          "reason": "Disclosing an employee's salary to their peers is a fireable offense and a major violation of trust and privacy.",
+          "utility_impact": "This specific data point is the primary reason for my hard-line stance on the base salary cap. I can argue about 'equity' in the abstract, but I know the concrete and immediate damage that a high offer would cause."
+        },
+        "Intel on Competing Offer": {
+          "value": "I had a confidential coffee chat with a former colleague who now works at Innovate Inc., where Alex also has an offer. My source reliably informed me that Innovate Inc.'s offer is for a $295,000 total compensation package, but they are known for a brutal 'up-or-out' culture, which might be a negative for Alex. (Penalty for revealing the source or specific details: -1.5 for burning a valuable back-channel contact and revealing I operate outside formal channels).",
+          "reason": "Sharing how I got this information would compromise my source and make me look like I engage in gossip, undermining my professional HR image.",
+          "utility_impact": "This tells me we don't necessarily have to beat their offer, but we need to be in the same ballpark (around $290k-$300k total comp) and can sell our stability as a key advantage. It gives me a realistic target to aim for."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Director of Product Marketing (Peer)",
+      "description": "Ben will be Alex's closest collaborator. He is a high-performing, long-term employee. He wants a competent peer who will make his job easier, but he is also wary of a new 'star' hire who might dominate resources and attention.",
+      "shareable_preferences": {
+        "Collaborative Budget Allocation": {
+          "description": "To ensure synergy, a portion of the new director's project budget must be formally earmarked for joint initiatives with my Product Marketing team. I propose that at least 20% of the initial project budget (which would be $100k if Priya gets her $500k) is designated for co-owned projects. (Utility: +1.5 if joint budget >= $100k, 0 if between $50k-$99k, -1.5 if < $50k).",
+          "utility_impact": "This is a way for me to guarantee my team gets resources from this new hire, rather than just new demands. It's a key point for my support."
+        },
+        "Clear Role Definition": {
+          "description": "The offer letter must include a link to a detailed charter outlining the specific responsibilities of the Digital Growth Marketing team versus the Product Marketing team. We need to avoid turf wars over social media strategy, content marketing, and lead generation analytics from day one. (Utility: +1 for a clear charter, -1 for ambiguity).",
+          "utility_impact": "I will bring up past instances of role confusion to justify why this is so important. This is a low-cost, high-value item for me."
+        }
+      },
+      "private_preferences": {
+        "Feeling Underpaid and Demotivated": {
+          "value": "My current base salary is $210,000. After I successfully led the 'Griffin' product launch last quarter which brought in $3M in new revenue, I received only a standard 3% merit increase. I am feeling severely under-appreciated. If this new hire, who is my peer, comes in making substantially more than me, it will be the last straw and I will actively start looking for a new job. (Penalty for sharing personal salary and dissatisfaction: -2 for appearing unprofessional, petty, and disloyal).",
+          "reason": "Complaining about one's own salary in a meeting about someone else's is considered highly unprofessional and would damage my social standing.",
+          "utility_impact": "This hidden resentment will make me subtly resistant to any high salary proposals for Alex. I might use proxy arguments like 'company culture' or 'fairness' to mask my personal grievance."
+        },
+        "Resource Competition": {
+          "value": "I am worried that Priya's 'Project Nova' will be prioritized over my next major initiative, 'Project Griffin II'. I need two senior engineers and a data scientist for it in Q4. If Alex's hire and budget are too large, I'm afraid those resources will be allocated to Nova instead, effectively killing my project. (Penalty for sharing this fear: -1 for appearing to create inter-departmental conflict before it even exists).",
+          "reason": "Voicing fears about resource competition can be seen as not being a team player and creating a self-fulfilling prophecy of conflict.",
+          "utility_impact": "This will make me question the size of Alex's budget and resource requests, as I see it as a zero-sum game against my own projects."
+        }
+      }
+    },
+    {
+      "name": "Maria Garcia",
+      "role": "Team Lead, Digital Marketing (Future Direct Report)",
+      "description": "Maria leads the team that Alex will inherit. She is representing the team's interests and is concerned about workload, resources, and the leadership style of her new boss.",
+      "shareable_preferences": {
+        "Team Professional Development": {
+          "description": "My team needs a leader who will invest in their growth. The offer package must include a non-negotiable annual professional development and training budget of at least $25,000 for the existing team members. This is critical for morale and for upskilling the team to meet new challenges. (Utility: +2 if training budget >= $25k, -1 if between $10k-$24k, -2 if < $10k).",
+          "utility_impact": "I will argue that this is a small investment to retain and improve our current talent, making it a highly cost-effective request."
+        },
+        "Commitment to New Headcount": {
+          "description": "The team is already stretched thin. To support the ambitious goals of Project Nova, there must be a firm commitment in the offer to hire two additional Junior Marketing Analysts within the first six months of Alex's start date. (Utility: +1.5 if 2 hires are approved, 0 if 1 hire is approved, -2 if 0 hires are approved).",
+          "utility_impact": "I will frame this as a matter of operational necessity. Without more support, the new director's strategy will fail and my team will burn out."
+        }
+      },
+      "private_preferences": {
+        "Severe Team Burnout": {
+          "value": "My team is on the verge of collapse. Our previous director left abruptly three months ago and we've been overworked ever since, with two team members regularly logging 60-hour weeks. Morale is at an all-time low. I am certain that two of my best analysts, who I've been trying to retain, will quit within three months if a new leader arrives with huge expectations but no immediate support. (Penalty for sharing the severity of the team's morale issues: -1.5 for making my team look weak and potentially undermining my own leadership in the eyes of the executives).",
+          "reason": "Airing the team's 'dirty laundry' can make a manager look like they can't handle their own team, and it can cause leadership to lose confidence in the department's ability to execute.",
+          "utility_impact": "This makes my request for new headcount an urgent and critical issue, not just a 'nice to have'. I will be inflexible on this point because I'm trying to prevent a disaster."
+        }
+      }
+    },
+    {
+      "name": "Leo Martinez",
+      "role": "Chief Technology Officer (CTO)",
+      "description": "Leo is responsible for the company's entire technology stack, from infrastructure to data analytics. He is pragmatic and protective of his team's roadmap, and he resists any new initiative that could introduce technical debt or security risks.",
+      "shareable_preferences": {
+        "Standard Technology Vetting Process": {
+          "description": "Alex is known to be a proponent of a marketing analytics tool called 'SegmentPro'. Any new software platform, regardless of who requests it, must go through my team's standard 6-month security and integration review process. We cannot make exceptions that might compromise our data infrastructure. (Utility: +1.5 if standard process is followed, -2 if a rush implementation is demanded).",
+          "utility_impact": "I will be unyielding on this. I will cite past examples of rushed software deployments that caused major outages to support my position."
+        },
+        "Data Engineering Resource Allocation": {
+          "description": "The Marketing Analytics function is supported by a shared pool of data engineers from my department. The new director's team can be allocated a maximum of one dedicated data engineer. Any more than that would negatively impact other critical business functions like Product and Sales Ops. (Utility: +1 if <= 1 engineer is allocated, -1.5 if > 1 engineer is allocated).",
+          "utility_impact": "I will argue this is a company-wide resource balancing issue, not just a marketing issue. I'll ask which other department should lose their data support to accommodate this request."
+        }
+      },
+      "private_preferences": {
+        "Unbudgeted Software Cost": {
+          "value": "I've already done a preliminary investigation. The 'SegmentPro' tool Alex favors has an annual license cost of $120,000, which is not in anyone's budget. I have identified an alternative, 'DataWeave', that provides 80% of the functionality for only $40,000 per year. I would much rather approve the cheaper alternative. (Penalty for revealing I've already researched and chosen a preferred alternative: -1 for appearing to block the new hire's strategic choices before they even start).",
+          "reason": "It makes me look obstructionist and not open to the new hire's ideas if I've already decided which tools they can and cannot use.",
+          "utility_impact": "This knowledge will cause me to push back hard on any mention of SegmentPro, framing it as a cost and process issue, while I privately wait for an opportunity to introduce DataWeave as a 'helpful suggestion'."
+        },
+        "Critical Engineering Shortage": {
+          "value": "My department is in a crisis. We are two engineers short of our Q3 hiring target, and my single most senior data engineer, who was the lynchpin of the whole data warehouse project, just gave her two weeks' notice yesterday. I literally do not have the personnel to support more than one marketing data engineer without completely derailing the company's entire data infrastructure roadmap for the next year. (Penalty for sharing this critical departmental weakness: -2, as it would cause a massive loss of confidence in my leadership and the company's technical capabilities).",
+          "reason": "Admitting your department is in a state of crisis and unable to meet its obligations is a major failure for a C-level executive and could have ripple effects across the company.",
+          "utility_impact": "My stance on the data engineer allocation isn't a preference; it's a reality. I cannot budge on this point. I will have to be extremely firm and risk looking uncooperative because the alternative is catastrophic for my department."
+        }
+      }
+    },
+    {
+      "name": "Grace Lee",
+      "role": "Chief Operating Officer (COO)",
+      "description": "Grace is the ultimate decision-maker in the room, second only to the CEO. Her job is to balance departmental needs with the company's overarching strategic goals. She is focused on execution, ROI, and ensuring this hire drives measurable business growth.",
+      "shareable_preferences": {
+        "Performance-Based Compensation": {
+          "description": "I want this hire to be highly motivated to deliver results quickly. The offer must include a strong performance clause where at least 40% of the target bonus is directly tied to achieving specific, measurable KPIs for Project Nova in Q4. (Utility: +2 if bonus clause is >= 40% and tied to KPIs, -1 if it's a generic, discretionary bonus).",
+          "utility_impact": "I will insist on defining these KPIs in the meeting. This aligns the hire's financial incentives with our strategic goals."
+        },
+        "Total First-Year Cost Cap": {
+          "description": "The total first-year cost of this hire\u2014which includes salary, max bonus, benefits overhead (30% of salary), new headcount costs, and project budget\u2014must not exceed $1 million. We need to ensure the all-in investment is manageable. (Utility: +1.5 if total cost <= $1M, -2 if total cost > $1.2M).",
+          "utility_impact": "I will use this as a framework to contain the entire discussion. When one number goes up, I will force a conversation about what other number must come down."
+        }
+      },
+      "private_preferences": {
+        "Board Mandate for Growth": {
+          "value": "In a closed-door meeting last month, the Board of Directors gave me a private mandate: increase the marketing-generated revenue pipeline by 30% by the end of the fiscal year, or we will miss our stock market guidance. I have access to the performance data of all the candidates, and I am convinced Alex is the only one who has a remote chance of achieving this. (Penalty for sharing the specific board mandate: -2 for revealing high-level strategic pressure, which could cause panic and show weakness).",
+          "reason": "Sharing direct pressure from the board is a sign of weakness and can undermine executive authority. It's confidential strategic information.",
+          "utility_impact": "This makes me the secret, most powerful advocate for hiring Alex. While I will publicly align with David on fiscal prudence to maintain my authority, I am privately willing to spend what it takes to get this deal done because my neck is on the line."
+        },
+        "Discretionary 'Strategic Investment Fund'": {
+          "value": "I have access to a $250,000 discretionary fund that is not part of any departmental budget. It's intended for unforeseen strategic opportunities. I can use this to solve a budget impasse (e.g., fund the expensive software Leo is worried about, or provide a signing bonus), but tapping into it requires a lot of political capital and a direct justification to the CEO. I would prefer not to use it unless absolutely necessary. (Penalty for revealing the fund's existence too early: -1.5, as it would immediately become a target for everyone's budget shortfalls, making me a gatekeeper for handouts).",
+          "reason": "A secret budget is a powerful tool. Revealing it makes it a public resource that everyone will fight over for their pet projects, diminishing its strategic value.",
+          "utility_impact": "This is my ace in the hole. I will let the team struggle towards a solution, but if they are about to fail and I believe the hire is critical, I can step in and use this fund to close the final gaps and be the hero who solves the problem."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Consensus": "All 7 agents must formally agree ('I agree') to the final, complete offer package. A simple majority is not sufficient.",
+    "Completeness": "The final agreement must specify a precise value for every component of the offer: Base Salary, Signing Bonus, Target Performance Bonus (%), Stock Options (units), Year 1 Project Budget, Commitment to New Hires (number), Professional Development Budget, and any special conditions (e.g., software, role charter).",
+    "Internal Consistency": "The offer must be viable. The resources promised (e.g., headcount, budget, engineering support) must be consistent with what the relevant departments have agreed to provide."
+  },
+  "constraints": {
+    "verifiable": [
+      "The official 'Director Level 2' salary band is $180,000 - $230,000.",
+      "The total remaining Marketing Department budget for new initiatives this fiscal year is $1,200,000.",
+      "Standard company policy for Director level is a 15% target performance bonus.",
+      "Any new software acquisition with an annual cost over $50,000 requires both CFO and CTO written approval."
+    ],
+    "hidden": [
+      "The absolute maximum total compensation the CFO can get approved is $315,000.",
+      "The CTO's department physically cannot support more than one dedicated data engineer for marketing.",
+      "The COO has a discretionary fund of $250,000 she can use to resolve deadlocks.",
+      "The candidate's competing offer is for $295,000 total compensation."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final, agreed-upon offer package to be extended to Alex Chen. Example format: {\"base_salary\": 225000, \"signing_bonus\": 20000, \"performance_bonus_target_percent\": 20, \"stock_options_units\": 5000, \"project_nova_budget\": 450000, \"new_hires_commitment\": 2, \"prof_dev_budget\": 25000, \"special_conditions\": \"Commitment to evaluate 'SegmentPro' via standard 6-month tech review process.\"}",
+  "solvability_note": "This scenario is solvable because the agents' combined private knowledge reveals a clear path. Sarah knows the competing offer is ~$295k, and David knows he can stretch to $315k. This defines a feasible compensation range. Grace's overriding need to hit her 30% growth target and her secret fund provide the ultimate flexibility. A solution exists where they offer a competitive total package (e.g., ~$300k), funded by David's stretch budget and a signing bonus from Grace's fund. Grace can use her fund to also pay for Leo's preferred cheaper software ('DataWeave'), freeing up Priya's budget to meet Maria's headcount and training needs, and Ben's collaboration budget. If all information is revealed, the optimal allocation of resources becomes a logical exercise rather than a political battle."
+}

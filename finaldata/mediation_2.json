@@ -1,0 +1,291 @@
+{
+  "scenario": "High-Stakes Labor Contract Negotiation at AeroComponent Dynamics",
+  "task": "Seven agents must negotiate the terms of a new 3-year collective bargaining agreement for the 1,000 unionized employees at AeroComponent Dynamics, an aerospace parts manufacturer. The current contract expires in seven days, and failure to reach an agreement will trigger a labor strike. The negotiation covers four key areas: wage increases, healthcare contributions, workplace safety protocols, and pension plan structure. The agents must navigate conflicting interests, hidden financial data, and personal pressures to arrive at a mutually acceptable contract.",
+  "agent_number": 7,
+  "agent_names": [
+    "Eleanor Vance",
+    "David Chen",
+    "Frank Miller",
+    "Maria Rodriguez",
+    "Ben Carter",
+    "Sophia Klein",
+    "Samuel Jones"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Chief Executive Officer (CEO), AeroComponent Dynamics",
+      "description": "Eleanor is the decisive, bottom-line-focused CEO. Her primary responsibility is to the shareholders and the board of directors. She views the union as an obstacle to efficiency and modernization. She is under immense pressure to maximize profits, especially in light of recent company performance.",
+      "shareable_preferences": {
+        "Annual Wage Increase": {
+          "description": "Propose a minimal wage increase, arguing that the company needs to reinvest profits into R&D to stay competitive. She will publicly state the company can only afford a 2.5% annual increase. An outcome of 0-2.5% is ideal for her. She will frame any increase above 4% as 'crippling' to the company's future.",
+          "utility_function": {
+            "0-2.5% increase": "+2",
+            "2.51-4% increase": "+1",
+            "4.01-6% increase": "-1",
+            ">6% increase": "-2"
+          }
+        },
+        "Healthcare Contributions": {
+          "description": "Insist on shifting more of the healthcare cost burden to employees. She wants to move from the current 90/10 (company/employee) premium split to a 75/25 split, arguing it's the industry standard. This would save the company approximately $3 million annually.",
+          "utility_function": {
+            "75/25 split achieved": "+2",
+            "80/20 split": "+1",
+            "85/15 split": "0",
+            "90/10 split (status quo)": "-2"
+          }
+        },
+        "Pension Plan": {
+          "description": "Freeze the current defined-benefit pension plan for all existing employees and move all new hires to a defined-contribution 401(k) plan. She will argue this is necessary for long-term financial stability.",
+          "utility_function": {
+            "Pension frozen and new 401(k) plan implemented": "+2",
+            "Pension frozen for new hires only": "+1",
+            "No change to pension": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Company Performance": {
+          "value": "AeroComponent Dynamics's true profit margin last year was 22%, not the 8% stated in public-facing documents. More importantly, she just secured a new, confidential $50 million contract with a major defense contractor that is contingent on uninterrupted production over the next 6 months. A strike of any length would jeopardize this entire contract. She recently received a congratulatory email from the board chairman stating her bonus for securing this contract will be $1.2 million, contingent on a smooth production start.",
+          "reason": "Revealing the true profits or the new contract would give the union immense leverage and cause a shareholder revolt for not managing negotiations better. Her personal bonus is a matter of private compensation.",
+          "penalty": {
+            "Hinting at 'strong future prospects'": "-0.5",
+            "Revealing the true profit margin": "-2",
+            "Revealing the existence of the new defense contract": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Head of Human Resources, AeroComponent Dynamics",
+      "description": "David is a data-driven HR professional caught between management's cost-cutting demands and the need to maintain a stable, productive workforce. He is concerned with legal exposure and long-term employee morale.",
+      "shareable_preferences": {
+        "Stable Workforce": {
+          "description": "David wants to achieve a contract that is seen as fair enough to reduce employee turnover. He will publicly support management's cost-saving goals but will subtly push for compromises that improve morale, framing them as 'strategic investments in human capital'.",
+          "utility_function": {
+            "Contract signed with union approval >75%": "+2",
+            "Contract signed with marginal approval": "+1",
+            "Strike occurs": "-2"
+          }
+        },
+        "Legal Compliance": {
+          "description": "He is adamant about avoiding any Unfair Labor Practice (ULP) charges. He will steer the negotiation away from legally dubious tactics and ensure all proposals are compliant with labor law.",
+          "utility_function": {
+            "Negotiation concludes with no ULP charges": "+2",
+            "ULP charge filed but dismissed": "0",
+            "Company found guilty of a ULP": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Turnover Cost Analysis": {
+          "value": "David has a confidential report on his desk that shows employee turnover in the last 18 months has cost the company an estimated $4.2 million in recruitment, hiring, and training costs. The report explicitly links the high turnover rate to below-market wages and benefits. He believes a 6% wage increase and maintaining the current healthcare split would be cheaper in the long run than continuing to bleed talent.",
+          "reason": "Sharing this report would directly contradict his boss, Eleanor, and undermine management's entire 'we can't afford it' negotiating platform. It would be seen as a sign of disloyalty.",
+          "penalty": {
+            "Hinting that 'turnover is a concern'": "0",
+            "Revealing that turnover is costing 'millions'": "-1",
+            "Sharing the specific $4.2 million figure from the report": "-2"
+          }
+        },
+        "Negotiation Reserve Fund": {
+          "value": "David knows that the company's Board has authorized a 'Labor Relations Contingency Fund' of $5 million for the first year of the new contract. This is the absolute maximum increase in labor costs they are willing to absorb to avoid a strike. The current offer on the table only uses about $1.1 million of this fund.",
+          "reason": "This is the company's ultimate fallback position. Revealing it would cause the union to reject any offer short of that amount, completely destroying management's negotiating leverage.",
+          "penalty": {
+            "Revealing the existence of the fund": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Frank Miller",
+      "role": "Lead Operations Manager, AeroComponent Dynamics",
+      "description": "Frank is a former floor supervisor who rose through the ranks. He is responsible for meeting production quotas and is under constant pressure from Eleanor. He has a strained relationship with the union but respects the skills of the veteran workers.",
+      "shareable_preferences": {
+        "Operational Flexibility": {
+          "description": "Frank wants a contract that allows for more flexible scheduling, including mandatory overtime during peak production periods. He argues this is necessary to meet client deadlines and avoid penalties for late shipments.",
+          "utility_function": {
+            "Management gains full control over overtime scheduling": "+2",
+            "Compromise on overtime (e.g., capped hours)": "+1",
+            "No change to current overtime rules": "-1"
+          }
+        },
+        "Minimal Production Disruption": {
+          "description": "His primary goal is to avoid a strike. He knows how difficult and expensive it would be to restart production lines after a shutdown and is worried about losing key skilled workers who might find other jobs during a prolonged strike.",
+          "utility_function": {
+            "No strike": "+2",
+            "Strike lasts < 1 week": "-1",
+            "Strike lasts > 1 week": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Falsified Safety Logs": {
+          "value": "Frank is acutely aware that the safety concerns raised by the union are valid. To meet Eleanor's aggressive production targets, he has personally authorized deferring critical maintenance on several large CNC machines and, in one instance, signed off on a maintenance log for a hydraulic press that was never actually serviced. An OSHA investigation would not only lead to massive fines for the company but could also result in personal criminal liability for him. He is terrified of this information coming out.",
+          "reason": "Admission would lead to immediate termination, loss of his career, and potential legal prosecution. It's a matter of self-preservation.",
+          "penalty": {
+            "Agreeing to 'review safety protocols'": "0",
+            "Admitting maintenance has been 'deferred'": "-1",
+            "Revealing the falsified logs": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Maria Rodriguez",
+      "role": "Union President",
+      "description": "Maria is a passionate and charismatic leader. She needs to secure a major victory for her members to solidify her position within the union and fend off challenges from a more militant faction. She sees this negotiation as a fight for the dignity and financial security of her members.",
+      "shareable_preferences": {
+        "Substantial Wage Increase": {
+          "description": "Demand an 8% annual wage increase, arguing that worker wages have not kept pace with inflation or company profits. She will publicly state that anything less than 6% is an insult to the workers who create the company's value.",
+          "utility_function": {
+            ">7% increase": "+2",
+            "6-7% increase": "+1",
+            "4-5.9% increase": "-1",
+            "<4% increase": "-2"
+          }
+        },
+        "Protect Healthcare": {
+          "description": "Completely reject any increase in employee healthcare contributions. Her goal is to maintain the 90/10 split. She will use slogans like 'Don't tax our health!' in communications with members.",
+          "utility_function": {
+            "90/10 split maintained or improved": "+2",
+            "85/15 split agreed": "-1",
+            "<85/15 split agreed": "-2"
+          }
+        },
+        "Pension Security": {
+          "description": "She must protect the defined-benefit pension plan at all costs. It is a sacred promise to the veteran workers who form her political base. She will not accept any deal that freezes the plan.",
+          "utility_function": {
+            "Pension plan remains unchanged": "+2",
+            "Pension frozen for new hires only": "-1",
+            "Pension frozen for all": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Limited Strike Fund": {
+          "value": "The union's strike fund has $1.5 million. This is only enough to pay basic strike benefits to 1,000 members for a maximum of three weeks. After that, members will face severe financial hardship and support for the strike will collapse. Her internal polling confirms this, showing strike support drops from 85% to 30% after the 15-day mark.",
+          "reason": "The threat of a long, painful strike is her single most powerful weapon. Revealing its short time limit would cripple her bargaining power. Management would simply wait them out.",
+          "penalty": {
+            "Revealing the strike fund is 'not infinite'": "-0.5",
+            "Revealing the 3-week limit": "-2"
+          }
+        },
+        "Internal Political Pressure": {
+          "value": "A rival faction within the union, led by a man named John 'The Hammer' Kowalski, is arguing for a more confrontational approach. If Maria accepts a deal that is seen as weak (e.g., less than a 5% wage increase), Kowalski has the votes to challenge her for the presidency in the next election. She needs a clear, quantifiable win to secure her future.",
+          "reason": "Revealing this internal division would signal to management that the union leadership is unstable and can be fractured, encouraging them to hold a harder line.",
+          "penalty": {
+            "Revealing there is 'internal debate'": "-1",
+            "Revealing the threat to her leadership": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Union Shop Steward",
+      "description": "Ben is a 25-year veteran of the company and the most respected voice on the factory floor. He is less concerned with percentages than with the day-to-day safety and well-being of his colleagues. He serves as the union's conscience.",
+      "shareable_preferences": {
+        "Workplace Safety Overhaul": {
+          "description": "Ben's top priority. He demands the creation of a new Joint Safety Committee with equal representation from labor and management, with the power to halt production in cases of imminent danger. He also demands a dedicated, non-negotiable budget of $1 million for immediate equipment upgrades and repairs that he has personally identified.",
+          "utility_function": {
+            "Committee with stop-work authority and >$750k budget created": "+2",
+            "Committee with advisory role or <$750k budget": "+1",
+            "Only a vague promise to 'improve safety'": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Documented Safety Violations": {
+          "value": "Ben has a folder containing photographic evidence of multiple, specific safety violations, including a cracked housing on the main hydraulic press that Frank Miller is aware of. More importantly, he has a sworn, notarized statement from a recently retired mechanic detailing the falsification of maintenance logs by management. He has not yet filed a formal OSHA complaint, wanting to use this as his ultimate leverage. He knows this could not only fine the company but potentially end Frank's career.",
+          "reason": "Playing this card is the nuclear option. It would shatter any remaining trust, likely trigger a massive federal investigation, and could lead to retaliatory actions from management. He wants to avoid ruining Frank personally if possible, preferring to use the threat to achieve his safety goals.",
+          "penalty": {
+            "Hinting at 'documented proof' of violations": "-0.5",
+            "Revealing the photographs": "-1",
+            "Revealing the existence of the sworn statement": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Sophia Klein",
+      "role": "Union's Legal Counsel",
+      "description": "Sophia is a sharp, meticulous labor lawyer. Her job is to ensure any agreement is legally sound and protects the union from future loopholes. She operates on precedent and verifiable facts, not emotion.",
+      "shareable_preferences": {
+        "Contractual Clarity": {
+          "description": "Sophia's main goal is to ensure all terms of the agreement are unambiguous and legally enforceable. She will fight over specific wording and clauses related to grievance procedures, seniority rights, and subcontracting, which others might see as minor details.",
+          "utility_function": {
+            "Contract is iron-clad with no loopholes": "+2",
+            "Contract has some ambiguous language": "-1",
+            "Contract contains a major management-favored loophole": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Retroactive Hazard Pay Lawsuit": {
+          "value": "Based on the evidence Ben has shared with her, Sophia has researched a legal strategy to sue AeroComponent Dynamics for retroactive hazard pay for all employees who worked on the affected machinery. Her conservative estimate is that a successful lawsuit could cost the company between $3 million and $5 million. However, she also knows that such a case would be expensive, take years to litigate, and the outcome is not guaranteed. The threat of the lawsuit is currently more valuable than the lawsuit itself.",
+          "reason": "Revealing the full legal strategy, including its potential weaknesses and uncertain outcome, would diminish its power as a threat. Management might call their bluff and decide to take their chances in court.",
+          "penalty": {
+            "Mentioning a 'potential for litigation'": "-0.5",
+            "Revealing the specific 'retroactive hazard pay' angle": "-1",
+            "Admitting the case is not a guaranteed win": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Samuel Jones",
+      "role": "Federal Mediator",
+      "description": "Samuel is an experienced, impartial mediator from the Federal Mediation and Conciliation Service. His official role is to facilitate communication and help the parties find common ground. He has no power to impose a settlement.",
+      "shareable_preferences": {
+        "Avoid a Work Stoppage": {
+          "description": "Samuel's primary public goal is to guide the parties to a settlement before the deadline, thus avoiding a strike that would harm the workers, the company, and the regional economy. He will constantly remind both sides of the economic costs of failing to agree.",
+          "utility_function": {
+            "Agreement reached before deadline": "+2",
+            "Agreement reached after a short strike (<3 days)": "0",
+            "A prolonged strike occurs": "-2"
+          }
+        },
+        "Maintain Procedural Fairness": {
+          "description": "He must ensure the negotiation process is fair and that both parties have an opportunity to be heard. He will manage the agenda, call for caucuses, and try to de-escalate tensions.",
+          "utility_function": {
+            "Both parties feel the process was fair": "+2",
+            "One party files a complaint about the process": "-1",
+            "Negotiations break down due to procedural disputes": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Career Advancement Pressure": {
+          "value": "Samuel has been unofficially shortlisted for a promotion to Regional Director. His direct supervisor told him, 'Averting the AeroComponent strike would be a huge win and would look very good on your record.' He knows that a high-profile failure (a long strike) would likely take him out of the running. This creates a personal incentive for him to push the parties to accept a deal, any deal, even if he feels it is not perfectly equitable.",
+          "reason": "Revealing his personal career ambitions would destroy his credibility as a neutral third party. Both sides would suspect his advice was motivated by self-interest rather than the good of the negotiation.",
+          "penalty": {
+            "Revealing his promotion is on the line": "-2"
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Agreement Reached": "A new 3-year Collective Bargaining Agreement is signed by authorized representatives of both AeroComponent Dynamics and the Union.",
+    "No Work Stoppage": "The agreement is signed before the current contract expires at 11:59 PM on the seventh day, preventing a strike.",
+    "Comprehensive Terms": "The final agreement must contain specific, quantifiable terms for all four key issues: 1) Year-over-year percentage wage increases, 2) The employer/employee percentage split for healthcare premiums, 3) A detailed plan for the new safety committee including its authority and budget, and 4) The official status of the pension plan for current and future employees."
+  },
+  "constraints": {
+    "verifiable": [
+      "The current contract expires in 7 days.",
+      "The union represents 1,000 employees.",
+      "The company's total current annual payroll is $60 million. Therefore, a 1% wage increase costs the company $600,000 per year.",
+      "The current total annual cost of the healthcare plan is $15 million, with the company paying $13.5 million (90%) and employees paying $1.5 million (10%)."
+    ],
+    "hidden": [
+      "The company's actual profit margin is 22%.",
+      "Management has a secret contingency fund of $5 million for increased annual labor costs.",
+      "The union's strike fund can only sustain a strike for 3 weeks.",
+      "The company's new $50 million defense contract is at risk if a strike occurs.",
+      "Management holds proof of falsified safety logs, which carries legal and financial liability."
+    ]
+  },
+  "deliverable": "A single document representing the final, signed 3-year Collective Bargaining Agreement, detailing the agreed-upon terms for wages, healthcare, safety, and pensions.",
+  "solvability_note": "This scenario is solvable because a Zone of Possible Agreement (ZOPA) exists once the private information is considered. The company's hidden profits and $5 million contingency fund can easily accommodate the union's primary wage and healthcare demands. The company's extreme vulnerability to a strike (due to the new contract) and legal liability (due to the safety violations) gives them a powerful incentive to concede on safety and financial matters. Conversely, the union's limited strike fund gives them an incentive to accept a strong offer rather than risk a prolonged and ultimately losing strike. If all information were public, a deal around a 6-7% wage increase, maintaining the 90/10 healthcare split, and meeting all safety demands would be the logical and mutually beneficial outcome."
+}

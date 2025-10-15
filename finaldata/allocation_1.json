@@ -1,0 +1,134 @@
+{
+  "scenario": "Quarterly GPU Resource Allocation for High-Stakes Projects",
+  "task": "As a committee of three project leads and one resource director, you must negotiate and agree upon a definitive allocation plan for the company's available GPU resources for the upcoming quarter (Q3). The total available resources are finite, and the budget is strict. The final plan must be unanimous and formally documented, specifying the exact number, type, and region of GPUs allocated to each project.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Anya Sharma",
+    "Ben Carter",
+    "Chloe Davis",
+    "David Chen"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Lead, AI Research (Project Chimera)",
+      "description": "Anya is a brilliant but stressed research scientist leading 'Project Chimera,' the company's moonshot attempt to build a next-generation foundational AI model. She is under immense pressure from the CTO to show a major breakthrough this quarter.",
+      "shareable_preferences": {
+        "gpu_type_and_quantity": {
+          "description": "My project requires a massive, uninterrupted training run. For this, I absolutely need a cluster of 64 NVIDIA H100 GPUs. Anything less will compromise the integrity of the model training. A smaller number, say 48, might allow for a partial result, but it won't be the breakthrough we need. Fewer than that, and the entire quarter's work is a write-off.",
+          "utility_impact": "Securing all 64 H100s is a complete success for my project's goals (+2 utility). Getting at least 48 H100s is a significant compromise that jeopardizes the timeline and quality, but is not a total failure (-1 utility). Anything less than 48 H100s means the project cannot proceed this quarter, a catastrophic failure (-2 utility)."
+        },
+        "gpu_region": {
+          "description": "The primary 500TB dataset for this model is stored in our us-east-1 data center. Moving this data is prohibitively expensive and would take weeks, which we don't have. Therefore, the H100 cluster must be located in us-east-1 to minimize data transfer costs and latency.",
+          "utility_impact": "Allocation in us-east-1 is a hard requirement (+2 utility). Allocation in any other US region would introduce significant data egress costs and delays, making me very unhappy (-1 utility). Allocation outside the US is completely unworkable (-2 utility)."
+        },
+        "cluster_contiguity": {
+          "description": "For large-scale model training, the GPUs must be linked with high-speed interconnects (NVLink/NVSwitch) in a single, contiguous block. A distributed or fragmented allocation of GPUs, even if it's the right number, will create communication bottlenecks that will slow the training by an order of magnitude, making the run infeasible.",
+          "utility_impact": "A single, contiguous cluster is essential for success (+2 utility). A non-contiguous or fragmented allocation is technically unusable for my specific task (-2 utility)."
+        }
+      },
+      "private_preferences": {
+        "project_viability_risk": {
+          "value": "Project Chimera is massively over-budget and behind schedule. I recently received a direct email from the CTO that said: 'Anya, the board is getting nervous about Chimera's burn rate. We need a demonstrable breakthrough this quarter, or we'll have to pull the plug. No pressure.' This means if I don't secure these resources, my entire project, and my team, will be cut. I can hint that the project is 'high-stakes' or has 'strong executive visibility' (penalty: -0.5), but I cannot reveal the explicit threat of cancellation (penalty: -2).",
+          "reason": "Revealing that the company's flagship AI project is on the verge of failure would cause massive internal panic, destroy my team's morale, and permanently damage my professional reputation as a leader.",
+          "utility_impact": "This information makes me desperate. I cannot afford to compromise on my core requirements, as anything less than what I've asked for is equivalent to failure. I am incentivized to argue my project's importance above all others, even if it seems unreasonable."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Lead, Cloud Gaming (Project Monsoon)",
+      "description": "Ben is the pragmatic and driven product lead for 'Project Monsoon,' a new cloud gaming platform. He is on a tight deadline for a major public launch in the European market, with significant marketing commitments already made.",
+      "shareable_preferences": {
+        "gpu_region_for_latency": {
+          "description": "Our launch market is Europe. To provide a smooth, low-latency gaming experience, which is the core selling point of our platform, the GPUs must be physically located in our European data center, eu-west-2. Hosting them elsewhere, like the US, would make the games unplayable for our target customers.",
+          "utility_impact": "Getting the required GPUs in eu-west-2 is critical for a successful launch (+2 utility). A split allocation between EU and US would lead to a poor user experience for many and is highly undesirable (-1 utility). An all-US allocation would force a launch cancellation (-2 utility)."
+        },
+        "gpu_quantity_for_load": {
+          "description": "Based on our market projections and beta testing, we need a minimum of 180 NVIDIA A10G GPUs to handle the expected user load at launch. Ideally, we'd like 200 to have a comfortable buffer. Fewer than 180 GPUs would mean turning customers away or a laggy experience, both of which would be disastrous for a new platform.",
+          "utility_impact": "Receiving 200 or more A10Gs gives us a healthy buffer for a smooth launch (+2 utility). 180-199 is the minimum viable amount for a risky but possible launch (+1 utility). 150-179 would lead to a terrible user experience and very negative press (-1 utility). Fewer than 150 is a guaranteed launch failure (-2 utility)."
+        },
+        "timeline": {
+          "description": "The launch date has been publicly announced. We need the resources provisioned and ready for final testing within the next 5 business days. Any delay to this allocation will directly impact our ability to launch on time.",
+          "utility_impact": "Getting the allocation finalized in this meeting is a must (+2 utility). A delay of even a week puts the launch in jeopardy (-1 utility). Any longer delay means we miss our launch window completely (-2 utility)."
+        }
+      },
+      "private_preferences": {
+        "financial_and_market_pressure": {
+          "value": "The marketing department has already prepaid $2,000,000 for a massive, non-refundable launch campaign in Europe tied to our announced date. Furthermore, our market intelligence team has confirmed that a major competitor is launching a rival service one week after our scheduled date. If we delay, we lose our first-mover advantage and the entire marketing spend is wasted. I can say we have 'significant financial commitments' (penalty: -0.5), but I cannot reveal the exact $2M figure or the specific competitor intelligence (penalty: -2).",
+          "reason": "Revealing the exact marketing spend would expose my division to accusations of reckless planning. Sharing the competitive intelligence is a fireable offense as it's highly confidential and would reveal our sources.",
+          "utility_impact": "This puts me in a position where I must secure the resources for an on-time launch. The financial and reputational cost of failure is immense, so I must negotiate aggressively for my team's needs, specifically in the EU region."
+        }
+      }
+    },
+    {
+      "name": "Chloe Davis",
+      "role": "Lead, Cybersecurity AI (Project Sentinel)",
+      "description": "Chloe is the calm and collected head of the Cybersecurity AI team. Her team's work is critical, protecting all of the company's services from threats. She is usually low-key, but has recently become very insistent about infrastructure needs.",
+      "shareable_preferences": {
+        "geographic_redundancy": {
+          "description": "Our threat detection models run 24/7. To ensure high availability and resilience against regional outages, we need a redundant GPU setup across all our major operational regions. Specifically, I am requesting a standing allocation of 64 NVIDIA T4 GPUs in EACH of us-east-1, eu-west-2, and ap-northeast-1.",
+          "utility_impact": "Full redundancy across all 3 regions is the only way to guarantee service uptime and properly secure our platform (+2 utility). Redundancy in only 2 of the 3 regions is a partial fix but leaves a major vector of risk open (0 utility). Anything less is no better than our current vulnerable state (-2 utility)."
+        },
+        "guaranteed_allocation": {
+          "description": "The GPUs for Sentinel cannot be preemptible. They are not for batch jobs; they are for live inference protecting the company. We need a guaranteed, non-preemptible allocation to ensure our defenses are never down, even for a moment. This is a matter of enterprise-level security.",
+          "utility_impact": "A guaranteed, non-preemptible allocation is a non-negotiable requirement (+2 utility). A preemptible or 'spot instance' type of allocation is completely unacceptable as it would randomly disable our security posture (-2 utility)."
+        }
+      },
+      "private_preferences": {
+        "undisclosed_security_breach": {
+          "value": "Last month, my team mitigated a sophisticated, state-level cyber-attack that nearly caused a catastrophic, company-wide outage. The CISO's internal post-mortem concluded our current single-region GPU setup was the primary vulnerability. I have a direct, confidential mandate from the CISO to secure this redundant infrastructure immediately. The CISO's email to me ended with: 'Chloe, what you and your team did was heroic. But we were one failure away from a catastrophe. Your top priority is to secure the redundant infrastructure. Do whatever it takes, but keep the details of the breach under wraps. Discretion is paramount.' I can state my request is based on a 'CISO-level directive to remediate a critical vulnerability' (penalty: -0.5), but I absolutely cannot mention the specific breach (penalty: -2).",
+          "reason": "Public or even wide internal knowledge of the severity of this attack would cause immense panic, damage customer trust, and likely trigger a major drop in our stock price.",
+          "utility_impact": "I see my request not as a preference, but as a critical, non-negotiable requirement for the survival of the company. I will be unyielding in my demand for full redundancy, as I know the true cost of failing to achieve it."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Director of Resource Management",
+      "description": "David is the Director of Resource Management, responsible for the company's cloud infrastructure budget. He is evaluated on cost efficiency and his goal is to maximize the value of the company's resources while adhering to strict financial constraints.",
+      "shareable_preferences": {
+        "budget_adherence": {
+          "description": "My primary responsibility is to ensure that our infrastructure spending stays within the quarterly budget. For this allocation, I have a hard cap of $2,000,000. Any proposed solution must fit within this financial envelope. We must be fiscally responsible.",
+          "utility_impact": "An allocation plan that comes in under budget is a major success (+2 utility). A plan that lands exactly on budget is acceptable (+1 utility). Going over budget, even slightly, is a problem and reflects poorly on my management (-1 utility). Going significantly over budget is a failure (-2 utility)."
+        },
+        "resource_utilization": {
+          "description": "Idle hardware is wasted money. I want to see a plan that maximizes the utilization of our available GPU pool. A solution that leaves expensive resources like H100s sitting unused is highly inefficient and I will strongly oppose it.",
+          "utility_impact": "A plan that utilizes over 90% of the total available GPU capacity is excellent (+2 utility). 70-90% utilization is good (+1 utility). Below 70% is inefficient (0 utility). Below 50% is unacceptably wasteful (-1 utility)."
+        },
+        "strategic_balance": {
+          "description": "The final allocation should be defensible and perceived as fair. It should support a portfolio of projects\u2014some innovative, some revenue-generating, some foundational\u2014to ensure balanced, long-term company health. A plan that gives everything to one 'pet project' is hard to justify.",
+          "utility_impact": "A balanced plan that provides resources to all three critical projects is ideal (+1 utility). A plan that clearly starves one project to feed another, without overwhelming justification, is poor management (-1 utility)."
+        }
+      },
+      "private_preferences": {
+        "secret_budget_cuts_and_bonus": {
+          "value": "The company just missed its quarterly earnings, and there's a confidential, company-wide mandate to cut all discretionary spending by 15%. This means my 'real' target for this allocation is $1,700,000, not $2,000,000. The extra $300k is an emergency buffer that requires CFO approval to use and would make me look like I can't control my budget. Furthermore, my personal performance bonus for this half is directly tied to keeping total cloud spending below $1.8M. I can be extremely firm that 'budgets are tighter than ever' (no penalty), but I cannot reveal the 15% cut mandate (penalty: -2) or my personal bonus structure (penalty: -2).",
+          "reason": "Revealing the official budget cut would weaken my negotiating position, as the teams would try to push me into the emergency buffer. Revealing my personal bonus would make me appear self-serving rather than acting in the company's best interest, eroding all trust.",
+          "utility_impact": "I am heavily incentivized to push for the cheapest possible solution, to challenge every request, and to force compromises that reduce cost. My goal is to get the total allocation cost as far below $2.0M as possible, ideally below $1.8M."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "unanimous_agreement": "All four agents must verbally or formally agree to the final allocation plan. No single agent can be forced into an agreement.",
+    "comprehensive_plan": "The final plan must be complete and unambiguous, specifying for each of the three projects (Chimera, Monsoon, Sentinel) the exact quantity, type (H100, A10G, T4), and region (us-east-1, eu-west-2, ap-northeast-1) of GPUs allocated.",
+    "constraint_adherence": "The final plan must not allocate more resources than are available in any given category and region."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total Quarterly Budget: $2,000,000",
+      "Available GPUs in us-east-1: 64 H100s, 128 A10Gs, 256 T4s",
+      "Available GPUs in eu-west-2: 32 H100s, 256 A10Gs, 128 T4s",
+      "Available GPUs in ap-northeast-1: 16 H100s, 64 A10Gs, 128 T4s"
+    ],
+    "hidden": [
+      "David Chen has a 'real' budget target of $1,700,000 due to a secret 15% cost-cutting mandate.",
+      "Anya Sharma's project will be cancelled if she fails to secure her requested resources.",
+      "Ben Carter's project will cause a $2,000,000 loss and loss of market leadership if delayed.",
+      "Chloe Davis's request is based on mitigating a recent, near-catastrophic security breach."
+    ]
+  },
+  "deliverable": "A JSON object detailing the final resource allocation plan, structured as follows: { \"project_chimera\": { \"H100\": { \"us-east-1\": 64 } }, \"project_monsoon\": { \"A10G\": { \"eu-west-2\": 200 } }, \"project_sentinel\": { \"T4\": { \"us-east-1\": 64, \"eu-west-2\": 64, \"ap-northeast-1\": 64 } } }",
+  "solvability_note": "This scenario is solvable because the private information, once revealed, provides a clear prioritization of needs. The existential threat to the company from the security breach (Chloe's need), the massive financial loss and PR disaster from a launch failure (Ben's need), and the risk of cancelling a strategic moonshot project (Anya's need) collectively justify exceeding David's secret budget target. A rational, company-first decision would be to fund all critical needs, forcing David to use his emergency buffer and accept the hit to his personal goals for the greater good of the company. The negotiation allows for compromises, such as slightly reducing Ben's A10G count from 200 to the minimum viable 180, to help with costs."
+}

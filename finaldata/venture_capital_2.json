@@ -1,0 +1,180 @@
+{
+  "scenario": "Seed-Stage Investment Negotiation for 'ConnectSphere'",
+  "task": "A group of six stakeholders must negotiate the terms of a $750,000 seed investment round for 'ConnectSphere', a promising AI-powered networking platform. The goal is to produce a single, unanimously agreed-upon term sheet. Key negotiation points include the company's post-money valuation, the investment allocation per investor, the resulting equity distribution, the composition of the new board of directors, and a high-level plan for the use of funds. The negotiation is complicated by hidden information, competing interests, and private motivations held by each agent.",
+  "agent_number": 6,
+  "agent_names": [
+    "Alex Chen",
+    "Ben Carter",
+    "Clara Evans",
+    "David Reed",
+    "Maria Flores",
+    "Samuel Jones"
+  ],
+  "agents": [
+    {
+      "name": "Alex Chen",
+      "role": "Co-Founder & CEO of ConnectSphere",
+      "description": "The visionary and business-savvy leader of ConnectSphere. Alex is fiercely protective of the company's long-term vision and wants to secure the best possible deal to fuel growth while retaining significant control. Alex handles the business development and investor relations.",
+      "shareable_preferences": {
+        "High Company Valuation": {
+          "description": "Alex is adamant about securing a post-money valuation of at least $5 million. This reflects the company's progress, recent user growth of 30% month-over-month, and the potential of their proprietary AI algorithm. A lower valuation would feel like a failure and would excessively dilute the founders' stake, making future funding rounds more difficult.",
+          "utility_impact": "Valuation > $5.5M: +2, $5M <= Valuation <= $5.5M: +1, $4M < Valuation < $5M: 0, $3.5M <= Valuation <= $4M: -1, Valuation < $3.5M: -2. A high valuation is a public signal of success and directly impacts personal wealth and control."
+        },
+        "Founder Control over Board": {
+          "description": "Alex insists that the founding team (Alex & Ben) retain two of the three seats on the board of directors. The third seat would go to the lead investor. This ensures that the founders can continue to steer the company's strategic direction without being overruled by investors who may prioritize short-term gains over the long-term vision.",
+          "utility_impact": "Founders get 2/3 board seats: +2, Founders get 1/3 board seats but with key veto rights: 0, Founders get 1/3 board seats with no special rights: -1, Investors control the board: -2. Control is paramount for executing the original vision."
+        },
+        "Flexible Use of Funds": {
+          "description": "Alex wants the term sheet to specify that at least 50% of the $750,000 investment ($375,000) be allocated to a 'Growth & Marketing' budget. This capital is critical for hiring a small sales team, launching a major digital marketing campaign, and securing key partnerships to accelerate user acquisition before competitors emerge.",
+          "utility_impact": "Marketing budget >= $400k: +2, $350k <= Marketing budget < $400k: +1, Marketing budget < $300k: -2. Alex believes aggressive marketing is the only way to capture the market."
+        }
+      },
+      "private_preferences": {
+        "Competing Term Sheet": {
+          "value": "Alex has a confidential, exploding term sheet from a small VC firm, 'Momentum Ventures'. It offers $1,000,000 on a $6 million post-money valuation. However, it comes with aggressive terms, including a 2x liquidation preference and the right to appoint two board members, effectively giving them control. Alex can hint at having 'other options' but cannot share the document or its specific terms due to a strict NDA. Penalty for sharing specifics (firm name, valuation): -2. Penalty for strongly hinting at a better offer: -1.",
+          "reason": "Violating the NDA with Momentum Ventures would result in the offer being rescinded and damage Alex's reputation as a trustworthy founder.",
+          "utility_impact": "This hidden offer is Alex's primary leverage. It makes accepting a valuation below $5M feel like a significant loss. Alex is tempted to leak details if the negotiation stalls at a low valuation, seeing it as the only way to get a fair deal from this group."
+        },
+        "Actual Revenue Figures": {
+          "value": "While publicly touting 'promising early revenue', the company's actual Monthly Recurring Revenue (MRR) is only $3,500. This is far below what would typically justify a $5M+ valuation. Alex can state the company is 'pre-rev-scaling' but cannot disclose the exact MRR. Penalty for revealing the exact MRR: -2.",
+          "reason": "Revealing the low MRR would severely undermine the valuation argument and could cause investors to lose confidence or even walk away.",
+          "utility_impact": "This knowledge creates immense pressure on Alex to justify the valuation based on user growth and future potential, rather than current financials."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Co-Founder & CTO of ConnectSphere",
+      "description": "The technical genius behind ConnectSphere's AI. Ben is a brilliant engineer but less experienced in business negotiations. His primary concern is the stability and scalability of the platform, and ensuring he has the resources to build a world-class product.",
+      "shareable_preferences": {
+        "Dedicated R&D Budget": {
+          "description": "Ben requires a non-negotiable budget of at least $300,000 from the seed round to be allocated specifically to 'Technology & Product Development'. This is needed to hire two senior AI engineers and migrate the platform's backend from its current unstable prototype infrastructure to a scalable, production-ready cloud architecture. Without this, he warns the platform will face critical performance issues within 6 months.",
+          "utility_impact": "R&D budget >= $300k: +2, $250k <= R&D budget < $300k: -1, R&D budget < $250k: -2. For Ben, this is a simple matter of operational necessity; anything less is fiscally irresponsible and risks total product failure."
+        },
+        "Maintaining Technical Autonomy": {
+          "description": "Ben wants to ensure that the board composition and governance terms do not allow investors to dictate the technical roadmap or product development priorities. He is wary of investors pushing for short-sighted features to boost vanity metrics at the expense of core platform stability and innovation.",
+          "utility_impact": "Full autonomy on tech roadmap: +1, Requirement for investor 'consultation' on roadmap: 0, Investor veto power over key tech decisions: -2. Ben sees micromanagement from non-technical investors as a major threat."
+        }
+      },
+      "private_preferences": {
+        "Critical Technical Debt": {
+          "value": "Ben secretly knows the platform's core matching algorithm has a severe scalability flaw. It works for the current user base, but will completely fail once they cross approximately 50,000 active users. A complete rewrite is needed, which will consume about $150,000 of the R&D budget and 4 months of work, delaying new feature development. Ben can say 'we need to invest in infrastructure' but cannot reveal the severity or the imminent failure point. Penalty for revealing the flaw: -2.",
+          "reason": "Admitting such a fundamental flaw in their core IP would spook investors, be seen as a major failure of his leadership as CTO, and could crater the company's valuation.",
+          "utility_impact": "This makes securing the full $300k R&D budget an absolute, do-or-die priority for Ben. He is less concerned about valuation than Alex because he knows the company is worthless if this isn't fixed immediately. He might be tempted to reveal this if Alex's high valuation demands threaten the entire deal."
+        }
+      }
+    },
+    {
+      "name": "Clara Evans",
+      "role": "Lead Angel Investor",
+      "description": "A seasoned and well-respected angel investor with a portfolio of successful exits. Clara is meticulous and risk-averse. She is willing to invest a significant amount ($400,000) but demands favorable terms, a board seat, and strong governance to protect her investment.",
+      "shareable_preferences": {
+        "Conservative Valuation": {
+          "description": "Based on the company's early stage and low revenue, Clara believes a post-money valuation between $3 million and $3.5 million is fair and realistic. She argues that this sets a reasonable benchmark for future rounds and aligns the founders with investors for a significant upside. She has data from comparable seed deals to back this up.",
+          "utility_impact": "Valuation <= $3.5M: +2, $3.5M < Valuation <= $4M: +1, $4M < Valuation <= $4.5M: 0, Valuation > $4.5M: -2. Clara's reputation is built on disciplined investments, not hype."
+        },
+        "Investor Protection (Board Seat)": {
+          "description": "Clara's investment is contingent on her taking the sole investor seat on the 3-person board. She wants to provide active mentorship and oversight, and have a formal say in major strategic decisions, such as executive hiring, future fundraising, and any potential acquisition offers.",
+          "utility_impact": "Clara gets the board seat: +2, An investor syndicate representative gets the seat: 0, Founders retain all board control: -2. She does not invest passively."
+        }
+      },
+      "private_preferences": {
+        "Confidential Due Diligence Report": {
+          "value": "Clara paid for a confidential market analysis report from a top firm. The report flags a significant long-term risk: a tech giant (like LinkedIn or Google) is rumored to be developing a competing feature that could launch in 18-24 months and render ConnectSphere obsolete. The report estimates a 40% chance of this happening. She cannot share the report due to an NDA with the research firm. Penalty for sharing the report or its specific findings: -2.",
+          "reason": "Violating the NDA would damage her relationship with a key due diligence partner and expose her to legal risk. It would also cause widespread panic.",
+          "utility_impact": "This report is the primary driver of her conservative valuation. It creates a strong incentive for her to push for a quick, profitable exit within 3-5 years, potentially putting her at odds with the founders' long-term vision. She feels justified in her low offer because she is pricing in a risk others are unaware of."
+        },
+        "Advisor's Influence": {
+          "value": "Clara has a close professional relationship with Samuel Jones, the company's advisor. She trusts his judgment implicitly and has privately told him that if he gives his 'unconditional blessing' on the deal structure, she will be more flexible on the valuation, potentially going up to $4M. She cannot reveal this pact as it would undermine her negotiating position. Penalty for revealing: -1.",
+          "reason": "Revealing that her tough stance can be swayed by a third party would weaken her authority and negotiation leverage.",
+          "utility_impact": "This gives Samuel Jones significant, hidden power over her decision-making process."
+        }
+      }
+    },
+    {
+      "name": "David Reed",
+      "role": "Growth Angel Investor",
+      "description": "A younger, newly wealthy investor who made his money in a recent crypto exit. David is eager to build a portfolio of high-growth tech startups. He is more tolerant of risk and is primarily motivated by the fear of missing out (FOMO) on the 'next big thing'. He is looking to invest $250,000.",
+      "shareable_preferences": {
+        "Getting into a 'Hot' Deal": {
+          "description": "David is less sensitive to valuation than Clara. His main goal is to secure a spot in what he perceives to be a competitive, high-potential deal. He is willing to accept a valuation up to $5M or even slightly higher if it means closing the deal quickly and being associated with a promising company.",
+          "utility_impact": "Valuation > $4.5M: +1, Valuation <= $4.5M: 0. A higher valuation signals to his peers that he's in a premium deal. His utility is more about participation than price optimization."
+        },
+        "Pro Rata Rights": {
+          "description": "David insists on securing pro rata rights, allowing him to maintain his percentage ownership by investing in future funding rounds. This is crucial for him to double-down on winners and is a standard request for him in any deal he does.",
+          "utility_impact": "Securing pro rata rights: +2, No pro rata rights: -2. This is a simple, binary requirement for him."
+        }
+      },
+      "private_preferences": {
+        "Personal Liquidity Pressure": {
+          "value": "David needs to deploy $1 million in capital into new investments before the end of the tax year (in 3 months) to offset a massive capital gains event from his crypto exit. ConnectSphere is one of the last viable deals in his pipeline. This creates a significant personal urgency to close the deal, even on terms that are less than ideal. He cannot reveal this. Penalty for revealing his tax situation: -2.",
+          "reason": "Revealing this would signal desperation, completely destroying his negotiation leverage and making him seem like an unsophisticated 'dumb money' investor to his peers.",
+          "utility_impact": "This hidden pressure makes him the most likely investor to concede on valuation. He is highly susceptible to any hints from Alex about competing offers, as the thought of the deal falling apart is more costly to him than a higher entry price."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Program Manager, TechSprout Accelerator",
+      "description": "Maria represents TechSprout, a prestigious but demanding accelerator. TechSprout offers mentorship, resources, and valuable network access. Their standard deal is to provide their program in exchange for a slice of equity, separate from the cash investment.",
+      "shareable_preferences": {
+        "Standard Equity Deal": {
+          "description": "TechSprout's standard, non-negotiable offer is to accept a company into its program in exchange for 7% of the company's equity. Maria will frame this as a take-it-or-leave-it offer, emphasizing the immense value and prestige of the TechSprout brand, which she claims will de-risk the investment for the angels and guarantee a successful Series A.",
+          "utility_impact": "Securing the full 7% equity: +2, Securing 5-6% equity: 0, Securing <5% equity: -2. Her performance is judged on her ability to close deals on standard terms."
+        },
+        "Public Association": {
+          "description": "Maria needs a public commitment from ConnectSphere to prominently feature the TechSprout logo and branding in their pitch decks and on their website as 'Proudly backed by TechSprout'. This is a key marketing requirement for the accelerator.",
+          "utility_impact": "Full branding commitment: +1, No commitment: -1. This is a soft but important preference."
+        }
+      },
+      "private_preferences": {
+        "Quarterly Quota Pressure": {
+          "value": "Maria is significantly behind on her quarterly quota for signing new companies. Her boss sent her a congratulatory email last quarter for closing a big deal, which she has pinned, but this quarter has been dry. She needs to sign two more companies of ConnectSphere's caliber in the next three weeks, or she will miss her target and forfeit a substantial performance bonus. This gives her private flexibility on the 'non-negotiable' 7% equity term; she could go as low as 4% if it meant closing the deal. Penalty for revealing her quota pressure: -2.",
+          "reason": "Admitting she is desperate to close would ruin the accelerator's image of exclusivity and power, and would prevent her from ever using the 'standard deal' argument effectively again.",
+          "utility_impact": "This makes her position far more flexible than she lets on. If the founders or investors push back hard on the 7% dilution, she is secretly authorized to concede significantly to save the deal and her bonus."
+        }
+      }
+    },
+    {
+      "name": "Samuel Jones",
+      "role": "Industry Advisor",
+      "description": "A highly respected veteran in the tech industry, Samuel has been informally advising Alex and Ben. He is participating in the negotiation to provide guidance and act as a neutral, trusted third party. Everyone respects his opinion.",
+      "shareable_preferences": {
+        "Fair and Balanced Outcome": {
+          "description": "Samuel's stated goal is to help all parties reach a deal that is fair and sets the company up for long-term success. He will advocate for compromise and reason, often acting as a mediator between the founders and investors. He wants a deal that 'feels right' for everyone.",
+          "utility_impact": "A deal is reached with minimal acrimony: +2, A deal is reached but with lingering resentment: 0, The deal falls apart: -2. His reputation is tied to his ability to facilitate successful outcomes."
+        },
+        "Strong Governance Structure": {
+          "description": "He advises that a 3-person board with one founder, one investor, and one independent member is the healthiest structure. He will push for this as a best practice, arguing it prevents deadlocks and ensures objective oversight.",
+          "utility_impact": "3-person board with an independent member: +1, Any other board structure: 0. This is based on his professional experience."
+        }
+      },
+      "private_preferences": {
+        "Secret Finder's Fee": {
+          "value": "Samuel has a secret, informal agreement with Clara Evans. If the deal closes with a post-money valuation at or below $4.0 million, Clara will pay him a 'consulting fee' of 1.5% of her investment amount ($6,000). He has not disclosed this to anyone else. Penalty for this conflict of interest being revealed: -2.",
+          "reason": "This is a massive, unethical conflict of interest. If revealed, his reputation as a neutral and trustworthy advisor would be instantly and permanently destroyed. He would be blacklisted in the startup community.",
+          "utility_impact": "This completely compromises his neutrality. He will subtly guide the conversation towards a lower valuation, using his trusted position to undermine Alex's arguments and validate Clara's concerns. For example, when Alex pushes for a $5M valuation, Samuel might say, 'Now Alex, let's be realistic, the market is a bit frothy right now, and Clara's point about diligence is a wise one. A down-round in the future would be devastating.'"
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All six agents must explicitly agree to the final terms of the deal. A single holdout means failure.",
+    "Term Sheet Finalization": "A complete term sheet must be agreed upon, specifying: 1. The exact post-money valuation (e.g., $4,500,000). 2. The investment amount from each investor (Clara, David). 3. The equity percentage for TechSprout. 4. The final, fully-diluted capitalization table. 5. The names of the three individuals who will serve on the Board of Directors.",
+    "Fund Allocation Plan": "A high-level budget must be approved, outlining the allocation of the $750,000 across major categories (e.g., R&D, Marketing, General & Administrative)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total investment amount to be raised is exactly $750,000.",
+      "The founding team (Alex and Ben) collectively own 100% of the company pre-investment and will not accept a deal that results in more than 35% total dilution from this seed round (including investor equity and the accelerator's stake).",
+      "The new Board of Directors must have exactly three members."
+    ],
+    "hidden": [
+      "The company currently has a monthly burn rate of $40,000, meaning they have less than 4 months of runway with their current cash reserves.",
+      "David Reed must deploy his capital within 3 months.",
+      "Maria Flores must meet her quota within 3 weeks."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final, agreed-upon term sheet. Example format: { 'post_money_valuation': 4500000, 'investment_breakdown': { 'Clara Evans': 500000, 'David Reed': 250000 }, 'equity_distribution': { 'Founders': 68.0, 'Clara Evans': 11.1, 'David Reed': 5.6, 'TechSprout': 7.0, 'Option Pool': 8.3 }, 'board_of_directors': ['Alex Chen', 'Clara Evans', 'Samuel Jones'], 'use_of_funds': { 'R&D': 300000, 'Marketing': 350000, 'G&A': 100000 } }",
+  "solvability_note": "This scenario is solvable because a zone of possible agreement exists. If all private information were revealed, the parties would understand the true pressures and risks. Alex's competing offer justifies a valuation higher than Clara's initial bid. However, Ben's technical debt and Clara's risk report would temper that valuation, pulling it down from Alex's ideal $5M+. David's and Maria's urgency to close a deal would make them highly flexible on terms. Samuel's conflict of interest would be exposed, neutralizing his biased influence. A logical compromise would emerge around a ~$4.25M valuation, with a board seat for Clara, a reduced equity stake for TechSprout, and a budget that satisfies Ben's critical technical needs, thereby meeting everyone's core (if not ideal) requirements."
+}

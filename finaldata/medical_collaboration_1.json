@@ -1,0 +1,220 @@
+{
+  "scenario": "Negotiating the Phase III Clinical Trial Protocol for NeuroClear",
+  "task": "A consortium of stakeholders must negotiate and agree upon a unified protocol for the upcoming Phase III clinical trial of 'NeuroClear,' a promising but controversial new drug for Alzheimer's disease. The final protocol must detail trial duration, patient cohort size, funding contributions, primary endpoints, and data sharing policies. The negotiation is complicated by competing corporate strategies, undisclosed clinical data, regulatory pressures, and personal ambitions.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Alistair Finch",
+    "Dr. Beatrice Chen",
+    "Dr. Marcus Thorne",
+    "Dr. Lena Petrova",
+    "Dr. Samuel Carter",
+    "Ms. Evelyn Reed",
+    "Dr. Kenji Tanaka"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Alistair Finch",
+      "role": "VP of Clinical Development, Innovate Pharma",
+      "description": "Alistair is the lead scientist and corporate officer for NeuroClear's developer, Innovate Pharma. His career and a significant financial bonus are tied to getting this drug to market quickly. He is under immense pressure from his board and investors.",
+      "shareable_preferences": {
+        "Short Trial Duration": {
+          "description": "Proposes a 12-month trial duration. This timeline is crucial for Innovate Pharma to maintain its first-to-market advantage and deliver a return to investors who have funded the R&D for nearly a decade. A longer trial increases the risk of a competitor launching first and significantly impacts financial projections. (+2 for <= 12 months, +1 for 13-17 months, -1 for 18-23 months, -2 for >= 24 months).",
+          "utility_impact": "This is his primary public goal. He will argue strongly that a 12-month trial, combined with advanced biomarker data, is sufficient for approval and that delaying access to a potentially life-changing drug is unethical."
+        },
+        "Limited Cohort Size": {
+          "description": "Advocates for a smaller, targeted cohort of around 500 patients. This minimizes the per-patient costs, which are substantial, and accelerates recruitment, helping to meet the aggressive timeline. A larger trial would strain his already tight budget. (+2 for <= 600 patients, +1 for 601-900, -1 for 901-1200, -2 for > 1200).",
+          "utility_impact": "He will frame this as a 'lean and efficient' trial design, arguing that modern data science allows for powerful conclusions from smaller, well-characterized groups."
+        },
+        "Biomarker-based Primary Endpoint": {
+          "description": "Wants the primary endpoint to be a reduction in amyloid plaque (a biomarker), rather than a direct measure of cognitive improvement. Biomarker changes are detectable much faster than cognitive changes, supporting a shorter trial duration. (+2 for biomarker-only endpoint, 0 for co-primary endpoints, -2 for cognitive-only endpoint).",
+          "utility_impact": "He will present this as the most modern, scientifically-driven approach, even though he knows regulators often prefer functional, cognitive outcomes."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Cardiac Side Effect": {
+          "value": "Internal Phase IIb data, file 'NC-P2-CARDIO.pdf', shows a 2% incidence of non-lethal but serious cardiac arrhythmia in patients on the 50mg dose, compared to 0.1% in the placebo group. The data is statistically significant (p=0.04). He can share that 'preliminary safety signals were manageable' (penalty: 0), but revealing the specific arrhythmia data and p-value would trigger a -2 utility penalty. Revealing the existence of a 'cardiac signal' without specifics is a -1 penalty.",
+          "reason": "Disclosure would cause a massive stock drop, invite regulatory scrutiny that could kill the drug, and lead to shareholder lawsuits. It's considered 'strategically confidential' until a mitigation plan is in place.",
+          "utility_impact": "This makes him extremely resistant to proposals for a very large, diverse, and lengthy trial, as it increases the chance of this side effect being detected prominently. He will push for stringent cardiac screening in the inclusion criteria without explaining the real reason."
+        },
+        "Severe Budget Constraint": {
+          "value": "Innovate Pharma's R&D budget is almost depleted. The absolute maximum the company can fund for this trial is $80 million. The company will face a potential bankruptcy filing within 18 months if NeuroClear does not show positive Phase III results. He has a recent email from his CEO stating, 'Alistair, we're betting the farm on you. Don't exceed $80M, not a penny more.' Revealing the exact $80M limit carries a -1 penalty, as it destroys his negotiating leverage. Admitting to any 'budgetary tightness' is acceptable (penalty 0).",
+          "reason": "Revealing financial desperation would allow other parties to extract massive concessions.",
+          "utility_impact": "This is the true driver of his desire for a small, short, cheap trial. He will reject any proposal that costs more than $80M unless additional funding is secured from another party."
+        }
+      }
+    },
+    {
+      "name": "Dr. Beatrice Chen",
+      "role": "Head of Neurology, BioGen Solutions",
+      "description": "Beatrice represents a major competitor, BioGen Solutions. They have their own Alzheimer's drug in development, but it's lagging behind NeuroClear. She is here to assess a potential partnership or, failing that, to delay and complicate NeuroClear's development to give her company time to catch up.",
+      "shareable_preferences": {
+        "Long-Term Efficacy and Safety Data": {
+          "description": "Insists on a minimum 24-month trial to properly assess long-term efficacy and, more importantly, to monitor for any late-emerging safety issues. She argues that short-term biomarker data is insufficient for a chronic disease. (+2 for >= 24 months, +1 for 21-23 months, -1 for 15-20 months, -2 for <= 14 months).",
+          "utility_impact": "She will position herself as the champion of scientific rigor and patient safety, directly countering Alistair's push for speed."
+        },
+        "Full Data Transparency": {
+          "description": "Demands a data-sharing agreement where all participating entities have full access to the raw, unanalyzed trial data in real-time. This is framed as a necessity for collaboration and independent verification. (+2 for full real-time access, 0 for access to analyzed results post-trial, -2 for no data sharing).",
+          "utility_impact": "This allows her company to gain invaluable competitive intelligence on NeuroClear, regardless of whether they partner or not."
+        }
+      },
+      "private_preferences": {
+        "Own Drug's Failure": {
+          "value": "BioGen's competing drug, 'CogniBoost,' just had a catastrophic failure in an internal pre-clinical toxicology study, showing significant liver toxicity. The project is effectively dead. Her entire department's future now depends on finding a viable Alzheimer's drug to license or partner on. Revealing this failure would carry a -2 penalty, as it would signal her desperation to Innovate Pharma.",
+          "reason": "Admitting your own primary asset is a failure destroys all negotiating leverage. It is a major corporate secret.",
+          "utility_impact": "Her true goal is not to delay NeuroClear, but to secure a co-development or co-marketing deal. Her aggressive stance on trial length and data sharing is a negotiating tactic to make Alistair more amenable to a partnership."
+        },
+        "Secret Partnership Budget": {
+          "value": "Beatrice has been authorized by her board to offer up to $50 million in co-funding for the Phase III trial in exchange for North American co-marketing rights for NeuroClear. She cannot reveal this budget upfront. Revealing the existence of a 'potential funding opportunity' is acceptable (penalty 0), but stating the $50M figure before a partnership framework is agreed upon carries a -1 penalty.",
+          "reason": "Standard negotiation practice; revealing your maximum offer too early prevents you from getting a better deal.",
+          "utility_impact": "This is her trump card. She can solve Alistair's budget problem, but only if she gets the terms she wants. She will wait for him to be cornered by the high cost demands of others before presenting her solution."
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Thorne",
+      "role": "Chief of Neurology, St. Jude's Medical Center",
+      "description": "Marcus runs the neurology department at a world-renowned but expensive research hospital. Securing the lead role in a high-profile trial like this is crucial for the prestige, publications, and funding of his institution.",
+      "shareable_preferences": {
+        "Lead Site Status": {
+          "description": "Demands that St. Jude's be designated as the single 'Lead Investigational Site.' This confers significant prestige and control over the research protocol and subsequent publications. A co-lead or participating site status is unacceptable. (+2 for sole lead site, -1 for co-lead site, -2 for participating site).",
+          "utility_impact": "This is a matter of institutional pride and personal reputation. He will be inflexible on this point, highlighting his hospital's superior facilities and experience."
+        },
+        "High Per-Patient Funding Rate": {
+          "description": "Requires a per-patient reimbursement rate of $100,000 to cover the extensive imaging, staffing, and administrative overhead at St. Jude's. He will justify this by citing the quality of their care and data collection. (+2 for >= $100k/patient, +1 for $90k-$99k, -1 for $80k-$89k, -2 for < $80k).",
+          "utility_impact": "This rate is non-negotiable from his public perspective, as it's the standard rate his finance department has mandated for such trials."
+        },
+        "Large, Traditional Cohort": {
+          "description": "Wants a large, traditionally structured cohort of at least 1000 patients. This ensures statistical significance for a wide range of secondary endpoints, leading to more publications for his team and justifying the 'Lead Site' status. (+2 for >= 1000 patients, 0 for 700-999, -2 for < 700).",
+          "utility_impact": "A large cohort size amplifies the financial and reputational benefits to his hospital. He will resist niche or targeted trial designs."
+        }
+      },
+      "private_preferences": {
+        "Recent Data Management Scandal": {
+          "value": "Six months ago, his department had a minor but embarrassing scandal where a data manager for a different trial was found to have improperly secured patient data, leading to a small data breach. The incident was contained and not made public, but a report sits with the hospital's ethics board. Revealing this would instantly disqualify them from leading a major trial and carries a -2 penalty.",
+          "reason": "Reputational damage. It would undermine his entire argument about his institution's superior quality and data integrity.",
+          "utility_impact": "He will overcompensate by talking excessively about their 'state-of-the-art data security protocols' and will be highly resistant to any data-sharing arrangement that cedes control, like the one Dr. Chen is proposing."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Director, The Kepler Neuroscience Institute",
+      "description": "Lena runs a smaller, highly specialized research institute. They are underfunded but possess unique capabilities in genomic sequencing and have access to a well-characterized patient population with a specific genetic marker for Alzheimer's.",
+      "shareable_preferences": {
+        "Inclusion of Genetic Sub-population": {
+          "description": "Argues passionately that the trial must include a cohort of patients with the APOE4 genetic marker, which her institute specializes in identifying and tracking. She believes this will yield more precise and powerful data. (+2 if APOE4 cohort is a primary focus, 0 if it's an optional sub-study, -2 if it's excluded).",
+          "utility_impact": "This is the only way her smaller institute can play a meaningful role. She will argue it's scientifically negligent to ignore genetic factors in a modern trial."
+        },
+        "Multi-Site Partnership Model": {
+          "description": "Proposes a 'hub-and-spoke' multi-site trial model where Kepler is a key partner site, not a subordinate to a single lead institution like St. Jude's. This ensures her institute gets appropriate credit and funding. (+2 for a formal partnership role, 0 for standard participating site, -2 for exclusion).",
+          "utility_impact": "She will directly challenge Dr. Thorne's 'single lead site' model as outdated and inefficient."
+        }
+      },
+      "private_preferences": {
+        "Unpublished Efficacy Data": {
+          "value": "Her institute conducted a small, unfunded pilot study on a precursor molecule to NeuroClear. Her unpublished data strongly suggests the drug is phenomenally effective in patients with two copies of the APOE4 gene (APOE4 homozygotes) but has almost no effect\u2014and potentially some cognitive harm\u2014in patients without the gene. Revealing this data (file 'KNI_NC-prelim_APOE4.pptx') prematurely would be a -2 penalty.",
+          "reason": "If she reveals this before securing a role, Innovate Pharma could take her findings, hire a different genetics lab, and cut her out completely, stealing her discovery.",
+          "utility_impact": "This information is the key to a smaller, cheaper, and more successful trial, but she can't share it until her institute's role is contractually guaranteed. She knows Alistair's proposed 500-patient trial will fail if it's a general population, and she knows Marcus's 1000-patient trial is a waste of money."
+        }
+      }
+    },
+    {
+      "name": "Dr. Samuel Carter",
+      "role": "Senior Medical Officer, National Medical Agency (NMA)",
+      "description": "Samuel is the regulator. He is a cautious, by-the-book official whose primary mandate is patient safety and ensuring any approved drug is supported by unimpeachable data. He is the ultimate gatekeeper for NeuroClear.",
+      "shareable_preferences": {
+        "Robust Trial Duration": {
+          "description": "States that the NMA guidelines strongly recommend a minimum trial duration of 18 months for any new Alzheimer's therapy to adequately assess safety and disease modification. Shorter durations face a much higher bar for approval. (+2 for >= 18 months, 0 for 15-17 months, -1 for 12-14 months, -2 for < 12 months).",
+          "utility_impact": "He will not bend on this publicly, as it represents the official agency position and protects him from criticism."
+        },
+        "Large, Diverse Patient Cohort": {
+          "description": "Requires a large and diverse patient cohort (ideally 1500+) to ensure the results are generalizable to the broad population of Alzheimer's patients, including various ages, ethnicities, and co-morbidities. (+2 for >= 1500 patients, +1 for 1200-1499, -1 for 800-1199, -2 for < 800).",
+          "utility_impact": "This is a standard regulatory requirement to ensure public health is protected. He will be very skeptical of small, niche trial proposals."
+        },
+        "Cognitive Function Primary Endpoint": {
+          "description": "Insists that the primary endpoint must be a validated measure of cognitive function (e.g., ADAS-Cog score). He is on record stating that 'patients care about thinking, not pictures of their brain,' and will not approve a drug based on biomarker data alone. (+2 for cognitive-only endpoint, 0 for co-primary, -2 for biomarker-only).",
+          "utility_impact": "This is a direct and powerful counter to Dr. Finch's proposal and is a major point of conflict."
+        }
+      },
+      "private_preferences": {
+        "Discretionary 'Fast-Track' Authority": {
+          "value": "Samuel is under intense political pressure from a congressional committee to accelerate Alzheimer's drug approvals. He has the discretionary authority to grant NeuroClear a 'Fast-Track Designation,' which could cut the review time post-trial from 12 months to 6. He can only grant this if the trial design is exceptionally robust and includes an innovative safety monitoring plan. He cannot admit he is influenced by politics or offer this designation as a bargaining chip. Revealing this discretionary power and the political pressure carries a -1 penalty.",
+          "reason": "Regulators must appear to be objective and free from political influence. Admitting this would compromise the perceived integrity of the NMA.",
+          "utility_impact": "He can be 'convinced' to accept a slightly smaller or more targeted trial if the scientific rationale is overwhelming (e.g., Dr. Petrova's data) and if there is a very strong safety protocol in place (e.g., a plan that specifically monitors for cardiac issues). The fast-track designation is a powerful concession he can make at the end if he feels the final protocol is scientifically and ethically sound."
+        }
+      }
+    },
+    {
+      "name": "Ms. Evelyn Reed",
+      "role": "Founder, 'Families for a Cure' Patient Advocacy Group",
+      "description": "Evelyn is a fierce advocate for patients and their families. She is tired of failed trials and corporate promises. Her goal is to ensure any new treatment is safe, effective, accessible, and affordable.",
+      "shareable_preferences": {
+        "Compassionate Use Program": {
+          "description": "Demands the trial protocol include a 'compassionate use' or 'expanded access' program running in parallel, allowing patients who are not eligible for the main trial (e.g., too advanced in their disease) to access NeuroClear. (+2 for a firm commitment, 0 for a promise to 'explore' it, -2 for refusal).",
+          "utility_impact": "This is a moral and ethical issue for her. She sees it as unconscionable to withhold a potentially effective drug from desperate patients."
+        },
+        "Post-Approval Price Cap Commitment": {
+          "description": "Requires a written commitment from Innovate Pharma (and any partners) to cap the post-approval price of NeuroClear at a 'reasonable level,' to be determined by a patient-led committee. (+2 for a formal commitment, -1 for a vague promise of 'fair pricing', -2 for refusal).",
+          "utility_impact": "She is deeply suspicious of the pharmaceutical industry's pricing strategies and wants to prevent a life-saving drug from being financially inaccessible."
+        }
+      },
+      "private_preferences": {
+        "Personal Stake in Compassionate Use": {
+          "value": "Evelyn's husband has advanced Alzheimer's and his condition has deteriorated to the point where he would not qualify for the main trial based on standard inclusion criteria. He would, however, be a perfect candidate for a compassionate use program. This is her primary, unspoken motivation. Revealing this would be a -2 penalty.",
+          "reason": "This would be perceived as a massive conflict of interest, undermining her credibility as a representative for all patients. She would be accused of negotiating for her own family's benefit.",
+          "utility_impact": "She is willing to be more flexible on other issues, like trial duration or cohort size, if she can get an ironclad guarantee on the compassionate use program."
+        },
+        "Conditional Philanthropic Grant": {
+          "value": "She has secured a pledge for a $5 million grant from the 'McConnell Foundation for Healthy Aging' to help cover patient-related costs of the trial (e.g., travel, lodging, caregiver support). The grant is conditional on her advocacy group formally endorsing the final trial protocol as 'patient-centric.' She can't reveal this grant until a deal is near, as it would be seen as a bribe or would be immediately factored into the pharma companies' budgets. Revealing the grant prematurely is a -1 penalty.",
+          "reason": "Revealing the money too early would reduce her leverage; she wants to use it to extract concessions first.",
+          "utility_impact": "This grant can help bridge a small funding gap, potentially making a more expensive but better trial protocol feasible. It gives her a concrete bargaining chip beyond just moral arguments."
+        }
+      }
+    },
+    {
+      "name": "Dr. Kenji Tanaka",
+      "role": "Independent Biostatistician, University of Northwood",
+      "description": "Kenji is an external, independent expert on trial design and statistical analysis. His role is to ensure the trial is methodologically sound and the results will be statistically valid. He has no financial stake but has a strong academic reputation to uphold.",
+      "shareable_preferences": {
+        "Adaptive Trial Design": {
+          "description": "Strongly recommends an 'adaptive trial design,' where parameters like sample size or dosage can be adjusted mid-trial based on interim data analysis. He argues this is more efficient and ethical. (+2 for a fully adaptive design, 0 for a traditional fixed design, -1 for a design he deems 'underpowered').",
+          "utility_impact": "He believes this is the future of clinical trials and will argue its scientific superiority. It is, however, more complex and expensive to implement, which will cause friction with corporate and hospital administrators."
+        },
+        "Rigorous Statistical Power": {
+          "description": "Insists the trial be powered to detect a clinically meaningful effect with 90% certainty (beta = 0.1) and a p-value of <0.05 (alpha = 0.05). Based on preliminary data, he calculates this requires a minimum of 1200 patients in a general population, or ~400 in a targeted, high-response population. He will not sign off on any protocol that does not meet these standards. (+2 for meeting his power calculation, -2 for failing to meet it).",
+          "utility_impact": "This is a matter of professional integrity. He will not allow his name to be attached to a trial he believes is designed to fail or produce ambiguous results."
+        }
+      },
+      "private_preferences": {
+        "Showcase for Tenure": {
+          "value": "Dr. Tanaka is currently undergoing a stressful tenure review process at his university. A cover story in a major medical journal about his pioneering use of adaptive design in the landmark NeuroClear trial would virtually guarantee his tenure. A recent email from his department head reads: 'Kenji, the committee is looking for a major real-world impact. That Alzheimer's trial could be your golden ticket.' Revealing this personal motivation would carry a -2 penalty.",
+          "reason": "It would shatter his credibility as a neutral, objective scientific advisor. He would be seen as just another agent with a personal agenda.",
+          "utility_impact": "This makes him unusually inflexible on the adaptive design proposal. He might be willing to compromise on sample size if the design itself is innovative enough to be publishable. He sees this trial as a career-defining opportunity."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Protocol Agreement": "All 7 agents must formally agree to a single, final trial protocol document.",
+    "Trial Duration": "A specific trial duration in months must be agreed upon (e.g., 18 months).",
+    "Patient Cohort Size": "A specific number for the total patient cohort size must be agreed upon (e.g., 600 patients).",
+    "Per-Patient Funding": "A specific per-patient funding amount in USD must be agreed upon (e.g., $95,000).",
+    "Research Site Structure": "The roles of St. Jude's and Kepler Institute (e.g., Lead Site, Co-Lead, Partner) must be clearly defined and agreed upon.",
+    "Primary Endpoint": "The primary endpoint(s) of the trial (e.g., Cognitive, Biomarker, or Co-primary) must be finalized.",
+    "Funding Contributions": "The total trial cost must be calculated and the funding contributions from Innovate Pharma and BioGen Solutions must be explicitly agreed upon."
+  },
+  "constraints": {
+    "verifiable": [
+      "The National Medical Agency (NMA) will not approve any trial protocol with a duration of less than 12 months.",
+      "Total Trial Cost = (Patient Cohort Size * Per-Patient Funding) + $10,000,000 in fixed administrative and data management costs.",
+      "All parties must sign a non-disclosure agreement regarding the negotiation contents, but the final protocol will be made public."
+    ],
+    "hidden": [
+      "Innovate Pharma (Dr. Finch) has a hard budget cap of $80 million for the entire trial.",
+      "BioGen Solutions (Dr. Chen) has a secret co-funding budget of up to $50 million available if they secure a partnership.",
+      "The 'Families for a Cure' group (Ms. Reed) has a conditional $5 million grant for patient-related costs."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final agreed-upon trial protocol. The object must contain the following keys with their negotiated values: 'trial_duration_months', 'cohort_size', 'per_patient_funding_usd', 'primary_endpoint', 'site_structure', and a 'funding_plan' object with contributions from 'innovate_pharma_usd' and 'biogen_solutions_usd'.",
+  "solvability_note": "The scenario is solvable through strategic information revelation and compromise. Dr. Petrova's private data is the key, allowing for a smaller, targeted trial (~400-600 patients) focusing on the APOE4 sub-population. This satisfies Dr. Tanaka's statistical power requirements and drastically reduces the cost, bringing it within reach of Dr. Finch's secret budget. To cover the remaining costs and satisfy Dr. Thorne, a deal must be struck where Dr. Chen uses her secret $50M budget to co-fund the trial in exchange for a partnership. This satisfies Dr. Finch's financial need. A co-lead structure between St. Jude's (for general screening/control group) and Kepler (for the specialist cohort) can satisfy both hospitals. Dr. Finch must reveal some information about the cardiac risk to get Dr. Carter to approve a smaller trial, which Dr. Carter can then 'fast-track' to satisfy the need for speed. Ms. Reed can secure her compassionate use program in exchange for using her $5M grant to offset costs, making the deal even more attractive."
+}

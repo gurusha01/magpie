@@ -1,0 +1,221 @@
+{
+  "scenario": "Executive Retreat Planning Amidst Corporate Secrecy",
+  "task": "A committee of five key personnel must negotiate and finalize the plan for the annual 3-day executive leadership retreat for the company's top 15 executives. The final plan must include a specific location, exact dates within Q3 (July-September), a detailed budget breakdown, and a high-level agenda theme. The group must reach a unanimous agreement on all four points.",
+  "agent_number": 5,
+  "agent_names": [
+    "Eleanor Vance",
+    "Marcus Thorne",
+    "David Chen",
+    "Sophia Rossi",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Chief Executive Officer (CEO)",
+      "description": "As the powerful and forward-thinking CEO, Eleanor is the ultimate decision-maker. She views the retreat as a critical, high-stakes business tool, not a vacation. Her focus is on securing the company's long-term future, and she is willing to use the company's resources to achieve her strategic objectives.",
+      "shareable_preferences": {
+        "location_choice": {
+          "description": "I insist on a location that guarantees absolute privacy and projects an image of prestige. My preference is 'The Serenity Peak Lodge' in Aspen. It's an exclusive-use venue, meaning no other guests, which is non-negotiable for the sensitive discussions we need to have. Any other venue must meet this strict 'exclusive-use' criterion. A standard hotel or conference center is completely out of the question.",
+          "utility_function": {
+            "Serenity Peak Lodge": 2,
+            "Other exclusive-use luxury resort": 0,
+            "Shared luxury resort": -1,
+            "Budget conference center": -2
+          }
+        },
+        "agenda_theme": {
+          "description": "The agenda must be laser-focused on 'Forward-Looking Strategic Planning'. We will be discussing the 10-year company roadmap. Frivolous activities like trust falls or games are a complete waste of valuable executive time. I expect a rigorous schedule of deep-dive workshops.",
+          "utility_function": {
+            "Strategic Planning": 2,
+            "Mixed Agenda": 0,
+            "Team Building": -1
+          }
+        },
+        "retreat_dates": {
+          "description": "The only viable dates for this retreat are the second week of August, specifically from Monday the 8th to Wednesday the 10th. My calendar is locked for the rest of the quarter with international travel and investor meetings. This window is the only one that accommodates some key external consultants I plan to have on standby.",
+          "utility_function": {
+            "Aug 8-10": 2,
+            "Any other dates": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "undisclosed_merger": {
+          "value": "The primary purpose of this retreat is to secretly finalize a $500M merger with our competitor, Innovate Dynamics. Their CEO will be staying at a nearby villa, and the Serenity Peak Lodge's proximity to a private airfield is the only way to facilitate this final, off-the-record meeting. The 'external consultants' I mentioned are actually our M&A lawyers. The deal hinges on this face-to-face meeting.",
+          "reason": "Public knowledge of a merger discussion before it's finalized is a massive SEC violation, could trigger insider trading, and would cause our stock price to plummet if the deal fails. The secrecy is a legal and fiduciary necessity.",
+          "penalty": {
+            "Revealing the merger or Innovate Dynamics": -5,
+            "Hinting at 'secret guests' or 'M&A activity'": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Chief Financial Officer (CFO)",
+      "description": "Marcus is the pragmatic and cost-conscious guardian of the company's treasury. He believes that financial strength is built on discipline and scrutinizes every major expenditure. He is deeply skeptical of what he sees as extravagant spending and is always looking for ways to improve the bottom line.",
+      "shareable_preferences": {
+        "budget_limit": {
+          "description": "Given the current economic climate and our need to conserve capital, I cannot approve a budget over $100,000 for this retreat. We need to set an example of fiscal responsibility from the top down. The 'Pine Ridge Conference Center' is a perfectly adequate local facility that would cost less than $75,000 all-in.",
+          "utility_function": {
+            "Budget <= $100,000": 2,
+            "$100,001 - $125,000": 0,
+            "$125,001 - $150,000": -1,
+            "> $150,000": -2
+          }
+        },
+        "agenda_focus": {
+          "description": "The theme should be 'Operational Efficiency and Cost Optimization.' Every session should challenge our leaders to find savings within their departments. This is a working session, not a party. We should emerge with a concrete plan to cut 5% of operational overhead.",
+          "utility_function": {
+            "Fiscal/Efficiency Theme": 2,
+            "Strategic Planning": 0,
+            "Team Building": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "ceo_succession_plan": {
+          "value": "I am privately championing our COO, Ben Carter, to succeed Eleanor when she retires next year. A lavish retreat, especially one pushed by Eleanor, weakens my argument to the board that we need a fiscally conservative internal candidate like Ben. I need to keep costs down to make Ben look good and to signal that the company's future is in steady, practical hands, not in expensive, high-risk ventures like a massive merger which would likely oust Ben.",
+          "reason": "Discussing CEO succession before an official announcement would be seen as a power grab. It would create a major political rift with Eleanor and destabilize the entire leadership team.",
+          "penalty": {
+            "Mentioning 'CEO succession' or 'Eleanor's retirement'": -3,
+            "Hinting at 'internal leadership changes'": -1
+          }
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Head of Corporate Security",
+      "description": "David is a meticulous, no-nonsense security professional with a background in military intelligence. He operates on a threat-assessment basis and views all corporate events through the lens of risk and vulnerability. His word on security matters is typically final.",
+      "shareable_preferences": {
+        "location_security": {
+          "description": "The venue must be physically isolated and defensible. I require a single, controllable point of entry/exit, 24/7 perimeter monitoring, and the ability for my team to conduct a full TSCM (Technical Surveillance Counter-Measures) sweep beforehand. My recommendation is the 'Stone Fortress Retreat' in a remote part of Montana. Any location near a town or shared with the public is a non-starter.",
+          "utility_function": {
+            "Stone Fortress or similar isolated facility": 2,
+            "Exclusive-use but accessible resort": -1,
+            "Any public/shared venue": -2
+          }
+        },
+        "communication_blackout": {
+          "description": "To prevent data exfiltration, I am mandating a strict 'no personal devices' policy for the duration of the retreat. We will establish a single, monitored satellite communications link for emergencies only. There will be no unsecured Wi-Fi or cell service.",
+          "utility_function": {
+            "Full blackout policy accepted": 2,
+            "Partial restrictions": 0,
+            "No policy": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "active_espionage_threat": {
+          "value": "I have received a credible tip from a trusted informant that a competitor has a mole on our executive team attempting to gather intel on a highly confidential initiative codenamed 'Project Nightingale' (I don't know this is the merger, but I know it's critical). My extreme security demands are not theoretical; they are a direct countermeasure to a specific, active threat. I cannot reveal the investigation without compromising my source and tipping off the mole.",
+          "reason": "Revealing an active, unconfirmed internal espionage investigation would create mass paranoia, destroy trust among the leadership, and could alert the very person we are trying to catch.",
+          "penalty": {
+            "Mentioning 'mole', 'espionage', or 'informant'": -4,
+            "Hinting at a 'specific security threat'": -1
+          }
+        },
+        "personal_date_conflict": {
+          "value": "My only daughter is getting married on Saturday, August 12th. Eleanor's proposed dates of August 8-10 are right before the wedding. Given the remote locations we are considering, any minor travel delay due to weather or flight cancellations would mean I miss the most important day of my daughter's life. I will have to veto these dates, but I cannot give the real reason.",
+          "reason": "In our intense corporate culture, citing a family event to block a critical CEO-mandated meeting would make me appear unprofessional and not fully committed, undermining my authority on other matters.",
+          "penalty": {
+            "Revealing his daughter's wedding is the reason": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Sophia Rossi",
+      "role": "Head of Facilities & Events",
+      "description": "Sophia is an experienced and relationship-focused event planner. Her performance is judged on her ability to execute flawless, high-end events while managing complex logistics and staying within budget. She prides herself on her network of vendors and her ability to deliver a 'wow' experience.",
+      "shareable_preferences": {
+        "preferred_vendor": {
+          "description": "For a seamless and truly premium experience, I strongly recommend the 'Azure Sky Resort & Spa'. I have a long-standing partnership with them, and they are masters of executive hospitality. Their all-inclusive package simplifies budgeting and includes five-star dining, a golf course, and a spa, which would be a fantastic reward for the team's hard work.",
+          "utility_function": {
+            "Azure Sky Resort & Spa": 2,
+            "Other 5-star resort": 1,
+            "Any other option": -2
+          }
+        },
+        "logistical_feasibility": {
+          "description": "The chosen location must be logistically sound. This means it should be within a two-hour drive of a major airport. Coordinating travel for 15 busy executives to a remote location with multiple connecting flights is a recipe for disaster and delays.",
+          "utility_function": {
+            "Easy logistics (near major airport)": 2,
+            "Moderate logistics (regional airport)": 0,
+            "Complex logistics (remote, multiple connections)": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "unethical_kickback": {
+          "value": "The 'partnership' I have with Azure Sky Resort includes a personal, undisclosed 5% kickback on the final booking price. A $150,000 retreat would mean a $7,500 payment to me. I have an email from my contact there, Jean-Pierre, which reads: 'Sophia, looking forward to hosting your team again! Just confirming our special 'partnership appreciation' bonus is in place for you when you book the Q3 retreat.' This is unethical and would result in my immediate termination if discovered.",
+          "reason": "This is a fireable offense that would destroy my professional reputation and could lead to legal trouble. Admitting it is not an option.",
+          "penalty": {
+            "Revealing any form of kickback, bonus, or commission": -5
+          }
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Chief Operating Officer (COO)",
+      "description": "Ben is the ambitious and charismatic COO, widely seen as the heir apparent to the CEO position. He is focused on the people and processes of the company, believing that a strong, cohesive culture is the key to operational excellence. He is eager to prove his leadership capabilities.",
+      "shareable_preferences": {
+        "agenda_priority": {
+          "description": "After a challenging year, our top priority must be rebuilding morale and team cohesion. I am proposing an agenda centered on 'Collaborative Leadership and Team Building'. This means professionally facilitated workshops, outdoor problem-solving exercises, and activities designed to foster trust. We need a venue with the right facilities, like 'The Evergreen Adventure Lodge'.",
+          "utility_function": {
+            "Team Building": 2,
+            "Mixed Agenda": 1,
+            "Strategic Planning": -1,
+            "Fiscal/Efficiency Theme": -2
+          }
+        },
+        "retreat_atmosphere": {
+          "description": "The environment needs to be informal and egalitarian to encourage open communication. Stuffy boardrooms and formal presentations will just reinforce the existing silos. We need a relaxed setting where our VPs feel empowered to speak candidly with senior leadership.",
+          "utility_function": {
+            "Informal atmosphere": 2,
+            "Formal atmosphere": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "solidifying_succession": {
+          "value": "I am aware that Eleanor is planning to retire in the next 18 months, and I am positioning myself as her successor. This retreat is my single best opportunity to demonstrate my leadership style and win the unwavering support of the executive team. A team-building agenda that I lead showcases my strengths, whereas a strategy-focused agenda led by Eleanor keeps me in her shadow.",
+          "reason": "Openly campaigning for the CEO job while the current CEO is still in place would be political suicide. It would brand me as disloyal and undermine the chain of command.",
+          "penalty": {
+            "Stating his ambition to be CEO": -3,
+            "Hinting at his leadership aspirations": -1
+          }
+        },
+        "personal_friction_with_ceo": {
+          "value": "Eleanor and I had a major disagreement last week over Q2 resource allocation, where she accused me of being 'operationally myopic'. The tension between us is high, and I feel she is intentionally excluding me from key decisions. This makes me resistant to simply conceding to her plans for the retreat, as I feel I need to re-establish my authority and influence within the group.",
+          "reason": "Airing personal conflicts with the CEO to colleagues is unprofessional and makes the entire leadership team look unstable. It would damage my own reputation as much as hers.",
+          "penalty": {
+            "Revealing the specific argument or tension with Eleanor": -2
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "Unanimous agreement on a single, specific venue for the retreat.",
+    "criterion2": "Unanimous agreement on the exact 3-day dates for the retreat within Q3.",
+    "criterion3": "Unanimous agreement on a final total budget that is at or below the maximum constraint.",
+    "criterion4": "Unanimous agreement on one of the proposed high-level agenda themes (Strategy, Team Building, Fiscal, or a defined Mix)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total retreat budget cannot exceed $150,000.",
+      "The retreat must be exactly 3 days in duration.",
+      "The retreat must take place within Q3 (July 1st to September 30th).",
+      "The plan must accommodate all 15 members of the executive leadership team."
+    ],
+    "hidden": [
+      "The retreat must facilitate a secret, in-person meeting for Eleanor.",
+      "The dates cannot conflict with David's daughter's wedding on August 12th."
+    ]
+  },
+  "deliverable": "A finalized 1-page document titled 'Executive Retreat Plan' detailing the agreed-upon Location, Dates, Final Budget, and Agenda Theme, signed off by all five agents.",
+  "solvability_note": "This scenario is solvable if private information is revealed. Knowledge of the merger and espionage threat would justify the need for a secure, private location, overriding budget and vendor preferences. Knowledge of David's wedding would force a change of dates, opening up new location and vendor possibilities. Acknowledging the succession dynamics would allow for a compromise on a mixed agenda that satisfies both Eleanor's strategic needs and Ben's team-building goals. A potential solution is a different secure venue for a week in September with a budget of ~$125k and a blended agenda."
+}

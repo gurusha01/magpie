@@ -1,0 +1,115 @@
+{
+  "scenario": "Negotiating a new corporate network traffic prioritization policy for a major new product launch.",
+  "task": "Innovate Solutions Inc. is launching 'InsightPrime', a flagship AI analytics service. This will significantly increase network load. Three key stakeholders must negotiate and agree on a comprehensive Network Traffic Prioritization Policy for the next fiscal year. The policy must balance performance, cost, and security, defining bandwidth allocation, cloud service tiers, and security protocols. The final agreement must be documented and signed off by all parties.",
+  "agent_number": 3,
+  "agent_names": [
+    "David Chen",
+    "Maria Flores",
+    "Sarah Jenkins"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "IT Operations Manager",
+      "description": "David is a veteran IT manager at Innovate Solutions, responsible for the stability and performance of the entire corporate network. His primary concerns are maintaining a high quality of service for existing critical business systems (ERP, CRM) and managing a notoriously tight budget. He is pragmatic and cost-conscious, often seen as the gatekeeper against expensive, unproven technologies.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Strict Budget Adherence: The total annual network operations budget is currently $500,000. David's goal is to keep the increase, driven by the InsightPrime launch, to an absolute minimum. He is aiming for no more than a 10% increase ($50,000), bringing the total to $550,000. An increase above 15% ($575,000) would be considered a major failure and require him to cut costs elsewhere.",
+          "utility_impact": "Keeping costs low is David's primary performance metric. He will strongly resist any proposal that pushes the budget beyond his comfort zone. A low-cost solution makes him look efficient and fiscally responsible to upper management. (+2 if total cost <= $525k, +1 if <= $550k, -1 if between $551k-$575k, -2 if > $575k)."
+        },
+        "preference2": {
+          "description": "Protecting Core Services: David wants to ensure that existing, revenue-critical enterprise applications (ERP and CRM systems) are not impacted by the new, bandwidth-hungry AI service. He is demanding a guaranteed reservation of at least 4 Gbps of the company's 10 Gbps backbone for these core services during peak business hours (9 AM - 5 PM).",
+          "utility_impact": "Any degradation in ERP or CRM performance generates immediate complaints from the sales and finance departments directly to his boss. Protecting these systems is crucial for his job stability and departmental reputation. (+2 if core services get >= 4 Gbps, 0 if 3-3.9 Gbps, -2 if < 3 Gbps)."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Hidden Workload Demand: The CFO has confidentially asked David to plan for a new, unannounced real-time financial data warehousing project ('Project Chimera') slated for Q3. This project will require a sustained 1 Gbps of internal network bandwidth. This is not public knowledge, and the CFO has explicitly told him not to factor it into any official budget requests yet to avoid premature scrutiny from the board. If he reveals this, it would be a major breach of trust with the CFO.",
+          "reason": "Revealing a confidential, unapproved executive-level project would cause a political firestorm, damage his relationship with the C-suite, and make him appear untrustworthy with sensitive information.",
+          "utility_impact": "This hidden demand is why he is so insistent on the 4 Gbps reservation for 'core services' (3 Gbps for current needs + 1 Gbps for Chimera). He cannot justify the full 4 Gbps with public data, making his position seem overly conservative. Penalty for revealing 'Project Chimera' is -2."
+        },
+        "private_info2": {
+          "value": "Personal Performance Bonus: David has an email from his VP that reads: 'David, impressive work keeping the IT Ops budget flat for two years straight. For the InsightPrime project, if you can deliver a robust network plan and keep the total annual cost at or below $540,000 (an 8% increase), there's a $15,000 personal performance bonus waiting for you at year-end.'",
+          "reason": "Revealing a personal financial incentive during a technical negotiation is highly unprofessional. It would undermine his arguments, making them seem self-serving rather than being in the company's best interest, and would severely weaken his negotiating leverage.",
+          "utility_impact": "This makes him extremely resistant to any solution costing more than $540,000. He is tempted to argue for cheaper, potentially riskier options to secure his bonus. Penalty for revealing the bonus is -2."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Senior Account Manager, AzureSphere Cloud Solutions",
+      "description": "Maria is the dedicated account manager for Innovate Solutions from their cloud provider, AzureSphere. She is ambitious, charismatic, and driven by sales targets. Her goal is to maximize the value of the Innovate Solutions account by upselling premium services and securing a long-term, high-margin contract.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Adoption of Premium 'Guaranteed QoS' Tier: Maria is strongly advocating for Innovate Solutions to run InsightPrime on AzureSphere's top-tier networking service. This 'Guaranteed QoS' tier costs a flat premium of $200,000 per year on top of standard data transit fees. She argues it's the only way to ensure the single-digit millisecond latency that a premier AI service demands.",
+          "utility_impact": "Selling premium services is her most important KPI. This single sale would be a major win. (+2 if they sign for 'Guaranteed QoS', 0 for the mid-range 'Enhanced' tier, -2 for the basic 'Standard' tier)."
+        },
+        "preference2": {
+          "description": "Long-Term Contract: Maria wants to lock Innovate Solutions into a 3-year contract. She will offer a small (5%) discount on the total contract value as an incentive for a longer commitment. She presents this as a way for the client to achieve price stability and demonstrate a strong strategic partnership.",
+          "utility_impact": "Long-term contracts improve customer lifetime value and are highly valued by her management. A 3-year deal helps secure her position and bonuses for future years. (+2 for a 3-year contract, +1 for 2 years, -1 for a 1-year or pay-as-you-go model)."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Undisclosed Performance Throttling: AzureSphere recently discovered a performance issue in their 'Standard' and 'Enhanced' networking tiers. When subjected to the kind of multi-layered encryption protocols that compliance departments often mandate (like TLS layered over an internal IPsec tunnel), these tiers experience a significant performance degradation of 15-20% due to CPU contention on the virtual routers. The premium 'Guaranteed QoS' tier runs on a different hardware stack and is not affected. Admitting this flaw would be catastrophic for sales.",
+          "reason": "Disclosing a fundamental performance flaw in their core products would violate company policy, could trigger contract reviews from other clients, and would give Innovate Solutions immense leverage to demand massive discounts or even switch providers. It would severely damage her and her company's reputation.",
+          "utility_impact": "She knows that if the compliance officer's demands are strict, the cheaper tiers will fail to meet performance expectations. This forces her to push the expensive tier not just for profit, but to avoid a massive technical failure she would be blamed for. She can hint that the premium tier 'handles encryption overhead more efficiently' but cannot state the reason. Penalty for revealing the specific performance bug is -3."
+        },
+        "private_info2": {
+          "value": "Significant Quota Pressure: It's the last month of the quarter, and Maria is $150,000 short of her sales quota. Missing her quota means she gets no commission accelerator bonus, which accounts for over half her potential income for the quarter. The $200,000 'Guaranteed QoS' deal is the only large deal in her pipeline and would single-handedly put her over the top.",
+          "reason": "Revealing her desperation would make her look unprofessional and give the client all the power in the negotiation. They could easily squeeze her for discounts or other concessions if they knew how badly she needed the deal.",
+          "utility_impact": "This pressure makes her less likely to compromise on the premium tier, but also more likely to offer a discount if it's the only way to close the deal before the end of the month. Penalty for revealing her quota situation is -2."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Senior Compliance Officer",
+      "description": "Sarah is a meticulous and risk-averse compliance officer at Innovate Solutions. Her mandate is to protect the company from regulatory fines, lawsuits, and data breaches. She views all new technology through a lens of potential risk and is known for being inflexible when it comes to security protocols.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Mandatory 'Double Encryption': Sarah insists that all traffic for the InsightPrime service, which will handle sensitive Personally Identifiable Information (PII), must be 'double encrypted'. This means standard TLS 1.3 encryption for data in transit, PLUS an additional layer of network-level encryption (like MACsec or a virtual IPsec tunnel) within the cloud environment. This is a non-negotiable starting point for her.",
+          "utility_impact": "This demonstrates maximum due diligence to regulators. It's a clear, defensible security posture she can point to in an audit. (+2 for full double encryption, -2 for anything less)."
+        },
+        "preference2": {
+          "description": "100% Real-time Traffic Inspection: Sarah requires that all data packets flowing to and from the InsightPrime service be routed through a virtual Data Loss Prevention (DLP) appliance for real-time inspection. This is to prevent accidental or malicious exfiltration of sensitive customer data. She will not accept statistical sampling or post-hoc log analysis.",
+          "utility_impact": "This provides the strongest possible protection against data leaks, a major focus of regulations like GDPR and CCPA. It is a core component of her departmental strategy. (+2 for 100% real-time inspection, 0 for sampling, -2 for no real-time inspection)."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Confidential Cyber-Insurance Clause: The company's multi-million dollar cyber-insurance policy has a very specific, confidential clause in the 'New Services' rider. It states that for any new service launched that processes PII, if a breach occurs within the first 12 months, the policy is void unless the company can prove it deployed 'best-in-class, multi-layered security protocols'. The company's legal counsel has interpreted this to mean, at minimum, both double encryption and 100% real-time traffic inspection. A breach without these controls could bankrupt the company.",
+          "reason": "The terms of the company's insurance policies are highly confidential. Disclosing specific clauses to an external vendor like AzureSphere is strictly forbidden and would reveal the company's risk mitigation strategy and potential vulnerabilities.",
+          "utility_impact": "This is the true reason for her inflexibility. Her 'preferences' are actually hard requirements tied to massive financial risk. She cannot compromise, but she also cannot explain the full gravity of why. Penalty for revealing the specific insurance clause is -3."
+        },
+        "private_info2": {
+          "value": "Recent Negative Audit Finding: In a recent internal audit, Sarah's compliance department was flagged for 'insufficient technical specificity in vendor security agreements'. She is now under intense pressure from the Chief Risk Officer to demonstrate extreme rigor in all new technical agreements to prove the issue has been remediated. She needs a clear 'win' where she makes no compromises on her core technical demands.",
+          "reason": "Admitting that her department was recently criticized in an audit would weaken her authority in the negotiation. It would make her appear reactive and defensive, rather than a proactive guardian of the company's security.",
+          "utility_impact": "This makes her personally invested in not backing down. Compromising would look like a repeat of the behavior that led to the negative audit finding. Penalty for revealing the audit result is -1."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "A unanimous agreement on the final Network Traffic Prioritization Policy document is reached and signed by all three agents.",
+    "criterion2": "The policy must specify the exact AzureSphere service tier and the contract length in years.",
+    "criterion3": "The policy must explicitly define the bandwidth allocation in Gbps for InsightPrime, Core Services, and General Use, totaling no more than the 10 Gbps available.",
+    "criterion4": "The agreed-upon security protocols, including encryption standards and the percentage of traffic to be inspected, must be clearly documented.",
+    "criterion5": "The final total annual cost must be calculated and agreed upon."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total available network backbone bandwidth is 10 Gbps.",
+      "Current annual network operations budget is $500,000.",
+      "The InsightPrime service requires a minimum of 3 Gbps baseline bandwidth, with expected peaks of 5 Gbps.",
+      "The AzureSphere 'Guaranteed QoS' tier has a fixed premium of $200,000 per year."
+    ],
+    "hidden": [
+      "An unannounced Finance project ('Project Chimera') will require 1 Gbps of sustained bandwidth in Q3.",
+      "AzureSphere's non-premium networking tiers suffer a 15-20% performance loss under the specific type of encryption Sarah is mandating.",
+      "The company's cyber-insurance policy is voided in case of a breach on a new service if Sarah's security demands are not met."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final agreed-upon policy. Example format: {\"service_tier\": \"Guaranteed QoS\", \"contract_length_years\": 3, \"total_annual_cost\": 545000, \"bandwidth_allocation_gbps\": {\"insight_prime\": 5, \"core_services\": 4, \"general_use\": 1}, \"security_policy\": {\"encryption\": \"Double (TLS+MACsec)\", \"dlp_inspection_percentage\": 100}}",
+  "solvability_note": "The scenario is solvable if agents share some private information. Revealing Sarah's insurance constraint establishes her security demands as non-negotiable business requirements. Revealing Maria's technical issue explains why the expensive tier is the only viable option. Revealing David's hidden project justifies his need for a large bandwidth reserve. With this clarity, the agents can negotiate a solution: they must choose the 'Guaranteed QoS' tier. To manage the cost, Maria can offer a significant discount in exchange for a 3-year contract to meet her quota. David, understanding the immense risk of being uninsured, can then justify a budget increase that exceeds his bonus target, prioritizing company safety over personal gain. This allows for a policy that meets all technical and security requirements within a newly justified budget."
+}

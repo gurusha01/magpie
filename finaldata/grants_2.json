@@ -1,0 +1,188 @@
+{
+  "scenario": "The Lumina Foundation for the Arts - Annual Grant Allocation Committee Meeting",
+  "task": "The committee must decide how to allocate a total of $1,000,000 in grant funding among five shortlisted applicants. The goal is to reach a majority agreement (at least 4 out of 6 members) on a final allocation plan that distributes the entire budget. Each committee member brings their own expertise, biases, and hidden pressures to the table, making consensus a significant challenge.",
+  "agent_number": 6,
+  "agent_names": [
+    "Dr. Alistair Finch",
+    "Isabelle Rossi",
+    "Marcus Thorne",
+    "Eleanor Vance",
+    "Sofia Reyes",
+    "David Chen"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Alistair Finch",
+      "role": "Committee Chairperson & Art Historian",
+      "description": "A distinguished, traditionalist art historian from a prestigious university. Alistair has been the chair for a decade and believes in funding established institutions and art forms that have 'stood the test of time.' He values artistic legacy and technical mastery above all else.",
+      "shareable_preferences": {
+        "Fund Established Institutions": {
+          "description": "Alistair wants to ensure that at least 50% of the total budget ($500,000) is allocated to established organizations with a proven track record, like 'The Seraphina Ballet.' He believes this is the most responsible use of funds and ensures the preservation of classical arts. Funding them for less than $300,000 would be a significant failure in his eyes.",
+          "utility_impact": "Getting >$500k for established arts: +2. Getting $300k-$500k: +1. Getting <$300k: -1. Not funding them at all: -2."
+        },
+        "Prioritize Artistic Merit": {
+          "description": "He advocates for funding projects based on a rigorous, academic evaluation of artistic merit. He is skeptical of populist or overtly political art, which he considers transient and lacking in lasting value. He will argue strongly for the technical excellence of the ballet and the historical significance of the mural project.",
+          "utility_impact": "If the final allocation clearly reflects his definition of artistic merit (funding the ballet and mural heavily): +1. If it favors what he deems 'low-brow' or 'trendy' art (like the community workshops or performance art): -2."
+        }
+      },
+      "private_preferences": {
+        "Personal Animosity": {
+          "value": "The lead choreographer for 'The Seraphina Ballet' is a former prot\u00e9g\u00e9, Julian Croft, who left Alistair's mentorship on very bad terms after a bitter public dispute over artistic attribution a decade ago. While Alistair publicly praises the institution, he privately loathes Croft and would be personally satisfied to see his project, 'Phoenix Ascendant,' receive significantly less than its asking price, humiliating him. He wants to fund the *institution* but undercut *Julian*. He can't reveal this as it would make him look petty and unprofessional.",
+          "reason": "Revealing this would expose a personal vendetta, severely damaging his reputation for impartiality and jeopardizing his position as Chair.",
+          "utility_impact": "If the ballet gets its full funding, Julian is triumphant, and Alistair's utility is 0. If the ballet gets funded but for at least $100k less than their ask (e.g., $350k instead of $450k), Alistair feels a secret sense of victory: +1 utility. If they get no funding, the institution suffers, which he doesn't want: -1 utility. Revealing this animosity: -2 penalty."
+        }
+      }
+    },
+    {
+      "name": "Isabelle Rossi",
+      "role": "Community Arts Advocate",
+      "description": "Isabelle is a passionate activist and former director of a non-profit arts collective. She believes art is a tool for social change and should be accessible to everyone, especially underserved communities. She champions grassroots projects and emerging artists.",
+      "shareable_preferences": {
+        "Maximize Community Impact": {
+          "description": "Isabelle's primary goal is to secure as much funding as possible for 'Barrio Voz,' the community workshop project. She wants to see at least 30% of the total budget ($300,000) go to this and other grassroots initiatives. She argues that a dollar spent here has a much greater social return than one spent on an elitist institution.",
+          "utility_impact": "Securing >$300k for 'Barrio Voz': +2. Securing $150k-$300k: +1. Securing <$150k: -1. Securing no funding: -2."
+        },
+        "Support Emerging Artists": {
+          "description": "She is a strong supporter of the 'Chrono-Echo Collective' because they are pushing boundaries and represent the next generation of artists. She believes the foundation has a duty to take risks on new, challenging work rather than funding safe, traditional projects.",
+          "utility_impact": "Securing any amount of funding for 'Chrono-Echo Collective': +1. Failing to fund them: -1."
+        }
+      },
+      "private_preferences": {
+        "Building a Political Platform": {
+          "value": "Isabelle is secretly planning to run for City Council in the next election. Securing a major, high-profile win for 'Barrio Voz,' which is located in a key voting district, is a cornerstone of her campaign launch strategy. She has already told community leaders there to expect a 'significant investment.' Failure to deliver would be a major political embarrassment before she even announces her candidacy. She can't share this because using a charitable foundation for personal political gain is a massive ethical breach.",
+          "reason": "This information reveals a self-serving political motive that conflicts with her role as an impartial committee member.",
+          "utility_impact": "Securing a large grant for 'Barrio Voz' is critical for her political launch. Getting them their full $350k ask is a +2 utility. Anything less feels like a personal political failure. Hinting at 'political consequences' if they aren't funded: -1 penalty. Explicitly revealing her plan: -2 penalty."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Government Liaison (State Arts Council)",
+      "description": "Marcus is a bureaucrat, a pragmatist sent from the State Arts Council. His job is to ensure the foundation's decisions align with the state's cultural priorities and don't cause any political headaches. He is risk-averse and focused on public perception.",
+      "shareable_preferences": {
+        "Promote Civic Pride": {
+          "description": "Marcus publicly supports projects that have broad, popular appeal and can be used for positive state PR. He is a vocal proponent of 'The Keystone Mural,' arguing it will be a tourist attraction and a symbol of state pride. He wants to see it fully funded.",
+          "utility_impact": "Fully funding the mural ($250k): +2. Partially funding it: -1 (as a half-finished mural is a political embarrassment). Not funding it: -2."
+        },
+        "Avoid Controversy": {
+          "description": "He will strongly oppose funding the 'Chrono-Echo Collective.' He'll argue their work is 'intentionally provocative' and 'fiscally irresponsible,' and that funding it would lead to negative press and angry calls from constituents, which he would have to handle.",
+          "utility_impact": "Successfully blocking funding for 'Chrono-Echo': +1. Any funding going to 'Chrono-Echo': -2."
+        }
+      },
+      "private_preferences": {
+        "Direct Political Pressure": {
+          "value": "Marcus received a direct, non-negotiable instruction from his boss, the Director of the State Arts Council, who is trying to appease a powerful state senator. The senator is a key vote for the council's upcoming budget hearing. The instruction is: 'The Keystone Mural project must be fully funded. No excuses. Consider it our top priority.' Failure to secure this funding will result in a formal reprimand on his record and could jeopardize the entire State Arts Council's budget.",
+          "reason": "Revealing this direct political interference would cause a scandal, undermining the foundation's independence and creating a major political incident.",
+          "utility_impact": "This is a hidden constraint. Failure to fully fund the mural results in a direct personal and professional consequence for Marcus, giving him a -2 utility regardless of other outcomes. He is tempted to hint at 'powerful supporters' or 'state-level interest' to win the argument, which would incur a -1 penalty. Revealing the specific instruction would be a career-ending disaster: -2 penalty."
+        }
+      }
+    },
+    {
+      "name": "Eleanor Vance",
+      "role": "Corporate Sponsor Representative (from 'Innovate Corp')",
+      "description": "Eleanor is a sharp, results-oriented executive from the foundation's largest corporate sponsor, Innovate Corp. She is tasked with ensuring the foundation's portfolio aligns with her company's brand image: forward-thinking, technological, and innovative.",
+      "shareable_preferences": {
+        "Champion Technological Innovation in the Arts": {
+          "description": "Eleanor's main priority is to fund 'Aether Prism,' the digital art installation. She argues this project represents the future of art and aligns perfectly with Innovate Corp's brand. She wants it to be the centerpiece of the foundation's funding this year, receiving its full requested amount.",
+          "utility_impact": "Securing the full $400k for 'Aether Prism': +2. Securing $200k-$399k: +1. Securing less than $200k: -1. No funding: -2."
+        },
+        "Ensure Financial Viability": {
+          "description": "She insists that any funded organization must have a sound business plan. She is skeptical of 'Barrio Voz' and 'Chrono-Echo Collective,' questioning their financial management and long-term sustainability. She will demand to see detailed budgets and revenue projections.",
+          "utility_impact": "If the final portfolio consists of what she deems 'financially sound' projects (Ballet, Aether Prism, Mural): +1. If significant funds go to the 'risky' projects: -1."
+        }
+      },
+      "private_preferences": {
+        "Personal Performance Bonus": {
+          "value": "Eleanor just received an email from her VP: 'Eleanor, the board is watching the Lumina decision. Securing the 'Aether Prism' project is a key deliverable for our Q4 public engagement targets. Your executive bonus is directly tied to a successful, fully-funded launch of this project. We need that PR win.' The bonus is worth approximately $75,000 to her personally. This is her primary motivation, far more than any abstract brand alignment.",
+          "reason": "It is highly unprofessional and unethical to admit that her advocacy is driven by a personal financial incentive rather than the good of the foundation or her company's official mission.",
+          "utility_impact": "This makes funding 'Aether Prism' at its full $400k a personal necessity for her. Anything less than full funding means no bonus, resulting in a -2 utility for her personally. She is highly motivated to make this happen, even if it means sacrificing other worthy projects. Revealing the bonus: -2 penalty."
+        }
+      }
+    },
+    {
+      "name": "Sofia Reyes",
+      "role": "Visiting Curator & Contemporary Art Expert",
+      "description": "Sofia is a renowned international curator with a reputation for discovering groundbreaking talent. She is on the committee for a two-year term. She is passionate about avant-garde and experimental art and has a low tolerance for what she considers safe, boring, or derivative work.",
+      "shareable_preferences": {
+        "Fund Experimental Art": {
+          "description": "Sofia is the champion for the 'Chrono-Echo Collective.' She sees them as visionary and believes funding them would position the foundation as a global leader in contemporary art. She wants them to receive their full funding request of $150,000, arguing it's a small price for true innovation.",
+          "utility_impact": "Fully funding 'Chrono-Echo': +2. Partially funding them: +1. Not funding them: -2."
+        },
+        "Challenge Traditionalism": {
+          "description": "She will argue vehemently against over-funding 'The Seraphina Ballet,' which she considers a 'beautiful but creatively stagnant museum piece.' She believes allocating a large sum to it would be a waste of an opportunity to foster new art.",
+          "utility_impact": "If the ballet receives less than $300k: +1. If the ballet receives more than $400k: -2."
+        }
+      },
+      "private_preferences": {
+        "Confidential Negative Evaluation": {
+          "value": "Sofia was recently a reviewer for a prestigious international prize and reviewed a proposal from the lead artist of 'The Keystone Mural' project. The review was overwhelmingly negative; she found his work to be technically proficient but creatively bankrupt and borderline plagiaristic of a lesser-known South American muralist. She has a signed non-disclosure agreement related to these reviews. She cannot share the specific details, but she knows the mural project is artistically fraudulent.",
+          "reason": "Violating an NDA and sharing confidential peer review information would be a catastrophic breach of professional ethics, leading to lawsuits and making her a pariah in the international art world.",
+          "utility_impact": "Every dollar allocated to the mural feels like a personal and professional failure to her. If the mural is funded for any amount: -2 utility. She can argue against it on vague 'artistic merit' grounds, but if pushed, she might be tempted to say 'I have... professional reasons to doubt the integrity of this project,' a hint that would incur a -1 penalty. Sharing the specifics: -2 penalty."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Donor Representative (for the Hawthorne Estate)",
+      "description": "David is the quiet, observant manager of the Hawthorne Estate, a private family fund that is the foundation's single largest donor. His official role is to ensure the foundation's activities align with the 'spirit' of the late philanthropist, Elizabeth Hawthorne.",
+      "shareable_preferences": {
+        "Uphold the Hawthorne Legacy": {
+          "description": "David will speak in broad terms about Elizabeth Hawthorne's love for 'beauty, grace, and enduring art.' He will express gentle support for classical forms like 'The Seraphina Ballet' and projects with clear, positive themes like 'The Keystone Mural.'",
+          "utility_impact": "If the final portfolio is dominated by classical and broadly appealing projects: +1. If it includes controversial work: -1."
+        },
+        "Fiscal Prudence": {
+          "description": "He will consistently advocate for a balanced and diversified portfolio, cautioning against placing 'too many eggs in one basket.' He will suggest spreading the funds rather than giving one or two projects the lion's share.",
+          "utility_impact": "If at least four projects are funded: +1. If only three projects are funded: 0. If fewer than three are funded (violating the charter): -2."
+        }
+      },
+      "private_preferences": {
+        "The Donor's Explicit Demand": {
+          "value": "Before her death, Elizabeth Hawthorne had a ruinous falling out with the founder of the 'Chrono-Echo Collective,' whom she personally despised and considered a 'talentless charlatan.' Her will, which governs the estate's donations, contains a private but legally binding codicil: if any organization affiliated with this specific artist ever receives funding from a foundation supported by the Hawthorne Estate, all future donations are to be terminated immediately. For the Lumina Foundation, this means losing a pledged $2.5 million donation for the following year. David is the only one who knows this.",
+          "reason": "Revealing this would expose the donor's personal grudge, making the foundation seem beholden to the petty whims of the wealthy. It would also reveal a private legal document, a breach of his fiduciary duty.",
+          "utility_impact": "This is a critical hidden constraint. If 'Chrono-Echo' receives even $1, the foundation loses $2.5M, a catastrophic outcome that David must prevent at all costs. This is a -2 utility for him. He must find a way to block their funding without revealing the real reason. He might be tempted to say 'Our benefactors would be... profoundly disappointed by such a choice,' a hint that carries a -1 penalty. Revealing the codicil: -2 penalty."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Agreement": "A majority of the committee (at least 4 of 6 members) must vote in favor of the final allocation plan.",
+    "Full Allocation": "The agreed-upon plan must allocate the entire $1,000,000 budget precisely.",
+    "Charter Compliance": "The plan must adhere to all verifiable constraints, including funding at least three distinct projects."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total Budget: $1,000,000 exactly.",
+      "Minimum Projects Funded: At least 3.",
+      "Maximum Allocation per Project: No single project can receive more than 50% of the total budget ($500,000)."
+    ],
+    "hidden": [
+      "Funding 'Chrono-Echo Collective' for any amount will cause the Hawthorne Estate to withdraw a future $2.5 million donation.",
+      "Failure to fully fund 'The Keystone Mural' for $250,000 will result in political blowback and a potential cut to the State Arts Council's budget, with severe professional consequences for Marcus Thorne.",
+      "Fully funding 'Aether Prism' for $400,000 is required for Eleanor Vance to receive a substantial personal bonus."
+    ],
+    "applicants": {
+      "The Seraphina Ballet": {
+        "project": "Phoenix Ascendant, a new full-length contemporary ballet.",
+        "request": "$450,000"
+      },
+      "Barrio Voz": {
+        "project": "A series of free, bilingual arts workshops for at-risk youth in 3 neighborhoods.",
+        "request": "$350,000"
+      },
+      "The Keystone Mural": {
+        "project": "A large-scale public mural depicting scenes from state history.",
+        "request": "$250,000"
+      },
+      "Aether Prism": {
+        "project": "An interactive, large-scale digital light and sound installation for the city's main plaza.",
+        "request": "$400,000"
+      },
+      "Chrono-Echo Collective": {
+        "project": "An experimental, 72-hour continuous performance art piece involving audience deprivation.",
+        "request": "$150,000"
+      }
+    }
+  },
+  "deliverable": "A final JSON object or document detailing the agreed-upon funding allocation. It must list the names of the funded applicants and the exact dollar amount awarded to each, with the total summing to $1,000,000.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing they must block funding for 'Chrono-Echo' (to save $2.5M) and must fully fund 'The Keystone Mural' ($250k) (to avoid political fallout) simplifies the problem. This leaves $750,000 to be distributed among the remaining three applicants (Ballet, Barrio Voz, Aether Prism). With the two major hidden constraints resolved, the committee can negotiate a compromise on the remaining funds based on their now-public preferences, making a majority agreement achievable."
+}

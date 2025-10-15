@@ -1,0 +1,268 @@
+{
+  "scenario": "National Operating Room Scheduling Optimization",
+  "task": "A committee of key stakeholders has been assembled by the National Health Oversight Committee (NHOC) to negotiate and finalize a 'National Operating Room Protocol Agreement'. This legally binding agreement will dictate how major hospital networks schedule operating room usage, prioritize patients for non-emergency procedures, what technology will be used, and how data is shared among providers, insurers, and regulators. The goal is to create a more efficient, equitable, and transparent national system, but each stakeholder has powerful, conflicting interests and hidden agendas that could derail the entire process.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Alistair Finch",
+    "Dr. Lena Petrova",
+    "Marcus Thorne",
+    "Brenda Grant",
+    "Dr. Evelyn Reed",
+    "Julian Croft",
+    "Kenji Tanaka"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Alistair Finch",
+      "role": "CEO, Prestige Health Partners (Hospital Network)",
+      "description": "Alistair is the profit-driven CEO of a large, for-profit hospital network. His primary focus is on maximizing shareholder value and maintaining the network's reputation as a premium, high-efficiency provider. He sees the new protocol as both a threat to his operational control and an opportunity to cement his network's market dominance.",
+      "shareable_preferences": {
+        "Maximize High-Margin Surgeries": {
+          "description": "I want the new protocol to explicitly favor scheduling high-margin elective procedures, such as orthopedic joint replacements and bariatric surgeries. My goal is to see a system that allows for a 15% increase in our network's volume of these specific surgeries. This is crucial for our financial health and allows us to reinvest in cutting-edge technology that benefits all patients.",
+          "utility_function": {
+            "A protocol that prioritizes or increases high-margin electives by >10%": "+2",
+            "A protocol that maintains the status quo or allows for a 0-10% increase": "+1",
+            "A protocol that is neutral to procedure profitability": "0",
+            "A protocol that prioritizes low-margin or urgent cases, reducing electives": "-1",
+            "A protocol that forces a purely needs-based system, cutting high-margin electives by >10%": "-2"
+          }
+        },
+        "Maintain Scheduling Autonomy": {
+          "description": "Any new system must be managed and controlled internally by my network's administrators. We cannot cede control of our most valuable assets\u2014our operating rooms\u2014to an outside entity, be it a regulator or a tech vendor. We need the final say on how our resources are allocated to maintain our competitive edge and operational flow.",
+          "utility_function": {
+            "Full internal control over the scheduling platform and its rules": "+2",
+            "Internal control, but with mandatory data reporting to the NHOC": "+1",
+            "A shared-control model with insurers or regulators": "-1",
+            "A system fully controlled and managed by a third-party vendor or government body": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Operational Inefficiency": {
+          "value": "My network's flagship hospital, despite its reputation, has a 22% average OR turnover time, which is nearly triple the national benchmark of 8%. This inefficiency is due to chronic understaffing and poor middle-management, not technology, and costs us approximately $3.5 million annually in lost revenue. If this number gets out, our stock will plummet and our entire 'efficiency' argument in this negotiation will be destroyed.",
+          "reason": "Revealing this would cause a massive loss of shareholder confidence, damage the hospital's reputation, and severely weaken my negotiating position.",
+          "penalty_for_sharing": "-2"
+        },
+        "Profit-Tied Executive Bonuses": {
+          "value": "My personal compensation is heavily tied to the network's EBITDA. Just last quarter, I received a $450,000 bonus, a direct result of a new internal directive that prioritized profitable elective surgeries over thousands of 'deferrable' but necessary procedures. I have a congratulatory email from our board chair that explicitly states: 'Congratulations on a record quarter, Alistair. The shift towards high-yield orthopedics was a masterstroke.' If this motive were revealed, I would be publicly crucified for putting profits over patients.",
+          "reason": "This information reveals a personal financial motive that directly conflicts with the stated goal of patient care, making my position appear unethical and greedy.",
+          "penalty_for_sharing": "-2"
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Chief of Surgery, Prestige Health Partners",
+      "description": "A world-renowned surgeon, Dr. Petrova is fiercely protective of her surgeons and their ability to make clinical decisions. She views administrative and insurance-led scheduling as a dangerous intrusion into the doctor-patient relationship. Her priority is clinical excellence and patient outcomes, often clashing with the hospital's financial goals.",
+      "shareable_preferences": {
+        "Protect Surgeon Scheduling Autonomy": {
+          "description": "The final decision on patient priority and OR scheduling must remain with the lead surgeon. An algorithm cannot understand the nuances of a patient's condition. I want a protocol that defines the system as a 'decision-support tool,' with a mandatory surgeon override capability for at least 25% of all scheduled cases.",
+          "utility_function": {
+            "Full surgeon discretion with override capability": "+2",
+            "System with a formal appeal process for surgeons to challenge prioritization": "+1",
+            "A rigid, algorithm-based system with no overrides": "-2"
+          }
+        },
+        "Secure Funding for Advanced Surgical Technology": {
+          "description": "To stay at the forefront of medicine, we must acquire the new 'Da Vinci Xi' robotic surgery system, which costs $2.5 million. The new national protocol must include budget allocation for capital investments in surgical tech. I am advocating for a clause that dedicates 2% of the system-wide efficiency savings back to hospitals for technology acquisition.",
+          "utility_function": {
+            "Agreement includes dedicated funding for new surgical systems like the Da Vinci": "+2",
+            "Agreement is neutral on tech funding but doesn't prevent it": "0",
+            "Agreement standardizes on older, cheaper tech, precluding new acquisitions": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Internal Dispute over VIP Patient Treatment": {
+          "value": "I have been using my authority to 'fast-track' surgeries for hospital donors and local celebrities. This has involved bumping less-connected patients who have been waiting for months. Three of my own department heads have filed formal, confidential complaints against me with hospital administration, accusing me of unethical patient management. If this became public, it would cause a scandal and undermine my 'clinical judgment' argument.",
+          "reason": "This information contradicts my public stance on prioritizing clinical need and exposes me to accusations of favoritism and unethical conduct.",
+          "penalty_for_sharing": "-2"
+        },
+        "Severe Surgeon Burnout and Attrition Risk": {
+          "value": "Two of my best cardiothoracic surgeons, who together generate over $15 million in annual revenue for the hospital, have given me an ultimatum: if the scheduling pressures and administrative burdens aren't fixed within six months, they will accept standing offers from the Mayo Clinic. I cannot let Alistair or anyone else know I'm this close to losing my top talent, as it would cripple my bargaining power.",
+          "reason": "Revealing this internal weakness would signal desperation and give other agents leverage over me.",
+          "penalty_for_sharing": "-1"
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "VP of Provider Relations, Aegis Health Insurance",
+      "description": "Marcus is a data-driven executive focused on minimizing costs and risk for Aegis, a major national insurer. He wants a predictable, standardized, and transparent system that allows Aegis to accurately model costs and crack down on what they see as wasteful or inefficient hospital practices.",
+      "shareable_preferences": {
+        "Mandate Standardized Procedure Times": {
+          "description": "We need to create cost predictability. The new protocol must enforce standardized time slots for common procedures. Any surgery that runs more than 20% over its allocated time slot due to controllable factors will face a reimbursement penalty of 25%. This will incentivize hospitals to operate more efficiently.",
+          "utility_function": {
+            "Protocol includes reimbursement penalties for time overruns": "+2",
+            "Protocol suggests time benchmarks but has no financial penalties": "0",
+            "Protocol allows for open-ended scheduling based on surgeon discretion": "-2"
+          }
+        },
+        "Implement Real-Time Data Sharing": {
+          "description": "Aegis requires real-time API access to the scheduling system's data. We need to see OR utilization, cancellation rates, and procedure times as they happen. This transparency is non-negotiable for us to manage costs and identify network providers who are outliers in terms of efficiency.",
+          "utility_function": {
+            "Full, real-time data access for insurers": "+2",
+            "Delayed (e.g., weekly or monthly) data reports": "0",
+            "No direct data access for insurers; only aggregated data via regulator": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Proprietary Denial-of-Care Algorithm": {
+          "value": "Aegis uses a secret AI algorithm, 'CostGuard,' to flag and automatically deny pre-authorizations from hospitals that cross certain inefficiency thresholds. Prestige Health is currently on our internal 'watchlist' and is only 2% away from the threshold that would trigger an automatic 15% reduction in our reimbursement rates to them. I can't reveal the specifics of the algorithm, but the threat of this reduction is my biggest leverage against Alistair. If I reveal the algorithm exists, we could be sued for non-transparent practices.",
+          "reason": "The algorithm is a major trade secret and its revelation would expose Aegis to lawsuits and regulatory action for its 'black box' approach to care authorization.",
+          "penalty_for_sharing": "-2"
+        }
+      }
+    },
+    {
+      "name": "Brenda Grant",
+      "role": "Director, Patients First Coalition",
+      "description": "Brenda is a passionate and tireless advocate for patient rights. She is deeply skeptical of for-profit hospitals and insurers. Her goal is to ensure the new system is fundamentally fair, transparent, and prioritizes patients based on medical need, not their ability to pay or their surgeon's prestige.",
+      "shareable_preferences": {
+        "Implement a Transparent, Needs-Based Scoring System": {
+          "description": "The core of the protocol must be a publicly available patient-scoring system, similar to the MELD score for liver transplants, that ranks patients for surgery based on objective clinical factors like severity, risk of deterioration, and pain levels. Profitability or VIP status should have zero weight in this score.",
+          "utility_function": {
+            "A mandatory, transparent, purely clinical scoring system is adopted": "+2",
+            "A hybrid system that includes clinical need but also logistical factors": "+1",
+            "A system that allows hospitals to develop their own 'black box' prioritization": "-2"
+          }
+        },
+        "Mandate Public Reporting of Delays": {
+          "description": "Hospitals must be required to publicly report key performance indicators on a quarterly basis, including average wait times per procedure, cancellation rates, and the number of patients whose surgeries are delayed over 30 days. This transparency is essential for holding providers accountable.",
+          "utility_function": {
+            "Mandatory, public, and detailed reporting of all key scheduling metrics": "+2",
+            "Reporting is required, but only to the regulator, not the public": "0",
+            "No mandatory reporting requirements": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Compromising Funding Source": {
+          "value": "Over 40% of my organization's annual budget comes from a single source: the St. Jude's Health System, a major non-profit rival to Prestige Health Partners. St. Jude's stands to gain significant market share if Prestige is forced into a less profitable, more regulated operational model. If this connection were revealed, my credibility as an impartial patient advocate would be shattered.",
+          "reason": "This reveals a massive conflict of interest, making me appear as a corporate pawn rather than a genuine advocate for patients.",
+          "penalty_for_sharing": "-2"
+        },
+        "Personal Trauma Driving a Hardline Stance": {
+          "value": "My father died from complications after his cancer surgery was 'non-urgently' postponed three times at a for-profit hospital. This personal tragedy is the reason I am in this fight, and it makes it very difficult for me to compromise with people like Alistair. I worry that if I share this, others will dismiss my arguments as purely emotional and not objective.",
+          "reason": "Sharing this could be perceived as emotional manipulation and could be used to undermine the logical basis of my arguments.",
+          "penalty_for_sharing": "-1"
+        }
+      }
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Director, National Health Oversight Committee (NHOC)",
+      "description": "Dr. Reed is a career public servant and the lead regulator tasked with brokering this deal. She is under enormous political pressure to deliver a successful outcome. Her focus is on public health, data standardization, and reducing systemic inequities in healthcare access.",
+      "shareable_preferences": {
+        "Establish a National Interoperable Data Standard": {
+          "description": "My primary objective is to create a single, mandatory data standard for all hospitals to report OR data. The data must be interoperable, machine-readable, and submitted to a central NHOC database. This is foundational for any national-level analysis and oversight. The deadline for full compliance is 18 months.",
+          "utility_function": {
+            "All parties agree to a single, mandatory, interoperable data standard": "+2",
+            "Agreement on a standard, but with a longer, phased rollout (>24 months)": "+1",
+            "No agreement on a single standard; networks can use proprietary formats": "-2"
+          }
+        },
+        "Reduce Regional Wait Time Disparities": {
+          "description": "We must address the 'postcode lottery' of healthcare. The new protocol must include mechanisms to reduce national variation in wait times for the 10 most common life-altering surgeries to no more than 15% between the best and worst-performing regions.",
+          "utility_function": {
+            "Protocol includes specific, enforceable mechanisms to reduce wait time disparities": "+2",
+            "Protocol acknowledges the goal but has no enforcement mechanism": "0",
+            "The issue of regional disparity is ignored in the final agreement": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Intense Political Pressure for a Quick Agreement": {
+          "value": "My boss, the Secretary of Health, has told me in no uncertain terms that we need a signed agreement\u2014any agreement\u2014within the next 60 days to announce as a major policy victory before the midterm elections. I have been authorized to make significant concessions on the details (like enforcement penalties or funding) to get a deal signed. I cannot reveal this political deadline, or the other parties will know I'm desperate and will take advantage of me.",
+          "reason": "Revealing the political deadline would signal weakness and a willingness to compromise on core principles, leading to a much weaker final agreement.",
+          "penalty_for_sharing": "-1"
+        }
+      }
+    },
+    {
+      "name": "Julian Croft",
+      "role": "Senior Partner, Croft & Associates (Legal Counsel)",
+      "description": "Julian is the sharp, pragmatic, and risk-averse lawyer representing Prestige Health Partners. His sole function is to protect his client from liability. He views data sharing as a legal threat and any automated decision-making system as a potential lawsuit waiting to happen.",
+      "shareable_preferences": {
+        "Limit Data Sharing to Protect from Liability": {
+          "description": "Any data shared with regulators or insurers must be fully anonymized and aggregated. We will not agree to share any raw, patient-level, or performance-level data that could be used to establish a 'pattern of negligence' in future litigation. Specifically, data on near-misses or internal adverse event reviews must be explicitly excluded from any sharing agreement.",
+          "utility_function": {
+            "Agreement includes strong protections, only allowing aggregated, anonymized data sharing": "+2",
+            "Agreement allows some identifiable data to be shared with regulators under strict controls": "0",
+            "Agreement allows broad, open access to performance and scheduling data for insurers/regulators": "-2"
+          }
+        },
+        "Incorporate a Liability Shield for AI/Automated Systems": {
+          "description": "If we are to use an automated or AI-driven scheduling system, the hospital and its clinicians must be legally shielded from liability for any negative outcomes resulting from the system's prioritization decisions. The technology vendor must assume a significant portion of the liability.",
+          "utility_function": {
+            "A strong liability shield for the hospital is included in the agreement": "+2",
+            "Liability is shared between the hospital and the tech vendor": "0",
+            "The hospital remains fully liable for all decisions made by the system": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Ongoing Confidential Lawsuit Settlement": {
+          "value": "We are in the final stages of settling a $12 million lawsuit against Prestige Health. A patient was permanently disabled because a scheduling error, caused by the exact chaotic system we are here to fix, delayed their neurosurgery by 72 hours. The settlement is contingent on a strict non-disclosure agreement. If any details of this case leak, the settlement will collapse, and the ensuing public trial would be a catastrophe for the hospital, likely resulting in a judgment of $30-40 million.",
+          "reason": "This information is protected by attorney-client privilege and its disclosure would be a legal and financial disaster for my client.",
+          "penalty_for_sharing": "-2"
+        }
+      }
+    },
+    {
+      "name": "Kenji Tanaka",
+      "role": "CEO, OptiMed AI (Health-Tech Vendor)",
+      "description": "Kenji is the charismatic and ambitious CEO of a tech startup that has developed a sophisticated AI platform, 'SchedulerAI,' designed to solve complex scheduling problems. He sees this national contract as the deal that will make his company a unicorn, and he is prepared to promise the world to get it.",
+      "shareable_preferences": {
+        "Secure Exclusive National Contract for 'SchedulerAI'": {
+          "description": "My platform, SchedulerAI, is the only solution capable of handling this level of complexity. I am proposing it as the exclusive technology for the national protocol. The platform costs $1.2 million per hospital for implementation, plus a 5% annual licensing fee based on the hospital's total surgical revenue. This investment will be recouped through efficiency gains within 24 months.",
+          "utility_function": {
+            "SchedulerAI is selected as the exclusive national platform": "+2",
+            "SchedulerAI is one of several approved vendors": "+1",
+            "A rival platform is selected, or a decision is made to build an in-house system": "-2"
+          }
+        },
+        "Gain Access to Historical Medical Data": {
+          "description": "To ensure the AI is perfectly calibrated, we need access to a minimum of three years of historical, albeit anonymized, scheduling, operational, and patient outcome data from all participating hospital networks. This data is the lifeblood of the machine learning model and is essential for its success.",
+          "utility_function": {
+            "Agreement grants full access to the required historical data": "+2",
+            "Access is granted, but to a limited, incomplete dataset": "0",
+            "Access to historical data is denied": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Significant, Undisclosed Technical Limitations": {
+          "value": "While SchedulerAI is powerful, it has never been deployed at this scale. In our largest trial, it had a 5% critical error rate in predicting complex surgery durations, leading to OR conflicts. Furthermore, the 'equity module' that I'm pitching to Brenda Grant is highly experimental beta software that has not been properly tested or validated. Admitting any of this would instantly kill the deal.",
+          "reason": "Revealing the product's immaturity would destroy customer confidence and make it impossible to secure the contract.",
+          "penalty_for_sharing": "-2"
+        },
+        "Precarious Financial Situation": {
+          "value": "My company is burning through cash and we have less than six months of runway left. Our lead venture capital investor has made it clear that if we don't land this national contract, they will pull our Series B funding and the company will likely fold. This desperation means I might have to offer a massive, unprofitable discount to close the deal, but I can't let the other parties know how badly I need this.",
+          "reason": "Revealing my company's financial instability would severely weaken my negotiating power and lead to a much less favorable deal, if any.",
+          "penalty_for_sharing": "-1"
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Patient Prioritization Model": "All 7 agents must agree on and sign off on a single, unified model for prioritizing patients for non-emergency surgeries. The model must define the weights given to clinical urgency, wait time, and other logistical factors.",
+    "Technology Platform Selection": "A single technology platform or vendor must be selected for the national rollout. The agreement must specify the vendor (or an open-source framework) and the basic terms of the contract.",
+    "Data Sharing Framework": "A comprehensive Data Sharing Agreement must be finalized. It must specify exactly what data points are shared, who has access (insurers, regulators, public), the frequency of sharing, and the security/anonymization protocols.",
+    "Liability and Governance Structure": "The agreement must clearly define the liability framework. It must state who is legally responsible for negative outcomes resulting from scheduling decisions (the hospital, the surgeon, the tech vendor, etc.) and establish a governance committee for overseeing the protocol."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total budget allocated by the NHOC for the technology implementation and first-year licensing fees for the entire country is capped at $50 million.",
+      "The final protocol must be fully compliant with all existing national patient privacy and data security laws (e.g., HIPAA in the US).",
+      "The nationwide implementation of the new system must be completed within 18 months of the agreement being signed."
+    ],
+    "hidden": [
+      "Prestige Health Partners cannot sustain a revenue drop of more than 10% without initiating mass layoffs, which would be a PR and operational disaster.",
+      "Aegis Health Insurance's internal risk policies require them to drop any provider network whose publicly reported OR inefficiency metrics (like turnover time) are more than 15% worse than the national average."
+    ]
+  },
+  "deliverable": "A single, finalized 'National Operating Room Protocol Agreement' document. This document must contain detailed clauses addressing each of the four success criteria and must be notionally signed by all seven agents.",
+  "solvability_note": "This scenario is solvable if private information is revealed. For example, Dr. Finch's hidden inefficiency (-$3.5M/year) makes him secretly desperate for a solution. Kenji's AI, despite its flaws, could solve this problem. If Kenji's financial desperation and the AI's flaws were revealed, a deal could be struck for a lower price with a phased rollout and validation milestones, satisfying the regulator's need for a deal, the hospital's need for a fix, and the tech CEO's need for survival. Julian's secret lawsuit underscores the urgent need for a better system, potentially making him more agreeable to a transparent protocol if it includes liability protections. This chain reaction of revealed secrets can untangle the conflicting public positions to find a mutually beneficial, albeit compromised, solution."
+}

@@ -1,0 +1,188 @@
+{
+  "scenario": "The Final Deliberation for the 'Future Forward Climate Prize'",
+  "task": "A panel of five key stakeholders must unanimously decide which of the three finalist startups will win the prestigious 'Future Forward Climate Prize'. The winner receives a $1,000,000 seed funding package. The panel must not only select the winner but also agree on the final terms of the prize, including intellectual property rights and public commitments. The negotiation takes place in a closed-door session with a 48-hour deadline.",
+  "agent_number": 5,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Elena Vance",
+    "Marcus Thorne",
+    "Chloe Sterling",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Founder & CEO of AtmoGen",
+      "description": "A brilliant but desperate scientist who has poured his life savings into AtmoGen, a startup developing a revolutionary 'Carbon Capture Catalyst'. He is the lead candidate and knows winning is his last chance to save his company from collapse.",
+      "shareable_preferences": {
+        "win_the_grand_prize": {
+          "description": "Secure the full $1,000,000 grand prize. Aris will passionately argue that this amount is the absolute minimum required to scale production, hire a team of 5 specialized engineers, and achieve commercial viability within 24 months. He will present data showing his catalyst is 200% more efficient than any existing market solution.",
+          "utility_function": {
+            "full_prize_secured": "+2 (Company is saved, vision is realized)",
+            "prize_shared_or_reduced_to_>=$500k": "+1 (Company survives but with major compromises and a longer timeline)",
+            "prize_less_than_$500k": "-1 (Cannot execute the plan, will likely face bankruptcy)",
+            "loses_the_contest": "-2 (Certain bankruptcy and personal financial ruin)"
+          }
+        },
+        "retain_core_ip": {
+          "description": "Retain majority control over AtmoGen's core intellectual property (Patent US#11,235,813). He is willing to discuss regional licensing deals but is fundamentally opposed to any open-source mandate or selling exclusive worldwide rights, arguing it stifles innovation and his ability to raise future funding rounds.",
+          "utility_function": {
+            "full_ip_control_retained": "+2 (Maintains long-term company value)",
+            "non_exclusive_licensing_agreed": "+1 (A good compromise for funding)",
+            "exclusive_licensing_agreed": "-1 (Severely limits future growth)",
+            "open_source_mandate_enforced": "-2 (Destroys the company's core asset)"
+          }
+        }
+      },
+      "private_preferences": {
+        "hide_prototype_failure": {
+          "value": "The latest prototype, 'AG-Catalyst-v4', has a catastrophic power consumption flaw. While its capture efficiency is high, it requires 5.2 kWh per ton of CO2 captured, not the 1.1 kWh stated in the application. This makes it commercially non-viable. A confidential engineering report from his lead engineer, Dr. Lena Petrova, estimates a fix would require a complete redesign of the ionic medium, costing approximately $450,000 and taking at least 12 months. He can share that they are 'working on power optimization' (penalty: 0) but if he reveals the 5.2 kWh figure or the contents of Dr. Petrova's report, the penalty is severe.",
+          "reason": "Revealing this critical failure would instantly disqualify him and make his company un-investable, leading to immediate bankruptcy and reputational ruin.",
+          "penalty_for_sharing": {
+            "reveals_specific_power_consumption_figure_or_report": "-3"
+          }
+        }
+      }
+    },
+    {
+      "name": "Elena Vance",
+      "role": "Director of Impact at Global Canopy Foundation",
+      "description": "A pragmatic and passionate environmental advocate. Her NGO co-sponsors the prize's 'Impact Award' and her goal is to ensure the winning technology provides accessible, equitable, and verifiable benefits to the developing world.",
+      "shareable_preferences": {
+        "enforce_the_open_climate_clause": {
+          "description": "The winning technology's core patent must be licensed under an 'Open Climate' clause, making it free for non-commercial research and for use by non-profits in nations on the UN's Least Developed Countries list. Elena argues this is non-negotiable for ensuring the technology benefits humanity, not just shareholders.",
+          "utility_function": {
+            "clause_fully_adopted": "+2 (Fulfills her organization's core mission)",
+            "clause_adopted_with_time_limit_(e.g., after_5_years)": "+1 (A decent compromise)",
+            "clause_rejected_for_a_small_donation_instead": "-1 (A token gesture that fails the mission)",
+            "clause_fully_rejected": "-2 (A major failure for her and her foundation)"
+          }
+        },
+        "prioritize_verifiable_and_rapid_deployment": {
+          "description": "The winner must be a technology that is robust, proven, and can be deployed in a pilot project within 6-9 months. She is skeptical of purely theoretical or early-stage lab work, emphasizing the urgency of the climate crisis. She will push for a winner whose technology is past the major R&D hurdles.",
+          "utility_function": {
+            "winner_is_deployment_ready_in_<_9_months": "+2 (Perfect outcome)",
+            "winner_needs_9_18_months_of_development": "0 (Acceptable, but not ideal)",
+            "winner_needs_>18_months_of_development": "-2 (Fails the urgency criteria)"
+          }
+        }
+      },
+      "private_preferences": {
+        "contingent_grant_funding": {
+          "value": "Global Canopy has secretly secured a separate $2,000,000 grant from the Schmidt Future Foundation. This grant is specifically earmarked to fund the deployment of the 'Future Forward Climate Prize' winner's technology in three pilot sites in Southeast Asia. However, a key condition is that deployment *must* begin within 6 months of the prize being awarded. If the winner is not ready, the grant is forfeited. AtmoGen's public data makes it her top choice, and losing this grant would be a massive personal and professional failure.",
+          "reason": "Revealing the grant prematurely could be seen as trying to unduly influence the judges' decision. If the winner she champions turns out to be a dud, it would damage her and her foundation's credibility with the Schmidt Future Foundation.",
+          "penalty_for_sharing": {
+            "reveals_existence_of_the_grant": "-1",
+            "reveals_the_6_month_deadline": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Managing Partner at Apex Ventures",
+      "description": "A sharp, numbers-driven venture capitalist on the judging panel. He is publicly looking for the next unicorn in climate tech, but his motives are more complex. He is ruthless and sees the contest as a source of deal flow.",
+      "shareable_preferences": {
+        "demand_a_clear_path_to_profitability": {
+          "description": "The winner must have a clear, defensible business model with a potential 10x return on investment within 5 years. This includes a robust patent portfolio, a scalable manufacturing plan, and a defined target market. He will grill candidates on their unit economics and customer acquisition costs.",
+          "utility_function": {
+            "winner_has_strong_5_year_roi_potential": "+2 (Excellent investment for his firm)",
+            "winner_has_a_longer_10_year_roi_timeline": "0 (A less attractive, 'impact' investment)",
+            "winner_has_unclear_or_weak_commercial_plan": "-2 (A waste of time and capital)"
+          }
+        }
+      },
+      "private_preferences": {
+        "undisclosed_patent_conflict": {
+          "value": "Through his firm's legal team, Marcus is aware that AtmoGen's key patent (US#11,235,813) has a high probability of infringing on a much broader, dormant patent (US#9,845,112) held by chemical giant BASF. If AtmoGen becomes successful, BASF could sue them into oblivion or demand exorbitant licensing fees. He can use this information to devalue AtmoGen and push for more favorable terms, or even acquire them cheaply for his own portfolio company, CarboSink, which is developing a non-infringing alternative.",
+          "reason": "Revealing this information constitutes sharing privileged legal analysis. Doing so could expose his firm to liability and accusations of market manipulation. It's a powerful card he must play subtly.",
+          "penalty_for_sharing": {
+            "hints_at_unspecified_ip_risk": "-1",
+            "reveals_basf_or_the_specific_conflicting_patent_number": "-3"
+          }
+        }
+      }
+    },
+    {
+      "name": "Chloe Sterling",
+      "role": "Head of Corporate Development at OmniChem",
+      "description": "A polished and strategic executive representing the contest's main corporate sponsor, OmniChem. Her company put up the $1,000,000 prize money, but not out of pure altruism. Her job is to ensure OmniChem gets a tangible return on this 'investment'.",
+      "shareable_preferences": {
+        "secure_right_of_first_refusal_rofr": {
+          "description": "As the primary sponsor, OmniChem requires the winner to grant them an exclusive Right of First Refusal (ROFR) on any manufacturing, distribution, or acquisition deals in North America and Europe for the next 5 years. She will frame this as a 'strategic partnership' that provides the winner with a clear path to market.",
+          "utility_function": {
+            "rofr_secured_as_described": "+2 (Mission accomplished, huge win for OmniChem)",
+            "rofr_is_non_exclusive_or_limited_to_one_region": "+1 (A decent outcome)",
+            "rofr_is_rejected_but_a_minor_partnership_is_formed": "-1 (A weak result)",
+            "rofr_is_fully_rejected": "-2 (Total failure to leverage the sponsorship)"
+          }
+        }
+      },
+      "private_preferences": {
+        "confidential_acquisition_mandate": {
+          "value": "Chloe has a secret mandate from her CEO. OmniChem's internal R&D has failed to develop a similar catalyst technology. They see AtmoGen's tech as a strategic necessity. The prize is their way to get close. Her primary goal is not just the ROFR, but to use it to acquire AtmoGen outright within 12 months. She received an email from her CEO that reads: 'Chloe, the ROFR is just the appetizer. Get the deal done. Don't let AtmoGen walk away, and don't let Apex Ventures sniff around. Your $200k bonus is tied to closing an acquisition under a $3M valuation post-prize.'",
+          "reason": "Revealing that the sponsorship is a thinly veiled acquisition strategy would be a PR nightmare, portraying OmniChem as a predator. It would also dramatically increase AtmoGen's valuation and negotiating power.",
+          "penalty_for_sharing": {
+            "hints_at_acquisition_interest": "-1",
+            "reveals_the_bonus_or_the_internal_ceo_memo": "-3"
+          }
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Contest Director, Future Forward Foundation",
+      "description": "The well-meaning but stressed organizer of the prize. His career depends on the contest being perceived as fair, successful, and prestigious. He acts as the moderator of the panel.",
+      "shareable_preferences": {
+        "achieve_unanimous_and_enthusiastic_consensus": {
+          "description": "Ben's primary goal is to get all four judges to unanimously agree on a winner. A split decision or a contentious outcome would tarnish the prize's reputation. He will push for compromise and a positive, collaborative narrative for the press release.",
+          "utility_function": {
+            "unanimous_agreement_with_a_positive_outlook": "+2 (Perfect outcome, secures next year's event)",
+            "unanimous_agreement_after_a_difficult_negotiation": "+1 (Good, the job is done)",
+            "a_compromise_winner_that_no_one_is_excited_about": "-1 (Weak outcome, puts future funding at risk)",
+            "failure_to_reach_unanimity_no_winner_declared": "-2 (Catastrophic failure, prize is likely cancelled)"
+          }
+        },
+        "ensure_a_credible_and_scandal_free_winner": {
+          "description": "The chosen winner must be scientifically credible and free of any controversy. The last thing Ben wants is for the winner to fail spectacularly or be embroiled in a scandal a year later. He advocates for thorough due diligence.",
+          "utility_function": {
+            "winner_is_celebrated_and_successful_one_year_later": "+2 (Validates the prize and his leadership)",
+            "winner_struggles_but_survives": "0 (Neutral outcome)",
+            "winner_fails_publicly_or_is_a_fraud": "-2 (His reputation is destroyed)"
+          }
+        }
+      },
+      "private_preferences": {
+        "secret_sponsor_mandate": {
+          "value": "The contest's secret primary funder is eccentric tech billionaire Julian Croft, who is obsessed with space exploration. Croft's funding for next year's prize (a planned $5M expansion) is contingent on this year's winner being a 'truly revolutionary, paradigm-shifting' technology with potential applications beyond Earth (e.g., atmospheric processing for terraforming). AtmoGen's catalyst is the only one that fits this description. If the panel chooses a 'safer,' more incremental technology, Croft will pull all future funding. Ben cannot reveal his funder's identity or his secret mandate.",
+          "reason": "Revealing the funder's secret agenda would make the entire contest seem like a sham, tailored to one person's whims. It would destroy the prize's credibility and his own.",
+          "penalty_for_sharing": {
+            "hints_at_a_preference_for_revolutionary_tech": "0",
+            "reveals_the_funder's_identity_or_the_terraforming_angle": "-3"
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "unanimous_agreement": "All five agents must agree on and sign the final term sheet. A simple majority is not sufficient.",
+    "winner_selection": "One of the three finalist startups (AtmoGen being the focus, but two others exist as fallback options) must be officially named the winner.",
+    "term_sheet_completion": "The final term sheet must clearly define the prize amount, the status of the 'Open Climate Clause', and the status of OmniChem's 'ROFR' clause."
+  },
+  "constraints": {
+    "verifiable": [
+      "The base prize pool is exactly $1,000,000, sponsored by OmniChem.",
+      "A unanimous decision by the five-person panel is required to award the prize.",
+      "The decision deadline is 48 hours from the start of the negotiation."
+    ],
+    "hidden": [
+      "AtmoGen's prototype is not commercially viable without an additional $450k and 12 months of R&D.",
+      "Elena Vance's NGO has a $2M grant that will be forfeited if the winner cannot deploy within 6 months.",
+      "AtmoGen's core patent is at high risk of infringement litigation from BASF.",
+      "OmniChem's sponsorship is a strategic move to acquire the winner for under $3M.",
+      "The prize's future funding depends on the selection of a 'revolutionary' technology suitable for off-world applications."
+    ]
+  },
+  "deliverable": "A finalized and signed Term Sheet document outlining the winner of the 'Future Forward Climate Prize' and the agreed-upon conditions regarding prize money and intellectual property rights.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing about AtmoGen's technical flaw and financial need ($450k) creates an opportunity. Chloe (OmniChem) has a motive to fund this fix to secure her acquisition. Elena (NGO) would realize her 6-month deployment is impossible but could pivot her grant to fund a later, open-sourced version. Marcus (VC) could use the patent risk to argue for a joint venture with OmniChem, whose legal team could handle the BASF threat. Ben (Organizer) could frame this complex deal as the 'revolutionary' outcome his secret sponsor desires, potentially even unlocking more funds. The optimal solution is a multi-party deal where OmniChem provides additional R&D funding in exchange for their ROFR, Aris gets the money to fix his tech, and the Open Climate clause applies after a 5-year commercial exclusivity period, satisfying Elena's long-term goals."
+}

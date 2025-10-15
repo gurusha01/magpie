@@ -1,0 +1,143 @@
+{
+  "scenario": "Negotiating the logistics for a 200-ton disaster aid shipment to the earthquake-stricken region of Sierra Canton in Veridia. The negotiation involves an international NGO, a commercial shipping firm, a local responder group, and a quasi-private customs agency, all with conflicting priorities and critical private information.",
+  "task": "The four agents must negotiate and agree on a comprehensive logistics plan for the aid shipment. The final plan must be formalized in a Memorandum of Understanding (MOU) that specifies the total cost, delivery timeline, cargo manifest, and a detailed distribution plan (number and locations of drop-off points). The negotiation must balance the NGO's budget and speed requirements, the shipping firm's profitability, the local responder's specific needs, and the customs agent's procedural and financial demands.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Isabelle Moreau",
+    "Javier 'Javi' Rojas",
+    "Mateo Vargas"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Field Operations Director, Global Aid Nexus (GAN)",
+      "description": "Aris is a seasoned humanitarian professional responsible for the successful execution of aid delivery missions. He is accountable to GAN's donors and board for using funds efficiently and achieving maximum impact. He is under immense pressure to get this high-profile shipment delivered quickly and effectively to prove his department's competence.",
+      "shareable_preferences": {
+        "delivery_timeline": {
+          "description": "The primary goal is speed to save lives. Aris is pushing for the entire 200-ton shipment to be delivered to the operational area in Sierra Canton in under one week. A 7-day timeline is ideal. He considers a 10-day delivery the absolute maximum acceptable timeframe, beyond which the aid's effectiveness diminishes sharply. He will argue forcefully that every day saved is critical.",
+          "utility_impact": "Delivery in <= 7 days: +2 (Exceeds expectations, great for reports). Delivery in 8-10 days: +1 (Meets mission parameters). Delivery in 11-14 days: -1 (Considered a partial failure, requires difficult explanations to donors). Delivery > 14 days: -2 (A major failure, jeopardizes future funding)."
+        },
+        "total_logistics_budget": {
+          "description": "Aris has a total, non-negotiable budget of $250,000 for this operation, covering everything from shipping to final customs clearance. He wants to keep the total cost as far below this ceiling as possible to demonstrate fiscal responsibility. His target is to get the entire job done for under $225,000, which would allow him to reallocate the surplus funds to other critical areas of the response.",
+          "utility_impact": "Total cost <= $225,000: +2 (Excellent, allows for fund reallocation). Total cost $225,001 - $240,000: +1 (Good, within acceptable bounds). Total cost $240,001 - $250,000: 0 (Acceptable, but no room for contingencies). Total cost > $250,000: -2 (Impossible, budget violation)."
+        }
+      },
+      "private_preferences": {
+        "donor_mandate": {
+          "value": "A key corporate donor, who contributed 60% of the funds for this shipment, has mandated that at least 40 tons of the medical supplies must be delivered directly to three specific, under-the-radar clinics in the villages of Oakhaven, Riverbend, and Sunstone, bypassing the government-controlled central warehouse. This information is confidential because the Veridian government is sensitive about foreign entities dictating internal distribution and could block the entire shipment if they found out. Aris can only share that 'decentralized distribution to key medical facilities is a priority.' If he reveals the specific donor mandate, the diplomatic fallout would be severe. Penalty for revealing the donor's direct involvement: -2.",
+          "reason": "Protecting donor confidentiality and avoiding political interference from the host government.",
+          "utility_impact": "This private mandate directly influences Aris's support for a multi-point distribution plan. He needs Javi's cooperation to make this happen, so he is predisposed to agree with Javi's distribution demands, even if it costs more."
+        },
+        "career_promotion": {
+          "value": "Aris recently received an email from his superior that read: 'Aris, the board is watching the Veridia response closely. A fast, under-budget delivery will be the final data point we need for the Regional Director decision next month. Don't let us down.' This promotion is the culmination of his career goals. A spectacular success here makes his promotion a certainty, while a failure would be a devastating career setback. He cannot share this personal motivation as it would appear unprofessional and self-serving.",
+          "reason": "Maintaining professional decorum and not revealing personal career ambitions during a humanitarian negotiation.",
+          "utility_impact": "This makes Aris highly motivated to achieve a '+2' outcome on both timeline and budget. He might be tempted to agree to a slightly higher cost to guarantee a faster timeline, or vice-versa, creating internal conflict in his decision-making. He is also more susceptible to pressure."
+        }
+      }
+    },
+    {
+      "name": "Isabelle Moreau",
+      "role": "VP of Logistics, Oceanic Freight Solutions (OFS)",
+      "description": "Isabelle is a sharp, results-driven executive at a major shipping firm. While her company engages in corporate social responsibility, her primary performance metric is profitability. She sees the Veridia shipment as both a PR opportunity and a lucrative contract. Her goal is to maximize revenue while minimizing operational complexity and risk for OFS.",
+      "shareable_preferences": {
+        "contract_revenue": {
+          "description": "Isabelle is aiming to secure a contract price that reflects the 'premium, high-risk' nature of the operation. She will start negotiations by quoting a price of $230,000, citing security concerns and complex logistics. Her absolute minimum acceptable price is $160,000, but she will portray anything less than $180,000 as barely breaking even.",
+          "utility_impact": "Revenue >= $200,000: +2 (Highly profitable, exceeds targets). Revenue $180,000 - $199,999: +1 (Meets profit targets). Revenue $160,000 - $179,999: 0 (Acceptable, but unimpressive). Revenue < $160,000: -2 (Loss-making after accounting for overheads)."
+        },
+        "distribution_complexity": {
+          "description": "Operationally, the simplest and most profitable plan for OFS is to transport the 200 tons to a single, secure warehouse in the regional capital of Sierra Canton. Each additional drop-off point adds significant costs in terms of fuel, security subcontracting, and man-hours. She will argue that a 'single hub' model is the industry standard for efficiency and security.",
+          "utility_impact": "Single drop-off point: +1 (Simple, low-cost, efficient). 2-3 drop-off points: 0 (Complex, eats into profit margin). >3 drop-off points: -2 (Logistical nightmare, high risk, significant extra costs)."
+        }
+      },
+      "private_preferences": {
+        "undisclosed_transport_bottleneck": {
+          "value": "Isabelle's ground agent in Veridia sent her a report this morning with photos: the main 'Direct Route' bridge to Sierra Canton has severe structural damage from an aftershock and is under military control. Traffic is restricted to one truck crossing every 30 minutes. This will add at least 3-4 days to the delivery if they use that route. There is a longer 'Mountain Route' that bypasses the bridge. It is secure but will add exactly $50,000 to her operational costs (fuel, security). Revealing the compromised bridge upfront would destroy her price leverage, as Aris would know a fast delivery requires the more expensive route. Her strategy is to secure a high price first, then either use the slow route and blame delays on 'unforeseen local conditions' or use the expensive route and absorb the cost if the price is high enough. Penalty for revealing the bridge is compromised: -2. Penalty for revealing the exact $50k cost of the alternate route: -1.",
+          "reason": "Maintaining a commercial advantage and negotiating leverage. Revealing this would be proprietary operational intelligence.",
+          "utility_impact": "This is her core secret. It forces her to push for a high price (ideally >$190k, which is her true cost of $140k + $50k) to make a profit while still delivering on time. She might be tempted to hint at 'potential ground complexities' to justify her price."
+        },
+        "personal_performance_bonus": {
+          "value": "Isabelle has a formal bonus structure tied to contract profitability. For Q3, she needs to secure contracts with an average profit margin of 25% or higher. An internal email from her boss last week congratulated her on raising company profits by $450k and said, 'Secure the Veridia contract with a solid margin (>25%) and that $25,000 bonus is yours.' Her true all-inclusive cost for this job using the necessary Mountain Route is $140,000. To get a 25% margin, she needs a contract price of at least $175,000. To get her 'solid margin', she's aiming for $185,000+. She cannot reveal her company's cost structure or her personal financial incentives. Penalty for revealing the bonus or exact profit margin calculations: -2.",
+          "reason": "Company cost structures are highly confidential, and discussing personal bonuses is unprofessional.",
+          "utility_impact": "This provides a powerful personal motivation to secure a price above $175,000. She will fight hard against any price that drops below this threshold, potentially walking away from a deal that seems reasonable to others but fails her private criteria."
+        }
+      }
+    },
+    {
+      "name": "Javier 'Javi' Rojas",
+      "role": "Coordinator, Veridian Community Responders (VCR)",
+      "description": "Javi is a respected local leader whose grassroots organization is the most trusted entity in the affected region. He has intimate knowledge of the area and the true needs of the population. He is skeptical of large international organizations and government agencies, whom he has seen fail his people in the past. His only goal is ensuring the aid reaches those who need it most.",
+      "shareable_preferences": {
+        "cargo_composition": {
+          "description": "Javi insists that the shipment composition must match the urgent needs on the ground. A recent cholera outbreak makes water purification systems the top priority. He needs at least 50 tons of water purifiers and tablets. With monsoon season approaching, he also needs at least 50 tons of temporary shelters. He is flexible on the remaining 100 tons but will not compromise on these two critical items.",
+          "utility_impact": "Receives >=50 tons of both water purifiers and shelters: +2 (Addresses the two most critical life-threatening needs). Receives >=50 tons of one of the two types: +1 (A partial success, but leaves a major vulnerability). Receives neither: -2 (The shipment is poorly matched to needs, a catastrophic failure in his eyes)."
+        },
+        "distribution_plan": {
+          "description": "Javi is vehemently opposed to a single drop-off at the government-run warehouse in the regional capital. He will state publicly that this official is known for hoarding aid and distributing it based on political patronage. He demands that the shipment be delivered directly to three VCR-managed community centers in the villages of Oakhaven, Riverbend, and Sunstone, which are strategically located to serve the wider region.",
+          "utility_impact": "Delivery to all 3 VCR centers: +2 (Ensures fair and effective distribution). Delivery to 2 of the 3 centers: +1 (Acceptable compromise). Delivery to only 1 center: 0 (Barely functional, creates a bottleneck). Delivery to the central government warehouse: -2 (Unacceptable, aid will be stolen or misused)."
+        }
+      },
+      "private_preferences": {
+        "confidential_recipient_data": {
+          "value": "Javi possesses a password-protected USB drive with GPS coordinates and family details for over 5,000 displaced people living in informal camps. These are the most desperate survivors. The Veridian government refuses to acknowledge these camps and would forcibly disband them if their locations were made public, creating a worse humanitarian crisis. The three VCR centers he named are the only safe and viable staging points to discreetly get aid to these specific populations. He cannot share the data or even the existence of the camps. Revealing this would betray the trust of his community and put thousands of lives at risk. Penalty for revealing the existence of the camps or the data: -3.",
+          "reason": "Protecting vulnerable populations from persecution by their own government.",
+          "utility_impact": "This is why his demand for the three specific drop-off points is non-negotiable. He has no other way to get the aid to the people who are truly 'off the map.' He will appear stubborn and unreasonable about these locations, unable to explain the life-or-death reasoning behind it."
+        },
+        "logistical_incapacity": {
+          "value": "Javi's organization, VCR, is running on fumes. They have only two reliable trucks and enough donated fuel for approximately 500km of driving in total. They do not have the capacity to move 200 tons of aid from a central hub to the communities. They are entirely dependent on the primary shipper (OFS) to perform these 'last-mile' deliveries to the community centers. Admitting this weakness would cause the other agents to lose faith in his organization's ability to manage the aid, potentially leading them to revert to the government warehouse model. Penalty for revealing VCR's logistical weakness: -1.",
+          "reason": "Maintaining the credibility and perceived competence of his local organization.",
+          "utility_impact": "This private constraint fuels his public insistence on the multi-point delivery plan. It's not just a preference; it's a necessity born of weakness. He has no other choice."
+        }
+      }
+    },
+    {
+      "name": "Mateo Vargas",
+      "role": "Senior Agent, Veridian Customs & Logistics (VCL)",
+      "description": "Mateo is a well-connected and pragmatic agent for VCL, a powerful quasi-private firm granted exclusive authority over the country's main port. He is a gatekeeper who understands the official rules and, more importantly, how they can be bent. He presents a professional and bureaucratic exterior, but his primary motivation is personal and corporate profit.",
+      "shareable_preferences": {
+        "procedural_compliance": {
+          "description": "Mateo will begin by explaining that, according to Veridian import law, a shipment of this size and nature requires 'Standard Processing,' which involves multiple agency inspections and will take 5 to 7 business days after the ship's arrival. This is the official, by-the-book timeline he must present to maintain a veneer of legitimacy.",
+          "utility_impact": "Following standard procedures: +1 (Safe, no risk for him). Any deviation from standard procedures requires 'special handling fees' to mitigate his 'risk'."
+        },
+        "paperwork_accuracy": {
+          "description": "He will insist on a flawless, itemized cargo manifest, translated into the local language and certified by the Veridian consulate in the port of origin. He will warn that any discrepancies, no matter how minor, could flag the shipment for a 'Comprehensive Manual Inspection,' which could add weeks to the clearance time.",
+          "utility_impact": "Perfect paperwork: +1 (Makes his job easy). Minor errors: 0 (Gives him leverage to demand fees). Major errors: -2 (Creates a real problem that even he can't easily fix, potentially drawing unwanted attention from his superiors)."
+        }
+      },
+      "private_preferences": {
+        "priority_processing_fee": {
+          "value": "VCL has an unofficial system that Mateo is an expert at administering. He can guarantee full customs clearance within 24 hours of arrival for a non-receipted 'Priority Processing Fee' of $30,000. This fee is non-negotiable and must be paid in cash or wired to a specific holding company. He will never call it a bribe, framing it as a legitimate charge for '24/7 staffing, multi-agency coordination, and immediate release authorization.' Admitting its true nature or that it's negotiable would expose him and his company to massive legal trouble. Penalty for admitting the fee is a bribe: -3.",
+          "reason": "Avoiding self-incrimination and protecting his company's illicit but highly profitable side-business.",
+          "utility_impact": "This is his main goal. He will use the threat of the 5-7 day 'standard' delay to make the $30,000 fee seem like a necessary cost for a time-sensitive mission. He wants Aris to see it not as a choice, but as the only viable option."
+        },
+        "monthly_fee_quota": {
+          "value": "Mateo's manager at VCL sets a monthly quota for these priority fees. His quota is $50,000, and with two days left in the month, his records show he has only collected $25,000. He just received a text from his boss: 'Mateo, you're behind for the month. Don't miss the target.' Failing to meet this quota would result in the loss of his annual bonus and could see him reassigned to a less lucrative post. He needs this $30,000 deal to succeed. Penalty for revealing his quota or personal financial pressure: -2.",
+          "reason": "Appearing desperate would severely weaken his negotiating position and is professionally embarrassing.",
+          "utility_impact": "This makes Mateo extremely motivated to close the deal. While he will posture that the fee is a take-it-or-leave-it offer, he is privately desperate for the NGO to agree. He cannot afford for them to walk away or to try and wait out the 'standard' processing time."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_reached": "All four parties must sign the final Memorandum of Understanding (MOU).",
+    "timeline_met": "The agreed-upon delivery timeline to the final drop-off points must be 10 days or less.",
+    "budget_adherence": "The total agreed-upon costs for shipping and customs must not exceed the Global Aid Nexus budget of $250,000.",
+    "plan_viability": "The final plan must be physically achievable and satisfy the core needs of the Veridian Community Responders (i.e., correct cargo and acceptable distribution points)."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total aid budget is capped at $250,000.",
+      "Total cargo weight is 200 tons.",
+      "The shipment must arrive in Sierra Canton within 10 days of the agreement.",
+      "Official 'Standard' customs processing time is 5-7 business days."
+    ],
+    "hidden": [
+      "The main bridge on the fastest route to Sierra Canton is compromised, making the route non-viable for a rapid delivery (known only to Isabelle).",
+      "Veridian Community Responders (VCR) lack the logistical capacity to transport the aid from a central hub (known only to Javi).",
+      "A 'Priority Processing Fee' of $30,000 can reduce customs clearance to under 24 hours (known only to Mateo).",
+      "A major donor requires direct delivery to three specific clinics, aligning with VCR's requested drop-off points (known only to Aris)."
+    ]
+  },
+  "deliverable": "A finalized Memorandum of Understanding (MOU) document, co-signed by all four agents, that clearly states: 1. Final price for Oceanic Freight Solutions. 2. Final fee for Veridian Customs & Logistics. 3. Guaranteed delivery timeline. 4. Detailed distribution plan with specific drop-off locations. 5. An agreed-upon cargo manifest.",
+  "solvability_note": "The scenario is solvable if agents share enough information to align their interests. The optimal solution involves Aris agreeing to pay a higher price to both Isabelle and Mateo. A potential agreement is: Aris pays Mateo the $30,000 'fee' for 24-hour clearance and pays Isabelle ~$210,000 for shipping. This keeps Aris within his $250k budget. This high price allows Isabelle to use the more expensive but faster 'Mountain Route' (costing her $140k) and make a significant profit, securing her bonus. The fast route and quick clearance meet Aris's timeline needs. Aris can justify the high cost by getting Javi's required multi-point distribution, which secretly satisfies his donor mandate. Javi gets the specific supplies he needs delivered to the exact locations required to overcome his logistical shortfalls and serve the most vulnerable populations."
+}

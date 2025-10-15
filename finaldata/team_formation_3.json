@@ -1,0 +1,167 @@
+{
+  "scenario": "Project Chimera Team Formation",
+  "task": "A group of four key stakeholders at 'InnovateForward Inc.' must negotiate and finalize the leadership, staffing, budget, and timeline for 'Project Chimera', a new high-stakes AI-driven analytics platform. The decisions made will significantly impact departmental resources, individual career trajectories, and a confidential, company-defining strategic initiative.",
+  "agent_number": 4,
+  "agent_names": [
+    "Evelyn Reed",
+    "Ben Carter",
+    "Sarah Jenkins",
+    "Mark Chen"
+  ],
+  "agents": [
+    {
+      "name": "Evelyn Reed",
+      "role": "VP of Product Development",
+      "description": "Evelyn is the executive sponsor for Project Chimera. She holds the ultimate authority but requires consensus to maintain political capital and ensure project buy-in from all departments. Her focus is on the project's strategic impact on the company's market position.",
+      "shareable_preferences": {
+        "visionary_leadership": {
+          "description": "I need a project lead who is not just an executor but a true visionary. They must be able to inspire the team and make a big splash in the market. A charismatic leader who can sell the project's potential both internally and externally is crucial for its success. This project needs to be seen as a game-changer. A methodical manager won't cut it.",
+          "utility_function": {
+            "Sarah Jenkins as lead": "+2",
+            "Mark Chen as lead": "0",
+            "Someone else as lead": "-1"
+          }
+        },
+        "aggressive_timeline": {
+          "description": "The market is moving incredibly fast, and our competitors are not waiting. We absolutely must have a compelling Minimum Viable Product (MVP) ready to demonstrate within 9 months. Any significant delay will render the project's impact obsolete. This is a non-negotiable deadline from the board.",
+          "utility_function": {
+            "9-month timeline agreed": "+2",
+            "10-11 month timeline": "-1",
+            "12+ month timeline": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "confidential_acquisition_goal": {
+          "value": "The primary, confidential goal of Project Chimera is to serve as a technology showcase to attract an acquisition from tech giant 'Innovate Inc.'. I have a confidential email from our CEO stating that Innovate Inc.'s M&A team is scheduled for a 'strategic partnership deep-dive' in 10 months. The demo for them needs to be incredibly flashy and focus on novel AI features, even if the backend isn't fully robust. Stability is secondary to the 'wow factor' for this specific demo. If the demo is unimpressive, the acquisition deal, worth hundreds of millions, will fall through.",
+          "reason": "Revealing acquisition talks would trigger mass panic among employees, potential SEC violations regarding material non-public information, and could jeopardize the deal if Innovate Inc. perceives it as a leak.",
+          "penalty": "Revealing the acquisition context: -5 (Immediate termination and potential legal action). Hinting at a 'major strategic partnership': -2 (Severe reprimand from the CEO and loss of trust).",
+          "utility_impact": "This biases her heavily towards a leader and approach (Sarah's) that prioritizes speed and impressive, demo-friendly features over long-term stability and architectural purity. She cannot explain the real reason for this preference."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Director of Engineering",
+      "description": "Ben is responsible for allocating the engineering resources for the project. He manages multiple teams and must balance the demands of Chimera against other critical, revenue-generating projects. His reputation is built on delivering stable, high-quality software.",
+      "shareable_preferences": {
+        "resource_sustainability": {
+          "description": "Project Chimera is important, but it's not our only priority. I cannot pull all my top engineers from their current duties on 'Project Phoenix' and 'Project Griffin,' which are critical for our existing enterprise customers. I propose we staff Chimera with a blended team: 2 senior engineers from Phoenix and 3 high-potential, but less experienced, engineers from my other teams. This ensures we don't jeopardize our core business.",
+          "utility_function": {
+            "Agreed to blended team proposal": "+2",
+            "Forced to give up 3-4 top engineers": "-1",
+            "Forced to give up all 5 requested top engineers": "-2"
+          }
+        },
+        "technical_debt_management": {
+          "description": "I need a project lead who understands the long-term cost of technical debt. Rushing to a deadline by cutting corners will cripple us later. The lead must prioritize clean, scalable architecture to ensure Chimera has a future beyond a simple demo. We need to build this to last.",
+          "utility_function": {
+            "Mark Chen as lead (known for quality)": "+2",
+            "Sarah Jenkins as lead (known for speed over quality)": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "mark_chens_promotion_path": {
+          "value": "I have been grooming Mark Chen for a promotion to Director. Successfully leading a high-profile project like Chimera is the final item on his development plan. I have already submitted my formal recommendation for his promotion to HR, contingent on him taking on a significant leadership role this year. If Sarah gets this lead, Mark's promotion is likely delayed by at least a year, and I'm concerned he will be recruited by a competitor.",
+          "reason": "Openly admitting he's trying to get his own subordinate promoted over another qualified candidate would be perceived as blatant nepotism, undermining his authority and potentially leading to an HR complaint from Sarah.",
+          "penalty": "Revealing his specific intent to promote Mark: -2 (Severe reputational damage and formal HR review).",
+          "utility_impact": "He will strongly advocate for Mark, using objective-sounding arguments like 'technical stability' and 'risk management' as a cover for his personal and departmental succession planning."
+        },
+        "sarahs_past_project_data": {
+          "value": "I have the confidential post-mortem report for Sarah's last project, 'Odyssey.' While publicly lauded as a success, it went 22% over budget, and the engineering team she managed suffered a 30% attrition rate in the six months post-launch due to burnout. The codebase was so rushed that my teams spent the next two quarters just stabilizing it. I can vaguely mention 'concerns about execution on past projects,' but I am forbidden from sharing the specific metrics (budget/attrition numbers) as they are confidential HR and Finance documents.",
+          "reason": "Sharing confidential performance and financial data about a colleague's project is a major HR violation and would be seen as a malicious personal attack.",
+          "penalty": "Sharing specific negative metrics (e.g., 'her last team had 30% attrition'): -3 (Formal disciplinary action). Vaguely alluding to 'past burnout issues': -0.5 (Minor reputational hit for being passive-aggressive).",
+          "utility_impact": "This information makes him deeply resistant to putting his engineers under Sarah's leadership. He will appear overly cautious or even obstructionist because he cannot reveal the hard data backing his concerns."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Senior Product Manager",
+      "description": "Sarah is a highly ambitious and successful product manager known for delivering high-impact projects on aggressive timelines. She is a top candidate to lead Project Chimera and sees it as a critical step for her career.",
+      "shareable_preferences": {
+        "full_team_autonomy": {
+          "description": "To meet the aggressive 9-month deadline, the project lead needs full autonomy over team composition and execution. This means I need to hand-pick the 5 senior engineers best suited for the job, not just who is available. Specifically, I need Liam (AI specialist) and Rachel (UX engineer) from Ben's 'Phoenix' team. Success is only possible with the A-team.",
+          "utility_function": {
+            "Full control to pick the 5 engineers": "+2",
+            "Gets 2-3 of her chosen engineers": "0",
+            "Forced to accept a pre-assigned 'blended' team": "-2"
+          }
+        },
+        "specialized_tooling_budget": {
+          "description": "To accelerate development and build a truly cutting-edge product, we need a dedicated budget of at least $400,000 for specialized AI/ML platforms and cloud services. This includes licenses for 'TensorFlow Enterprise Suite' and 'DataBricks Premium'. Skimping on tools will result in a slower, less impressive final product.",
+          "utility_function": {
+            "Budget >= $400k": "+2",
+            "Budget between $300k-$399k": "0",
+            "Budget < $300k": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "promotion_contingency": {
+          "value": "In my last 1-on-1 with Evelyn Reed, she explicitly said, 'Sarah, knock this next project out of the park, and the new Director of Innovation role is yours.' My entire career plan for the next three years is built on leading Project Chimera and securing that promotion. If I don't get the lead role, I will consider my growth at this company stalled and will activate my external job search immediately.",
+          "reason": "Revealing a private conversation with a VP about a promotion makes her seem arrogant, transactional, and untrustworthy. It also puts Evelyn in an extremely awkward position, as such promises are meant to be confidential motivators.",
+          "penalty": "Revealing Evelyn's promise: -2 (Damages her relationship with Evelyn and makes her look unprofessional to her peers).",
+          "utility_impact": "This makes her extremely aggressive and uncompromising in her negotiation to become the project lead. She views anything less than full leadership as a personal and professional failure."
+        },
+        "rival_job_offer": {
+          "value": "I currently hold a written offer for a Director position at a direct competitor, 'FutureProof Tech', with a 20% salary increase and a sign-on bonus. The offer expires in two weeks. I would prefer to stay here and lead Chimera, but I have a very real, very attractive alternative. This is my 'nuclear option' if the negotiation fails.",
+          "reason": "Using an outside offer as leverage is a high-risk maneuver. It can be perceived as blackmail and can permanently damage internal relationships, even if she gets what she wants. It's a card you can only play once.",
+          "penalty": "Revealing the competing offer: -1 (Burns bridges and makes her seem disloyal).",
+          "utility_impact": "This gives her a strong Best Alternative to a Negotiated Agreement (BATNA), making her less willing to compromise on her core demand of project leadership. She has less to lose than the others realize."
+        }
+      }
+    },
+    {
+      "name": "Mark Chen",
+      "role": "Senior Engineering Manager",
+      "description": "Mark is a highly respected manager who works for Ben Carter. He is known for his methodical approach, technical excellence, and strong loyalty to his team. He is also considered a potential leader for Project Chimera.",
+      "shareable_preferences": {
+        "phased_rollout_strategy": {
+          "description": "Instead of a high-risk, 'big bang' MVP launch in 9 months, I strongly propose a phased rollout. We can launch a core, stable feature set in 8 months, followed by more advanced, experimental features in the subsequent 3-4 months. This approach de-risks the launch, allows for user feedback, and prevents team burnout.",
+          "utility_function": {
+            "Phased rollout is approved": "+2",
+            "Big bang launch is approved but with a 10-month timeline": "0",
+            "Big bang launch in 9 months is approved": "-2"
+          }
+        },
+        "team_well_being_and_workload": {
+          "description": "My primary responsibility is to the health and sustainability of my team. I will not commit my engineers to a project plan that requires sustained 60-hour work weeks. A successful project is one that delivers a great product without burning out our valuable talent. The plan must include buffer time and respect work-life balance.",
+          "utility_function": {
+            "Plan includes explicit 15% buffer time": "+2",
+            "Plan is aggressive but has no mandated overtime": "0",
+            "Plan implicitly requires significant overtime": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "personal_performance_goals": {
+          "value": "My official, documented annual performance goal, co-signed by Ben, is to 'Improve cross-departmental collaboration and reduce engineering attrition on my direct team by 15%'. Leading a high-stress, rushed project like the one Sarah is proposing would directly contradict this goal and likely cause me to fail my performance review, which would mean losing out on a significant performance bonus and a promotion. Ben just sent me a congratulatory email last week: 'Mark, great job on the Q2 attrition numbers, you're on track for that 'Exceeds Expectations' rating and the promotion we discussed! Keep it up!'",
+          "reason": "Discussing one's personal performance goals and bonus structure in a group negotiation is highly unprofessional. It makes him seem self-serving and focused on personal gain rather than the project's success.",
+          "penalty": "Revealing that his bonus/review is tied to attrition rates: -2 (Looks petty and unprofessional).",
+          "utility_impact": "He will strongly resist any plan that he believes will lead to team burnout, as it directly threatens his documented career objectives and financial incentives. He will champion a slower, more stable approach under the guise of 'best practices'."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_on_lead": "All four agents must verbally agree on a single Project Lead (Sarah or Mark).",
+    "agreement_on_staffing": "A high-level staffing plan must be agreed upon, specifying the number and source of the core engineering team.",
+    "agreement_on_budget": "A top-level budget allocation for key areas (personnel, tools) must be finalized and fall within the overall project constraint.",
+    "agreement_on_timeline": "A project timeline and milestone approach (e.g., 'big bang' vs. 'phased') must be decided upon and documented."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total project budget for the first year cannot exceed $2.5 million.",
+      "The core project team must consist of 1 Project Lead, 5 Senior Engineers, and 3 Data Scientists.",
+      "A functional MVP must be delivered. The definition of 'functional' is part of the negotiation."
+    ],
+    "hidden": [
+      "Innovate Inc.'s M&A team will be visiting for a demo in 10 months (known only to Evelyn).",
+      "Sarah Jenkins's rival job offer expires in two weeks (known only to Sarah)."
+    ]
+  },
+  "deliverable": "A one-page 'Project Chimera Charter' document signed by all four agents, detailing the final decisions on: 1. Project Lead, 2. Staffing Plan, 3. Key Budget Allocations, and 4. Timeline & Launch Strategy.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Evelyn's need for a 'flashy demo' for an acquisition explains her urgency. Ben's and Mark's concerns about Sarah's management style (backed by data) become concrete risks to mitigate. Sarah's promotion-or-quit ultimatum, backed by a real offer, clarifies the stakes. A clear compromise exists: Appoint Sarah as Project Lead to meet Evelyn's strategic need and retain Sarah, but also appoint Mark as 'Technical Lead' with explicit authority over architectural quality and team workload. This satisfies Ben's need to protect his engineers, gives Mark a leadership role for his promotion, and puts a necessary check on Sarah's high-risk tendencies, creating a balanced leadership team that can achieve the project's true goals."
+}

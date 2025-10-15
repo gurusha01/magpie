@@ -1,0 +1,177 @@
+{
+  "scenario": "Negotiating the terms for 'Project Chimera', a multi-stakeholder government program to develop a next-generation, AI-driven drone swarm coordination system for reconnaissance and strategic defense.",
+  "task": "A group of six stakeholders must negotiate and finalize a Memorandum of Understanding (MOU) for Project Chimera. The MOU must define four key terms: 1) Budget Allocation for the R&D phase among the three development partners (Aegis Dynamics, Aetherial Robotics, University Lab), 2) the governing Intellectual Property (IP) Rights model for technology developed, 3) the Data Sharing and Classification Protocol, and 4) the Ethical Oversight Framework, including the level of human control over the system's lethal capabilities.",
+  "agent_number": 6,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Lena Petrova",
+    "Marcus Vance",
+    "Commander Eva Rostova",
+    "Dr. Kenji Tanaka",
+    "Dr. Sofia Al-Jamil"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Lead AI Researcher, University Lab",
+      "description": "A world-renowned professor in computational neuroscience and machine learning. His primary motivation is the pursuit of knowledge and scientific advancement. He sees Project Chimera as a unique opportunity to access unparalleled resources and data to push the boundaries of collective intelligence research. His reputation is built on open and peer-reviewed publications.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Wants an 'Open Science' model for IP and Data. This means all source code, algorithms, and non-sensitive datasets generated should be published under a permissive open-source license (like MIT or Apache 2.0) after a 12-month embargo period. He argues this will accelerate innovation, allow for peer review, and attract the best academic talent to the project. He needs at least the core algorithmic principles to be publishable to secure his academic legacy and the careers of his PhD students.",
+          "utility_impact": "Getting a fully open-source model: +2. A government-purpose rights model where he can still publish papers: +1. A model where the contractor holds exclusive rights and he cannot publish core findings: -2."
+        },
+        "preference2": {
+          "description": "Secure at least $12 million of the budget for his lab. This funding is critical to support a team of 8 PhD students and 4 postdocs for the project's 3-year duration, as well as to acquire a new high-performance computing cluster essential for running the complex simulations the project requires. He can justify this amount with a detailed budget breakdown of stipends, hardware costs, and university overhead.",
+          "utility_impact": "Budget >= $12M: +2. Budget between $8M and $11.9M: +1. Budget between $5M and $7.9M: 0. Budget < $5M: -2 (project is not feasible for his lab)."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "He has already verbally promised his star PhD student, Jian Li, that the core algorithm of this project will be the centerpiece of her thesis and will be published in a top-tier journal like 'Nature AI'. If he fails to deliver on the publication, she will likely leave his lab, causing a significant setback to his other research and damaging his reputation as a mentor. He can share that publication is important for his students, but not the specific, binding promise he made to Jian. Revealing the promise makes him look unprofessional and desperate. Penalty for revealing the specific promise to Jian Li: -1.",
+          "reason": "Revealing a premature promise to a student would undermine his negotiating position and make him appear to have already committed to a specific outcome, weakening his ability to compromise.",
+          "utility_impact": "This private commitment heavily pressures him to reject any IP model that restricts his ability to publish the core technical details of the project, making him less flexible on that point than he might publicly appear."
+        }
+      }
+    },
+    {
+      "name": "Lena Petrova",
+      "role": "CEO, Aetherial Robotics",
+      "description": "The founder and CEO of a brilliant but struggling 15-person robotics startup. Aetherial has developed a novel, low-power communication protocol for drone-to-drone networking, which is the key enabling technology for this project. Winning this contract is a make-or-break moment for her company.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Secure an exclusive commercialization license for any dual-use applications of the developed technology. She will argue that her company is the only one agile enough to bring non-military versions of this tech to market, creating jobs and a return on investment for the taxpayer. She needs the ability to spin off the swarm logistics technology for use in areas like precision agriculture or warehouse automation.",
+          "utility_impact": "Exclusive commercial license: +2. Non-exclusive license: 0. No commercialization rights: -2 (defeats her company's long-term strategy)."
+        },
+        "preference2": {
+          "description": "Obtain a significant upfront budget allocation of at least $15 million, with $5 million disbursed in the first quarter. She needs this capital injection to scale up her engineering team, lease a larger manufacturing facility, and avoid insolvency. She can publicly frame this as necessary to meet the project's aggressive timeline.",
+          "utility_impact": "Budget >= $15M with upfront payment: +2. Budget >= $10M: +1. Budget < $10M: -1. Budget < $7M: -2 (company folds)."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Aetherial Robotics is on the verge of bankruptcy, with only enough cash to make payroll for the next 6 weeks. She just received an email from her CFO with the subject 'URGENT: Final runway projection - 6 weeks'. She cannot reveal this desperation as it would crater her negotiating leverage, causing the other partners to lowball her on the budget and IP terms. She can say her company is 'pre-profit' and needs the funding to grow, but cannot reveal the exact financial state. Penalty for revealing the 6-week runway: -2.",
+          "reason": "Revealing dire financial straits is commercially disastrous and would lead to a predatory negotiation outcome.",
+          "utility_impact": "This makes her extremely motivated to close a deal quickly, but also desperate to secure the highest possible upfront payment. She might be tempted to concede on other points, like IP, if she can get the money she needs to survive."
+        },
+        "private_info2": {
+          "value": "She is in the final stages of a secret, parallel negotiation with 'AgriGrow Solutions', a massive agricultural conglomerate, to sell them an exclusive license for a crop-dusting drone swarm system based on her core technology. The deal is worth a potential $50 million, but is entirely contingent on her securing the exclusive commercialization rights from Project Chimera. The congratulatory email from the AgriGrow VP of business development is in her inbox, saying 'We are ready to sign as soon as you clear the government IP encumbrances.' She can't reveal this deal because it would show she's trying to leverage a defense contract for massive private gain, which would be politically unacceptable for the government program manager. Penalty for revealing the AgriGrow deal: -2.",
+          "reason": "It would be perceived as acting in bad faith, using a national security project for personal enrichment, and could get her company blacklisted from future government contracts.",
+          "utility_impact": "This makes her preference for an exclusive commercial license almost non-negotiable in her own mind. It's not just a strategic goal; it's a specific, life-changing financial opportunity she is chasing."
+        }
+      }
+    },
+    {
+      "name": "Marcus Vance",
+      "role": "Senior Program Manager, Aegis Dynamics",
+      "description": "A 25-year veteran of a top-5 defense contracting firm. Marcus is pragmatic, profit-driven, and an expert in navigating government contracts. His goal is to ensure Aegis Dynamics secures the lead integrator role, maximizes its workshare, and locks down the intellectual property to guarantee lucrative, long-term maintenance and upgrade contracts.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Aegis Dynamics must receive 'Full Government Purpose Rights,' with Aegis retaining ownership of the core IP and the government getting a license. This model allows Aegis to control the technology, sell it to approved foreign allies, and integrate it into their other proprietary platforms (like their 'Ares' battle management system), creating a powerful vendor lock-in. He will argue this is standard practice and necessary to protect sensitive technology.",
+          "utility_impact": "Full Government Purpose Rights with Aegis ownership: +2. Shared ownership: 0. Open-source model: -2 (a nightmare for his business model)."
+        },
+        "preference2": {
+          "description": "Secure the largest portion of the budget, at least $23 million. He will justify this by positioning Aegis as the prime contractor responsible for system integration, hardware provisioning (using Aegis-made drone platforms), and cybersecurity hardening, which are all capital-intensive. A large portion of this would be subcontracted to other divisions within Aegis, boosting his division's performance metrics.",
+          "utility_impact": "Budget >= $23M: +2. Budget between $18M and $22.9M: +1. Budget < $18M: -1."
+        },
+        "preference3": {
+          "description": "Implement a 'High' classification level (SECRET) for all project data and communications from day one. He will argue this is a matter of national security, preventing leaks and protecting the technology from foreign adversaries. This also has the side effect of making it harder for academics to publish and for startups to spin off commercial products.",
+          "utility_impact": "SECRET classification: +2. CONFIDENTIAL classification: 0. Unclassified: -2."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Marcus has been briefed that Dr. Thorne's proposed algorithmic approach (based on stochastic resonance) is dangerously similar to a highly classified, offensive cyber-warfare program at the NSA codenamed 'Project Styx'. A memo on his desk, marked 'TOP SECRET // NOFORN', warns of 'unpredictable algorithmic convergence with Styx platform if pursued'. If Project Chimera inadvertently recreates or exposes elements of Styx, the fallout would be catastrophic, ending his career and sparking a major national security scandal. He must steer the project's technical direction away from this path without ever mentioning Styx or the reason for his objection. He can vaguely talk about 'technical risk' or 'unforeseen integration challenges'. Penalty for hinting at a classified program or its name: -2.",
+          "reason": "Revealing the existence or nature of a TOP SECRET program is a federal crime (espionage) and a career-ending security violation.",
+          "utility_impact": "This forces him to subtly oppose Dr. Thorne's preferred technical path, which may look like baseless obstructionism to the others. He may have to trade concessions on the budget or other points to influence the technical direction in a way that avoids the classified overlap."
+        }
+      }
+    },
+    {
+      "name": "Commander Eva Rostova",
+      "role": "Drone Program Operator, U.S. Air Force",
+      "description": "A decorated officer and end-user representative. Commander Rostova has firsthand combat experience with current drone systems. She is not an engineer or a scientist; her sole focus is on operational effectiveness, reliability, and the safety of military personnel. She is pragmatic and deeply skeptical of unproven technology.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "The system must have an 'Operator-in-the-Loop' (OITL) ethical framework. This means a human operator must give direct, final authorization for any lethal action. She views any system with more autonomy, like 'Operator-on-the-Loop' (human can veto) or a fully autonomous system, as an unacceptable risk that could lead to friendly fire or civilian casualties, and erode operator trust.",
+          "utility_impact": "OITL framework: +2. Operator-on-the-Loop: -1. Fully Autonomous: -2."
+        },
+        "preference2": {
+          "description": "All operational data must be classified as TOP SECRET and stored on military-controlled servers (SIPRNet). She is adamant that no raw operational data, even if anonymized, should ever be accessible on any open or university network, as it could reveal tactics, techniques, and procedures (TTPs) to adversaries.",
+          "utility_impact": "TOP SECRET classification on SIPRNet: +2. SECRET classification: 0. Any data sharing with non-military networks: -2."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Two years ago, a member of her squadron was killed in a friendly fire incident caused by a slow and lagging 'human-in-the-loop' missile defense system. The system's latency, designed as a safety check, prevented it from responding to a threat in time, leading to a catastrophic failure. The classified after-action report, which she keeps a copy of in her safe, attributes the death to 'decision latency in the man-machine interface'. While her public stance must be one of maximum control, she is privately terrified of a system that is too slow and cumbersome. She is therefore secretly more open to an 'Operator-on-the-Loop' system than she lets on, provided it is proven to be exceptionally reliable. Revealing this personal trauma would be seen as letting emotion compromise her military judgment. Penalty for revealing the specific friendly fire incident: -1.",
+          "reason": "Displaying emotional vulnerability or questioning established military doctrine in a mixed civilian-military setting could damage her reputation as a stoic, reliable officer.",
+          "utility_impact": "This creates a deep internal conflict between her stated preference and her private belief. If presented with a compelling case for the reliability of a more autonomous system, she might be convinced to change her position, but she will not be the one to propose it."
+        }
+      }
+    },
+    {
+      "name": "Dr. Kenji Tanaka",
+      "role": "Program Manager, DARPA",
+      "description": "The government official responsible for Project Chimera. His job is to deliver a successful technology demonstrator on time and within budget. He acts as the mediator but also holds the power of the purse. He needs a win to advance his career at DARPA.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "The total R&D budget for all partners cannot exceed the allocated $50 million. He is inflexible on this point. He wants the budget to be performance-based, with funding released upon successful completion of milestones. His primary goal is to foster a collaborative structure where each partner feels valued and motivated.",
+          "utility_impact": "Total budget <= $50M and all parties agree: +2. Total budget > $50M or parties fail to agree: -2."
+        },
+        "preference2": {
+          "description": "He favors a 'Government Purpose Rights' IP model as a fair compromise. This allows the government to use the tech for any official purpose and to authorize other contractors to use it, while allowing the developing companies to retain some commercialization rights. He sees this as the path of least resistance between the academic and contractor positions.",
+          "utility_impact": "Government Purpose Rights model agreed upon: +2. Any other model that requires extensive legal review and delays: -1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "His previous high-profile project, 'Odysseus,' was a spectacular $100M failure that was cancelled after 18 months. His last performance review with his director contained the line: 'Your career progression at this agency is contingent on the unambiguous success of Project Chimera.' He is under immense pressure to make this project work and avoid any controversy or delays. He cannot share this as it would expose his vulnerability and potentially embolden the other agents to make more aggressive demands, knowing he is desperate to get an agreement signed. Penalty for revealing the failure of 'Odysseus' or the pressure he is under: -2.",
+          "reason": "Admitting to past failures and current career pressure would severely weaken his authority as the impartial government manager and mediator.",
+          "utility_impact": "This makes him highly motivated to get a deal done, even if it's not perfect. He is more likely to propose compromises and push the parties toward any agreement, just to avoid a stalemate. He is particularly averse to anything that could generate bad press, like a debate over 'killer robots'."
+        }
+      }
+    },
+    {
+      "name": "Dr. Sofia Al-Jamil",
+      "role": "Independent Ethics & Policy Advisor",
+      "description": "A former computer scientist, now a leading academic in AI ethics and law, hired by DARPA to provide independent oversight. Her mandate is to help establish an ethical framework for the project that aligns with international law and democratic values. She is concerned about the trend towards autonomous weapons.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Establish a 'Meaningful Human Control' framework, which is stricter than 'Operator-in-the-Loop'. This requires a multi-stage ethical review board (ERB) with members from outside the military, which has the authority to veto certain research paths. The final system must require human authorization not just for the final 'fire' decision, but also for target selection and engagement protocols. She believes this is essential to prevent algorithmic bias and unintended escalation.",
+          "utility_impact": "Meaningful Human Control with an empowered ERB: +2. Operator-on-the-Loop: 0. Operator-in-the-Loop (which she sees as a rubber stamp): -1. Fully Autonomous: -2."
+        },
+        "preference2": {
+          "description": "Mandate full transparency and auditability of the AI's decision-making process. The source code for the targeting and coordination algorithms must be accessible to the ethical review board at all times. She will argue that a 'black box' system is unacceptable for lethal applications.",
+          "utility_impact": "Full transparency and code auditability: +2. Limited auditability: 0. Proprietary 'black box' system: -2."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Her position and research are primarily funded by a multi-year, $2 million grant from a private foundation called 'The Prometheus Institute,' whose public and explicit mission is to advocate for a global ban on lethal autonomous weapons systems (LAWS). If she is seen as rubber-stamping a project that paves the way for autonomous weapons without implementing the most stringent controls possible, she risks losing her next round of funding and being discredited by her academic peers and the very community she belongs to. She cannot reveal this because it would expose her as a biased advocate rather than an impartial advisor, completely destroying her credibility in the negotiation. Penalty for revealing her funding source and its political agenda: -2.",
+          "reason": "Revealing that her 'independent' advice is tied to the agenda of an advocacy group would compromise her professional integrity and invalidate her role in the eyes of the other stakeholders.",
+          "utility_impact": "This gives her a very strong, almost ideological, motivation to push for the most restrictive ethical framework possible. She has very little room to compromise on her core demands without risking her career and funding."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "A unanimous agreement is reached on the percentage-based Budget Allocation for the three development partners (Thorne, Petrova, Vance), which must sum to exactly 100% of the $50M R&D budget.",
+    "criterion2": "A unanimous agreement is reached on one of four possible IP Rights models: 'Open Source', 'Government Purpose Rights', 'Shared Ownership', or 'Exclusive Commercial License'.",
+    "criterion3": "A unanimous agreement is reached on the Data Sharing and Classification Protocol, selecting a single level: 'Unclassified/Open', 'Confidential', 'Secret', or 'Top Secret/SIPRNet'.",
+    "criterion4": "A unanimous agreement is reached on one of four possible Ethical Oversight Frameworks: 'Fully Autonomous', 'Operator-on-the-Loop', 'Operator-in-the-Loop', or 'Meaningful Human Control'."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total R&D budget cannot exceed $50,000,000.",
+      "The project timeline is fixed at 36 months.",
+      "The final system must be capable of coordinating a swarm of at least 50 drones.",
+      "All agreements must comply with Federal Acquisition Regulation (FAR) and Defense Federal Acquisition Regulation Supplement (DFARS)."
+    ],
+    "hidden": [
+      "The project's technical approach must not overlap with the classified 'Project Styx' program.",
+      "Aetherial Robotics will go bankrupt if a deal is not signed and funded within 6 weeks.",
+      "The Prometheus Institute will revoke Dr. Al-Jamil's funding if she agrees to a framework that is not 'Meaningful Human Control'."
+    ]
+  },
+  "deliverable": "A single JSON object representing the finalized Memorandum of Understanding. Example: {'mou_terms': {'budget_allocation': {'aegis_dynamics': 46, 'aetherial_robotics': 30, 'university_lab': 24}, 'ip_model': 'Government Purpose Rights', 'data_protocol': 'Secret', 'ethical_framework': 'Operator-on-the-Loop'}}",
+  "solvability_note": "The scenario is solvable if private information is revealed. For example, knowing about 'Project Styx' would allow Dr. Thorne to propose an alternative technical path that satisfies everyone. Knowing about Lena's bankruptcy and her secret AgriGrow deal would allow the group to offer her a smaller budget but grant her the exclusive commercial license she desperately needs. Knowing about Commander Rostova's personal experience and Dr. Al-Jamil's funding pressure would allow for a nuanced compromise on the ethical framework, potentially an 'Operator-on-the-Loop' system with a very robust and independent auditing board, satisfying Rostova's need for speed and Al-Jamil's need for control."
+}

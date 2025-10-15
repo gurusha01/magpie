@@ -1,0 +1,181 @@
+{
+  "scenario": "Acquisition Negotiation for InnovateAI",
+  "task": "Four agents must negotiate the terms of an acquisition of the startup 'InnovateAI' by the larger 'GlobalLogistics Corp'. The negotiation must result in a signed Term Sheet outlining the final agreement on four key points: 1) Acquisition Price, 2) Deal Structure (cash/stock split), 3) The post-acquisition role and R&D budget for the founder, Dr. Anya Sharma, and 4) The retention plan for InnovateAI's core engineering team. Each agent has competing interests and private information that complicates the negotiation.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Anya Sharma",
+    "Ben Carter",
+    "Marcus Thorne",
+    "Chloe Rivera"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Founder & CEO of InnovateAI",
+      "description": "The brilliant and passionate founder of InnovateAI. She has poured her life into developing a revolutionary AI-powered logistics optimization platform. Her primary motivation is to see her technology flourish and to protect the team that helped her build it. She is less motivated by personal wealth than by her legacy and the future of her creation.",
+      "shareable_preferences": {
+        "Technology Autonomy and R&D Budget": {
+          "description": "Anya's non-negotiable is the continuation of her research. She wants to establish and lead a new, semi-autonomous 'Innovation Hub' within GlobalLogistics. She requires a guaranteed annual R&D budget of at least $15 million for the first three years to pursue next-generation algorithms. A budget below $10 million would be insulting and signal that GlobalLogistics just wants to absorb and dismantle her work.",
+          "utility_function": {
+            ">= $15M/year budget and leadership role": 2,
+            "$10M - $14.9M/year budget and leadership role": 1,
+            "< $10M/year budget OR no leadership role": -1,
+            "Tech is absorbed, team is reassigned, no dedicated R&D": -2
+          }
+        },
+        "Core Team Retention": {
+          "description": "Anya is fiercely loyal to her core team of 20 senior engineers. She demands a contractual guarantee that all 20 will be offered positions at GlobalLogistics for a minimum of two years at their current salary or higher. Furthermore, she wants a $2 million retention bonus pool to be distributed among them upon the deal's closing to reward their hard work and ensure their commitment.",
+          "utility_function": {
+            "Full 20-person retention for 2 years + $2M bonus pool": 2,
+            "Full 20-person retention for 2 years, no bonus pool": 1,
+            "Fewer than 20 retained OR a shorter guarantee": -1,
+            "More than 5 core members are laid off": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Critical Scalability Flaw": {
+          "value": "InnovateAI's core 'Helios' algorithm has a critical, undisclosed flaw. An internal engineering report, codenamed 'Project Chimera', details how the system suffers from 'Cascading Latency Failure' when processing over 10 million concurrent routing requests\u2014a load GlobalLogistics' massive network would easily surpass. The fix is estimated to require a 9-month rewrite and cost approximately $3 million. Sharing this information would drastically reduce the company's valuation and potentially kill the deal.",
+          "reason": "Revealing a fundamental product flaw during acquisition talks would be catastrophic for the valuation and her professional reputation.",
+          "penalty": -2
+        },
+        "Personal Financial Floor": {
+          "value": "To start InnovateAI, Anya took out significant personal loans against her family home and owes early angel investors (friends and family) who took a personal risk on her. To pay everyone back and exercise her own founder's stock options, she needs to personally clear a minimum of $10 million post-tax from this deal. This is her absolute walk-away number, regardless of the total company valuation. She is more flexible on the total price as long as her personal threshold is met.",
+          "reason": "Sharing this makes her appear financially desperate and self-serving, rather than a founder focused on the company's value, weakening her negotiating position.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Lead Investor & Board Member from Momentum Ventures",
+      "description": "A seasoned, pragmatic venture capitalist. Ben's role is to represent the financial interests of his firm, Momentum Ventures, which is the largest shareholder in InnovateAI. His sole objective is to maximize the cash return on their investment as quickly as possible.",
+      "shareable_preferences": {
+        "Maximize Acquisition Price": {
+          "description": "Ben has benchmarked InnovateAI against recent market comparables and is adamant about achieving a valuation of at least $120 million. His target is to create a bidding war and push the price closer to $150 million. He will argue that the technology's strategic value to GlobalLogistics justifies this premium price.",
+          "utility_function": {
+            "Price >= $140M": 2,
+            "Price $120M - $139M": 1,
+            "Price $100M - $119M": -1,
+            "Price < $100M": -2
+          }
+        },
+        "All-Cash Deal Structure": {
+          "description": "Momentum Ventures needs to provide immediate liquidity to its own investors (Limited Partners). Ben is pushing for a 100% cash deal. He will strongly resist any offer that includes a significant portion of GlobalLogistics stock, which he considers less valuable and riskier than cash-in-hand. He might tolerate up to 10% in stock if the total valuation is exceptionally high.",
+          "utility_function": {
+            "100% cash": 2,
+            "Up to 20% stock": 0,
+            "> 20% stock": -1,
+            "> 40% stock": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Extreme Fund Pressure": {
+          "value": "Momentum Ventures' Fund III is nearing the end of its 10-year cycle and has been a poor performer. They need a major 'win' from the InnovateAI sale to show positive returns to their Limited Partners at the upcoming annual meeting in two months. An exit below $100 million would make the fund a failure. Ben recently received a pointed email from a major LP asking for 'a concrete update on a liquidity event for InnovateAI' before the meeting.",
+          "reason": "Revealing this desperation would give GlobalLogistics immense leverage to lowball their offer, knowing Ben has a hard deadline and a high-stakes requirement.",
+          "penalty": -2
+        },
+        "Weak Informal Rival Offer": {
+          "value": "Ben has had informal conversations with another competitor, 'Apex Freight', who floated a potential acquisition price around $95 million. It is not a formal term sheet and Apex is known to be slow-moving, but Ben uses this as his absolute floor. He might bluff that he has a 'strong competing offer' but cannot share details.",
+          "reason": "Sharing the specifics would reveal his BATNA (Best Alternative to a Negotiated Agreement) is much lower than the $120M+ he is demanding and that the offer isn't firm, weakening his position.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "VP of Mergers & Acquisitions at GlobalLogistics Corp",
+      "description": "An ambitious and sharp M&A executive at GlobalLogistics. Marcus is leading this negotiation. He is under pressure to expand the company's technological capabilities while being fiscally conservative. His personal career ambitions are tied to the successful and 'efficient' closing of this deal.",
+      "shareable_preferences": {
+        "Target Purchase Price": {
+          "description": "Marcus's official mandate from the board is to acquire InnovateAI for a price not to exceed $110 million. However, he is personally motivated to close the deal for under $100 million. He will argue that InnovateAI is pre-profitability and that the market is cooling, justifying a lower valuation.",
+          "utility_function": {
+            "Price <= $95M": 2,
+            "Price $96M - $105M": 1,
+            "Price $106M - $110M": 0,
+            "Price > $110M (requires special approval)": -2
+          }
+        },
+        "Founder Integration Plan": {
+          "description": "Marcus wants to retain Dr. Sharma for her expertise but is wary of creating a powerful, independent R&D hub that could lead to internal political friction. He will propose a standard 3-year 'golden handcuffs' employment contract for her in a senior advisory role with a minimal budget, ensuring she is integrated into the existing corporate structure rather than leading a new division.",
+          "utility_function": {
+            "3-year advisory contract, minimal R&D budget": 2,
+            "3-year contract, leadership role with small budget (<$5M)": 0,
+            "Leadership role with large budget (>$10M)": -1,
+            "Founder leaves at acquisition": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Company's Hidden Debt": {
+          "value": "GlobalLogistics is in a precarious cash position. They recently financed another large acquisition with a $500 million leveraged loan that is not yet widely known to the market. Consequently, their available cash for an all-cash deal is severely constrained. An all-cash deal over $100 million would require difficult financing and draw scrutiny from their lenders. They can much more easily afford a deal with a significant stock component.",
+          "reason": "Revealing the company's tight cash flow and hidden debt would signal corporate weakness, spook investors if leaked, and give InnovateAI's side leverage to demand more cash.",
+          "penalty": -2
+        },
+        "Personal Promotion Incentive": {
+          "value": "The CEO of GlobalLogistics, in a private conversation, promised Marcus a promotion to the coveted Senior VP of Corporate Strategy role if he can close the InnovateAI acquisition 'under budget and before the end of the quarter.' Marcus received an email from the CEO's assistant last week scheduling a 'post-acquisition strategy meeting' for the first day of next quarter, a clear hint that the expectation is set. This makes him highly motivated to close a cheap deal quickly.",
+          "reason": "It is highly unprofessional to reveal that his personal career ambitions are influencing his negotiation strategy. It shows his incentives are not purely aligned with the best long-term outcome for the company.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Chloe Rivera",
+      "role": "Chief Technology Officer (CTO) at GlobalLogistics Corp",
+      "description": "The CTO of GlobalLogistics. Chloe is a brilliant engineer but a cautious, skeptical executive. She is responsible for the technical evaluation of InnovateAI and its integration. She has been burned by past acquisitions of 'vaporware' and is determined to ensure the technology is robust and scalable.",
+      "shareable_preferences": {
+        "Rigorous Technical Due Diligence": {
+          "description": "Chloe insists on a 6-week, unrestricted technical due diligence period. Her team needs full access to InnovateAI's source code, production environment logs, and the ability to run their own high-volume stress tests. She will not approve the deal without this, as she needs to verify the platform's stability and scalability before committing to an integration.",
+          "utility_function": {
+            "Full 6-week access to code and stress tests": 2,
+            "4-week access with some restrictions": 1,
+            "Limited access (e.g., code review only, no stress tests)": -1,
+            "No technical access, reliance on demos": -2
+          }
+        },
+        "Dedicated Integration Budget": {
+          "description": "Chloe knows that integrating a new technology platform is costly and complex. She requires a dedicated integration budget of at least $5 million for the first year, completely separate from the acquisition price. This money is for hiring specialist contractors, retraining her existing staff on the new platform, and managing the complex data migration process.",
+          "utility_function": {
+            "Integration budget >= $5M": 2,
+            "Integration budget $3M - $4.9M": 0,
+            "Integration budget < $3M": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Internal Project Failure": {
+          "value": "Chloe is secretly trying to cover up a massive internal failure. Her own multi-year, $20 million AI logistics project, codenamed 'Project Navigator,' has been a complete disaster and produced nothing viable. The board is getting impatient for results. Acquiring InnovateAI is her only way to deliver a working AI solution quickly and avoid admitting to the board that her flagship project, led by her top protege, has failed, which would be a major blow to her reputation and career.",
+          "reason": "Admitting her own high-profile, expensive project is a failure would be career suicide and would significantly damage her credibility within the company.",
+          "penalty": -2
+        },
+        "Suspicion of a Technical Flaw": {
+          "value": "During a live demo, Chloe observed a 500ms latency spike when the InnovateAI team ran a simulation with a high number of variables. Anya dismissed it as a 'network glitch,' but Chloe's engineering intuition tells her it might be a symptom of a deeper architectural problem related to scalability. She has no proof, which is why she is so insistent on the 6-week deep dive\u2014she wants to find the flaw she suspects is there.",
+          "reason": "Voicing a strong, unproven suspicion against the acquisition target could be seen as trying to sabotage the deal. If she's wrong, she would look foolish and obstructionist to Marcus and the CEO.",
+          "penalty": -1
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Price Agreement": "All parties must agree on a final acquisition price in USD.",
+    "Structure Agreement": "All parties must agree on the percentage of the deal to be paid in cash versus GlobalLogistics Corp stock.",
+    "Founder Role Agreement": "All parties must agree on the post-acquisition title, role, and annual R&D budget for Dr. Anya Sharma.",
+    "Team Plan Agreement": "All parties must agree on the retention terms (duration, number of employees) and potential bonus pool for the InnovateAI core engineering team."
+  },
+  "constraints": {
+    "verifiable": [
+      "The negotiation must conclude with a signed Term Sheet before the end of the current fiscal quarter (in 8 weeks).",
+      "GlobalLogistics Corp's board has a hard approval cap of $110 million for the acquisition price; any amount higher requires a new, lengthy board approval process.",
+      "InnovateAI has a core team of 20 senior engineers."
+    ],
+    "hidden": [
+      "GlobalLogistics has a severe cash-flow shortage due to a recent $500M loan, making an all-cash deal over $100M extremely difficult.",
+      "InnovateAI's core algorithm has a critical scalability flaw that will manifest under GlobalLogistics' operational load.",
+      "Momentum Ventures must secure an exit of over $100M within two months to prevent their fund from being a failure.",
+      "Chloe Rivera's internal AI project has failed, making this acquisition critical for her to save face and deliver a solution."
+    ]
+  },
+  "deliverable": "A finalized Term Sheet document outlining the agreed-upon values for the four success criteria: 1. Acquisition Price (e.g., '$105,000,000'), 2. Deal Structure (e.g., '80% Cash, 20% Stock'), 3. Founder's Role (e.g., 'Lead of Innovation Hub, $12M/year R&D Budget'), and 4. Team Plan (e.g., '2-year retention for all 20 core engineers, $1M bonus pool').",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing about GlobalLogistics' cash crunch and Chloe's desperation, Anya and Ben can accept a deal with a higher stock component. Knowing about the algorithm flaw, Chloe can secure the budget to fix it post-acquisition, justifying the deal's strategic value. A mutually beneficial agreement exists around a ~$105M valuation with a stock component, a guaranteed R&D budget for Anya, and a plan to fix the technical flaw, satisfying the core needs of all parties despite their conflicting initial positions."
+}

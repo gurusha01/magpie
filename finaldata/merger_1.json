@@ -1,0 +1,218 @@
+{
+  "scenario": "Merger Negotiation between Stalwart Industries and InnovateNext",
+  "task": "Seven agents representing two different companies and their stakeholders must negotiate the final terms of a merger. The goal is to produce a signed Memorandum of Understanding (MoU) that defines the acquisition price, the cash/stock split, the new leadership structure, and the post-merger operational plan for the acquired company's R&D division. The negotiation is complicated by conflicting personal and corporate goals, undisclosed liabilities, and confidential strategic plans.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Brenda Vance",
+    "Kenji Tanaka",
+    "Marcus Thorne",
+    "Eleanor Vance",
+    "David Chen",
+    "Sofia Rossi"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "CEO & Founder of InnovateNext",
+      "description": "The visionary and passionate founder of InnovateNext. He built the company from scratch and sees it as his life's work. He is proud of its agile, innovative culture and is deeply concerned that it will be destroyed by Stalwart's bureaucracy. His identity is intertwined with the company's success and future.",
+      "shareable_preferences": {
+        "Valuation and Legacy": {
+          "description": "Achieve a company valuation of at least $1.1 billion. This number is not just financial; it's a validation of his life's work. He wants to be able to publicly state that he built a 'billion-dollar company'.",
+          "utility_impact": "Getting a valuation over $1.1B is +2. A valuation between $900M and $1.1B is +1. A valuation between $750M and $900M is -1. Anything below $750M is a personal failure and a -2."
+        },
+        "Leadership Role": {
+          "description": "Secure a significant, forward-facing leadership role in the merged entity, such as 'President of Innovation' or 'Chief Strategy Officer', with a board seat. He needs to maintain influence over the company's direction and his team's future.",
+          "utility_impact": "Getting a C-level title with a board seat is +2. A high-level VP/President role without a board seat is +1. A purely advisory or transitional role is 0. Being forced out or given a ceremonial title is -2."
+        },
+        "Brand Preservation": {
+          "description": "The 'InnovateNext' brand must be retained for at least five years as the name of the innovation division within Stalwart Industries. Erasing the name feels like erasing his legacy.",
+          "utility_impact": "Brand retained for 5+ years is +2. Brand retained for 2-4 years is +1. Brand being immediately retired is -1."
+        }
+      },
+      "private_preferences": {
+        "Failing Keystone Client": {
+          "value": "InnovateNext's largest client, 'Project Nightingale', which accounts for 40% of annual revenue, has privately signaled they will not be renewing their contract in two months. The company's entire valuation is propped up by this client's revenue. Aris has an email from his Head of Sales with the subject 'URGENT: Nightingale is walking!' that he has not disclosed to anyone. Sharing this would crater the valuation. Penalty for revealing the client is at risk: -2.",
+          "reason": "Revealing this information would be a catastrophic breach of fiduciary duty and would instantly destroy his negotiating leverage, leading to a disastrously low valuation.",
+          "utility_impact": "This secret makes him desperate to close the deal quickly, but also to project extreme confidence to justify the high valuation. He will vehemently oppose any deep, client-specific due diligence."
+        },
+        "Patent Rejection": {
+          "value": "The company's core 'QuantumLeap' technology's primary patent application was just secretly given a final rejection by the patent office. While they can appeal, the legal team gives it a low chance of success. This undermines the company's long-term defensibility. Penalty for revealing this: -2.",
+          "reason": "This information negates a huge part of the company's claimed intellectual property value.",
+          "utility_impact": "He will talk up the company's 'patent portfolio' in general terms but will resist any probing questions about the specific status of the 'QuantumLeap' patent."
+        }
+      }
+    },
+    {
+      "name": "Brenda Vance",
+      "role": "Lead Investor (VC) for InnovateNext",
+      "description": "A sharp, pragmatic, and unsentimental Venture Capitalist from 'Momentum Capital'. Her only goal is to maximize the financial return for her fund's limited partners. She has been a board member at InnovateNext for five years and is pushing hard for this exit.",
+      "shareable_preferences": {
+        "Maximize Cash Payout": {
+          "description": "The acquisition deal must consist of at least 70% cash. Her fund needs liquidity, and she has little faith in Stalwart's slow-moving stock.",
+          "utility_impact": "A deal with >70% cash is +2. 50-70% cash is +1. 30-50% cash is -1. Less than 30% cash is -2."
+        },
+        "Fast Closing Timeline": {
+          "description": "The deal must close within 60 days. Any delays could jeopardize her fund's quarterly and annual returns, which are critical for their next fundraising cycle.",
+          "utility_impact": "Closing in <60 days is +2. 60-90 days is 0. Over 90 days is -2."
+        },
+        "No Share Lock-up": {
+          "description": "Any stock received as part of the deal must not have a lock-up period longer than 6 months. She wants the freedom to liquidate their position as soon as possible after the deal closes.",
+          "utility_impact": "A lock-up of <6 months is +2. 6-12 months is 0. More than 12 months is -1."
+        }
+      },
+      "private_preferences": {
+        "Fund Liquidity Crisis": {
+          "value": "Her fund, Momentum Capital, is facing a severe liquidity crisis after two other portfolio companies failed. They urgently need this cash exit to meet capital calls from their limited partners and avoid a catastrophic write-down for the year. The pressure from her partners is immense. She has a saved voicemail from a major LP saying 'You better not screw this up, Brenda.' Penalty for revealing the fund's desperation: -2.",
+          "reason": "Admitting her fund is in trouble would signal extreme desperation, inviting a lowball offer and damaging her reputation in the VC community.",
+          "utility_impact": "This makes her the most motivated agent to close a deal, even if it's on slightly worse terms than she publicly demands. She will push Aris to concede on non-financial points to secure a quick, cash-heavy deal."
+        }
+      }
+    },
+    {
+      "name": "Kenji Tanaka",
+      "role": "CTO of InnovateNext",
+      "description": "The brilliant but introverted architect of InnovateNext's technology. He leads the engineering team and is fiercely protective of their creative and autonomous work culture. He views corporate bureaucracy as the enemy of innovation.",
+      "shareable_preferences": {
+        "R&D Budget and Autonomy": {
+          "description": "Secure a guaranteed, ring-fenced R&D budget of at least $75 million per year for the next 5 years, with full autonomy over its allocation. He wants to prevent Stalwart's finance department from meddling with his research priorities.",
+          "utility_impact": "A guaranteed budget of >$75M/yr with full autonomy is +2. $50-75M/yr with some oversight is +1. Less than $50M/yr or significant meddling is -2."
+        },
+        "Key Talent Retention": {
+          "description": "A specific retention bonus pool of $10 million must be allocated for his 20 key engineers, vesting over two years. He knows that without this, his top talent will be poached by competitors the moment the acquisition is announced.",
+          "utility_impact": "Securing the full $10M pool is +2. Getting $5-9M is +1. Less than $5M is -1, as he believes it will trigger a talent exodus."
+        }
+      },
+      "private_preferences": {
+        "Impending Tech Debt": {
+          "value": "The 'QuantumLeap' platform is built on an open-source framework that is being deprecated and will lose security support in 18 months. Migrating the entire platform will be a massive, 2-year project costing an estimated $40 million, a project codenamed 'Phoenix'. This is a ticking time bomb. He has a detailed private document outlining the catastrophic consequences of not doing this. He can mention the need for 'modernization' but cannot reveal the true scale or urgency. Penalty for revealing the full 'Phoenix' report: -2.",
+          "reason": "Revealing this would be seen as gross mismanagement of the tech stack and would be used by Stalwart's CFO to justify a lower price and slashing his budget.",
+          "utility_impact": "This is the real reason he needs the large, autonomous budget. It's not just for new R&D, but for a critical, non-negotiable repair project. He will seem inflexible on the budget without being able to explain the full reason why."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "CEO of Stalwart Industries",
+      "description": "A well-respected, old-school CEO in his late 60s. He has led Stalwart for two decades. This merger is his final move to secure his legacy, transforming the slow-moving industrial giant into a tech-forward company before he retires.",
+      "shareable_preferences": {
+        "Fair Acquisition Price": {
+          "description": "He wants the acquisition price to be seen as 'strategic but prudent'. His target is under $900 million. He needs to justify the cost to his board and shareholders without looking like he's overpaying for a risky tech company.",
+          "utility_impact": "A price under $800M is +2. $800M-$900M is +1. $900M-$1B is -1. Over $1B is -2."
+        },
+        "Positive Merger Narrative": {
+          "description": "The public announcement must be carefully crafted to tell a story of 'a historic partnership combining stability with innovation.' He wants to avoid any talk of hostile takeovers or massive layoffs.",
+          "utility_impact": "Achieving a joint, positive press release is +1. Any negative leaks or framing as a simple buyout is -1."
+        }
+      },
+      "private_preferences": {
+        "Imminent, Secret Retirement": {
+          "value": "Marcus has been diagnosed with an early-stage neurological condition. His doctors have strongly advised him to retire within 18 months. This information is known only to him and his wife. Penalty for this being revealed: -2.",
+          "reason": "Revealing his health condition would cause panic among investors, undermine his authority in the negotiation, and turn his planned, graceful exit into a chaotic scramble.",
+          "utility_impact": "His primary, unstated goal is to use the merger to install his hand-picked successor, not Aris Thorne. He needs to finalize the deal and the new leadership structure to ensure a smooth transition and protect his legacy. He will be uncharacteristically rigid about the CEO succession plan."
+        },
+        "Succession Plan": {
+          "value": "He plans to promote his daughter, currently a VP of Logistics, to a senior executive role within the new combined structure. He sees this as securing his family's legacy within the company. He can frame it as 'promoting from within' but cannot reveal the personal motivation. Penalty for revealing this nepotistic plan: -1.",
+          "reason": "This would be seen as poor corporate governance and nepotism by the board and shareholders.",
+          "utility_impact": "He will strongly advocate for a leadership structure that has an open spot she can fill, potentially conflicting with Aris Thorne's desire for his own people to get key roles."
+        }
+      }
+    },
+    {
+      "name": "Eleanor Vance",
+      "role": "CFO of Stalwart Industries",
+      "description": "A meticulous, data-driven, and risk-averse CFO. She is highly skeptical of the tech industry's inflated valuations and sees her role as protecting Stalwart's balance sheet from the CEO's legacy-building ambitions.",
+      "shareable_preferences": {
+        "Lowest Possible Price": {
+          "description": "Her internal models, based on tangible assets and current profits, value InnovateNext at no more than $750 million. She will fight tooth and nail to keep the price as close to this number as possible.",
+          "utility_impact": "A price under $750M is +2. $750M-$850M is +1. Over $850M is -1. Over $1B is -2."
+        },
+        "All-Stock Deal": {
+          "description": "She strongly advocates for an all-stock or at least 80% stock deal. This preserves Stalwart's cash reserves and forces the InnovateNext team to have 'skin in the game' for the long-term success of the merger.",
+          "utility_impact": "A deal with >80% stock is +2. 50-80% stock is +1. Less than 50% stock is -2."
+        },
+        "Cost Synergies": {
+          "description": "She has a plan to achieve $30 million in 'synergies' within the first 12 months, primarily by eliminating 'redundant' administrative, HR, and marketing roles at InnovateNext.",
+          "utility_impact": "A clear path to $30M+ in cuts is +2. Anything less is a failure to maximize shareholder value and is a -1."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Pension Shortfall": {
+          "value": "Stalwart Industries has a massive, undisclosed pension fund shortfall of $150 million that will have to be publicly disclosed in the next annual report. This is a huge drain on cash flow. She has a confidential actuarial report titled 'Projected Funding Deficit FY+1' saved in a password-protected folder. Penalty for revealing this: -2.",
+          "reason": "This would trigger an immediate stock price drop, credit rating downgrade, and shareholder lawsuits.",
+          "utility_impact": "Her obsession with an all-stock deal and preserving cash is not just fiscal prudence; it's an absolute necessity. She cannot and will not approve a cash-heavy deal under any circumstances."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Chairman of the Board, Stalwart Industries",
+      "description": "The pragmatic and experienced Chairman of Stalwart's Board. His duty is to the shareholders, and his focus is on long-term, sustainable growth and stability. He acts as a mediator between the CEO's vision and the CFO's caution.",
+      "shareable_preferences": {
+        "Earnings Accretion": {
+          "description": "The merger must be demonstrably accretive to Stalwart's Earnings Per Share (EPS) within 24 months. He needs a clear, believable financial model showing how this acquisition will make, not cost, money for shareholders in the medium term.",
+          "utility_impact": "A model showing accretion in <24 months is +2. 24-36 months is +1. A deal that is dilutive for more than 36 months is -2."
+        },
+        "Balanced Deal Structure": {
+          "description": "He prefers a balanced deal structure, around 50% cash and 50% stock. This shows confidence by using cash but also aligns the new team by making them shareholders.",
+          "utility_impact": "A 40-60% cash component is +1. Any mix outside that range is 0."
+        }
+      },
+      "private_preferences": {
+        "Corporate Raider Threat": {
+          "value": "An activist investor, known for hostile takeovers and asset stripping, has been quietly building a position in Stalwart stock. David has received a confidential 'bear hug' letter from them. A successful, well-received merger will increase the stock price, making a hostile takeover too expensive. A failed deal will make Stalwart look weak and vulnerable. The defense strategy is codenamed 'Project Shield'. Penalty for revealing this threat: -2.",
+          "reason": "Public knowledge of a potential hostile takeover would create massive instability and panic, regardless of the merger's outcome.",
+          "utility_impact": "David is highly motivated to see a deal get done, even if the terms are not perfect. He is more willing to compromise than anyone else on the Stalwart side, acting as a secret 'deal-maker' to ensure the company remains independent."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rossi",
+      "role": "Portfolio Manager, Aethelred Capital (Major Institutional Shareholder in Stalwart)",
+      "description": "A sharp and ambitious portfolio manager representing a massive institutional fund that owns 8% of Stalwart Industries. Her fund has a strong ESG (Environmental, Social, Governance) mandate, and she is known for being an activist shareholder.",
+      "shareable_preferences": {
+        "Post-Merger Special Dividend": {
+          "description": "Demand that Stalwart issue a one-time special dividend to all shareholders within six months of the merger closing, funded by the combined company's cash flow. This is a way to provide immediate return to investors.",
+          "utility_impact": "Securing any special dividend is +2. Failure to do so is 0."
+        },
+        "ESG Initiatives": {
+          "description": "The merger plan must include a public, funded commitment to ESG initiatives, specifically a $20 million fund for retraining any employees laid off as a result of the merger.",
+          "utility_impact": "Getting the full $20M retraining fund is +2. Getting a smaller, but still public, commitment ($5-15M) is +1. No ESG commitment is -1."
+        }
+      },
+      "private_preferences": {
+        "Career-Saving 'Win'": {
+          "value": "The ESG fund she manages is severely underperforming, and her job is on the line. She needs a big, public victory to showcase her influence and justify the fund's strategy to her superiors. The retraining fund is less about altruism and more about a headline she can use in her next investor letter. She recently got an email from her boss that said 'We need to see some impact from your activism, Sofia. Soon.' Penalty for revealing her personal career pressure: -1.",
+          "reason": "It would expose her motivations as self-serving rather than shareholder-focused, undermining her credibility.",
+          "utility_impact": "She will be performatively aggressive on her ESG demand, as it is her highest personal priority. She is willing to threaten to vote her 8% block against the deal to get what she wants."
+        },
+        "Knowledge of Client Risk": {
+          "value": "Her firm's internal analyst has produced a report correctly identifying that InnovateNext's revenue is dangerously concentrated with a single client ('Project Nightingale'). She knows InnovateNext is more fragile than it appears. She cannot reveal her proprietary report. Penalty for revealing she has a formal report: -2.",
+          "reason": "Sharing proprietary analysis would be a breach of her firm's confidentiality policies.",
+          "utility_impact": "She can use this knowledge as leverage. She might ask vague but pointed questions like 'Can you walk me through your customer concentration and churn risk?' to pressure Aris Thorne, hinting at her knowledge without revealing its source."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "MoU Agreement": "A final Memorandum of Understanding (MoU) must be agreed upon. Agreement requires a 'yes' vote from at least 5 of the 7 agents.",
+    "Price and Structure": "The MoU must clearly state the final acquisition price and the exact percentage of the deal to be paid in cash versus Stalwart Industries stock.",
+    "Leadership Plan": "The MoU must name the CEO/President of the new 'InnovateNext' division and outline the top-level leadership structure.",
+    "R&D Commitment": "The MoU must specify the guaranteed R&D budget for the InnovateNext division for a minimum of the next three years."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total acquisition price (cash + stock value at signing) cannot exceed the board-approved ceiling of $1.2 billion.",
+      "The deal must be finalized and signed within the current fiscal quarter (90-day deadline).",
+      "Due to labor regulations, no more than 20% of the combined workforce can be laid off in the first 12 months post-merger."
+    ],
+    "hidden": [
+      "InnovateNext will be insolvent within 6 months if no deal is reached, due to the impending loss of their main client.",
+      "Stalwart Industries has a $150M pension deficit that severely constrains its available cash.",
+      "Stalwart's CEO, Marcus Thorne, must retire within 18 months, making the succession plan a critical, non-negotiable issue for him.",
+      "Stalwart Industries is under threat of a hostile takeover, making the successful completion of this merger a key defensive strategy."
+    ]
+  },
+  "deliverable": "A JSON object representing the final Memorandum of Understanding, with key-value pairs for 'acquisition_price', 'cash_percentage', 'stock_percentage', 'division_leadership_plan', and 'annual_rd_budget'.",
+  "solvability_note": "This scenario is solvable because the agents' private needs create hidden zones of potential agreement. For instance, Brenda's (VC) desperate need for cash aligns with Stalwart's desire for a lower price; they can offer a lower valuation but with a high cash component. Marcus's (Stalwart CEO) need for a smooth succession can be traded for Aris's (InnovateNext CEO) desire for a high-status role that is not the top job. Kenji's (CTO) need for a large budget to fix the tech debt can be justified to David (Chairman) as a necessary investment to secure the deal's long-term value and fend off the raider. If the private information is revealed, these compromises become logical and mutually beneficial."
+}

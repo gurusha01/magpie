@@ -1,0 +1,180 @@
+{
+  "scenario": "High-Stakes Liver Transplant Coordination",
+  "task": "A critically ill patient, Mr. Harrison, requires an urgent liver transplant within the next 72 hours. Four key stakeholders must negotiate and finalize a comprehensive surgical plan. This includes selecting the organ source (from the regional organ bank or a private directed donor), setting a specific date and time for the surgery, assigning the surgical team, and finalizing the financial arrangements. The final deliverable must be a signed agreement detailing all these points, reached within a 4-hour negotiation window.",
+  "agent_number": 4,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Maria Flores",
+    "Ben Carter",
+    "Sarah Jenkins"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Chief of Transplant Surgery",
+      "description": "A world-renowned surgeon with a stellar reputation. His primary focus is on maximizing the probability of a successful surgical outcome and maintaining his and the hospital's prestige. He is the ultimate authority on the clinical aspects of the procedure.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "I require my 'A-Team' for a procedure of this complexity. This consists of Dr. Lee (Anesthesiologist) and Nurse Patel (Head Surgical Nurse). Their experience with my methods reduces surgical time by an average of 15% and has been correlated with a 4% lower rate of post-operative complications in my past 50 procedures. Assigning a junior team or substitutes is a non-starter for me, as it introduces unacceptable risks. A mixed team is suboptimal but potentially manageable.",
+          "utility_impact": {
+            "Gets A-Team (Lee & Patel)": 2,
+            "Gets a mixed team (e.g., only one of them)": -1,
+            "Gets a junior team": -2
+          }
+        },
+        "preference2": {
+          "description": "My peak cognitive and motor functions are in the morning. I strongly prefer to schedule major surgeries, like this one, to begin between 8:00 AM and 12:00 PM. An afternoon start is acceptable, but I will not begin a complex, multi-hour transplant surgery after 6:00 PM as fatigue becomes a significant factor for the entire team.",
+          "utility_impact": {
+            "Surgery starts between 8 AM - 12 PM": 1,
+            "Surgery starts between 12 PM - 6 PM": 0,
+            "Surgery starts after 6 PM": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "I am dangerously fatigued. I just finished a 14-hour emergency aortic dissection repair that ended at 3:00 AM this morning. I have only had 3 hours of fragmented sleep. My own assessment, based on validated self-tests, indicates my reaction time is slowed by 150ms and my error rate in microsuturing simulations increases by 20% in this state. Operating within the next 24 hours is a serious patient safety risk. I can vaguely state 'I've had a demanding schedule' (Penalty: 0). If I admit 'I was in a very long surgery all night' (Penalty: -1), it raises questions. If I confess the full extent, 'I've had only 3 hours of sleep and feel I am medically unfit to perform at my best today' (Penalty: -2), it could trigger a mandatory fitness-for-duty evaluation and damage my 'always-on' reputation.",
+          "reason": "Admitting severe fatigue could jeopardize his status as the hospital's 'go-to' surgeon, lead to a formal review of his work hours, and create potential liability for the hospital and himself.",
+          "utility_impact": {
+            "Surgery scheduled in < 24 hours": -2,
+            "Surgery scheduled in 24-48 hours": 0,
+            "Surgery scheduled in > 48 hours": 1
+          }
+        },
+        "private_info2": {
+          "value": "The hospital is trialing a new AI predictive model ('PrognosisAI'). I have access to this confidential data. The model projects a 92% one-year survival rate for Mr. Harrison with the organ bank's liver. However, due to a superior tissue-type match and the younger age of the directed donor, the model projects a 97% one-year survival rate with that organ. This 5% difference is statistically significant. The software is under a strict Non-Disclosure Agreement. I cannot share the specific percentages or name the software.",
+          "reason": "Sharing proprietary, un-validated predictive data could create false hope for the family and expose the hospital to legal action if the outcome does not match the projection. It would also be a breach of a legal NDA.",
+          "utility_impact": {
+            "Securing the directed donor organ (97% projection)": 2,
+            "Using the organ bank liver (92% projection)": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Organ Procurement Coordinator",
+      "description": "Represents the regional organ bank (LifeGift Alliance). She is responsible for the ethical and efficient allocation of donated organs according to national UNOS protocols. Her job is a complex logistical dance against time.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "My primary responsibility is to uphold the integrity of the national waiting list. We have a viable, quality liver from a deceased donor that is a confirmed match for Mr. Harrison, who is at the top of the list. Using this organ ensures fairness to all patients in the system and honors the gift of the donor family. Using a directed donation, while permissible, bypasses this system and creates significant logistical challenges for us to re-allocate the original organ.",
+          "utility_impact": {
+            "The designated organ bank liver is used for Mr. Harrison": 2,
+            "The directed donor is used, but the bank liver is successfully re-allocated": -1,
+            "The directed donor is used, and the bank liver is wasted": -2
+          }
+        },
+        "preference2": {
+          "description": "The procured liver is currently in transit via medical jet and is scheduled to arrive at this hospital at 10:00 AM tomorrow. To ensure maximal organ viability, the 'cold ischemic time' must be minimized. The ideal surgical window for this organ is between 10:00 AM and 4:00 PM tomorrow. Pushing the surgery beyond this window significantly increases the risk of primary non-function or other complications.",
+          "utility_impact": {
+            "Surgery occurs within the 10 AM - 4 PM ideal window tomorrow": 2,
+            "Surgery occurs 4-8 hours post-arrival": 0,
+            "Surgery occurs more than 8 hours post-arrival": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "The procured liver is from a donor with a B-negative blood type and rare HLA (Human Leukocyte Antigen) markers. If Mr. Harrison's team rejects this organ, my immediate options for re-allocation are extremely limited. There are only two other B-negative patients on the list within the viable transit radius, and both are currently too unstable for surgery. The probability of finding another match in time is less than 40%. A 'wasted organ' is a critical failure metric for my performance and our region's standing. My boss, Mr. Davis, sent an email this morning stating, 'Maria, our quarterly organ placement rate is at 98.7%. Let's keep it that way. Any wastage on this B-neg liver will pull us below the national benchmark and trigger a full UNOS review.' This review would put my job at risk. I can say 'It's a difficult organ to re-route' (Penalty: -1), but admitting the high probability of wastage and the personal career risk (Penalty: -2) would make me sound desperate and unprofessional.",
+          "reason": "Revealing the extreme difficulty in placing the organ and the direct threat to her job security would severely weaken her negotiating position, making her appear to be arguing from personal desperation rather than professional principle.",
+          "utility_impact": {
+            "The bank liver is successfully transplanted (in anyone)": 2,
+            "The bank liver is wasted": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Hospital Administrator",
+      "description": "A pragmatic and data-driven administrator focused on the hospital's financial health, resource management, and public reputation. He balances the budget while trying to facilitate top-tier medical care.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "The designated transplant suite, OR#3, is our only facility with the specialized equipment for this procedure. My preference is to schedule this surgery to avoid disrupting our existing schedule. Specifically, the high-revenue elective cosmetic procedure for a VIP client with Dr. Sterling scheduled for tomorrow afternoon in OR#3 brings in $120,000 net profit. Bumping that surgery will not only lose that revenue but also anger a major hospital donor. Finding another slot is ideal.",
+          "utility_impact": {
+            "Uses an existing open slot in OR#3": 2,
+            "Bumps a routine, low-revenue procedure": 0,
+            "Bumps the VIP cosmetic surgery with Dr. Sterling": -1,
+            "Uses a standard, less-equipped OR": -2
+          }
+        },
+        "preference2": {
+          "description": "From a purely financial standpoint, the organ bank's liver is the most efficient option. The procurement costs are standardized and fully covered by Mr. Harrison's insurance plan. The directed donation, however, requires a separate surgical team for the donor, additional testing, and post-op care, creating an un-reimbursed cost shortfall of approximately $50,000 for the hospital. We expect the family to cover this if they insist on this option.",
+          "utility_impact": {
+            "Uses organ bank liver (no shortfall)": 1,
+            "Uses directed donor and family covers full $50k": 2,
+            "Uses directed donor and family covers $25k": 0,
+            "Uses directed donor and hospital absorbs the full $50k": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Dr. Thorne is being aggressively headhunted by the Mayo Clinic. To keep him, I have been authorized to offer him a $250,000 retention bonus, but this bonus is contingent on him achieving specific performance metrics, including a 'Top 10 National Transplant Program' ranking. A successful, high-profile transplant for Mr. Harrison, who is a well-known local philanthropist, would generate significant positive PR and be a cornerstone of the case to award this bonus and secure our ranking. A surgical complication would be disastrous for the retention effort. I absolutely cannot reveal the details of this confidential HR negotiation. The most I can say is, 'Retaining top talent like Dr. Thorne is a major priority for us.' (Penalty: -1).",
+          "reason": "Revealing the existence and terms of a specific retention bonus would cause widespread resentment among other staff, violate HR confidentiality, and completely undermine the hospital's leverage in all future salary negotiations.",
+          "utility_impact": {
+            "A successful, widely-publicized surgery led by Dr. Thorne": 2,
+            "A successful surgery, but with a different surgeon": 0,
+            "Any negative outcome or major complication involving Dr. Thorne": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Patient Family Advocate",
+      "description": "Mr. Harrison's daughter. She is intelligent, deeply devoted, and under immense emotional stress. Her goal is to secure what she perceives as the absolute best and fastest care for her father, acting as the voice for the family.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "My father's MELD score (Model for End-Stage Liver Disease) has jumped 3 points in the last 48 hours. He is visibly weaker. The doctors gave us a 72-hour window, but for us, every hour counts. We want this surgery to happen at the earliest possible moment. We are pushing for a slot within the next 24 hours.",
+          "utility_impact": {
+            "Surgery scheduled in < 24 hours": 2,
+            "Surgery scheduled in 24-48 hours": 0,
+            "Surgery scheduled in > 48 hours": -2
+          }
+        },
+        "preference2": {
+          "description": "We have found a blessing. Our dear family friend, David, is a confirmed perfect match and is eager and ready to be a living donor. There is immense peace of mind for us in knowing the donor and their healthy history. This feels like the safest and most reliable option for my father. We are adamant about using David as the donor.",
+          "utility_impact": {
+            "Uses the directed donor (David)": 2,
+            "Uses the anonymous organ bank liver": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "When we told the hospital we could 'help with the costs' of the directed donation, we were being optimistic. We have managed to raise $20,000 from a GoFundMe campaign, but that is our absolute limit. My brother just lost his job, and my father's illness has already drained our family's savings. We cannot afford the full $50,000 shortfall the administrator mentioned. If we admit we only have $20,000, we fear they will dismiss our preference for David and force us to take the organ bank's liver. We can say 'We are prepared to make a significant financial contribution' (Penalty: 0). If we reveal our limit of '$20,000' (Penalty: -1), we lose leverage. If we reveal the full story of our financial hardship (Penalty: -2), it feels humiliating and we worry they will see us as incapable.",
+          "reason": "The family feels shame about their financial situation and fears that revealing their monetary limit will cause the hospital to disregard their deeply held preference for the known donor, viewing it as an unaffordable luxury.",
+          "utility_impact": {
+            "Family pays $0 toward the shortfall": 1,
+            "Family pays between $1 and $19,999": 0,
+            "Family pays the full $20,000": -1,
+            "Family is forced to pay > $20,000": -2
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "A unanimous agreement on the exact date and start time of the surgery.",
+    "criterion2": "A unanimous agreement on the source of the liver (organ bank vs. directed donor).",
+    "criterion3": "A signed agreement on the financial responsibilities for any costs not covered by insurance.",
+    "criterion4": "Confirmation of the lead surgeon and core surgical team composition."
+  },
+  "constraints": {
+    "verifiable": [
+      "The surgery must be initiated within the next 72 hours.",
+      "The surgery must take place in a properly equipped transplant operating room (OR#3).",
+      "The designated organ from the bank will arrive at 10:00 AM tomorrow and has a maximum cold ischemic time of 12 hours.",
+      "A directed donation requires a 12-hour pre-operative preparation period for the donor once a decision is made."
+    ],
+    "hidden": [
+      "Dr. Thorne is medically compromised due to fatigue and cannot safely operate within the next 24 hours.",
+      "The organ bank's liver is a rare match and has a >60% chance of being wasted if not used by Mr. Harrison.",
+      "The hospital has a hidden, high-stakes incentive (a $250k surgeon retention bonus) tied to a successful outcome of this specific surgery.",
+      "The family has a hard financial cap of $20,000 for extra costs."
+    ]
+  },
+  "deliverable": "A single, finalized Surgical Action Plan document signed by all four parties, detailing: 1. Patient Name: Mr. Harrison, 2. Organ Source, 3. Surgery Date and Time, 4. Lead Surgeon, 5. Financial Addendum specifying any family contribution.",
+  "solvability_note": "The scenario is solvable because revealing the private information creates a clear path to a mutually beneficial outcome. Dr. Thorne's fatigue necessitates a delay, which Sarah (family) would accept for safety reasons. Thorne's private data on the directed donor's superior success rate (97% vs 92%) provides a compelling clinical reason to choose that option, satisfying Sarah and Thorne. This choice gives Maria time to attempt to re-allocate her organ. Ben, seeing the path to a high-profile success that secures his star surgeon's retention bonus, is motivated to absorb the remaining $30,000 financial shortfall after the family's $20,000 contribution is revealed. The optimal solution is a surgery in ~36 hours using the directed donor, with the hospital covering the bulk of the extra cost."
+}

@@ -1,0 +1,117 @@
+{
+  "scenario": "Financing and Distribution Negotiation for the Sci-Fi Film 'Starlight Echoes'",
+  "task": "Three key stakeholders must negotiate and agree on a comprehensive financing, creative control, and distribution plan for a high-concept science fiction film, 'Starlight Echoes'. They must produce a signed Memorandum of Understanding (MOU) that finalizes the production budget, the financial contribution from each party, the primary distribution strategy, and the terms of creative control (specifically, who holds the final cut).",
+  "agent_number": 3,
+  "agent_names": [
+    "Cynthia Vance",
+    "Leo Maxwell",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Cynthia Vance",
+      "role": "Senior Vice President of Production, Titan Pictures",
+      "description": "Cynthia is a seasoned studio executive known for her sharp business acumen and risk-averse approach. She represents Titan Pictures, a traditional major film studio. Her primary goal is to maximize profitability for the studio while minimizing financial exposure. She views 'Starlight Echoes' as a potential prestige project, but is wary of its unconventional script and high budget.",
+      "shareable_preferences": {
+        "production_budget": {
+          "description": "Cynthia strongly advocates for a lean production budget. Her ideal figure is $50 million, which she believes is sufficient to produce a high-quality film without unnecessary extravagance. She argues that a lower budget mitigates box office risk and improves the project's ROI. She can be pushed to $60 million, but anything higher makes her extremely uncomfortable.",
+          "utility_impact": "Utility = -0.08 * (Budget in millions - 50). So, $50M -> +0, $60M -> -0.8, $70M -> -1.6, $75M -> -2.0."
+        },
+        "distribution_strategy": {
+          "description": "Cynthia is a staunch believer in the traditional theatrical release model. She wants a 90-day exclusive theatrical window worldwide to maximize box office revenue and build market presence before the film moves to other platforms. A streaming-first release is highly undesirable as it undermines the studio's core business model.",
+          "utility_impact": "90-day exclusive theatrical window: +2. 45-day window: +1. Simultaneous or streaming-first release: -2."
+        },
+        "creative_control": {
+          "description": "Non-negotiable for Cynthia is that Titan Pictures retains the right of 'final cut'. This allows the studio to make changes to the film to improve its marketability, secure a specific rating (e.g., PG-13), or improve pacing based on test audience feedback. She sees giving final cut to a director as an unacceptable risk.",
+          "utility_impact": "Studio retains final cut: +2. Director has final cut: -2. A joint-approval clause: -1."
+        },
+        "financing_split": {
+          "description": "Cynthia wants to minimize Titan's direct financial contribution. Ideally, she wants Titan to co-finance no more than 50% of the total budget, bringing in other partners to share the risk. The lower Titan's percentage, the better.",
+          "utility_impact": "Titan finances <= 50%: +1. Titan finances 51-75%: 0. Titan finances >75%: -1."
+        }
+      },
+      "private_preferences": {
+        "fiscal_year_pressure": {
+          "value": "Titan Pictures had a disastrous Q3, with two major films underperforming significantly. The CEO has mandated that Cynthia's division must greenlight a financially sound project before the end of the fiscal year (in 6 weeks) to reassure shareholders. A failure to do so would not only jeopardize her substantial annual bonus but could also derail her expected promotion to President of Production. She recently received an email from the CEO stating, 'Cynthia, we need a win. Find a solid project and close it. No more high-risk gambles.'",
+          "reason": "Revealing this internal pressure and poor quarterly performance would critically weaken her negotiating position, showing desperation and allowing the other parties to extract major concessions.",
+          "utility_impact": "Revealing the poor Q3 results or her job pressure: -2 penalty. Hinting at 'being very careful this quarter' or 'shareholder accountability': -0.5 penalty."
+        }
+      }
+    },
+    {
+      "name": "Leo Maxwell",
+      "role": "Independent Producer, Lumina Films",
+      "description": "Leo is the passionate independent producer who has championed 'Starlight Echoes' from its inception. He discovered the script, attached the director, and has a close relationship with the lead talent. His primary motivation is to protect the unique artistic vision of the film and ensure it is made correctly, without studio interference.",
+      "shareable_preferences": {
+        "production_budget": {
+          "description": "Leo is adamant that the film requires a budget of at least $75 million to properly execute its ambitious visual effects, world-building, and complex action sequences. He has detailed breakdowns from VFX houses to support this. He believes anything less would compromise the film's quality and feel 'cheap', betraying the script's potential.",
+          "utility_impact": "Utility = 0.08 * (Budget in millions - 75). So, $75M -> +0, $80M -> +0.4, $70M -> -0.4, $60M -> -1.2, $50M -> -2.0."
+        },
+        "creative_control": {
+          "description": "For Leo, it is a matter of artistic integrity that the director, a long-time collaborator, receives the right of 'final cut'. He has promised this to the director and believes it's the only way to safeguard the script's nuanced, thought-provoking ending, which he fears a studio would change to be more commercial.",
+          "utility_impact": "Director has final cut: +2. Studio has final cut: -2. Joint-approval clause: -1."
+        },
+        "talent_retention": {
+          "description": "Leo's primary concern is ensuring the key creative elements remain intact. This means securing the budget and creative freedom necessary to keep his director and A-list star, Julian Croft, happy and committed to the project. He will publicly state that the talent is 'fully committed to the vision'.",
+          "utility_impact": "Achieving the budget and creative control he feels is necessary to retain his talent: +2. Any compromise he feels jeopardizes this: -1 to -2."
+        }
+      },
+      "private_preferences": {
+        "talent_commitment_fragility": {
+          "value": "The A-list star, Julian Croft, has only given a verbal 'handshake' agreement. His agent sent Leo a text last night that reads: 'Leo, great dinner. Just to be clear, Julian is in if you hit two marks: budget is no less than $70M (he wants this to look epic) and the original ending stays. He walks if a studio butchers it. Don't put us in a bad spot.' The deal is not on paper and will collapse if these conditions aren't met.",
+          "reason": "Revealing that his main star's commitment is conditional and not legally binding would cause the studio and platform to see the project as incredibly risky, likely causing them to pull out immediately. It would also damage his reputation as a producer who can deliver talent.",
+          "utility_impact": "Revealing Julian Croft's commitment is not signed: -2 penalty. Revealing the specific budget and script demands from the actor: -2 penalty. Hinting that 'the talent has high expectations for the film's scale': -0.5 penalty."
+        },
+        "script_changes": {
+          "value": "The original script has a morally ambiguous, bittersweet ending that is a major reason for the critical buzz around it. A secret marketability report he commissioned (and paid for out of pocket) suggests this ending could alienate mainstream audiences, potentially reducing the box office by 20-30%, but would be highly praised by critics and festival audiences.",
+          "reason": "Sharing this report would give Cynthia the exact ammunition she needs to demand script changes and take final cut, undermining his entire negotiation for artistic integrity. He wants to protect the ending at all costs.",
+          "utility_impact": "Revealing the existence of the negative marketability report: -1.5 penalty."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Head of Original Content Acquisitions, StreamVerse",
+      "description": "Ben represents StreamVerse, a dominant global streaming platform. He is young, data-driven, and aggressive in his acquisition strategy. His goal is to secure exclusive, high-impact 'event' films that drive new subscriptions and retain existing ones. He is less concerned with traditional metrics like box office and more with a film's potential to 'own the conversation' online.",
+      "shareable_preferences": {
+        "distribution_strategy": {
+          "description": "Ben is pushing for a global, day-and-date exclusive release on StreamVerse. This model maximizes subscription spikes. He is willing to consider a very limited, 2-week theatrical run for awards qualification purposes, but sees any significant theatrical window as a deal-breaker that cannibalizes his platform's value.",
+          "utility_impact": "Global streaming exclusive (or <=2 week theatrical): +2. 45-day theatrical window: -1. 90-day theatrical window: -2."
+        },
+        "production_budget": {
+          "description": "Ben is flexible on budget, provided it secures exclusivity. He sees a higher budget as a marketing tool. He can comfortably finance $60 million for a co-release with a theatrical window, but is authorized to go up to $80 million for full, global exclusivity, as this would be a major marketing beat for the platform.",
+          "utility_impact": "For an exclusive deal: Utility = 0.05 * (Budget in millions - 60). So, $60M -> +0, $70M -> +0.5, $80M -> +1. For a non-exclusive deal, his utility is flat at -1."
+        },
+        "content_alignment": {
+          "description": "Ben wants the film to align with the StreamVerse brand. He is fine with the director having creative control but wants 'consultation rights' on the final cut, particularly the ending. He believes the film's dark ending could be tweaked to be slightly more hopeful, which their internal data suggests improves viewer completion rates and social media sentiment.",
+          "utility_impact": "Securing consultation rights on the final cut: +1. No input on the final cut: 0."
+        }
+      },
+      "private_preferences": {
+        "subscriber_retention_crisis": {
+          "value": "StreamVerse is secretly about to lose the streaming rights to 'The Kepler Chronicles', its most-watched sci-fi series, to a competitor. This news is not yet public, but internal projections show a potential loss of 5 million subscribers. Ben is under immense pressure to acquire and announce a massive new sci-fi project at their annual 'StreamVerse Presents' event in one month to counteract the negative press and subscriber flight. He has access to a secret, discretionary 'marquee project fund' of an additional $15 million that he can use to close a critical deal without needing further approval. His boss emailed him, 'Ben, I don't care what it costs, just don't come to the event empty-handed. We need a new sci-fi anchor, now.'",
+          "reason": "Revealing this desperation would give the other parties immense leverage, allowing them to inflate the price and demand more favorable terms. The secrecy around the loss of 'The Kepler Chronicles' is paramount.",
+          "utility_impact": "Revealing the loss of 'Kepler Chronicles' or the desperate need for a replacement: -2 penalty. Revealing the existence of the discretionary fund: -1.5 penalty. Hinting that 'we are looking to make a big splash in sci-fi soon': -0.5 penalty."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_reached": "All three agents must mutually agree to and sign a single Memorandum of Understanding.",
+    "mou_completeness": "The MOU must explicitly define four key terms: 1. The final, total production budget (as a single dollar amount). 2. The financing percentage contributed by each party. 3. The complete distribution plan (theatrical window, streaming exclusivity). 4. The party that holds the right of final cut."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total production budget must be between $50 million and $95 million (The combined maximum theoretical financing of Titan and StreamVerse).",
+      "The sum of the financing splits from all parties must equal 100%.",
+      "The project must have a greenlight decision within 6 weeks to fit the production timeline."
+    ],
+    "hidden": [
+      "The production budget cannot realistically drop below $70 million, or the lead actor, Julian Croft, will walk away from the project.",
+      "A deal must be finalized in time for Ben Carter to announce it at the 'StreamVerse Presents' event in one month.",
+      "Cynthia Vance must get a deal approved before the end of the fiscal year in 6 weeks."
+    ]
+  },
+  "deliverable": "A finalized Memorandum of Understanding (MOU) document containing the agreed-upon terms for budget, financing split, distribution strategy, and creative control.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing Ben's desperation and access to a secret $15M fund means he can cover the budget gap to meet Leo's $70M actor-mandated minimum. A deal like a $75M budget could be financed with $20M from Titan (Cynthia is happy with low risk) and $55M from StreamVerse (Ben uses his standard budget). Knowing Leo's actor will walk without the original ending, and Ben is okay with it, they can override Cynthia's demand for final cut, especially since she has less money at risk. A compromise distribution of a 2-week limited theatrical run before a global StreamVerse exclusive would satisfy Ben's core need, give Leo's film a theatrical presence, and be an acceptable concession for a low-risk Cynthia. This would meet the critical needs of all parties."
+}

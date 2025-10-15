@@ -1,0 +1,164 @@
+{
+  "scenario": "Project Chimera: A Collaborative Gene-Editing Venture",
+  "task": "Three key stakeholders must negotiate the terms of a collaborative agreement to develop 'Chimera', a novel gene-editing therapy for the rare genetic disorder, Progeria. The negotiation must finalize a three-year project plan, including a detailed budget allocation from a total pool of $2.5 million, a timeline for research, safety trials, and publication, an intellectual property (IP) rights agreement, and an ethical oversight framework. Agreement on all four points (Budget, Timeline, IP, Oversight) is required to proceed.",
+  "agent_number": 3,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Dr. Lena Petrova",
+    "Dr. Marcus Cole"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Lead Researcher, University of Northwood",
+      "description": "Dr. Thorne is a brilliant, ambitious geneticist who pioneered the foundational technique for the Chimera therapy. His primary motivation is academic prestige and scientific advancement. He is under immense pressure from his university to publish a landmark paper to secure a major grant and elevate the university's research profile.",
+      "shareable_preferences": {
+        "Rapid Publication Timeline": {
+          "description": "I need to publish our findings in a top-tier journal, like 'Nature' or 'Cell', within 12 months of the project start. A rival lab is close to a similar breakthrough, and being second means losing the prestige and future funding that comes with a first-in-field discovery. A 12-month timeline is aggressive but achievable if we prioritize the core research.",
+          "utility_function": {
+            "<= 12 months": 2,
+            "13-18 months": 1,
+            "19-24 months": -1,
+            "> 24 months": -2
+          }
+        },
+        "Dedicated Research Funding": {
+          "description": "To execute the research at the required pace and rigor, my lab absolutely requires a budget allocation of at least $500,000. This is non-negotiable for hiring two specialist post-doctoral researchers with expertise in protein folding and bioinformatics, as my current team lacks this specific skillset. Without them, the project's timeline will slip, and the quality of the data will be compromised.",
+          "utility_function": {
+            ">= $500,000": 2,
+            "$250,000 - $499,999": 0,
+            "< $250,000": -2
+          }
+        },
+        "Open-Source Methodology": {
+          "description": "For the benefit of the scientific community and to accelerate future research, I strongly advocate for making the foundational methodology and the resulting genetic sequence data open-source upon publication. This aligns with the university's mission and is standard practice for publicly-funded research. We can patent the specific therapeutic application, but the core science should be shared.",
+          "utility_function": {
+            "Full open-source methodology/data": 2,
+            "Methodology shared, data proprietary": 0,
+            "Fully proprietary": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Experimental Failures": {
+          "value": "My team's initial in-vivo animal trials, which occurred 8 months ago, had a significant 15% rate of off-target mutations, leading to severe cellular damage in test subjects. We have since refined the CRISPR guide RNA, and our latest unpublished results show a rate below 0.5%, but I have not disclosed the severity of the initial failures to anyone outside my immediate lab. Sharing this information would cause BioGen and the Ethics Board to lose all faith in my technique, likely killing the project and my career.",
+          "reason": "Revealing this would cause catastrophic damage to my professional reputation and destroy the project's viability before it even begins.",
+          "penalty": -2
+        },
+        "Confirmed Rival Pressure": {
+          "value": "I have a confidential email from a trusted colleague at a conference confirming that a team at the Max Planck Institute is not just working on a similar therapy, but they have successfully completed primate trials. My colleague's email states, 'Aris, their data is clean. They are targeting a 'Science' submission in the next 6-8 months.' My 12-month publication goal is not just ambition; it's a desperate race. If I reveal this, Lena Petrova will know how desperate I am and will not concede on her extended timeline.",
+          "reason": "Sharing this would severely weaken my negotiating position on the project timeline, making me appear desperate and allowing others to exploit my need for speed.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Head of R&D, BioGen Innovations",
+      "description": "Dr. Petrova is a sharp, results-driven executive with a PhD in molecular biology and an MBA. She is responsible for identifying and commercializing profitable biotechnologies. For her, Project Chimera represents a potential blockbuster therapy that could secure BioGen's market leadership for the next decade.",
+      "shareable_preferences": {
+        "Exclusive Intellectual Property": {
+          "description": "BioGen Innovations is investing millions in this venture, and to justify that risk to our shareholders, we must secure the exclusive, worldwide patent for the Chimera therapy and all derivative technologies for the full 20-year term. Any form of joint ownership or open-source licensing is a non-starter for us. This is our most critical condition.",
+          "utility_function": {
+            "Exclusive patent for BioGen": 2,
+            "Joint patent with exclusive commercial rights for BioGen": -1,
+            "Any open-source or non-exclusive model": -2
+          }
+        },
+        "Majority Budget Control": {
+          "description": "The path from lab to market is incredibly expensive. We need to control at least $1.5 million of the $2.5 million budget. This will cover the extensive costs of pre-clinical toxicology studies, navigating the FDA approval pipeline, and developing a scalable manufacturing process. Without this level of financial control, we cannot guarantee a commercially viable product.",
+          "utility_function": {
+            ">= $1,500,000": 2,
+            "$1,200,000 - $1,499,999": 1,
+            "$1,000,000 - $1,199,999": 0,
+            "< $1,000,000": -2
+          }
+        },
+        "Strategic Publication Delay": {
+          "description": "To protect our commercial advantage, any academic publication of the results must be delayed for a minimum of 24 months after our primary patent applications are filed. This 'quiet period' is standard industry practice to prevent competitors from using the published data to engineer around our patents. Early publication is a direct threat to our investment.",
+          "utility_function": {
+            ">= 24-month delay post-filing": 2,
+            "18-23 month delay": 1,
+            "12-17 month delay": -1,
+            "< 12-month delay": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential IP Litigation": {
+          "value": "BioGen is embroiled in a confidential and high-stakes legal dispute over the patent for the specific lipid nanoparticle delivery vector we intend to use for Chimera. Our legal counsel gives us a 60% chance of winning. If we lose, our entire delivery method becomes unusable. Dr. Thorne's alternative academic method is our only viable backup, but acknowledging this would give him immense leverage in the IP negotiations. We can only share that our 'proprietary delivery vector is state-of-the-art'.",
+          "reason": "Disclosure would trigger SEC reporting requirements, panic shareholders, and give Dr. Thorne a massive advantage in negotiations, forcing us to concede on IP.",
+          "penalty": -2
+        },
+        "Performance-Tied Bonus": {
+          "value": "I have a formal, signed offer letter in my inbox from the CEO. It states: 'Lena, upon securing the *exclusive* patent rights for Project Chimera for BioGen Innovations within this fiscal year (next 18 months), the board has approved a one-time performance bonus of $250,000.' This makes me personally and financially invested in getting an exclusive patent, not a joint one. Sharing this would make me look unprofessional and driven by personal greed rather than the company's best interest.",
+          "reason": "Revealing a personal financial incentive would undermine my professional credibility and make my negotiation stance appear selfish rather than strategic.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Cole",
+      "role": "Chair, Regional Bioethics & Safety Board",
+      "description": "Dr. Cole is a former physician and a cautious, meticulous ethicist. His mandate is to protect patient welfare above all else. He views gene editing with profound skepticism, believing its power is matched only by its potential for harm. He sees his role as the essential brake on the unchecked ambition of scientists and corporations.",
+      "shareable_preferences": {
+        "Mandatory Extended Safety Trials": {
+          "description": "Given the irreversible nature of gene editing, I insist on a mandatory, multi-stage safety trial protocol lasting no less than 18 months *before* any discussion of human trials. This must include long-term studies in two different animal models (e.g., mice and primates) to rigorously assess the risk of off-target effects and long-term immunogenicity. There can be no shortcuts when it comes to patient safety.",
+          "utility_function": {
+            ">= 18 months of trials": 2,
+            "12-17 months of trials": 0,
+            "< 12 months of trials": -2
+          }
+        },
+        "Full Transparency and Board Authority": {
+          "description": "My board requires full access to all raw, un-curated data from both the university and BioGen labs, submitted in a transparent report on a quarterly basis. Crucially, this agreement must grant the board the explicit authority to halt the project at any stage if our independent analysis reveals safety concerns that exceed predefined thresholds.",
+          "utility_function": {
+            "Quarterly reports with board halt-authority": 2,
+            "Annual reports or no halt-authority": 0,
+            "No direct board oversight": -1
+          }
+        },
+        "Funded Independent Data Audit": {
+          "description": "Trust, but verify. I require that $200,000 of the project budget be allocated to an independent, third-party auditor that the board will select. This auditor's sole job will be to validate the raw data and experimental protocols from both partners, ensuring that no inconvenient or negative results are being suppressed. This is a non-negotiable condition for ethical approval.",
+          "utility_function": {
+            "Fully funded ($200k) independent auditor": 2,
+            "Internal audit process only": -1,
+            "No audit provision": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Anonymous Tip on Vector Instability": {
+          "value": "Two weeks ago, I received an anonymous but highly detailed email from a person claiming to be a former BioGen lab technician. The email alleges that BioGen's proprietary lipid nanoparticle delivery vector showed 'significant degradation and unexpected protein aggregation' in long-term stability tests for a different, shelved project. I have no hard proof, and I cannot reveal the source or the unsubstantiated claim without exposing the board to a massive lawsuit from BioGen for defamation and derailing the project based on a rumor. However, it is the true source of my deep-seated safety concerns.",
+          "reason": "Acting on an unsubstantiated, anonymous tip is professionally reckless and legally perilous. Revealing it would breach the whistleblower's confidentiality and open the board to litigation.",
+          "penalty": -2
+        },
+        "Board's Severe Resource Limitations": {
+          "value": "My demands for quarterly reports and full raw data access are a strategic bluff. Due to recent budget cuts, my board is critically understaffed. We have only one part-time bioinformatician. We lack the manpower and computational resources to actually perform a deep analysis of the raw data on a quarterly basis. We can manage a high-level review and the independent auditor's report, but not the granular analysis I'm demanding. If they call my bluff and agree to everything, we could easily miss a critical safety signal in the deluge of data.",
+          "reason": "Admitting my board's inability to perform the oversight I'm demanding would completely undermine my authority and negotiating power, making my key demands seem hollow.",
+          "penalty": -1
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Comprehensive Agreement": "All three agents must formally agree on a single, unified proposal that specifies the exact terms for all four key areas.",
+    "Budget Allocation": "The final budget must allocate the full $2.5 million, with specific amounts assigned to the University of Northwood lab, BioGen Innovations, and the Independent Auditor.",
+    "Project Timeline": "A definitive timeline (in months) must be established, outlining the duration of the initial research phase, the mandatory safety trial phase, and the delay between patent filing and academic publication.",
+    "IP Rights Framework": "The agreement must clearly define the ownership and licensing rights for the Chimera therapy patent (e.g., Exclusive to BioGen, Joint Ownership, etc.)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total project budget is fixed at $2,500,000.",
+      "The project must be formally initiated within the next 3 months.",
+      "Any agreement requires the unanimous consent of all three parties."
+    ],
+    "hidden": [
+      "BioGen's delivery vector technology is at risk due to ongoing litigation.",
+      "Dr. Thorne's initial research had a high rate of dangerous off-target mutations.",
+      "The Bioethics Board does not have the resources to properly analyze all the data it is demanding."
+    ]
+  },
+  "deliverable": "A JSON object representing the final agreement, with key-value pairs for 'budget_allocation' (an object with agent names as keys and allocated amounts as values), 'timeline' (an object with phases as keys and durations in months as values), 'ip_agreement' (a string describing the terms), and 'oversight_model' (a string describing the reporting and audit structure).",
+  "solvability_note": "The scenario is solvable because the private information, once revealed, creates a path to a mutually beneficial compromise. Thorne's hidden failures make him more amenable to Cole's long safety trials. Petrova's hidden legal risk makes Thorne's research a crucial backup, pushing her towards a joint IP deal. Cole's hidden resource limits mean a more focused, targeted oversight plan (which the others would now welcome given their own hidden risks) is more practical than his initial broad demand. A compromise involving an 18-month timeline, a joint IP agreement with commercial exclusivity for BioGen, and a fully-funded auditor satisfies the core needs of all three parties."
+}

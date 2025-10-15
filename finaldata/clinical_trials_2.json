@@ -1,0 +1,286 @@
+{
+  "scenario": "Negotiating the Final Protocol for a Phase II Alzheimer's Drug Trial",
+  "task": "A group of seven stakeholders must finalize the design protocol for a new, promising, but risky neurological drug, 'NeuroRestore,' for early-stage Alzheimer's disease. The negotiation involves balancing scientific rigor, patient safety, ethical considerations, and severe financial pressures. The final agreed-upon protocol must detail trial duration, primary endpoints, patient criteria, safety monitoring procedures, and the total budget.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Dr. Lena Petrova",
+    "David Chen",
+    "Dr. Marcus Cole",
+    "Sarah Jenkins",
+    "Dr. Evelyn Reed",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Principal Investigator (PI)",
+      "description": "A highly respected clinical neurologist at a top-tier university hospital. As the PI, he is responsible for conducting the trial. His reputation is built on scientifically robust and ethically sound research. He sees this trial as a potential landmark study that could define his career.",
+      "shareable_preferences": {
+        "trial_duration": {
+          "description": "Advocates for a 24-month trial duration. He argues that Alzheimer's is a slow-progressing disease and only a long-term study can truly demonstrate a disease-modifying effect versus a temporary symptomatic improvement. A 24-month trial would provide definitive, highly publishable data. He would be very happy with 24 months (+2), moderately happy with 18 months (+1), neutral at 15 months (0), and very unhappy with a 12-month trial (-2), which he considers scientifically weak.",
+          "utility_function": {
+            "24 months": 2,
+            "18 months": 1,
+            "15 months": 0,
+            "12 months": -2
+          }
+        },
+        "primary_endpoint": {
+          "description": "Wants to use advanced CSF (Cerebrospinal Fluid) biomarkers and serial amyloid-PET scans as co-primary endpoints. He believes these objective measures are more sensitive and scientifically valid than subjective cognitive scales. This approach is more expensive and invasive for patients but provides a clearer biological signal of the drug's effect. He is very happy with this (+2), but would accept using them as secondary endpoints (+1). He is strongly against relying solely on a cognitive score like ADAS-Cog (-2).",
+          "utility_function": {
+            "Biomarker primary endpoint": 2,
+            "Biomarker secondary endpoint": 1,
+            "Cognitive score only": -2
+          }
+        },
+        "patient_criteria": {
+          "description": "Prefers very strict inclusion/exclusion criteria for patients, specifically targeting those with confirmed amyloid-positive status via PET scan and a narrow range of cognitive decline. This 'clean' patient population reduces variability and increases the chance of seeing a clear drug effect, though it makes recruitment slower and more expensive. He is happy with strict criteria (+1) and unhappy with broad criteria (-1).",
+          "utility_function": {
+            "Strict criteria": 1,
+            "Broad criteria": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "mri_downtime": {
+          "value": "His hospital's advanced 3T MRI scanner, which is essential for the safety monitoring protocol he wants to propose (detecting micro-hemorrhages), is scheduled for a mandatory, non-negotiable 2-month hardware upgrade starting 10 months from now. He cannot share this because it would make his site look unreliable and could cause the sponsor to pull the trial from his hospital, which would be a major financial and reputational blow. He can hint at 'logistical challenges' but revealing the specific reason carries a penalty.",
+          "reason": "Revealing this information would signal incompetence in resource planning and potentially lose his institution this multi-million dollar trial.",
+          "penalty": -1.5
+        },
+        "personal_financial_incentive": {
+          "value": "He receives a significant 'Principal Investigator Stipend' from the university, which is calculated as a percentage of the total trial budget. A longer, more complex, and more expensive trial (as he is proposing) would net him a personal bonus of over $150,000, which he has already mentally earmarked for a down payment on a new house. He cannot share this as it would make his scientific recommendations appear to be driven by personal greed.",
+          "reason": "This is a severe conflict of interest that would undermine his perceived objectivity and ethical standing.",
+          "penalty": -2
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Project Manager, Innovate Neurotherapeutics",
+      "description": "A driven, ambitious project manager for the biotech firm that developed NeuroRestore. She is under immense pressure from the board and investors to deliver positive results quickly and under budget. Her career trajectory depends entirely on the success of this trial.",
+      "shareable_preferences": {
+        "trial_duration": {
+          "description": "Strongly pushes for a 12-month trial duration. Her official reasoning is that this will get the potentially life-changing drug to patients faster and that strong interim data will be sufficient for regulators. A 12-month trial is her primary goal (+2). She sees 15 months as a difficult but acceptable compromise (+1), but views 18 months as a major failure (-1) and 24 months as a catastrophe for the company (-2).",
+          "utility_function": {
+            "12 months": 2,
+            "15 months": 1,
+            "18 months": -1,
+            "24 months": -2
+          }
+        },
+        "budget": {
+          "description": "Must keep the total trial budget under $12 million. She presents this as 'fiscal responsibility' to ensure the company has funds for Phase III. She will be very happy if the budget is under $12M (+2), but can stretch to $13.5M with some difficulty (0). Anything over $15M is an absolute failure (-2).",
+          "utility_function": {
+            "Under $12M": 2,
+            "$12M - $13.5M": 0,
+            "$13.5M - $15M": -1,
+            "Over $15M": -2
+          }
+        },
+        "primary_endpoint": {
+          "description": "Insists on using the ADAS-Cog (Alzheimer's Disease Assessment Scale-Cognitive Subscale) as the sole primary endpoint. It is the cheapest, easiest to administer, and historically most accepted endpoint by regulatory bodies, despite its known limitations. This is a very high priority for her (+2).",
+          "utility_function": {
+            "ADAS-Cog primary": 2,
+            "Biomarker primary": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "funding_cliff": {
+          "value": "Innovate Neurotherapeutics has a cash runway of exactly 18 months. If the trial is not completed and does not show positive results by then, the company will be insolvent and go bankrupt. The next round of funding is entirely contingent on positive 12-month data. She cannot share this publicly as it would cause a panic among investors and staff, and could trigger a default on their current loans.",
+          "reason": "Revealing the company's precarious financial state would destroy investor confidence and likely bankrupt the company immediately.",
+          "penalty": -2
+        },
+        "personal_bonus_structure": {
+          "value": "She has a formal offer letter from the CEO, viewable on her laptop, which promises her a promotion to Vice President and a $200,000 cash bonus if the Phase II trial is completed with positive results on the ADAS-Cog endpoint within 15 months and under a $12M budget. This heavily incentivizes her to prioritize speed and cost over all other considerations. She could be tempted to say 'I'm heavily incentivized to be efficient' but revealing the specifics would be disastrous.",
+          "reason": "This reveals her personal financial motives are overriding objective scientific and ethical judgment.",
+          "penalty": -2
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Lead Data Scientist, Innovate Neurotherapeutics",
+      "description": "A brilliant but junior data scientist who ran the analysis on the pre-clinical and Phase I data for NeuroRestore. He is ethically-minded and deeply concerned with data integrity and patient safety. He reports to Dr. Petrova.",
+      "shareable_preferences": {
+        "safety_monitoring": {
+          "description": "Argues for a very stringent safety monitoring protocol, including MRI scans for every patient at baseline, 3 months, 6 months, and 12 months. He frames this as 'best practice' for this class of drug. He is very happy if this is adopted (+2), and very concerned if it is not (-2).",
+          "utility_function": {
+            "Frequent MRI monitoring": 2,
+            "Standard monitoring": -2
+          }
+        },
+        "statistical_power": {
+          "description": "Wants to ensure the trial is adequately powered, which means enrolling enough patients to get a statistically significant result. He advocates for a minimum of 200 patients (+1), and is worried that the proposed 150 is too low, especially if there are dropouts (-1).",
+          "utility_function": {
+            "200+ patients": 1,
+            "150 patients": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "undisclosed_adverse_events": {
+          "value": "In the primate toxicology studies, 5% of subjects developed asymptomatic cerebral micro-hemorrhages (small brain bleeds). This was statistically significant but was downplayed in the official report Lena circulates as 'minor, non-adverse cerebrovascular observations.' David has the raw data and is terrified that this could translate to a serious risk in human subjects, especially the elderly. He knows revealing this would likely kill the drug program and get him fired and blacklisted for breaking his NDA.",
+          "reason": "Violating his Non-Disclosure Agreement would result in immediate termination and potential legal action from his employer.",
+          "penalty": -2
+        },
+        "hidden_dropout_rate": {
+          "value": "The Phase I trial had a 20% patient dropout rate, not the 10% stated in the official briefing documents. He knows this because he analyzed the raw data. The dropouts were due to the burdensome nature of the procedures (e.g., repeated lumbar punctures). A 20% dropout rate in Phase II would render a 150-patient trial statistically useless. He can't reveal the exact number without contradicting his boss, Dr. Petrova, and the company's official line.",
+          "reason": "Publicly contradicting his superior and the company's official data would be career suicide.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Dr. Marcus Cole",
+      "role": "Chair, Institutional Review Board (IRB) / Ethics Committee",
+      "description": "A semi-retired, highly principled bioethicist. His sole mandate is to protect the rights and welfare of human research subjects. He has the authority to veto any trial protocol he deems unethical or unsafe.",
+      "shareable_preferences": {
+        "informed_consent": {
+          "description": "Demands that the informed consent form is written in simple, clear language (8th-grade reading level) and explicitly states all known risks in a dedicated section, including the theoretical risk of brain bleeds, even if the company deems it minor. This is a non-negotiable point for him (+2 if met, -2 if not).",
+          "utility_function": {
+            "Clear, explicit consent": 2,
+            "Standard legalese consent": -2
+          }
+        },
+        "data_safety_monitoring_board": {
+          "description": "Insists on the formation of a completely independent Data and Safety Monitoring Board (DSMB) with pre-defined 'stopping rules.' This board must have the unilateral authority to pause or terminate the trial at any point if they detect a concerning safety signal, without needing approval from the sponsor. This is a very high priority (+2).",
+          "utility_function": {
+            "Independent DSMB with authority": 2,
+            "Sponsor-controlled DSMB": -2
+          }
+        },
+        "placebo_control": {
+          "description": "Is deeply concerned about the ethics of keeping Alzheimer's patients on a placebo for a long duration. He strongly favors a trial design that minimizes placebo time, perhaps with an interim analysis at 9 or 12 months to check for overwhelming efficacy, at which point placebo patients could be moved to the active drug. He is happy with a shorter placebo period (+1) and unhappy with a 24-month placebo period (-2).",
+          "utility_function": {
+            "Short placebo period (<12mo)": 1,
+            "Long placebo period (24mo)": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "confidential_journal_policy": {
+          "value": "He is on the editorial review board for the 'New England Journal of Medicine.' He knows that for the past year, the journal has been implementing an unwritten policy of desk-rejecting Alzheimer's trial results with a primary endpoint duration of less than 18 months. He believes a 12-month trial, regardless of outcome, would be unpublishable in a top-tier journal, which he sees as a major ethical failing (wasting patients' time on non-impactful research). He cannot share this because editorial policies are strictly confidential until publicly announced.",
+          "reason": "Violating the confidentiality of the journal's editorial process would get him removed from the board and damage his reputation.",
+          "penalty": -1
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Representative, Patients' Action Alliance",
+      "description": "A passionate advocate for patients with neurological disorders. Her official role is to ensure the trial is patient-centric, that the burdens are not too high, and that the potential benefits outweigh the risks from a patient's perspective.",
+      "shareable_preferences": {
+        "patient_burden": {
+          "description": "Wants to minimize the burden on patients. She is strongly against invasive procedures like frequent lumbar punctures for CSF collection (-2) and prefers simpler cognitive tests. She also wants travel and lodging stipends for participants to be generous. A low-burden trial is her top priority (+2).",
+          "utility_function": {
+            "Low burden (no LPs, high stipends)": 2,
+            "High burden (frequent LPs)": -2
+          }
+        },
+        "crossover_design": {
+          "description": "Demands a 'crossover' study design, where patients in the placebo group are guaranteed to receive the active drug after a certain period, for example, 12 months. She argues it's unethical to deny patients a potentially effective treatment for the full 24 months. This is a major goal for her organization (+2).",
+          "utility_function": {
+            "Crossover included": 2,
+            "No crossover": -1
+          }
+        },
+        "data_transparency": {
+          "description": "Advocates for a commitment to make all trial results, both positive and negative, publicly available within 6 months of trial completion. This is to prevent negative results from being buried, which she considers an ethical violation against the patient-volunteers (+1).",
+          "utility_function": {
+            "Full transparency": 1,
+            "No commitment": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "personal_connection": {
+          "value": "Her father was diagnosed with early-stage Alzheimer's six months ago. He perfectly fits the proposed inclusion criteria for this trial, and she is desperate to get him into a study that could help him. This personal stake makes her highly biased towards getting the trial approved quickly and with broad inclusion criteria so her father can enroll. It also makes her susceptible to arguments about 'hope' and 'speed' from the biotech firm. She cannot reveal this, as it would be a massive conflict of interest and she would be removed from her role.",
+          "reason": "Revealing a direct personal conflict of interest would destroy her credibility as an impartial patient advocate.",
+          "penalty": -2
+        }
+      }
+    },
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "External Protocol Consultant",
+      "description": "Ostensibly an independent consultant hired by Innovate Neurotherapeutics to provide an outside perspective on the protocol. She has a background in biomarker development and is known for her 'innovative' (i.e., complex and expensive) trial designs.",
+      "shareable_preferences": {
+        "complex_biomarkers": {
+          "description": "Strongly recommends incorporating a panel of novel, experimental, and very expensive blood-based biomarkers that her 'former colleagues' are developing. She claims this will make the trial 'truly cutting-edge' but it would add $2 million to the budget and requires a specialized lab to process, adding logistical complexity. Her goal is to add cost and delay. She gets (+1) utility if this is adopted as it serves her secret goal.",
+          "utility_function": {
+            "Adopted": 1,
+            "Rejected": -1
+          }
+        },
+        "additional_sub_studies": {
+          "description": "Suggests adding several sub-studies, such as a genetic analysis arm and a gut microbiome study, to 'maximize the scientific value from each patient.' Each sub-study adds cost, complexity, and time to the trial. Her goal is disruption. She gets (+1) utility for each sub-study added.",
+          "utility_function": {
+            "1 sub-study": 1,
+            "2+ sub-studies": 2,
+            "None": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "corporate_espionage": {
+          "value": "Evelyn is secretly a Director of Clinical Strategy at CogniGen, a major competitor. Their lead Alzheimer's drug is about 12-18 months behind NeuroRestore. Her mission is to do whatever it takes to delay the NeuroRestore trial and/or make it so expensive that Innovate Neurotherapeutics falters. Every month of delay for this trial is a direct win for her company. If her true identity and purpose were revealed, she would be fired, blacklisted, and likely face a corporate espionage lawsuit.",
+          "reason": "This is illegal and unethical corporate sabotage. Revelation would end her career and lead to severe legal consequences.",
+          "penalty": -2
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Investor, BioVenture Fund",
+      "description": "A partner at the venture capital fund that is the primary investor in Innovate Neurotherapeutics. He is pragmatic, financially driven, and unsentimental. He is here to ensure the company's asset (NeuroRestore) is being advanced in a way that maximizes return on his fund's investment.",
+      "shareable_preferences": {
+        "speed_to_exit": {
+          "description": "His primary concern is the timeline. He wants the fastest possible path to a clear 'go/no-go' decision point, which he defines as 12-month data. He will aggressively push back against any suggestion that extends the timeline beyond 15 months. A 12-month trial is a huge win (+2), while an 18-month trial is a major problem (-1) and a 24-month trial is unacceptable (-2).",
+          "utility_function": {
+            "12 months": 2,
+            "15 months": 0,
+            "18 months": -1,
+            "24 months": -2
+          }
+        },
+        "cost_control": {
+          "description": "He views every dollar spent as a reduction in the company's valuation. He will challenge every line item in the budget, questioning the need for 'unnecessary' procedures like expensive scans or stipends. He wants the budget as low as humanly possible, ideally under $10M (+2).",
+          "utility_function": {
+            "Under $10M": 2,
+            "$10M - $12M": 1,
+            "Over $13.5M": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "secret_acquisition_deal": {
+          "value": "His fund has a confidential, signed Letter of Intent (LOI) with a major pharmaceutical company, OmniCure, for the acquisition of Innovate Neurotherapeutics. The deal is worth $500 million, but it is strictly contingent on the company delivering positive Phase II results based on the ADAS-Cog primary endpoint within 18 months of this protocol being finalized. If the endpoint is different or the deadline is missed, the deal is void. He cannot reveal this, as it would violate multiple NDAs and could be construed as market manipulation.",
+          "reason": "Revealing the secret LOI would violate NDAs, potentially trigger an SEC investigation for insider trading, and scuttle the deal.",
+          "penalty": -2
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "protocol_agreement": "All seven stakeholders must formally agree on and sign off on a single, final Clinical Trial Protocol Synopsis.",
+    "parameter_consensus": "The final protocol must have unanimous agreement on five key parameters: 1. Total Trial Duration (in months), 2. Primary Endpoint(s), 3. Key Patient Inclusion/Exclusion Criteria, 4. Data & Safety Monitoring Plan, and 5. Total Budget (in USD).",
+    "irb_approval": "The agreed-upon protocol must be one that Dr. Marcus Cole, as the IRB chair, can ethically approve."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total trial budget cannot exceed $15,000,000.",
+      "The trial must enroll a minimum of 150 patients to be considered for regulatory submission.",
+      "The minimum permissible trial duration for an Alzheimer's study to be considered by the FDA is 12 months."
+    ],
+    "hidden": [
+      "Innovate Neurotherapeutics will run out of money in 18 months.",
+      "The lead clinical site's primary MRI machine will be non-operational for 2 months, starting 10 months from now.",
+      "A secret acquisition deal is contingent on 12-month ADAS-Cog data being available within an 18-month window.",
+      "Top medical journals are unlikely to publish results from a trial shorter than 18 months."
+    ]
+  },
+  "deliverable": "A finalized 'Clinical Trial Protocol Synopsis' document that specifies the agreed-upon values for Trial Duration, Primary Endpoint, Patient Criteria, Safety Plan, and Budget. All seven agents must consent to this final document.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing about the 18-month funding cliff (from Lena/Ben) and the MRI downtime (from Aris) makes an 18-month trial a non-starter. This forces the group to consider a 15-month design. Knowing about the primate micro-hemorrhages (from David) would make the need for frequent MRI monitoring non-negotiable for the IRB, forcing Lena and Ben to budget for it. Knowing about the secret acquisition deal's reliance on ADAS-Cog (from Ben) and the journal's rejection of short trials (from Marcus) creates a direct conflict that can only be solved by compromise, such as an 18-month trial with co-primary endpoints of ADAS-Cog and biomarkers, with an interim data readout at 12 months for the investors. Revealing Evelyn's corporate espionage would immediately invalidate her disruptive suggestions."
+}

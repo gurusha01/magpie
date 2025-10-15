@@ -1,0 +1,131 @@
+{
+  "scenario": "Automobile Rollout Planning for the 'Aetherion' EV",
+  "task": "The leadership of Stellara Automotive has tasked the heads of Design, Production, and Regulatory Affairs to finalize the master plan for the company's flagship electric SUV, the 'Aetherion'. The team must agree on three critical, interconnected variables: 1) The official global launch quarter, 2) The final budget allocation for their respective departments from the remaining project funds, and 3) The final go/no-go decision on including the 'Level 3 Aetherion Pilot' autonomous driving feature. The current plan, which is proving contentious, targets a Q4 2024 launch with the Aetherion Pilot as a headline feature.",
+  "agent_number": 3,
+  "agent_names": [
+    "Elena Vance",
+    "Marcus Thorne",
+    "David Chen"
+  ],
+  "agents": [
+    {
+      "name": "Elena Vance",
+      "role": "Head of Vehicle Design & User Experience",
+      "description": "Elena is the visionary behind the Aetherion's cutting-edge design and technology. Her reputation is built on delivering innovative, headline-grabbing features. She is fiercely protective of her team's vision and is under immense pressure from marketing and the CEO to launch the Aetherion with all its promised features to compete with rival offerings.",
+      "shareable_preferences": {
+        "Launch Timing": {
+          "description": "Elena is adamant about a Q4 2024 launch. This timing is strategically aligned with the Los Angeles Auto Show, where the Aetherion is scheduled for its grand reveal. A delay would mean missing the key holiday sales season and losing the 'first-to-market' advantage for several of its features. A launch in Q4 2024 is ideal (+2), a slip to Q1 2025 is acceptable but disappointing (+1), a slip to Q2 2025 is a major failure (-1), and any later is a disaster (-2).",
+          "utility_function": {
+            "Q4 2024": 2,
+            "Q1 2025": 1,
+            "Q2 2025": -1,
+            "Q3 2025 or later": -2
+          }
+        },
+        "Departmental Budget": {
+          "description": "Elena is requesting an additional $20 million for her department from the project's contingency fund. She is publicly framing this as necessary for 'final software polish, premium material sourcing, and enhanced user interface development' to ensure the vehicle feels truly next-generation. She argues this investment is critical for justifying the vehicle's premium price point. Getting the full $20M is a big win (+2), getting at least $10M is acceptable (+1), no budget change is a setback (-1), and a budget cut would be catastrophic for her team's goals (-2).",
+          "utility_function": {
+            "Increase of $20M": 2,
+            "Increase between $10M and $19M": 1,
+            "No change or increase less than $10M": -1,
+            "Any budget cut": -2
+          }
+        },
+        "Aetherion Pilot Feature": {
+          "description": "The 'Aetherion Pilot' Level 3 autonomous system is Elena's flagship feature. It's the primary differentiator for the vehicle. She insists it must be included at launch. Her position is that launching without it would make the Aetherion 'just another EV'. The feature launching fully enabled is a perfect outcome (+2), while launching it with some features disabled for a later software update is a major compromise (-1). Removing it entirely is unthinkable (-2).",
+          "utility_function": {
+            "Launch with full Level 3 capabilities": 2,
+            "Launch with partial/limited capabilities": -1,
+            "Feature removed from launch model": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Testing Setback": {
+          "value": "The Aetherion Pilot system has a critical, undisclosed flaw. In recent internal simulations, the system failed to correctly identify stationary objects in low-light, rainy conditions in 9 out of 10 runs, leading to simulated collisions. Her software team believes they can fix it, but they need at least four more months of development and a new suite of LIDAR sensors, which will cost $15 million. This is the real reason for her $20M budget request. She recently received an email from her VP stating: 'Elena, congratulations on the positive early press for the Aetherion Pilot! Your promotion to Chief Design Officer is riding on a flawless execution of this feature.' Sharing the 90% failure rate would not only kill the feature but also severely damage her reputation and career prospects.",
+          "leak_penalty": "Revealing the specific 90% failure rate: -2 utility. Hinting at 'significant software challenges' without numbers: -1 utility.",
+          "reason": "Admitting such a severe failure would cause panic among executives, undermine her leadership, and likely lead to her removal from the project. It's a matter of professional survival."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "VP of Manufacturing & Production",
+      "description": "Marcus is a seasoned operations executive, responsible for the entire manufacturing process. His world is one of logistics, efficiency, and margins. His primary goal is a smooth, predictable, and cost-effective production ramp-up. He is evaluated on meeting production deadlines and staying under budget.",
+      "shareable_preferences": {
+        "Launch Timing": {
+          "description": "Marcus is strongly advocating for pushing the launch to Q2 2025. He publicly cites the need for 'additional time to calibrate the new robotics on the assembly line and ensure impeccable build quality from day one.' He warns that a rushed Q4 launch will inevitably lead to quality control issues and a potential for costly recalls. A Q2 2025 launch gives him the buffer he needs (+2), Q1 2025 is tight but manageable (0), while a Q4 2024 launch is, in his public words, 'courting disaster' (-2).",
+          "utility_function": {
+            "Q2 2025 or later": 2,
+            "Q1 2025": 0,
+            "Q4 2024": -2
+          }
+        },
+        "Departmental Budget": {
+          "description": "Marcus wants to reduce the overall production budget by $15 million. He argues that by simplifying some non-essential assembly processes and renegotiating with secondary component suppliers, he can return this money to the company's bottom line, which would be a huge win for his department. A $15M cut is a major success (+2), any cut is good (+1), no change is neutral (0), but an increase to the overall project budget to fund other departments would negatively impact his performance metrics (-1).",
+          "utility_function": {
+            "Cut of $15M or more": 2,
+            "Any budget cut up to $14M": 1,
+            "No budget change": 0,
+            "Any overall budget increase": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "Private Supply Chain Delays": {
+          "value": "Marcus has received a confidential 'force majeure' notification from Voltaic Systems, the exclusive supplier of the Aetherion's custom battery packs. A fire at their primary cobalt refinement plant will delay the first mass-production shipment of batteries by at least three months. They will not arrive until late January 2025, making a Q4 2024 launch physically impossible. The NDA with Voltaic is iron-clad; revealing this information would trigger a multi-million dollar penalty and could cause Stellara's stock to plummet. Marcus's annual bonus is explicitly tied to maintaining a positive relationship with key suppliers.",
+          "leak_penalty": "Revealing the specific supplier and reason for delay: -2 utility. Hinting at 'major, unavoidable supply chain disruptions' without specifics: -1 utility.",
+          "reason": "Violating a critical supplier NDA would have severe legal and financial repercussions for the company and would be a fireable offense for him personally."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Director of Regulatory Compliance & Safety",
+      "description": "David is a meticulous, risk-averse lawyer and engineer. His sole mandate is to ensure the Aetherion is 100% compliant with all global safety regulations, both current and anticipated. His department is seen as a cost center, but he holds the ultimate power to halt the entire project if he deems it unsafe or non-compliant.",
+      "shareable_preferences": {
+        "Launch Timing": {
+          "description": "David is officially indifferent to the launch date, his only stated preference is that the launch must not happen until his team has completed its 'full validation and documentation cycle.' He is hesitant to provide a firm timeline, stating it depends on the final configuration of the vehicle. This ambiguity gives him leverage. If his other needs are met, he is fine with any date (+1), but if he feels rushed or his concerns are ignored, he will be extremely unhappy (-2).",
+          "utility_function": {
+            "Any date, if other preferences are met": 1,
+            "Any date, if other preferences are not met": -2
+          }
+        },
+        "Departmental Budget": {
+          "description": "David is requesting a non-negotiable budget of $5 million for 'proactive safety testing protocols.' He wants to conduct a series of advanced battery crush and thermal runaway tests that go far beyond current government requirements. He argues this is essential for 'future-proofing' the vehicle against evolving safety standards and protecting the company from long-term liability. Getting the full $5M is the only acceptable outcome for him (+2). Anything less is a failure to prioritize safety and he will not sign off (-2).",
+          "utility_function": {
+            "Increase of $5M or more": 2,
+            "Increase of less than $5M": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential Government Approvals Intel": {
+          "value": "David has a confidential, off-the-record source at the National Highway Traffic Safety Administration (NHTSA). This source warned him that new, much stricter regulations for EV battery pack integrity in side-impact collisions are being fast-tracked and are expected to be announced in Q1 2025. The Aetherion's current battery design, while passing all current tests, would likely fail this new, more stringent standard. A post-launch recall and redesign would cost hundreds of millions. His $5M budget request is to secretly test and develop a reinforcement solution. Revealing his source would be illegal, end his career, and trigger a formal investigation into the company.",
+          "leak_penalty": "Revealing the existence of an NHTSA source or the specific impending regulation: -2 utility. Strongly implying that 'future regulatory landscapes are shifting' without specifics: 0 utility (this is his job).",
+          "reason": "Revealing classified government information and an anonymous source would have severe legal consequences for him and the company, and is a major ethical breach."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Agreement": "All three agents must formally agree on a single, unified plan. A majority vote is not sufficient; consensus is required. The plan must explicitly state the values for the three key variables.",
+    "Variable 1: Launch Quarter": "A specific quarter for the global launch must be agreed upon (e.g., 'Q1 2025').",
+    "Variable 2: Final Budget Allocation": "The final allocation of the remaining $50 million project contingency fund must be decided. The sum of all changes (increases or decreases) must not exceed this amount.",
+    "Variable 3: Aetherion Pilot Status": "A definitive decision on the 'Aetherion Pilot' feature must be made: 1) Launch fully enabled, 2) Launch with limited capabilities, or 3) Remove from launch model."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total project contingency fund is $50 million. Any new budget allocations must be drawn from this fund.",
+      "The company has publicly messaged a 'late 2024' launch window to investors and the press.",
+      "The vehicle must be certified to pass all publicly available US (FMVSS) and EU (ECE) safety standards as of today."
+    ],
+    "hidden": [
+      "A key supplier cannot deliver essential battery packs until late January 2025.",
+      "The primary autonomous driving feature has a 90% failure rate in critical safety simulations.",
+      "A new, unannounced government safety regulation is imminent that the current design will likely fail."
+    ]
+  },
+  "deliverable": "A single JSON object representing the final, agreed-upon plan, with the following structure: { \"agreed_launch_quarter\": \"[e.g., Q2 2025]\", \"budget_allocation_changes\": { \"design_dept\": [value], \"production_dept\": [value], \"regulatory_dept\": [value] }, \"aetherion_pilot_status\": \"[e.g., Launch with limited capabilities]\" }",
+  "solvability_note": "This scenario is solvable if all private information is revealed. Knowing about the 3-month battery delay makes the Q4 2024 launch impossible, forcing a move to Q2 2025. This delay gives Elena's team the 4 months they need to fix the Aetherion Pilot. The combined knowledge of the testing failure and the impending battery regulation makes the business case for allocating David's $5M and part of Elena's $20M request ($15M for new sensors) clear and logical. A mutually agreeable solution would be a Q2 2025 launch, with a budget allocation of +$15M for Design, +$5M for Regulatory, and the remaining contingency used to offset production costs, and launching with a fully functional Aetherion Pilot."
+}

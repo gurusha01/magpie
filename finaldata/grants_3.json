@@ -1,0 +1,194 @@
+{
+  "scenario": "The 'AgriFuture' Grant Allocation Committee",
+  "task": "A panel of seven reviewers must decide how to allocate a total of $3,000,000 from a federal technology grant. The grant is aimed at funding 'Next-Generation AI for Sustainable Agriculture'. There are three finalist proposals: Project 'HarvestGuard' (A), Project 'TerraGrowth' (B), and Project 'FarmSense' (C). The committee must reach a consensus on the final funding allocation, which must be justified in a final report. The proposals cannot be funded below 50% of their requested amount to be considered viable.",
+  "agent_number": 7,
+  "agent_names": [
+    "Dr. Alistair Finch",
+    "Dr. Lena Petrova",
+    "Dr. Kenji Tanaka",
+    "Ms. Evelyn Reed",
+    "Mr. David Chen",
+    "Dr. Isabella Rossi",
+    "Dr. Samuel Jones"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Alistair Finch",
+      "role": "Committee Chair & Professor of Computer Science",
+      "description": "A distinguished and senior academic from a top-tier university. As chair, his primary goal is to oversee a smooth, respectable, and decisive review process. His reputation is built on leading efficient and effective academic committees.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Alistair strongly prefers a unanimous or near-unanimous decision. He believes a fractured vote reflects poorly on his leadership and the committee's competence. He will push for compromises that can get everyone to sign off on the final report without dissent.",
+          "utility_impact": "Utility is based on the final vote count. Unanimous vote: +2. One dissenting vote: +1. Two dissenting votes: 0. Three dissenting votes: -1. A completely deadlocked committee: -2."
+        },
+        "preference2": {
+          "description": "He values scientific rigor and a clear, well-defined research methodology above all else. He is skeptical of projects that seem overly commercial or lack a strong theoretical foundation. He will publicly champion the proposal that has the most citations, strongest preliminary data, and most experienced academic team.",
+          "utility_impact": "If the project he deems 'most rigorous' (initially Project B) gets the majority of funding (>50% of the total grant): +1. If it's rejected: -1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Alistair is the front-runner candidate for the Dean of the College of Engineering at his university. The university president explicitly told him that 'demonstrating strong, consensual leadership' on the high-profile AgriFuture committee would be a significant factor in the final decision. A messy, contentious, or delayed outcome could jeopardize this career-defining promotion.",
+          "reason": "Revealing this would make his attempts to force a consensus appear self-serving and egotistical rather than for the good of the committee, severely undermining his authority as chair.",
+          "utility_impact": "This private goal amplifies his desire for a smooth process. He is willing to sacrifice finding the 'perfect' project for one that everyone can simply agree on. If the meeting ends in a deadlock, he sees it as a personal failure with a -2 utility hit, regardless of the scientific outcome."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Assistant Professor of AI & Machine Learning",
+      "description": "A brilliant and ambitious young researcher known for her cutting-edge work in generative adversarial networks (GANs) and reinforcement learning. She is a purist who believes in funding foundational, high-risk/high-reward research.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Lena is a vocal advocate for Project C ('FarmSense'), which proposes a novel federated learning platform for analyzing disparate farm data. She is captivated by its theoretical elegance and potential to create a paradigm-shifting public dataset. She argues it represents the most significant leap in AI technology among the three proposals.",
+          "utility_impact": "If Project C gets fully funded ($2.2M): +2. If it gets partial funding (at least $1.1M): +1. If it gets no funding: -2."
+        },
+        "preference2": {
+          "description": "She is openly dismissive of what she calls 'incremental engineering'. She believes Project A ('HarvestGuard') is just an application of existing robotics and computer vision, and Project B ('TerraGrowth') uses standard genomic prediction models. She will argue against funding 'safe' projects.",
+          "utility_impact": "If either Project A or B is funded over Project C: -1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "The principal investigator of Project B ('TerraGrowth'), Dr. Marcus Thorne, is her former PhD advisor with whom she had a severe falling out. She accused him of taking credit for her dissertation work, and the dispute became a bitter, unresolved departmental scandal. She believes his research methods are outdated and that he is an intellectual fraud.",
+          "reason": "Airing this personal history would be seen as unprofessional, vindictive, and petty. It would call her own objectivity into question and could damage her reputation in the close-knit academic community.",
+          "utility_impact": "Her primary hidden goal is to ensure Project B is NOT funded, under any circumstances. If Project B gets any funding at all, she considers it a personal defeat and a validation of her rival, resulting in a utility of -2. This is more important to her than getting Project C funded."
+        }
+      }
+    },
+    {
+      "name": "Dr. Kenji Tanaka",
+      "role": "Expert in Agricultural Robotics",
+      "description": "A practical, hardware-focused engineer whose work is in developing autonomous systems for farming. He has a 'boots on the ground' perspective and favors tangible, field-tested solutions over purely theoretical ones.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Kenji is the strongest supporter of Project A ('HarvestGuard'), a proposal to develop a fleet of autonomous drones and rovers for early pest detection and targeted spraying. He argues that this is the only proposal that offers a concrete, physical solution to a real-world problem, promising immediate and measurable reductions in pesticide use.",
+          "utility_impact": "If Project A is fully funded ($2.8M): +2. If it receives partial funding (at least $1.4M): +1. If it is not funded: -2."
+        },
+        "preference2": {
+          "description": "He is skeptical of data-heavy, software-only solutions like Project C, questioning their real-world applicability without dedicated hardware. He often says, 'You can't code your way out of a drought.'",
+          "utility_impact": "If the final allocation heavily favors software (e.g., Project C gets >60% of the budget): -1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Dr. Tanaka holds a key patent on a specific type of hyperspectral imaging sensor that is explicitly named as a core component in the Project A proposal. The project's budget allocates $300,000 for licensing and purchasing these sensors. His university's IP policy grants him a 40% share of all licensing revenue. Funding Project A would result in a direct, personal payment of approximately $120,000 over the life of the grant. He has not formally disclosed the exact financial stake, only that his university holds 'some related IP'.",
+          "reason": "Revealing the exact six-figure personal windfall would be a major conflict of interest, far beyond a typical academic IP link. It would look like he is using his position on the committee to enrich himself. Penalty for revealing exact amount: -2. Penalty for admitting a 'significant' financial stake: -1.",
+          "utility_impact": "This financial incentive makes him an almost immovable advocate for Project A. The personal payout is life-changing, and the thought of losing it makes him extremely resistant to compromise."
+        }
+      }
+    },
+    {
+      "name": "Ms. Evelyn Reed",
+      "role": "Venture Capitalist, Partner at 'Innovate Capital'",
+      "description": "A sharp, business-minded investor who sits on the board to provide a commercial perspective. Her sole focus is on the potential for market disruption, scalability, and return on investment. She sees the grant as seed funding for future billion-dollar companies.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Evelyn strongly believes that government funding should prioritize projects with a clear path to commercialization. She champions Project C ('FarmSense') because its platform-based model is highly scalable and has the potential to become the 'operating system' for digital agriculture, a huge market opportunity.",
+          "utility_impact": "If Project C is funded with at least $1.5M: +2. If it gets any funding ($1.1M-$1.49M): +1. If it is not funded: -2."
+        },
+        "preference2": {
+          "description": "She is critical of Project A's reliance on expensive, custom hardware, which she sees as a barrier to scaling. She is also wary of Project B's long research timeline, arguing that 'the market won't wait for five years of genomic sequencing.'",
+          "utility_impact": "If the final decision is to fully fund the 'unscalable' Project A: -1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "Her firm, Innovate Capital, is the lead investor in a stealth-mode startup co-founded by the principal investigator of Project C. They have a $500,000 convertible note in the company. If Project C secures this federal grant, it triggers a valuation clause that quintuples the value of their investment overnight, turning their $500k into $2.5M on paper. She is bound by a strict NDA and disclosing this would be a severe breach of fiduciary duty and securities regulations.",
+          "reason": "This is a massive, undisclosed financial conflict of interest. Revealing it would get her fired, potentially disbarred from financial services, and would trigger an investigation into the grant process. Penalty for revealing her firm's investment: -2.",
+          "utility_impact": "Her advocacy for Project C is not just a preference; it's a critical part of her job's performance and her firm's portfolio success. She has a powerful incentive to mislead the committee about her motivations and to ensure Project C gets funded, no matter what."
+        }
+      }
+    },
+    {
+      "name": "Mr. David Chen",
+      "role": "Director of R&D, AgriCorp",
+      "description": "A corporate executive from AgriCorp, one of the world's largest agricultural technology companies. He is on the committee to represent industry interests and ensure that funded research aligns with real-world agricultural needs and can be integrated into existing supply chains.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "David argues that Project B ('TerraGrowth'), which focuses on AI-driven crop gene selection for drought resistance, has the most significant potential for widespread, global impact. He emphasizes the practical need for better crop varieties and AgriCorp's long-standing interest in genomics.",
+          "utility_impact": "If Project B gets funded with at least $1.5M: +2. If it gets any funding ($1.25M-$1.49M): +1. If it is not funded: -2."
+        },
+        "preference2": {
+          "description": "He expresses concern that Project C's open-data platform could be a threat to corporate IP and data security. He will raise objections about data governance and control, framing it as a practical business concern.",
+          "utility_impact": "If Project C is funded with more than 50% of the total grant: -1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "AgriCorp has a secret, pre-existing research agreement with the university team behind Project B. More importantly, David's performance review is this quarter, and he just received an email from his VP of Global Strategy which reads: 'David, securing the AgriFuture grant for the TerraGrowth team is a Q4 strategic objective. Your performance bonus of $75,000 is contingent on them receiving at least $1.5M in funding. Make it happen.' He cannot share this email or the explicit bonus tie-in.",
+          "reason": "Revealing this would be a blatant admission of a conflict of interest and an attempt to manipulate a federal grant process for personal and corporate gain. It would cause a massive scandal for AgriCorp and result in his immediate termination and potential legal action. Penalty for revealing the bonus: -2. Penalty for revealing the secret partnership: -1.",
+          "utility_impact": "David is under immense pressure. He must secure at least $1.5M for Project B. This is not a preference; it's a non-negotiable personal and professional requirement. He will be extremely aggressive in his support of B and obstruction of others."
+        }
+      }
+    },
+    {
+      "name": "Dr. Isabella Rossi",
+      "role": "Professor of Science, Technology, and Society",
+      "description": "An ethicist and policy expert. Her role is to evaluate the broader societal, ethical, and environmental implications of the proposed research. She is the committee's conscience.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Isabella is most concerned with equity and accessibility. She favors projects that benefit small-scale farmers, not just large corporations. She will publicly advocate for solutions that are open-source, affordable, and do not lock farmers into proprietary systems. Initially, this makes her lean towards Project A or C.",
+          "utility_impact": "If the chosen project has a strong, explicit open-source or public-good component: +2. If it's a closed, proprietary system: -2."
+        },
+        "preference2": {
+          "description": "She is deeply concerned about the environmental impact. She is a strong supporter of Project A ('HarvestGuard') because its promise of reducing pesticide use by up to 90% through targeted application is a massive, verifiable environmental win.",
+          "utility_impact": "If Project A gets at least 50% of its requested funding: +1."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "A former graduate student, now working at a tech startup, confidentially told her that the data collection model for Project C ('FarmSense') is extremely invasive. The project's proposal is vague, but her source claims it involves scraping sensitive data from farm equipment logs and soil sensors without explicit, ongoing farmer consent, creating a massive privacy risk. The source made her promise not to reveal their identity for fear of being fired and blacklisted.",
+          "reason": "She cannot reveal her source without betraying a confidence and destroying that person's career. Making unsubstantiated accusations against a major proposal without proof could also expose her and the committee to a lawsuit for defamation.",
+          "utility_impact": "She has a strong, hidden imperative to block Project C. She cannot explain the true reason why. She will have to resort to vague arguments about 'potential data governance issues' or 'unclear privacy safeguards,' which may sound weak to others. If Project C is funded, she feels she has failed in her duty as an ethicist, resulting in a -2 utility."
+        }
+      }
+    },
+    {
+      "name": "Dr. Samuel Jones",
+      "role": "Program Director, National Science Foundation",
+      "description": "A career government administrator and the funding agency's representative on the committee. His job is to ensure the process is fair and the outcome aligns with the agency's strategic goals. He is risk-averse and politically savvy.",
+      "shareable_preferences": {
+        "preference1": {
+          "description": "Samuel wants a 'safe' choice that is easy to defend to Congress and the public. He prefers projects with clear deliverables, measurable outcomes, and minimal risk of failure or controversy. This makes him favor the tangible hardware of Project A or the well-established research area of Project B over the more abstract and novel approach of Project C.",
+          "utility_impact": "If a project with a high risk of failure (in his view, Project C) is fully funded: -1. If a safe, tangible project (A or B) is fully funded: +1."
+        },
+        "preference2": {
+          "description": "He is very concerned about the budget. He will argue strongly for funding a single project fully rather than splitting the funds, as administering multiple, smaller grants is less efficient and often leads to projects failing to meet their full potential. He wants to 'make one big splash, not two small ripples.'",
+          "utility_impact": "If the budget is split between two projects: -1. If one project receives at least $2.2M: +2."
+        }
+      },
+      "private_preferences": {
+        "private_info1": {
+          "value": "The head of the NSF received a call from the influential Senator of a major agricultural state, who is currently holding up the agency's budget confirmation. The Senator's message, passed down to Samuel, was that it would be 'highly favorable' for the agency if a significant grant was awarded to a project benefiting her state's 'Land Grant' universities. Project A is the only proposal that is a partnership with two major universities in that specific state. The instruction from his boss was 'Don't mess this up, Sam. We need that budget approved.'",
+          "reason": "Revealing this direct political pressure would destroy the integrity of the peer-review process, cause a political firestorm, and likely end his career as a government administrator. Penalty for even hinting at political influence: -2.",
+          "utility_impact": "Samuel has a hidden, overriding mandate to ensure Project A gets funded, preferably fully. This political imperative is far more important than any scientific merit, and it puts him in direct alignment with Kenji Tanaka, but for entirely different reasons."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "criterion1": "The committee must produce a final allocation plan that distributes the entire $3,000,000 budget among the three projects.",
+    "criterion2": "The allocation must be agreed upon by a majority of the committee members (at least 4 out of 7). A formal vote will be taken.",
+    "criterion3": "The final decision must be accompanied by a 1-page written justification, which must be signed by all consenting members of the committee."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total available budget: $3,000,000.",
+      "Project A ('HarvestGuard') Requested Budget: $2,800,000.",
+      "Project B ('TerraGrowth') Requested Budget: $2,500,000.",
+      "Project C ('FarmSense') Requested Budget: $2,200,000.",
+      "Funding Viability Rule: Any funded project must receive at least 50% of its originally requested budget. Funding below this level is not permitted.",
+      "A decision must be finalized by the end of the day."
+    ],
+    "hidden": [
+      "David Chen must secure at least $1.5M for Project B to receive his $75,000 bonus.",
+      "Evelyn Reed's firm's investment in Project C's startup will quintuple in value if the project is funded.",
+      "Dr. Samuel Jones is under political pressure to fund Project A to help his agency's budget get approved.",
+      "Dr. Isabella Rossi cannot fund Project C due to confidential information about severe privacy violations.",
+      "Dr. Lena Petrova will not accept any outcome that funds her academic rival's Project B."
+    ]
+  },
+  "deliverable": "A JSON object detailing the final allocation of the $3,000,000 budget. Example: {\"Project A\": 2800000, \"Project B\": 0, \"Project C\": 0}. The sum of the values must equal 3,000,000.",
+  "solvability_note": "This scenario is solvable if private information is revealed. For instance, if David's and Evelyn's direct financial conflicts of interest in Projects B and C were exposed, those proposals would likely be disqualified by the committee chair and the NSF representative. This would immediately invalidate the primary goals of David, Evelyn, and Lena (whose rival runs Project B). With B and C eliminated, Project A becomes the only remaining option. The committee could then easily agree to fund Project A, satisfying Kenji's (less severe) financial interest and Samuel's hidden political mandate. This would lead to a logical, unanimous decision to allocate $2,800,000 to Project A and return the remaining $200,000 to the NSF."
+}

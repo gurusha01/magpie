@@ -1,0 +1,157 @@
+{
+  "scenario": "Cedar Creek Watershed Restoration Project",
+  "task": "A state-level environmental grant of $5 million has been approved for the rehabilitation of the Cedar Creek watershed, which is suffering from severe nitrate pollution. This pollution threatens the drinking water of downstream communities and the ecology of a protected wetland. Three key stakeholders must negotiate and unanimously agree on a single, comprehensive 3-year action plan that allocates the entire $5 million budget. The plan must detail specific interventions (e.g., infrastructure upgrades, land restoration, water treatment), assign financial responsibilities, and set a clear timeline for implementation.",
+  "agent_number": 3,
+  "agent_names": [
+    "Ben Carter",
+    "Dr. Lena Hanson",
+    "Marcus Thorne"
+  ],
+  "agents": [
+    {
+      "name": "Ben Carter",
+      "role": "President, Cedar Valley Farmers' Cooperative",
+      "description": "Ben is a third-generation farmer and a respected leader in the agricultural community. He represents over 50 family-owned farms in the Cedar Creek watershed. His primary goal is to ensure the economic viability of these farms while navigating increasing environmental regulations. He is pragmatic and fiercely protective of his members' livelihoods.",
+      "shareable_preferences": {
+        "Subsidized Irrigation Modernization": {
+          "description": "Ben wants to secure at least $2.5 million of the grant to subsidize a cooperative-wide switch to high-efficiency drip irrigation systems. He argues this will reduce water usage by 40% and significantly decrease fertilizer runoff. He believes this is a proactive, long-term solution that empowers farmers rather than punishing them. An allocation of $2.5M or more would be ideal; anything less than $1.5M would be insufficient to get the majority of farmers on board and would be considered a failure.",
+          "utility_function": {
+            "Allocation >= $2.5M": "+2",
+            "Allocation between $1.5M and $2.49M": "+1",
+            "Allocation < $1.5M": "-2"
+          }
+        },
+        "Voluntary-Only Buffer Zone Program": {
+          "description": "Ben is strongly opposed to any mandatory requirement for farms to convert productive riverside land into non-revenue-generating riparian buffer zones. He is willing to support a voluntary program where farmers are paid a fair market rate for any land they choose to convert, funded from the grant. He suggests a budget of no more than $500,000 for this, arguing that irrigation modernization is a more effective use of funds.",
+          "utility_function": {
+            "Program is purely voluntary with compensation": "+1",
+            "Program is mandatory": "-2"
+          }
+        },
+        "No Fertilizer-Specific Regulations": {
+          "description": "Ben will resist any part of the plan that names or bans specific types of fertilizers. He argues that this would constitute government overreach and unfairly target farmers for using legal, approved products. He maintains that the issue is application and runoff, which his irrigation proposal directly addresses.",
+          "utility_function": {
+            "No fertilizer-specific regulations included": "+2",
+            "Regulations on specific fertilizers are included": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Pollution Source": {
+          "value": "The Cooperative recently completed an internal soil and water study which they have not shared. The confidential report, currently on Ben's laptop, definitively concludes that over 40% of the watershed's total nitrate pollution comes directly from a new, cheap, and highly effective fertilizer called 'Nitro-Boost 3000' that 90% of his members recently adopted. Admitting this would expose the cooperative to massive EPA fines, public condemnation, and likely a class-action lawsuit from the water utility. Sharing the report's existence would be a disaster. Last week, Ben received a congratulatory email from the co-op board: 'Ben, fantastic work securing that bulk purchase of Nitro-Boost 3000! You've saved our members over $500,000 this season alone. A true win for the co-op!'",
+          "reason": "Revealing this information would lead to severe legal and financial repercussions for the cooperative and damage Ben's reputation as a leader.",
+          "penalty_if_revealed": {
+            "Mentioning 'a specific fertilizer might be more problematic than others'": "-1",
+            "Admitting the co-op conducted a private study on fertilizer runoff": "-3",
+            "Revealing the name 'Nitro-Boost 3000' or its specific contribution percentage": "-5"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Hanson",
+      "role": "Lead Scientist, State Environmental Protection Division (EPD)",
+      "description": "Dr. Hanson is a dedicated environmental scientist with a Ph.D. in hydrology. She has spent years studying the Cedar Creek ecosystem and is driven by data and a mandate to restore the watershed's ecological health. She is viewed as a strict regulator by some, but her primary motivation is preventing an ecological collapse.",
+      "shareable_preferences": {
+        "Mandatory Riparian Buffer Zones": {
+          "description": "Lena's models show that the single most effective method for immediate nitrate filtration is the restoration of natural riparian buffers. She is pushing for at least 150 acres of mandatory, 50-foot-wide buffer zones along the creek's path through agricultural lands. She wants to allocate $1.5 million from the grant to acquire land rights and fund the restoration work.",
+          "utility_function": {
+            "At least 150 acres of mandatory buffers are established": "+2",
+            "Between 75 and 149 acres of buffers are established": "+1",
+            "Less than 75 acres of buffers are established or the program is voluntary": "-2"
+          }
+        },
+        "Polluter Pays Principle": {
+          "description": "Lena firmly believes that the agricultural sector, as the primary source of the pollution, should contribute financially to the solution. She proposes that the grant cover 75% of the costs for any on-farm upgrades, with the Farmers' Cooperative covering the remaining 25% through a low-interest loan program or direct investment.",
+          "utility_function": {
+            "Farmers contribute at least 25% of their upgrade costs": "+2",
+            "Farmers contribute between 10-24%": "+1",
+            "Farmers contribute less than 10% (i.e., full subsidy)": "-1"
+          }
+        },
+        "Comprehensive Water Quality Monitoring": {
+          "description": "She insists that $500,000 of the grant must be set aside for a robust, 3-year water quality monitoring program with real-time sensors to track nitrate levels at multiple points in the watershed. This is non-negotiable for her, as it's the only way to verify the plan's effectiveness.",
+          "utility_function": {
+            "A $500k monitoring program is fully funded": "+2",
+            "The monitoring budget is cut below $300k": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Political Pressure and Program Viability": {
+          "value": "Lena's entire Watershed Program at the EPD is on the verge of being defunded due to state budget cuts and political opposition claiming her department is ineffective. Her supervisor told her in a private meeting last week, 'Lena, if you don't come back with a signed, unanimous agreement for the Cedar Creek project, the entire program is gone. No more second chances.' This makes her desperate for any agreement, even if it means compromising significantly on her publicly stated 'non-negotiable' positions, like the mandatory nature of the buffer zones. She can't reveal this desperation as it would completely undermine her negotiating authority.",
+          "reason": "Revealing her department's political vulnerability would severely weaken her bargaining position, inviting the other parties to ignore her scientific recommendations.",
+          "penalty_if_revealed": {
+            "Hinting at 'political difficulties' or 'budgetary challenges' at the EPD": "-2",
+            "Explicitly stating her program is at risk of being defunded": "-4"
+          }
+        },
+        "Unconfirmed Industrial Pollution Data": {
+          "value": "Lena has preliminary, unconfirmed satellite spectrometry data that suggests a significant, localized chemical leak near an old, defunct paper mill upstream from the farms. The signature is not a perfect match for nitrates but could be an ammonia compound that converts to nitrates. Confirming this would require a $250,000 ground-truthing and drilling study. She is hesitant to allocate funds to this 'hunch' when the agricultural runoff is a proven problem, and a wrong bet could doom the project and her career. However, if true, it could be another major pollution source.",
+          "reason": "Publicizing unverified data could cause a panic, trigger legal action against the wrong party, and make her and the EPD look incompetent if the lead turns out to be false.",
+          "penalty_if_revealed": {
+            "Mentioning a 'potential non-agricultural source' without specifics": "-1",
+            "Revealing the existence of the satellite data and the specific location": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Director of Operations, Clearwater Municipal Utilities",
+      "description": "Marcus is a bottom-line-oriented engineer and manager responsible for providing safe, affordable drinking water to over 100,000 residents in downstream communities. The rising nitrate levels are a direct threat to his operations and budget, forcing him to consider extremely expensive new treatment facilities. He is focused on finding the most cost-effective solution that guarantees water safety.",
+      "shareable_preferences": {
+        "Avoidance of Capital-Intensive Treatment Plant": {
+          "description": "Clearwater Utilities has a quote for a new denitrification plant that will cost $4 million to build, plus $200,000 in annual operating costs, which would have to be passed on to customers via a 15% rate hike. Marcus's primary goal is for the grant-funded plan to reduce nitrate levels at the source enough to make this plant unnecessary. He wants the plan to prioritize immediate, source-level interventions over anything else.",
+          "utility_function": {
+            "Plan is projected to reduce nitrates below the federal limit, making the plant unnecessary": "+2",
+            "Plan only partially reduces nitrates, still requiring the plant": "-2"
+          }
+        },
+        "Upstream Pays': Financial Contribution": {
+          "description": "Marcus argues that since the pollution originates upstream, the financial burden should not fall on his downstream customers. He wants a significant portion of the grant, at least $2 million, to be spent directly on the agricultural lands to stop the problem at its source. He is unwilling to contribute any of Clearwater's funds to the project.",
+          "utility_function": {
+            "At least $2M is spent on source-reduction in the agricultural zone": "+1",
+            "Clearwater Utilities is asked to co-fund any part of the solution": "-2"
+          }
+        },
+        "Guaranteed Stable Water Flow": {
+          "description": "Marcus needs assurance that the proposed solutions will not negatively impact the volume of water flowing down Cedar Creek, particularly during the dry summer months. Large-scale water retention projects, like creating extensive wetlands, would be a major concern for him as they could reduce the inflow to his utility's reservoirs.",
+          "utility_function": {
+            "Plan maintains or improves summer water flow rates": "+1",
+            "Plan includes large-scale water retention that reduces summer flow rates by more than 10%": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Secret Water Sales Agreement": {
+          "value": "Clearwater Utilities has a confidential, highly profitable contract to sell surplus raw water to the 'Silicon Mesa' industrial park in the next county. This deal generated $1.2 million in pure profit for the utility last year, which is used to fund executive bonuses and capital projects without public oversight. This agreement is legally questionable, as Clearwater's water rights are for municipal use, and his own customers are under strict conservation orders. Any watershed plan that significantly reduces surplus water flow (especially during summer, when the industrial park's demand is highest) would jeopardize this secret revenue stream. The CEO of Clearwater sent him a text yesterday: 'Marcus, just saw the Q2 numbers on the Silicon Mesa deal. Stellar. Keep that water flowing, my bonus depends on it.'",
+          "reason": "Revelation of this deal would cause a massive public scandal, likely result in his termination, trigger state-level investigations, and expose the utility to lawsuits.",
+          "penalty_if_revealed": {
+            "Hinting that 'certain industrial contracts depend on water flow'": "-2",
+            "Revealing the existence of a water-selling agreement and its financial value": "-5"
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All three agents must sign the final Memorandum of Understanding (MOU). A simple majority is not sufficient.",
+    "Comprehensive Budget": "The MOU must explicitly allocate the full $5 million grant across specific, defined project activities.",
+    "Technical Feasibility": "The agreed-upon plan must be technically capable of reducing nitrate concentrations in the creek to below the EPA's safe drinking water limit of 10 ppm within the 3-year project timeline."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total project budget cannot exceed $5,000,000.",
+      "The project timeline must not exceed 3 years.",
+      "The final plan must be compliant with all existing state and federal environmental laws (excluding any new regulations proposed within the plan itself)."
+    ],
+    "hidden": [
+      "The primary source of nitrate pollution (over 40%) is the 'Nitro-Boost 3000' fertilizer used by the farmers.",
+      "Clearwater Utilities' financial health is secretly dependent on maintaining high water flow to service a lucrative, non-municipal water contract.",
+      "The EPD's Watershed Program will be shut down if Dr. Hanson fails to secure an agreement, making her more desperate for a deal than she appears."
+    ]
+  },
+  "deliverable": "A single, signed Memorandum of Understanding (MOU) document that details the agreed-upon action plan, including a line-item budget allocating the $5 million, a list of project activities with assigned responsibilities for each party, and a 3-year implementation timeline with key milestones.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Knowing the exact fertilizer (Nitro-Boost 3000) is the main problem allows for a targeted solution, such as using grant money to subsidize a switch to a safer, albeit more expensive, alternative. Knowing about the potential industrial pollution source allows the agents to allocate $250k to investigate it, potentially bringing a fourth party to the table to share costs. Knowing about Marcus's need for high water flow allows the group to discard solutions like retention ponds and focus on water-efficient methods like drip irrigation, which aligns with Ben's goals. Finally, knowing Lena's desperation would allow the others to push for a compromise she would accept to save her program, breaking a potential deadlock."
+}

@@ -1,0 +1,135 @@
+{
+  "scenario": "The Starlight Foundation's annual gala features a high-stakes auction for the sole, original handwritten manuscript of 'The Crimson Hourglass,' the final, unpublished novel by the recently deceased and beloved author, Evelyn Reed. The auction takes an unconventional turn: instead of a simple highest-bid-wins, the top three bidders, whose final silent bids were extremely close, are brought into a private negotiation room. They must collectively decide who takes ownership of the manuscript and how their combined final donation will be structured. The foundation's goal is to maximize the total donation while ensuring a positive public narrative.",
+  "task": "The three agents must negotiate and produce a single, signed agreement that definitively outlines: 1. The sole new owner of the Evelyn Reed manuscript. 2. The total final donation amount to the Starlight Foundation. 3. The specific monetary contribution of each of the three agents towards that total donation. The negotiation takes place over a 60-minute period in a private suite at the gala.",
+  "agent_number": 3,
+  "agent_names": [
+    "Eleanor Vance",
+    "Marcus Thorne",
+    "Julian Croft"
+  ],
+  "agents": [
+    {
+      "name": "Eleanor Vance",
+      "role": "Esteemed Philanthropist",
+      "description": "Eleanor is an elderly, highly respected public figure known for her generous contributions to the arts and education. She was a very close and lifelong friend of the late author, Evelyn Reed, and is the executor of her literary estate. Her public persona is one of selfless dedication to cultural preservation.",
+      "shareable_preferences": {
+        "Acquire Manuscript for Public Archive": {
+          "description": "My primary goal is to acquire this manuscript to donate it to the permanent collection at Northwood University, where Evelyn taught for over thirty years. It is a piece of literary history that belongs to the world, accessible to scholars, students, and the public for generations to come. Anything less would be a betrayal of her legacy. I am willing to contribute significantly to make this happen.",
+          "utility_function": {
+            "Manuscript goes to University Archive": 2,
+            "Manuscript goes to a private collection but with guaranteed public access": 0,
+            "Manuscript is used for commercial purposes or remains in a private collection": -2
+          }
+        },
+        "Collaborative and Dignified Outcome": {
+          "description": "The press is watching. This negotiation should be a testament to our shared love for Evelyn's work and our commitment to charity. I want the final announcement to highlight a collaborative effort, where we all came together to support the Starlight Foundation. A public squabble over a piece of history would be terribly undignified.",
+          "utility_function": {
+            "Outcome is framed as a joint philanthropic effort": 1,
+            "Outcome is framed neutrally": 0,
+            "Outcome is framed as a corporate PR win for another party": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "Personal Connection to Manuscript": {
+          "value": "The manuscript contains several thinly veiled, deeply personal passages and poems about my own life and our shared friendship. It's our final conversation. I desperately want the opportunity to read it one last time in private before it becomes a public artifact. I might even wish to have the university archivists redact a single, two-line poem that is intensely personal. I cannot share this; it would make my 'selfless' quest seem entirely selfish and vain, tarnishing both my reputation and the dignity of the donation.",
+          "leak_penalty": -2,
+          "reason": "Revealing this would undermine her public image as a selfless philanthropist and expose a deeply private aspect of her friendship with the deceased author."
+        },
+        "Significant Tax Incentive": {
+          "value": "My accountant sent me a detailed memo last week. Due to other capital gains this year, any charitable donation I make above $750,000 will be subject to a 40% tax deduction. This means that for every dollar I spend over $750k, I effectively get 40 cents back. My absolute, hard ceiling for this auction is $1,200,000, which I can pay from my foundation's liquid funds. To go higher would require liquidating assets, which I am not prepared to do. Sharing this financial detail would make my philanthropic gesture appear as a calculated, self-serving tax strategy.",
+          "leak_penalty": -1,
+          "reason": "Discussing personal tax strategies in a charitable setting is considered crass and would damage her reputation for pure altruism."
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "VP of Marketing, LuxaVerse Inc.",
+      "description": "Marcus is a sharp, ambitious executive from LuxaVerse, a burgeoning tech company building a hyper-realistic metaverse platform. He is under immense pressure to generate mainstream buzz and establish LuxaVerse as a culturally relevant brand, not just a gaming company.",
+      "shareable_preferences": {
+        "Acquire Manuscript for Digital Experience": {
+          "description": "LuxaVerse plans to acquire the manuscript to make it the crown jewel of our new 'Cultural Heritage' wing. We will create a stunning, interactive virtual museum around it, allowing millions of people globally to experience Evelyn Reed's genius up close. We see this as democratizing art and literature for the next generation. Our company is prepared to make a landmark donation to be the sole entity making this happen.",
+          "utility_function": {
+            "LuxaVerse acquires sole ownership of the manuscript": 2,
+            "LuxaVerse acquires shared/digital rights only": 1,
+            "LuxaVerse fails to acquire any rights to the manuscript": -2
+          }
+        },
+        "Maximize Brand Exposure": {
+          "description": "This is a cornerstone of our Q4 marketing strategy. It is essential that LuxaVerse is credited as the primary or sole benefactor in all press releases from the Starlight Foundation. We need the brand recognition that comes with a donation of this magnitude. A 'joint effort' story dilutes our marketing impact significantly.",
+          "utility_function": {
+            "LuxaVerse receives sole, prominent credit": 2,
+            "LuxaVerse receives shared credit": 0,
+            "LuxaVerse is not mentioned or is a minor partner": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "Strict Budget and Personal Bonus": {
+          "value": "My total approved budget for this acquisition, all-in, is $1,500,000. I cannot exceed this without board approval, which is not an option. Furthermore, I have a congratulatory email from my CEO that reads: 'Marcus, get this done. If you secure the manuscript and sole naming rights for our company's donation at a final price under $1.3M, there's a $100k personal bonus waiting for you. Don't mess this up.' Revealing this bonus structure would make me look personally greedy and unprofessional, and revealing my budget ceiling would cripple my negotiating power.",
+          "leak_penalty": -2,
+          "reason": "Sharing internal budget constraints and personal financial incentives is highly unprofessional and would severely weaken his negotiation position and corporate image."
+        },
+        "Controversial Commercialization Plan": {
+          "value": "The 'virtual museum' is just phase one. Our internal project brief, codenamed 'Project Phoenix,' outlines a plan to use our proprietary AI to analyze Evelyn Reed's handwriting and linguistic patterns. The goal is to generate 'newly discovered' short stories and poems 'in the style of' the author, offered as premium, exclusive content within the LuxaVerse. Literary purists would see this as a grotesque desecration of her legacy. If this plan were to leak, the PR backlash would be catastrophic and kill the entire project.",
+          "leak_penalty": -2,
+          "reason": "The plan is ethically dubious and would cause a massive public relations scandal, portraying the company as a soulless vulture capitalizing on a dead artist's legacy."
+        }
+      }
+    },
+    {
+      "name": "Julian Croft",
+      "role": "Private Art Dealer",
+      "description": "Julian is a quiet, unassuming man in his late 30s who runs a small, specialist bookstore. He appears out of his depth compared to the other two. He claims to be representing an anonymous, high-net-worth client who is a passionate and private collector of literary artifacts.",
+      "shareable_preferences": {
+        "Acquire Manuscript for a Private Collector": {
+          "description": "My client is a lifelong admirer of Evelyn Reed's work. They believe such a unique item should be preserved in a private, climate-controlled environment, away from the risks of public display. Their only wish is to be the quiet custodian of this piece of history. They have authorized me to bid a substantial sum to ensure its safety.",
+          "utility_function": {
+            "The 'client' acquires the manuscript": 2,
+            "The manuscript goes to a public archive": -1,
+            "The manuscript is acquired for commercial use": -2
+          }
+        },
+        "Absolute Anonymity": {
+          "description": "It is a non-negotiable condition from my client that their identity remains completely confidential. The donation and acquisition must be handled through a designated trust. They are not interested in public recognition of any kind; their motivation is purely a love for the work.",
+          "utility_function": {
+            "The 'client's' anonymity is fully preserved": 1,
+            "The 'client's' identity is revealed": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "True Identity and Motivation": {
+          "value": "I am the client. I am Evelyn Reed's biological son. I was given up for a closed adoption at birth and she and I never met. I only discovered my parentage after her death through a private investigator. This manuscript is not an investment or a collector's item for me; it is the only physical connection I will ever have to the mother I never knew. I have sold my business and am using my life's savings for this. The thought of her words being turned into a corporate marketing tool or a sterile museum piece is unbearable. If my identity is revealed, it will create a media circus, dragging my mother's memory and my private life through the mud. I want to grieve and connect with her on my own terms.",
+          "leak_penalty": -2,
+          "reason": "The revelation would cause an intrusive and painful media frenzy, violating his privacy and potentially tarnishing the public memory of his famous mother."
+        },
+        "Absolute Financial Limit": {
+          "value": "My final silent bid was $1.1 million. This is, quite literally, every cent I have. I have no more money. I cannot contribute a single dollar more. My entire negotiation strategy relies on appealing to the others' better nature or finding a creative solution, because I cannot win a bidding war. Revealing my financial desperation would eliminate any leverage I might have.",
+          "leak_penalty": -1,
+          "reason": "Admitting his financial limit would remove him as a credible threat in the negotiation, leaving him with no leverage."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Agreement Reached": "All three agents must sign a final agreement document within the 60-minute time limit.",
+    "Clear Ownership": "The agreement must unambiguously name one of the three parties (or their represented entity) as the new legal owner of the manuscript.",
+    "Fulfilled Donation": "The agreement must specify a total donation amount and the exact contribution from each agent, with the total being equal to or greater than the highest initial bid of $1,150,000."
+  },
+  "constraints": {
+    "verifiable": [
+      "There is only one physical manuscript. It cannot be divided.",
+      "The total donation must be at least $1,150,000.",
+      "The negotiation must conclude within 60 minutes."
+    ],
+    "hidden": [
+      "Eleanor Vance's absolute budget is $1,200,000.",
+      "Marcus Thorne's absolute budget is $1,500,000.",
+      "Julian Croft's absolute budget is $1,100,000."
+    ]
+  },
+  "deliverable": "A JSON object representing the final signed agreement, structured as: { 'owner': 'Agent_Name_or_Entity', 'total_donation': 1250000, 'contributions': { 'Eleanor Vance': 500000, 'Marcus Thorne': 600000, 'Julian Croft': 150000 } }",
+  "solvability_note": "This scenario is solvable if private information is revealed. The conflicting desires for ownership can be resolved through creative, non-monetary concessions. For example, Marcus (LuxaVerse) has the most money and wants PR. He could 'win' the auction by contributing the most, but grant physical custody of the manuscript to Eleanor for her university archive in exchange for exclusive digital scanning and exhibition rights. Julian, unable to afford the manuscript, could be offered private, supervised viewing sessions before it's transferred to the university, in exchange for his contribution to the donation pool. This allows Marcus his PR win and digital content, Eleanor to fulfill her promise to the university, and Julian to have the personal connection he craves, all while maximizing the total donation."
+}

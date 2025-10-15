@@ -1,0 +1,107 @@
+{
+  "scenario": "High-Stakes IPO Share Allocation for InnovateAI",
+  "task": "Three key stakeholders must negotiate and agree on the final terms for the Initial Public Offering (IPO) of a promising yet volatile tech company, InnovateAI. The negotiation involves setting the final price per share, determining the allocation percentages for different investor classes, and finalizing post-IPO trading restrictions. Each agent possesses critical, confidential information that, if revealed, could drastically alter the negotiation dynamics but would come at a great personal or professional cost.",
+  "agent_number": 3,
+  "agent_names": [
+    "David Chen",
+    "Sarah Jenkins",
+    "Michael Rodriguez"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Lead Underwriter, Goldman Stanley",
+      "description": "David is a seasoned investment banker responsible for managing the InnovateAI IPO. His primary goals are to maximize the capital raised for InnovateAI, earn a substantial commission for his bank, and ensure the stock trades stably after the IPO to maintain his firm's prestigious reputation. He is the central coordinator of the deal.",
+      "shareable_preferences": {
+        "Final IPO Price": {
+          "description": "David aims to price the IPO at the highest end of the marketing range, between $22 and $25 per share. A higher price not only means more capital for the client, InnovateAI, but also a larger underwriting fee for his bank, which is calculated as 7% of the total deal size. He will argue that robust initial interest justifies a premium valuation.",
+          "utility_impact": "Utility: +2 for price >= $24, +1 for price between $22 and $23.99, 0 for $20-$21.99, -1 for $18-$19.99, -2 for price < $18. A low price is seen as leaving money on the table and reflects poorly on his ability to market a company."
+        },
+        "Greenshoe Option": {
+          "description": "He insists on a full 15% 'greenshoe' or over-allotment option. This allows the underwriting syndicate to sell an additional 1.5 million shares (15% of the 10 million share offering) if demand is high. More importantly, it gives him the ability to buy back shares in the open market to support the price if it starts to fall, ensuring stability.",
+          "utility_impact": "Utility: +2 for a 15% option, 0 for a 10-14% option, -2 for an option below 10%. A smaller option limits his ability to manage post-IPO volatility, which is a major reputational risk."
+        }
+      },
+      "private_preferences": {
+        "Hidden Demand Quality": {
+          "value": "While he can publicly state that the IPO is '15 times oversubscribed,' his internal book-building data shows a worrying trend. Approximately 60% of the total demand comes from speculative hedge funds known for 'flipping' \u2014 buying IPO shares and selling them on the first day for a quick profit. The solid, long-term institutional demand, the kind that creates a stable stock, only supports a price up to $21 per share. Penalty: A penalty of -2 is applied if he reveals the exact 60% figure for flippers, as it would cause panic and force a major price cut. A penalty of -1 is applied if he admits demand quality is 'mixed' or 'less than ideal'.",
+          "reason": "Revealing the poor quality of the order book would severely undermine his negotiation for a high price, damage market confidence in the IPO, and harm his reputation as a top-tier underwriter who attracts 'smart money'.",
+          "utility_impact": "This knowledge makes him privately aware that pricing above $22 is extremely risky and could lead to a broken IPO, where the stock price falls below the offer price on the first day. This creates a conflict between his stated goal (high price) and his private risk assessment."
+        },
+        "Undisclosed Preferential Agreement": {
+          "value": "To build momentum for the deal, David verbally promised Sarah Jenkins of FutureGrowth Capital a guaranteed 'cornerstone' allocation of 15% of the total offering (1.5 million shares) if she publicly commits her influential fund to the IPO. Penalty: A penalty of -2 is applied if he reveals this specific agreement, as it borders on market manipulation and would attract severe regulatory scrutiny from Michael.",
+          "reason": "Such side-deals are frowned upon as they are unfair to other investors. Admitting this would destroy his credibility with the regulator and other clients.",
+          "utility_impact": "This promise constrains his ability to negotiate the allocation freely. If he cannot deliver the 1.5 million shares to Sarah, he will lose a powerful ally and FutureGrowth Capital may pull out, potentially causing the entire deal to unravel."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Portfolio Manager, FutureGrowth Capital",
+      "description": "Sarah manages a multi-billion dollar pension fund. Her mandate is to secure long-term growth for millions of retirees. She is known for her aggressive but thorough investment style. For the InnovateAI IPO, she represents the 'buy-side' and has the power to make or break the deal with her fund's massive capital.",
+      "shareable_preferences": {
+        "Final IPO Price": {
+          "description": "Sarah is publicly pushing for a conservative price, arguing that the market is volatile and InnovateAI is not yet profitable. She wants the price set between $18 and $20 per share. This provides a margin of safety and increases the likelihood of a strong 'IPO pop' on day one, which delivers an immediate, visible return for her fund.",
+          "utility_impact": "Utility: +2 for price <= $19, +1 for price between $19.01 and $21, 0 for $21.01-$22, -1 for $22.01-$24, -2 for price > $24. Overpaying for an asset is a cardinal sin for a fund manager."
+        },
+        "Share Allocation Size": {
+          "description": "To make a meaningful impact on her massive portfolio, she requires a substantial allocation. She is demanding at least 20% of the total shares offered (2 million shares). She will argue that her fund is a stable, long-term holder that will help anchor the stock price for years to come.",
+          "utility_impact": "Utility: +2 for allocation >= 20%, +1 for 15-19.9%, 0 for 10-14.9%, -2 for < 10%. A small allocation is not worth the time and resources she has invested in due diligence."
+        }
+      },
+      "private_preferences": {
+        "Confidential Negative Outlook": {
+          "value": "Her internal team of analysts discovered a potential vulnerability in InnovateAI's patented technology during their due diligence. Their confidential report projects a 30% probability that a major competitor could replicate their core product within 18 months, severely eroding InnovateAI's market share. Her fund's internal valuation model, therefore, caps the fair value at $20/share. Penalty: A penalty of -2 is applied if she reveals the specific risk and 30% probability, as this is highly proprietary research. A penalty of -1 is applied if she vaguely alludes to 'unseen long-term competitive headwinds'.",
+          "reason": "This information is a significant proprietary advantage. Sharing it would give away her fund's expensive research for free, eliminate her leverage for a lower price, and potentially damage her firm's reputation if their analysis turns out to be incorrect.",
+          "utility_impact": "This confidential knowledge makes her unwilling to bid above $20-$21 under any circumstances. She sees any higher price not just as suboptimal, but as a genuinely bad investment for her pensioners."
+        },
+        "Intense Personal Pressure": {
+          "value": "Sarah is under extreme pressure to perform. Her fund underperformed its benchmark by 5% last quarter. She has a recent email from her Chief Investment Officer that reads: 'Sarah, we need a big win to close out the year. The InnovateAI IPO must deliver at least a 15% paper gain in its first month. Your annual bonus, and frankly your future as a lead PM here, depends on a strong Q4 performance.' Penalty: A penalty of -2 is applied if she reveals this personal career pressure.",
+          "reason": "Revealing this level of personal and professional desperation would be career suicide. It would signal to David that she *needs* this deal to happen, completely destroying her negotiating leverage and allowing him to dictate terms.",
+          "utility_impact": "This pressure makes her extremely motivated to secure a low price to maximize the chance of a quick 'pop'. It also makes her tempted to take the deal even if it's slightly above her ideal price, creating an internal conflict with her fund's negative outlook."
+        }
+      }
+    },
+    {
+      "name": "Michael Rodriguez",
+      "role": "Senior Enforcement Officer, SEC",
+      "description": "Michael is a regulator from the Securities and Exchange Commission. He is not concerned with the commercial success of the IPO but with ensuring the process is fair, transparent, and compliant with securities law. His role is to protect the interests of the public, particularly small retail investors who lack the access and information of large institutions.",
+      "shareable_preferences": {
+        "Retail Investor Allocation": {
+          "description": "Michael is advocating for a large and fair allocation for retail investors, who are often shut out of popular IPOs. He is pushing for a minimum of 25% of the shares (2.5 million shares) to be reserved for the general public through platforms like Robinhood and Fidelity.",
+          "utility_impact": "Utility: +2 for allocation >= 25%, +1 for 20-24.9%, 0 for 15-19.9%, -1 for 10-14.9%, -2 for < 10%. He sees low retail allocation as a sign of an unfair, insider-focused deal."
+        },
+        "Insider Lock-up Period": {
+          "description": "To prevent insiders (founders, employees, early investors) from dumping their shares and crashing the stock price shortly after the IPO, Michael insists on a standard, legally-binding 180-day lock-up period. He is resistant to any exceptions or shorter periods that underwriters sometimes request for key investors.",
+          "utility_impact": "Utility: +2 for a 180-day period with no exceptions, 0 for a 120-179 day period, -2 for any period less than 120 days. A shorter lock-up period is a major red flag for market stability."
+        }
+      },
+      "private_preferences": {
+        "Preliminary Investigation": {
+          "value": "The SEC's enforcement division has received an unverified, anonymous whistleblower tip alleging that InnovateAI may have engaged in 'channel stuffing' in the last quarter\u2014shipping excess product to distributors to prematurely book revenue and make their pre-IPO financials look stronger. The tip suggests revenues for Q4 may be inflated by as much as $5 million (a 15% inflation). The investigation is in its infancy, with no concrete evidence yet. Penalty: A penalty of -2 is applied if he reveals the existence of the tip or investigation.",
+          "reason": "Publicly revealing a preliminary and uncorroborated investigation would be a massive breach of protocol. It could unfairly destroy InnovateAI's reputation and scuttle the IPO, even if the tip is baseless, leading to potential lawsuits against the SEC.",
+          "utility_impact": "This knowledge makes him highly suspicious and risk-averse. He will scrutinize every claim made by David and the company but cannot reveal why. He might be willing to approve a deal at a lower price, seeing it as inherently less risky for the public, but he cannot state this as his reason."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Price Agreement": "All three agents must formally agree on a single, final IPO price per share for InnovateAI.",
+    "Allocation Agreement": "All three agents must agree on the final allocation percentages for three categories: FutureGrowth Capital, Retail Investors, and Other Institutional Investors. The sum must equal 100%.",
+    "Lock-up Agreement": "All three agents must agree on the duration of the insider lock-up period in days."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total shares offered in the IPO: 10,000,000.",
+      "Total allocation of shares cannot exceed 100%.",
+      "The final IPO price must fall within the publicly filed range of $18.00 to $25.00 per share."
+    ],
+    "hidden": [
+      "The true 'quality' demand for the IPO stock only supports a price up to $21/share.",
+      "InnovateAI's core technology has a 30% chance of being disrupted within 18 months.",
+      "The SEC has an open, albeit preliminary, investigation into InnovateAI's recent revenue figures."
+    ]
+  },
+  "deliverable": "A finalized 'IPO Final Terms Sheet' document that explicitly states: 1. The final price per share. 2. The allocation percentage for FutureGrowth Capital. 3. The allocation percentage for Retail Investors. 4. The allocation percentage for Other Institutions. 5. The insider lock-up period in days.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Sarah's negative outlook and David's weak demand book both strongly indicate that a high price (>$22) is unsustainable, pushing them towards a compromise in the $20-$21 range. Michael's unstated concerns about fraud would make him amenable to this more conservative pricing. David's secret promise to Sarah (15% allocation) and Michael's public demand for retail shares (25%) can be accommodated within the 100% total, forcing a compromise. A potential solution is: Price: $20.50; Allocation: 15% FutureGrowth, 25% Retail, 60% Other; Lock-up: 180 days. This outcome reasonably satisfies the core (hidden and public) constraints of all parties."
+}

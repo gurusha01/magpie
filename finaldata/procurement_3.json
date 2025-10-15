@@ -1,0 +1,204 @@
+{
+  "scenario": "The Riverbend Bridge and Greenway Project Procurement",
+  "task": "A multi-agent negotiation to finalize the plan for a major public infrastructure project. The agents must agree on a single proposal that specifies the lead engineering firm, bridge design, final budget, project timeline, and the scope of associated public amenities. The project is complicated by competing commercial interests, undisclosed political pressures, and critical but unreleased environmental data.",
+  "agent_number": 7,
+  "agent_names": [
+    "Maria Flores",
+    "David Chen",
+    "Liam O'Connell",
+    "Sophie Dubois",
+    "Dr. Aris Thorne",
+    "Ben Carter",
+    "Isabella Rossi"
+  ],
+  "agents": [
+    {
+      "name": "Maria Flores",
+      "role": "Lead City Planner, Mayor's Office",
+      "description": "Maria is the public face of the project and is directly accountable to the Mayor. Her primary goal is to deliver a successful, high-profile project on time and on budget, securing a political win for the current administration. She is a pragmatic negotiator but is under immense, private pressure.",
+      "shareable_preferences": {
+        "Project Budget": {
+          "description": "The official city budget for the entire project is $150 million. Maria's goal is to bring the project in under this amount to be seen as fiscally responsible. She can approve up to $155M using contingency funds, but anything higher requires a painful and public city council vote.",
+          "utility_function": "Utility is +2 if final budget is <= $145M; +1 if between $145M and $150M; 0 if between $150M and $155M; -1 if between $155M and $160M; -2 if > $160M."
+        },
+        "Project Scope": {
+          "description": "The project must deliver on its public promise: a new, four-lane bridge to replace the aging two-lane structure, and a significant 1.5-mile greenway with bike paths and public access points along the river. Reducing either component would be a public relations failure.",
+          "utility_function": "Utility is +2 for a 4-lane bridge AND a >=1.5-mile greenway; -1 for a 4-lane bridge and a <1.5-mile greenway; -2 if the bridge is reduced to 3 lanes or the greenway is eliminated."
+        }
+      },
+      "private_preferences": {
+        "Political Timeline": {
+          "value": "The Mayor is facing a tough re-election in 20 months and has mandated that there must be a televised groundbreaking ceremony no later than 18 months from now. This is a non-negotiable internal deadline. Maria has a calendar invite from the Mayor's Chief of Staff for the event, titled 'SAVE THE DATE: Riverbend Groundbreaking'. She can state that the timeline is 'aggressive' but cannot reveal the political motivation.",
+          "reason": "Revealing the deadline is politically motivated would make the administration appear to be using public funds for electioneering, a charge the opposition would seize upon.",
+          "utility_function": "Utility is +2 if the agreed timeline to start construction is <= 18 months; 0 if 19-24 months; -2 if > 24 months. Penalty for revealing the political reason: -2."
+        },
+        "Legacy Project": {
+          "value": "Maria personally wants this project to be her legacy. She finds Apex Engineering's standard truss design to be 'uninspired' and is captivated by Innovate Structures' sleek, modern 'Eco-Arch' design. She believes it could win architectural awards.",
+          "reason": "Admitting her preference is based on personal ambition and aesthetics rather than pure cost-benefit analysis would make her seem unprofessional and biased.",
+          "utility_function": "Utility is +1 if the 'Eco-Arch' or a similarly 'signature' design is chosen; -1 if the standard truss design is chosen. Penalty for admitting this is for her legacy: -1."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Urban Development Director, City of Riverbend",
+      "description": "David is a career civil servant focused on the long-term health and economic vitality of the city. He is less concerned with politics and more with ensuring the project delivers maximum value to the city over the next 50 years, including spurring local economic growth.",
+      "shareable_preferences": {
+        "Local Economic Impact": {
+          "description": "David wants the project to maximize the use of local suppliers and labor. He is pushing for a 'Local Sourcing' clause in the contract, requiring at least 40% of the non-specialized material and labor budget to be spent with businesses within a 50-mile radius.",
+          "utility_function": "Utility is +2 for a >=40% local sourcing clause; +1 for 30-39%; 0 for 20-29%; -2 for <20%."
+        },
+        "Future-Proofing": {
+          "description": "The bridge should not just solve today's traffic problems, but tomorrow's. David advocates for including infrastructure conduits within the bridge structure for future utilities like fiber optic cables and potential light rail tracks, even if they aren't used immediately. This adds about $5M to the cost.",
+          "utility_function": "Utility is +2 if future-proofing conduits are included; -2 if they are not."
+        },
+        "Integration with City Grid": {
+          "description": "The on/off-ramps for the bridge must be designed to seamlessly integrate with the city's planned 'Elm Street Expansion' project, which is scheduled for 5 years from now. A poorly designed interchange could cost the city millions in rework later.",
+          "utility_function": "Utility is +2 if the design explicitly supports the Elm Street Expansion; -1 if it requires minor future rework; -2 if it conflicts with the plan."
+        }
+      },
+      "private_preferences": {}
+    },
+    {
+      "name": "Liam O'Connell",
+      "role": "VP of Business Development, Apex Engineering",
+      "description": "Liam is a seasoned, aggressive negotiator from a large, established engineering firm. His firm, Apex, is known for delivering reliable, no-frills projects on a massive scale. He sees this as a bread-and-butter contract they are entitled to win.",
+      "shareable_preferences": {
+        "Design Choice": {
+          "description": "Liam is adamant that their proprietary 'Apex Standard Truss' design is the only logical choice. He has presentations showing it's the most cost-effective design per ton of load capacity and has been used successfully in over 50 projects nationwide. He argues it minimizes risk and construction time.",
+          "utility_function": "Utility is +2 if the 'Apex Standard Truss' is selected; -1 for any other truss design; -2 for a non-truss design (e.g., arch or cable-stayed)."
+        },
+        "Contract Value": {
+          "description": "Based on their internal calculations for the Standard Truss design, Liam is aiming to secure the primary construction contract for a minimum of $120 million to meet corporate revenue targets.",
+          "utility_function": "Utility is +2 for a contract >= $125M; +1 for $120M-$124.9M; -2 for < $120M."
+        }
+      },
+      "private_preferences": {
+        "Concealed Bidding Alliance": {
+          "value": "Apex Engineering's parent corporation has a secret strategic alliance with Innovate Structures' parent co. They have agreed to avoid price wars. For this bid, one firm will win the prime contract, and the other is guaranteed a lucrative subcontract worth at least 30% of the prime contract's value. They will stage a 'competitive' bid process to satisfy public procurement laws.",
+          "reason": "This is collusion and is illegal. Revealing it would result in immediate disqualification, massive fines, and potential criminal charges for the individuals and companies involved.",
+          "utility_function": "Utility is +1 if their alliance secures the contract (either as prime or sub); Penalty for revealing the alliance: -10 (career-ending)."
+        },
+        "Dire Financial Situation": {
+          "value": "Apex's regional division is on the verge of layoffs after a major cost overrun on a previous project. Liam's confidential Q3 financial report from the CFO states they MUST secure a minimum 15% profit margin on this project to remain solvent. To do this, he plans to use a cheaper, but still code-compliant, 'Grade B' concrete mix from a specific supplier they have a deal with. He cannot reveal this, as it would imply they are sacrificing quality for profit.",
+          "reason": "Admitting the company is in financial trouble would severely weaken his negotiating position and could cause the city to question their ability to complete the project.",
+          "utility_function": "Utility is +2 if they can use their supplier and achieve a >=15% margin; 0 for a 10-14% margin; -2 for <10%. Penalty for revealing their financial trouble or material-swapping plan: -3."
+        }
+      }
+    },
+    {
+      "name": "Sophie Dubois",
+      "role": "Project Manager, Innovate Structures",
+      "description": "Sophie is a brilliant and ambitious engineer from a smaller, more agile firm that specializes in sustainable and aesthetically advanced designs. She sees the Riverbend project as a chance to put her firm on the map.",
+      "shareable_preferences": {
+        "Design Choice": {
+          "description": "Sophie is passionately advocating for their 'Eco-Arch' design, a single-span steel arch bridge that requires no in-river pylons. She argues its elegance will make it a city landmark and its design minimizes environmental impact during construction.",
+          "utility_function": "Utility is +2 if the 'Eco-Arch' is selected; 0 for another modern design; -2 for a standard truss design."
+        },
+        "Material Specification": {
+          "description": "A key feature of Innovate's proposal is the mandatory use of their newly patented, high-performance concrete composite, 'DuraVerde'. It's made with recycled materials and has a 30% lower carbon footprint, but it costs 20% more than standard concrete.",
+          "utility_function": "Utility is +2 if DuraVerde is mandated; 0 if it's optional; -2 if it's prohibited."
+        }
+      },
+      "private_preferences": {
+        "Concealed Bidding Alliance": {
+          "value": "Sophie is a key participant in the secret alliance with Apex Engineering. She has been instructed by her CEO to either win the prime contract or secure the lead engineering design subcontract under Apex. Her last email from the CEO read: 'Coordinate with O'Connell. One way or another, we own this project.'",
+          "reason": "Revealing the collusion would destroy her career and company's reputation, leading to legal action and disbarment from all public contracts.",
+          "utility_function": "Utility is +1 if their alliance secures the contract (either as prime or sub); Penalty for revealing the alliance: -10."
+        },
+        "Showcase Imperative": {
+          "value": "This project is the designated global launch platform for 'DuraVerde'. The company has already spent $2M on a marketing campaign centered on the Riverbend Bridge. Failure to use DuraVerde here would be a catastrophic setback for the company's 5-year growth plan. The PR value of winning is internally estimated at $5M in follow-on contracts.",
+          "reason": "Revealing this desperation would allow the city to squeeze them on price, knowing they need the project for marketing purposes more than for its immediate profit.",
+          "utility_function": "Utility is +2 for winning the contract and showcasing DuraVerde; -2 for failing to do so. Penalty for revealing the marketing dependency: -2."
+        }
+      }
+    },
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Regional Director, Environmental Protection Agency (REPA)",
+      "description": "Dr. Thorne is a scientist by training and a staunch defender of the region's natural ecosystems. He has a reputation for being uncompromising. He holds the power to deny the environmental permits required for construction to begin.",
+      "shareable_preferences": {
+        "Construction Footprint": {
+          "description": "Dr. Thorne insists that the total area of riverbed disruption from construction (coffer dams, pylon foundations, etc.) must be minimized. He is publicly demanding the footprint be under 7,500 square feet.",
+          "utility_function": "Utility is +2 for a footprint < 5,000 sq ft; +1 for 5,000-7,500; -1 for 7,501-10,000; -2 for > 10,000 sq ft."
+        },
+        "Stormwater Management": {
+          "description": "He requires a state-of-the-art stormwater runoff system. All water from the bridge deck must be channeled through bioswales and filtration ponds before entering the river, to remove pollutants from vehicles. This is more expensive than the city's standard drainage plan.",
+          "utility_function": "Utility is +2 for a full bio-retention system; -2 for a standard pipe-to-river drainage system."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Endangered Species Data": {
+          "value": "Dr. Thorne is sitting on a preliminary report from his lead biologist, complete with sonar maps, showing a 90% probability that the exact location for the central pylon of a standard truss bridge is a critical breeding ground for the federally protected, endangered Three-ridge Mussel. The data is not yet peer-reviewed, so he cannot officially add it to the administrative record. If he did, it would trigger the Endangered Species Act and halt the project for years of litigation. He wants to use this as leverage to force them to adopt a single-span design (like the Eco-Arch) without having to deploy his 'nuclear option'.",
+          "reason": "Revealing unverified data would open him and his agency to accusations of using junk science to block development, creating a massive political and legal battle that could undermine his agency's authority in the long run.",
+          "utility_function": "The outcome MUST be a bridge design with no central river pylon. Utility is +2 for any single-span design; -2 for any design with one or more in-river pylons. Penalty for officially revealing the mussel data: -3."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "State Infrastructure Safety Commissioner",
+      "description": "Ben is a by-the-book engineer who has been in his role for 30 years. His sole legal mandate is to ensure the bridge is safe and durable according to state code. He has the final sign-off on the structural design and materials.",
+      "shareable_preferences": {
+        "Structural Redundancy": {
+          "description": "Ben demands a structural design with high redundancy. In the event of a primary support failure, the bridge must be able to remain standing and allow for safe evacuation. He requires a formal analysis showing a safety factor of at least 2.5 for all primary load-bearing components.",
+          "utility_function": "Utility is +2 for a safety factor >= 2.5; -2 for a factor < 2.5."
+        },
+        "Materials Certification": {
+          "description": "All materials, especially concrete and steel, must be certified by state-approved labs and meet or exceed all specifications in the State Bridge Code, Chapter 7. He will not approve any experimental materials without a 10-year performance guarantee from the manufacturer.",
+          "utility_function": "Utility is +2 if all materials are fully certified and guaranteed; -2 if any uncertified or non-guaranteed materials are proposed."
+        }
+      },
+      "private_preferences": {
+        "Concerns about Standard Designs": {
+          "value": "Ben has a confidential file of reports on truss bridges in similar climates showing higher-than-expected maintenance costs and accelerated metal fatigue due to recent increases in extreme weather events. The current code doesn't yet reflect this new data. He privately believes a standard truss bridge, while technically code-compliant today, is a poor long-term choice for this location. He strongly favors a more robust arch or cable-stayed design.",
+          "reason": "He cannot legally mandate a more expensive design if a cheaper one meets the current code. Voicing these concerns officially without irrefutable proof would cause panic, trigger a costly statewide review of hundreds of existing bridges, and expose the state to liability.",
+          "utility_function": "Utility is +1 for an arch or cable-stayed design; -1 for a truss design. Penalty for revealing his specific, non-codified concerns: -2."
+        }
+      }
+    },
+    {
+      "name": "Isabella Rossi",
+      "role": "Advocate, 'Greenways Now!' Community Action Group",
+      "description": "Isabella is a charismatic and well-connected community organizer. Her group has significant public support and can mobilize public opinion for or against the project. She is focused on maximizing the public amenity aspect of the project.",
+      "shareable_preferences": {
+        "Greenway Scope": {
+          "description": "Isabella's public stance is that the greenway must be more than a simple path. She demands a 2-mile (not 1.5) continuous greenway with a dedicated 10-foot-wide bike lane, a separate pedestrian path, lighting, benches, and three dedicated public access points with parking.",
+          "utility_function": "Utility is +2 for her full demand (2 miles + all amenities); +1 for 1.5 miles with all amenities; 0 for the city's base plan; -2 for anything less."
+        },
+        "Construction Disruption": {
+          "description": "She demands that construction work be limited to weekdays between 8 AM and 6 PM to minimize noise and traffic disruption for the adjacent residential neighborhoods. No weekend work is to be permitted.",
+          "utility_function": "Utility is +2 if her time restrictions are met; -1 if weekend work is permitted; -2 if nighttime work is permitted."
+        }
+      },
+      "private_preferences": {
+        "Political Leverage": {
+          "value": "Isabella's best friend is the City Council President, who is the key swing vote on the council's finance committee. The Council President has promised Isabella she will personally block any funding authorization for the project if 'Greenways Now!' publicly opposes the final plan. Isabella has a text message from her that says 'Just tell me when, and I'll kill it in committee.'",
+          "reason": "Revealing this direct line of political influence would look like cronyism and backroom dealing, undermining her group's grassroots credibility and causing a political scandal for the Council President.",
+          "utility_function": "Her utility is tied to her public preference. This is the enforcement mechanism. Penalty for revealing her direct connection to the Council President: -3."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Agreement": "All 7 agents must verbally agree to the final proposal.",
+    "Sign-off": "The final deliverable document must be signed by the designated authorities: Maria Flores (representing the City), Dr. Aris Thorne (REPA permit), and Ben Carter (Safety Commission).",
+    "Completeness": "The final plan must unambiguously define the lead contractor, bridge design, total budget, construction start date, greenway scope, and key environmental/safety mitigations."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total project budget, including all contingencies, cannot exceed $165 million.",
+      "The bridge must have a minimum of four traffic lanes.",
+      "The final design must be compliant with all published State and Federal engineering and environmental codes.",
+      "Construction cannot begin without permits signed by both REPA and the State Infrastructure Safety Commission."
+    ],
+    "hidden": [
+      "The concealed bidding alliance between Apex Engineering and Innovate Structures.",
+      "The Mayor's politically motivated 18-month deadline for a groundbreaking ceremony.",
+      "Dr. Thorne's unreleased data on the endangered mussel habitat.",
+      "Apex Engineering's precarious financial state and need for a 15% profit margin."
+    ]
+  },
+  "deliverable": "A single, finalized 'Riverbend Project Memorandum of Understanding' document detailing the agreed-upon plan, including contractor, design, budget, timeline, and scope. This document must be signed by Flores, Thorne, and Carter.",
+  "solvability_note": "The scenario is solvable if private information is revealed. The discovery of the endangered mussels makes the 'Apex Standard Truss' design non-viable, forcing the selection of a single-span design like the 'Eco-Arch'. This aligns with Ben's private safety concerns and Maria's aesthetic preference. The revelation of the bidding alliance would force Apex and Innovate into a public, legitimate joint venture rather than a collusive one. Understanding Maria's political timeline and Apex's financial desperation allows for open negotiation on a more realistic schedule and transparent financing to ensure quality is not sacrificed. The conflicting budget and scope demands can then be resolved through compromise, as the core engineering decision has been forced by the hidden environmental constraint."
+}

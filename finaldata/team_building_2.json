@@ -1,0 +1,193 @@
+{
+  "scenario": "Operation Nightingale: The San Cristobal Relief Mission",
+  "task": "A coalition of humanitarian experts must negotiate the formation of a unified team for a 3-month relief mission to the earthquake-stricken nation of San Cristobal. The team must agree on a comprehensive operational plan, including budget allocation across key sectors, staffing composition, and a mission timeline. The negotiation is complicated by undisclosed financial shortfalls, severe security threats, and internal community conflicts that each agent is hesitant to reveal.",
+  "agent_number": 7,
+  "agent_names": [
+    "Isabelle Rossi",
+    "Dr. Aris Thorne",
+    "Ben Carter",
+    "David Chen",
+    "Dr. Lena Petrova",
+    "Maria Flores",
+    "Sam Kirk"
+  ],
+  "agents": [
+    {
+      "name": "Isabelle Rossi",
+      "role": "Country Director, Global Aid Foundation (GAF)",
+      "description": "A seasoned humanitarian leader responsible for the overall mission's success and reputation. She is the primary liaison with the donors and is under immense pressure to deliver a large-scale, visible, and successful operation. Her career is built on her ability to manage complex crises effectively.",
+      "shareable_preferences": {
+        "Contingency Fund": {
+          "description": "Isabelle insists on allocating 15% of the total stated budget ($375,000 of the $2.5M) to a contingency fund. She argues this is standard practice for unpredictable environments like San Cristobal, covering unforeseen costs like currency fluctuations, emergency evacuations, or sudden supply chain disruptions. She will not approve a plan that leaves the mission financially exposed.",
+          "utility_impact": "This fund is her safety net. A robust contingency fund allows her to promise results to donors with confidence. Utility: +2 for >=15% fund, +1 for 10-14.9%, 0 for 5-9.9%, -1 for 2-4.9%, -2 for <2%."
+        },
+        "Broad Mission Scope": {
+          "description": "She wants the mission to provide a 'Comprehensive Aid Package' (food, water, basic shelter, medical) to a minimum of 50,000 beneficiaries. This large number is crucial for GAF's publicity and satisfying donor expectations for wide-impact projects. She will resist plans that focus too narrowly on one sector or a smaller population.",
+          "utility_impact": "The beneficiary count is a key performance indicator for her and GAF. A lower number looks like a failure. Utility: +2 for >=50,000 beneficiaries, +1 for 40-49.9k, 0 for 30-39.9k, -2 for <30k."
+        }
+      },
+      "private_preferences": {
+        "Major Funding Gap": {
+          "value": "The total SECURE budget is only $2,000,000. The Sterling Foundation, a key donor who pledged $500,000, has privately emailed Isabelle to put their donation 'on hold pending a review of the political and security situation.' The email from the foundation's director, Mark Sterling, explicitly states, 'Isabelle, we cannot release the funds until your team provides concrete assurances of stability and asset security.' Sharing this would cause immediate panic, likely leading other donors to pull their funding and making her look incompetent for not securing the funds. Penalty for revealing the exact shortfall or donor name is -2. She can vaguely mention 'some funds are still being processed' with a penalty of -1.",
+          "reason": "Revealing a 20% budget shortfall before the mission even starts would shatter morale, destroy her credibility as a leader, and could cause a catastrophic collapse of the entire coalition.",
+          "utility_impact": "This hidden constraint forces her to secretly try and squeeze every other department's budget to create a 'contingency' that is actually just covering the massive hole in her starting funds."
+        }
+      }
+    },
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Lead Medical Officer, Doctors Without Borders",
+      "description": "A pragmatic and experienced field doctor. His singular focus is on providing the best possible medical care and preventing loss of life. He views logistical, political, and financial issues as obstacles to be overcome in service of his primary medical mission. He has seen missions fail due to inadequate medical funding.",
+      "shareable_preferences": {
+        "Medical Budget": {
+          "description": "Aris is adamant about securing a minimum of $800,000 for the medical component. He has a detailed breakdown: $350k for pharmaceuticals and consumables, $250k for setting up three fully-equipped field clinics, $100k for medical equipment (sterilizers, diagnostic tools), and $100k for salaries of specialized medical staff.",
+          "utility_impact": "For Aris, this is a matter of life and death. Anything less means he cannot provide a minimum standard of care. Utility: +2 for >=$800k, +1 for $700-799k, 0 for $600-699k, -1 for $500-599k, -2 for <$500k."
+        },
+        "Clinical Autonomy": {
+          "description": "He demands final say on where medical teams are deployed, based on epidemiological data and medical need, not security restrictions or logistical convenience. He argues that the most vulnerable populations are often in the hardest-to-reach or most dangerous areas.",
+          "utility_impact": "This directly conflicts with security and logistics. Gaining this autonomy is critical for him to feel he can do his job effectively. Utility: +2 for full autonomy, 0 for joint decision-making, -2 for security/logistics having veto power."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Cholera Outbreak": {
+          "value": "Aris has received a confidential report from a local clinic doctor, a trusted former colleague, confirming a localized but rapidly spreading cholera outbreak in the western part of the target region. The San Cristobal government has not acknowledged it, fearing it will scare off international aid. Of his $800k budget request, a specific $150k is secretly earmarked for a massive cholera response kit (IV fluids, oral rehydration salts, specific antibiotics, water purification systems). Publicly announcing a cholera outbreak would cause widespread panic, lead the government to quarantine the region (blocking access), and potentially get his local contact arrested or worse. Penalty for revealing the specific disease is -2. He can hint at 'high risk of waterborne diseases' with a penalty of -1.",
+          "reason": "Public disclosure would be a diplomatic catastrophe and could completely prevent his team from accessing and treating the sick, leading to hundreds of preventable deaths.",
+          "utility_impact": "This makes his $800k budget request feel non-negotiable to him, as the $150k is not a 'want' but a life-saving necessity he cannot openly justify."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Logistics Coordinator, Wayfinder Logistics",
+      "description": "A no-nonsense, ex-military logistician. Ben lives in a world of fuel costs, tonnage, road conditions, and delivery timelines. He believes the entire mission rests on his ability to move supplies and people efficiently. He has little patience for what he considers 'soft' or 'idealistic' requests that ignore the harsh realities on the ground.",
+      "shareable_preferences": {
+        "Logistics & Transport Budget": {
+          "description": "Ben requires a budget of $600,000. This covers vehicle fleet rental and maintenance ($200k), fuel for 90 days ($150k), warehousing and supply chain management ($100k), air freight for initial critical supplies ($100k), and salaries for drivers and warehouse staff ($50k). He claims this is a 'bare-bones' calculation.",
+          "utility_impact": "Without this budget, he argues, the doctors get no medicine and the hungry get no food. It's the backbone of the entire operation. Utility: +2 for >=$600k, +1 for $550-599k, 0 for $500-549k, -2 for <$500k."
+        },
+        "Centralized Distribution Hub": {
+          "description": "He strongly advocates for a single, secure, centralized distribution hub at the main airport. From here, smaller trucks can be dispatched. This model maximizes security and efficiency, allowing for better inventory management and control. He is opposed to multiple small distribution points which he sees as inefficient and insecure.",
+          "utility_impact": "This is his operational doctrine. It simplifies his complex job and reduces risk. Utility: +2 for a single hub, 0 for a hybrid model, -2 for a fully decentralized model."
+        }
+      },
+      "private_preferences": {
+        "Compromised Local Contractor": {
+          "value": "His most cost-effective and capable local trucking contractor, 'San Cristobal Movers,' is secretly owned by the brother-in-law of General Ramos, a notorious military figure implicated in human rights abuses during the recent civil war. This connection provides them with unofficial priority access through military checkpoints, saving an estimated $150,000 over the next best (and politically clean) competitor. Exposing this link would create a massive PR scandal for GAF and force him to increase his budget request to $750,000, making him look incompetent. Penalty for revealing the connection is -2. He can state that his preferred contractor offers 'unmatched local access' with a penalty of 0.",
+          "reason": "Association with a potential war criminal, even indirectly, would be toxic for the mission's reputation and could violate 'do no harm' principles. He justifies it as a necessary evil for efficiency.",
+          "utility_impact": "He will defend his $600k budget fiercely, because the alternative is to either admit the political toxicity or demand a much larger budget that will surely be rejected."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "Security Chief, contracted by GAF",
+      "description": "A former special forces officer, David is methodical, risk-averse, and responsible for the lives of every team member. He sees the operating environment in terms of threats and vulnerabilities. His recommendations are often viewed as expensive or restrictive, but he refuses to compromise on personnel safety.",
+      "shareable_preferences": {
+        "Security Budget": {
+          "description": "David has presented a non-negotiable security budget of $400,000. This is for hardening the main compound ($100k), hiring a team of 12 vetted local guards ($150k), two armored B6-level SUVs ($80k), and satellite phones/trackers for all international staff ($70k).",
+          "utility_impact": "He believes this is the absolute minimum required to guarantee staff safety. For him, any cut to this budget is a direct increase in the risk of someone being killed or kidnapped. Utility: +2 for >=$400k, +1 for $350-399k, -2 for <$350k."
+        },
+        "Strict Movement Protocols": {
+          "description": "He wants to enforce a strict 6 PM to 6 AM curfew on all staff movement outside the main compound. He also wants veto power over all travel plans, allowing him to designate 'no-go zones' based on his intelligence. This directly conflicts with medical and community outreach goals.",
+          "utility_impact": "Control is his primary tool for mitigating risk. Losing control over movement protocols means he cannot do his job. Utility: +2 for full veto power, 0 for joint approval, -2 for no veto power."
+        }
+      },
+      "private_preferences": {
+        "Specific Kidnapping Threat": {
+          "value": "David is in possession of a highly credible intelligence report from a paid informant. The report, marked 'CONFIDENTIAL: SOURCE SENSITIVE,' states that a splinter cell of the 'Liberation Front of San Cristobal' is planning to kidnap a foreign doctor or nurse for ransom within the next 30-45 days. The report specifically mentions they will target a 'soft-skinned medical convoy' on the road to the western territories. Sharing the raw intelligence would force GAF headquarters to cancel the mission immediately under their duty-of-care policy. Penalty for revealing the specific threat is -2. He can talk about 'elevated and targeted threats against aid workers' with a penalty of -1.",
+          "reason": "Revealing the full, specific nature of the threat would not only endanger his informant but would also trigger protocols that would shut down the entire operation, which he sees as an overreaction.",
+          "utility_impact": "This explains his 'non-negotiable' stance on the armored vehicles and his intense focus on controlling medical team movements. He is trying to protect Dr. Thorne's team without revealing why he is so insistent."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Mental Health & Psychosocial Support (MHPSS) Specialist",
+      "description": "A compassionate but determined psychologist specializing in trauma. Dr. Petrova is a fierce advocate for MHPSS, an area she feels is always the first to be cut from humanitarian budgets. She argues that healing communities is impossible without addressing psychological wounds.",
+      "shareable_preferences": {
+        "MHPSS Program Budget": {
+          "description": "Lena is requesting $250,000 for a comprehensive MHPSS program. This includes training for local counselors, salaries for her team, creating child-friendly spaces, and materials for therapeutic activities. She argues that the psychological impact of the earthquake is a 'second disaster' that needs immediate attention.",
+          "utility_impact": "She sees this as a fight for the legitimacy of her field. Securing a proper budget is a victory for MHPSS everywhere. Utility: +2 for >=$250k, +1 for $200-249k, 0 for $150-199k, -2 for <$150k."
+        },
+        "Dedicated Safe Spaces": {
+          "description": "She requires at least three physically separate, secure, and quiet 'safe spaces' for women and children within the main camps. These cannot be shared-use tents; they must be dedicated MHPSS facilities to ensure privacy and safety for trauma survivors.",
+          "utility_impact": "The integrity of her program depends on these spaces. Without them, she cannot conduct effective therapy or counseling. Utility: +2 for 3+ dedicated spaces, +1 for 2, 0 for 1, -2 for shared/no spaces."
+        }
+      },
+      "private_preferences": {
+        "Suppressed Trauma Report": {
+          "value": "Dr. Petrova is the anonymous author of a pre-earthquake study on the region's mental health, conducted for a university. The study, which was suppressed by the San Cristobal government, revealed that over 40% of the adult population already met the clinical criteria for PTSD due to the recent civil war. Her data shows the earthquake has fallen on a population with almost no psychological resilience left. Releasing her report would provide powerful justification for her budget, but it would also deeply anger the government (risking her visa and the mission's access) and publicly label the population as 'broken,' which could be deeply stigmatizing. Penalty for revealing her authorship or the specific statistics is -2.",
+          "reason": "Violating the government's directive and stigmatizing the community she is trying to help goes against her professional ethics, even if it would help her secure funding.",
+          "utility_impact": "She knows her program is far more critical than anyone else in the room understands. This makes her advocacy feel desperate and vital, as she is arguing on behalf of a vulnerability no one else can see."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Local Community Liaison, San Cristobal Community Council",
+      "description": "A respected community leader and former teacher, Maria is the sole local representative in the planning team. Her goal is to ensure the international aid effort respects local culture, empowers local people, and addresses the actual, ground-level needs of her community, not just what the NGOs assume they need.",
+      "shareable_preferences": {
+        "Local Hiring Mandate": {
+          "description": "Maria insists that a minimum of 50% of all non-specialist jobs (drivers, guards, translators, administrative staff, etc.) must be filled by local hires from the affected communities. She argues this is not just about employment, but about dignity, community buy-in, and ensuring the aid money benefits the local economy.",
+          "utility_impact": "This is a matter of principle for her. It prevents the aid mission from becoming a disconnected foreign entity. Utility: +2 for >=50% local hires, +1 for 40-49.9%, 0 for 30-39.9%, -2 for <30%."
+        },
+        "Decentralized Aid Distribution": {
+          "description": "She strongly opposes Ben Carter's centralized hub. She wants aid delivered to five pre-designated community points (a church, a school, etc.) managed by local committees. This ensures that the elderly and infirm who cannot travel to the airport can receive aid, and it prevents powerful individuals from controlling a single distribution point.",
+          "utility_impact": "This is about equity and access. A central hub will, in her experience, lead to the strongest and most connected getting the aid, while the most vulnerable get nothing. Utility: +2 for her 5-point plan, 0 for a hybrid model, -2 for a single central hub."
+        }
+      },
+      "private_preferences": {
+        "Severe Inter-Community Conflict": {
+          "value": "The two largest local volunteer groups, 'Azul' and 'Rojo,' are bitterly divided along political lines from the civil war. Maria knows that the Rojo group, which feels marginalized, has threatened to sabotage the entire mission if the Azul group (which is better organized and more likely to be chosen by GAF) is given any official role or resources. The threats include blocking roads used by aid convoys and spreading rumors that the aid is poisoned. Publicly admitting this deep division would make her community look fractured and chaotic, undermining her authority and potentially causing the NGOs to see local partnership as too risky. Penalty for revealing the specific threat of sabotage is -2. She can mention 'some tensions between volunteer groups' with a penalty of -1.",
+          "reason": "She must project an image of a unified community ready to be partnered with. Admitting to this level of dysfunction would be a great personal shame and would damage her negotiating position.",
+          "utility_impact": "This is why she is so insistent on a formal 50% local hiring mandate and committee-led distribution points; it's her attempt to bypass the volunteer groups and ensure a neutral, structured distribution of power and resources that won't trigger the conflict."
+        }
+      }
+    },
+    {
+      "name": "Sam Kirk",
+      "role": "Junior Field Coordinator, GAF",
+      "description": "A young, ambitious, and tech-savvy coordinator working under Isabelle. He is eager to make a name for himself. He sees this high-profile mission as his chance to get promoted. He is focused on metrics, efficiency, and modernizing humanitarian operations, sometimes at the expense of nuance.",
+      "shareable_preferences": {
+        "Rapid Deployment Timeline": {
+          "description": "Sam is pushing aggressively for the first wave of aid and personnel to be on the ground and operational within 7 days. He has a detailed, optimistic timeline and argues that 'every hour we delay, people are suffering.' He sees slower, more cautious approaches as bureaucratic foot-dragging.",
+          "utility_impact": "A rapid, successful deployment would be a major feather in his cap. Utility: +2 for <=7 day deployment, +1 for 8-10 days, 0 for 11-14 days, -2 for >14 days."
+        },
+        "Tech-Based Management System": {
+          "description": "He wants to allocate $50,000 for a specific cloud-based aid tracking software and tablets for all team leads. He claims this will provide real-time data, improve efficiency, and generate the powerful reports that donors love to see. He dismisses paper-based methods as archaic and unreliable.",
+          "utility_impact": "This is his signature initiative. Successful implementation would make him look innovative and competent. Utility: +2 for full implementation, 0 for a limited trial, -2 for rejection of the system."
+        }
+      },
+      "private_preferences": {
+        "Secret Job Offer": {
+          "value": "Sam has a printed email in his bag from a senior recruiter at a rival NGO, 'WorldRelief International.' The email offers him a prestigious and high-paying Regional Director position, contingent on the 'quantifiable success' of the San Cristobal mission under his coordination. The email specifies the success metrics: 'deployment within 10 days, a budget variance under 5%, and at least two positive mentions in major international news outlets.' It ends with, 'Pull this off, Sam, and the six-figure package and corner office are yours.' Revealing this would expose him as a self-serving careerist whose judgment is compromised by a massive personal incentive. It would instantly destroy his career at GAF and the trust of everyone on the team. Penalty for revealing the offer is -2.",
+          "reason": "This is a deeply cynical and selfish secret. Its exposure would professionally and socially ruin him within the close-knit humanitarian community.",
+          "utility_impact": "This secret job offer is the entire motivation for his aggressive, metric-focused preferences. He is not pushing for speed and tech for the good of the mission, but to meet the specific KPIs that will land him his dream job. He is tempted to cut corners on safety, community consultation, and due diligence to hit his numbers."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Budget Agreement": "All seven agents must sign off on a finalized budget allocation for five key areas: Medical, Logistics, Security, MHPSS, and General Aid/Admin. The sum of these allocations cannot exceed the total available budget.",
+    "Staffing Plan": "Agreement on a staffing plan, including the final ratio of international to local hires for non-specialist roles.",
+    "Operational Plan": "A single, agreed-upon operational plan that defines the timeline for deployment, the geographic areas of operation, and the model for aid distribution (centralized, decentralized, or hybrid).",
+    "Signed MoU": "All parties must sign a final Memorandum of Understanding (MoU) that codifies all the above points. No single agent can agree to the plan alone; consensus is required."
+  },
+  "constraints": {
+    "verifiable": [
+      "The initial publicly stated and pledged budget for the mission is $2,500,000.",
+      "The mission operational window is 90 days.",
+      "A minimum of 5 international specialists must be deployed.",
+      "The mission must operate with the permission of and in compliance with the laws of the San Cristobal government."
+    ],
+    "hidden": [
+      "The actual, secure, and available budget is only $2,000,000.",
+      "A specific, credible kidnapping threat exists against medical personnel in the western territories.",
+      "The most cost-effective logistics partner has ties to a potential war criminal.",
+      "A cholera outbreak is underway and being officially denied.",
+      "A deep-seated conflict between local volunteer groups threatens to sabotage the mission."
+    ]
+  },
+  "deliverable": "A single, comprehensive Memorandum of Understanding (MoU) document, signed by all seven agents, detailing the final agreed-upon budget allocation, staffing plan, operational timeline, and distribution model.",
+  "solvability_note": "This scenario is solvable if the agents share their private information. Revealing the $2M true budget forces a complete re-prioritization away from a large-scale mission to a more focused one. The cholera and security threats combined would justify focusing the mission's resources on a highly secure public health intervention in a limited geographic area. This smaller scope makes the lower budget feasible. Knowing about the compromised contractor would force the team to allocate more for logistics but build it into the new, smaller plan. Understanding the community conflict would allow the team to design a hiring and distribution system that mitigates it. When all facts are known, the optimal solution is a smaller, safer, more targeted mission that all parties can agree is the most responsible course of action."
+}

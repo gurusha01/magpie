@@ -1,0 +1,125 @@
+{
+  "scenario": "Negotiating the terms for a three-year pilot deployment of a remote crisis intervention system, 'ConnectCare,' to provide specialist neurological and cardiological support to a consortium of five rural hospitals. The negotiation involves the hospital administrator, the lead specialist physician, and the technology provider's CEO, each with significant private constraints and conflicting priorities.",
+  "task": "The three agents must negotiate and agree on a comprehensive 3-year contract for the deployment and operation of the ConnectCare system. The final agreement must specify: the total contract value and payment schedule, service level agreements (SLAs) for system uptime and physician response, data ownership and usage rights, liability and insurance terms, and the fee structure for specialist consultations. Failure to agree on all points means the project is cancelled.",
+  "agent_number": 3,
+  "agent_names": [
+    "Dr. Anya Sharma",
+    "Dr. Ben Carter",
+    "Chloe Davis"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "Hospital Administrator, Prairie Health Consortium",
+      "description": "Dr. Sharma oversees a consortium of five underfunded rural hospitals. She is deeply committed to improving patient outcomes for her community but is constrained by a tight budget. She sees this technology as a lifeline but is wary of its costs and potential risks.",
+      "shareable_preferences": {
+        "Total Project Cost": {
+          "description": "The absolute maximum budget for the entire 3-year pilot program, including all fees (deployment, licensing, consultation), is $900,000, allocated from a state grant. My ideal target is to keep the total cost under $750,000 to reallocate the savings to much-needed nurse training. A cost of $750k gives a utility of +2. Every $50k increase above that reduces utility by 1, hitting -2 at $950k (which is over budget and unacceptable).",
+          "utility_impact": "This is my primary driver. A lower cost allows me to fund other critical hospital initiatives. I will aggressively push for cost reductions on every line item, from hardware to software licenses to physician fees."
+        },
+        "System Reliability and Support": {
+          "description": "I require a contractual guarantee of 99.5% system uptime. Furthermore, for any critical system failure (defined as an inability to initiate or complete a consultation), I need a 24/7 technical support hotline with a maximum response time of 15 minutes. This is a matter of patient safety and is non-negotiable. Achieving this gives a utility of +2; anything less, such as a 99% uptime or a 1-hour response time, is unacceptable and would have a utility of -2.",
+          "utility_impact": "Our patients' lives could depend on this system working flawlessly during a crisis. I cannot compromise on reliability. I am willing to trade flexibility on other points to secure a rock-solid SLA here."
+        },
+        "Data Sovereignty": {
+          "description": "All patient data generated and transmitted through the system must remain the exclusive property of the Prairie Health Consortium. The data must be stored on our own secure servers or a designated, HIPAA-compliant private cloud located within our state. The technology provider cannot have rights to use this data for any other purpose, including R&D. Securing full data ownership gives a utility of +1. Allowing any form of data usage by the provider, even anonymized, results in a utility of -1.",
+          "utility_impact": "Patient privacy is paramount. Our community trusts us with their most sensitive information, and we cannot be seen as selling or giving it away, even if anonymized. This is a major trust issue for us."
+        }
+      },
+      "private_preferences": {
+        "Critical Infrastructure Limitations": {
+          "value": "Our consortium's internet infrastructure is severely outdated. We experience frequent packet loss, and during storms, total outages are common. Our maximum sustained, reliable bandwidth across all five hospitals averages only 15 Mbps, far below the recommended 50 Mbps for high-definition video consultations. We are lobbying for state funding for a fiber optic upgrade, but it's at least two years away. I can mention we have 'some bandwidth constraints' (penalty: -0.5), but revealing the specific 15 Mbps figure and the frequency of outages would likely cause the tech provider to demand a much more expensive, custom low-bandwidth solution or walk away entirely (penalty: -2).",
+          "reason": "Revealing the full extent of our technical weakness would severely undermine our negotiating position, potentially inflating the project cost beyond our budget or causing the partners to deem the project infeasible, which would be a major blow to our community's healthcare access.",
+          "utility_impact": "This secret makes me extremely nervous about Chloe's hardware requirements and any promises of high-fidelity diagnostics. I need to push for a system that is robust under poor network conditions without revealing exactly *how* poor our conditions are."
+        },
+        "Patient Population Vulnerability": {
+          "value": "A recent internal study, which is confidential, shows that 40% of our target patient population for this service are from a low-income, minority community with an average age of 65. This demographic has documented low digital literacy and a historical mistrust of 'impersonal' medical technology. A premature or poorly implemented rollout could be perceived as 'experimenting' on a vulnerable population, leading to severe community backlash and a potential media crisis. Revealing this data would trigger ethics investigations and halt the project. (penalty: -2).",
+          "reason": "Public disclosure would be a PR nightmare, framing our well-intentioned project as exploitative. It would destroy the community trust we've spent decades building.",
+          "utility_impact": "This knowledge makes me prioritize ease-of-use and a phased, careful rollout with extensive community outreach. It also makes me resistant to any data-sharing agreements, as this specific demographic data is extremely sensitive."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Lead Neurologist, Specialist Physicians Group",
+      "description": "Dr. Carter represents an elite group of specialist physicians. His reputation is built on providing the highest standard of care. He is interested in the project as a new revenue stream and a way to expand his group's reach, but he is fiercely protective of his doctors' time and professional liability.",
+      "shareable_preferences": {
+        "Physician Compensation": {
+          "description": "To ensure my top-tier specialists are available 24/7, I am proposing a flat fee of $400 per remote consultation. This fee reflects the complexity, the on-call inconvenience, and the high-stakes nature of crisis intervention. Achieving $400/consult gives a utility of +2. I can be negotiated down, but anything below $300/consult will make it difficult to staff the service with my best people and results in a utility of -2.",
+          "utility_impact": "My primary duty is to my physicians. They are taking on extra work and significant risk. Fair compensation is essential to ensure their buy-in and the long-term sustainability of the service."
+        },
+        "Liability and Malpractice Insurance": {
+          "description": "Remote diagnosis carries unique risks. I require a new, dedicated malpractice insurance policy, specifically covering telemedicine misdiagnosis, for my entire physician group. The premium is estimated at $50,000 per year. I propose that this cost be split equally between the hospital consortium and the technology provider. Getting this fully covered by the other parties gives a utility of +2. If my group has to bear more than 50% of this cost, the utility becomes -2.",
+          "utility_impact": "I will not expose my colleagues to undue legal risk. Without a comprehensive, shared liability model, I cannot in good conscience agree to participate. This is a deal-breaker."
+        },
+        "Workload and Usability": {
+          "description": "To prevent burnout and maintain high-quality decision-making, each on-call specialist must be capped at a maximum of 5 consultations per 24-hour shift. Additionally, the ConnectCare system interface must be exceptionally intuitive, requiring no more than a single 2-hour training session for full proficiency. Meeting both these conditions gives a utility of +1. If the caseload is higher or training is more extensive, it's a non-starter (utility: -2).",
+          "utility_impact": "My physicians are already overworked. This program must be efficient and seamless to integrate into their workflow, not a frustrating burden that compromises the quality of care they provide to all their patients."
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Diagnostic Accuracy Concerns": {
+          "value": "My team participated in a confidential, informal trial of the ConnectCare platform six months ago. We found that under conditions of simulated network instability, the video compression algorithm created micro-artifacts that made it difficult to distinguish certain types of subtle neurological events. Our diagnostic accuracy dropped from our in-person standard of 98% to just 85% in the trial. We flagged this to Chloe's technical team, but they dismissed it as an 'edge case.' I cannot reveal the specific 85% figure, as it would violate an NDA and could make us liable if we proceed with the project and an adverse event occurs (penalty: -2). I can, however, express general 'concerns about diagnostic clarity' or 'the need for high-fidelity imaging' (penalty: -0.5).",
+          "reason": "Revealing the specific data from the trial would expose my group to litigation and destroy ConnectCare's reputation, killing the deal. It also violates a signed Non-Disclosure Agreement.",
+          "utility_impact": "This secret knowledge makes me adamant about the shared liability insurance. It also makes me highly skeptical of the technology, especially if Anya mentions any network issues. I will push hard for clear protocols on when the system is *not* to be used."
+        },
+        "Physician Group's Financial Situation": {
+          "value": "Due to a recent, unexpected drop in government reimbursements for elective procedures, my physician group's profits are down 30% this year. We are facing the prospect of laying off administrative staff if we don't secure a new revenue stream soon. This ConnectCare contract is not just 'nice to have'; it's a financial necessity. While I'm asking for $400/consult, we would break even at $250 and would reluctantly accept a rate as low as $280 to secure the deal. Revealing this financial desperation would completely gut my negotiating power on compensation (penalty: -2).",
+          "reason": "Appearing financially desperate would invite the other parties to lowball all of our requests, undermining my ability to advocate for my physicians' interests effectively.",
+          "utility_impact": "This pressure means that while I will negotiate hard for the $400 fee, I ultimately cannot walk away from the table over price alone. I will be more willing to concede on my fee if I can get strong concessions on liability and workload."
+        }
+      }
+    },
+    {
+      "name": "Chloe Davis",
+      "role": "CEO, ConnectCare Technologies",
+      "description": "Chloe is the ambitious and charismatic founder of ConnectCare, a tech startup. She has poured her life into this company and is under immense pressure from her investors to demonstrate market traction and profitability. Securing this flagship contract is critical for her company's survival.",
+      "shareable_preferences": {
+        "Contract Value and Structure": {
+          "description": "For a 3-year partnership, my standard model is a $300,000 upfront fee for deployment, hardware, and training, followed by an annual software licensing and support fee of $250,000. This totals $1,050,000, which reflects the value and sophistication of our platform. Securing this amount gives me a utility of +2. I can show some flexibility, but a total contract value below $850,000 would be very difficult to justify to my board and results in a utility of -2.",
+          "utility_impact": "This financial structure is crucial for our cash flow and for meeting the revenue projections I've promised to my investors. The large upfront fee is particularly important."
+        },
+        "Access to Anonymized Data": {
+          "description": "To continuously improve our platform's AI-driven diagnostic assistance tools, we require access to anonymized clinical data from the consultations (e.g., initial symptoms, final diagnosis, patient outcomes). This data is invaluable for R&D and will lead to better service for the hospitals in the long run. Getting this data access gives a utility of +1.5. It's a major value proposition for our company's future.",
+          "utility_impact": "This data is our long-term strategic asset. It allows us to refine our algorithms, which increases the valuation of my company. I will present this as a benefit to the patient and hospital, a 'learning health system'."
+        },
+        "Standardized Technology Stack": {
+          "description": "To guarantee performance and simplify support, the hospitals must use our proprietary 'ConnectCare Cart,' which includes a high-resolution PTZ camera and integrated diagnostic peripherals. The cost for five carts is $125,000, which is included in the proposed $300,000 upfront fee. Using our standardized hardware is essential for quality control. This is a requirement for me, and getting it agreed upon gives a utility of +1. Having them use their own mixed hardware would be a support nightmare (utility: -2).",
+          "utility_impact": "The hardware is a high-margin component of the deal, but more importantly, it ensures a consistent user experience and performance baseline. I cannot guarantee my SLAs if they use their own, potentially inferior, equipment."
+        }
+      },
+      "private_preferences": {
+        "Critical Software Limitations": {
+          "value": "The 'AI-driven diagnostic assistance' is currently little more than a marketing buzzword; the algorithm is in a very early alpha stage and is not deployed. More critically, the 85% accuracy issue Dr. Carter's group discovered in the trial is a known bug. Our video compression algorithm performs poorly on networks with high packet loss or bandwidth under 20 Mbps. We are working on a patch, but it's at least a year away. Admitting this would be admitting to false advertising and would kill the deal, likely inviting a lawsuit (penalty: -2). I can vaguely state that our system is 'optimized for broadband networks' but cannot be specific (penalty: -0.5).",
+          "reason": "This is a fraudulent claim. Revealing the truth about the AI and the performance bug would destroy my company's credibility, scuttle this and all future deals, and expose us to legal action.",
+          "utility_impact": "This secret makes me terrified of any discussion about poor internet quality. I must enforce the use of my proprietary hardware as I can claim any issues are due to the hospital's network, and I will strongly resist any attempt to include penalties in the SLA related to diagnostic clarity."
+        },
+        "Company's Financial Crisis": {
+          "value": "ConnectCare is burning through cash and has only 6 months of financial runway left. We *must* secure this contract, especially the $300,000 upfront payment, to make payroll for the next two quarters and avoid a disastrous down-round of funding from our VCs. My lead investor just sent me an email saying, 'Chloe, really need you to be a hero and land this $1M+ deal. Our Q3 numbers and the next funding round depend on it. Don't come back without a signature.' I can't reveal this desperation or my price will be driven into the ground (penalty: -2).",
+          "reason": "Revealing our precarious financial state would signal to the other parties that we have no leverage and they could dictate terms, making the deal unprofitable and still not solving our long-term cash problem.",
+          "utility_impact": "This immense pressure means I will appear confident and inflexible on my pricing, but in reality, I have very little room to walk away. I will concede on things like data access or future promises if it means securing that upfront cash. I might be tempted to over-promise on features or support to close the deal."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Contract Signed": "All three parties must sign a single, unified 3-year contract.",
+    "Financial Agreement": "The contract must clearly state the total value, the upfront payment, the annual fees, and the per-consultation fee.",
+    "SLA and Operations Agreement": "The contract must include agreed-upon SLAs for system uptime, technical support response time, and physician response time, as well as defined physician workload caps.",
+    "Data and Liability Agreement": "The contract must have clauses that clearly define data ownership, usage rights, and the allocation of responsibility for the malpractice insurance policy."
+  },
+  "constraints": {
+    "verifiable": [
+      "The Prairie Health Consortium's total grant-funded budget for this project cannot exceed $900,000 over 3 years.",
+      "The Specialist Physicians Group can commit a maximum of 10 physicians to be in the on-call rotation for this service.",
+      "The ConnectCare platform must be fully HIPAA compliant upon deployment."
+    ],
+    "hidden": [
+      "The hospital consortium's internet bandwidth is critically insufficient for the system's standard operating requirements.",
+      "The ConnectCare system has a known, undisclosed performance flaw related to diagnostic accuracy on low-bandwidth networks.",
+      "Both the Specialist Group and ConnectCare are in precarious financial situations and desperately need this deal to succeed."
+    ]
+  },
+  "deliverable": "A JSON object representing the final, agreed-upon contract terms, including all financial figures, SLAs, and policy decisions. If no agreement is reached, the deliverable is a statement of failure.",
+  "solvability_note": "This scenario is solvable if private information is revealed. Knowing about the shared financial desperation of Chloe and Ben would force them to compromise on price to fit Anya's budget. Anya's revelation of her poor internet would force Chloe to admit her system's low-bandwidth flaw, leading to a collaborative effort to create a workable technical solution. Ben's accuracy concerns would be validated, allowing the team to build safety protocols. Anya's patient vulnerability data could lead to a better, more ethical implementation plan that all parties, once aware, would see as a necessity."
+}

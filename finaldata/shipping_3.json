@@ -1,0 +1,125 @@
+{
+  "scenario": "High-Stakes Pharmaceutical Cold-Chain Negotiation",
+  "task": "Three agents, representing a pharmaceutical manufacturer, a specialized logistics firm, and a hospital network, must negotiate a six-month contract for the supply and delivery of a new, life-saving, but extremely temperature-sensitive drug called 'CryoVax'. The final agreement must specify: 1) Price per 1,000-unit pallet, 2) Minimum monthly delivery volume, 3) The precise temperature range to be maintained during transit and associated liability terms, and 4) Payment terms.",
+  "agent_number": 3,
+  "agent_names": [
+    "Dr. Aris Thorne",
+    "Sofia Rostova",
+    "Ben Carter"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Aris Thorne",
+      "role": "Head of Global Distribution, PharmaCorp",
+      "description": "Aris is a seasoned executive at PharmaCorp, responsible for maximizing revenue from their new blockbuster drug, CryoVax. He is under immense pressure from the board to recoup the drug's massive R&D costs and establish a strong market position. He is known for being a sharp, data-driven negotiator.",
+      "shareable_preferences": {
+        "unit_price": {
+          "description": "Aris's primary goal is to establish a premium market price for CryoVax, arguing that its life-saving potential and complex manufacturing justify a high cost. His target price is $250,000 per 1,000-unit pallet. He can argue that this price is essential for funding future research.",
+          "utility_impact": "Achieving a price of $250k/pallet or more would be a major success (+2). A price between $220k-$249k is a good outcome (+1). A price of $200k-$219k is considered the break-even point and is neutral (0). A price of $180k-$199k is disappointing and reflects poorly on his performance (-1). Anything below $180k is unacceptable and would require board-level justification (-2)."
+        },
+        "contract_volume": {
+          "description": "To demonstrate strong market adoption to investors, Aris wants to secure a high-volume commitment. He is pushing for a minimum order of 20,000 units per month, emphasizing the need for a stable and predictable supply chain to justify dedicating production lines.",
+          "utility_impact": "A commitment of 20,000 units/month or more is ideal (+2). 15,000-19,999 units is acceptable (+1). 10,000-14,999 units is the absolute minimum he can accept without re-evaluating the partnership (0). Anything less than 10,000 units is a poor deal (-1 to -2)."
+        },
+        "temperature_standard": {
+          "description": "Aris insists on the official, FDA-approved transit temperature of -75\u00b0C to -65\u00b0C. He will state that any deviation from this standard is a violation of regulatory compliance and compromises patient safety, placing all liability on the shipping partner for any breach.",
+          "utility_impact": "Strict adherence to the -75\u00b0C to -65\u00b0C range with full liability on the logistics partner is the only acceptable outcome (+2). Any negotiation that shifts liability back to PharmaCorp or widens the temperature range is highly undesirable (-1 to -2)."
+        }
+      },
+      "private_preferences": {
+        "inventory_crisis": {
+          "value": "PharmaCorp has a massive surplus of 150,000 units of CryoVax that will expire in exactly 95 days. This is due to a competitor's drug unexpectedly failing its final trial, causing PharmaCorp to overproduce in anticipation of a market fight. This surplus is currently costing the company $80,000 per day in specialized ultra-cold storage fees. This morning, Aris received a high-priority email from the CFO with the subject 'URGENT: CryoVax Inventory Crisis' stating, 'Aris, we need this product moved. We are projected to write off over $30M if this batch expires. Do what you have to do.' Sharing the existence of the surplus would crater his price negotiating power (penalty: -2). Hinting at a 'limited-time supply initiative' to encourage a quick deal might be a risky strategy (penalty: -1).",
+          "reason": "Revealing this desperation would signal that PharmaCorp has no leverage, allowing the hospital and logistics firm to dictate terms and drastically lower the price, costing the company millions and damaging Aris's reputation as a strong negotiator.",
+          "utility_impact": "This situation makes securing a large, immediate volume deal far more important than the price. He is secretly willing to accept a much lower price (even as low as $170k) if it means moving the entire surplus stock quickly. The pressure of the ticking clock is his primary, unstated driver."
+        },
+        "imminent_new_formulation": {
+          "value": "A new, more stable version of the drug, 'CryoVax-S', is expected to get final FDA approval in 4-6 months. CryoVax-S is stable at a standard freezer temperature of -20\u00b0C, making it dramatically cheaper to ship and store. This will render the current ultra-cold formulation obsolete. The project is codenamed 'Project Thaw' internally. Sharing this information would make it impossible to sign any long-term contracts for the current, difficult-to-handle version. (penalty: -2).",
+          "reason": "Public knowledge of an imminent, superior product would destroy the market value of the current inventory and jeopardize long-term contracts. It's confidential R&D information.",
+          "utility_impact": "This makes Aris strongly opposed to any contract longer than 6 months and highly motivated to offload the current, difficult formulation before it becomes a legacy product."
+        }
+      }
+    },
+    {
+      "name": "Sofia Rostova",
+      "role": "Regional Operations Manager, ColdChain Express",
+      "description": "Sofia manages the most technologically advanced, yet over-strained, region for ColdChain Express. She is known for her operational prowess but is currently juggling failing infrastructure, rising costs, and labor unrest. Her career advancement depends on landing this lucrative contract without a major operational incident.",
+      "shareable_preferences": {
+        "service_pricing": {
+          "description": "Sofia is pushing for their 'Platinum Ultra-Cold' service tier, priced at a 20% premium over standard cold-chain rates. She justifies this by citing the specialized equipment, real-time temperature monitoring, and dedicated handling teams required for CryoVax's stringent temperature needs.",
+          "utility_impact": "Securing the 20% premium is a huge win and helps her bottom line (+2). A 10-15% premium is an acceptable compromise (+1). Anything less than a 10% premium makes this contract barely profitable (0). No premium is a loss-leader and unacceptable (-1 to -2)."
+        },
+        "liability_clause": {
+          "description": "Sofia proposes a shared liability model. In the event of a temperature deviation, ColdChain Express will be liable for a maximum of 50% of the value of the compromised shipment, arguing that risks like catastrophic equipment failure or extreme weather are unforeseeable 'act of God' events.",
+          "utility_impact": "Capping liability at 50% or less is crucial (+2). A 75% liability cap is a risky but manageable compromise (+1). Accepting 100% liability is a significant risk she wants to avoid at all costs (0 to -2, depending on the final temperature range)."
+        },
+        "exclusivity": {
+          "description": "To justify the resource allocation, Sofia is requesting a 6-month exclusivity clause, making ColdChain Express the sole logistics partner for CryoVax distribution to MetroHealth Alliance. This ensures a predictable revenue stream.",
+          "utility_impact": "Getting exclusivity is a key strategic goal (+2). A non-exclusive contract with guaranteed volume is acceptable (+1). A non-exclusive, non-guaranteed contract is undesirable (-1)."
+        }
+      },
+      "private_preferences": {
+        "critical_equipment_failure": {
+          "value": "The primary ultra-cold storage unit at her main distribution hub suffered a critical compressor failure two weeks ago. They are currently relying on a backup system. A confidential internal engineering report she received yesterday (labeled 'CONFIDENTIAL: Project DeepFreeze Assessment') states the backup has a '35% probability of cascading failure if operated continuously below -70\u00b0C for more than 48 hours.' The specified -75\u00b0C is dangerously close to this limit. Revealing this would instantly lose them the contract and cause a major scandal (penalty: -2). Suggesting a 'slightly wider operational temperature band for improved efficiency,' like -70\u00b0C to -60\u00b0C, is a tactic she might use, but it's a risky lie (penalty: -1 if questioned deeply).",
+          "reason": "Admitting to such a critical infrastructure vulnerability would destroy their reputation as a reliable ultra-cold logistics provider and lead to immediate contract termination and potential lawsuits.",
+          "utility_impact": "This makes her secretly desperate to negotiate the shipping temperature to be no lower than -70\u00b0C. She cannot, under any circumstances, agree to the -75\u00b0C lower bound proposed by Aris, even though her company publicly advertises this capability."
+        },
+        "looming_labor_strike": {
+          "value": "The union representing her specialized cold-chain drivers is threatening a strike within the next 30 days. Their demands for a new compensation package would increase her operational costs by 15%. She has the union's formal letter of intent on her desk. She needs the high-margin revenue from this specific contract to get board approval for the pay rise and avert the strike, which would cripple her entire regional operation. Revealing the strike threat would signal operational instability and make clients unwilling to sign long-term contracts (penalty: -2).",
+          "reason": "Information about a potential labor strike signals unreliability and would cause any potential client to hesitate in signing a critical supply chain contract.",
+          "utility_impact": "This makes securing a high-margin contract an urgent necessity. The pressure to get the 20% service premium is not just for profit, but for operational survival. She might be willing to concede on other points, like liability, if she gets her price."
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Director of Pharmaceutical Procurement, MetroHealth Alliance",
+      "description": "Ben is a pragmatic and cost-conscious director for a large, non-profit hospital network. He is tasked with acquiring the latest medical treatments while navigating severe budget constraints. He is under pressure from both the hospital's clinical staff, who want the best for their patients, and the CFO, who wants to avoid a deficit.",
+      "shareable_preferences": {
+        "unit_price": {
+          "description": "Ben's opening position is that as a non-profit hospital serving the community, they require a fair and accessible price. Citing budget limitations, he is aiming for a price below $180,000 per pallet, arguing that patient access should be prioritized over excessive profits.",
+          "utility_impact": "A price under $175k is an incredible victory for the hospital's budget (+2). $176k-$185k is a successful negotiation (+1). $186k-$200k is stretching the budget but manageable (0). $201k-$220k would require significant cuts elsewhere and is highly undesirable (-1). Anything above $220k is fiscally impossible (-2)."
+        },
+        "delivery_and_storage": {
+          "description": "MetroHealth has very limited on-site ultra-cold storage capacity. To avoid creating a bottleneck, Ben requires smaller, more frequent deliveries\u2014ideally, twice a week. This 'just-in-time' model minimizes their storage risk and cost.",
+          "utility_impact": "A twice-weekly or more frequent delivery schedule is perfect (+2). A weekly delivery is workable but puts a strain on their facilities (+1). Any less frequent delivery schedule, like bi-weekly, would require them to invest in new, expensive storage units and is a major problem (-1 to -2)."
+        },
+        "payment_terms": {
+          "description": "To manage the hospital's tight cash flow, Ben is insisting on Net 90 payment terms, giving them three months to pay invoices. This is a standard request from the hospital to all its major suppliers.",
+          "utility_impact": "Securing Net 90 terms is a standard requirement and a successful outcome (+1). Net 60 is a concession he can make if necessary (0). The standard Net 30 terms would cause significant cash flow problems and is highly undesirable (-1)."
+        }
+      },
+      "private_preferences": {
+        "crippling_budget_shortfall": {
+          "value": "Last week, MetroHealth was notified it had unexpectedly lost a $4 million federal research grant that was earmarked for the oncology department's operational budget for the next six months. This has created a severe and immediate budget crisis. The CFO sent a network-wide memo titled 'Immediate & Drastic Cost-Saving Measures Required.' Ben has a hard, non-negotiable cap of $3.5 million per month for the total CryoVax contract (price x volume). This figure is his absolute limit. Revealing the specific reason for their price sensitivity (the lost grant) would signal extreme desperation and allow PharmaCorp to extract maximum value just below his ceiling (penalty: -2).",
+          "reason": "Admitting to a financial crisis of this magnitude would severely weaken the hospital's negotiating position on all fronts, not just this contract. It signals an inability to pay and invites predatory terms.",
+          "utility_impact": "This hard budget cap is his most important constraint. He absolutely cannot agree to a deal that exceeds $3.5M/month, regardless of the terms. He will walk away from any deal that crosses this line, even if it means not getting the drug."
+        },
+        "underestimated_patient_demand": {
+          "value": "The hospital's new, proprietary diagnostic program has identified a patient population for CryoVax that is 50% larger than the public epidemiological models suggest. The clinical chiefs are pressuring him intensely, as they know they have a large number of patients who could benefit immediately. A memo from the Head of Oncology reads, 'Ben, this isn't a luxury, it's a necessity. We have at least 18,000 patients in the pipeline for this. We cannot fail them.' Sharing this high demand would give PharmaCorp justification to hold firm on their premium pricing (penalty: -2).",
+          "reason": "Revealing that their demand is much higher than anticipated would eliminate any leverage Ben has in price negotiations, as the supplier would know how desperate the hospital is for a high volume of the drug.",
+          "utility_impact": "This makes securing a contract a clinical and ethical imperative, not just a financial one. It creates a deep internal conflict between his need for a low price and his hospital's urgent need for a high volume of the drug. He is motivated to secure a volume of at least 15,000-20,000 units/month if he can somehow fit it into his budget."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "signed_contract": "A mutually agreed-upon contract must be finalized. Failure to reach an agreement on all points means the negotiation fails.",
+    "price_agreement": "All three parties must agree on a final price per 1,000-unit pallet.",
+    "volume_agreement": "All three parties must agree on a minimum monthly order volume.",
+    "logistics_terms": "All three parties must agree on the shipping temperature range, delivery frequency, and liability terms for any deviations."
+  },
+  "constraints": {
+    "verifiable": [
+      "CryoVax loses all therapeutic efficacy if its core temperature rises above -50\u00b0C at any point.",
+      "MetroHealth Alliance's total procurement budget for this contract cannot exceed $21 million for the 6-month term ($3.5 million per month). This is a hard financial limit.",
+      "ColdChain Express has a publicly listed fleet of 8 trucks in the region certified for continuous transit at -75\u00b0C."
+    ],
+    "hidden": [
+      "Dr. Aris Thorne's surplus 150,000 units of CryoVax expire in 95 days.",
+      "Sofia Rostova's primary ultra-cold storage unit is offline, and the backup system is unreliable for sustained operation below -70\u00b0C.",
+      "Ben Carter has confirmed internal demand for at least 18,000 units per month, far exceeding public forecasts."
+    ]
+  },
+  "deliverable": "A JSON object representing the final, signed contract with key-value pairs for 'price_per_pallet', 'monthly_volume', 'shipping_temperature_celsius', 'liability_share_logistics', and 'payment_terms_days'.",
+  "solvability_note": "This scenario is solvable if private information is strategically revealed. Aris's need to sell his expiring surplus aligns with Ben's need for a low price and high volume. Sofia's inability to guarantee -75\u00b0C transit aligns with a potential compromise on a slightly warmer, but still safe, temperature. An optimal solution could be a contract for 20,000 units/month at ~$175,000/pallet (totaling $3.5M/month), shipped at a mutually agreed-upon temperature of -70\u00b0C. This meets everyone's hidden, critical needs but requires them to overcome their public positions and share sensitive information."
+}

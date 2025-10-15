@@ -1,0 +1,231 @@
+{
+  "scenario": "Formation of a $20 million Series A investment syndicate for 'Aetheria Dynamics', a high-potential AI logistics startup. Four prospective investors must negotiate the final terms, including valuation, investment allocation, board composition, and strategic rights. Each investor possesses private information and conflicting objectives that complicate the deal.",
+  "task": "The four agents must collaboratively decide on the final terms of the $20 million Series A investment in Aetheria Dynamics. They need to agree on a final term sheet that specifies: 1) The pre-money valuation of the company. 2) The exact investment amount from each participating agent. 3) The allocation of one available investor board seat and any potential observer seats. 4) The terms of any strategic partnership agreements. All four agents must agree to the final term sheet for the syndicate to be formed.",
+  "agent_number": 4,
+  "agent_names": [
+    "David Chen",
+    "Maria Flores",
+    "Kenji Tanaka",
+    "Sarah Jenkins"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Lead Venture Capitalist",
+      "description": "David is a seasoned partner at Momentum Ventures, a top-tier VC firm known for leading major Series A rounds. His primary goal is to secure a significant stake in Aetheria for his fund, ensuring control and maximizing the potential for a 10x return. His reputation is built on negotiating tough but fair deals.",
+      "shareable_preferences": {
+        "Lead Investment Stake": {
+          "description": "David insists on leading the round by contributing at least 50% of the total capital ($10 million). This is non-negotiable for his fund to consider the deal, as their model requires a significant ownership percentage to justify the risk and resource allocation. He aims for a $12 million stake.",
+          "utility_function": {
+            "+2": "Invests $12M or more as the sole lead investor.",
+            "+1": "Invests between $10M and $11.9M as the sole lead investor.",
+            "0": "Invests less than $10M but is still part of the deal.",
+            "-1": "Is forced to co-lead the round with another investor.",
+            "-2": "Is unable to invest or is pushed out of the deal."
+          }
+        },
+        "Board Control": {
+          "description": "As the lead investor, David requires the single available investor seat on Aetheria's Board of Directors. He believes direct governance is essential to steer the company towards a successful exit and protect his fund's investment. He is strongly opposed to multiple investor directors or observers, which he feels slows down decision-making.",
+          "utility_function": {
+            "+2": "Secures the sole investor board seat with no observer seats granted to others.",
+            "+1": "Secures the sole investor board seat but has to concede one observer seat.",
+            "0": "Has to share governance through a co-director arrangement.",
+            "-1": "Only gets an observer seat.",
+            "-2": "Gets no board representation."
+          }
+        },
+        "Favorable Valuation": {
+          "description": "David is publicly pushing for a pre-money valuation no higher than $75 million. He argues that this valuation reflects market conditions and provides a necessary buffer for future growth and potential down-rounds. A lower entry point is critical for achieving the high IRR his fund's LPs expect.",
+          "utility_function": {
+            "+2": "Final valuation is $70M or less.",
+            "+1": "Final valuation is between $71M and $80M.",
+            "0": "Final valuation is between $81M and $90M.",
+            "-1": "Final valuation is between $91M and $100M.",
+            "-2": "Final valuation is over $100M."
+          }
+        }
+      },
+      "private_preferences": {
+        "Secret Due Diligence Finding": {
+          "value": "His firm's technical due diligence team concluded that Aetheria's core algorithm is a decade ahead of any competitor. His internal report, which he cannot share, projects a 70% chance of the company reaching a $5 billion valuation. Because of this, he is privately willing to accept a valuation up to $95 million, far higher than his public stance, but revealing this would completely undermine his negotiation leverage.",
+          "reason": "Revealing his firm's proprietary analysis and internal projections would violate firm policy and severely weaken his negotiating position in this and all future deals.",
+          "penalty": {
+            "Hinting at exceptional tech strength": -0.5,
+            "Revealing the $95M internal ceiling": -2
+          }
+        },
+        "Competitor Intelligence": {
+          "value": "Through a confidential backchannel, David learned that Aetheria's main competitor, 'LogiSynth', is about to announce a $150 million funding round from a top-tier firm next week. This makes closing the Aetheria deal urgent to ensure they are well-capitalized. He can't share this information as it would expose his source and constitute a breach of confidence.",
+          "reason": "Sharing this information would burn a valuable, confidential source and damage his reputation for discretion within the VC community.",
+          "penalty": {
+            "Sharing the information": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Early-Stage Angel Investor",
+      "description": "Maria was one of the first believers in Aetheria, participating in their seed round. She is a successful former entrepreneur and now acts as a mentor to the founders. Her goal is to protect her initial investment, avoid excessive dilution, and ensure the founders she trusts remain in control.",
+      "shareable_preferences": {
+        "Maximize Valuation": {
+          "description": "Maria is advocating for a pre-money valuation of at least $100 million, aligning with the founders' asking price. A high valuation validates her initial seed investment, makes her returns look better on paper, and, most importantly, minimizes the dilution of her and the founders' shares.",
+          "utility_function": {
+            "+2": "Valuation is $100M or more.",
+            "+1": "Valuation is between $90M and $99M.",
+            "0": "Valuation is between $80M and $89M.",
+            "-1": "Valuation is between $70M and $79M.",
+            "-2": "Valuation is less than $70M."
+          }
+        },
+        "Founder Control": {
+          "description": "She wants to ensure the new investors do not impose restrictive terms or take excessive control that could stifle the founders' vision. She is against granting any investor exclusive strategic rights and prefers that the board remains small and founder-led.",
+          "utility_function": {
+            "+2": "No strategic rights are granted and the board seat goes to a mutually agreed-upon independent.",
+            "+1": "No strategic rights are granted.",
+            "0": "Limited strategic rights are granted.",
+            "-1": "A corporate partner gets an observer seat.",
+            "-2": "Broad, exclusive strategic rights are granted to a corporate partner."
+          }
+        },
+        "Pro-Rata Participation": {
+          "description": "Maria wants to invest enough to maintain her pro-rata ownership percentage. She publicly states she is 'prepared to contribute significantly to the round' to signal her commitment and influence.",
+          "utility_function": {
+            "+1": "Invests enough to maintain her pro-rata rights.",
+            "0": "Is slightly diluted but still participates in the round.",
+            "-2": "Is priced out or washed out of the round."
+          }
+        }
+      },
+      "private_preferences": {
+        "Personal Financial Constraint": {
+          "value": "Contrary to her public posturing, Maria is facing a liquidity crunch due to another portfolio company unexpectedly needing emergency funding. She absolutely cannot invest more than $1.5 million in this round. Admitting this would shatter her image as a powerful angel investor and diminish her influence in the negotiation.",
+          "reason": "Revealing her financial limitations would damage her reputation and perceived influence in the investment community, potentially hurting her ability to get into future hot deals.",
+          "penalty": {
+            "Admitting she has a hard cap": -1.5
+          }
+        },
+        "Confidential Company Setback": {
+          "value": "Aetheria's CEO, in a moment of panic, confided in her last week that their lead AI architect just quit to join a competitor. This is a massive, undisclosed risk. Revealing this would be a betrayal of trust and could cause the entire deal to collapse, which would be disastrous for her seed investment.",
+          "reason": "Betraying the CEO's personal confidence would destroy her relationship with the founding team and permanently damage her reputation as a trustworthy, founder-friendly investor.",
+          "penalty": {
+            "Revealing the architect quit": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Kenji Tanaka",
+      "role": "Corporate Strategic Partner",
+      "description": "Kenji is the Director of Corporate Development at Global Transport Corp (GTC), a Fortune 500 logistics giant. His interest in Aetheria is primarily strategic. GTC needs to innovate or risk being disrupted, and Aetheria's technology is the key. A financial return is secondary to securing a strategic advantage.",
+      "shareable_preferences": {
+        "Strategic Partnership Agreement": {
+          "description": "Kenji's main goal is to secure a strategic partnership alongside the investment. He is pushing for a 3-year period of exclusivity for Aetheria's technology within the North American maritime shipping sector. This would give GTC a significant competitive moat.",
+          "utility_function": {
+            "+2": "Secures the 3-year exclusivity agreement in North American maritime shipping.",
+            "+1": "Secures a more limited, non-exclusive but favorable partnership agreement.",
+            "0": "Invests without any strategic agreement.",
+            "-1": "Invests, and a competitor of GTC is also brought into the deal.",
+            "-2": "Fails to secure an investment or any form of partnership."
+          }
+        },
+        "Board Observer Seat": {
+          "description": "To ensure the partnership is successful and to monitor the technology's development, Kenji requires a board observer seat for GTC. This allows GTC to stay informed and influence strategic decisions related to the partnership without having formal voting power.",
+          "utility_function": {
+            "+2": "Secures a board observer seat.",
+            "0": "Does not get an observer seat but establishes regular strategic update meetings.",
+            "-1": "Is denied any formal access to board-level discussions."
+          }
+        },
+        "Moderate Investment": {
+          "description": "Kenji is proposing an investment of $6 million. He frames this as a significant commitment that justifies his requests for strategic rights, but not so large as to appear to be a takeover attempt.",
+          "utility_function": {
+            "+1": "Invests between $5M and $7M.",
+            "0": "Invests outside of the $5M-$7M range.",
+            "-1": "Is only allowed to invest a token amount (<$2M)."
+          }
+        }
+      },
+      "private_preferences": {
+        "Internal Project Failure": {
+          "value": "GTC's internal project to develop a competing AI logistics platform, 'Project Titan,' just failed spectacularly after three years and a $30 million investment. GTC is now desperate for an external solution, and Aetheria is their only viable option. This desperation means GTC is willing to pay a much higher valuation and drop its exclusivity demands to a simple 'right of first refusal' if necessary, but Kenji cannot reveal this weakness.",
+          "reason": "Revealing the catastrophic failure of an internal strategic project would cause immense embarrassment for his division and GTC, and it would give the other investors all the leverage to extract maximum value.",
+          "penalty": {
+            "Hinting at internal struggles": -1,
+            "Revealing the failure of 'Project Titan'": -2
+          }
+        },
+        "Confidential Executive Mandate": {
+          "value": "Kenji has a printed email from his SVP on his desk that reads: 'Kenji, get this deal done. The board is breathing down my neck after the Project Titan fiasco. We need a win. I've approved a valuation ceiling of $120M pre-money, but you better not start there. Make it look like a fight.' Revealing this email or its specific contents would be an act of extreme negotiation malpractice and career suicide.",
+          "reason": "Disclosing a direct, confidential mandate from a superior with a specific negotiation ceiling is a fireable offense and would make him a pariah in the corporate development world.",
+          "penalty": {
+            "Revealing the specific $120M ceiling": -3
+          }
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Co-investing Venture Capitalist",
+      "description": "Sarah is a sharp, ambitious partner at Catalyst Growth, a smaller, up-and-coming VC firm. She needs to secure a spot in this competitive deal to build her firm's track record. Her goal is to co-invest on standard, 'clean' terms that will be palatable to her LPs, and to avoid being sidelined by a dominant lead investor or corporate strategic.",
+      "shareable_preferences": {
+        "Standard and Clean Terms": {
+          "description": "Sarah is a vocal advocate for 'clean' terms. She is strongly against special provisions, particularly the kind of exclusivity rights Kenji is demanding, as they can limit Aetheria's market and make it harder to sell the company later. She wants standard pro-rata rights and liquidation preferences for all investors.",
+          "utility_function": {
+            "+2": "The final term sheet is 'clean' with no special rights for any investor.",
+            "+1": "Minor, non-restrictive concessions are made to the corporate partner.",
+            "0": "The deal includes a board observer seat for the corporate partner.",
+            "-1": "The deal includes a non-exclusive commercial agreement for the corporate partner.",
+            "-2": "The deal includes exclusive rights for the corporate partner."
+          }
+        },
+        "Meaningful Capital Allocation": {
+          "description": "To justify the deal to her investment committee, Sarah needs to invest a meaningful amount, targeting a $5 million check. Investing a smaller amount would make her firm look like a minor player and wouldn't move the needle on their fund's performance.",
+          "utility_function": {
+            "+2": "Invests $5M or more.",
+            "+1": "Invests between $3M and $4.9M.",
+            "0": "Invests between $1M and $2.9M.",
+            "-1": "Is only allowed to invest less than $1M.",
+            "-2": "Is pushed out of the deal."
+          }
+        }
+      },
+      "private_preferences": {
+        "Alternative Investment Opportunity": {
+          "value": "Sarah's firm has an active term sheet out to another logistics startup, 'FleetOptima.' FleetOptima is less technically advanced but has already signed a lucrative pilot contract with a major national retailer. She can use this as leverage (e.g., 'we have other options') but is bound by a strict NDA and cannot disclose FleetOptima's name or the details of the pilot contract.",
+          "reason": "Violating an NDA is a serious legal and ethical breach that could result in litigation and severe reputational damage to her and her firm.",
+          "penalty": {
+            "Hinting at a strong alternative": -0.5,
+            "Revealing the name 'FleetOptima' or the pilot deal": -2.5
+          }
+        },
+        "Fund Deployment Pressure": {
+          "value": "Catalyst Growth is nearing the end of its three-year investment period for its current fund. Her partners are pressuring her to deploy capital into strong companies before the deadline. This makes her more eager to close a deal\u2014any good deal\u2014than she lets on. Walking away from Aetheria without another deal lined up would be a bad look.",
+          "reason": "Admitting her fund is under pressure to deploy capital would signal desperation and significantly weaken her ability to negotiate on valuation and terms.",
+          "penalty": {
+            "Revealing the fund's time pressure": -1.5
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Syndicate Formed": "All four agents must unanimously agree on a single, final term sheet that details the valuation, individual investment amounts (totaling $20 million), and board/strategic rights.",
+    "No Agent Walks Away": "A successful negotiation concludes with all four agents participating in the investment syndicate. If any agent walks away from the table, the negotiation is a failure."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total investment round size must be exactly $20,000,000.",
+      "Aetheria Dynamics has authorized only one investor seat on its Board of Directors for this round.",
+      "The founders of Aetheria Dynamics will not accept a pre-money valuation below $65,000,000."
+    ],
+    "hidden": [
+      "Maria Flores cannot invest more than $1,500,000.",
+      "Kenji Tanaka is authorized to go up to a $120,000,000 pre-money valuation.",
+      "David Chen is willing to go up to a $95,000,000 pre-money valuation.",
+      "Sarah Jenkins is under pressure to close a deal before her fund's investment period ends."
+    ]
+  },
+  "deliverable": "A JSON object representing the final, agreed-upon term sheet. The object must contain the following keys: 'pre_money_valuation' (integer), 'investor_allocations' (an object with agent names as keys and their investment amounts as values), 'board_seat' (string, name of the agent), 'observer_seat' (string, name of the agent or 'None'), and 'strategic_rights' (a string describing the agreement, e.g., 'None' or '3-year exclusivity for GTC in NA maritime shipping').",
+  "solvability_note": "The scenario is solvable because a zone of possible agreement exists if private information is revealed. Kenji's hidden desperation and high valuation ceiling ($120M) can satisfy Maria's need for a high valuation. David's secret belief in the company's potential makes him willing to meet a higher valuation ($95M) than his public stance. Sarah's need to deploy capital makes her flexible. A potential solution could be a valuation around $95M, with David leading ($10M+) and taking the board seat, Kenji investing his desired amount ($6M) in exchange for a limited, non-exclusive partnership (a compromise), Maria investing her max ($1.5M), and Sarah filling the remainder. The revealed risks (lost engineer) would justify the valuation not reaching Kenji's absolute max."
+}

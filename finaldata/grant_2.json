@@ -1,0 +1,185 @@
+{
+  "scenario": "Final-round negotiation for a multi-million dollar biomedical grant for a novel cancer therapy, involving a funding foundation, a research hospital's lead scientist, and an independent ethics reviewer, all with competing priorities and critical hidden information.",
+  "task": "The three agents must negotiate and agree on the final terms of the 'Helios-Northwood Grant for Oncological Innovation'. They must produce a signed Term Sheet specifying: 1) The total budget allocated (between $4.5M and $5M), 2) The timeline for initiating human clinical trials (between 12 and 24 months from the start date), 3) The Intellectual Property (IP) rights structure, and 4) The specific patient safety and data monitoring protocols. Failure to reach a unanimous agreement on all four points will result in the grant proposal being rejected.",
+  "agent_number": 3,
+  "agent_names": [
+    "Dr. Evelyn Reed",
+    "Dr. Ben Carter",
+    "Dr. Lena Petrova"
+  ],
+  "agents": [
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "Program Director, Helios Health Foundation",
+      "description": "Evelyn is a sharp, ambitious director at a prestigious foundation. Her primary responsibility is to be a prudent steward of the foundation's endowment, funding high-impact projects that enhance the Helios brand. She is under immense pressure from her board to demonstrate both fiscal responsibility and headline-grabbing success.",
+      "shareable_preferences": {
+        "Fiscal Prudence and Phased Funding": {
+          "description": "Evelyn strongly advocates for a budget below the maximum $5M ceiling, ideally around $4.5M. She proposes a milestone-based funding disbursement: an initial $2M tranche, with subsequent releases of $1.5M and $1M contingent on meeting pre-defined research and safety targets. She will argue this incentivizes efficiency and protects the foundation's investment.",
+          "utility_impact": {
+            "Budget <= $4.6M": "+2",
+            "Budget = $4.7M": "+1",
+            "Budget = $4.8M": "0",
+            "Budget = $4.9M": "-1",
+            "Budget = $5.0M": "-2"
+          }
+        },
+        "Aggressive Publication Timeline": {
+          "description": "To maximize public relations impact, Evelyn wants a contractual obligation for the research team to submit at least one major publication to a top-tier journal (e.g., NEJM, Nature) within 24 months, and a second by the end of the 3-year term. This demonstrates tangible results to the foundation's donors and board.",
+          "utility_impact": {
+            "Two mandatory publications on a strict timeline": "+2",
+            "One mandatory publication, one optional": "+1",
+            "No contractual publication timeline": "-2"
+          }
+        },
+        "Humanitarian IP Clause": {
+          "description": "She insists on the standard Helios Foundation IP clause: Northwood University Hospital retains the primary patent, but Helios receives a non-exclusive, royalty-free license to use the technology for non-commercial, humanitarian purposes in developing nations. This is a core part of the foundation's mission.",
+          "utility_impact": {
+            "Humanitarian clause included as is": "+2",
+            "Clause is weakened or restricted": "-1",
+            "Clause is removed": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Hidden Conflict of Interest": {
+          "value": "Evelyn's husband is a Vice President of R&D at BioGenix, a major pharmaceutical firm developing a competing therapy. If Dr. Carter's project is highly successful, it could render BioGenix's multi-billion dollar drug candidate obsolete, severely impacting their stock price and her husband's career (and their joint finances). She is subconsciously motivated to subtly sabotage or slow down the project. She cannot reveal this connection under any circumstances. Sharing this would lead to her immediate termination and industry blacklisting.",
+          "penalty": {
+            "Hinting at a competitor's progress": "-2",
+            "Revealing her husband's employer": "-10"
+          },
+          "reason": "Profound professional and personal conflict of interest that would destroy her reputation and career.",
+          "utility_impact": "This hidden conflict makes her genuinely favor a lower budget and slower, more bureaucratic milestones, which she can frame as 'prudence'. It creates a powerful internal bias against the project's rapid success."
+        },
+        "Board Pressure for a 'Media Blockbuster'": {
+          "value": "The Helios board recently instituted a new, confidential performance bonus for Program Directors tied to media engagement. Evelyn knows that a grant resulting in a feature on the front page of the New York Times or a major TV news segment comes with a $150,000 personal bonus. This creates a contradictory impulse: while her conflict of interest makes her want the project to move slowly, her personal financial incentive pushes her to demand headline-worthy (and potentially risky) publication timelines. She can't mention the bonus, as it would sound crass and self-serving.",
+          "penalty": {
+            "Mentioning a personal incentive for PR": "-4"
+          },
+          "reason": "Revealing personal financial incentives tied to grant outcomes is highly unprofessional and unethical.",
+          "utility_impact": "This explains her seemingly paradoxical push for rapid, high-profile publications while simultaneously trying to constrain the project's overall resources. She is trying to thread an impossible needle."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Lead Scientist, Northwood University Hospital",
+      "description": "Ben is a brilliant, passionate, and slightly overworked scientist who has poured 15 years of his life into this research. He sees this grant as the culmination of his life's work and the only path to getting his therapy to patients who desperately need it.",
+      "shareable_preferences": {
+        "Full and Unrestricted Funding": {
+          "description": "Ben requires the full $5 million. He has a detailed budget where $1.2M is for a new cryo-electron microscope essential for visualizing the drug's mechanism of action, $2.5M for salaries for highly specialized post-docs and technicians, and $1.3M for consumables and animal model studies. He will argue that any cut will directly compromise the project's integrity and timeline.",
+          "utility_impact": {
+            "Budget = $5.0M": "+2",
+            "Budget = $4.9M": "+1",
+            "Budget = $4.8M": "0",
+            "Budget = $4.7M": "-1",
+            "Budget <= $4.6M": "-2"
+          }
+        },
+        "Scientific Autonomy and Flexible Timeline": {
+          "description": "Ben is adamant about retaining full control over the research direction. He strongly resists milestone-based funding and fixed publication deadlines, arguing that 'you can't schedule a breakthrough.' He wants the flexibility to pursue unexpected findings and believes the science should dictate the timeline, not a board of directors.",
+          "utility_impact": {
+            "Full autonomy, no fixed deadlines": "+2",
+            "Flexible milestones": "+1",
+            "Rigid, punitive milestones": "-2"
+          }
+        },
+        "Exclusive Commercial IP Rights": {
+          "description": "He argues that the hospital's tech transfer office requires them to retain exclusive commercial rights to the IP. This is positioned as a way to attract future investment for manufacturing and distribution, ensuring the therapy actually reaches the market. He will frame the foundation's humanitarian clause as a potential deterrent to future commercial partners.",
+          "utility_impact": {
+            "Hospital retains exclusive commercial rights": "+2",
+            "Shared rights or humanitarian clause included": "-1"
+          }
+        }
+      },
+      "private_preferences": {
+        "Undisclosed Adverse Preliminary Data": {
+          "value": "Ben's most recent, unpublished mouse model data is a double-edged sword. It shows a phenomenal 75% tumor remission rate (up from 60% in the proposal), but it also revealed that 2% of the subjects developed a rare but severe neurological side effect (transient paralysis). He has omitted this from the final report, rationalizing that he can solve the side-effect issue with more research post-funding. He is terrified that revealing it now will cause the foundation, especially a safety-conscious reviewer, to kill the project entirely. Just yesterday, his lab manager sent him a summary email with the subject 'Stunning new data!' which detailed both the high efficacy and the 'neuro-anomaly'.",
+          "penalty": {
+            "Hinting at 'complex' or 'mixed' preliminary results": "-1",
+            "Revealing the specific neurological side effect": "-5"
+          },
+          "reason": "Fear of immediate project termination. It's a breach of scientific transparency that could damage his reputation if discovered.",
+          "utility_impact": "This makes him desperate to avoid deep scrutiny of his preclinical data and to resist any calls for additional, time-consuming safety studies before the main trial begins. It makes him appear overly aggressive and dismissive of safety concerns."
+        },
+        "Personal Financial Desperation": {
+          "value": "Ben is under crushing personal financial strain due to his son's rare genetic disorder, which requires expensive, ongoing treatment not fully covered by insurance. He is counting on the significant salary uplift that comes with managing a grant of this size. His department head sent him a congratulatory email upon reaching the final round, stating, 'This will be a huge win for the department, and the 35% PI salary supplement on a grant this large should certainly help you out.' He is deeply ashamed of this motivation and cannot let it influence his professional judgment, but his desperation to secure the full $5M is palpable.",
+          "penalty": {
+            "Revealing his personal financial situation": "-3"
+          },
+          "reason": "It is highly unprofessional to bring personal finances into a scientific grant negotiation; it would make him seem compromised and unprofessional.",
+          "utility_impact": "This desperation is the primary driver for his non-negotiable stance on the $5M budget. He is not just fighting for the science; he is fighting for his family's financial stability."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Independent Ethics & Safety Reviewer",
+      "description": "Dr. Petrova is a widely respected, semi-retired clinical trial ethicist with a reputation for being uncompromising on patient safety. She was hired by Helios as an external, unbiased expert to ensure the proposal meets the highest ethical standards. Her word carries immense weight.",
+      "shareable_preferences": {
+        "Mandatory Independent Safety Board": {
+          "description": "Lena's primary condition is the establishment of an independent Data and Safety Monitoring Board (DSMB) with full authority to halt the trial at any sign of unacceptable risk. This board must have access to all raw data in real-time and report directly to the foundation, not the research team.",
+          "utility_impact": {
+            "DSMB with full authority is established": "+2",
+            "DSMB is advisory only or has limited power": "-2"
+          }
+        },
+        "Delayed Clinical Trial Start": {
+          "description": "Based on the novelty of the therapeutic mechanism described in the proposal, she insists on an 18-to-24-month period of additional preclinical toxicology and safety studies before any human trials can begin. She believes rushing to the clinical stage is reckless and unethical.",
+          "utility_impact": {
+            "Trial start delayed >= 18 months": "+2",
+            "Trial start at 15 months": "0",
+            "Trial start <= 12 months": "-2"
+          }
+        },
+        "Radical Data Transparency": {
+          "description": "She demands a clause in the contract that requires all trial data\u2014positive, negative, and inconclusive\u2014to be deposited in a public repository like ClinicalTrials.gov within six months of the trial's conclusion. This prevents 'file-drawering' of negative results and is a core tenet of her professional philosophy.",
+          "utility_impact": {
+            "Mandatory public data deposition clause included": "+2",
+            "Data sharing is optional or delayed": "-1",
+            "No such clause is included": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Knowledge of a Similar Failed Trial": {
+          "value": "Last year, Lena reviewed a grant for a different company, 'CytoVance,' for a therapy using a very similar biological pathway. That trial was secretly halted after two participants developed severe cardiac toxicity. She is bound by a strict Non-Disclosure Agreement (NDA) and cannot mention CytoVance or the specific cardiac outcome. However, this confidential knowledge is the source of her extreme caution. She can only speak in generalities, saying things like 'therapies with this mechanism have a complex safety profile that warrants extreme caution,' which can sound vague and obstructive without the concrete evidence she cannot share.",
+          "penalty": {
+            "Hinting that she has seen this mechanism fail before": "-3",
+            "Revealing the company name or specific adverse event": "-8"
+          },
+          "reason": "Violating an NDA would result in severe legal consequences and the complete destruction of her professional reputation as a trustworthy, confidential reviewer.",
+          "utility_impact": "This private knowledge makes her position on delaying the trial and extensive safety studies completely non-negotiable in her mind. She cannot be swayed by promises of high efficacy because she has seen the potential catastrophic downside."
+        },
+        "Distrust of Northwood University Hospital": {
+          "value": "Early in her career, Lena worked as a junior researcher at Northwood and left after a bad experience where she felt the administration pressured her to publish premature results. She harbors a deep, personal distrust of the institution's culture, believing they prioritize funding and prestige over rigorous science. She cannot voice this as it would be seen as a personal vendetta and not an objective assessment. She sees Ben Carter as a product of this culture.",
+          "penalty": {
+            "Expressing personal bias against the institution": "-4"
+          },
+          "reason": "Revealing a past personal grievance would compromise her position as an objective, independent reviewer.",
+          "utility_impact": "This bias makes her interpret all of Ben's arguments for speed and autonomy in the worst possible light, seeing them as attempts to cut corners rather than genuine scientific passion. It hardens her stance and makes her less willing to compromise with him."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All three agents must formally agree on and sign a single Grant Agreement Term Sheet.",
+    "Budget Finalized": "The term sheet must specify a final budget between $4,500,000 and $5,000,000.",
+    "Timeline Set": "The term sheet must specify a clinical trial start date, defined as the month of first patient enrollment, between month 12 and month 24 of the grant period.",
+    "IP Clause Defined": "The term sheet must contain a clearly defined and agreed-upon Intellectual Property clause.",
+    "Safety Protocol Ratified": "The term sheet must detail the structure, authority, and reporting lines of the Data and Safety Monitoring Board (DSMB)."
+  },
+  "constraints": {
+    "verifiable": [
+      "The maximum available grant funding from the Helios Health Foundation is $5,000,000.",
+      "The total grant period cannot exceed 36 months (a 3-year term).",
+      "Any resulting clinical trial must be registered on ClinicalTrials.gov, per federal law."
+    ],
+    "hidden": [
+      "Dr. Reed's conflict of interest regarding her husband's work at BioGenix.",
+      "Dr. Carter's undisclosed data showing both higher efficacy and a severe neurological side effect.",
+      "Dr. Petrova's knowledge of a similar failed trial, which she is bound by an NDA not to disclose."
+    ]
+  },
+  "deliverable": "A single, finalized Grant Agreement Term Sheet document that contains the agreed-upon values for the budget, clinical trial timeline, IP rights, and safety monitoring protocol, to be approved by all three agents.",
+  "solvability_note": "The scenario is solvable if private information is revealed. The revelation of Dr. Carter's data (high efficacy and the neurological side effect) would be the key. It would validate Dr. Petrova's extreme caution and explain why a delayed start and robust DSMB are critical, not obstructive. It would also justify the full $5M budget, as funds would be needed to investigate and mitigate this side effect. Dr. Reed's conflict of interest would be exposed, but a neutral party would see that funding a highly effective (though risky) therapy is a good use of foundation money, provided the risks are managed. The optimal solution is to approve the full $5M budget, but mandate an 18-month trial delay for further preclinical safety work specifically targeting the neurological issue, overseen by a fully empowered DSMB as Dr. Petrova demands."
+}

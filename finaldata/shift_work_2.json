@@ -1,0 +1,182 @@
+{
+  "scenario": "Apex Manufacturing Shift Restructuring Negotiation",
+  "task": "A team of 6 representatives, 3 from management and 3 from the labor union, must negotiate and agree upon a new weekly shift schedule and compensation package for the next 12 months. The current system is a standard 8-hour, 5-day work week (5x8) with frequent, often mandatory, overtime. Management has proposed a new 'flex-shift' system involving 10-hour, 4-day shifts (4x10) to increase productivity and reduce explicit overtime costs. The union is skeptical, concerned about worker fatigue, safety, and potential loss of income. The group must produce a single, signed agreement outlining the new plan.",
+  "agent_number": 6,
+  "agent_names": [
+    "David Chen",
+    "Maria Garcia",
+    "Frank Miller",
+    "Sarah Jenkins",
+    "Tom Riley",
+    "Emily Vance"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Plant Manager",
+      "description": "David is responsible for the overall operations and profitability of the plant. He is under immense pressure from corporate headquarters to increase production output by 15% to secure a new, lucrative contract ('Project Titan'). He sees the 4x10 shift as the only viable way to achieve this without a massive capital investment.",
+      "shareable_preferences": {
+        "implement_flex_shift": {
+          "description": "David wants to implement the 10-hour, 4-day (4x10) work week for at least 70% of the 200-person workforce. He argues this will increase machine uptime from the current 75% to a target of 90%, which is critical for meeting new production quotas. He is willing to discuss which departments adopt it first but is firm on the need for a significant change from the current 5x8 model.",
+          "utility_impact": "Full adoption of the 4x10 schedule is his primary goal. (+2: 70% or more of the workforce on 4x10 shifts; +1: 40-69% on 4x10 shifts; -1: Less than 40% on 4x10 shifts; -2: Complete rejection of the 4x10 proposal)."
+        },
+        "control_overtime_budget": {
+          "description": "David wants to cap the scheduled overtime budget at $50,000 per quarter. He frames this as a necessary cost-control measure to keep the plant competitive. He claims the current system, with its unpredictable overtime, is financially unsustainable.",
+          "utility_impact": "Keeping costs down is a key performance indicator for him. (+1: Overtime budget is set at or below $50,000/quarter; -1: Budget is set between $50,001 and $75,000; -2: Budget exceeds $75,000/quarter)."
+        }
+      },
+      "private_preferences": {
+        "bonus_tied_to_output": {
+          "value": "David recently received a congratulatory email from his VP which read: 'David, great work last quarter. As you know, securing Project Titan is our top priority. We need a 15% sustained output increase by Q3. The board has approved a personal performance bonus of $75,000 for you, contingent on hitting this target. Failure is not an option.' He knows the 4x10 shift is the only way to hit this number.",
+          "reason": "Revealing that his motivation is tied to a large personal bonus would make him appear greedy and self-serving, destroying his credibility with the union that he is acting in the company's best interest. It would completely undermine his negotiating position. Penalty: -2.",
+          "utility_impact": "This is his primary driver. The negotiation's outcome directly impacts his personal finances. Any outcome that doesn't lead to the 15% output increase threatens this bonus."
+        },
+        "critical_maintenance_delay": {
+          "value": "The plant's main stamping press, Machine #7, which is essential for 40% of production, is operating on borrowed time. A critical-risk report from engineering states it is 2000 operating hours past its mandatory major overhaul. The overhaul costs $250,000 and requires a full 5-day plant shutdown. He has been postponing it to avoid the production dip and cost on his quarterly reports. The proposed 4x10 schedule would increase the strain on this machine, raising the risk of a catastrophic, multi-week failure.",
+          "reason": "Admitting this exposes him to charges of negligent management and willfully endangering workers. It would give the union immense leverage, potentially leading to a forced shutdown on their terms and an investigation. It also reveals a huge hidden cost. Penalty: -2.",
+          "utility_impact": "He needs a schedule that doesn't push the machine to a breaking point before he can quietly schedule the maintenance during a holiday week. A breakdown would be a disaster for his career and bonus."
+        }
+      }
+    },
+    {
+      "name": "Maria Garcia",
+      "role": "HR Director",
+      "description": "Maria is tasked with managing employee relations, ensuring legal compliance, and mitigating workforce-related risks. She is concerned about rising employee burnout and absenteeism and wants to find a solution that improves morale without disrupting operations.",
+      "shareable_preferences": {
+        "ensure_legal_compliance": {
+          "description": "Maria insists that any new schedule must be fully compliant with state and federal labor laws, specifically ensuring a minimum of 10 consecutive hours of rest for every employee between shifts and proper calculation of overtime for hours worked beyond 40 in a week.",
+          "utility_impact": "This is non-negotiable for her, as non-compliance would expose the company to lawsuits and her to professional failure. (+2: The final agreement is fully compliant and documented; -2: The agreement contains any legal grey areas or violations)."
+        },
+        "fund_wellness_program": {
+          "description": "She wants to introduce a new employee wellness program (including mental health support and ergonomic assessments) which she believes will reduce absenteeism. She has a proposal ready, but it requires $20,000 in funding per year, which she has been told must come from operational savings generated by the new shift schedule.",
+          "utility_impact": "This is a passion project for her and a way to show she is proactively supporting employees. (+1: The plan saves at least $20,000 to fund her program; 0: The program is not funded)."
+        }
+      },
+      "private_preferences": {
+        "rising_absenteeism_data": {
+          "value": "Maria has a confidential HR analytics report on her desk showing that stress-related absenteeism has increased by 30% over the past six months, costing the company an estimated $80,000 in lost productivity and temporary staffing. The report strongly correlates the increase with the current erratic overtime schedule.",
+          "reason": "Publicizing this data would cause widespread panic about job security and working conditions. It would validate the union's worst fears and could trigger a formal grievance or an investigation by the Department of Labor. Penalty: -1.",
+          "utility_impact": "This data makes her secretly desperate to change the current system. She is more aligned with the union's desire for change than she lets on, but cannot reveal why."
+        },
+        "personal_career_ambitions": {
+          "value": "Maria is in the final stages of interviewing for a VP of HR position at a larger company. A key part of her narrative is her ability to 'pioneer innovative workforce solutions.' Successfully negotiating a complex new shift system without a strike would be a massive, tangible achievement to put on her resume. Conversely, a strike or failed negotiation would be a black mark she cannot afford.",
+          "reason": "It's highly unprofessional to reveal that her actions are motivated by a desire to leave the company. It would signal disloyalty and make both sides distrust her as a neutral HR representative. Penalty: -2.",
+          "utility_impact": "She is highly motivated to find a peaceful, innovative compromise, and may be willing to make concessions to management's position to be seen as a successful dealmaker."
+        }
+      }
+    },
+    {
+      "name": "Frank Miller",
+      "role": "Finance Controller",
+      "description": "Frank is a numbers-driven executive focused exclusively on the financial health of the plant. He views all operational decisions through the lens of a balance sheet. He is David's main ally in the push for cost reduction.",
+      "shareable_preferences": {
+        "reduce_labor_costs": {
+          "description": "Frank's stated goal is to reduce the total labor cost (wages + overtime + benefits) as a percentage of revenue by 5% over the next fiscal year. He presents this as a matter of 'improving operational efficiency' to ensure long-term plant viability.",
+          "utility_impact": "This is his core metric for success. (+2: Agreement projects a 5% or greater reduction in labor cost percentage; +1: 1-4.9% reduction; -1: Any increase in labor cost percentage)."
+        }
+      },
+      "private_preferences": {
+        "hidden_overtime_surcharge": {
+          "value": "Frank knows the official $50,000/quarter overtime budget is a fiction. His internal analysis shows that factoring in costs from production errors by tired workers, expedited shipping fees to meet deadlines missed due to staff shortages, and quality control failures adds a 40% 'invisible surcharge'. The true cost of overtime last quarter was $70,000. His model predicts the 4x10 shift, by stabilizing the workforce, would eliminate nearly $60,000 of this hidden cost per quarter.",
+          "reason": "Admitting the true costs reveals that his department's financial reporting is misleading and that management has been tolerating massive inefficiency. It would give the union a precise, verified number to use as leverage for demanding higher wages ('You can afford it, you're already wasting it!'). Penalty: -2.",
+          "utility_impact": "This knowledge makes him a staunch supporter of the 4x10 plan, as it represents a huge, albeit hidden, financial win that makes his department look good."
+        },
+        "loan_covenant_clause": {
+          "value": "The parent company recently secured a $10 million low-interest loan for expansion. Frank was on the team that negotiated it. He knows there is a strict covenant in the agreement that requires the company to maintain a stable or decreasing labor-cost-to-revenue ratio for the next 12 months. Any significant, uncompensated wage increase (like the 4% the union wants) or a costly strike could trigger a technical default on the loan, with severe financial consequences.",
+          "reason": "This is extremely sensitive, market-moving information. Leaking the specifics of a loan covenant would be a massive breach of corporate confidentiality and could cause a panic among investors. Penalty: -2.",
+          "utility_impact": "He cannot, under any circumstances, agree to a deal that significantly raises the labor cost ratio. This creates a hard ceiling on any wage increase he can accept."
+        }
+      }
+    },
+    {
+      "name": "Sarah Jenkins",
+      "role": "Union President",
+      "description": "Sarah is a charismatic and experienced leader, elected to fiercely protect the interests of the 200 union members. She is deeply suspicious of management's motives and is determined to secure better pay and working conditions.",
+      "shareable_preferences": {
+        "secure_wage_increase": {
+          "description": "Sarah is demanding a 4% across-the-board wage increase for all union members to counteract recent inflation and reward their hard work. She argues that the company's profitability can easily support this increase.",
+          "utility_impact": "Delivering a pay raise is a key promise to her members. (+2: Secures a wage increase of 4% or more; +1: Secures an increase between 2% and 3.9%; -1: Secures less than 2%; -2: Accepts a wage freeze or cut)."
+        },
+        "schedule_must_be_optional": {
+          "description": "Sarah insists that any new shift system, particularly the strenuous 4x10 proposal, must be strictly optional (opt-in) for all current employees. She also demands that any employee, regardless of their chosen schedule, must be guaranteed a minimum of 38 hours of work per week.",
+          "utility_impact": "Protecting worker autonomy and preventing forced schedules is a core union principle. (+2: The new schedule is 100% opt-in for all members; -2: The new schedule is mandatory)."
+        }
+      },
+      "private_preferences": {
+        "limited_strike_fund": {
+          "value": "Sarah knows the union's strike fund is dangerously low. After a previous dispute last year, the fund currently holds only enough to support a full member walkout for a maximum of 8 days. After that, they would be forced to return to work with virtually no leverage, likely accepting management's initial offer.",
+          "reason": "The threat of a prolonged strike is her most powerful negotiating tool. Revealing its severe limitation would render the threat empty, causing her to lose all leverage in the negotiation. Penalty: -2.",
+          "utility_impact": "She has to project an image of strength and willingness to strike for weeks, while knowing she has a very short timeline to get a deal done if talks break down."
+        },
+        "divided_union_membership": {
+          "value": "An anonymous internal poll she conducted last week revealed a sharp divide in the union. Roughly 40% of the members, mostly younger workers with families, are strongly in favor of the 4x10 schedule for the three-day weekend. However, 60%, composed largely of senior workers, are vehemently opposed, citing health and fatigue concerns. A mandatory vote on the current proposal would likely fail, but it would also expose a major rift in her union.",
+          "reason": "Revealing this internal division would be catastrophic. Management could use a 'divide and conquer' strategy, appealing directly to the younger workers and breaking the union's unified front. Penalty: -1.",
+          "utility_impact": "She is not just negotiating with management; she is trying to find a compromise that her own fractured membership will ratify. A simple 'yes' or 'no' is not an option for her."
+        }
+      }
+    },
+    {
+      "name": "Tom Riley",
+      "role": "Senior Machine Operator / Union Steward",
+      "description": "Tom is a 30-year veteran of the plant and a respected voice among the senior workforce. He operates the heavy machinery and serves as the union's de facto safety expert. He is highly skeptical of any changes that prioritize speed over safety and experience.",
+      "shareable_preferences": {
+        "reject_10_hour_shifts": {
+          "description": "Tom staunchly opposes the 10-hour shift proposal. He argues from experience that operating heavy, dangerous machinery requires intense focus, and that after 8 hours, fatigue drastically increases the risk of accidents. He cites two 'near-miss' incidents in the past year that occurred during overtime hours.",
+          "utility_impact": "His primary goal is worker safety. (+2: The 4x10 proposal is completely rejected; -1: The 4x10 proposal is adopted by some departments but not his (heavy machinery); -2: The 4x10 proposal is implemented for his department)."
+        },
+        "increase_safety_budget": {
+          "description": "Tom is demanding a 50% increase in the annual safety equipment budget, from $10,000 to $15,000. He wants to purchase new ergonomic supports, better-quality safety harnesses, and updated hearing protection, which he claims management has ignored requests for.",
+          "utility_impact": "This is a tangible way for him to improve his colleagues' daily work lives. (+1: The safety budget is increased to $15,000 or more; 0: The budget remains unchanged or is cut)."
+        }
+      },
+      "private_preferences": {
+        "personal_health_condition": {
+          "value": "Tom has a chronic back condition (diagnosed sciatica) that he manages with regular physical therapy. He has not officially disclosed this to HR for fear of being deemed unfit for his physically demanding job and being forced into a lower-paying role or early retirement. Working a 10-hour shift standing at his machine would be excruciatingly painful and medically inadvisable for him. He knows of at least four other senior operators with similar undisclosed, age-related health concerns.",
+          "reason": "This is sensitive personal medical information. Disclosing it could lead to workplace discrimination, a forced medical leave, or the loss of his job. Penalty: -2.",
+          "utility_impact": "His opposition to the 10-hour day is not just philosophical; it's a matter of personal health and livelihood. This makes his position on the issue almost completely inflexible."
+        }
+      }
+    },
+    {
+      "name": "Emily Vance",
+      "role": "Junior Assembly Worker / Union Rep",
+      "description": "Emily represents the plant's younger demographic. She has been with the company for three years and is a single mother of two. She is focused on issues of work-life balance and financial stability.",
+      "shareable_preferences": {
+        "support_flexible_schedule": {
+          "description": "Emily is a strong proponent of the 4x10 shift option. A three-day weekend would save her over $150 a week in childcare costs for one of her children, a significant portion of her income. She argues that for many younger workers, the flexibility is more valuable than a small pay increase.",
+          "utility_impact": "The financial and family benefits are huge for her. (+2: A 4x10 or other flexible, compressed work week option is made available; -1: The schedule remains a rigid 5x8)."
+        },
+        "demand_predictable_scheduling": {
+          "description": "Regardless of the shift structure, Emily demands that schedules be posted at least one month in advance with no last-minute changes. The current system of being asked to stay for overtime with little notice makes managing childcare and personal appointments nearly impossible.",
+          "utility_impact": "Predictability is crucial for her life outside of work. (+1: The agreement includes a clause guaranteeing schedules are posted 4 weeks in advance; -1: The scheduling remains unpredictable)."
+        }
+      },
+      "private_preferences": {
+        "reliance_on_a_second_job": {
+          "value": "Emily works a second job as a server for 15 hours every weekend to afford her rent and bills. Her factory income alone is not enough. The current, erratic mandatory overtime has twice forced her to call out of her weekend job, costing her over $400 in lost wages and tips and straining her relationship with her other employer. A guaranteed three-day weekend from the 4x10 schedule would not only secure her second job but would allow her to potentially pick up more shifts there.",
+          "reason": "She fears that if management knew she had a second job, they would see her as less committed to Apex Manufacturing. They might also use it as an excuse to deny her a raise, arguing that she has other income. Penalty: -1.",
+          "utility_impact": "This hidden financial pressure makes her a very strong, almost desperate, advocate for the 4x10 schedule. She may be willing to trade away other union demands, like the wage increase, to secure it."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_achieved": "A single, written agreement is produced and signed by both David Chen (for management) and Sarah Jenkins (for the union).",
+    "core_terms_defined": "The agreement must explicitly define: 1. The new shift structure(s) (e.g., 5x8, 4x10, or a hybrid model). 2. The policy for overtime assignment and compensation rate. 3. The across-the-board wage adjustment percentage for the next 12 months.",
+    "operational_stability": "The final agreement must be ratified by the union membership and implemented without a strike, walkout, or the filing of a major collective grievance within the first 30 days of the new schedule taking effect."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total plant operating budget for the next fiscal year cannot exceed $5.5 million.",
+      "Any agreed-upon schedule must be compliant with state and federal labor laws, including rules on overtime pay and mandatory rest periods.",
+      "The factory requires a minimum of 100 operational hours per week to meet existing contractual demands."
+    ],
+    "hidden": [
+      "Machine #7 requires a non-negotiable 5-day shutdown for a major overhaul in the near future.",
+      "A significant increase in the labor-cost-to-revenue ratio could put a critical company loan in default.",
+      "The union's strike fund can only sustain a full walkout for 8 days."
+    ]
+  },
+  "deliverable": "A JSON object representing the final agreement. It must contain keys for 'shift_structure' (string), 'overtime_policy' (string), 'wage_increase_percentage' (float), and 'additional_terms' (string, e.g., safety budget, wellness program funding).",
+  "solvability_note": "The scenario is solvable because a compromise exists if private information is shared. Knowledge of the required maintenance on Machine #7 (David's info) and the hidden overtime costs (Frank's info) creates an opportunity. The parties can agree to a planned shutdown for the maintenance, during which no one loses pay. The massive savings from eliminating hidden overtime costs can fund both a modest wage increase (e.g., 2.5-3%) and Maria's wellness program. The internal union division (Sarah's info) combined with the specific needs of Tom (health) and Emily (childcare) points to a hybrid solution: allow workers to opt-in to a 4x10 schedule while others remain on 5x8. This satisfies all parties to a degree, avoids violating the loan covenant, and prevents a strike that neither side can truly afford."
+}

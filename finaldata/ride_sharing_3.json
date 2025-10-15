@@ -1,0 +1,192 @@
+{
+  "scenario": "Veridian Creek Flash Flood Response",
+  "task": "A flash flood has devastated the remote Veridian Creek valley, isolating several communities. A coordination committee of 7 key stakeholders has been assembled to create and unanimously agree upon a comprehensive 72-hour emergency transportation plan. This plan must allocate a limited pool of volunteer drivers, vehicles, and a single private source of fuel to evacuate residents and deliver critical supplies, all while navigating undisclosed risks and conflicting priorities.",
+  "agent_number": 7,
+  "agent_names": [
+    "Elena Vargas",
+    "Dr. Ben Carter",
+    "Maria Flores",
+    "Leo Petrov",
+    "Frank Miller",
+    "Dr. Aisha Khan",
+    "Jake 'Sarge' Simmons"
+  ],
+  "agents": [
+    {
+      "name": "Elena Vargas",
+      "role": "County Emergency Manager",
+      "description": "Elena is a career public servant responsible for the county's official disaster response. She is under immense political pressure from the state capital and the local mayor to maintain order, follow established protocols, and project an image of control. Her primary concern is a swift, orderly, and publicly defensible evacuation.",
+      "shareable_preferences": {
+        "Evacuate Pine Ridge Estates First": {
+          "description": "Elena strongly insists on prioritizing the evacuation of the affluent Pine Ridge Estates. She argues that this area has the highest population density and its residents have significant political influence, which can unlock more state-level resources if they are seen to be handled well. She wants at least 40% of the first 24-hour transport capacity dedicated to this single location. Utility: +2 if Pine Ridge is prioritized as requested, -1 if it's treated equally, -2 if it's placed last.",
+          "utility_impact": "This is her public-facing top priority. Achieving this demonstrates her effectiveness to her superiors and quiets the most vocal and influential residents. Failing to do so could jeopardize her career and future funding for the department."
+        },
+        "Maintain Official Communications Control": {
+          "description": "All public statements, route plans, and evacuation lists must be channeled through her office for official approval before action. She wants a 2-hour review window for any plan before it is finalized. She believes this prevents panic and misinformation. Utility: +1 if she gets this control, -1 if information is shared freely by other agents, causing what she sees as chaos."
+        },
+        "Strict Adherence to Budget": {
+          "description": "The county has an initial emergency fund of $10,000 for immediate operational needs like fuel. She cannot authorize payments above this amount without a lengthy approval process. She wants to keep the fuel price below $7.00 per gallon to stay within this budget. Utility: +1 if fuel costs are kept under budget, -2 if she is forced to go over budget, as it creates a significant administrative and political problem for her."
+        }
+      },
+      "private_preferences": {
+        "Mayor's Family Trapped": {
+          "value": "The mayor has called her privately, in a panic. His wife, two children, and elderly mother are trapped in their home in Pine Ridge Estates. He has made it clear, without saying it directly, that her job performance review is tied to their safe and immediate rescue. She cannot share this as it would be a major political scandal, exposing blatant favoritism and corruption. Sharing that 'influential people' are trapped has a -1 penalty. Revealing it's the mayor's immediate family is a -2 penalty.",
+          "reason": "This is a politically explosive secret. Revealing it would destroy her professional reputation and likely end her career, while also causing a massive public outcry and loss of faith in the rescue effort.",
+          "utility_impact": "This is her true, overriding motivation. The public preference for evacuating Pine Ridge is a cover for this personal mission. She will fight tooth and nail for resources to be sent there first, even if other areas are in more objective danger."
+        }
+      }
+    },
+    {
+      "name": "Dr. Ben Carter",
+      "role": "Field Director, Global Aid Response (GAR)",
+      "description": "Ben is a seasoned humanitarian aid worker from a large, international NGO. He is methodical, risk-averse, and bound by GAR's strict global protocols. His focus is on maximizing verifiable impact, ensuring volunteer safety, and maintaining GAR's pristine reputation for professionalism.",
+      "shareable_preferences": {
+        "Mandatory Safety & Protocol Briefing": {
+          "description": "Ben insists that all volunteer drivers, regardless of experience, must attend a mandatory 4-hour GAR safety and equipment-use briefing before they can be deployed. He argues this is non-negotiable for insurance and liability reasons. He has pre-printed manuals and checklists. Utility: +2 if the full briefing is implemented, -1 if it's shortened to 1 hour, -2 if it's skipped entirely.",
+          "utility_impact": "This is a core tenet of his organization's operational model. Skipping it would violate protocol and, in his view, expose everyone to unacceptable risk. He sees it as the foundation of a professional, rather than amateur, response."
+        },
+        "Prioritize High-Capacity Shelters": {
+          "description": "GAR has set up a large, well-stocked shelter at the county fairgrounds. Ben wants all evacuation routes to terminate at this single location. This streamlines aid distribution and medical triage. He is against dropping evacuees off at multiple smaller, less-equipped locations. Utility: +1 if his shelter is the primary destination, -1 if multiple drop-off points are used."
+        },
+        "Transparent Resource Allocation": {
+          "description": "Ben demands a clear, transparent, and audited account of how all resources, especially fuel, are used. He wants every gallon logged and assigned to a specific mission. He is very skeptical of informal deals and wants to pay a fair, documented market price for all supplies. Utility: +1 for a fully transparent process, -1 for any 'off-the-books' deals."
+        }
+      },
+      "private_preferences": {
+        "Secret 'Operational Smoothing' Fund": {
+          "value": "Ben has access to a discretionary fund of $20,000 cash, separate from the official project budget. It's intended for 'smoothing' operations in difficult environments (e.g., paying bribes, securing scarce resources at a premium). His superiors sanctioned it via a congratulatory but confidential email after his last mission, praising his 'pragmatism'. Mentioning this fund is strictly forbidden by GAR's public transparency policy. He can hint at 'creative financing' (-1 penalty), but revealing the fund's existence or amount (-2 penalty) would get him fired and cause a major donor scandal.",
+          "reason": "The fund contradicts his organization's public commitment to 100% transparency and accountability. Its existence, if revealed, would be a PR nightmare.",
+          "utility_impact": "This gives Ben immense leverage, but using it is a last resort. He can solve budget problems (like Frank's high fuel price) but only at great personal risk. He'd rather force others to conform to the official budget."
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Founder, Veridian Community Helpers (VCH)",
+      "description": "Maria is a lifelong resident of Veridian Creek and runs a small, local NGO. She has deep connections within the community and an encyclopedic knowledge of the area's back roads and hidden communities. She is fiercely protective of the valley's most vulnerable and often overlooked residents.",
+      "shareable_preferences": {
+        "Prioritize Whispering Pines Community": {
+          "description": "Maria's top priority is a small, isolated community of a dozen elderly residents in 'Whispering Pines', accessible only by a treacherous, unpaved logging trail. She argues they are the most vulnerable and will be forgotten by the official response. She wants at least one dedicated 4WD vehicle and driver for this task for the entire 72-hour period. Utility: +2 if this is guaranteed, -1 if they are put in the general queue, -2 if they are ignored.",
+          "utility_impact": "Her entire organization's purpose is to advocate for these forgotten groups. Failing them would be a deep personal and professional failure."
+        },
+        "Use of Local Knowledge": {
+          "description": "Maria insists that her knowledge of local routes and conditions should take precedence over official maps, which are often outdated. She wants the authority to reroute drivers in real-time based on her network's feedback. Utility: +1 if her expertise is respected and utilized, -1 if she is forced to stick to official, inefficient routes."
+        }
+      },
+      "private_preferences": {
+        "Personal Family Emergency": {
+          "value": "Her intense focus on Whispering Pines is because her own diabetic grandmother lives there. Maria spoke to her briefly before the lines went down; her grandmother has less than 24 hours of insulin left. This is a life-or-death situation for her family member. She is terrified that revealing this personal stake will cause others to dismiss her advocacy as selfish and unprofessional, potentially delaying the rescue of the entire group. Revealing her grandmother is sick is a -1 penalty. Revealing the specific, time-critical insulin issue is a -2 penalty.",
+          "reason": "She fears being seen as prioritizing her family over the community, which would damage her reputation as an impartial community leader and could lead to others refusing her request.",
+          "utility_impact": "This is the true driver of her urgency. She will be almost irrationally insistent on the Whispering Pines evacuation, potentially alienating others by refusing to compromise on this single issue."
+        }
+      }
+    },
+    {
+      "name": "Leo Petrov",
+      "role": "Volunteer Driver Coordinator",
+      "description": "Leo is a local mechanic who has rallied a group of 10 independent volunteers with their own vehicles (4 well-maintained 4WD trucks, 6 sedans). He feels a deep sense of responsibility for the safety and well-being of the people who trusted him to lead them.",
+      "shareable_preferences": {
+        "Strict Driver Safety Protocols": {
+          "description": "Leo demands strict operational limits for his drivers: no more than 8 hours of driving per 24-hour period, and they must not be sent into areas deemed 'high-risk' without clear intelligence. He also wants a guarantee of hot meals and safe lodging for them at the end of each shift. Utility: +2 if these conditions are met, -1 if hours are extended to 12, -2 if safety guarantees are ignored.",
+          "utility_impact": "His reputation and conscience are on the line. If one of his volunteers gets hurt, it's on him. He will pull his drivers out of the operation if he feels they are being exploited or endangered."
+        },
+        "Vehicle Maintenance Support": {
+          "description": "He wants a small, dedicated supply of spare tires, oil, and a toolkit to be provided by the coordination committee, and for his judgment on whether a vehicle is fit for a specific route to be final. Utility: +1 if supplies are provided, -1 if they are not."
+        }
+      },
+      "private_preferences": {
+        "Inexperienced Youth Drivers": {
+          "value": "Two of the ten drivers he has vouched for as 'highly experienced locals' are his 17-year-old nephew and his friend. They have provisional licenses and, while capable drivers, have zero experience in genuine emergency conditions. He was desperate for volunteers with 4WD trucks and they were the only ones available. If this is discovered, he will lose all credibility with the other drivers and the committee, and could face legal liability if something goes wrong. He can say 'some drivers are younger' (-1 penalty), but revealing their exact age and license status is a -2 penalty.",
+          "reason": "Public admission would shatter the trust his volunteer group has placed in him, likely causing the group to disband and leaving him personally humiliated and potentially liable.",
+          "utility_impact": "Leo will strongly resist any deep vetting of his drivers (like Ben's briefing) and will be overly cautious about sending drivers to the most dangerous routes, not just for safety, but to protect his secret and prevent the teenagers from being put in a situation they can't handle."
+        }
+      }
+    },
+    {
+      "name": "Frank Miller",
+      "role": "Owner, Miller's Gas & Towing",
+      "description": "Frank is a shrewd local businessman who owns the only gas station with power and a working pump in the disaster zone. He also owns a fleet of two heavy-duty tow trucks. He sees the disaster as both a community duty and a business opportunity.",
+      "shareable_preferences": {
+        "Premium Price for Fuel": {
+          "description": "Frank is willing to make his entire fuel reserve (which he claims is 1,000 gallons of diesel) available, but at a premium price of $12.00 per gallon, citing hazard pay for his staff and the cost of running his generator. He wants payment upfront, in cash. Utility: +2 if he gets his price, +1 if he gets $9.00/gallon, -2 if he's forced to accept the 'standard' government rate of $7.00/gallon or less.",
+          "utility_impact": "This is a chance for him to make a significant profit from a captive market. He justifies it as fair compensation for his risk and investment."
+        },
+        "Prioritize Business Asset Recovery": {
+          "description": "Before his trucks are used for evacuations, he wants to use one of them for 6 hours to pull his cousin's valuable construction equipment out of a flooded commercial lot. He frames this as 'clearing a route' but it's purely a private financial interest. Utility: +1 if this is allowed, -1 if it's denied."
+        }
+      },
+      "private_preferences": {
+        "Leaking Fuel Tank": {
+          "value": "Frank's main underground storage tank has a slow, recently discovered leak. He did a stick measurement this morning and knows he actually has closer to 800 gallons, not the 1,000 he is advertising, and he's losing about 2 gallons per hour. He needs to sell the fuel as quickly as possible at a high price before the discrepancy becomes obvious or the fuel is gone. Admitting the leak (-2 penalty) would destroy his reputation, expose him to massive environmental fines, and force him to give the fuel away for free as a gesture of goodwill.",
+          "reason": "Revealing the leak would make him a pariah in the community for trying to profit from a disaster while concealing a critical flaw in his offering. The legal and financial ramifications would be ruinous.",
+          "utility_impact": "This creates immense pressure on Frank to close a deal quickly and resist any attempts to audit or measure his fuel supply. He will create a false sense of urgency, claiming he has other buyers or that the generator powering the pump might fail."
+        }
+      }
+    },
+    {
+      "name": "Dr. Aisha Khan",
+      "role": "Lead Physician, Veridian Creek Clinic",
+      "description": "Dr. Khan is the overworked head of the local medical clinic, which is now running on a backup generator and dwindling supplies. She is focused entirely on patient outcomes and preventing a wider public health crisis.",
+      "shareable_preferences": {
+        "Immediate Medical Evacuation": {
+          "description": "Her first and most urgent priority is the immediate evacuation of 15 critical-care patients from her clinic. This requires vehicles that can accommodate stretchers (at least two of the 4WD trucks) and must be the very first convoy to leave, as the clinic's generator is unreliable. Utility: +2 if her patients are the first group evacuated, -2 if they are delayed by more than 12 hours.",
+          "utility_impact": "This is a matter of life and death for her patients. Any delay directly increases the risk of mortality, and she will not compromise on their safety."
+        },
+        "Delivery of Medical Supplies": {
+          "description": "She needs an incoming delivery of fresh water, antibiotics, and IV fluids on the very first return trip of any vehicle. The clinic's supply of clean water is almost gone. Utility: +1 if supplies are confirmed on the first return trip."
+        }
+      },
+      "private_preferences": {
+        "Suspected Cholera Outbreak": {
+          "value": "She has privately diagnosed three of her patients with symptoms strongly indicative of cholera, likely from contaminated well water. She has not shared this information with anyone, not even her staff, to avoid causing a mass panic in the valley. A panic would make an orderly evacuation impossible and could lead to people fleeing through dangerous, flooded areas. Publicly confirming a cholera outbreak (-2 penalty) would be catastrophic for public morale and order, but the information is critical for prioritizing the evacuation and preventing a wider epidemic.",
+          "reason": "The word 'cholera' would incite widespread panic. People would stop listening to authorities and a chaotic, self-interested rush would ensue, endangering far more people.",
+          "utility_impact": "This secret makes her demand for immediate evacuation and clean water supplies non-negotiable in her mind. She knows the stakes are much higher than anyone else in the room realizes. She will appear inflexible and single-minded about her clinic's needs because she is trying to contain a potential epidemic."
+        }
+      }
+    },
+    {
+      "name": "Jake 'Sarge' Simmons",
+      "role": "Team Lead, Veridian Volunteer Search & Rescue (SAR)",
+      "description": "Jake is a no-nonsense, retired military veteran who leads the local SAR team. He has the most accurate, on-the-ground intelligence about the conditions of roads, bridges, and isolated areas. His only priority is the safety of rescue teams and civilians.",
+      "shareable_preferences": {
+        "Avoid Old Mill Bridge Route": {
+          "description": "Jake adamantly refuses to send any teams, volunteer or professional, across the Old Mill Bridge. He states that his visual inspection showed the supports are critically undermined by the floodwaters and it is at imminent risk of collapse. He argues that using the longer, 5-mile detour via Ridge Road is the only safe option, even though it will add 30 minutes to any trip to the northern communities. Utility: +2 if the bridge is declared a no-go zone, -2 if teams are ordered to use it.",
+          "utility_impact": "He will not knowingly send people to their deaths. He would sooner pull his team from the entire operation than cross that bridge. This is a matter of professional judgment and personal honor."
+        },
+        "SAR Team Has Veto Power": {
+          "description": "He wants final say on route safety for any dispatched vehicle. If his team deems a route unsafe due to changing conditions (like a mudslide), they must have the authority to halt or redirect convoys without waiting for committee approval. Utility: +1 if his team gets this authority, -1 if they are overruled."
+        }
+      },
+      "private_preferences": {
+        "Unconfirmed Sighting of Looters": {
+          "value": "The real reason he is so adamant about the Old Mill Bridge is not just structural. During his recon, he and his partner briefly spotted what looked like two men armed with rifles setting up a makeshift roadblock on the far side of the bridge. It was from a distance, and he has no hard proof. Reporting this officially as 'armed looters' without confirmation would be seen as fear-mongering and could divert critical law enforcement resources on a wild goose chase. He can't prove what he saw, so he's using the 'damaged bridge' story as a more defensible reason to keep people away. Revealing the unconfirmed sighting (-2 penalty) would damage his credibility as a level-headed leader if it turns out to be nothing.",
+          "reason": "Crying wolf about armed hostiles is a serious claim. If he's wrong, his judgment will be questioned for all future operations. He is protecting his professional reputation for providing only verified intelligence.",
+          "utility_impact": "This secret makes him completely inflexible on the bridge issue. He cannot compromise because he believes he is protecting people from a violent threat, not just a structural one. He will let the others think he is being overly cautious or stubborn rather than reveal his unconfirmed intelligence."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All 7 agents must verbally or in writing agree to the final 72-hour plan. No agent can be 'strong-armed'; the agreement must be voluntary.",
+    "Comprehensive Allocation Plan": "The final plan must detail the allocation of all 10 drivers and their specific vehicles to routes, tasks, and schedules for the full 72-hour period.",
+    "Fuel Sustainability": "The total fuel allocated in the plan must not exceed the actual amount of fuel available from Frank Miller.",
+    "Prioritization Agreement": "The plan must explicitly state the evacuation priority for at least three distinct community groups/locations (e.g., Pine Ridge, Whispering Pines, Clinic Patients)."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total operational window: 72 hours.",
+      "Total volunteer drivers: 10.",
+      "Total vehicles: 4 4WD trucks, 6 sedans.",
+      "Frank Miller's publicly stated fuel supply: 1,000 gallons of diesel.",
+      "County's emergency budget for initial expenses: $10,000."
+    ],
+    "hidden": [
+      "Frank Miller's actual fuel supply is ~800 gallons and decreasing.",
+      "Two of Leo's 'experienced' drivers are teenagers with provisional licenses.",
+      "There is a suspected, unannounced cholera outbreak at the clinic.",
+      "There is an unconfirmed but credible threat of armed looters near the Old Mill Bridge."
+    ]
+  },
+  "deliverable": "A written 72-hour operational plan document. It must include a table with columns for: Time Block (e.g., 0-8 hours), Driver Name, Vehicle Type, Assigned Route/Task, Evacuation/Cargo Priority, and Allocated Fuel (in gallons). The document must be signed (or verbally agreed to on record) by all seven agents.",
+  "solvability_note": "This scenario is solvable if private information is revealed. Revealing the cholera outbreak (Aisha) and the looters (Jake) would immediately re-frame the operational priorities around health and safety, making the clinic and avoiding the bridge non-negotiable for everyone. Ben's secret fund can solve the budget conflict with Frank's fuel price. Frank's leaking tank, once revealed, would force more efficient fuel planning. Leo's underage drivers would be assigned safer, local tasks, and the personal motivations of Elena and Maria would allow the group to craft a compassionate compromise (e.g., a single, fast vehicle for their specific family members) without sacrificing the entire plan."
+}

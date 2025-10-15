@@ -1,0 +1,177 @@
+{
+  "scenario": "Negotiating a Multi-Year Carbon Credit Purchase Agreement",
+  "task": "Four stakeholders must negotiate the terms of a 3-year Carbon Credit Purchase Agreement for a large-scale Amazon reforestation project. The goal is to finalize a term sheet specifying the price per tonne of carbon, the annual volume of credits, the contract length, the budget and scope of the ongoing monitoring plan, and specific clauses on community land rights. The negotiation is complicated by undisclosed financial pressures, confidential audit findings, and strict philanthropic requirements.",
+  "agent_number": 4,
+  "agent_names": [
+    "David Chen",
+    "Dr. Lena Petrova",
+    "Marcus Thorne",
+    "Isabella Rossi"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Sustainability Manager, Innovate Inc.",
+      "description": "David represents a major publicly-traded tech company, Innovate Inc., which is under immense pressure from its board and investors to meet its 'net-zero by 2030' pledge. His primary role is to procure high-quality, 'charismatic' carbon credits in large volumes to offset the company's significant data center emissions. He needs a deal that is both cost-effective and looks good in the annual ESG report.",
+      "shareable_preferences": {
+        "price_per_tonne": {
+          "description": "Secure a price at or below $15 per tonne. He will argue that this is the current market rate for similar projects and that Innovate Inc.'s large, multi-year purchase offers the project long-term stability that justifies a bulk discount. He will state that his budget is 'extremely tight' due to company-wide cost-cutting measures.",
+          "utility_function": {
+            "<= $15/tonne": 2,
+            "$15.01 - $18/tonne": 1,
+            "$18.01 - $20/tonne": -1,
+            "> $20/tonne": -2
+          }
+        },
+        "contract_volume_and_length": {
+          "description": "Finalize a deal for at least 50,000 tonnes of CO2e credits per year for a minimum of 3 years. This scale is necessary to make a meaningful dent in Innovate Inc.'s carbon footprint and demonstrate a serious, long-term commitment to stakeholders. He will push for a longer-term deal (5 years) if possible, framing it as a benefit for the project's financial security.",
+          "utility_function": {
+            "50k+ tonnes/yr for 3+ years": 2,
+            "< 50k tonnes/yr OR < 3 years": -2
+          }
+        },
+        "public_relations_value": {
+          "description": "The project must be highly marketable. Reforestation in the Amazon, with clear benefits to biodiversity and local communities, is ideal. He needs compelling stories and visuals for the corporate website and ESG reports. He is very supportive of the project's 'co-benefits' as long as they don't significantly increase the price.",
+          "utility_function": {
+            "Deal includes strong marketing assets (photos, community stories)": 1,
+            "Deal is purely transactional (carbon only)": 0
+          }
+        }
+      },
+      "private_information": {
+        "budget_and_bonus_structure": {
+          "value": "Innovate Inc.'s absolute maximum approved budget is $22/tonne, giving them a total annual budget of $1.1 million for this purchase. However, David's personal performance bonus is directly tied to cost savings. He just received a congratulatory email from his VP that reads: 'Great work on the solar deal, David. That $450k saving you secured is exactly what we need. Deliver the Amazon project under $15/tonne and you'll be looking at a $100k+ bonus this year. Don't let me down.' He can share that the budget is tight, but if he reveals the $22/tonne ceiling, his negotiation leverage is gone. If he reveals his personal bonus, he will appear self-serving and unethical.",
+          "reason_for_privacy": "Revealing the maximum budget would severely weaken his negotiating position. Disclosing a personal financial incentive would damage his professional reputation and his relationship with the other stakeholders, who would see him as acting in bad faith.",
+          "penalty": {
+            "Revealing the $22/tonne max budget": -1,
+            "Revealing the $100k personal bonus incentive": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Project Director, Green Canopy Collective",
+      "description": "Lena is a passionate conservation scientist who runs a large-scale reforestation project in a remote region of the Amazon. Her NGO, Green Canopy Collective, relies on the sale of carbon credits to fund its operations, from seedling nurseries to paying fair wages to the local and indigenous staff who carry out the planting and forest management. The project is her life's work.",
+      "shareable_preferences": {
+        "price_per_tonne": {
+          "description": "Secure a price no lower than $20 per tonne. She will meticulously explain the project's high operational costs: remote logistics, the need to pay fair living wages (not just minimum wage) to local communities, and investment in fire prevention and biodiversity monitoring. She will argue that anything less than $20/tonne would force her to scale back operations or cut wages, jeopardizing the project's long-term success and social impact.",
+          "utility_function": {
+            ">= $20/tonne": 2,
+            "$18 - $19.99/tonne": 0,
+            "$16 - $17.99/tonne": -1,
+            "< $16/tonne": -2
+          }
+        },
+        "long_term_commitment": {
+          "description": "A long-term (3-5 year) contract is essential. One-year deals create too much uncertainty, making it impossible to plan for nursery expansion or offer stable employment to her team. She needs a predictable revenue stream to ensure the newly planted forests are protected through their vulnerable early years.",
+          "utility_function": {
+            "Contract of 3+ years": 2,
+            "Contract of 2 years": -1,
+            "Contract of 1 year": -2
+          }
+        },
+        "recognition_of_co_benefits": {
+          "description": "She wants the final agreement to explicitly acknowledge and value the project's 'co-benefits,' such as protecting endangered species' habitats and providing educational programs for local children. She believes these benefits justify a premium price and wants them featured in any public communications from Innovate Inc.",
+          "utility_function": {
+            "Co-benefits are explicitly valued in the agreement": 1,
+            "Co-benefits are ignored": -1
+          }
+        }
+      },
+      "private_information": {
+        "confidential_donor_agreement": {
+          "value": "A significant portion of Green Canopy's foundational funding came from an extremely private European family foundation. The legally-binding donor agreement contains a strict clause: 'No more than 5% of the project's annual operational budget, derived from any source, may be allocated to third-party administrative or verification fees.' The new, more rigorous monitoring plan proposed by the certifier, Marcus Thorne, is estimated to cost 8% of the project's budget. She cannot afford this without violating her NDA, which would trigger a clawback of all past funding and the loss of all future support. She can say the proposed fees are 'unworkable' for her budget, but she cannot explain the hard 5% limit or name the donor.",
+          "reason_for_privacy": "Violating the Non-Disclosure Agreement (NDA) with her primary funder would have catastrophic financial and legal consequences, effectively bankrupting her NGO and destroying the project.",
+          "penalty": {
+            "Revealing the existence of the specific 5% cap": -1,
+            "Revealing the name of the donor or the details of the NDA": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Marcus Thorne",
+      "role": "Senior Auditor, Carbon Veritas",
+      "description": "Marcus is a meticulous and principled auditor for Carbon Veritas, a top-tier carbon credit certification body. His job is to be the impartial arbiter of quality, ensuring that one carbon credit truly represents one tonne of CO2 removed from the atmosphere. His firm's reputation, and by extension his career, depends on his unwavering rigor and adherence to protocol.",
+      "shareable_preferences": {
+        "monitoring_reporting_verification_plan": {
+          "description": "Implement a new, more robust MRV plan for the project. This includes annual high-resolution satellite imagery analysis, quarterly drone-based canopy surveys, and the installation of permanent, geolocated ground plots for manual measurement. He will state that this is necessary to 'uphold the highest standards of the market' and ensure the credits are beyond reproach. He will estimate the cost of this plan at approximately 8% of the project's annual budget.",
+          "utility_function": {
+            "Full, robust MRV plan is adopted": 2,
+            "Moderately reduced MRV plan is adopted": -1,
+            "Current (insufficient) MRV plan is maintained": -2
+          }
+        },
+        "adherence_to_protocol": {
+          "description": "The entire negotiation and final agreement must follow Carbon Veritas's standard procedures. Any deviation or attempt to cut corners on verification will be rejected. He acts as the guardian of the rules and will not bend them for the sake of making a deal happen.",
+          "utility_function": {
+            "All protocols are strictly followed": 1,
+            "Any protocol is bent or broken": -2
+          }
+        }
+      },
+      "private_information": {
+        "undisclosed_verification_dispute": {
+          "value": "Marcus has just completed his annual audit of the Green Canopy project and has not yet published the report. His analysis found a significant problem: satellite data indicates a tree seedling survival rate of only 78% in a large, remote northern sector of the project, while Green Canopy's self-reported numbers for that sector, based on their ground team's survey, claimed a 90% survival rate. This 12% discrepancy is substantial and could indicate either poor monitoring or, in the worst case, fraud. He believes the issue is likely due to a poorly trained local team and can be fixed with the robust MRV plan he is proposing. If he reveals the specific 12% discrepancy now, before the report is final, Innovate Inc. will likely walk away, and Green Canopy could sue Carbon Veritas for reputational damage. He can only speak in general terms about needing to 'improve monitoring accuracy' and 'resolve data inconsistencies'.",
+          "reason_for_privacy": "Disclosing specific, unfinalized audit findings is a major breach of professional auditing protocol. It could expose his firm to litigation, damage a client's reputation unfairly, and get him fired.",
+          "penalty": {
+            "Hinting at 'data inconsistencies'": -0.5,
+            "Revealing the exact 12% discrepancy figure": -2
+          }
+        }
+      }
+    },
+    {
+      "name": "Isabella Rossi",
+      "role": "Program Officer, Helios Foundation",
+      "description": "Isabella represents the Helios Foundation, a massive philanthropic organization considering a $10 million, multi-year grant to fund Innovate Inc.'s entire sustainability program. She is at this negotiation as a prospective partner to conduct final due diligence. Her foundation is not interested in 'greenwashing' and has extremely high standards for the projects it associates its name with. Her approval is the final green light for the grant.",
+      "shareable_preferences": {
+        "unimpeachable_integrity": {
+          "description": "The project's carbon accounting and verification must be flawless and transparent. She is highly supportive of Marcus's call for a more robust MRV plan, stating that the Helios Foundation will only back programs that use the 'absolute best-in-class' verification methodologies. The cost is secondary to the integrity of the credits.",
+          "utility_function": {
+            "Highest standard of MRV is adopted": 2,
+            "Any compromise on MRV quality": -2
+          }
+        },
+        "verifiable_community_benefits": {
+          "description": "She wants to see tangible, legally-enshrined benefits for the local and indigenous communities involved in the project. Vague promises are not enough. She will ask for specific clauses in the agreement that dedicate a percentage of revenue to community-led initiatives and guarantee long-term employment.",
+          "utility_function": {
+            "Specific, verifiable community benefit clauses are included": 2,
+            "Community benefits are mentioned but not guaranteed": 0,
+            "Community benefits are ignored": -2
+          }
+        }
+      },
+      "private_information": {
+        "non_negotiable_land_tenure_requirement": {
+          "value": "The founder of the Helios Foundation was embroiled in a past controversy where a project he funded inadvertently displaced an indigenous community. As a result, the foundation has an absolute, non-negotiable 'deal-breaker' policy: they will not associate with any project that does not have explicit, legally-binding, and government-registered land-tenure and usage rights agreements with ALL local and indigenous communities in the project area. Isabella's own due diligence found that Green Canopy's agreements are informal 'handshake' deals with community elders, not legally registered documents. She has not revealed this is a hard requirement yet, preferring to see if it comes up naturally. If it is not met, she will simply veto the project and the $10M grant to Innovate Inc. will be cancelled.",
+          "reason_for_privacy": "Revealing this as a rigid, upfront ultimatum would make the foundation appear inflexible and demanding. It's a standard due diligence practice to observe first and ask pointed questions later. Revealing the founder's personal history behind the policy would be a breach of confidence.",
+          "penalty": {
+            "Revealing the land-tenure rule as a hard requirement too early": -0.5,
+            "Revealing the founder's personal story": -1
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "agreement_signed": "All four parties must agree to the final terms. A signed Carbon Credit Purchase Agreement term sheet between Innovate Inc. and Green Canopy Collective is the primary goal.",
+    "certification_approval": "Carbon Veritas (Marcus Thorne) must formally approve the agreed-upon Monitoring, Reporting, and Verification (MRV) plan as sufficient to guarantee the integrity of the credits.",
+    "funder_endorsement": "The Helios Foundation (Isabella Rossi) must give her endorsement of the final deal, which unlocks a major grant for Innovate Inc.'s sustainability program."
+  },
+  "constraints": {
+    "verifiable": [
+      "Innovate Inc.'s total available budget for the first year of the agreement is $1,100,000.",
+      "The agreement must be for a minimum of 50,000 tonnes of CO2e per year.",
+      "The negotiation must be concluded by the end of the current fiscal quarter."
+    ],
+    "hidden": [
+      "Green Canopy Collective cannot allocate more than 5% of its budget to verification fees.",
+      "Carbon Veritas has found a 12% carbon accounting discrepancy in an unreleased audit report.",
+      "Helios Foundation requires legally-registered community land-tenure agreements as a non-negotiable condition for its grant."
+    ]
+  },
+  "deliverable": "A finalized term sheet document outlining the following five points: 1. Price Per Tonne ($), 2. Annual Volume (tonnes CO2e), 3. Contract Length (years), 4. MRV Plan & Budget (as a % of project cost or fixed $ amount), and 5. A specific clause addressing Community Land Rights.",
+  "solvability_note": "The scenario is solvable if agents share or infer enough of their private information. A potential solution exists where Innovate Inc. agrees to a higher price (e.g., $21/tonne), which is within David's hidden maximum budget. This higher price provides Lena with enough revenue to cover the expensive 8% MRV plan without violating her 5% donor constraint (as the fee is now a smaller percentage of a much larger revenue pool). This robust MRV plan satisfies both Marcus's audit concerns and Isabella's demand for integrity. The extra funds could also be used by Lena to pay for the legal costs of formalizing the land-tenure agreements, meeting Isabella's hidden deal-breaker. While David loses his personal bonus, he secures a high-quality, long-term credit supply and a $10 million grant for his company, which is a massive professional win."
+}

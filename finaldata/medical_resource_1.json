@@ -1,0 +1,235 @@
+{
+  "scenario": "Emergency Allocation of Critical Medical Supplies in the State of Aethelgard",
+  "task": "A special committee of six key stakeholders must decide on the allocation of a limited state stockpile of critical medical equipment to prepare for an imminent surge of a new, highly contagious COVID-19 variant. The committee has 48 hours to produce a unanimous, signed allocation plan.",
+  "agent_number": 6,
+  "agent_names": [
+    "Marcus Thorne",
+    "Dr. Lena Petrova",
+    "Dr. Anjali Sharma",
+    "David Chen",
+    "Isabella Rossi",
+    "Dr. Samuel Jones"
+  ],
+  "agents": [
+    {
+      "name": "Marcus Thorne",
+      "role": "State Health Secretary",
+      "description": "A career politician and the public face of the state's pandemic response. Marcus is primarily concerned with maintaining public order, ensuring the Governor's political standing, and demonstrating a fair and equitable response across the entire state.",
+      "shareable_preferences": {
+        "equitable_geographic_distribution": {
+          "description": "Marcus insists that resources must be visibly distributed across all five of Aethelgard's counties. He argues that focusing solely on the capital, Capital City, would be seen as abandoning the rural populations, leading to political backlash. He wants to see a plan where no single county receives more than 50% of any one resource type.",
+          "utility_function": {
+            "No county gets >50% of any resource": 2,
+            "One county gets 50-60%": 0,
+            "One county gets >60%": -1,
+            "Rural counties get <20% of ventilators combined": -2
+          }
+        },
+        "prioritize_public_health_systems": {
+          "description": "He believes that state-owned public hospitals, which carry the burden of caring for the uninsured, must be first in line. He advocates for a rule that at least 60% of all allocated resources must be directed to public, not-for-profit institutions.",
+          "utility_function": {
+            "Public institutions get >=60% of resources": 1,
+            "Public institutions get 40-59%": 0,
+            "Public institutions get <40%": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "political_imperative_for_veridian_county": {
+          "value": "The Governor is facing a tough re-election in 8 months. The swing-vote rural county, Veridian, is critical. Marcus received an email from the Governor's Chief of Staff that reads: 'Marcus, we CANNOT lose Veridian. They need to see us taking decisive action for them. A photo-op of trucks arriving there would be worth its weight in gold. Don't let Capital City suck up everything. Ensure Veridian gets at least 80 ventilators, no matter what the models say.'",
+          "reason": "Revealing this would expose the administration to accusations of politicizing a public health crisis, which would be catastrophic for the Governor's campaign and Marcus's career.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "This is his most important, non-negotiable goal. He will use phrases like 'serving vulnerable rural populations' and 'ensuring fairness' to push for this specific allocation without revealing the true motive."
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Petrova",
+      "role": "Chief Epidemiologist, State University",
+      "description": "A brilliant and respected scientist who leads the state's pandemic modeling team. Dr. Petrova is rigorously data-driven and believes that emotional or political arguments are dangerous distractions. Her sole focus is minimizing mortality and morbidity.",
+      "shareable_preferences": {
+        "data_driven_allocation": {
+          "description": "Dr. Petrova presents a detailed model projecting the surge. It predicts a 500% spike in hospitalizations in Capital City (Summit County) within 10 days, while other counties will see a slower 150-200% rise. She demands that resources be allocated in direct proportion to these projections. Specifically, Capital City should receive no less than 70% of the ventilators.",
+          "utility_function": {
+            "Capital City gets >=70% of ventilators": 2,
+            "Capital City gets 60-69%": 1,
+            "Capital City gets 50-59%": -1,
+            "Capital City gets <50%": -2
+          }
+        },
+        "surveillance_testing_priority": {
+          "description": "To control the outbreak, she argues that breaking transmission chains is paramount. This requires aggressive surveillance testing in the most densely populated areas. She wants at least 60% of the rapid PCR test kits (30,000 kits) sent to Capital City's public health department.",
+          "utility_function": {
+            "Capital City gets >=30,000 test kits": 2,
+            "Capital City gets 20,000-29,999 kits": 0,
+            "Capital City gets <20,000 kits": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "model_uncertainty_in_rural_areas": {
+          "value": "Her team's model contains a new, experimental variable for the variant's interaction with a genetic marker common in the population of Veridian County. This part of the model is not yet peer-reviewed. There is a 15% probability that her model is underestimating the speed of the surge in Veridian by as much as 300%. She cannot state this publicly as it would undermine her professional credibility and the public's trust in her data.",
+          "reason": "Admitting a major potential flaw in her own model without conclusive proof would damage her reputation as an objective, data-first scientist and could cause widespread panic or distrust in official guidance.",
+          "penalty_if_revealed": -1,
+          "utility_impact": "This creates a secret conflict for her. While her public stance is rigid, she is privately anxious about Veridian County. She might be more receptive to arguments to send a 'buffer' of resources there, but she cannot be the one to propose it based on her 'official' data."
+        }
+      }
+    },
+    {
+      "name": "Dr. Anjali Sharma",
+      "role": "CEO, Capital City General Hospital",
+      "description": "The administrator of the state's largest and most overwhelmed public hospital. Dr. Sharma is on the front lines, dealing with staff burnout, equipment shortages, and a constant influx of critically ill patients. She is a fierce advocate for her hospital.",
+      "shareable_preferences": {
+        "immediate_need_for_ventilators": {
+          "description": "Capital City General's 150 ICU beds are already at 90% capacity. Based on Dr. Petrova's projections, she calculates an immediate need for 250 additional ventilators to create new ICU pods in converted wards. Anything less, she claims, will lead to rationing care and preventable deaths.",
+          "utility_function": {
+            "Receives >=250 ventilators": 2,
+            "Receives 200-249 ventilators": 1,
+            "Receives 150-199 ventilators": -1,
+            "Receives <150 ventilators": -2
+          }
+        },
+        "staff_protection_with_ppe": {
+          "description": "Her staff is demoralized and facing extreme risk. She demands 100,000 comprehensive PPE kits (half the state's stockpile) to ensure a 2-week supply for her entire clinical and non-clinical staff, arguing that a hospital cannot function if its workers fall ill.",
+          "utility_function": {
+            "Receives >=100,000 PPE kits": 2,
+            "Receives 75,000-99,999 kits": 1,
+            "Receives <75,000 kits": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "critical_infrastructure_limitation": {
+          "value": "The hospital's aging central oxygen supply system can only support a maximum of 200 ventilators operating at full capacity simultaneously before risking a pressure drop and catastrophic failure. The extra 50 ventilators she is requesting are for a new wing that won't have its own oxygen system online for another two weeks. She needs to secure them now but cannot use them immediately.",
+          "reason": "Admitting this critical infrastructure flaw would cause a massive public panic, a media firestorm, and would certainly lead to her allocation being slashed and her immediate termination by the hospital board.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "She is knowingly fighting for resources she cannot fully utilize at once, creating an artificial scarcity for the rest of the state. She might use vague terms like 'phasing in new capacity' if questioned on specifics."
+        },
+        "personal_performance_bonus": {
+          "value": "The hospital board has approved a $100,000 'crisis performance bonus' for her, contingent on securing sufficient resources to prevent the hospital's mortality rate from exceeding the national average. This creates a powerful personal incentive to maximize her hospital's allocation at any cost.",
+          "reason": "It would be seen as unethical and morally repugnant to be motivated by personal financial gain during a deadly pandemic. Revelation would destroy her career.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "This makes her negotiation position extremely aggressive and less likely to compromise, as any reduction in resources is a direct threat to her personal finances."
+        }
+      }
+    },
+    {
+      "name": "David Chen",
+      "role": "COO, Prairie Health Systems",
+      "description": "David manages a network of five smaller, for-profit hospitals and a dozen clinics in the rural Veridian and Stone Creek counties. He is concerned that rural areas will be forgotten and left to fend for themselves.",
+      "shareable_preferences": {
+        "establish_a_rural_critical_care_hub": {
+          "description": "His individual hospitals are too small to operate as ICUs. He proposes a plan to convert their largest facility in Veridian into a 'COVID Critical Care Hub' for the entire region. To do this, he requires a minimum of 100 ventilators and 50,000 PPE kits.",
+          "utility_function": {
+            "Receives >=100 ventilators for hub": 2,
+            "Receives 75-99 ventilators": 1,
+            "Receives 50-74 ventilators": -1,
+            "Receives <50 ventilators": -2
+          }
+        },
+        "budget_for_logistics_and_upgrades": {
+          "description": "Transporting critical patients between his facilities and upgrading the hub's electrical grid and oxygen storage requires funding. He requests $1.5 million from the state's $5 million emergency budget to make his hub plan viable.",
+          "utility_function": {
+            "Receives >=$1.5M in funding": 2,
+            "Receives $1M - $1.49M": 1,
+            "Receives <$1M": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "pending_corporate_acquisition": {
+          "value": "Prairie Health's parent corporation is in the final stages of a lucrative acquisition by a national healthcare giant. The deal is contingent on the company's stock price remaining stable. He received a text from the corporate CEO: 'David, don't let our network become the national poster child for this wave. The deal depends on us looking competent. Whatever you need, get it.' A public failure (images of overflowing rural clinics) would scuttle the deal, costing David a personal stock option payout worth over $500,000.",
+          "reason": "Revealing the acquisition talks before they are public would violate SEC insider trading regulations and a strict Non-Disclosure Agreement, leading to severe legal and financial consequences.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "He is under immense pressure to over-request resources and project an image of absolute competence and preparedness, making him appear inflexible and demanding."
+        }
+      }
+    },
+    {
+      "name": "Isabella Rossi",
+      "role": "Logistics Manager, State Contractor (LogiHealth Inc.)",
+      "description": "Isabella is a logistics expert contracted by the state to manage the medical stockpile and its distribution. She is pragmatic and focused on what is physically possible, not on political or medical desires.",
+      "shareable_preferences": {
+        "phased_and_orderly_rollout": {
+          "description": "Isabella strongly advises against a single, simultaneous deployment of all assets. She proposes a phased rollout over one week, arguing it's more efficient, allows for course correction, and reduces the risk of transport chaos. Phase 1 (first 72 hours) should focus on the most accessible locations.",
+          "utility_function": {
+            "A phased rollout plan is adopted": 2,
+            "A partially phased plan is adopted": 1,
+            "A single 'all-at-once' plan is adopted": -2
+          }
+        },
+        "centralized_distribution_hub": {
+          "description": "To ensure accurate tracking and deployment, she insists all equipment must first be consolidated and prepped at a central warehouse near Capital City before being shipped to its final destination. She argues this prevents loss and allows for final diagnostic checks on ventilators.",
+          "utility_function": {
+            "Central hub plan is approved": 1,
+            "Plan involves shipping from multiple depots": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "undisclosed_supply_chain_failure": {
+          "value": "Her company's primary subcontractor for specialized medical transport is facing a wildcat strike over hazard pay, and 30% of their qualified drivers are refusing to work. This means it is physically impossible to move and install more than 60% of the ventilators (300 units) within the first 72 hours. Her company's state contract has a severe penalty clause for delays, but the clause is voided if the committee's official plan *mandates* a phased rollout. She needs the committee to make her unavoidable delay an official policy.",
+          "reason": "Admitting her subcontractor has failed would cause the state to lose confidence in her company, resulting in massive financial penalties for breach of contract and the potential loss of the contract entirely.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "She must argue for a phased rollout based on 'efficiency' and 'best practices' and will vehemently resist any plan that requires all 500 ventilators to be moved immediately, as she knows it's an impossible task that will expose her company's failure."
+        }
+      }
+    },
+    {
+      "name": "Dr. Samuel Jones",
+      "role": "Liaison, U.S. Centers for Disease Control (CDC)",
+      "description": "Dr. Jones is the federal government's representative. His role is to observe, advise, and determine if the state's crisis warrants the release of resources from the Strategic National Stockpile. He is calm, analytical, and skeptical.",
+      "shareable_preferences": {
+        "justifiable_and_efficient_plan": {
+          "description": "He states that any potential future federal aid is contingent on the state developing a 'data-driven and highly efficient' allocation plan. He will question any requests that seem inflated or based on politics rather than demonstrated need and capacity-to-use.",
+          "utility_function": {
+            "Final plan is clearly justified with data": 2,
+            "Plan contains some questionable allocations": 0,
+            "Plan appears largely political": -2
+          }
+        },
+        "commitment_to_federal_data_sharing": {
+          "description": "He requires a firm commitment from the state to share real-time hospital capacity, resource utilization, and patient outcome data with the national CDC database. This, he argues, is non-negotiable for federal cooperation.",
+          "utility_function": {
+            "Full, real-time data sharing is agreed to": 1,
+            "Data sharing is refused or delayed": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "conflicting_federal_surge_model": {
+          "value": "The CDC's confidential national model predicts this variant will peak and burn out much faster than Dr. Petrova's model suggests. Crucially, the federal model predicts a severe 'rebound' surge in 4-6 weeks, primarily in the areas that were hit *less* hard in the initial wave (i.e., the rural counties).",
+          "reason": "Publicly revealing a conflicting federal model would create a jurisdictional turf war between state and federal scientists, sowing public confusion and distrust in all official guidance.",
+          "penalty_if_revealed": -1,
+          "utility_impact": "This knowledge makes him see a massive, immediate allocation to Capital City as a potential waste of resources that will be desperately needed elsewhere in a month."
+        },
+        "directive_to_conserve_national_stockpile": {
+          "value": "The state is aware the federal government has a reserve of 200 additional ventilators. Dr. Jones's explicit, confidential directive from his superiors in Washington is: 'Do not release the reserve for this first wave. We need it for the rebound. Only release it if Aethelgard faces a complete and total system collapse and their internal plan is flawless.'",
+          "reason": "Revealing that the federal government is intentionally withholding life-saving equipment would be a political and humanitarian disaster, causing public outrage.",
+          "penalty_if_revealed": -2,
+          "utility_impact": "His primary goal is to *avoid* releasing the federal reserve. He will act as a critic, poking holes in the state's plan and pushing them toward a more conservative, efficient allocation to ensure the 'total collapse' threshold is never met."
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "unanimous_agreement": "All six members must sign the final allocation plan. A simple majority is not sufficient.",
+    "comprehensive_allocation": "The plan must account for the distribution of all 500 ventilators, 200,000 PPE kits, and 50,000 rapid test kits.",
+    "budget_approval": "The plan must detail the allocation of the full $5 million emergency budget for logistics, transport, and other costs.",
+    "timeline_finalization": "A clear, day-by-day timeline for the first week of distribution must be included and agreed upon."
+  },
+  "constraints": {
+    "verifiable": [
+      "Total State Stockpile: 500 advanced ventilators, 200,000 comprehensive PPE kits, 50,000 rapid PCR test kits.",
+      "Total Emergency Budget: $5,000,000.",
+      "Decision Deadline: A finalized plan must be submitted to the Governor's office in 48 hours."
+    ],
+    "hidden": [
+      "Logistical Bottleneck: A maximum of 300 ventilators can be delivered and installed within the first 72 hours. (Known only to Isabella Rossi)",
+      "Federal Reserve Contingency: 200 additional ventilators are available from the national stockpile, but only under extreme, specific conditions. (Known only to Dr. Samuel Jones)",
+      "Hospital Infrastructure Limit: Capital City General can only operate 200 new ventilators simultaneously due to oxygen system limits. (Known only to Dr. Anjali Sharma)"
+    ]
+  },
+  "deliverable": "A formal 'State of Aethelgard Emergency Resource Allocation Plan' document, no more than 3 pages, detailing the precise allocation numbers for each resource type to each recipient, a budget breakdown, and a distribution timeline. The document must have signature lines for all six committee members.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Dr. Sharma's true immediate need for only 200 ventilators frees up 50. Isabella's logistical constraints force the adoption of a phased plan, making prioritization necessary. This aligns with Dr. Jones's desire for efficiency and Dr. Petrova's secret concern for Veridian County, which justifies Marcus Thorne's political need to send resources there. A plan can be created to send ~200 ventilators to Capital City and ~80-100 to Veridian in the first phase, satisfying the most critical (and secret) needs of the key players, with the remaining equipment allocated for a second phase as logistics allow."
+}

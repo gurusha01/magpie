@@ -1,0 +1,169 @@
+{
+  "scenario": "Redwood Creek Mine Restoration Project",
+  "task": "Three stakeholders must negotiate and agree on a comprehensive restoration plan for the recently closed Redwood Creek open-pit copper mine. The plan must specify the final land use, total budget, project timeline, and long-term monitoring commitments. The negotiation is complicated by undisclosed information held by each party, creating a complex web of conflicting interests and potential deal-breakers.",
+  "agent_number": 3,
+  "agent_names": [
+    "David Chen",
+    "Dr. Lena Hanson",
+    "Maria Flores"
+  ],
+  "agents": [
+    {
+      "name": "David Chen",
+      "role": "Project Manager, Apex Minerals Inc.",
+      "description": "David is a results-oriented project manager for Apex Minerals, the company that owns the mine. He is under significant corporate pressure to decommission the Redwood Creek site efficiently and cost-effectively to release capital for a new, more profitable venture. His professional reputation and a significant personal bonus are tied to the successful and swift completion of this project under budget.",
+      "shareable_preferences": {
+        "Budgetary Efficiency": {
+          "description": "My primary goal is to execute this restoration with maximum fiscal responsibility. The plan must be economically viable. I am proposing a total project budget not to exceed $15 million. A budget of $12 million or less would be ideal and would demonstrate exemplary efficiency.",
+          "utility_function": {
+            "<= $12M": 2,
+            "<= $15M": 1,
+            "<= $18M": 0,
+            "> $18M": -1,
+            "> $20M": -2
+          }
+        },
+        "Expedited Timeline": {
+          "description": "Time is a critical resource for Apex Minerals. We need to finalize this project and have all regulatory sign-offs completed within 24 months. This allows us to reallocate personnel and equipment to our upcoming lithium project in Nevada. A timeline longer than 30 months would create significant logistical and financial strain.",
+          "utility_function": {
+            "<= 24 months": 2,
+            "<= 30 months": 1,
+            "> 30 months": -1,
+            "> 36 months": -2
+          }
+        },
+        "Land Restoration Approach": {
+          "description": "I advocate for a standard 'cap and cover' restoration method. This involves grading the site for stability, covering it with a geo-textile membrane and topsoil, and seeding it with fast-growing, non-native grasses. This approach is proven, meets all baseline environmental regulations, and is the most cost-effective and timely solution.",
+          "utility_function": {
+            "'Cap and Cover' plan accepted": 2,
+            "Partial native species planting": -1,
+            "Full ecological restoration with varied terrain": -2
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential Redevelopment Proposal": {
+          "value": "Apex Minerals has a signed, confidential Letter of Intent with SunVolt Inc., a major solar energy firm. They want to lease 80% of the flat, graded land post-restoration for a large-scale solar farm. The deal is worth approximately $2 million per year for Apex, but it is strictly contingent on the site being delivered 'pad-ready' (flat, stable, accessible) within 24 months. If the plan involves creating varied terrain like hills or wetlands, the deal is off. I cannot reveal the existence of SunVolt or this deal due to a strict NDA.",
+          "reason": "Revealing this would violate a Non-Disclosure Agreement, immediately terminating the lucrative deal and exposing Apex Minerals to legal action from SunVolt. It would also be a major professional failure.",
+          "penalty_if_revealed": -2
+        },
+        "Hidden Liability Dispute": {
+          "value": "Our legal department is in secret, sensitive negotiations to settle a lawsuit with a downstream farmer whose well showed elevated heavy metal levels. Our internal hydrologists suspect a small, undocumented fissure in the mine's southern tailings pond is the cause. Admitting to any widespread contamination or agreeing to extensive, unscheduled soil testing in that quadrant could jeopardize the settlement, transforming it from a potential $500k payout into a $10M+ class-action lawsuit. I can argue against 'unnecessary testing' on the basis of cost, but I cannot reveal the true legal and contamination risk.",
+          "reason": "This information is protected by attorney-client privilege. Revealing it would constitute a catastrophic legal and financial blunder for the company and would result in my immediate termination.",
+          "penalty_if_revealed": -2
+        },
+        "Personal Performance Bonus": {
+          "value": "I have a formal email from my VP which reads: 'David, regarding the Redwood Creek closure, if you secure a plan under $15M and ensure the site is ready for the SunVolt handover in 24 months, the board has approved a $100,000 performance bonus for you.' This bonus is a significant part of my expected annual income.",
+          "reason": "It is highly unprofessional and reputationally damaging to discuss one's personal financial incentives in a professional negotiation. It would undermine my credibility and make me appear self-serving rather than company-focused.",
+          "penalty_if_revealed": -1
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Hanson",
+      "role": "Lead Scientist, State Environmental Protection Agency (SEPA)",
+      "description": "Lena is a dedicated and meticulous environmental scientist with 20 years of regulatory experience. She views the Redwood Creek project as an opportunity to set a new, higher standard for mine restorations in the state, moving beyond the bare-minimum compliance she has seen fail in the past. She is driven by scientific principles and a commitment to long-term ecological health.",
+      "shareable_preferences": {
+        "Comprehensive Ecological Restoration": {
+          "description": "The goal should not be to simply cover up the mine, but to restore a functioning, native ecosystem. I require a plan that includes re-contouring the land to a more natural state, re-establishing native plant species and pollinator habitats, and creating wetland areas to manage water runoff and support biodiversity.",
+          "utility_function": {
+            "Full ecological restoration plan": 2,
+            "Partial restoration (>50% native species)": 1,
+            "Basic 'Cap and Cover' plan": -2
+          }
+        },
+        "Rigorous Long-Term Monitoring": {
+          "description": "A successful restoration cannot be judged on day one. I insist on a mandatory, Apex-funded 10-year monitoring program for soil and water quality. This is non-negotiable for ensuring the long-term stability and safety of the site. A shorter plan would be irresponsible.",
+          "utility_function": {
+            "10-year monitoring plan": 2,
+            "5-year monitoring plan": 1,
+            "2-year monitoring plan": -1,
+            "No dedicated long-term plan": -2
+          }
+        },
+        "Data Transparency": {
+          "description": "To ensure public trust and accountability, all environmental data related to this project, including soil tests, water quality reports, and monitoring results, must be made publicly available on the SEPA website. There should be no 'proprietary' data when it comes to public health and the environment.",
+          "utility_function": {
+            "Full public data access": 1,
+            "Partial or delayed access": -1
+          }
+        }
+      },
+      "private_preferences": {
+        "Unofficial Contamination Data": {
+          "value": "Two months ago, a departing junior field tech gave me an off-the-record report. On his own time, he took a soil sample just outside the mine's southern boundary, near the farmer's property. His preliminary lab test, which was not done to official standards, showed cadmium and lead levels 10 times higher than anything in Apex's official self-reported data. The data is inadmissible and I cannot mention its existence. If I do, the data will be thrown out, the tech could face legal trouble, and I would face a serious internal investigation for using un-vetted data.",
+          "reason": "Using this data would be a major breach of regulatory protocol, jeopardizing the entire legal standing of SEPA's case against Apex and damaging my professional integrity.",
+          "penalty_if_revealed": -2
+        },
+        "Internal Political Pressure": {
+          "value": "My direct supervisor, under pressure from the Governor's office to promote a 'business-friendly' climate, privately told me to 'find a quick, reasonable compromise and avoid a protracted fight.' He warned that a high-profile, expensive battle with a major employer like Apex would be 'unhelpful' for our department's budget requests next year. I have some leeway, but if this negotiation stalls and becomes a public fight, my career progression will be stalled.",
+          "reason": "Revealing internal political pressures would severely weaken my negotiating authority. It would signal to David that I can be forced to back down if he holds out long enough.",
+          "penalty_if_revealed": -1
+        }
+      }
+    },
+    {
+      "name": "Maria Flores",
+      "role": "Executive Director, Redwood Creek Conservancy",
+      "description": "Maria is a respected and tenacious community leader. Her family has lived in the Redwood Creek area for generations. She represents a coalition of local residents, environmentalists, and recreational groups who have endured the negative impacts of the mine and now want to see the land transformed into a valuable community asset for future generations.",
+      "shareable_preferences": {
+        "Public Access and Parkland": {
+          "description": "This land was a community resource before it was a mine, and it should be one again. We demand that at least 75% of the restored site be designated as a public park, with amenities like hiking trails, picnic areas, and educational signage. Anything less would be a betrayal of the community.",
+          "utility_function": {
+            ">=75% of land as public park": 2,
+            "50-74% as park": 1,
+            "<50% as park": -1,
+            "No public access": -2
+          }
+        },
+        "Local Economic Benefit": {
+          "description": "The community that bore the burden of the mine's pollution and noise should reap the benefits of its restoration. We require a contractual commitment that a minimum of 50% of the labor and subcontracting budget for the restoration work is awarded to local businesses and workers from our county.",
+          "utility_function": {
+            ">=50% local hire commitment": 2,
+            "25-49% local hire": 1,
+            "<25% local hire": -2
+          }
+        },
+        "Superior Water Quality Standards": {
+          "description": "Meeting the bare legal minimum for water quality is not good enough. We want a binding commitment that the water quality in Redwood Creek, downstream from the mine, will be restored to its certified pre-mining baseline levels within 5 years of project completion. This is vital for the local ecosystem and for recreational fishing.",
+          "utility_function": {
+            "Guarantee of pre-mining water quality": 2,
+            "Meeting standard legal minimums": 0
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential Donor Pledge": {
+          "value": "I have secured a pledge from a wealthy, anonymous benefactor for a $3 million matching grant. The money is to be used for the restoration project, but it is strictly conditional on two things: 1) the final plan must be the full ecological restoration model that Dr. Hanson supports, and 2) it must include the construction of a small 'Wetland Ecology Education Center' on the site. The donor will withdraw the offer if their identity is revealed before the deal is signed or if the conditions are not met.",
+          "reason": "The donor is intensely private and will pull the funding immediately if their anonymity is compromised, as they do not want to be solicited for other projects. Revealing the pledge prematurely would vaporize the money.",
+          "penalty_if_revealed": -2
+        },
+        "Organizational Fragility": {
+          "value": "The Redwood Creek Conservancy is in a precarious financial position. Our membership has dropped by 30% over the past two years, and a major fundraising drive failed last quarter. A high-profile public victory here\u2014securing a new park for the community\u2014would be a lifeline, driving a new membership campaign and securing our future. A total loss\u2014like the land becoming a private solar farm\u2014would be devastating and could force us to dissolve the organization within the year.",
+          "reason": "Revealing our organization's financial weakness would destroy my negotiating leverage. David Chen would perceive me as desperate and would be unwilling to make any meaningful concessions, knowing I cannot afford a complete failure.",
+          "penalty_if_revealed": -1
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Signed Agreement": "All three parties must sign a final Memorandum of Understanding.",
+    "Plan Specification": "The agreement must clearly define the final land use (e.g., park, industrial, mixed-use), the restoration methodology, and long-term access rights.",
+    "Budget and Funding": "The agreement must state the total project budget and the specific financial commitments from each party.",
+    "Timeline": "The agreement must include a detailed project timeline with key milestones and a final completion date."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total budget contributed by Apex Minerals cannot exceed $20 million.",
+      "The restoration plan must, at a minimum, satisfy state and federal environmental regulations for mine closure (RCRA Subtitle D).",
+      "The project must be legally completed within a 48-month timeframe from the start date."
+    ],
+    "hidden": [
+      "David Chen's actual budget target is under $15 million to secure his bonus and the solar farm deal.",
+      "Dr. Lena Hanson has strong reason to believe the southern quadrant of the mine site has severe, unreported contamination.",
+      "Maria Flores has potential access to an additional $3 million in funding, but only for a specific type of high-cost restoration plan."
+    ]
+  },
+  "deliverable": "A single, jointly-authored 'Memorandum of Understanding' that details the agreed-upon restoration plan, budget, timeline, land use, and monitoring commitments, signed by all three agents.",
+  "solvability_note": "The scenario is solvable if private information is revealed. Lena's knowledge of contamination, if she can force new testing, would make David's cheap 'cap and cover' plan non-compliant and legally risky, jeopardizing the solar deal's timeline and stability requirements. This forces Apex to consider a more expensive, thorough cleanup. David's budget crisis can then be solved by Maria revealing her $3 million grant, which bridges the financial gap to afford the full ecological restoration. In exchange for avoiding a lawsuit and gaining positive PR, Apex can agree to the park concept. The final agreement would be a publicly-accessible ecological park with a wetland center, funded by a combination of Apex's increased (but legally necessary) budget and the Conservancy's grant, satisfying the core goals of all three parties."
+}

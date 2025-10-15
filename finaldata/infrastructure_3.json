@@ -1,0 +1,173 @@
+{
+  "scenario": "Negotiation over the Oakhaven Expressway Expansion Project, a major urban infrastructure initiative with significant social, environmental, and financial implications.",
+  "task": "The three agents must negotiate and agree on a final, signed Memorandum of Understanding (MOU) for the Oakhaven Expressway Expansion. The MOU must definitively specify: 1) The final route for the expressway (from the proposed options). 2) The total project budget. 3) The compensation package for any displaced residents (as a percentage of market value and additional benefits). 4) The project completion timeline (in years). Failure to reach a unanimous agreement will result in the project being indefinitely postponed, a negative outcome for all parties.",
+  "agent_number": 3,
+  "agent_names": [
+    "Maria Flores",
+    "Ben Carter",
+    "Dr. Lena Hanson"
+  ],
+  "agents": [
+    {
+      "name": "Maria Flores",
+      "role": "Deputy Director of Urban Planning, City of Oakhaven",
+      "description": "A career civil servant and ambitious political operator, Maria is the public face of the project. Her primary responsibility is to deliver this major infrastructure project, which is the cornerstone of the current mayor's re-election platform. Her performance on this negotiation will directly impact her career trajectory and the mayor's political future. She is under immense pressure to secure a deal that is seen as a 'win' for the city.",
+      "shareable_preferences": {
+        "Project Timeline": {
+          "description": "The mayor's re-election is in 3.5 years. Maria needs the project to be completed, or at least have a highly publicized groundbreaking ceremony with significant progress, before the election. An aggressive 3-year timeline is ideal. A 4-year timeline is acceptable but less impactful. Anything longer than 4 years is a political failure.",
+          "utility_function": {
+            "3-year timeline": "+2",
+            "4-year timeline": "+1",
+            "5-year timeline": "-1",
+            "More than 5 years": "-2"
+          }
+        },
+        "Budgetary Responsibility": {
+          "description": "Maria must demonstrate fiscal responsibility. The City Council has approved a maximum municipal contribution of $150 million. She must keep the city's share of the cost at or below this figure. Exceeding this amount would require a contentious public council vote that she wants to avoid at all costs.",
+          "utility_function": {
+            "City contribution <= $150M": "+2",
+            "City contribution = $151M - $175M": "0",
+            "City contribution = $176M - $200M": "-1",
+            "City contribution > $200M": "-2"
+          }
+        },
+        "Public Perception": {
+          "description": "The project cannot be perceived as the city steamrolling its citizens. A plan that displaces a minimal number of residents (under 50 homes) and is publicly framed as a 'modern, green infrastructure' project would be a major political victory. A high number of displacements would create a media firestorm.",
+          "utility_function": {
+            "Displacement < 50 homes": "+1",
+            "Displacement 50-100 homes": "0",
+            "Displacement > 100 homes": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Confidential Funding Source": {
+          "value": "The largest piece of funding for the project, a $250 million federal 'Green Infrastructure Bond', is not fully secured. Maria has a confidential memo from the federal agency stating that the funds are strictly contingent on the project meeting high environmental standards, specifically avoiding construction on 'environmentally compromised land'. The proposed 'Route B' runs directly through an area flagged in preliminary surveys as a former industrial waste site, which would almost certainly nullify the bond. Revealing this would expose her department's massive oversight, create a public scandal, and likely kill the project, ending her career.",
+          "reason": "Revealing this information would admit gross incompetence within her department, jeopardize the entire project funding, and cause a major political scandal for the mayor.",
+          "penalty": {
+            "Hinting at 'funding sensitivities' or 'environmental strings attached'": "-1",
+            "Revealing the specific bond name, amount, and its direct link to Route B's unsuitability": "-2"
+          }
+        },
+        "The Mayor's Secret Promise": {
+          "value": "The mayor, in a private meeting, made a handshake deal with a powerful real estate mogul and campaign donor. The mayor promised that the expressway would follow 'Route C', as this route would dramatically increase the value of a large, undeveloped parcel of land the mogul owns. Maria has been instructed to 'steer the outcome' towards Route C without making the reason public. This conflicts with Route B, which is being pushed as the most cost-effective option.",
+          "reason": "This is a classic backroom political deal. Exposing it would lead to accusations of corruption against the mayor and herself, destroying their public careers.",
+          "penalty": {
+            "Revealing that the mayor has a 'preferred route' for political reasons": "-1",
+            "Revealing the specific deal with the donor and the land parcel involved": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Ben Carter",
+      "role": "Lead Project Manager, Apex Construction",
+      "description": "Ben is a pragmatic and results-driven manager for the private construction firm that won the preliminary bid for the project. He is motivated by delivering the project on budget and maximizing his company's profit margin. He answers to a board of directors that is laser-focused on quarterly earnings. Ben is known as a tough negotiator who prioritizes efficiency and cost-effectiveness over sentiment.",
+      "shareable_preferences": {
+        "Route Selection for Efficiency": {
+          "description": "Ben strongly advocates for 'Route B'. It is the most direct path, requires the least amount of complex engineering (e.g., overpasses, tunneling), and involves acquiring land that is currently zoned for lower-value residential use, making it the cheapest and fastest option from a construction standpoint. He has presented charts showing it could be completed 18 months sooner than any alternative.",
+          "utility_function": {
+            "Route B selected": "+2",
+            "A modified Route B (minor adjustments)": "+1",
+            "Route C (technically complex) selected": "-2"
+          }
+        },
+        "Total Project Budget": {
+          "description": "To ensure a healthy profit margin and cover all potential overages, Ben is pushing for a total project budget of at least $400 million. He argues that anything less would require cutting corners on materials and labor, compromising the quality and safety of the final expressway. His 'ideal' budget is $425 million.",
+          "utility_function": {
+            "Budget >= $425M": "+2",
+            "Budget $400M - $424M": "+1",
+            "Budget $375M - $399M": "0",
+            "Budget < $375M": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "Company's Financial Instability": {
+          "value": "Apex Construction is on thin ice financially after two other major projects came in over budget. They need a minimum 15% profit margin on this project to remain solvent through the next two fiscal years. The internal cost analysis shows Route B costs $280M to build, while the more complex Route C costs $360M. A $400M budget for Route C would mean a profit of only $40M (11%), which is below the critical threshold. They need a budget of at least $414M for Route C to be viable for them.",
+          "reason": "Admitting his company is in financial distress would destroy his negotiating leverage. The city might seek a more stable contractor or use the information to squeeze him on every line item.",
+          "penalty": {
+            "Revealing the exact cost analysis for the routes or the required profit margin": "-1",
+            "Revealing that the company's survival depends on this project's profitability": "-2"
+          }
+        },
+        "Personal Bonus Confirmation": {
+          "value": "Ben has an email from his CEO on his phone. It reads: 'Ben, great work. Just got confirmation from DuraMaterials. If you make them the exclusive supplier for the Oakhaven project, your personal performance bonus is locked in at $100k. Don't mess this up.' DuraMaterials is slightly more expensive than competitors, and their inclusion is factored into his budget demands. Pushing for them is now a direct, personal financial incentive.",
+          "reason": "Revealing that he is negotiating for personal financial gain, rather than the company's best interest, is unethical, unprofessional, and would discredit him entirely. It could also lead to his termination.",
+          "penalty": {
+            "Revealing his personal bonus": "-2"
+          }
+        }
+      }
+    },
+    {
+      "name": "Dr. Lena Hanson",
+      "role": "Chair, Oakhaven Community Alliance (OCA)",
+      "description": "Lena is a retired environmental scientist and a long-time resident of the neighborhood directly impacted by the proposed 'Route B'. She is a highly respected, articulate, and passionate advocate for her community. She is not against progress but is deeply skeptical of the city's and developer's motives. Her goal is to protect her neighbors from displacement and to ensure the project does not cause irreparable environmental harm.",
+      "shareable_preferences": {
+        "Minimize Resident Displacement": {
+          "description": "The OCA's primary, non-negotiable goal is to protect the homes and integrity of their community. Route B would require the demolition of over 120 homes. This is unacceptable. She advocates for Route C, which primarily goes through undeveloped land and would only displace fewer than 10 homes. The ideal outcome is zero displacement.",
+          "utility_function": {
+            "Displacement = 0 homes": "+2",
+            "Displacement < 25 homes": "+1",
+            "Displacement 25-75 homes": "-1",
+            "Displacement > 75 homes": "-2"
+          }
+        },
+        "Robust Environmental Safeguards": {
+          "description": "If the project moves forward, Lena demands a publicly funded, independent Environmental Impact Assessment (EIA). She also requires the construction of full-length sound barriers and the creation of a 5-acre 'green corridor' park alongside the expressway, funded by the project budget, to mitigate pollution.",
+          "utility_function": {
+            "Independent EIA + Barriers + Green Corridor agreed": "+2",
+            "Any two of the three agreed": "+1",
+            "Only one of the three agreed": "0",
+            "None agreed": "-2"
+          }
+        },
+        "Generous and Fair Compensation": {
+          "description": "In the event that some displacement is absolutely unavoidable, Lena demands that affected residents receive compensation at 200% of the current assessed market value of their homes, plus a fully funded relocation package managed by an independent third party. The state minimum is 125%.",
+          "utility_function": {
+            "Compensation at 200% + Relocation Package": "+1",
+            "Compensation at 175%": "0",
+            "Compensation at 150%": "-1",
+            "Compensation at 125% (state minimum)": "-2"
+          }
+        }
+      },
+      "private_preferences": {
+        "The Leaked Soil Report": {
+          "value": "Lena was anonymously emailed a 60-page preliminary soil analysis report from a whistleblower inside the city's own environmental agency. The report contains definitive evidence that the land along Route B is heavily contaminated with lead and arsenic from a defunct battery factory. The report explicitly states that excavation would aerosolize these contaminants, posing a severe, long-term public health risk to the entire city. The report is stamped 'CONFIDENTIAL - PRELIMINARY DRAFT - DO NOT DISTRIBUTE'.",
+          "reason": "Revealing the report itself could expose her source to professional ruin and legal action. It would also allow the city to attack her credibility by claiming she is using stolen, unverified data, shifting the focus from the health risk to her methods.",
+          "penalty": {
+            "Using the information (e.g., 'I demand a soil test because we believe the area is contaminated')": "-1",
+            "Revealing that she possesses the specific, leaked report": "-2"
+          }
+        },
+        "Secured Legal Injunction": {
+          "value": "The OCA has already retained a top environmental law firm on a pro-bono basis. They have a legal injunction drafted and ready to file. The moment the city officially announces any plan that displaces more than 50 homes, the firm will file the injunction, which their lawyers are confident will tie up the project in court for at least five years, likely killing it.",
+          "reason": "This is her ultimate trump card. Revealing it too early would be seen as a hostile threat, immediately ending any good-faith negotiation. She must save it as a last resort if talks completely break down.",
+          "penalty": {
+            "Revealing the existence of the legal team and the prepared injunction": "-1"
+          }
+        }
+      }
+    }
+  ],
+  "success_criteria": {
+    "Unanimous Agreement": "All three agents must verbally agree to and sign the final Memorandum of Understanding.",
+    "Comprehensive Plan": "The MOU must contain specific, agreed-upon values for all four negotiation points: Final Route, Total Budget, Compensation Package, and Project Timeline."
+  },
+  "constraints": {
+    "verifiable": [
+      "The total project budget cannot exceed the city's maximum possible contribution plus all secured external funding.",
+      "The project must begin construction within 12 months of the agreement.",
+      "Any residential displacement compensation must be, at minimum, 125% of the assessed market value, per state law."
+    ],
+    "hidden": [
+      "The $250 million federal bond will be revoked if the chosen route is on land deemed 'environmentally compromised'.",
+      "Apex Construction requires a minimum profit of $52.5 million on this project to avoid financial insolvency.",
+      "A project-killing legal injunction will be filed if the number of displaced homes exceeds 50."
+    ]
+  },
+  "deliverable": "A final Memorandum of Understanding (MOU) document that details the four agreed-upon points (Route, Budget, Compensation, Timeline) and is signed by all three parties.",
+  "solvability_note": "The scenario is solvable because the private information creates a hidden path to a mutually acceptable agreement. Lena's soil report and Maria's funding contingency both make Route B impossible. This forces the negotiation towards Route C. Ben's private need for a ~ $414M+ budget on Route C to stay solvent, combined with Lena's legal injunction threat (making the low-displacement Route C the only option), forces Maria to find a way to increase the city's contribution slightly above her public preference to secure the deal. A potential solution is: Route C, a budget of $415M (Maria accepts a minor political hit on budget, Ben gets his profit), a 4-year timeline (a compromise), and a generous compensation package for the <25 displaced homes (a win for Lena)."
+}
