@@ -1,6 +1,5 @@
 # Multi-Agent Negotiation System (MPI)
 
-<h1 align="center">Dataset for "MAGPIE: A benchmark for Multi-AGent contextual PrIvacy Evaluation"</h1>
 <p align="center">
   <a href="https://arxiv.org/abs/2510.15186" target="_blank" style="
     display:inline-block;
