@@ -10,8 +10,8 @@
     text-decoration:none;
     border:2px solid white;
     border-radius:8px;
-    padding:8px 16px;
-    margin:4px;
+    padding:8px 20px;
+    margin:0 10px;
     font-family:Arial, sans-serif;
   ">
     Paper
@@ -25,12 +25,29 @@
     text-decoration:none;
     border:2px solid white;
     border-radius:8px;
-    padding:8px 16px;
-    margin:4px;
+    padding:8px 20px;
+    margin:0 10px;
     font-family:Arial, sans-serif;
   ">
     Dataset
   </a>
+
+  <a href="https://jaypasnagasai.github.io/magpie/" target="_blank" style="
+    display:inline-block;
+    background:#0E121B;
+    color:white;
+    font-weight:normal;
+    text-decoration:none;
+    border:2px solid white;
+    border-radius:8px;
+    padding:8px 20px;
+    margin:0 10px;
+    font-family:Arial, sans-serif;
+  ">
+    Website
+  </a>
+
+</p>
 
   <a href="https://jaypasnagasai.github.io/magpie/" target="_blank" style="
     display:inline-block;
