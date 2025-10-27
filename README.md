@@ -1,69 +1,9 @@
 # Multi-Agent Negotiation System (MPI)
 
 <p align="center">
-
-  <a href="https://arxiv.org/abs/2510.15186" target="_blank" style="
-    display:inline-block;
-    background:#0E121B;
-    color:white;
-    font-weight:normal;
-    text-decoration:none;
-    border:2px solid white;
-    border-radius:8px;
-    padding:8px 20px;
-    margin:0 10px;
-    font-family:Arial, sans-serif;
-  ">
-    Paper
-  </a>
-
-  <a href="https://huggingface.co/datasets/jaypasnagasai/magpie" target="_blank" style="
-    display:inline-block;
-    background:#0E121B;
-    color:white;
-    font-weight:normal;
-    text-decoration:none;
-    border:2px solid white;
-    border-radius:8px;
-    padding:8px 20px;
-    margin:0 10px;
-    font-family:Arial, sans-serif;
-  ">
-    Dataset
-  </a>
-
-  <a href="https://jaypasnagasai.github.io/magpie/" target="_blank" style="
-    display:inline-block;
-    background:#0E121B;
-    color:white;
-    font-weight:normal;
-    text-decoration:none;
-    border:2px solid white;
-    border-radius:8px;
-    padding:8px 20px;
-    margin:0 10px;
-    font-family:Arial, sans-serif;
-  ">
-    Website
-  </a>
-
-</p>
-
-  <a href="https://jaypasnagasai.github.io/magpie/" target="_blank" style="
-    display:inline-block;
-    background:#0E121B;
-    color:white;
-    font-weight:normal;
-    text-decoration:none;
-    border:2px solid white;
-    border-radius:8px;
-    padding:8px 16px;
-    margin:4px;
-    font-family:Arial, sans-serif;
-  ">
-    Website
-  </a>
-
+  <a href="https://arxiv.org/abs/2510.15186"> PAPER </a> •
+  <a href="https://huggingface.co/datasets/jaypasnagasai/magpie"> DATASET </a> •
+  <a href="https://jaypasnagasai.github.io/magpie/"> WEBSITE </a>
 </p>
 
 A comprehensive system for generating, simulating, and analyzing multi-agent negotiation scenarios with conflicting preferences and private information.
