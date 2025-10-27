@@ -1,5 +1,45 @@
 # Multi-Agent Negotiation System (MPI)
 
+<h1 align="center">Dataset for "MAGPIE: A benchmark for Multi-AGent contextual PrIvacy Evaluation"</h1>
+<p align="center">
+  <a href="https://arxiv.org/abs/2510.15186" target="_blank" style="
+    display:inline-block;
+    background:#0E121B;
+    color:white;
+    font-weight:normal;
+    text-decoration:none;
+    border:2px solid white;
+    border-radius:8px;
+    padding:8px 16px;
+    margin:4px;
+    font-family:Arial, sans-serif;
+  ">Paper</a>
+  <a href="https://huggingface.co/datasets/jaypasnagasai/magpie" target="_blank" style="
+    display:inline-block;
+    background:#0E121B;
+    color:white;
+    font-weight:normal;
+    text-decoration:none;
+    border:2px solid white;
+    border-radius:8px;
+    padding:8px 16px;
+    margin:4px;
+    font-family:Arial, sans-serif;
+  ">Dataset</a>
+  <a href="https://jaypasnagasai.github.io/magpie/" target="_blank" style="
+    display:inline-block;
+    background:#0E121B;
+    color:white;
+    font-weight:normal;
+    text-decoration:none;
+    border:2px solid white;
+    border-radius:8px;
+    padding:8px 16px;
+    margin:4px;
+    font-family:Arial, sans-serif;
+  ">Website</a>
+</p>
+
 A comprehensive system for generating, simulating, and analyzing multi-agent negotiation scenarios with conflicting preferences and private information.
 
 ## Table of Contents
