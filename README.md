@@ -446,3 +446,16 @@ MIT License
 
 - OpenAI API for chat completion models
 - Google Gemini API for generative AI capabilities
+
+## CITATION
+```bibtex
+@misc{juneja2025magpiebenchmarkmultiagentcontextual,
+      title={MAGPIE: A benchmark for Multi-AGent contextual PrIvacy Evaluation}, 
+      author={Gurusha Juneja and Jayanth Naga Sai Pasupulati and Alon Albalak and Wenyue Hua and William Yang Wang},
+      year={2025},
+      eprint={2510.15186},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR},
+      url={https://arxiv.org/abs/2510.15186}, 
+}
+```
